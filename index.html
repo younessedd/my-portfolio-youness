@@ -687,7 +687,7 @@
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1124px) {
             .burger-btn {
                 display: flex;
             }
@@ -820,24 +820,22 @@
     </section>
 
     <!-- About Section -->
-<section id="about">
-    <div class="container">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <div>
-                <h3>YOUNESS EDDANGUIR</h3>
-                <p>Junior Web Developer with a strong passion for innovation in web technologies and IoT. Leveraging my background in electrical engineering, I seamlessly integrate digital solutions with physical systems to create intelligent and practical applications.</p>
-                <p>I thrive on quickly learning new technologies and solving complex technical challenges. My goal is to deliver efficient, scalable, and user-friendly solutions that enhance productivity and improve everyday life.</p>
-                <p>Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, and IoT platforms including Arduino, ESP32, ESP8266, and robotics, aiming to develop cutting-edge projects that bridge the digital and physical worlds.</p>
-            </div>
-            <div class="about-img">
-                <!-- Replace the src with the path to your image -->
-                <img src="images/my.jpeg" alt="Youness Eddanguir" style="width:100%; border-radius:10px;">
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div>
+                    <h3>YOUNESS EDDANGUIR</h3>
+                    <p>Junior Web Developer with a strong passion for innovation in web technologies and IoT. Leveraging my background in electrical engineering, I seamlessly integrate digital solutions with physical systems to create intelligent and practical applications.</p>
+                    <p>I thrive on quickly learning new technologies and solving complex technical challenges. My goal is to deliver efficient, scalable, and user-friendly solutions that enhance productivity and improve everyday life.</p>
+                    <p>Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, and IoT platforms including Arduino, ESP32, ESP8266, and robotics, aiming to develop cutting-edge projects that bridge the digital and physical worlds.</p>
+                </div>
+                <div class="about-img">
+                    <img src="images/my.jpeg" alt="Youness Eddanguir" style="width:100%; border-radius:10px;">
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
+    </section>
 
     <!-- Skills Section -->
     <section id="skills">
@@ -883,6 +881,8 @@
     </section>
 
     <!-- CV Download Section -->
+    <!-- CV Download Section -->
+    <!-- CV Download Section -->
     <section id="cv" class="cv-section">
         <div class="container">
             <h2>Curriculum Vitae</h2>
@@ -894,7 +894,7 @@
                     </div>
                     <h3>Web Developer</h3>
                     <p>Focuses on web development skills and relevant experiences.</p>
-                    <a href="cv/dev.cv.pdf" class="btn download-cv" data-cv="webdev">Download PDF</a>
+                    <a href="cv/cv-webdev.pdf" class="btn download-cv" data-cv="webdev" target="_blank">View/Download PDF</a>
                 </div>
                 <div class="cv-card">
                     <div class="cv-icon">
@@ -902,13 +902,14 @@
                     </div>
                     <h3>Electrical Engineer / IoT</h3>
                     <p>Focuses on electrical, electronic projects and Internet of Things.</p>
-                    <a href="assets/cv-electric.pdf" class="btn download-cv" data-cv="electric">Download PDF</a>
+                    <a href="cv/cv-electric.pdf" class="btn download-cv" data-cv="electric" target="_blank">View/Download PDF</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
+       <!-- Contact Section -->
     <section id="contact">
         <div class="container">
             <h2>Contact Me</h2>
@@ -923,7 +924,7 @@
                             </div>
                             <div>
                                 <h4>Email</h4>
-                                <p>john@example.com</p>
+                                <p><a href="mailto:eddanguiryouness@gmail.com" style="color: inherit; text-decoration: none;">eddanguiryouness@gmail.com</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -932,7 +933,16 @@
                             </div>
                             <div>
                                 <h4>Phone</h4>
-                                <p>+1 (555) 123-4567</p>
+                                <p><a href="tel:+212664837281" style="color: inherit; text-decoration: none;">+212 6 6483 7281</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <p><a href="https://wa.me/212664837281" target="_blank" style="color: inherit; text-decoration: none;">+212 6 6483 7281</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -941,7 +951,7 @@
                             </div>
                             <div>
                                 <h4>Location</h4>
-                                <p>San Francisco, CA</p>
+                                <p><a href="https://www.google.com/maps/place/Casablanca,+Morocco" target="_blank" style="color: inherit; text-decoration: none;">Casablanca, Morocco</a></p>
                             </div>
                         </div>
                     </div>
@@ -991,218 +1001,205 @@
     <script>
         // Data and global variables
         const skillsData = [
-    { 
-        category: "Web Development", 
-        skills: [
-            { name: "HTML/CSS", level: "Advanced" },
-            { name: "JavaScript", level: "Advanced" },
-            { name: "React.js", level: "Advanced" },
-            { name: "Laravel", level: "Intermediate" },
-            { name: "Bootstrap", level: "Intermediate" },
-            { name: "Git", level: "Intermediate" },  
-            { name: "Responsive Design", level: "Advanced" },
-            { name: "REST APIs", level: "Intermediate" },
-           
-        ]
-    },
-    { 
-        category: "Internet of Things", 
-        skills: [
-            { name: "Arduino", level: "Intermediate" },
-            { name: "ESP32/ESP8266", level: "Intermediate" },
-            { name: "Sensor Networks", level: "Intermediate" },
-            { name: "Firebase", level: "Intermediate" },
-            { name: "Electrique/Electronics", level: "Advanced" },
-            { name: "Circuit Design", level: "Intermediate" },
-            { name: "Bluetooth BLE", level: "Intermediate" },
-            { name: "Home Automation", level: "Intermediate" },
-           
-        ]
-    },
-    { 
-        category: "Other Skills", 
-        skills: [
-            { name: "UI/UX Design", level: "Intermediate" },
-            { name: "Problem Solving", level: "Advanced" },
-            { name: "Teamwork", level: "Advanced" },
-            { name: "Communication", level: "Advanced" },
-            { name: "Critical Thinking", level: "Advanced" },
-            { name: "Time Management", level: "Advanced" },
-            { name: "Presentation Skills", level: "Intermediate" },
-            { name: "Creativity", level: "Advanced" },
-
-        ]
-    }
-];
+            { 
+                category: "Web Development", 
+                skills: [
+                    { name: "HTML/CSS", level: "Advanced" },
+                    { name: "JavaScript", level: "Advanced" },
+                    { name: "React.js", level: "Advanced" },
+                    { name: "Laravel", level: "Intermediate" },
+                    { name: "Bootstrap", level: "Intermediate" },
+                    { name: "Git", level: "Intermediate" },  
+                    { name: "Responsive Design", level: "Advanced" },
+                    { name: "REST APIs", level: "Intermediate" },
+                ]
+            },
+            { 
+                category: "Internet of Things", 
+                skills: [
+                    { name: "Arduino", level: "Intermediate" },
+                    { name: "ESP32/ESP8266", level: "Intermediate" },
+                    { name: "Sensor Networks", level: "Intermediate" },
+                    { name: "Firebase", level: "Intermediate" },
+                    { name: "Electrique/Electronics", level: "Advanced" },
+                    { name: "Circuit Design", level: "Intermediate" },
+                    { name: "Bluetooth BLE", level: "Intermediate" },
+                    { name: "Home Automation", level: "Intermediate" },
+                ]
+            },
+            { 
+                category: "Other Skills", 
+                skills: [
+                    { name: "UI/UX Design", level: "Intermediate" },
+                    { name: "Problem Solving", level: "Advanced" },
+                    { name: "Teamwork", level: "Advanced" },
+                    { name: "Communication", level: "Advanced" },
+                    { name: "Critical Thinking", level: "Advanced" },
+                    { name: "Time Management", level: "Advanced" },
+                    { name: "Presentation Skills", level: "Intermediate" },
+                    { name: "Creativity", level: "Advanced" },
+                ]
+            }
+        ];
 
         // Web Applications Data with detailed explanations
         const webAppsData = [
- {
-    id: 1,
-    title: "Coworker",
-    description: "A modern responsive coworking space website project, showcasing design and front-end development skills.",
-    icon: "fas fa-building",
-    features: [
-        "Responsive layout for desktop and mobile",
-        "Interactive sections with animations",
-        "Hero, About, Projects, and Contact sections",
-        "Clean modern design"
-    ],
-    technologies: ["HTML5", "CSS3", "JavaScript"],
-    liveUrl: "https://younessedd.github.io/coworker-youness/",
-    githubUrl: "https://github.com/younessedd/coworker-youness",
-    explanation: "This project is a front-end website for a coworking space. It demonstrates responsive design, smooth scrolling, section animations, and an organized project showcase."
-},
-
-{
-    id: 2,
-    title: "Restarent",
-    description: "A modern responsive restaurant website project, featuring menu display, reservation form, and interactive UI elements.",
-    icon: "fas fa-utensils",
-    features: [
-        "Responsive layout for desktop and mobile",
-        "Menu display with categories",
-        "Reservation/contact form",
-        "Smooth animations and modern design"
-    ],
-    technologies: ["HTML5", "CSS3", "JavaScript"],
-    liveUrl: "https://younessedd.github.io/restarent-youness/",
-    githubUrl: "https://github.com/younessedd/restarent-youness",
-    explanation: "This project is a front-end website for a restaurant. It showcases responsive design, interactive sections, menu organization, and a reservation form for users."
-},
-
-      {
-    id: 3,
-    title: "PowerGrid Solutions",
-    description: "A responsive energy management and solutions website project, showcasing services, projects, and company information.",
-    icon: "fas fa-bolt",
-    features: [
-        "Responsive layout for desktop and mobile",
-        "Services and project showcase",
-        "Interactive sections with smooth animations",
-        "Clean modern design for professional presentation"
-    ],
-    technologies: ["HTML5", "CSS3", "JavaScript"],
-    liveUrl: "https://younessedd.github.io/PowerGrid-Solutions-youness/",
-    githubUrl: "https://github.com/younessedd/PowerGrid-Solutions-youness",
-    explanation: "This project is a front-end website for an energy solutions company. It highlights services, completed projects, and provides an interactive user experience with responsive design and animations."
-},
-
+            {
+                id: 1,
+                title: "Coworker",
+                description: "A modern responsive coworking space website project, showcasing design and front-end development skills.",
+                icon: "fas fa-building",
+                features: [
+                    "Responsive layout for desktop and mobile",
+                    "Interactive sections with animations",
+                    "Hero, About, Projects, and Contact sections",
+                    "Clean modern design"
+                ],
+                technologies: ["HTML5", "CSS3", "JavaScript"],
+                liveUrl: "https://younessedd.github.io/coworker-youness/",
+                githubUrl: "https://github.com/younessedd/coworker-youness",
+                explanation: "This project is a front-end website for a coworking space. It demonstrates responsive design, smooth scrolling, section animations, and an organized project showcase."
+            },
+            {
+                id: 2,
+                title: "Restarent",
+                description: "A modern responsive restaurant website project, featuring menu display, reservation form, and interactive UI elements.",
+                icon: "fas fa-utensils",
+                features: [
+                    "Responsive layout for desktop and mobile",
+                    "Menu display with categories",
+                    "Reservation/contact form",
+                    "Smooth animations and modern design"
+                ],
+                technologies: ["HTML5", "CSS3", "JavaScript"],
+                liveUrl: "https://younessedd.github.io/restarent-youness/",
+                githubUrl: "https://github.com/younessedd/restarent-youness",
+                explanation: "This project is a front-end website for a restaurant. It showcases responsive design, interactive sections, menu organization, and a reservation form for users."
+            },
+            {
+                id: 3,
+                title: "PowerGrid Solutions",
+                description: "A responsive energy management and solutions website project, showcasing services, projects, and company information.",
+                icon: "fas fa-bolt",
+                features: [
+                    "Responsive layout for desktop and mobile",
+                    "Services and project showcase",
+                    "Interactive sections with smooth animations",
+                    "Clean modern design for professional presentation"
+                ],
+                technologies: ["HTML5", "CSS3", "JavaScript"],
+                liveUrl: "https://younessedd.github.io/PowerGrid-Solutions-youness/",
+                githubUrl: "https://github.com/younessedd/PowerGrid-Solutions-youness",
+                explanation: "This project is a front-end website for an energy solutions company. It highlights services, completed projects, and provides an interactive user experience with responsive design and animations."
+            },
         ];
 
         // Mobile Applications Data
         const mobileAppsData = [
- {
-    id: 1,
-    title: "AmeriQuiz Quest",
-    description: "A mobile quiz application with engaging questions and interactive gameplay.",
-    icon: "fas fa-question-circle",
-    features: [
-        "Multiple-choice quiz questions",
-        "Scoring and progress tracking",
-        "Interactive and user-friendly interface",
-        "Fun and educational gameplay"
-    ],
-    technologies: ["Kodular", "Firebase"],
-    playStoreUrl: "https://play.google.com/store/apps/details?id=com.youproproyou.ameriquizquest",
-    explanation: "Mobile quiz app that allows users to test their knowledge with multiple-choice questions. Includes scoring system, progress tracking, and an engaging, interactive interface."
-},
-
- {
-    id: 2,
-    title: "Sensor Android",
-    description: "Android app that detects all available sensors on the device and visualizes their functionality with interactive graphics.",
-    icon: "fas fa-mobile-alt",
-    features: [
-        "Detects all device sensors",
-        "Interactive sensor visualizations",
-        "Lists supported hardware sensors",
-        "Provides useful sensor tools for daily use"
-    ],
-    technologies: ["Kodular", "Sensor APIs"],
-     playStoreUrl: "https://play.google.com/store/apps/details?id=com.FiveStarApp.Test.Sensors.free",
-    explanation: "This app scans all sensors on an Android device, displays real-time sensor data with vivid graphics, and offers practical tools for using sensors in everyday scenarios."
-},
-
-{
-    id: 3,
-    title: "DARI CONNECTER",
-    description: "Mobile app for configuring, managing, and controlling smart home and commercial devices easily from your smartphone or tablet.",
-    icon: "fas fa-lightbulb",
-    features: [
-        "Control lights, plugs, and other connected devices",
-        "Manage automated buildings with one click",
-        "Centralized smart building control",
-        "Quick and intuitive interface for all functions"
-    ],
-    technologies: ["Flutter", "IoT Protocols", "MQTT", "Firebase"],
-    playStoreUrl: "https://play.google.com/store/apps/details?id=com.FiveStarApp.Smart.Home.Connected",
-    explanation: "The DARI CONNECTER app turns your mobile device into a central control hub for smart homes and commercial properties, allowing you to automate lighting, power outlets, and other devices with ease."
-},
-
-
+            {
+                id: 1,
+                title: "AmeriQuiz Quest",
+                description: "A mobile quiz application with engaging questions and interactive gameplay.",
+                icon: "fas fa-question-circle",
+                features: [
+                    "Multiple-choice quiz questions",
+                    "Scoring and progress tracking",
+                    "Interactive and user-friendly interface",
+                    "Fun and educational gameplay"
+                ],
+                technologies: ["Kodular", "Firebase"],
+                playStoreUrl: "https://play.google.com/store/apps/details?id=com.youproproyou.ameriquizquest",
+                explanation: "Mobile quiz app that allows users to test their knowledge with multiple-choice questions. Includes scoring system, progress tracking, and an engaging, interactive interface."
+            },
+            {
+                id: 2,
+                title: "Sensor Android",
+                description: "Android app that detects all available sensors on the device and visualizes their functionality with interactive graphics.",
+                icon: "fas fa-mobile-alt",
+                features: [
+                    "Detects all device sensors",
+                    "Interactive sensor visualizations",
+                    "Lists supported hardware sensors",
+                    "Provides useful sensor tools for daily use"
+                ],
+                technologies: ["Kodular", "Sensor APIs"],
+                playStoreUrl: "https://play.google.com/store/apps/details?id=com.FiveStarApp.Test.Sensors.free",
+                explanation: "This app scans all sensors on an Android device, displays real-time sensor data with vivid graphics, and offers practical tools for using sensors in everyday scenarios."
+            },
+            {
+                id: 3,
+                title: "DARI CONNECTER",
+                description: "Mobile app for configuring, managing, and controlling smart home and commercial devices easily from your smartphone or tablet.",
+                icon: "fas fa-lightbulb",
+                features: [
+                    "Control lights, plugs, and other connected devices",
+                    "Manage automated buildings with one click",
+                    "Centralized smart building control",
+                    "Quick and intuitive interface for all functions"
+                ],
+                technologies: ["Flutter", "IoT Protocols", "MQTT", "Firebase"],
+                playStoreUrl: "https://play.google.com/store/apps/details?id=com.FiveStarApp.Smart.Home.Connected",
+                explanation: "The DARI CONNECTER app turns your mobile device into a central control hub for smart homes and commercial properties, allowing you to automate lighting, power outlets, and other devices with ease."
+            },
         ];
 
         // IoT Projects Data
         const iotProjectsData = [
-         {
-    id: 1,
-    title: "Smart Home Automation",
-    description: "Complete smart home solution using ESP32 microcontrollers and CADIO Automation app for mobile control.",
-    icon: "fas fa-home",
-    features: [
-        "Control lights, fans, and appliances remotely",
-        "Automated schedules for devices",
-        "Energy monitoring and usage statistics",
-        "Integration with CADIO Automation mobile app"
-    ],
-    technologies: ["ESP32", "MQTT", "Arduino", "CADIO Automation App", "Relay Modules", "Sensors"],
-    documentationUrl: "https://github.com/username/smart-home-automation",
-    explanation: "This project demonstrates how to turn a regular home into a smart home using ESP32 microcontrollers. Devices like lights, fans, and other appliances can be controlled via the CADIO Automation app. It supports scheduling, remote access, and real-time monitoring, making home automation easy and efficient."
-},
-
-  {
-    id: 2,
-    title: "Industrial Automation & Maintenance System",
-    description: "Automated industrial system for monitoring, controlling, and maintaining electrical equipment efficiently.",
-    icon: "fas fa-industry",
-    features: [
-        "Real-time monitoring of industrial machines",
-        "Automated fault detection and alerts",
-        "Scheduled maintenance notifications",
-        "Remote control and system diagnostics"
-    ],
-    technologies: ["PLC", "Arduino/ESP32", "SCADA", "Sensors & Actuators", "IoT Protocols"],
-    documentationUrl: "https://github.com/username/industrial-automation",
-    explanation: "This project focuses on industrial electrical automation, enabling efficient monitoring and maintenance of industrial machines. The system uses sensors and PLC/ESP32 controllers to detect faults, provide real-time alerts, and allow remote diagnostics. It improves safety, reduces downtime, and optimizes maintenance schedules in industrial environments."
-},
-{
-    id: 3,
-    title: "Robotics & IoT Systems",
-    description: "Full robotics and IoT automation system built using Arduino, ESP32, and ESP8266 with a wide range of sensors and actuators.",
-    icon: "fas fa-robot",
-    features: [
-        "Robotics projects from zero to advanced level",
-        "Integration of multiple sensors and actuators",
-        "WiFi & Bluetooth IoT control",
-        "Smart automation with ESP32/ESP8266",
-        "Real-time monitoring and cloud connectivity"
-    ],
-    technologies: [
-        "Arduino", 
-        "ESP32", 
-        "ESP8266", 
-        "C/C++", 
-        "IoT Protocols", 
-        "Servo & DC Motors", 
-        "Ultrasonic, IR, PIR, Gas Sensors, etc", 
-        "Bluetooth BLE"
-    ],
-    documentationUrl: "https://github.com/username/robotics-iot-systems",
-    explanation: "A complete robotics and IoT project collection that teaches automation from zero to hero. Includes building robots with Arduino and ESP boards, using multiple sensors, motor drivers, wireless communication, and cloud-based monitoring. Perfect for beginners and professionals looking to master robotics and IoT development."
-},
-
-
+            {
+                id: 1,
+                title: "Smart Home Automation",
+                description: "Complete smart home solution using ESP32 microcontrollers and CADIO Automation app for mobile control.",
+                icon: "fas fa-home",
+                features: [
+                    "Control lights, fans, and appliances remotely",
+                    "Automated schedules for devices",
+                    "Energy monitoring and usage statistics",
+                    "Integration with CADIO Automation mobile app"
+                ],
+                technologies: ["ESP32", "MQTT", "Arduino", "CADIO Automation App", "Relay Modules", "Sensors"],
+                documentationUrl: "https://github.com/username/smart-home-automation",
+                explanation: "This project demonstrates how to turn a regular home into a smart home using ESP32 microcontrollers. Devices like lights, fans, and other appliances can be controlled via the CADIO Automation app. It supports scheduling, remote access, and real-time monitoring, making home automation easy and efficient."
+            },
+            {
+                id: 2,
+                title: "Industrial Automation & Maintenance System",
+                description: "Automated industrial system for monitoring, controlling, and maintaining electrical equipment efficiently.",
+                icon: "fas fa-industry",
+                features: [
+                    "Real-time monitoring of industrial machines",
+                    "Automated fault detection and alerts",
+                    "Scheduled maintenance notifications",
+                    "Remote control and system diagnostics"
+                ],
+                technologies: ["PLC", "Arduino/ESP32", "SCADA", "Sensors & Actuators", "IoT Protocols"],
+                documentationUrl: "https://github.com/username/industrial-automation",
+                explanation: "This project focuses on industrial electrical automation, enabling efficient monitoring and maintenance of industrial machines. The system uses sensors and PLC/ESP32 controllers to detect faults, provide real-time alerts, and allow remote diagnostics. It improves safety, reduces downtime, and optimizes maintenance schedules in industrial environments."
+            },
+            {
+                id: 3,
+                title: "Robotics & IoT Systems",
+                description: "Full robotics and IoT automation system built using Arduino, ESP32, and ESP8266 with a wide range of sensors and actuators.",
+                icon: "fas fa-robot",
+                features: [
+                    "Robotics projects from zero to advanced level",
+                    "Integration of multiple sensors and actuators",
+                    "WiFi & Bluetooth IoT control",
+                    "Smart automation with ESP32/ESP8266",
+                    "Real-time monitoring and cloud connectivity"
+                ],
+                technologies: [
+                    "Arduino", 
+                    "ESP32", 
+                    "ESP8266", 
+                    "C/C++", 
+                    "IoT Protocols", 
+                    "Servo & DC Motors", 
+                    "Ultrasonic, IR, PIR, Gas Sensors, etc", 
+                    "Bluetooth BLE"
+                ],
+                documentationUrl: "https://github.com/username/robotics-iot-systems",
+                explanation: "A complete robotics and IoT project collection that teaches automation from zero to hero. Includes building robots with Arduino and ESP boards, using multiple sensors, motor drivers, wireless communication, and cloud-based monitoring. Perfect for beginners and professionals looking to master robotics and IoT development."
+            },
         ];
 
         // Initialize page on load
@@ -1298,7 +1295,6 @@
                         </div>
                         <div class="app-buttons">
                             <a href="${app.liveUrl}" target="_blank" class="btn btn-outline">View Live Website</a>
-                           
                         </div>
                     </div>
                 `;
@@ -1387,17 +1383,13 @@
                 link.addEventListener('click', closeMobileMenu);
             });
             
-            // CV download
+            
+                // CV download
             document.querySelectorAll('.download-cv').forEach(link => {
                 link.addEventListener('click', function(e) {
-                    e.preventDefault();
                     const cvType = this.dataset.cv;
                     const cvName = cvType === 'webdev' ? 'Web Developer CV' : 'Electrical Engineer CV';
-                    showToast(`Downloading ${cvName}...`, 'success');
-                    // Simulate download
-                    setTimeout(() => {
-                        showToast(`${cvName} download started`, 'success');
-                    }, 500);
+                    showToast(`Opening ${cvName}...`, 'success');
                 });
             });
             
