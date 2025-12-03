@@ -3,16 +3,1247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Developer & IoT Maker</title>
+    <title>Web Developer & IoT Maker Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Add EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        // Initialize EmailJS with your public key
-        (function() {
-            emailjs.init("IbbG69TuO-Uyx_4I8"); // Your public key
-        })();
-    </script>
+</head>
+<body class="theme-light">
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Portfo<span>lio</span></a>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#web-apps">Web Apps</a></li>
+                    <li><a href="#mobile-apps">Mobile Apps</a></li>
+                    <li><a href="#iot-projects">IoT Projects</a></li>
+                    <li><a href="#cv">CV</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <div class="theme-toggle" id="theme-toggle-desktop">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="burger-btn" id="burger-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        
+        <div class="mobile-menu" id="mobile-menu">
+            <ul class="mobile-nav">
+                <li><a href="#home" class="mobile-nav-link">Home</a></li>
+                <li><a href="#about" class="mobile-nav-link">About</a></li>
+                <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+                <li><a href="#web-apps" class="mobile-nav-link">Web Apps</a></li>
+                <li><a href="#mobile-apps" class="mobile-nav-link">Mobile Apps</a></li>
+                <li><a href="#iot-projects" class="mobile-nav-link">IoT Projects</a></li>
+                <li><a href="#cv" class="mobile-nav-link">CV</a></li>
+                <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+                <li>
+                    <div class="mobile-theme-toggle" id="mobile-theme-toggle">
+                        <span>Switch Theme</span>
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hello, I'm a <span>Junior Web Developer</span> <br>& IoT Maker</h1>
+                <p>I build modern web experiences and smart connected applications. My passion is turning ideas into reality using technology.</p>
+                <div class="hero-btns center-buttons">
+                    <a href="#web-apps" class="btn">View Web Apps</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    <a href="#cv" class="btn btn-secondary">Download CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div>
+                    <h3>YOUNESS EDDANGUIR</h3>
+                    <p>Junior Web Developer with a strong passion for innovation in web technologies and IoT. Leveraging my background in electrical engineering, I seamlessly integrate digital solutions with physical systems to create intelligent and practical applications.</p>
+                    <p>I thrive on quickly learning new technologies and solving complex technical challenges. My goal is to deliver efficient, scalable, and user-friendly solutions that enhance productivity and improve everyday life.</p>
+                    <p>Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, and IoT platforms including Arduino, ESP32, ESP8266, and robotics, aiming to develop cutting-edge projects that bridge the digital and physical worlds.</p>
+                </div>
+                <div class="about-img">
+                    <img src="images/my.jpeg" alt="Youness Eddanguir" style="width:100%;height:100%;border-radius:10px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            <p>Comprehensive technical skills across multiple domains</p>
+            
+            <!-- Skill Navigation - Centered -->
+            <div class="skills-nav center-buttons" id="skills-nav">
+                <button class="skill-nav-btn" data-category="web">
+                    <i class="fas fa-code"></i>
+                    <span>Web Development</span>
+                </button>
+                <button class="skill-nav-btn" data-category="iot">
+                    <i class="fas fa-microchip"></i>
+                    <span>IoT & Electronics</span>
+                </button>
+                <button class="skill-nav-btn" data-category="mobile">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Mobile Development</span>
+                </button>
+                <button class="skill-nav-btn" data-category="soft">
+                    <i class="fas fa-star"></i>
+                    <span>Soft Skills</span>
+                </button>
+            </div>
+            
+            <!-- Skills Modal Overlay -->
+            <div class="skills-modal-overlay" id="skills-modal-overlay">
+                <div class="skills-modal" id="skills-modal">
+                    <button class="close-modal-btn" id="skills-close-modal-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    
+                    <!-- Web Development Card -->
+                    <div class="skill-modal-card active" id="web-modal-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>Web Development</h3>
+                            <p class="skill-subtitle">Frontend & Backend Development</p>
+                        </div>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-js"></i>
+                                <span>JavaScript (ES6+)</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Responsive Design</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-react"></i>
+                                <span>React.js</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-server"></i>
+                                <span>REST APIs</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-git-alt"></i>
+                                <span>Git / GitHub</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-paint-brush"></i>
+                                <span>UI/UX Basics</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-bootstrap"></i>
+                                <span>Bootstrap / Tailwind CSS</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-laravel"></i>
+                                <span>Laravel</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- IoT & Electronics Card -->
+                    <div class="skill-modal-card" id="iot-modal-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <h3>IoT & Electronics</h3>
+                            <p class="skill-subtitle">Internet of Things & Electrical Engineering</p>
+                        </div>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fas fa-microchip"></i>
+                                <span>ESP32 Programming</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-wifi"></i>
+                                <span>ESP8266 Programming</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-robot"></i>
+                                <span>Arduino Programming</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-broadcast-tower"></i>
+                                <span>MQTT Protocol</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-temperature-high"></i>
+                                <span>Sensors & Actuators</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-bluetooth"></i>
+                                <span>Bluetooth BLE</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-home"></i>
+                                <span>Smart Home Automation</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-wifi"></i>
+                                <span>WiFi IoT Systems</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-microchip"></i>
+                                <span>NodeMCU Projects</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-google"></i>
+                                <span>Firebase (IoT)</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>Electrical/Electronics</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-project-diagram"></i>
+                                <span>Circuit Design</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-industry"></i>
+                                <span>Industrial Electrical Maintenance</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-tools"></i>
+                                <span>Troubleshooting & Diagnostics</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Electrical Schematics Reading</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-plug"></i>
+                                <span>Contactors / Relays / Protection</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-sliders-h"></i>
+                                <span>Control Panels</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-industry"></i>
+                                <span>Basic PLC Knowledge</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-sensor"></i>
+                                <span>Industrial Sensors & Automation Components</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Development Card -->
+                    <div class="skill-modal-card" id="mobile-modal-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>Mobile Development</h3>
+                            <p class="skill-subtitle">Android App Development</p>
+                        </div>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Kodular App Development</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-paint-brush"></i>
+                                <span>Android UI Design</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-bluetooth"></i>
+                                <span>Bluetooth/BLE Integration</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-google"></i>
+                                <span>Firebase Integration</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-sync-alt"></i>
+                                <span>IoT App Communication</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Soft Skills Card -->
+                    <div class="skill-modal-card" id="soft-modal-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3>Soft Skills</h3>
+                            <p class="skill-subtitle">Professional & Interpersonal Skills</p>
+                        </div>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Problem Solving</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-palette"></i>
+                                <span>Creativity</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Time Management</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-brain"></i>
+                                <span>Critical Thinking</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-comments"></i>
+                                <span>Communication</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-users"></i>
+                                <span>Teamwork</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                                <span>Presentation Skills</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-paint-brush"></i>
+                                <span>UI/UX Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Web Apps Section -->
+    <section id="web-apps">
+        <div class="container">
+            <h2>Web Applications</h2>
+            <p>Modern web applications built with latest technologies</p>
+            
+            <!-- Web Apps Navigation - Centered -->
+            <div class="skills-nav center-buttons" id="web-apps-nav">
+                <button class="skill-nav-btn" data-category="all">
+                    <i class="fas fa-layer-group"></i>
+                    <span>All Projects</span>
+                </button>
+                <button class="skill-nav-btn" data-category="frontend">
+                    <i class="fas fa-code"></i>
+                    <span>Frontend Projects</span>
+                </button>
+                <button class="skill-nav-btn" data-category="fullstack">
+                    <i class="fas fa-server"></i>
+                    <span>Fullstack Projects</span>
+                </button>
+                <button class="skill-nav-btn" data-category="responsive">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Responsive Websites</span>
+                </button>
+            </div>
+            
+            <!-- Web Apps Modal Overlay -->
+            <div class="webapps-modal-overlay" id="webapps-modal-overlay">
+                <div class="skills-modal" id="webapps-modal">
+                    <button class="close-modal-btn" id="webapps-close-modal-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    
+                    <!-- All Projects Card -->
+                    <div class="skill-modal-card active" id="all-modal-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                            <h3>All Web Projects</h3>
+                            <p class="skill-subtitle">Complete collection of web applications</p>
+                        </div>
+                        <div class="skills-grid webapp-grid">
+                            <!-- Coworker Project -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <h4>Coworker</h4>
+                                <p>A modern responsive coworking space website project</p>
+                                <div class="webapp-tech">
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span>JavaScript</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="https://younessedd.github.io/coworker-youness/" target="_blank" class="btn btn-small">Live Demo</a>
+                                    <a href="https://github.com/younessedd/coworker-youness" target="_blank" class="btn btn-outline btn-small">View Code</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Restaurant Project -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <h4>Restaurant</h4>
+                                <p>A modern responsive restaurant website project</p>
+                                <div class="webapp-tech">
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span>JavaScript</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="https://younessedd.github.io/restarent-youness/" target="_blank" class="btn btn-small">Live Demo</a>
+                                    <a href="https://github.com/younessedd/restarent-youness" target="_blank" class="btn btn-outline btn-small">View Code</a>
+                                </div>
+                            </div>
+                            
+                            <!-- PowerGrid Solutions Project -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h4>PowerGrid Solutions</h4>
+                                <p>Responsive energy management and solutions website</p>
+                                <div class="webapp-tech">
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span>JavaScript</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="https://younessedd.github.io/PowerGrid-Solutions-youness/" target="_blank" class="btn btn-small">Live Demo</a>
+                                    <a href="https://github.com/younessedd/PowerGrid-Solutions-youness" target="_blank" class="btn btn-outline btn-small">View Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Frontend Projects Card -->
+                    <div class="skill-modal-card" id="frontend-modal-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>Frontend Projects</h3>
+                            <p class="skill-subtitle">User interface focused web applications</p>
+                        </div>
+                        <div class="skills-grid webapp-grid">
+                            <!-- Coworker Project -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <h4>Coworker</h4>
+                                <p>A modern responsive coworking space website project</p>
+                                <div class="webapp-tech">
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span>JavaScript</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Responsive Design</span>
+                                    <span>Interactive UI</span>
+                                    <span>Modern Layout</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="https://younessedd.github.io/coworker-youness/" target="_blank" class="btn btn-small">Live Demo</a>
+                                    <a href="https://github.com/younessedd/coworker-youness" target="_blank" class="btn btn-outline btn-small">View Code</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Restaurant Project -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <h4>Restaurant</h4>
+                                <p>A modern responsive restaurant website project</p>
+                                <div class="webapp-tech">
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span>JavaScript</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Menu Display</span>
+                                    <span>Reservation Form</span>
+                                    <span>Mobile Friendly</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="https://younessedd.github.io/restarent-youness/" target="_blank" class="btn btn-small">Live Demo</a>
+                                    <a href="https://github.com/younessedd/restarent-youness" target="_blank" class="btn btn-outline btn-small">View Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Fullstack Projects Card -->
+                    <div class="skill-modal-card" id="fullstack-modal-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h3>Fullstack Projects</h3>
+                            <p class="skill-subtitle">Complete web applications with backend</p>
+                        </div>
+                        <div class="skills-grid webapp-grid">
+                            <div class="empty-state">
+                                <i class="fas fa-code-branch" style="font-size: 4rem; color: var(--text-secondary); margin-bottom: 1.5rem;"></i>
+                                <h4>Coming Soon</h4>
+                                <p>Fullstack projects are currently in development. Check back soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Responsive Websites Card -->
+                    <div class="skill-modal-card" id="responsive-modal-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>Responsive Websites</h3>
+                            <p class="skill-subtitle">Mobile-first responsive web designs</p>
+                        </div>
+                        <div class="skills-grid webapp-grid">
+                            <!-- PowerGrid Solutions Project -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h4>PowerGrid Solutions</h4>
+                                <p>Responsive energy management and solutions website</p>
+                                <div class="webapp-tech">
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span>JavaScript</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Mobile First</span>
+                                    <span>Cross-browser</span>
+                                    <span>Accessible</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="https://younessedd.github.io/PowerGrid-Solutions-youness/" target="_blank" class="btn btn-small">Live Demo</a>
+                                    <a href="https://github.com/younessedd/PowerGrid-Solutions-youness" target="_blank" class="btn btn-outline btn-small">View Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Apps Section - UPDATED with Modal Logic -->
+    <section id="mobile-apps">
+        <div class="container">
+            <h2>Mobile Applications</h2>
+            <p>Mobile applications published on Google Play Store</p>
+            
+            <!-- Mobile Apps Navigation - Centered -->
+            <div class="skills-nav center-buttons" id="mobile-apps-nav">
+                <button class="skill-nav-btn" data-category="quiz">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Quiz Apps</span>
+                </button>
+                <button class="skill-nav-btn" data-category="smart">
+                    <i class="fas fa-home"></i>
+                    <span>Smart Home Apps</span>
+                </button>
+                <button class="skill-nav-btn" data-category="utility">
+                    <i class="fas fa-tools"></i>
+                    <span>Utility Apps</span>
+                </button>
+                <button class="skill-nav-btn" data-category="others">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Other Apps</span>
+                </button>
+            </div>
+            
+            <!-- Mobile Apps Modal Overlay -->
+            <div class="mobileapps-modal-overlay" id="mobileapps-modal-overlay">
+                <div class="skills-modal" id="mobileapps-modal">
+                    <button class="close-modal-btn" id="mobileapps-close-modal-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    
+                    <!-- Quiz Apps Card -->
+                    <div class="skill-modal-card active" id="quiz-modal-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <h3>Quiz Applications</h3>
+                            <p class="skill-subtitle">Educational and entertaining quiz mobile apps</p>
+                        </div>
+                        <div class="skills-grid webapp-grid">
+                            <!-- AmeriQuiz Quest -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-question-circle"></i>
+                                </div>
+                                <h4>AmeriQuiz Quest</h4>
+                                <p>A mobile quiz application with engaging questions and interactive gameplay.</p>
+                                <div class="webapp-tech">
+                                    <span>Kodular</span>
+                                    <span>Firebase</span>
+                                    <span>Quiz API</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Multiple Choice</span>
+                                    <span>Score Tracking</span>
+                                    <span>Progress System</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="https://play.google.com/store/apps/details?id=com.youproproyou.ameriquizquest" target="_blank" class="btn btn-small">Play Store</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Math Quiz -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <h4>Math Quiz Challenge</h4>
+                                <p>Educational math quiz app for improving calculation skills with timed challenges.</p>
+                                <div class="webapp-tech">
+                                    <span>Kodular</span>
+                                    <span>Math Engine</span>
+                                    <span>Score System</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Timed Challenges</span>
+                                    <span>Difficulty Levels</span>
+                                    <span>Progress Tracking</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="#" class="btn btn-small">Coming Soon</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Smart Home Apps Card -->
+                    <div class="skill-modal-card" id="smart-modal-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3>Smart Home Applications</h3>
+                            <p class="skill-subtitle">Mobile apps for home automation and IoT control</p>
+                        </div>
+                        <div class="skills-grid webapp-grid">
+                            <!-- CADIO Automation App -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <h4>CADIO Automation</h4>
+                                <p>Smart home control app for managing IoT devices and automation systems.</p>
+                                <div class="webapp-tech">
+                                    <span>Android</span>
+                                    <span>Bluetooth</span>
+                                    <span>WiFi Control</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Device Control</span>
+                                    <span>Scheduling</span>
+                                    <span>Remote Access</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="#" class="btn btn-small">Coming Soon</a>
+                                </div>
+                            </div>
+                            
+                            <!-- IoT Home Controller -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <h4>IoT Home Controller</h4>
+                                <p>Control lights, appliances, and security systems from your mobile device.</p>
+                                <div class="webapp-tech">
+                                    <span>MQTT Protocol</span>
+                                    <span>ESP32</span>
+                                    <span>Real-time Control</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Voice Control</span>
+                                    <span>Energy Monitoring</span>
+                                    <span>Security Features</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="#" class="btn btn-small">Coming Soon</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Utility Apps Card -->
+                    <div class="skill-modal-card" id="utility-modal-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3>Utility Applications</h3>
+                            <p class="skill-subtitle">Practical tools and utility mobile apps</p>
+                        </div>
+                        <div class="skills-grid webapp-grid">
+                            <!-- Sensor Android -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <h4>Sensor Android</h4>
+                                <p>Android app that detects all available sensors on the device and visualizes their functionality.</p>
+                                <div class="webapp-tech">
+                                    <span>Kodular</span>
+                                    <span>Sensor APIs</span>
+                                    <span>Real-time Data</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Sensor Detection</span>
+                                    <span>Data Visualization</span>
+                                    <span>Hardware Info</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="https://play.google.com/store/apps/details?id=com.FiveStarApp.Test.Sensors.free" target="_blank" class="btn btn-small">Play Store</a>
+                                </div>
+                            </div>
+                            
+                            <!-- File Manager Pro -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-folder"></i>
+                                </div>
+                                <h4>File Manager Pro</h4>
+                                <p>Advanced file management app with cloud integration and encryption features.</p>
+                                <div class="webapp-tech">
+                                    <span>Android</span>
+                                    <span>Cloud Storage</span>
+                                    <span>Encryption</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Cloud Sync</span>
+                                    <span>File Encryption</span>
+                                    <span>Media Organization</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="#" class="btn btn-small">Coming Soon</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Other Apps Card -->
+                    <div class="skill-modal-card" id="others-modal-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </div>
+                            <h3>Other Mobile Applications</h3>
+                            <p class="skill-subtitle">Additional mobile apps and utilities</p>
+                        </div>
+                        <div class="skills-grid webapp-grid">
+                            <!-- Weather Forecast -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-cloud-sun"></i>
+                                </div>
+                                <h4>Weather Forecast Pro</h4>
+                                <p>Accurate weather forecasting app with detailed maps and alerts.</p>
+                                <div class="webapp-tech">
+                                    <span>Weather API</span>
+                                    <span>GPS</span>
+                                    <span>Notifications</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Hourly Forecast</span>
+                                    <span>Weather Maps</span>
+                                    <span>Alert System</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="#" class="btn btn-small">Coming Soon</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Note Taking App -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-sticky-note"></i>
+                                </div>
+                                <h4>Quick Notes</h4>
+                                <p>Simple and efficient note-taking app with cloud sync and organization.</p>
+                                <div class="webapp-tech">
+                                    <span>Firebase</span>
+                                    <span>Cloud Sync</span>
+                                    <span>Rich Text</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Cloud Backup</span>
+                                    <span>Categories</span>
+                                    <span>Search Function</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="#" class="btn btn-small">Coming Soon</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Fitness Tracker -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-running"></i>
+                                </div>
+                                <h4>Fitness Tracker</h4>
+                                <p>Track workouts, calories, and fitness goals with detailed analytics.</p>
+                                <div class="webapp-tech">
+                                    <span>Health APIs</span>
+                                    <span>GPS Tracking</span>
+                                    <span>Analytics</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Workout Plans</span>
+                                    <span>Progress Charts</span>
+                                    <span>Goal Setting</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="#" class="btn btn-small">Coming Soon</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IoT Projects Section - UPDATED with Modal Logic -->
+    <section id="iot-projects">
+        <div class="container">
+            <h2>IoT Projects</h2>
+            <p>Internet of Things projects combining hardware and software</p>
+            
+            <!-- IoT Projects Navigation - Centered -->
+            <div class="skills-nav center-buttons" id="iot-projects-nav">
+                <button class="skill-nav-btn" data-category="home">
+                    <i class="fas fa-home"></i>
+                    <span>Smart Home</span>
+                </button>
+                <button class="skill-nav-btn" data-category="industrial">
+                    <i class="fas fa-industry"></i>
+                    <span>Industrial IoT</span>
+                </button>
+                <button class="skill-nav-btn" data-category="sensors">
+                    <i class="fas fa-thermometer-half"></i>
+                    <span>Sensor Projects</span>
+                </button>
+                <button class="skill-nav-btn" data-category="othersiot">
+                    <i class="fas fa-microchip"></i>
+                    <span>Other IoT Projects</span>
+                </button>
+            </div>
+            
+            <!-- IoT Projects Modal Overlay -->
+            <div class="iotprojects-modal-overlay" id="iotprojects-modal-overlay">
+                <div class="skills-modal" id="iotprojects-modal">
+                    <button class="close-modal-btn" id="iotprojects-close-modal-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    
+                    <!-- Smart Home Projects Card -->
+                    <div class="skill-modal-card active" id="home-modal-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3>Smart Home Automation</h3>
+                            <p class="skill-subtitle">Complete smart home solutions using IoT technology</p>
+                        </div>
+                        <div class="skills-grid webapp-grid">
+                            <!-- Smart Home Automation -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <h4>Smart Home Automation</h4>
+                                <p>Complete smart home solution using ESP32 microcontrollers and CADIO Automation app for mobile control.</p>
+                                <div class="webapp-tech">
+                                    <span>ESP32</span>
+                                    <span>MQTT</span>
+                                    <span>Arduino</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Remote Control</span>
+                                    <span>Scheduling</span>
+                                    <span>Energy Monitoring</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="https://github.com/username/smart-home-automation" target="_blank" class="btn btn-small">View Docs</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Industrial IoT Card -->
+                    <div class="skill-modal-card" id="industrial-modal-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <h3>Industrial IoT Projects</h3>
+                            <p class="skill-subtitle">Industrial automation and monitoring systems</p>
+                        </div>
+                        <div class="skills-grid webapp-grid">
+                            <!-- Industrial Automation -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-industry"></i>
+                                </div>
+                                <h4>Industrial Automation System</h4>
+                                <p>Automated industrial system for monitoring, controlling, and maintaining electrical equipment efficiently.</p>
+                                <div class="webapp-tech">
+                                    <span>PLC</span>
+                                    <span>ESP32</span>
+                                    <span>SCADA</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Fault Detection</span>
+                                    <span>Remote Diagnostics</span>
+                                    <span>Maintenance Alerts</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="https://github.com/username/industrial-automation" target="_blank" class="btn btn-small">View Docs</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sensor Projects Card -->
+                    <div class="skill-modal-card" id="sensors-modal-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-thermometer-half"></i>
+                            </div>
+                            <h3>Sensor-Based Projects</h3>
+                            <p class="skill-subtitle">Projects utilizing various sensors for data collection and automation</p>
+                        </div>
+                        <div class="skills-grid webapp-grid">
+                            <!-- Temperature Monitoring -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-temperature-high"></i>
+                                </div>
+                                <h4>IoT Temperature Monitor</h4>
+                                <p>Real-time temperature monitoring system with ESP32 and web dashboard.</p>
+                                <div class="webapp-tech">
+                                    <span>ESP32</span>
+                                    <span>DHT22</span>
+                                    <span>WebSocket</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Real-time Data</span>
+                                    <span>Web Dashboard</span>
+                                    <span>Alert System</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="#" class="btn btn-small">View Project</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Motion Detection -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-running"></i>
+                                </div>
+                                <h4>Smart Motion Detector</h4>
+                                <p>Motion detection system with notifications and security features.</p>
+                                <div class="webapp-tech">
+                                    <span>PIR Sensor</span>
+                                    <span>NodeMCU</span>
+                                    <span>Mobile App</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Instant Alerts</span>
+                                    <span>Energy Saving</span>
+                                    <span>Security</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="#" class="btn btn-small">View Project</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Other IoT Projects Card -->
+                    <div class="skill-modal-card" id="othersiot-modal-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-puzzle-piece"></i>
+                            </div>
+                            <h3>Other IoT Projects</h3>
+                            <p class="skill-subtitle">Additional Internet of Things projects and experiments</p>
+                        </div>
+                        <div class="skills-grid webapp-grid">
+                            <!-- Smart Garden -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-seedling"></i>
+                                </div>
+                                <h4>Smart Garden System</h4>
+                                <p>Automated plant watering and monitoring system with soil sensors.</p>
+                                <div class="webapp-tech">
+                                    <span>Soil Sensors</span>
+                                    <span>Water Pump</span>
+                                    <span>Arduino</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Auto Watering</span>
+                                    <span>Soil Monitoring</span>
+                                    <span>Mobile Alerts</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="#" class="btn btn-small">View Project</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Energy Monitor -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h4>Home Energy Monitor</h4>
+                                <p>Real-time energy consumption monitoring system for homes.</p>
+                                <div class="webapp-tech">
+                                    <span>Current Sensor</span>
+                                    <span>ESP8266</span>
+                                    <span>Cloud Storage</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Real-time Data</span>
+                                    <span>Cost Analysis</span>
+                                    <span>Energy Saving Tips</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="#" class="btn btn-small">View Project</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Weather Station -->
+                            <div class="webapp-skill-item">
+                                <div class="webapp-icon">
+                                    <i class="fas fa-wind"></i>
+                                </div>
+                                <h4>IoT Weather Station</h4>
+                                <p>Complete weather monitoring station with multiple sensors and web interface.</p>
+                                <div class="webapp-tech">
+                                    <span>Multiple Sensors</span>
+                                    <span>ESP32</span>
+                                    <span>Web Dashboard</span>
+                                </div>
+                                <div class="webapp-features">
+                                    <span>Temperature</span>
+                                    <span>Humidity</span>
+                                    <span>Pressure</span>
+                                    <span>Wind Speed</span>
+                                </div>
+                                <div class="webapp-buttons">
+                                    <a href="#" class="btn btn-small">View Project</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Download Section -->
+    <section id="cv" class="cv-section">
+        <div class="container">
+            <h2>Curriculum Vitae</h2>
+            <p>Download my specialized CVs according to field</p>
+            <div class="cv-cards-container">
+                <div class="cv-cards"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p class="section-subtitle">Get in touch for opportunities or collaborations</p>
+            
+            <div class="contact-container">
+                <div class="contact-form-wrapper">
+                    <h3>Send a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" class="form-control" required>
+                                <div class="error" id="nameError">Name required (minimum 3 characters)</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" class="form-control" required>
+                                <div class="error" id="emailError">Valid email required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" class="form-control" required placeholder="+212 6 1234 5678">
+                            <div class="error" id="phoneError">Valid phone number required</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                            <div class="error" id="messageError">Message required (minimum 10 characters)</div>
+                        </div>
+                        <button type="submit" class="btn form-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo-center">
+                <div class="logo">Portfo<span>lio</span></div>
+            </div>
+            
+            <div class="footer-social-section">
+                <h3>Connect With Me</h3>
+                <div class="footer-social-icons">
+                    <a href="https://github.com/younessedd" target="_blank" class="footer-social-icon github">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="footer-social-icon linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://twitter.com/yourusername" target="_blank" class="footer-social-icon twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://codepen.io/yourusername" target="_blank" class="footer-social-icon codepen">
+                        <i class="fab fa-codepen"></i>
+                    </a>
+                    <a href="https://wa.me/212664837281" target="_blank" class="footer-social-icon whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:eddanguiryouness@gmail.com" class="footer-social-icon email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo-top">
+                        <div class="logo">Portfo<span>lio</span></div>
+                    </div>
+                    <div class="footer-about">
+                        <p>Junior Web Developer & IoT Maker with passion for creating innovative digital solutions and smart connected applications.</p>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="quick-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
+                        <li><a href="#skills"><i class="fas fa-chevron-right"></i> Skills</a></li>
+                        <li><a href="#web-apps"><i class="fas fa-chevron-right"></i> Web Apps</a></li>
+                        <li><a href="#mobile-apps"><i class="fas fa-chevron-right"></i> Mobile Apps</a></li>
+                        <li><a href="#iot-projects"><i class="fas fa-chevron-right"></i> IoT Projects</a></li>
+                        <li><a href="#cv"><i class="fas fa-chevron-right"></i> CV</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info-footer">
+                        <li>
+                            <a href="https://www.google.com/maps/place/Casablanca" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Morocco</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+212664837281">
+                                <i class="fas fa-phone"></i>
+                                <span>+212 6 6483 7281</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:eddanguiryouness@gmail.com">
+                                <i class="fas fa-envelope"></i>
+                                <span>eddanguiryouness@gmail.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/212664837281" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>+212 6 6483 7281</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Expertise</h3>
+                    <ul class="quick-links">
+                        <li><a href="#"><i class="fas fa-check"></i> Web Development</a></li>
+                        <li><a href="#"><i class="fas fa-check"></i> IoT Solutions</a></li>
+                        <li><a href="#"><i class="fas fa-check"></i> Mobile Apps</a></li>
+                        <li><a href="#"><i class="fas fa-check"></i> Electrical Engineering</a></li>
+                        <li><a href="#"><i class="fas fa-check"></i> Responsive Design</a></li>
+                        <li><a href="#"><i class="fas fa-check"></i> Problem Solving</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Youness Eddanguir. All rights reserved.</p>
+                <p>Developed with passion and dedication.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
     <style>
         /* CSS Variables for Theming */
         :root {
@@ -56,6 +1287,7 @@
             line-height: 1.6;
             transition: var(--transition);
             min-height: 100vh;
+            font-size: 16px;
         }
 
         .container {
@@ -106,6 +1338,8 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
 
         a {
@@ -147,7 +1381,12 @@
             background: var(--secondary-color);
         }
 
-        /* Header - Well sized and centered */
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        /* Header */
         header {
             position: fixed;
             top: 0;
@@ -171,7 +1410,6 @@
             padding: 0 20px;
         }
 
-        /* Logo on Left */
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
@@ -185,7 +1423,6 @@
             color: var(--secondary-color);
         }
 
-        /* Desktop Navigation - Perfectly centered */
         .desktop-nav {
             display: flex;
             align-items: center;
@@ -250,7 +1487,6 @@
             color: white;
         }
 
-        /* Burger Button - Right side for mobile */
         .burger-btn {
             display: none;
             font-size: 1.5rem;
@@ -269,7 +1505,6 @@
             color: white;
         }
 
-        /* Mobile Menu */
         .mobile-menu {
             display: none;
             position: fixed;
@@ -384,168 +1619,365 @@
             color: var(--primary-color);
         }
 
-        /* Skills Section */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2.5rem;
+        /* Modal Overlays */
+        .skills-modal-overlay,
+        .webapps-modal-overlay,
+        .mobileapps-modal-overlay,
+        .iotprojects-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 20px;
         }
 
-        .skill-category h3 {
-            margin-bottom: 1.5rem;
+        .skills-modal-overlay.active,
+        .webapps-modal-overlay.active,
+        .mobileapps-modal-overlay.active,
+        .iotprojects-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .skills-modal {
+            background: var(--surface);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            max-width: 1000px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .skills-modal-overlay.active .skills-modal,
+        .webapps-modal-overlay.active .skills-modal,
+        .mobileapps-modal-overlay.active .skills-modal,
+        .iotprojects-modal-overlay.active .skills-modal {
+            transform: scale(1);
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--background);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .close-modal-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .skill-modal-card {
+            display: none;
+        }
+
+        .skill-modal-card.active {
+            display: block;
+        }
+
+        /* Skills Navigation */
+        .skills-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem auto 0;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+        }
+
+        .skill-nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.5rem;
+            background: var(--surface);
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            transition: var(--transition);
+            cursor: pointer;
+            min-width: 150px;
+            text-align: center;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .skill-nav-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
             color: var(--primary-color);
-            text-align: left;
         }
 
-        .skill-list {
-            list-style: none;
+        .skill-nav-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .skill-nav-btn i {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-nav-btn span {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.25rem;
+            justify-content: center;
         }
 
         .skill-item {
-            background: var(--surface);
-            padding: 18px;
-            margin-bottom: 12px;
-            border-radius: 8px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .skill-level {
-            font-weight: 600;
-            color: var(--secondary-color);
-        }
-
-        /* Web Apps Section */
-        .webapps-tabs {
-            display: flex;
-            justify-content: center;
             gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .webapp-tab {
-            padding: 12px 24px;
-            background: var(--surface);
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            color: var(--text-secondary);
-        }
-
-        .webapp-tab:hover {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        .webapp-tab.active {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        .apps-section {
-            text-align: center;
-        }
-
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .app-card {
-            background: var(--surface);
+            padding: 1rem 1.25rem;
+            background: var(--background);
             border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
             transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            min-height: 420px;
-        }
-
-        .app-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .app-icon {
-            font-size: 3.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .app-info {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .app-description {
-            text-align: center;
-            margin: 1rem 0;
-        }
-
-        .app-features {
-            list-style: none;
-            margin: 1rem 0;
-            padding: 0;
             text-align: left;
         }
 
-        .app-features li {
-            padding: 8px 0;
-            color: var(--text-secondary);
-            position: relative;
-            padding-left: 25px;
+        .skill-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--surface) 0%, rgba(79, 70, 229, 0.05) 100%);
         }
 
-        .app-features li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
+        .skill-item i {
+            font-size: 1.5rem;
             color: var(--primary-color);
-            font-weight: bold;
+            min-width: 30px;
         }
 
-        .app-buttons {
+        .skill-item span {
+            font-weight: 500;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .skill-card-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .skill-icon {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--surface) 0%, rgba(79, 70, 229, 0.1) 100%);
+            width: 80px;
+            height: 80px;
             display: flex;
-            gap: 12px;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
+            border-radius: 20px;
+            margin: 0 auto;
         }
 
-        /* CV Download Section */
-        .cv-section {
+        .skill-card-header h3 {
+            color: var(--text);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        /* Web App Grid Items */
+        .webapp-grid {
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .webapp-skill-item {
+            background: var(--background);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
         }
 
-        .cv-cards {
+        .webapp-skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-color);
+        }
+
+        .webapp-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--surface) 0%, rgba(79, 70, 229, 0.1) 100%);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+        }
+
+        .webapp-skill-item h4 {
+            color: var(--text);
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .webapp-skill-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            max-width: 100%;
+        }
+
+        .webapp-tech, .webapp-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .webapp-tech span, .webapp-features span {
+            background: var(--surface);
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+
+        .webapp-features span {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--secondary-color);
+            border-color: rgba(6, 182, 212, 0.2);
+        }
+
+        .webapp-buttons {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .empty-state h4 {
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .empty-state p {
+            color: var(--text-secondary);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Universal Grid System for CV */
+        .cv-cards-container {
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
             margin-top: 3rem;
         }
 
+        .cv-cards {
+            display: grid;
+            gap: 2.5rem;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        /* 1 item - Always centered */
+        .cv-cards.one-item {
+            grid-template-columns: 1fr;
+            max-width: 320px;
+        }
+
+        /* 2 items - Responsive layout */
+        .cv-cards.two-items {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 650px;
+        }
+
+        /* 4+ items - Responsive layout */
+        .cv-cards.four-items {
+            grid-template-columns: repeat(4, 1fr);
+            max-width: 1200px;
+        }
+
+        /* Card Styles */
         .cv-card {
             background: var(--surface);
-            padding: 2.5rem;
             border-radius: 12px;
-            width: 320px;
+            padding: 2rem;
             box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
             text-align: center;
+            min-height: 320px;
+        }
+
+        .cv-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
         }
 
         .cv-icon {
@@ -554,7 +1986,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Contact Section - Simplified */
+        /* Contact Section */
         .contact-container {
             display: flex;
             flex-direction: column;
@@ -567,6 +1999,11 @@
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
+        }
+
+        .contact-form-wrapper h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
         }
 
         .form-row {
@@ -586,6 +2023,7 @@
             margin-bottom: 0.5rem;
             font-weight: 600;
             color: var(--text);
+            font-size: 1rem;
         }
 
         .form-control {
@@ -610,6 +2048,7 @@
             min-height: 160px;
             resize: vertical;
             line-height: 1.5;
+            font-size: 1rem;
         }
 
         .error {
@@ -666,7 +2105,7 @@
             font-size: 1.2rem;
         }
 
-        /* Professional Footer */
+        /* Footer */
         footer {
             background: var(--surface);
             padding: 4rem 0 2rem;
@@ -721,6 +2160,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 0.95rem;
         }
 
         .quick-links a:hover {
@@ -750,6 +2190,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 0.95rem;
         }
 
         .contact-info-footer a:hover {
@@ -786,7 +2227,6 @@
             transform: translateY(-3px);
         }
 
-        /* Social Icons Section */
         .footer-social-section {
             text-align: center;
             margin-bottom: 3rem;
@@ -825,7 +2265,6 @@
             transform: translateY(-5px);
         }
 
-        /* Specific colors for social icons */
         .footer-social-icon.twitter:hover {
             background: #1DA1F2;
         }
@@ -858,23 +2297,85 @@
             font-size: 0.95rem;
         }
 
-        /* Logo in footer center on mobile */
         .footer-logo-center {
             display: none;
         }
 
-        /* Responsive Design - Improved Button Centering */
+        .center-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* Responsive Design */
         @media (max-width: 992px) {
             .about-content {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
+            
             .hero h1 {
                 font-size: 2.8rem;
             }
+            
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 2rem;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            p {
+                font-size: 1.05rem;
+            }
+            
+            .webapp-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .skills-nav {
+                max-width: 600px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+            
+            .webapp-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .webapp-skill-item {
+                max-width: 100%;
+            }
+            
+            /* Skills modal responsive */
+            .skills-modal {
+                padding: 1.5rem;
+                width: 95%;
+                max-height: 90vh;
+            }
+            
+            .skill-nav-btn {
+                min-width: 130px;
+                padding: 1rem;
+            }
+            
+            .skill-nav-btn i {
+                font-size: 1.5rem;
             }
         }
 
@@ -902,18 +2403,13 @@
                 margin: 0 auto;
             }
             
-            .cv-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .app-buttons {
+            .webapp-buttons {
                 flex-direction: column;
                 width: 100%;
                 align-items: center;
             }
             
-            .app-buttons .btn {
+            .webapp-buttons .btn {
                 width: 100%;
                 max-width: 280px;
                 margin: 5px 0;
@@ -922,13 +2418,19 @@
             h1 {
                 font-size: 2.5rem;
             }
-            h2 {
-                font-size: 2rem;
-            }
             
             .form-row {
                 grid-template-columns: 1fr;
                 gap: 1rem;
+            }
+            
+            .skills-nav {
+                gap: 0.75rem;
+            }
+            
+            .skill-nav-btn {
+                padding: 0.75rem 1rem;
+                min-width: 110px;
             }
         }
 
@@ -962,7 +2464,6 @@
                 justify-content: center;
             }
             
-            /* Social icons center on mobile */
             .footer-social-section {
                 text-align: center;
             }
@@ -975,7 +2476,6 @@
                 justify-content: center;
             }
             
-            /* Hide top logo, show centered logo */
             .footer-logo-top {
                 display: none;
             }
@@ -992,460 +2492,163 @@
                 margin-bottom: 1.5rem;
             }
             
-            /* Center all buttons in responsive */
             .cv-card .btn,
-            .app-buttons .btn,
             .hero-btns .btn,
-            .webapp-tab,
             .form-btn {
                 display: block;
                 margin-left: auto;
                 margin-right: auto;
             }
-        }
-
-        @media (max-width: 576px) {
-            section {
-                padding: 60px 0;
-            }
-            .mobile-menu {
-                width: 100%;
-            }
-            .apps-grid {
-                grid-template-columns: 1fr;
-            }
-            .skills-container {
-                grid-template-columns: 1fr;
-            }
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            .webapps-tabs {
+            
+            .skills-nav {
                 flex-direction: column;
                 align-items: center;
             }
-            .webapp-tab {
+            
+            .skill-nav-btn {
                 width: 100%;
-                max-width: 280px;
-                text-align: center;
+                max-width: 250px;
+                flex-direction: row;
+                justify-content: flex-start;
+                text-align: left;
+                padding: 1rem 1.5rem;
             }
             
-            /* Social icons responsive */
-            .footer-social-icons {
-                gap: 1rem;
+            .skill-nav-btn i {
+                margin-right: 1rem;
+                margin-bottom: 0;
             }
             
-            .footer-social-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
+            .skill-icon {
+                font-size: 2.5rem;
+                width: 60px;
+                height: 60px;
             }
             
-            /* Ensure all buttons are centered */
+            .skill-card-header h3 {
+                font-size: 1.5rem;
+            }
+            
+            .skill-item {
+                padding: 0.75rem 1rem;
+            }
+            
+            .skill-item i {
+                font-size: 1.25rem;
+                min-width: 25px;
+            }
+            
+            .skill-item span {
+                font-size: 0.9rem;
+            }
+            
+            .webapp-icon {
+                font-size: 2rem;
+                width: 50px;
+                height: 50px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            h3 {
+                font-size: 1.3rem;
+            }
+            
+            p, .cv-card p {
+                font-size: 0.95rem;
+            }
+            
+            .cv-card {
+                padding: 1.5rem;
+            }
+            
+            .cv-icon {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
             .btn {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin: 0.5rem auto;
+                padding: 12px 24px;
+                font-size: 0.9rem;
             }
             
-            .hero-btns .btn,
-            .app-buttons .btn,
-            .cv-card .btn {
+            .skill-nav-btn {
+                padding: 0.75rem;
+            }
+            
+            .webapp-buttons {
+                flex-direction: column;
+            }
+            
+            .webapp-buttons .btn {
                 width: 100%;
-                max-width: 300px;
+                margin: 0.25rem 0;
+            }
+            
+            .skills-modal {
+                padding: 1rem;
+            }
+            
+            .skill-card-header h3 {
+                font-size: 1.5rem;
+            }
+            
+            .skill-subtitle {
+                font-size: 1rem;
             }
         }
 
-        /* Special centering for specific button containers */
-        .center-buttons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        @media (max-width: 576px) {
-            .center-buttons {
+        @media (max-width: 380px) {
+            .skills-grid {
+                gap: 0.75rem;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+            
+            .skill-nav-btn {
+                padding: 0.75rem;
+            }
+            
+            .webapp-tech, .webapp-features {
                 flex-direction: column;
                 align-items: center;
-            }
-            
-            .center-buttons .btn {
-                width: 100%;
-                max-width: 300px;
             }
         }
     </style>
-</head>
-<body class="theme-light">
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <!-- Logo on Left -->
-            <a href="#" class="logo">Portfo<span>lio</span></a>
-            
-            <!-- Desktop Navigation -->
-            <nav class="desktop-nav">
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#web-apps">Web Apps</a></li>
-                    <li><a href="#mobile-apps">Mobile Apps</a></li>
-                    <li><a href="#iot-projects">IoT Projects</a></li>
-                    <li><a href="#cv">CV</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li>
-                        <div class="theme-toggle" id="theme-toggle-desktop">
-                            <i class="fas fa-moon"></i>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-            
-            <!-- Burger Button for Mobile -->
-            <div class="burger-btn" id="burger-btn">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobile-menu">
-            <ul class="mobile-nav">
-                <li><a href="#home" class="mobile-nav-link">Home</a></li>
-                <li><a href="#about" class="mobile-nav-link">About</a></li>
-                <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
-                <li><a href="#web-apps" class="mobile-nav-link">Web Apps</a></li>
-                <li><a href="#mobile-apps" class="mobile-nav-link">Mobile Apps</a></li>
-                <li><a href="#iot-projects" class="mobile-nav-link">IoT Projects</a></li>
-                <li><a href="#cv" class="mobile-nav-link">CV</a></li>
-                <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
-                <li>
-                    <div class="mobile-theme-toggle" id="mobile-theme-toggle">
-                        <span>Switch Theme</span>
-                        <i class="fas fa-moon"></i>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Hello, I'm <span>Junior Web Developer</span> <br>& IoT Maker</h1>
-                <p>I build modern web experiences and smart connected applications. My passion is turning ideas into reality using technology.</p>
-                <div class="hero-btns center-buttons">
-                    <a href="#web-apps" class="btn">View Web Apps</a>
-                    <a href="#contact" class="btn btn-outline">Contact Me</a>
-                    <a href="#cv" class="btn btn-secondary">Download CV</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div>
-                    <h3>YOUNESS EDDANGUIR</h3>
-                    <p>Junior Web Developer with a strong passion for innovation in web technologies and IoT. Leveraging my background in electrical engineering, I seamlessly integrate digital solutions with physical systems to create intelligent and practical applications.</p>
-                    <p>I thrive on quickly learning new technologies and solving complex technical challenges. My goal is to deliver efficient, scalable, and user-friendly solutions that enhance productivity and improve everyday life.</p>
-                    <p>Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, and IoT platforms including Arduino, ESP32, ESP8266, and robotics, aiming to develop cutting-edge projects that bridge the digital and physical worlds.</p>
-                </div>
-                <div class="about-img">
-                    <img src="images/my.jpeg" alt="Youness Eddanguir" style="width:100%;height:100%;border-radius:10px;">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <h2>Skills</h2>
-            <div class="skills-container" id="skills-container">
-                <!-- Will be generated by JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Web Apps Section with Tabs -->
-    <section id="web-apps" class="apps-section">
-        <div class="container">
-            <h2>Web Applications</h2>
-            <p>Modern web applications built with latest technologies</p>
-            
-            <!-- Category Tabs -->
-            <div class="webapps-tabs center-buttons" id="webapps-tabs">
-                <div class="webapp-tab active" data-category="all">All Projects</div>
-                <div class="webapp-tab" data-category="frontend">Frontend Projects</div>
-                <div class="webapp-tab" data-category="fullstack">Fullstack Projects</div>
-                <div class="webapp-tab" data-category="responsive">Responsive Websites</div>
-            </div>
-            
-            <div class="apps-grid" id="web-apps-grid">
-                <!-- Will be generated by JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Mobile Apps Section -->
-    <section id="mobile-apps" class="apps-section">
-        <div class="container">
-            <h2>Mobile Applications</h2>
-            <p>Mobile applications published on Google Play Store</p>
-            <div class="apps-grid" id="mobile-apps-grid">
-                <!-- Will be generated by JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- IoT Projects Section -->
-    <section id="iot-projects" class="apps-section">
-        <div class="container">
-            <h2>IoT Projects</h2>
-            <p>Internet of Things projects combining hardware and software</p>
-            <div class="apps-grid" id="iot-projects-grid">
-                <!-- Will be generated by JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- CV Download Section -->
-    <section id="cv" class="cv-section">
-        <div class="container">
-            <h2>Curriculum Vitae</h2>
-            <p>Download my specialized CVs according to field</p>
-            <div class="cv-cards">
-                <div class="cv-card">
-                    <div class="cv-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Web Developer</h3>
-                    <p>Focuses on web development skills and relevant experiences.</p>
-                    <a href="cv/cv-webdev.pdf" class="btn download-cv" data-cv="webdev" target="_blank">View/Download PDF</a>
-                </div>
-                <div class="cv-card">
-                    <div class="cv-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Electrical Engineer / IoT</h3>
-                    <p>Focuses on electrical, electronic projects and Internet of Things.</p>
-                    <a href="cv/cv-electric.pdf" class="btn download-cv" data-cv="electric" target="_blank">View/Download PDF</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section - Only Form Now -->
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Me</h2>
-            <p class="section-subtitle">Get in touch for opportunities or collaborations</p>
-            
-            <div class="contact-container">
-                <!-- Contact Form Only -->
-                <div class="contact-form-wrapper">
-                    <h3>Send a Message</h3>
-                    <form id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Full Name *</label>
-                                <input type="text" id="name" class="form-control" required>
-                                <div class="error" id="nameError">Name required (minimum 3 characters)</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" id="email" class="form-control" required>
-                                <div class="error" id="emailError">Valid email required</div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" class="form-control" required placeholder="+212 6 1234 5678">
-                            <div class="error" id="phoneError">Valid phone number required</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                            <div class="error" id="messageError">Message required (minimum 10 characters)</div>
-                        </div>
-                        <button type="submit" class="btn form-btn">
-                            <i class="fas fa-paper-plane"></i>
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Professional Footer -->
-    <footer>
-        <div class="container">
-            <!-- Centered Logo for Mobile -->
-            <div class="footer-logo-center">
-                <div class="logo">Portfo<span>lio</span></div>
-            </div>
-            
-            <!-- Social Icons Section -->
-            <div class="footer-social-section">
-                <h3>Connect With Me</h3>
-                <div class="footer-social-icons">
-                    <a href="https://github.com/younessedd" target="_blank" class="footer-social-icon github">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="footer-social-icon linkedin">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://twitter.com/yourusername" target="_blank" class="footer-social-icon twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://codepen.io/yourusername" target="_blank" class="footer-social-icon codepen">
-                        <i class="fab fa-codepen"></i>
-                    </a>
-                    <a href="https://wa.me/212664837281" target="_blank" class="footer-social-icon whatsapp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="mailto:eddanguiryouness@gmail.com" class="footer-social-icon email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="footer-content">
-                <!-- About Column -->
-                <div class="footer-column">
-                    <div class="footer-logo-top">
-                        <div class="logo">Portfo<span>lio</span></div>
-                    </div>
-                    <div class="footer-about">
-                        <p>Junior Web Developer & IoT Maker with passion for creating innovative digital solutions and smart connected applications.</p>
-                    </div>
-                 
-                </div>
-                
-                <!-- Quick Links Column -->
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="quick-links">
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
-                        <li><a href="#skills"><i class="fas fa-chevron-right"></i> Skills</a></li>
-                        <li><a href="#web-apps"><i class="fas fa-chevron-right"></i> Web Apps</a></li>
-                        <li><a href="#mobile-apps"><i class="fas fa-chevron-right"></i> Mobile Apps</a></li>
-                        <li><a href="#iot-projects"><i class="fas fa-chevron-right"></i> IoT Projects</a></li>
-                        <li><a href="#cv"><i class="fas fa-chevron-right"></i> CV</a></li>
-                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact Info Column -->
-                <div class="footer-column">
-                    <h3>Contact Info</h3>
-                    <ul class="contact-info-footer">
-                        <li>
-                            <a href="https://www.google.com/maps/place/Casablanca" target="_blank">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Morocco</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tel:+212664837281">
-                                <i class="fas fa-phone"></i>
-                                <span>+212 6 6483 7281</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="mailto:eddanguiryouness@gmail.com">
-                                <i class="fas fa-envelope"></i>
-                                <span>eddanguiryouness@gmail.com</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://wa.me/212664837281" target="_blank">
-                                <i class="fab fa-whatsapp"></i>
-                                <span>+212 6 6483 7281</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Skills Column -->
-                <div class="footer-column">
-                    <h3>Expertise</h3>
-                    <ul class="quick-links">
-                        <li><a href="#"><i class="fas fa-check"></i> Web Development</a></li>
-                        <li><a href="#"><i class="fas fa-check"></i> IoT Solutions</a></li>
-                        <li><a href="#"><i class="fas fa-check"></i> Mobile Apps</a></li>
-                        <li><a href="#"><i class="fas fa-check"></i> Electrical Engineering</a></li>
-                        <li><a href="#"><i class="fas fa-check"></i> Responsive Design</a></li>
-                        <li><a href="#"><i class="fas fa-check"></i> Problem Solving</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2023 Youness Eddanguir. All rights reserved.</p>
-                <p>Developed with passion and dedication.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Toast Container -->
-    <div class="toast-container" id="toastContainer"></div>
 
     <script>
-        // Data and global variables
-        const skillsData = [
-            { 
-                category: "Web Development", 
-                skills: [
-                    { name: "HTML/CSS", level: "Advanced" },
-                    { name: "JavaScript", level: "Advanced" },
-                    { name: "React.js", level: "Advanced" },
-                    { name: "Laravel", level: "Intermediate" },
-                    { name: "Bootstrap", level: "Intermediate" },
-                    { name: "Git", level: "Intermediate" },  
-                    { name: "Responsive Design", level: "Advanced" },
-                    { name: "REST APIs", level: "Intermediate" },
-                ]
-            },
-            { 
-                category: "Internet of Things", 
-                skills: [
-                    { name: "Arduino", level: "Intermediate" },
-                    { name: "ESP32/ESP8266", level: "Intermediate" },
-                    { name: "Sensor Networks", level: "Intermediate" },
-                    { name: "Firebase", level: "Intermediate" },
-                    { name: "Electrique/Electronics", level: "Advanced" },
-                    { name: "Circuit Design", level: "Intermediate" },
-                    { name: "Bluetooth BLE", level: "Intermediate" },
-                    { name: "Home Automation", level: "Intermediate" },
-                ]
-            },
-            { 
-                category: "Other Skills", 
-                skills: [
-                    { name: "UI/UX Design", level: "Intermediate" },
-                    { name: "Problem Solving", level: "Advanced" },
-                    { name: "Teamwork", level: "Advanced" },
-                    { name: "Communication", level: "Advanced" },
-                    { name: "Critical Thinking", level: "Advanced" },
-                    { name: "Time Management", level: "Advanced" },
-                    { name: "Presentation Skills", level: "Intermediate" },
-                    { name: "Creativity", level: "Advanced" },
-                ]
-            }
-        ];
-
-        // Web Applications Data with categories
+        // Web Apps Data
         const webAppsData = [
             {
                 id: 1,
@@ -1466,7 +2669,7 @@
             },
             {
                 id: 2,
-                title: "Restarent",
+                title: "Restaurant",
                 description: "A modern responsive restaurant website project, featuring menu display, reservation form, and interactive UI elements.",
                 icon: "fas fa-utensils",
                 category: "frontend",
@@ -1497,388 +2700,352 @@
                 liveUrl: "https://younessedd.github.io/PowerGrid-Solutions-youness/",
                 githubUrl: "https://github.com/younessedd/PowerGrid-Solutions-youness",
                 explanation: "This project is a front-end website for an energy solutions company. It highlights services, completed projects, and provides an interactive user experience with responsive design and animations."
-            },
-            {
-                id: 4,
-                title: "E-commerce Platform",
-                description: "Fullstack e-commerce platform with user authentication, cart system, and payment integration.",
-                icon: "fas fa-shopping-cart",
-                category: "fullstack",
-                features: [
-                    "User authentication and authorization",
-                    "Product catalog with search and filter",
-                    "Shopping cart and checkout system",
-                    "Admin dashboard for product management"
-                ],
-                technologies: ["React.js", "Node.js", "MongoDB", "Express"],
-                liveUrl: "#",
-                githubUrl: "#",
-                explanation: "A complete e-commerce solution with frontend and backend integration. Includes user management, product catalog, shopping cart, and secure payment processing."
-            },
-            {
-                id: 5,
-                title: "Task Management App",
-                description: "Collaborative task management application with real-time updates and team features.",
-                icon: "fas fa-tasks",
-                category: "fullstack",
-                features: [
-                    "Real-time task updates",
-                    "Team collaboration features",
-                    "Drag and drop interface",
-                    "Progress tracking and reporting"
-                ],
-                technologies: ["Vue.js", "Laravel", "MySQL", "WebSockets"],
-                liveUrl: "#",
-                githubUrl: "#",
-                explanation: "A productivity application that helps teams manage tasks efficiently. Features include real-time updates, team assignments, deadlines, and progress visualization."
-            },
-            {
-                id: 6,
-                title: "Portfolio Template",
-                description: "Clean and modern portfolio template with dark/light mode and smooth animations.",
-                icon: "fas fa-palette",
-                category: "responsive",
-                features: [
-                    "Dark/Light mode toggle",
-                    "Fully responsive design",
-                    "Smooth scroll animations",
-                    "Contact form with validation"
-                ],
-                technologies: ["HTML5", "CSS3", "JavaScript", "GSAP"],
-                liveUrl: "#",
-                githubUrl: "#",
-                explanation: "A customizable portfolio template that showcases projects and skills. Features responsive design, theme switching, and interactive elements for an engaging user experience."
             }
         ];
 
-        // Mobile Applications Data
-        const mobileAppsData = [
+        const cvData = [
             {
                 id: 1,
-                title: "AmeriQuiz Quest",
-                description: "A mobile quiz application with engaging questions and interactive gameplay.",
-                icon: "fas fa-question-circle",
-                features: [
-                    "Multiple-choice quiz questions",
-                    "Scoring and progress tracking",
-                    "Interactive and user-friendly interface",
-                    "Fun and educational gameplay"
-                ],
-                technologies: ["Kodular", "Firebase"],
-                playStoreUrl: "https://play.google.com/store/apps/details?id=com.youproproyou.ameriquizquest",
-                explanation: "Mobile quiz app that allows users to test their knowledge with multiple-choice questions. Includes scoring system, progress tracking, and an engaging, interactive interface."
+                title: "Web Developer",
+                icon: "fas fa-code",
+                description: "Focuses on web development skills and relevant experiences.",
+                fileUrl: "cv/cv-webdev.pdf",
+                cvType: "webdev"
             },
             {
                 id: 2,
-                title: "Sensor Android",
-                description: "Android app that detects all available sensors on the device and visualizes their functionality with interactive graphics.",
-                icon: "fas fa-mobile-alt",
-                features: [
-                    "Detects all device sensors",
-                    "Interactive sensor visualizations",
-                    "Lists supported hardware sensors",
-                    "Provides useful sensor tools for daily use"
-                ],
-                technologies: ["Kodular", "Sensor APIs"],
-                playStoreUrl: "https://play.google.com/store/apps/details?id=com.FiveStarApp.Test.Sensors.free",
-                explanation: "This app scans all sensors on an Android device, displays real-time sensor data with vivid graphics, and offers practical tools for using sensors in everyday scenarios."
-            },
-            {
-                id: 3,
-                title: "DARI CONNECTER",
-                description: "Mobile app for configuring, managing, and controlling smart home and commercial devices easily from your smartphone or tablet.",
-                icon: "fas fa-lightbulb",
-                features: [
-                    "Control lights, plugs, and other connected devices",
-                    "Manage automated buildings with one click",
-                    "Centralized smart building control",
-                    "Quick and intuitive interface for all functions"
-                ],
-                technologies: ["Flutter", "IoT Protocols", "MQTT", "Firebase"],
-                playStoreUrl: "https://play.google.com/store/apps/details?id=com.FiveStarApp.Smart.Home.Connected",
-                explanation: "The DARI CONNECTER app turns your mobile device into a central control hub for smart homes and commercial properties, allowing you to automate lighting, power outlets, and other devices with ease."
-            },
+                title: "Electrical Engineer / IoT",
+                icon: "fas fa-bolt",
+                description: "Focuses on electrical, electronic projects and Internet of Things.",
+                fileUrl: "cv/cv-electric.pdf",
+                cvType: "electric"
+            }
         ];
 
-        // IoT Projects Data
-        const iotProjectsData = [
-            {
-                id: 1,
-                title: "Smart Home Automation",
-                description: "Complete smart home solution using ESP32 microcontrollers and CADIO Automation app for mobile control.",
-                icon: "fas fa-home",
-                features: [
-                    "Control lights, fans, and appliances remotely",
-                    "Automated schedules for devices",
-                    "Energy monitoring and usage statistics",
-                    "Integration with CADIO Automation mobile app"
-                ],
-                technologies: ["ESP32", "MQTT", "Arduino", "CADIO Automation App", "Relay Modules", "Sensors"],
-                documentationUrl: "https://github.com/username/smart-home-automation",
-                explanation: "This project demonstrates how to turn a regular home into a smart home using ESP32 microcontrollers. Devices like lights, fans, and other appliances can be controlled via the CADIO Automation app. It supports scheduling, remote access, and real-time monitoring, making home automation easy and efficient."
-            },
-            {
-                id: 2,
-                title: "Industrial Automation & Maintenance System",
-                description: "Automated industrial system for monitoring, controlling, and maintaining electrical equipment efficiently.",
-                icon: "fas fa-industry",
-                features: [
-                    "Real-time monitoring of industrial machines",
-                    "Automated fault detection and alerts",
-                    "Scheduled maintenance notifications",
-                    "Remote control and system diagnostics"
-                ],
-                technologies: ["PLC", "Arduino/ESP32", "SCADA", "Sensors & Actuators", "IoT Protocols"],
-                documentationUrl: "https://github.com/username/industrial-automation",
-                explanation: "This project focuses on industrial electrical automation, enabling efficient monitoring and maintenance of industrial machines. The system uses sensors and PLC/ESP32 controllers to detect faults, provide real-time alerts, and allow remote diagnostics. It improves safety, reduces downtime, and optimizes maintenance schedules in industrial environments."
-            },
-            {
-                id: 3,
-                title: "Robotics & IoT Systems",
-                description: "Full robotics and IoT automation system built using Arduino, ESP32, and ESP8266 with a wide range of sensors and actuators.",
-                icon: "fas fa-robot",
-                features: [
-                    "Robotics projects from zero to advanced level",
-                    "Integration of multiple sensors and actuators",
-                    "WiFi & Bluetooth IoT control",
-                    "Smart automation with ESP32/ESP8266",
-                    "Real-time monitoring and cloud connectivity"
-                ],
-                technologies: [
-                    "Arduino", 
-                    "ESP32", 
-                    "ESP8266", 
-                    "C/C++", 
-                    "IoT Protocols", 
-                    "Servo & DC Motors", 
-                    "Ultrasonic, IR, PIR, Gas Sensors, etc", 
-                    "Bluetooth BLE"
-                ],
-                documentationUrl: "https://github.com/username/robotics-iot-systems",
-                explanation: "A complete robotics and IoT project collection that teaches automation from zero to hero. Includes building robots with Arduino and ESP boards, using multiple sensors, motor drivers, wireless communication, and cloud-based monitoring. Perfect for beginners and professionals looking to master robotics and IoT development."
-            },
-        ];
-
-        // Current web app category filter
-        let currentWebAppCategory = 'all';
-
-        // Initialize page on load
+        // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
-            initTheme(); // Initialize theme
-            generateSkills(); // Generate skills section
-            generateWebApps(); // Generate web apps
-            generateMobileApps(); // Generate mobile apps
-            generateIoTProjects(); // Generate IoT projects
-            setupEventListeners(); // Setup event listeners
+            initTheme();
+            generateCV();
+            setupEventListeners();
+            updateGridClasses();
+            
+            // Initialize all navigation systems
+            setupSkillsNavigation();
+            setupWebAppsNavigation();
+            setupMobileAppsNavigation();
+            setupIoTProjectsNavigation();
+            
+            // Set current year in footer
+            updateCurrentYear();
         });
 
-        // Function to initialize theme mode
         function initTheme() {
             const savedTheme = localStorage.getItem('portfolio-theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             
-            // Determine appropriate theme
             if (savedTheme) {
                 document.body.className = savedTheme === 'dark' ? 'theme-dark' : 'theme-light';
             } else {
                 document.body.className = prefersDark ? 'theme-dark' : 'theme-light';
             }
             
-            updateThemeIcons(); // Update theme icons
+            updateThemeIcons();
         }
 
-        // Update theme icons in all places
         function updateThemeIcons() {
             const isDark = document.body.classList.contains('theme-dark');
             const iconClass = isDark ? 'fas fa-sun' : 'fas fa-moon';
             
-            // Update desktop icon
             const desktopIcon = document.querySelector('#theme-toggle-desktop i');
             if (desktopIcon) desktopIcon.className = iconClass;
             
-            // Update mobile icon
             const mobileIcon = document.querySelector('#mobile-theme-toggle i');
             if (mobileIcon) mobileIcon.className = iconClass;
             
-            // Update mobile text
             const mobileText = document.querySelector('#mobile-theme-toggle span');
             if (mobileText) mobileText.textContent = isDark ? 'Light Mode' : 'Dark Mode';
         }
 
-        // Generate skills section
-        function generateSkills() {
-            const container = document.getElementById('skills-container');
-            container.innerHTML = '';
+        function setupSkillsNavigation() {
+            const skillNavBtns = document.querySelectorAll('#skills-nav .skill-nav-btn');
+            const modalOverlay = document.getElementById('skills-modal-overlay');
+            const closeModalBtn = document.getElementById('skills-close-modal-btn');
             
-            skillsData.forEach(category => {
-                const categoryDiv = document.createElement('div');
-                categoryDiv.className = 'skill-category';
-                
-                let skillsHTML = `<h3>${category.category}</h3><ul class="skill-list">`;
-                
-                category.skills.forEach(skill => {
-                    skillsHTML += `
-                        <li class="skill-item">
-                            <span>${skill.name}</span>
-                            <span class="skill-level">${skill.level}</span>
-                        </li>
-                    `;
+            skillNavBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    
+                    // Remove active class from all buttons
+                    skillNavBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show modal
+                    openModal(modalOverlay, category, 'skills');
                 });
-                
-                skillsHTML += '</ul>';
-                categoryDiv.innerHTML = skillsHTML;
-                container.appendChild(categoryDiv);
+            });
+            
+            // Close modal when close button is clicked
+            closeModalBtn.addEventListener('click', function() {
+                closeModal(modalOverlay, skillNavBtns);
+            });
+            
+            // Close modal when clicking outside the modal
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal(modalOverlay, skillNavBtns);
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    closeModal(modalOverlay, skillNavBtns);
+                }
             });
         }
 
-        // Generate web applications with filtering
-        function generateWebApps() {
-            const container = document.getElementById('web-apps-grid');
-            container.innerHTML = '';
+        function setupWebAppsNavigation() {
+            const webAppNavBtns = document.querySelectorAll('#web-apps-nav .skill-nav-btn');
+            const modalOverlay = document.getElementById('webapps-modal-overlay');
+            const closeModalBtn = document.getElementById('webapps-close-modal-btn');
             
-            // Filter projects based on current category
-            let filteredProjects = webAppsData;
-            if (currentWebAppCategory !== 'all') {
-                filteredProjects = webAppsData.filter(app => app.category === currentWebAppCategory);
-            }
+            webAppNavBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    
+                    // Remove active class from all buttons
+                    webAppNavBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show modal
+                    openModal(modalOverlay, category, 'webapps');
+                });
+            });
             
-            // Show message if no projects in category
-            if (filteredProjects.length === 0) {
-                container.innerHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
-                        <i class="fas fa-folder-open" style="font-size: 4rem; color: var(--text-secondary); margin-bottom: 1.5rem;"></i>
-                        <h3>No projects in this category yet</h3>
-                        <p>Check back soon for new ${getCategoryName(currentWebAppCategory)} projects!</p>
-                    </div>
-                `;
-                return;
-            }
+            // Close modal when close button is clicked
+            closeModalBtn.addEventListener('click', function() {
+                closeModal(modalOverlay, webAppNavBtns);
+            });
             
-            filteredProjects.forEach(app => {
-                const appCard = document.createElement('div');
-                appCard.className = 'app-card';
-                
-                appCard.innerHTML = `
-                    <div class="app-icon">
-                        <i class="${app.icon}"></i>
-                    </div>
-                    <div class="app-info">
-                        <h3>${app.title}</h3>
-                        <div style="margin: 10px 0; display: flex; justify-content: center;">
-                            <span style="background: var(--primary-color); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">
-                                ${getCategoryName(app.category)}
-                            </span>
-                        </div>
-                        <p class="app-description">${app.description}</p>
-                        <ul class="app-features">
-                            ${app.features.map(feature => `<li>${feature}</li>`).join('')}
-                        </ul>
-                        <div class="app-explanation">
-                            <p><strong>Explanation:</strong> ${app.explanation}</p>
-                        </div>
-                        <div class="app-buttons center-buttons">
-                            <a href="${app.liveUrl}" target="_blank" class="btn btn-outline">View Live Website</a>
-                            ${app.githubUrl !== '#' ? `<a href="${app.githubUrl}" target="_blank" class="btn">View Code</a>` : ''}
-                        </div>
-                    </div>
-                `;
-                
-                container.appendChild(appCard);
+            // Close modal when clicking outside the modal
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal(modalOverlay, webAppNavBtns);
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    closeModal(modalOverlay, webAppNavBtns);
+                }
             });
         }
 
-        // Get category display name
-        function getCategoryName(category) {
+        function setupMobileAppsNavigation() {
+            const mobileAppNavBtns = document.querySelectorAll('#mobile-apps-nav .skill-nav-btn');
+            const modalOverlay = document.getElementById('mobileapps-modal-overlay');
+            const closeModalBtn = document.getElementById('mobileapps-close-modal-btn');
+            
+            mobileAppNavBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    
+                    // Remove active class from all buttons
+                    mobileAppNavBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show modal
+                    openModal(modalOverlay, category, 'mobileapps');
+                });
+            });
+            
+            // Close modal when close button is clicked
+            closeModalBtn.addEventListener('click', function() {
+                closeModal(modalOverlay, mobileAppNavBtns);
+            });
+            
+            // Close modal when clicking outside the modal
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal(modalOverlay, mobileAppNavBtns);
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    closeModal(modalOverlay, mobileAppNavBtns);
+                }
+            });
+        }
+
+        function setupIoTProjectsNavigation() {
+            const iotNavBtns = document.querySelectorAll('#iot-projects-nav .skill-nav-btn');
+            const modalOverlay = document.getElementById('iotprojects-modal-overlay');
+            const closeModalBtn = document.getElementById('iotprojects-close-modal-btn');
+            
+            iotNavBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    
+                    // Remove active class from all buttons
+                    iotNavBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show modal
+                    openModal(modalOverlay, category, 'iotprojects');
+                });
+            });
+            
+            // Close modal when close button is clicked
+            closeModalBtn.addEventListener('click', function() {
+                closeModal(modalOverlay, iotNavBtns);
+            });
+            
+            // Close modal when clicking outside the modal
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal(modalOverlay, iotNavBtns);
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    closeModal(modalOverlay, iotNavBtns);
+                }
+            });
+        }
+
+        function openModal(modalOverlay, category, section) {
+            let modalCards;
+            
+            if (section === 'skills') {
+                modalCards = document.querySelectorAll('#skills-modal .skill-modal-card');
+            } else if (section === 'webapps') {
+                modalCards = document.querySelectorAll('#webapps-modal .skill-modal-card');
+            } else if (section === 'mobileapps') {
+                modalCards = document.querySelectorAll('#mobileapps-modal .skill-modal-card');
+            } else if (section === 'iotprojects') {
+                modalCards = document.querySelectorAll('#iotprojects-modal .skill-modal-card');
+            }
+            
+            // Hide all modal cards
+            if (modalCards) {
+                modalCards.forEach(card => card.classList.remove('active'));
+                
+                // Show selected modal card
+                const targetCard = document.getElementById(`${category}-modal-card`);
+                if (targetCard) {
+                    targetCard.classList.add('active');
+                }
+            }
+            
+            // Show modal overlay
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            
+            // Show toast notification
             const categoryNames = {
-                'all': 'All',
-                'frontend': 'Frontend',
-                'fullstack': 'Fullstack',
-                'responsive': 'Responsive'
+                'web': 'Web Development',
+                'iot': 'IoT & Electronics',
+                'mobile': 'Mobile Development',
+                'soft': 'Soft Skills',
+                'all': 'All Projects',
+                'frontend': 'Frontend Projects',
+                'fullstack': 'Fullstack Projects',
+                'responsive': 'Responsive Websites',
+                'quiz': 'Quiz Apps',
+                'smart': 'Smart Home Apps',
+                'utility': 'Utility Apps',
+                'others': 'Other Apps',
+                'home': 'Smart Home',
+                'industrial': 'Industrial IoT',
+                'sensors': 'Sensor Projects',
+                'othersiot': 'Other IoT Projects'
             };
-            return categoryNames[category] || category;
+            
+            showToast(`Showing ${categoryNames[category] || category}`, 'info');
         }
 
-        // Generate mobile applications
-        function generateMobileApps() {
-            const container = document.getElementById('mobile-apps-grid');
+        function closeModal(modalOverlay, navBtns) {
+            // Hide modal
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+            
+            // Remove active class from all buttons
+            if (navBtns) {
+                navBtns.forEach(b => b.classList.remove('active'));
+            }
+        }
+
+        function updateCurrentYear() {
+            const currentYear = new Date().getFullYear();
+            const yearElement = document.getElementById('current-year');
+            if (yearElement) {
+                yearElement.textContent = currentYear;
+            }
+        }
+
+        function generateCV() {
+            const container = document.querySelector('.cv-cards');
             container.innerHTML = '';
             
-            mobileAppsData.forEach(app => {
-                const appCard = document.createElement('div');
-                appCard.className = 'app-card';
+            cvData.forEach(cv => {
+                const cvCard = document.createElement('div');
+                cvCard.className = 'cv-card';
                 
-                appCard.innerHTML = `
-                    <div class="app-icon">
-                        <i class="${app.icon}"></i>
+                cvCard.innerHTML = `
+                    <div class="cv-icon">
+                        <i class="${cv.icon}"></i>
                     </div>
-                    <div class="app-info">
-                        <h3>${app.title}</h3>
-                        <p class="app-description">${app.description}</p>
-                        <ul class="app-features">
-                            ${app.features.map(feature => `<li>${feature}</li>`).join('')}
-                        </ul>
-                        <div class="app-explanation">
-                            <p><strong>Explanation:</strong> ${app.explanation}</p>
-                        </div>
-                        <div class="app-buttons center-buttons">
-                            <a href="${app.playStoreUrl}" target="_blank" class="btn btn-outline">View on Play Store</a>
-                        </div>
-                    </div>
+                    <h3>${cv.title}</h3>
+                    <p>${cv.description}</p>
+                    <a href="${cv.fileUrl}" class="btn download-cv" data-cv="${cv.cvType}" target="_blank">View/Download PDF</a>
                 `;
                 
-                container.appendChild(appCard);
+                container.appendChild(cvCard);
             });
-        }
-
-        // Generate IoT projects
-        function generateIoTProjects() {
-            const container = document.getElementById('iot-projects-grid');
-            container.innerHTML = '';
             
-            iotProjectsData.forEach(project => {
-                const projectCard = document.createElement('div');
-                projectCard.className = 'app-card';
-                
-                projectCard.innerHTML = `
-                    <div class="app-icon">
-                        <i class="${project.icon}"></i>
-                    </div>
-                    <div class="app-info">
-                        <h3>${project.title}</h3>
-                        <p class="app-description">${project.description}</p>
-                        <ul class="app-features">
-                            ${project.features.map(feature => `<li>${feature}</li>`).join('')}
-                        </ul>
-                        <div class="app-explanation">
-                            <p><strong>Explanation:</strong> ${project.explanation}</p>
-                        </div>
-                        <div class="app-buttons center-buttons">
-                            ${project.documentationUrl !== '#' ? `<a href="${project.documentationUrl}" target="_blank" class="btn">View Documentation</a>` : ''}
-                        </div>
-                    </div>
-                `;
-                
-                container.appendChild(projectCard);
-            });
+            updateGridClasses();
         }
 
-        // Setup event listeners
+        function updateGridClasses() {
+            // CV Cards
+            const cvCards = document.querySelector('.cv-cards');
+            const cvItems = cvCards.children.length;
+            
+            cvCards.classList.remove('one-item', 'two-items', 'three-items', 'four-items');
+            
+            if (cvItems === 1) {
+                cvCards.classList.add('one-item');
+            } else if (cvItems === 2) {
+                cvCards.classList.add('two-items');
+            } else if (cvItems === 3) {
+                cvCards.classList.add('three-items');
+            } else if (cvItems >= 4) {
+                cvCards.classList.add('four-items');
+            }
+        }
+
         function setupEventListeners() {
-            // Toggle theme (desktop)
             document.getElementById('theme-toggle-desktop').addEventListener('click', toggleTheme);
-            
-            // Toggle theme (mobile)
             document.getElementById('mobile-theme-toggle').addEventListener('click', toggleTheme);
-            
-            // Burger button
             document.getElementById('burger-btn').addEventListener('click', toggleMobileMenu);
             
-            // Close mobile menu when clicking on a link
             document.querySelectorAll('.mobile-nav-link').forEach(link => {
                 link.addEventListener('click', closeMobileMenu);
             });
             
-            // CV download
             document.querySelectorAll('.download-cv').forEach(link => {
                 link.addEventListener('click', function(e) {
                     const cvType = this.dataset.cv;
@@ -1887,29 +3054,8 @@
                 });
             });
             
-            // Contact form
             document.getElementById('contactForm').addEventListener('submit', handleContactSubmit);
             
-            // Web app category tabs
-            document.querySelectorAll('.webapp-tab').forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // Update active tab
-                    document.querySelectorAll('.webapp-tab').forEach(t => {
-                        t.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                    
-                    // Update current category and regenerate projects
-                    currentWebAppCategory = this.dataset.category;
-                    generateWebApps();
-                    
-                    // Show toast notification
-                    const categoryName = getCategoryName(currentWebAppCategory);
-                    showToast(`Showing ${categoryName} Projects`, 'info');
-                });
-            });
-            
-            // Close menu when clicking outside
             document.addEventListener('click', function(event) {
                 const mobileMenu = document.getElementById('mobile-menu');
                 const burgerBtn = document.getElementById('burger-btn');
@@ -1919,15 +3065,15 @@
                 }
             });
             
-            // Close menu on Escape key
             document.addEventListener('keydown', function(event) {
                 if (event.key === 'Escape' && document.getElementById('mobile-menu').classList.contains('active')) {
                     closeMobileMenu();
                 }
             });
+            
+            window.addEventListener('resize', updateGridClasses);
         }
 
-        // Toggle theme mode
         function toggleTheme() {
             const isDark = document.body.classList.contains('theme-dark');
             document.body.classList.toggle('theme-dark');
@@ -1938,19 +3084,15 @@
             
             updateThemeIcons();
             showToast(`Switched to ${isDark ? 'Light' : 'Dark'} Mode`, 'success');
-            
-            // Close mobile menu if open
             closeMobileMenu();
         }
 
-        // Open/close mobile menu
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             const burgerIcon = document.getElementById('burger-btn').querySelector('i');
             
             mobileMenu.classList.toggle('active');
             
-            // Change burger icon
             if (mobileMenu.classList.contains('active')) {
                 burgerIcon.className = 'fas fa-times';
             } else {
@@ -1958,7 +3100,6 @@
             }
         }
 
-        // Close mobile menu
         function closeMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             const burgerIcon = document.getElementById('burger-btn').querySelector('i');
@@ -1967,28 +3108,22 @@
             burgerIcon.className = 'fas fa-bars';
         }
 
-        // Validate phone number
         function validatePhone(phone) {
-            if (!phone) return false; // Now required
+            if (!phone) return false;
             
-            // Remove spaces, dashes, and parentheses
             const cleanedPhone = phone.replace(/[\s\-()]/g, '');
             
-            // Check if it starts with + (international) or 0 (local)
             if (!/^(\+|0)/.test(cleanedPhone)) {
                 return false;
             }
             
-            // Check if the remaining characters are digits
             const digits = cleanedPhone.replace(/^\+/, '').replace(/^0/, '');
             return /^\d+$/.test(digits) && digits.length >= 8 && digits.length <= 15;
         }
 
-        // Handle contact form submission with EmailJS - Updated to match your template
-        function handleContactSubmit(e) {
+        async function handleContactSubmit(e) {
             e.preventDefault();
             
-            // Get form values
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
@@ -1996,7 +3131,6 @@
             
             let isValid = true;
             
-            // Validate name
             if (name.length < 3) {
                 document.getElementById('nameError').style.display = 'block';
                 isValid = false;
@@ -2004,7 +3138,6 @@
                 document.getElementById('nameError').style.display = 'none';
             }
             
-            // Validate email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 document.getElementById('emailError').style.display = 'block';
@@ -2013,7 +3146,6 @@
                 document.getElementById('emailError').style.display = 'none';
             }
             
-            // Validate phone (now required)
             if (!validatePhone(phone)) {
                 document.getElementById('phoneError').style.display = 'block';
                 isValid = false;
@@ -2021,7 +3153,6 @@
                 document.getElementById('phoneError').style.display = 'none';
             }
             
-            // Validate message
             if (message.length < 10) {
                 document.getElementById('messageError').style.display = 'block';
                 isValid = false;
@@ -2029,58 +3160,75 @@
                 document.getElementById('messageError').style.display = 'none';
             }
             
-            // If form is valid, send with EmailJS
             if (isValid) {
-                // Disable submit button and show loading state
                 const submitBtn = document.querySelector('#contactForm button[type="submit"]');
                 const originalText = submitBtn.innerHTML;
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                 submitBtn.disabled = true;
                 
-                // Format current time
-                const now = new Date();
-                const formattedTime = now.toLocaleString('en-US', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
-                
-                // Prepare EmailJS parameters - MATCHING YOUR TEMPLATE EXACTLY
-                const templateParams = {
-                    name: name,
-                    email: email,
-                    time: formattedTime,
-                    message: message + "\n\nPhone: " + phone // Add phone to message body
-                };
-                
-                // Send email using EmailJS
-                emailjs.send('service_l953yi6', 'template_5aimrbz', templateParams)
-                    .then(function(response) {
-                        // Success
-                        showToast('Your message has been sent successfully! I will reply soon.', 'success');
-                        document.getElementById('contactForm').reset();
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
-                    }, function(error) {
-                        // Error
-                        console.error('EmailJS Error:', error);
-                        showToast('There was an error sending your message. Please try again later.', 'error');
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
+                try {
+                    let emailConfig = {
+                        serviceID: 'service_l953yi6',
+                        templateID: 'template_5aimrbz',
+                        publicKey: 'IbbG69TuO-Uyx_4I8'
+                    };
+                    
+                    if (emailConfig && emailConfig.publicKey) {
+                        emailjs.init(emailConfig.publicKey);
+                    } else {
+                        throw new Error('EmailJS configuration not found');
+                    }
+                    
+                    const now = new Date();
+                    const formattedTime = now.toLocaleString('en-US', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
                     });
+                    
+                    const templateParams = {
+                        name: name,
+                        email: email,
+                        time: formattedTime,
+                        message: message + "\n\nPhone: " + phone
+                    };
+                    
+                    await emailjs.send(
+                        emailConfig.serviceID,
+                        emailConfig.templateID,
+                        templateParams
+                    );
+                    
+                    showToast('Your message has been sent successfully! I will reply soon.', 'success');
+                    document.getElementById('contactForm').reset();
+                    
+                } catch (error) {
+                    console.error('EmailJS Error:', error);
+                    
+                    let errorMessage = 'There was an error sending your message. Please try again later.';
+                    
+                    if (error.text && error.text.includes('Invalid login credentials')) {
+                        errorMessage = 'Email service configuration error.';
+                    } else if (error.status === 0) {
+                        errorMessage = 'Network error. Please check your internet connection.';
+                    }
+                    
+                    showToast(errorMessage, 'error');
+                } finally {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
             }
         }
 
-        // Show toast notification
         function showToast(message, type = 'info') {
             const toastContainer = document.getElementById('toastContainer');
             const toast = document.createElement('div');
             toast.className = 'toast';
             
-            // Set icon based on type
             let icon = 'info-circle';
             if (type === 'success') icon = 'check-circle';
             if (type === 'error') icon = 'exclamation-circle';
@@ -2092,12 +3240,10 @@
             
             toastContainer.appendChild(toast);
             
-            // Show Toast
             setTimeout(() => {
                 toast.classList.add('show');
             }, 10);
             
-            // Hide Toast after 4 seconds
             setTimeout(() => {
                 toast.classList.remove('show');
                 setTimeout(() => {
