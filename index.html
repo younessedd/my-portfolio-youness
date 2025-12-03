@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Developer & IoT Maker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Add EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS with your public key
+        (function() {
+            emailjs.init("IbbG69TuO-Uyx_4I8"); // Your public key
+        })();
+    </script>
     <style>
         /* CSS Variables for Theming */
         :root {
@@ -409,7 +417,38 @@
             color: var(--secondary-color);
         }
 
-        /* Apps Sections */
+        /* Web Apps Section */
+        .webapps-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .webapp-tab {
+            padding: 12px 24px;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-secondary);
+        }
+
+        .webapp-tab:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .webapp-tab.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
         .apps-section {
             text-align: center;
         }
@@ -487,11 +526,6 @@
             margin-top: 1.5rem;
         }
 
-        .app-buttons .btn {
-            flex: 1;
-            min-width: 140px;
-        }
-
         /* CV Download Section */
         .cv-section {
             text-align: center;
@@ -520,78 +554,62 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Contact Section */
+        /* Contact Section - Simplified */
         .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4rem;
+            text-align: center;
+        }
+
+        .contact-form-wrapper {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            text-align: left;
-        }
-
-        .contact-info h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-            text-align: left;
-        }
-
-        .contact-info p {
-            text-align: left;
-            max-width: 100%;
-        }
-
-        .contact-details {
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
+            gap: 1.5rem;
             margin-bottom: 1.5rem;
-        }
-
-        .contact-icon {
-            width: 55px;
-            height: 55px;
-            background: var(--surface);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            color: var(--primary-color);
-            font-size: 1.3rem;
         }
 
         .form-group {
             margin-bottom: 1.5rem;
+            text-align: left;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
-            text-align: left;
+            color: var(--text);
         }
 
         .form-control {
             width: 100%;
-            padding: 14px;
+            padding: 16px;
             background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
             color: var(--text);
             font-size: 1rem;
+            font-family: inherit;
             transition: var(--transition);
         }
 
         .form-control:focus {
             outline: none;
             border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
         }
 
         textarea.form-control {
             min-height: 160px;
             resize: vertical;
+            line-height: 1.5;
         }
 
         .error {
@@ -599,7 +617,18 @@
             font-size: 0.9rem;
             margin-top: 5px;
             display: none;
-            text-align: left;
+        }
+
+        .form-btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1rem;
         }
 
         /* Toast */
@@ -637,22 +666,146 @@
             font-size: 1.2rem;
         }
 
-        /* Footer */
+        /* Professional Footer */
         footer {
             background: var(--surface);
-            padding: 3rem 0;
-            text-align: center;
+            padding: 4rem 0 2rem;
             margin-top: 4rem;
         }
 
-        .social-links {
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            text-align: left;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        .footer-about p {
+            text-align: left;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .quick-links {
+            list-style: none;
+        }
+
+        .quick-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .quick-links a {
+            color: var(--text-secondary);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quick-links a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .quick-links i {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+        }
+
+        .contact-info-footer {
+            list-style: none;
+        }
+
+        .contact-info-footer li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-info-footer a {
+            color: var(--text-secondary);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-info-footer a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-info-footer i {
+            color: var(--primary-color);
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .social-links-footer {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links-footer a {
+            width: 40px;
+            height: 40px;
+            background: var(--background);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .social-links-footer a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Social Icons Section */
+        .footer-social-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .footer-social-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .footer-social-icons {
             display: flex;
             justify-content: center;
             gap: 1.5rem;
-            margin: 2rem 0;
+            flex-wrap: wrap;
         }
 
-        .social-link {
+        .footer-social-icon {
             width: 50px;
             height: 50px;
             background: var(--background);
@@ -661,29 +814,67 @@
             align-items: center;
             justify-content: center;
             font-size: 1.3rem;
+            color: var(--text-secondary);
             transition: var(--transition);
+            text-decoration: none;
         }
 
-        .social-link:hover {
+        .footer-social-icon:hover {
             background: var(--primary-color);
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
 
-        /* Responsive Design */
+        /* Specific colors for social icons */
+        .footer-social-icon.twitter:hover {
+            background: #1DA1F2;
+        }
+
+        .footer-social-icon.linkedin:hover {
+            background: #0077B5;
+        }
+
+        .footer-social-icon.github:hover {
+            background: #333;
+        }
+
+        .footer-social-icon.codepen:hover {
+            background: #000000;
+        }
+
+        .footer-social-icon.whatsapp:hover {
+            background: #25D366;
+        }
+
+        .footer-social-icon.email:hover {
+            background: #EA4335;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Logo in footer center on mobile */
+        .footer-logo-center {
+            display: none;
+        }
+
+        /* Responsive Design - Improved Button Centering */
         @media (max-width: 992px) {
-            .about-content, .contact-container {
+            .about-content {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
             .hero h1 {
                 font-size: 2.8rem;
             }
-            .contact-info p {
-                text-align: center;
-            }
-            .contact-info h3 {
-                text-align: center;
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
             }
         }
 
@@ -708,6 +899,7 @@
             .btn {
                 width: 100%;
                 max-width: 300px;
+                margin: 0 auto;
             }
             
             .cv-cards {
@@ -718,10 +910,13 @@
             .app-buttons {
                 flex-direction: column;
                 width: 100%;
+                align-items: center;
             }
             
             .app-buttons .btn {
                 width: 100%;
+                max-width: 280px;
+                margin: 5px 0;
             }
             
             h1 {
@@ -729,6 +924,83 @@
             }
             h2 {
                 font-size: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2.5rem;
+            }
+            
+            .footer-column h3 {
+                text-align: center;
+            }
+            
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .footer-about p,
+            .quick-links,
+            .contact-info-footer {
+                text-align: center;
+            }
+            
+            .quick-links a {
+                justify-content: center;
+            }
+            
+            .contact-info-footer li {
+                justify-content: center;
+            }
+            
+            /* Social icons center on mobile */
+            .footer-social-section {
+                text-align: center;
+            }
+            
+            .footer-social-icons {
+                justify-content: center;
+            }
+            
+            .social-links-footer {
+                justify-content: center;
+            }
+            
+            /* Hide top logo, show centered logo */
+            .footer-logo-top {
+                display: none;
+            }
+            
+            .footer-logo-center {
+                display: block;
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            
+            .footer-logo-center .logo {
+                justify-content: center;
+                height: auto;
+                margin-bottom: 1.5rem;
+            }
+            
+            /* Center all buttons in responsive */
+            .cv-card .btn,
+            .app-buttons .btn,
+            .hero-btns .btn,
+            .webapp-tab,
+            .form-btn {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
 
@@ -747,6 +1019,62 @@
             }
             .hero h1 {
                 font-size: 2.2rem;
+            }
+            .webapps-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            .webapp-tab {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+            
+            /* Social icons responsive */
+            .footer-social-icons {
+                gap: 1rem;
+            }
+            
+            .footer-social-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+            
+            /* Ensure all buttons are centered */
+            .btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0.5rem auto;
+            }
+            
+            .hero-btns .btn,
+            .app-buttons .btn,
+            .cv-card .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Special centering for specific button containers */
+        .center-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        @media (max-width: 576px) {
+            .center-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .center-buttons .btn {
+                width: 100%;
+                max-width: 300px;
             }
         }
     </style>
@@ -810,7 +1138,7 @@
             <div class="hero-content">
                 <h1>Hello, I'm <span>Junior Web Developer</span> <br>& IoT Maker</h1>
                 <p>I build modern web experiences and smart connected applications. My passion is turning ideas into reality using technology.</p>
-                <div class="hero-btns">
+                <div class="hero-btns center-buttons">
                     <a href="#web-apps" class="btn">View Web Apps</a>
                     <a href="#contact" class="btn btn-outline">Contact Me</a>
                     <a href="#cv" class="btn btn-secondary">Download CV</a>
@@ -831,7 +1159,7 @@
                     <p>Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, and IoT platforms including Arduino, ESP32, ESP8266, and robotics, aiming to develop cutting-edge projects that bridge the digital and physical worlds.</p>
                 </div>
                 <div class="about-img">
-                    <img src="images/my.jpeg" alt="Youness Eddanguir" style="width:100%;height: 100%;; border-radius:10px;">
+                    <img src="images/my.jpeg" alt="Youness Eddanguir" style="width:100%;height:100%;border-radius:10px;">
                 </div>
             </div>
         </div>
@@ -847,11 +1175,20 @@
         </div>
     </section>
 
-    <!-- Web Apps Section -->
+    <!-- Web Apps Section with Tabs -->
     <section id="web-apps" class="apps-section">
         <div class="container">
             <h2>Web Applications</h2>
             <p>Modern web applications built with latest technologies</p>
+            
+            <!-- Category Tabs -->
+            <div class="webapps-tabs center-buttons" id="webapps-tabs">
+                <div class="webapp-tab active" data-category="all">All Projects</div>
+                <div class="webapp-tab" data-category="frontend">Frontend Projects</div>
+                <div class="webapp-tab" data-category="fullstack">Fullstack Projects</div>
+                <div class="webapp-tab" data-category="responsive">Responsive Websites</div>
+            </div>
+            
             <div class="apps-grid" id="web-apps-grid">
                 <!-- Will be generated by JS -->
             </div>
@@ -881,8 +1218,6 @@
     </section>
 
     <!-- CV Download Section -->
-    <!-- CV Download Section -->
-    <!-- CV Download Section -->
     <section id="cv" class="cv-section">
         <div class="container">
             <h2>Curriculum Vitae</h2>
@@ -908,90 +1243,158 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-       <!-- Contact Section -->
+    <!-- Contact Section - Only Form Now -->
     <section id="contact">
         <div class="container">
             <h2>Contact Me</h2>
+            <p class="section-subtitle">Get in touch for opportunities or collaborations</p>
+            
             <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Let's Work Together</h3>
-                    <p>Looking for opportunities to develop my skills and work on exciting projects. If you have a project or job opportunity, feel free to contact me.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4>Email</h4>
-                                <p><a href="mailto:eddanguiryouness@gmail.com" style="color: inherit; text-decoration: none;">eddanguiryouness@gmail.com</a></p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4>Phone</h4>
-                                <p><a href="tel:+212664837281" style="color: inherit; text-decoration: none;">+212 6 6483 7281</a></p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div>
-                                <h4>WhatsApp</h4>
-                                <p><a href="https://wa.me/212664837281" target="_blank" style="color: inherit; text-decoration: none;">+212 6 6483 7281</a></p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h4>Location</h4>
-                                <p><a href="https://www.google.com/maps/place/Casablanca,+Morocco" target="_blank" style="color: inherit; text-decoration: none;">Casablanca, Morocco</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
+                <!-- Contact Form Only -->
+                <div class="contact-form-wrapper">
+                    <h3>Send a Message</h3>
                     <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" class="form-control" required>
-                            <div class="error" id="nameError">Name required (minimum 3 characters)</div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" class="form-control" required>
+                                <div class="error" id="nameError">Name required (minimum 3 characters)</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" class="form-control" required>
+                                <div class="error" id="emailError">Valid email required</div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control" required>
-                            <div class="error" id="emailError">Valid email required</div>
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" class="form-control" required placeholder="+212 6 1234 5678">
+                            <div class="error" id="phoneError">Valid phone number required</div>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
+                            <label for="message">Message *</label>
                             <textarea id="message" class="form-control" required></textarea>
                             <div class="error" id="messageError">Message required (minimum 10 characters)</div>
                         </div>
-                        <button type="submit" class="btn">Send Message</button>
+                        <button type="submit" class="btn form-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Professional Footer -->
     <footer>
         <div class="container">
-            <div class="logo">Portfo<span>lio</span></div>
-            <p>Junior Web Developer & IoT Maker</p>
-            <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-codepen"></i></a>
+            <!-- Centered Logo for Mobile -->
+            <div class="footer-logo-center">
+                <div class="logo">Portfo<span>lio</span></div>
             </div>
-            <p>&copy; 2023 All rights reserved. Developed with passion.</p>
+            
+            <!-- Social Icons Section -->
+            <div class="footer-social-section">
+                <h3>Connect With Me</h3>
+                <div class="footer-social-icons">
+                    <a href="https://github.com/younessedd" target="_blank" class="footer-social-icon github">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="footer-social-icon linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://twitter.com/yourusername" target="_blank" class="footer-social-icon twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://codepen.io/yourusername" target="_blank" class="footer-social-icon codepen">
+                        <i class="fab fa-codepen"></i>
+                    </a>
+                    <a href="https://wa.me/212664837281" target="_blank" class="footer-social-icon whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:eddanguiryouness@gmail.com" class="footer-social-icon email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-content">
+                <!-- About Column -->
+                <div class="footer-column">
+                    <div class="footer-logo-top">
+                        <div class="logo">Portfo<span>lio</span></div>
+                    </div>
+                    <div class="footer-about">
+                        <p>Junior Web Developer & IoT Maker with passion for creating innovative digital solutions and smart connected applications.</p>
+                    </div>
+                 
+                </div>
+                
+                <!-- Quick Links Column -->
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="quick-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
+                        <li><a href="#skills"><i class="fas fa-chevron-right"></i> Skills</a></li>
+                        <li><a href="#web-apps"><i class="fas fa-chevron-right"></i> Web Apps</a></li>
+                        <li><a href="#mobile-apps"><i class="fas fa-chevron-right"></i> Mobile Apps</a></li>
+                        <li><a href="#iot-projects"><i class="fas fa-chevron-right"></i> IoT Projects</a></li>
+                        <li><a href="#cv"><i class="fas fa-chevron-right"></i> CV</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info Column -->
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info-footer">
+                        <li>
+                            <a href="https://www.google.com/maps/place/Casablanca" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Morocco</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+212664837281">
+                                <i class="fas fa-phone"></i>
+                                <span>+212 6 6483 7281</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:eddanguiryouness@gmail.com">
+                                <i class="fas fa-envelope"></i>
+                                <span>eddanguiryouness@gmail.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/212664837281" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>+212 6 6483 7281</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Skills Column -->
+                <div class="footer-column">
+                    <h3>Expertise</h3>
+                    <ul class="quick-links">
+                        <li><a href="#"><i class="fas fa-check"></i> Web Development</a></li>
+                        <li><a href="#"><i class="fas fa-check"></i> IoT Solutions</a></li>
+                        <li><a href="#"><i class="fas fa-check"></i> Mobile Apps</a></li>
+                        <li><a href="#"><i class="fas fa-check"></i> Electrical Engineering</a></li>
+                        <li><a href="#"><i class="fas fa-check"></i> Responsive Design</a></li>
+                        <li><a href="#"><i class="fas fa-check"></i> Problem Solving</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Youness Eddanguir. All rights reserved.</p>
+                <p>Developed with passion and dedication.</p>
+            </div>
         </div>
     </footer>
 
@@ -1042,13 +1445,14 @@
             }
         ];
 
-        // Web Applications Data with detailed explanations
+        // Web Applications Data with categories
         const webAppsData = [
             {
                 id: 1,
                 title: "Coworker",
                 description: "A modern responsive coworking space website project, showcasing design and front-end development skills.",
                 icon: "fas fa-building",
+                category: "frontend",
                 features: [
                     "Responsive layout for desktop and mobile",
                     "Interactive sections with animations",
@@ -1065,6 +1469,7 @@
                 title: "Restarent",
                 description: "A modern responsive restaurant website project, featuring menu display, reservation form, and interactive UI elements.",
                 icon: "fas fa-utensils",
+                category: "frontend",
                 features: [
                     "Responsive layout for desktop and mobile",
                     "Menu display with categories",
@@ -1081,6 +1486,7 @@
                 title: "PowerGrid Solutions",
                 description: "A responsive energy management and solutions website project, showcasing services, projects, and company information.",
                 icon: "fas fa-bolt",
+                category: "responsive",
                 features: [
                     "Responsive layout for desktop and mobile",
                     "Services and project showcase",
@@ -1092,6 +1498,57 @@
                 githubUrl: "https://github.com/younessedd/PowerGrid-Solutions-youness",
                 explanation: "This project is a front-end website for an energy solutions company. It highlights services, completed projects, and provides an interactive user experience with responsive design and animations."
             },
+            {
+                id: 4,
+                title: "E-commerce Platform",
+                description: "Fullstack e-commerce platform with user authentication, cart system, and payment integration.",
+                icon: "fas fa-shopping-cart",
+                category: "fullstack",
+                features: [
+                    "User authentication and authorization",
+                    "Product catalog with search and filter",
+                    "Shopping cart and checkout system",
+                    "Admin dashboard for product management"
+                ],
+                technologies: ["React.js", "Node.js", "MongoDB", "Express"],
+                liveUrl: "#",
+                githubUrl: "#",
+                explanation: "A complete e-commerce solution with frontend and backend integration. Includes user management, product catalog, shopping cart, and secure payment processing."
+            },
+            {
+                id: 5,
+                title: "Task Management App",
+                description: "Collaborative task management application with real-time updates and team features.",
+                icon: "fas fa-tasks",
+                category: "fullstack",
+                features: [
+                    "Real-time task updates",
+                    "Team collaboration features",
+                    "Drag and drop interface",
+                    "Progress tracking and reporting"
+                ],
+                technologies: ["Vue.js", "Laravel", "MySQL", "WebSockets"],
+                liveUrl: "#",
+                githubUrl: "#",
+                explanation: "A productivity application that helps teams manage tasks efficiently. Features include real-time updates, team assignments, deadlines, and progress visualization."
+            },
+            {
+                id: 6,
+                title: "Portfolio Template",
+                description: "Clean and modern portfolio template with dark/light mode and smooth animations.",
+                icon: "fas fa-palette",
+                category: "responsive",
+                features: [
+                    "Dark/Light mode toggle",
+                    "Fully responsive design",
+                    "Smooth scroll animations",
+                    "Contact form with validation"
+                ],
+                technologies: ["HTML5", "CSS3", "JavaScript", "GSAP"],
+                liveUrl: "#",
+                githubUrl: "#",
+                explanation: "A customizable portfolio template that showcases projects and skills. Features responsive design, theme switching, and interactive elements for an engaging user experience."
+            }
         ];
 
         // Mobile Applications Data
@@ -1202,6 +1659,9 @@
             },
         ];
 
+        // Current web app category filter
+        let currentWebAppCategory = 'all';
+
         // Initialize page on load
         document.addEventListener('DOMContentLoaded', function() {
             initTheme(); // Initialize theme
@@ -1271,12 +1731,30 @@
             });
         }
 
-        // Generate web applications
+        // Generate web applications with filtering
         function generateWebApps() {
             const container = document.getElementById('web-apps-grid');
             container.innerHTML = '';
             
-            webAppsData.forEach(app => {
+            // Filter projects based on current category
+            let filteredProjects = webAppsData;
+            if (currentWebAppCategory !== 'all') {
+                filteredProjects = webAppsData.filter(app => app.category === currentWebAppCategory);
+            }
+            
+            // Show message if no projects in category
+            if (filteredProjects.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+                        <i class="fas fa-folder-open" style="font-size: 4rem; color: var(--text-secondary); margin-bottom: 1.5rem;"></i>
+                        <h3>No projects in this category yet</h3>
+                        <p>Check back soon for new ${getCategoryName(currentWebAppCategory)} projects!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            filteredProjects.forEach(app => {
                 const appCard = document.createElement('div');
                 appCard.className = 'app-card';
                 
@@ -1286,6 +1764,11 @@
                     </div>
                     <div class="app-info">
                         <h3>${app.title}</h3>
+                        <div style="margin: 10px 0; display: flex; justify-content: center;">
+                            <span style="background: var(--primary-color); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">
+                                ${getCategoryName(app.category)}
+                            </span>
+                        </div>
                         <p class="app-description">${app.description}</p>
                         <ul class="app-features">
                             ${app.features.map(feature => `<li>${feature}</li>`).join('')}
@@ -1293,14 +1776,26 @@
                         <div class="app-explanation">
                             <p><strong>Explanation:</strong> ${app.explanation}</p>
                         </div>
-                        <div class="app-buttons">
+                        <div class="app-buttons center-buttons">
                             <a href="${app.liveUrl}" target="_blank" class="btn btn-outline">View Live Website</a>
+                            ${app.githubUrl !== '#' ? `<a href="${app.githubUrl}" target="_blank" class="btn">View Code</a>` : ''}
                         </div>
                     </div>
                 `;
                 
                 container.appendChild(appCard);
             });
+        }
+
+        // Get category display name
+        function getCategoryName(category) {
+            const categoryNames = {
+                'all': 'All',
+                'frontend': 'Frontend',
+                'fullstack': 'Fullstack',
+                'responsive': 'Responsive'
+            };
+            return categoryNames[category] || category;
         }
 
         // Generate mobile applications
@@ -1325,7 +1820,7 @@
                         <div class="app-explanation">
                             <p><strong>Explanation:</strong> ${app.explanation}</p>
                         </div>
-                        <div class="app-buttons">
+                        <div class="app-buttons center-buttons">
                             <a href="${app.playStoreUrl}" target="_blank" class="btn btn-outline">View on Play Store</a>
                         </div>
                     </div>
@@ -1357,8 +1852,8 @@
                         <div class="app-explanation">
                             <p><strong>Explanation:</strong> ${project.explanation}</p>
                         </div>
-                        <div class="app-buttons">
-                            
+                        <div class="app-buttons center-buttons">
+                            ${project.documentationUrl !== '#' ? `<a href="${project.documentationUrl}" target="_blank" class="btn">View Documentation</a>` : ''}
                         </div>
                     </div>
                 `;
@@ -1383,8 +1878,7 @@
                 link.addEventListener('click', closeMobileMenu);
             });
             
-            
-                // CV download
+            // CV download
             document.querySelectorAll('.download-cv').forEach(link => {
                 link.addEventListener('click', function(e) {
                     const cvType = this.dataset.cv;
@@ -1395,6 +1889,25 @@
             
             // Contact form
             document.getElementById('contactForm').addEventListener('submit', handleContactSubmit);
+            
+            // Web app category tabs
+            document.querySelectorAll('.webapp-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Update active tab
+                    document.querySelectorAll('.webapp-tab').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Update current category and regenerate projects
+                    currentWebAppCategory = this.dataset.category;
+                    generateWebApps();
+                    
+                    // Show toast notification
+                    const categoryName = getCategoryName(currentWebAppCategory);
+                    showToast(`Showing ${categoryName} Projects`, 'info');
+                });
+            });
             
             // Close menu when clicking outside
             document.addEventListener('click', function(event) {
@@ -1454,13 +1967,31 @@
             burgerIcon.className = 'fas fa-bars';
         }
 
-        // Handle contact form submission
+        // Validate phone number
+        function validatePhone(phone) {
+            if (!phone) return false; // Now required
+            
+            // Remove spaces, dashes, and parentheses
+            const cleanedPhone = phone.replace(/[\s\-()]/g, '');
+            
+            // Check if it starts with + (international) or 0 (local)
+            if (!/^(\+|0)/.test(cleanedPhone)) {
+                return false;
+            }
+            
+            // Check if the remaining characters are digits
+            const digits = cleanedPhone.replace(/^\+/, '').replace(/^0/, '');
+            return /^\d+$/.test(digits) && digits.length >= 8 && digits.length <= 15;
+        }
+
+        // Handle contact form submission with EmailJS - Updated to match your template
         function handleContactSubmit(e) {
             e.preventDefault();
             
-            // Validate fields
+            // Get form values
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
             const message = document.getElementById('message').value.trim();
             
             let isValid = true;
@@ -1482,6 +2013,14 @@
                 document.getElementById('emailError').style.display = 'none';
             }
             
+            // Validate phone (now required)
+            if (!validatePhone(phone)) {
+                document.getElementById('phoneError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('phoneError').style.display = 'none';
+            }
+            
             // Validate message
             if (message.length < 10) {
                 document.getElementById('messageError').style.display = 'block';
@@ -1490,11 +2029,48 @@
                 document.getElementById('messageError').style.display = 'none';
             }
             
-            // If form is valid
+            // If form is valid, send with EmailJS
             if (isValid) {
-                // Simulate sending
-                showToast('Your message has been sent successfully! I will reply soon.', 'success');
-                document.getElementById('contactForm').reset();
+                // Disable submit button and show loading state
+                const submitBtn = document.querySelector('#contactForm button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+                
+                // Format current time
+                const now = new Date();
+                const formattedTime = now.toLocaleString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                // Prepare EmailJS parameters - MATCHING YOUR TEMPLATE EXACTLY
+                const templateParams = {
+                    name: name,
+                    email: email,
+                    time: formattedTime,
+                    message: message + "\n\nPhone: " + phone // Add phone to message body
+                };
+                
+                // Send email using EmailJS
+                emailjs.send('service_l953yi6', 'template_5aimrbz', templateParams)
+                    .then(function(response) {
+                        // Success
+                        showToast('Your message has been sent successfully! I will reply soon.', 'success');
+                        document.getElementById('contactForm').reset();
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }, function(error) {
+                        // Error
+                        console.error('EmailJS Error:', error);
+                        showToast('There was an error sending your message. Please try again later.', 'error');
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    });
             }
         }
 
