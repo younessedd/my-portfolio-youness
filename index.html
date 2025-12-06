@@ -9,7 +9,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body class="theme-light">
-    <!-- Header (same as before) -->
+    <!-- Header -->
     <header>
         <div class="header-container">
             <a href="#" class="logo">Portfo<span>lio</span></a>
@@ -57,7 +57,7 @@
         </div>
     </header>
 
-    <!-- Hero Section (same as before) -->
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
@@ -72,7 +72,7 @@
         </div>
     </section>
 
-    <!-- About Section (same as before) -->
+    <!-- About Section -->
     <section id="about">
         <div class="container">
             <h2>About Me</h2>
@@ -90,7 +90,7 @@
         </div>
     </section>
 
-    <!-- Skills Section (same as before) -->
+    <!-- Skills Section -->
     <section id="skills">
         <div class="container">
             <h2>Skills & Expertise</h2>
@@ -347,13 +347,13 @@
         </div>
     </section>
 
-    <!-- Web Apps Section - UPDATED -->
+    <!-- Web Apps Section - UPDATED WITH CATEGORY NAVIGATION + SWIPER -->
     <section id="web-apps">
         <div class="container">
             <h2>Web Applications</h2>
             <p>Modern web applications built with latest technologies</p>
             
-            <!-- Web Apps Navigation - Centered (REMOVED "All Projects") -->
+            <!-- Web Apps Navigation - Centered -->
             <div class="skills-nav center-buttons" id="web-apps-nav">
                 <button class="skill-nav-btn" data-category="frontend">
                     <i class="fas fa-code"></i>
@@ -368,16 +368,27 @@
                     <span>Responsive Websites</span>
                 </button>
             </div>
+            
+            <!-- Web Apps Swiper Container - HIDDEN BY DEFAULT -->
+            <div class="main-swiper-container" id="web-swiper-container" style="display: none;">
+                <div class="swiper main-swiper" id="webSwiper">
+                    <div class="swiper-wrapper">
+                        <!-- Web projects will be dynamically added here -->
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Mobile Apps Section - UPDATED -->
+    <!-- Mobile Apps Section - UPDATED WITH CATEGORY NAVIGATION + SWIPER -->
     <section id="mobile-apps">
         <div class="container">
             <h2>Mobile Applications</h2>
             <p>Mobile applications published on Google Play Store</p>
             
-            <!-- Mobile Apps Navigation - Centered (REMOVED "All Projects") -->
+            <!-- Mobile Apps Navigation - Centered -->
             <div class="skills-nav center-buttons" id="mobile-apps-nav">
                 <button class="skill-nav-btn" data-category="quiz">
                     <i class="fas fa-question-circle"></i>
@@ -396,16 +407,27 @@
                     <span>Other Apps</span>
                 </button>
             </div>
+            
+            <!-- Mobile Apps Swiper Container - HIDDEN BY DEFAULT -->
+            <div class="main-swiper-container" id="mobile-swiper-container" style="display: none;">
+                <div class="swiper main-swiper" id="mobileSwiper">
+                    <div class="swiper-wrapper">
+                        <!-- Mobile projects will be dynamically added here -->
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- IoT Projects Section - UPDATED -->
+    <!-- IoT Projects Section - UPDATED WITH CATEGORY NAVIGATION + SWIPER -->
     <section id="iot-projects">
         <div class="container">
             <h2>IoT Projects</h2>
             <p>Internet of Things projects combining hardware and software</p>
             
-            <!-- IoT Projects Navigation - Centered (REMOVED "All Projects") -->
+            <!-- IoT Projects Navigation - Centered -->
             <div class="skills-nav center-buttons" id="iot-projects-nav">
                 <button class="skill-nav-btn" data-category="home">
                     <i class="fas fa-home"></i>
@@ -424,21 +446,49 @@
                     <span>Other IoT Projects</span>
                 </button>
             </div>
-        </div>
-    </section>
-
-    <!-- CV Download Section (same as before) -->
-    <section id="cv" class="cv-section">
-        <div class="container">
-            <h2>Curriculum Vitae</h2>
-            <p>Download my specialized CVs according to field</p>
-            <div class="cv-cards-container">
-                <div class="cv-cards"></div>
+            
+            <!-- IoT Projects Swiper Container - HIDDEN BY DEFAULT -->
+            <div class="main-swiper-container" id="iot-swiper-container" style="display: none;">
+                <div class="swiper main-swiper" id="iotSwiper">
+                    <div class="swiper-wrapper">
+                        <!-- IoT projects will be dynamically added here -->
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section (same as before) -->
+    <!-- CV Download Section - UPDATED WITH POPUP SYSTEM -->
+    <section id="cv" class="cv-section">
+        <div class="container">
+            <h2>Curriculum Vitae</h2>
+            <p>View and download my specialized CVs according to field</p>
+            <div class="cv-cards-container">
+                <div class="cv-cards">
+                    <div class="cv-card">
+                        <div class="cv-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Web Developer CV</h3>
+                        <p>Professional web developer with 5+ years of experience in frontend and fullstack development.</p>
+                        <button class="btn cv-popup-btn" data-cv="web">View/Download CV</button>
+                    </div>
+                    <div class="cv-card">
+                        <div class="cv-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3>Electrical Engineer / IoT CV</h3>
+                        <p>Electrical engineer specializing in IoT solutions with expertise in embedded systems and industrial automation.</p>
+                        <button class="btn cv-popup-btn" data-cv="iot">View/Download CV</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
     <section id="contact">
         <div class="container">
             <h2>Contact Me</h2>
@@ -480,7 +530,7 @@
         </div>
     </section>
 
-    <!-- Footer (same as before) -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-logo-center">
@@ -585,32 +635,23 @@
         </div>
     </footer>
 
-    <!-- Gallery Popup Overlay -->
-    <div class="gallery-popup-overlay" id="gallery-popup-overlay">
-        <div class="gallery-popup" id="gallery-popup">
-            <button class="close-gallery-btn" id="close-gallery-btn">
-                <i class="fas fa-times"></i>
-            </button>
-            
-            <div class="swiper gallery-swiper">
-                <div class="swiper-wrapper">
-                    <!-- Slides will be dynamically added here -->
-                </div>
-                
-                <!-- Navigation Buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-                
-                <!-- Pagination -->
-                <div class="swiper-pagination"></div>
+    <!-- CV Popup -->
+    <div class="cv-popup-overlay" id="cvPopup">
+        <div class="cv-popup">
+            <div class="cv-popup-header">
+                <h3 class="cv-popup-title" id="cvPopupTitle">CV Title</h3>
+                <button class="cv-popup-close" id="cvPopupClose">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
-            
-            <div class="gallery-project-info">
-                <h3 id="gallery-project-title"></h3>
-                <p id="gallery-project-description"></p>
-                <div class="gallery-project-tech" id="gallery-project-tech"></div>
-                <div class="gallery-project-features" id="gallery-project-features"></div>
-                <div class="gallery-project-buttons" id="gallery-project-buttons"></div>
+            <div class="cv-popup-content">
+                <p class="cv-description" id="cvPopupDescription">CV Description</p>
+                <div class="cv-pdf-viewer">
+                    <iframe class="cv-pdf-iframe" id="cvPdfViewer" src="" title="CV PDF"></iframe>
+                </div>
+                <a class="btn cv-download-btn" id="cvDownloadBtn" href="#" download>
+                    <i class="fas fa-download"></i> Download CV
+                </a>
             </div>
         </div>
     </div>
@@ -662,6 +703,9 @@
             transition: var(--transition);
             min-height: 100vh;
             font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .container {
@@ -674,6 +718,7 @@
         section {
             padding: 80px 0;
             text-align: center;
+            width: 100%;
         }
 
         h1, h2, h3, h4 {
@@ -1191,173 +1236,300 @@
             margin: 0;
         }
 
-        /* Gallery Popup Styles */
-        .gallery-popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* DUAL SWIPER SYSTEM STYLES */
+        .main-swiper-container {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 99999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
+            max-width: 1000px;
+            margin: 2rem auto;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
         }
 
-        .gallery-popup-overlay.active {
-            opacity: 1;
-            visibility: visible;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .gallery-popup {
-            width: 95%;
-            max-width: 1200px;
-            height: 90vh;
+        .main-swiper {
+            width: 100%;
+            height: 650px;
             background: var(--surface);
-            border-radius: 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
             overflow: hidden;
             position: relative;
+        }
+
+        /* Project Card */
+        .project-card {
+            height: 100%;
             display: flex;
             flex-direction: column;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
+            background: var(--surface);
+            padding: 0;
+            border-radius: 12px;
         }
 
-        .gallery-popup-overlay.active .gallery-popup {
-            transform: scale(1);
-        }
-
-        .close-gallery-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.7);
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: white;
-            z-index: 100;
-            transition: var(--transition);
-        }
-
-        .close-gallery-btn:hover {
-            background: var(--primary-color);
-            transform: rotate(90deg);
-        }
-
-        .gallery-swiper {
+        /* Nested Image Swiper */
+        .image-swiper-container {
+            height: 300px;
             width: 100%;
-            height: 60%;
-            flex: 0 0 60%;
+            background: var(--background);
+            border-bottom: 1px solid var(--border);
         }
 
-        .swiper-slide {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .gallery-image {
+        .image-swiper {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+        }
+
+        .image-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
             background: var(--background);
         }
 
-        .swiper-button-prev,
-        .swiper-button-next {
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Project Info */
+        .project-info {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            max-height: 350px;
+            text-align: left;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            text-align: center;
+        }
+
+        .project-description {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-features {
+            margin: 1rem 0;
+        }
+
+        .features-title, .tech-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .features-list, .tech-list {
+            list-style-type: none;
+            margin-bottom: 1rem;
+            padding-left: 0;
+        }
+
+        .features-list li, .tech-list li {
+            margin-bottom: 0.3rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .features-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .tech-list li:before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            padding: 0.5rem 1rem;
+            background: var(--primary-color);
             color: white;
-            background: rgba(0, 0, 0, 0.5);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Swiper Navigation */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--primary-color);
+            background: rgba(255, 255, 255, 0.9);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .theme-dark .swiper-button-next,
+        .theme-dark .swiper-button-prev {
+            background: rgba(30, 41, 59, 0.9);
+            color: var(--secondary-color);
+        }
+
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 1.2rem;
+            font-weight: bold;
         }
 
         .swiper-button-prev:hover,
         .swiper-button-next:hover {
             background: var(--primary-color);
+            color: white;
         }
 
-        .swiper-button-prev:after,
-        .swiper-button-next:after {
+        /* CV Popup Styles */
+        .cv-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .cv-popup {
+            background: var(--surface);
+            width: 90%;
+            max-width: 800px;
+            height: 80vh;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .theme-dark .cv-popup {
+            background: var(--background);
+        }
+
+        .cv-popup-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cv-popup-title {
             font-size: 1.5rem;
         }
 
-        .swiper-pagination-bullet {
-            background: white;
-            opacity: 0.5;
+        .cv-popup-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
         }
 
-        .swiper-pagination-bullet-active {
-            background: var(--primary-color);
-            opacity: 1;
+        .cv-popup-close:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        .gallery-project-info {
+        .cv-popup-content {
             flex: 1;
-            padding: 2rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
             overflow-y: auto;
-            background: var(--surface);
         }
 
-        .gallery-project-info h3 {
-            color: var(--text);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .gallery-project-info p {
+        .cv-description {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
             text-align: center;
         }
 
-        .gallery-project-tech,
-        .gallery-project-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .gallery-project-tech span,
-        .gallery-project-features span {
-            background: var(--background);
-            color: var(--primary-color);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
+        .cv-pdf-viewer {
+            flex: 1;
             border: 1px solid var(--border);
-        }
-
-        .gallery-project-features span {
-            background: rgba(6, 182, 212, 0.1);
-            color: var(--secondary-color);
-            border-color: rgba(6, 182, 212, 0.2);
-        }
-
-        .gallery-project-buttons {
+            border-radius: 8px;
+            overflow: hidden;
             display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        .cv-pdf-iframe {
+            width: 100%;
+            flex: 1;
+            border: none;
+            background: white;
+        }
+
+        .cv-download-btn {
+            align-self: center;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .cv-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
         }
 
         /* Universal Grid System for CV */
@@ -1374,22 +1546,10 @@
             justify-content: center;
         }
 
-        /* 1 item - Always centered */
-        .cv-cards.one-item {
-            grid-template-columns: 1fr;
-            max-width: 320px;
-        }
-
         /* 2 items - Responsive layout */
         .cv-cards.two-items {
             grid-template-columns: repeat(2, 1fr);
             max-width: 650px;
-        }
-
-        /* 4+ items - Responsive layout */
-        .cv-cards.four-items {
-            grid-template-columns: repeat(4, 1fr);
-            max-width: 1200px;
         }
 
         /* Card Styles */
@@ -1418,6 +1578,10 @@
             font-size: 3.5rem;
             color: var(--primary-color);
             margin-bottom: 1.5rem;
+        }
+
+        .cv-popup-btn {
+            margin-top: 1rem;
         }
 
         /* Contact Section */
@@ -1544,6 +1708,7 @@
             background: var(--surface);
             padding: 4rem 0 2rem;
             margin-top: 4rem;
+            width: 100%;
         }
 
         .footer-content {
@@ -1775,13 +1940,13 @@
                 max-width: 600px;
             }
             
-            .gallery-popup {
-                height: 95vh;
+            .main-swiper {
+                height: 700px;
             }
             
-            .gallery-swiper {
-                height: 50%;
-                flex: 0 0 50%;
+            .cv-cards.two-items {
+                grid-template-columns: 1fr;
+                max-width: 320px;
             }
         }
 
@@ -1806,33 +1971,27 @@
                 font-size: 1.5rem;
             }
             
-            .gallery-popup {
-                width: 98%;
-                height: 98vh;
-                flex-direction: column;
+            .main-swiper {
+                height: 750px;
             }
             
-            .gallery-swiper {
-                height: 40%;
-                flex: 0 0 40%;
+            .image-swiper-container {
+                height: 250px;
             }
             
-            .gallery-project-info {
-                padding: 1.5rem;
+            .project-info {
+                max-height: 500px;
             }
             
-            .gallery-project-info h3 {
-                font-size: 1.5rem;
+            .swiper-button-next,
+            .swiper-button-prev {
+                width: 40px;
+                height: 40px;
             }
             
-            .gallery-project-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .gallery-project-buttons .btn {
-                width: 100%;
-                max-width: 280px;
+            .cv-popup {
+                width: 95%;
+                height: 90vh;
             }
         }
 
@@ -1876,6 +2035,10 @@
             .skill-nav-btn {
                 padding: 0.75rem 1rem;
                 min-width: 110px;
+            }
+            
+            .main-swiper {
+                height: 800px;
             }
         }
 
@@ -2010,17 +2173,6 @@
             .cv-icon {
                 font-size: 2.8rem;
             }
-            
-            .swiper-button-prev,
-            .swiper-button-next {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .swiper-button-prev:after,
-            .swiper-button-next:after {
-                font-size: 1rem;
-            }
         }
 
         @media (max-width: 480px) {
@@ -2058,194 +2210,1303 @@
                 font-size: 1rem;
             }
             
-            .gallery-swiper {
-                height: 35%;
-                flex: 0 0 35%;
+            .main-swiper {
+                height: 850px;
             }
             
-            .gallery-project-info {
+            .image-swiper-container {
+                height: 200px;
+            }
+            
+            .project-info {
                 padding: 1rem;
+                max-height: 650px;
             }
             
-            .gallery-project-info h3 {
-                font-size: 1.3rem;
+            .project-links {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .gallery-project-tech,
-            .gallery-project-features {
-                gap: 0.25rem;
-            }
-            
-            .gallery-project-tech span,
-            .gallery-project-features span {
-                padding: 4px 8px;
-                font-size: 0.8rem;
+            .project-link {
+                width: 100%;
+                max-width: 200px;
+                justify-content: center;
             }
         }
     </style>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Project Data - UPDATED with one image per project
-        const webAppsData = [
-            {
-                id: 1,
-                title: "Coworker",
-                description: "A modern responsive coworking space website project, showcasing design and front-end development skills.",
-                icon: "fas fa-building",
-                category: "frontend",
-                image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                features: [
-                    "Responsive layout for desktop and mobile",
-                    "Interactive sections with animations",
-                    "Hero, About, Projects, and Contact sections",
-                    "Clean modern design"
-                ],
-                technologies: ["HTML5", "CSS3", "JavaScript"],
-                liveUrl: "https://younessedd.github.io/coworker-youness/",
-                githubUrl: "https://github.com/younessedd/coworker-youness",
-                explanation: "This project is a front-end website for a coworking space. It demonstrates responsive design, smooth scrolling, section animations, and an organized project showcase."
-            },
-            {
-                id: 2,
-                title: "Restaurant",
-                description: "A modern responsive restaurant website project, featuring menu display, reservation form, and interactive UI elements.",
-                icon: "fas fa-utensils",
-                category: "frontend",
-                image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                features: [
-                    "Responsive layout for desktop and mobile",
-                    "Menu display with categories",
-                    "Reservation/contact form",
-                    "Smooth animations and modern design"
-                ],
-                technologies: ["HTML5", "CSS3", "JavaScript"],
-                liveUrl: "https://younessedd.github.io/restarent-youness/",
-                githubUrl: "https://github.com/younessedd/restarent-youness",
-                explanation: "This project is a front-end website for a restaurant. It showcases responsive design, interactive sections, menu organization, and a reservation form for users."
-            },
-            {
-                id: 3,
-                title: "PowerGrid Solutions",
-                description: "A responsive energy management and solutions website project, showcasing services, projects, and company information.",
-                icon: "fas fa-bolt",
-                category: "responsive",
-                image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                features: [
-                    "Responsive layout for desktop and mobile",
-                    "Services and project showcase",
-                    "Interactive sections with smooth animations",
-                    "Clean modern design for professional presentation"
-                ],
-                technologies: ["HTML5", "CSS3", "JavaScript"],
-                liveUrl: "https://younessedd.github.io/PowerGrid-Solutions-youness/",
-                githubUrl: "https://github.com/younessedd/PowerGrid-Solutions-youness",
-                explanation: "This project is a front-end website for an energy solutions company. It highlights services, completed projects, and provides an interactive user experience with responsive design and animations."
-            }
-        ];
+        // Project Data for Category Navigation + Dual Swiper System
+        const projectData = {
+            // WEB PROJECTS - 5 projects per category
+            frontend: [
+                {
+                    id: 1,
+                    title: "Coworker",
+                    description: "A modern responsive coworking space website project, showcasing design and front-end development skills.",
+                    category: "frontend",
+                    images: [
+                        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Responsive layout for desktop and mobile",
+                        "Interactive sections with animations",
+                        "Hero, About, Projects, and Contact sections",
+                        "Clean modern design"
+                    ],
+                    technologies: ["HTML5", "CSS3", "JavaScript"],
+                    links: [
+                        { name: "Live Demo", url: "https://younessedd.github.io/coworker-youness/", icon: "fa-external-link-alt" },
+                        { name: "GitHub", url: "https://github.com/younessedd/coworker-youness", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 2,
+                    title: "Restaurant",
+                    description: "A modern responsive restaurant website project, featuring menu display, reservation form, and interactive UI elements.",
+                    category: "frontend",
+                    images: [
+                        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Responsive layout for desktop and mobile",
+                        "Menu display with categories",
+                        "Reservation/contact form",
+                        "Smooth animations and modern design"
+                    ],
+                    technologies: ["HTML5", "CSS3", "JavaScript"],
+                    links: [
+                        { name: "Live Demo", url: "https://younessedd.github.io/restarent-youness/", icon: "fa-external-link-alt" },
+                        { name: "GitHub", url: "https://github.com/younessedd/restarent-youness", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 3,
+                    title: "Portfolio Website",
+                    description: "A modern portfolio website with dark/light mode, project showcase, and contact form.",
+                    category: "frontend",
+                    images: [
+                        "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Dark/Light mode toggle",
+                        "Project gallery with filters",
+                        "Smooth animations",
+                        "Contact form with validation"
+                    ],
+                    technologies: ["HTML5", "CSS3", "JavaScript", "Swiper.js"],
+                    links: [
+                        { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 4,
+                    title: "Travel Blog",
+                    description: "A responsive travel blog with featured posts, categories, and newsletter subscription.",
+                    category: "frontend",
+                    images: [
+                        "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Blog post layout with featured images",
+                        "Category filtering system",
+                        "Newsletter subscription form",
+                        "Social sharing buttons"
+                    ],
+                    technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+                    links: [
+                        { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 5,
+                    title: "E-Commerce Store",
+                    description: "A fully responsive e-commerce website with product filtering, shopping cart, and checkout system.",
+                    category: "frontend",
+                    images: [
+                        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Product catalog with search and filters",
+                        "Shopping cart functionality",
+                        "Responsive product grid layout",
+                        "User-friendly checkout process"
+                    ],
+                    technologies: ["HTML5", "CSS3", "JavaScript", "LocalStorage"],
+                    links: [
+                        { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                }
+            ],
+            fullstack: [
+                {
+                    id: 6,
+                    title: "Task Manager Pro",
+                    description: "A full-featured task management application with user authentication and real-time updates.",
+                    category: "fullstack",
+                    images: [
+                        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "User authentication with JWT",
+                        "Real-time task updates",
+                        "Team collaboration features",
+                        "Task analytics dashboard"
+                    ],
+                    technologies: ["React.js", "Node.js", "MongoDB", "Express", "Socket.io"],
+                    links: [
+                        { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 7,
+                    title: "Social Media Dashboard",
+                    description: "A comprehensive social media analytics dashboard with user management and reporting.",
+                    category: "fullstack",
+                    images: [
+                        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Multi-platform social media analytics",
+                        "Real-time data updates",
+                        "Custom report generation",
+                        "User role management system"
+                    ],
+                    technologies: ["React", "D3.js", "Chart.js", "REST API", "JWT"],
+                    links: [
+                        { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 8,
+                    title: "E-Learning Platform",
+                    description: "An online learning platform with courses, quizzes, and progress tracking.",
+                    category: "fullstack",
+                    images: [
+                        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Course management system",
+                        "Student progress tracking",
+                        "Interactive quiz system",
+                        "Certificate generation"
+                    ],
+                    technologies: ["Laravel", "MySQL", "JavaScript", "Bootstrap"],
+                    links: [
+                        { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 9,
+                    title: "Inventory System",
+                    description: "A complete inventory management system for small to medium businesses.",
+                    category: "fullstack",
+                    images: [
+                        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Inventory tracking and management",
+                        "Order processing system",
+                        "Reporting and analytics",
+                        "Barcode scanning integration"
+                    ],
+                    technologies: ["Vue.js", "Node.js", "MongoDB", "Express"],
+                    links: [
+                        { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 10,
+                    title: "Booking System",
+                    description: "An appointment booking system with calendar integration and notifications.",
+                    category: "fullstack",
+                    images: [
+                        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Calendar integration",
+                        "Email and SMS notifications",
+                        "Payment processing",
+                        "Admin dashboard"
+                    ],
+                    technologies: ["React.js", "Node.js", "PostgreSQL", "Stripe API"],
+                    links: [
+                        { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                }
+            ],
+            responsive: [
+                {
+                    id: 11,
+                    title: "PowerGrid Solutions",
+                    description: "A responsive energy management and solutions website project, showcasing services, projects, and company information.",
+                    category: "responsive",
+                    images: [
+                        "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Mobile-first responsive design",
+                        "Services and project showcase",
+                        "Interactive sections with smooth animations",
+                        "Clean modern design for professional presentation"
+                    ],
+                    technologies: ["HTML5", "CSS3", "JavaScript", "Flexbox", "Grid"],
+                    links: [
+                        { name: "Live Demo", url: "https://younessedd.github.io/PowerGrid-Solutions-youness/", icon: "fa-external-link-alt" },
+                        { name: "GitHub", url: "https://github.com/younessedd/PowerGrid-Solutions-youness", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 12,
+                    title: "Medical Clinic",
+                    description: "A responsive website for a medical clinic with appointment booking and services showcase.",
+                    category: "responsive",
+                    images: [
+                        "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Mobile-first responsive design",
+                        "Appointment booking system",
+                        "Doctor profiles and services",
+                        "Patient information portal"
+                    ],
+                    technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+                    links: [
+                        { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 13,
+                    title: "Real Estate Agency",
+                    description: "A responsive real estate website with property listings and search functionality.",
+                    category: "responsive",
+                    images: [
+                        "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Property listings with advanced search",
+                        "Virtual tour integration",
+                        "Mortgage calculator",
+                        "Agent contact system"
+                    ],
+                    technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+                    links: [
+                        { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 14,
+                    title: "Event Management",
+                    description: "A responsive event management website with ticket booking and event calendar.",
+                    category: "responsive",
+                    images: [
+                        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Event calendar with filtering",
+                        "Ticket booking system",
+                        "Venue information and maps",
+                        "Event galleries and reviews"
+                    ],
+                    technologies: ["HTML5", "CSS3", "JavaScript", "jQuery"],
+                    links: [
+                        { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 15,
+                    title: "Charity Organization",
+                    description: "A responsive charity website with donation system and project showcase.",
+                    category: "responsive",
+                    images: [
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Donation system with multiple payment options",
+                        "Project showcase and updates",
+                        "Volunteer registration",
+                        "Impact reports and stories"
+                    ],
+                    technologies: ["HTML5", "CSS3", "JavaScript", "PayPal API"],
+                    links: [
+                        { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                }
+            ],
+            
+            // MOBILE APPS - 5 projects per category
+            quiz: [
+                {
+                    id: 16,
+                    title: "Trivia Challenge",
+                    description: "A fun trivia game with multiple categories, difficulty levels, and global leaderboards.",
+                    category: "quiz",
+                    images: [
+                        "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Multiple categories (Science, History, Sports, etc.)",
+                        "Difficulty levels (Easy, Medium, Hard)",
+                        "Global leaderboards",
+                        "Daily challenges and rewards"
+                    ],
+                    technologies: ["Kotlin", "Firebase", "Room Database", "Material Design"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 17,
+                    title: "Language Quiz Master",
+                    description: "Learn languages through interactive quizzes and vocabulary building exercises.",
+                    category: "quiz",
+                    images: [
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Multiple languages (English, Spanish, French, etc.)",
+                        "Vocabulary builder with flashcards",
+                        "Pronunciation practice with speech recognition",
+                        "Progress tracking and achievement system"
+                    ],
+                    technologies: ["Flutter", "Google Cloud", "Speech API", "Firebase"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 18,
+                    title: "Science Quizzer",
+                    description: "Test your science knowledge with quizzes on physics, chemistry, biology, and astronomy.",
+                    category: "quiz",
+                    images: [
+                        "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Science categories (Physics, Chemistry, Biology, Astronomy)",
+                        "Interactive diagrams and illustrations",
+                        "Educational content with explanations",
+                        "Score tracking and performance analytics"
+                    ],
+                    technologies: ["React Native", "Firebase", "SVG Animations", "Redux"],
+                    links: [
+                        { name: "App Store", url: "#", icon: "fa-apple" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 19,
+                    title: "Movie Quiz",
+                    description: "Test your movie knowledge with quizzes about actors, directors, and film trivia.",
+                    category: "quiz",
+                    images: [
+                        "https://images.unsplash.com/photo-1489599809516-9827b6d1cf13?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1489599809516-9827b6d1cf13?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Movie categories (Actors, Directors, Oscars, etc.)",
+                        "Actor recognition quizzes",
+                        "Trivia questions from classic to modern films",
+                        "Watchlist integration with streaming services"
+                    ],
+                    technologies: ["Android Java", "TMDB API", "Firebase", "Glide"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 20,
+                    title: "Geography Quiz",
+                    description: "Learn world geography through interactive maps and country recognition quizzes.",
+                    category: "quiz",
+                    images: [
+                        "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Interactive world maps",
+                        "Country and capital city recognition",
+                        "Flag identification quizzes",
+                        "Geographic facts and statistics"
+                    ],
+                    technologies: ["Kotlin", "Google Maps API", "Firebase", "Material Design"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                }
+            ],
+            smart: [
+                {
+                    id: 21,
+                    title: "Smart Thermostat Pro",
+                    description: "Control your smart thermostat remotely and create energy-saving schedules.",
+                    category: "smart",
+                    images: [
+                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Remote temperature control",
+                        "Energy usage tracking and analytics",
+                        "Smart scheduling based on routines",
+                        "Geofencing for automatic adjustments"
+                    ],
+                    technologies: ["Android", "MQTT", "ESP32", "Firebase", "Google Maps"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 22,
+                    title: "Security Camera Hub",
+                    description: "Monitor all your security cameras from one app with motion detection alerts.",
+                    category: "smart",
+                    images: [
+                        "https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Multi-camera live view",
+                        "Motion detection with alerts",
+                        "Cloud storage for recordings",
+                        "Two-way audio communication"
+                    ],
+                    technologies: ["Flutter", "WebRTC", "Firebase", "Cloudinary", "Push Notifications"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 23,
+                    title: "Smart Lighting Control",
+                    description: "Control your smart lights with schedules, scenes, and voice commands.",
+                    category: "smart",
+                    images: [
+                        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Light scheduling and automation",
+                        "Color scenes and presets",
+                        "Voice control integration",
+                        "Energy monitoring and reports"
+                    ],
+                    technologies: ["React Native", "Bluetooth", "WiFi", "REST API", "Google Assistant"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 24,
+                    title: "Smart Door Lock",
+                    description: "Control and monitor your smart door locks remotely with access management.",
+                    category: "smart",
+                    images: [
+                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Remote lock/unlock control",
+                        "Temporary access codes for guests",
+                        "Activity logs and notifications",
+                        "Integration with security systems"
+                    ],
+                    technologies: ["Android", "Bluetooth", "Encryption", "Firebase", "Biometrics"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 25,
+                    title: "Home Energy Monitor",
+                    description: "Monitor your home's energy consumption in real-time with cost analysis.",
+                    category: "smart",
+                    images: [
+                        "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Real-time energy consumption monitoring",
+                        "Cost analysis and bill prediction",
+                        "Energy saving tips and recommendations",
+                        "Appliance-specific usage tracking"
+                    ],
+                    technologies: ["Flutter", "IoT Sensors", "Cloud Functions", "Charts", "Firebase"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                }
+            ],
+            utility: [
+                {
+                    id: 26,
+                    title: "File Manager Pro",
+                    description: "Advanced file management with cloud sync, encryption, and organization tools.",
+                    category: "utility",
+                    images: [
+                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Cloud storage synchronization",
+                        "File encryption and security",
+                        "Quick search and organization",
+                        "Batch operations and file sharing"
+                    ],
+                    technologies: ["Android", "Cloud Storage APIs", "Encryption", "Material Design"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 27,
+                    title: "System Optimizer",
+                    description: "Optimize your device's performance with cleaning tools and battery management.",
+                    category: "utility",
+                    images: [
+                        "https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Junk file cleaner and cache clearing",
+                        "Battery saver and optimization",
+                        "CPU and memory monitor",
+                        "Storage analyzer and manager"
+                    ],
+                    technologies: ["Android", "System APIs", "Battery Optimization", "Analytics"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 28,
+                    title: "Password Manager",
+                    description: "Secure password management with biometric authentication and cloud backup.",
+                    category: "utility",
+                    images: [
+                        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Secure AES-256 encryption",
+                        "Biometric authentication (fingerprint/face)",
+                        "Cloud backup and synchronization",
+                        "Password generator and strength analyzer"
+                    ],
+                    technologies: ["Android", "AES Encryption", "Biometrics", "Firebase", "Room DB"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 29,
+                    title: "Network Analyzer",
+                    description: "Analyze your network connections, speed, and security with detailed reports.",
+                    category: "utility",
+                    images: [
+                        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Internet speed test",
+                        "Network scanner and device discovery",
+                        "Security vulnerability check",
+                        "Connection logs and statistics"
+                    ],
+                    technologies: ["Android", "Network APIs", "Security Scanner", "Charts"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 30,
+                    title: "Battery Health",
+                    description: "Monitor your battery health with charging optimization and usage statistics.",
+                    category: "utility",
+                    images: [
+                        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Battery health monitoring and analysis",
+                        "Charging optimization tips",
+                        "Usage statistics and patterns",
+                        "Battery saving recommendations"
+                    ],
+                    technologies: ["Android", "Battery APIs", "Analytics", "Firebase", "Notifications"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                }
+            ],
+            others: [
+                {
+                    id: 31,
+                    title: "Weather Forecast Pro",
+                    description: "Accurate weather forecasting with detailed maps, alerts, and widgets.",
+                    category: "others",
+                    images: [
+                        "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Accurate 7-day weather forecasts",
+                        "Interactive weather maps and radar",
+                        "Severe weather alerts",
+                        "Customizable home screen widgets"
+                    ],
+                    technologies: ["Flutter", "Weather API", "Maps SDK", "Notifications", "Widgets"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 32,
+                    title: "Fitness Tracker Pro",
+                    description: "Comprehensive fitness tracking with workout plans, nutrition, and progress analytics.",
+                    category: "others",
+                    images: [
+                        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Workout tracking and planning",
+                        "Nutrition logging with barcode scanner",
+                        "Progress analytics and charts",
+                        "Social challenges and community"
+                    ],
+                    technologies: ["React Native", "Health APIs", "Firebase", "Charts", "Camera API"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 33,
+                    title: "Expense Tracker",
+                    description: "Track your expenses, create budgets, and analyze spending patterns.",
+                    category: "others",
+                    images: [
+                        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Expense tracking and categorization",
+                        "Budget creation and monitoring",
+                        "Spending analysis and reports",
+                        "Bill reminders and notifications"
+                    ],
+                    technologies: ["Android", "SQLite", "Charts", "Notifications", "Material Design"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 34,
+                    title: "Meditation Guide",
+                    description: "Guided meditation sessions with breathing exercises and sleep sounds.",
+                    category: "others",
+                    images: [
+                        "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Guided meditation sessions",
+                        "Breathing exercises and techniques",
+                        "Sleep sounds and white noise",
+                        "Progress tracking and streaks"
+                    ],
+                    technologies: ["Flutter", "Audio Player", "Firebase", "Analytics", "Notifications"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 35,
+                    title: "Recipe Organizer",
+                    description: "Organize your recipes with shopping lists, meal planning, and nutrition info.",
+                    category: "others",
+                    images: [
+                        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Recipe collection and organization",
+                        "Shopping list generation",
+                        "Meal planning and calendar",
+                        "Nutrition information and analysis"
+                    ],
+                    technologies: ["Android", "Room Database", "Barcode Scanner", "Nutrition API", "Calendar"],
+                    links: [
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                }
+            ],
+            
+            // IOT PROJECTS - 5 projects per category
+            home: [
+                {
+                    id: 36,
+                    title: "Voice-Controlled Home",
+                    description: "Complete voice-controlled smart home system with multiple device integration.",
+                    category: "home",
+                    images: [
+                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Voice control with Google Assistant/Alexa",
+                        "Multi-device integration and automation",
+                        "Scene creation for different moods",
+                        "Energy efficiency monitoring"
+                    ],
+                    technologies: ["ESP32", "Google Assistant", "MQTT", "Home Assistant", "Node-RED"],
+                    links: [
+                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 37,
+                    title: "Smart Garden System",
+                    description: "Automated garden watering and monitoring system with soil sensors and weather integration.",
+                    category: "home",
+                    images: [
+                        "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Automated watering based on soil moisture",
+                        "Soil condition monitoring",
+                        "Weather forecast integration",
+                        "Mobile app notifications and control"
+                    ],
+                    technologies: ["ESP8266", "Soil Moisture Sensors", "Weather API", "Water Pump", "Relay"],
+                    links: [
+                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 38,
+                    title: "Smart Security System",
+                    description: "Complete home security system with cameras, motion sensors, and alerts.",
+                    category: "home",
+                    images: [
+                        "https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Motion detection with PIR sensors",
+                        "Camera streaming and recording",
+                        "Smart alerts via mobile app",
+                        "Remote monitoring and control"
+                    ],
+                    technologies: ["Raspberry Pi", "PIR Sensors", "Camera Module", "Telegram API", "Python"],
+                    links: [
+                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 39,
+                    title: "Climate Control System",
+                    description: "Smart climate control with temperature, humidity, and air quality monitoring.",
+                    category: "home",
+                    images: [
+                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Temperature and humidity control",
+                        "Air quality monitoring (PM2.5, CO2)",
+                        "Energy optimization algorithms",
+                        "Mobile app integration"
+                    ],
+                    technologies: ["ESP32", "DHT22", "Air Quality Sensor", "Relay Module", "MQTT"],
+                    links: [
+                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 40,
+                    title: "Smart Lighting Network",
+                    description: "Network of smart lights with automation, scenes, and energy monitoring.",
+                    category: "home",
+                    images: [
+                        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Color control and dimming",
+                        "Automation scheduling",
+                        "Energy consumption monitoring",
+                        "Group control and scenes"
+                    ],
+                    technologies: ["ESP8266", "WS2812B LEDs", "MQTT", "Home Assistant", "Python"],
+                    links: [
+                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                }
+            ],
+            industrial: [
+                {
+                    id: 41,
+                    title: "Factory Monitoring System",
+                    description: "Real-time factory equipment monitoring with predictive maintenance alerts.",
+                    category: "industrial",
+                    images: [
+                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Equipment monitoring and status tracking",
+                        "Predictive maintenance alerts",
+                        "Real-time data visualization",
+                        "Alert system for anomalies"
+                    ],
+                    technologies: ["PLC", "IoT Sensors", "Cloud Platform", "Dashboard", "MQTT"],
+                    links: [
+                        { name: "Case Study", url: "#", icon: "fa-file-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 42,
+                    title: "Energy Management System",
+                    description: "Industrial energy consumption monitoring and optimization system.",
+                    category: "industrial",
+                    images: [
+                        "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Energy consumption monitoring",
+                        "Cost analysis and reporting",
+                        "Optimization suggestions",
+                        "Real-time alerts for high usage"
+                    ],
+                    technologies: ["Current Sensors", "ESP32", "Cloud Database", "Analytics", "Python"],
+                    links: [
+                        { name: "Case Study", url: "#", icon: "fa-file-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 43,
+                    title: "Production Line Monitor",
+                    description: "Monitor production line efficiency with real-time data and alerts.",
+                    category: "industrial",
+                    images: [
+                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Production monitoring and tracking",
+                        "Efficiency analysis and reporting",
+                        "Quality control integration",
+                        "Real-time alerts for issues"
+                    ],
+                    technologies: ["IoT Sensors", "PLC Integration", "Cloud Platform", "Dashboard", "MQTT"],
+                    links: [
+                        { name: "Case Study", url: "#", icon: "fa-file-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 44,
+                    title: "Warehouse Management",
+                    description: "Smart warehouse management with inventory tracking and environmental monitoring.",
+                    category: "industrial",
+                    images: [
+                        "https://images.unsplash.com/photo-1553413077-190dd305871c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1553413077-190dd305871c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Inventory tracking with RFID",
+                        "Environmental monitoring (temp, humidity)",
+                        "Security system integration",
+                        "Automated reporting and alerts"
+                    ],
+                    technologies: ["RFID", "Environmental Sensors", "ESP32", "Cloud Database", "Python"],
+                    links: [
+                        { name: "Case Study", url: "#", icon: "fa-file-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 45,
+                    title: "Water Treatment Monitoring",
+                    description: "Monitor water treatment processes with real-time data and quality control.",
+                    category: "industrial",
+                    images: [
+                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Water quality monitoring (pH, chlorine, turbidity)",
+                        "Process control and automation",
+                        "Alert system for anomalies",
+                        "Compliance reporting"
+                    ],
+                    technologies: ["Water Quality Sensors", "ESP32", "Cloud Platform", "Dashboard", "Python"],
+                    links: [
+                        { name: "Case Study", url: "#", icon: "fa-file-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                }
+            ],
+            sensors: [
+                {
+                    id: 46,
+                    title: "Environmental Monitor",
+                    description: "Multi-sensor environmental monitoring system with data logging.",
+                    category: "sensors",
+                    images: [
+                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Multi-sensor data collection",
+                        "Long-term data logging",
+                        "Mobile app integration",
+                        "Data export and analysis"
+                    ],
+                    technologies: ["Multiple Sensors", "ESP32", "SD Card", "Mobile App", "Python"],
+                    links: [
+                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 47,
+                    title: "Motion Tracking System",
+                    description: "Advanced motion tracking with multiple sensors and pattern recognition.",
+                    category: "sensors",
+                    images: [
+                        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Motion detection and tracking",
+                        "Pattern recognition",
+                        "Real-time position tracking",
+                        "Data analysis and visualization"
+                    ],
+                    technologies: ["PIR Sensors", "Ultrasonic Sensors", "ESP32", "Machine Learning", "Python"],
+                    links: [
+                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 48,
+                    title: "Weather Station",
+                    description: "Complete weather station with multiple sensors and web dashboard.",
+                    category: "sensors",
+                    images: [
+                        "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Weather monitoring (temp, humidity, pressure)",
+                        "Data logging and analysis",
+                        "Web dashboard for visualization",
+                        "Forecast generation"
+                    ],
+                    technologies: ["Weather Sensors", "ESP8266", "Web Dashboard", "Data API", "Python"],
+                    links: [
+                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 49,
+                    title: "Smart Parking System",
+                    description: "Smart parking lot management with sensor-based spot detection.",
+                    category: "sensors",
+                    images: [
+                        "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Parking spot detection",
+                        "Availability display system",
+                        "Mobile app integration",
+                        "Payment system integration"
+                    ],
+                    technologies: ["Ultrasonic Sensors", "ESP32", "Mobile App", "Payment System", "Python"],
+                    links: [
+                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 50,
+                    title: "Health Monitoring System",
+                    description: "Health monitoring with wearable sensors and data analysis.",
+                    category: "sensors",
+                    images: [
+                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Vital signs monitoring",
+                        "Data analysis and trends",
+                        "Alert system for anomalies",
+                        "Cloud storage for data"
+                    ],
+                    technologies: ["Wearable Sensors", "ESP32", "Bluetooth", "Cloud Platform", "Python"],
+                    links: [
+                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                }
+            ],
+            othersiot: [
+                {
+                    id: 51,
+                    title: "Smart Agriculture",
+                    description: "Complete smart agriculture system with soil monitoring and automated irrigation.",
+                    category: "othersiot",
+                    images: [
+                        "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Soil monitoring and analysis",
+                        "Automated irrigation control",
+                        "Crop health monitoring",
+                        "Weather integration for optimization"
+                    ],
+                    technologies: ["IoT Sensors", "ESP32", "Water Pump", "Cloud Platform", "Python"],
+                    links: [
+                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 52,
+                    title: "Asset Tracking System",
+                    description: "Real-time asset tracking with GPS and sensor data.",
+                    category: "othersiot",
+                    images: [
+                        "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "GPS tracking and location",
+                        "Real-time position updates",
+                        "Geofencing and alerts",
+                        "Asset condition monitoring"
+                    ],
+                    technologies: ["GPS Module", "ESP32", "Cloud Platform", "Mobile App", "Python"],
+                    links: [
+                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 53,
+                    title: "Smart Waste Management",
+                    description: "Smart waste bin monitoring with fill level sensors and route optimization.",
+                    category: "othersiot",
+                    images: [
+                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Fill level monitoring",
+                        "Route optimization for collection",
+                        "Collection scheduling",
+                        "Data analytics for efficiency"
+                    ],
+                    technologies: ["Ultrasonic Sensors", "ESP8266", "GPS", "Optimization Algorithms", "Python"],
+                    links: [
+                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 54,
+                    title: "Smart Street Lighting",
+                    description: "Intelligent street lighting system with motion detection and energy optimization.",
+                    category: "othersiot",
+                    images: [
+                        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Motion detection for activation",
+                        "Energy optimization algorithms",
+                        "Remote control and monitoring",
+                        "Maintenance alerts"
+                    ],
+                    technologies: ["PIR Sensors", "ESP32", "LED Control", "Cloud Platform", "Python"],
+                    links: [
+                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                },
+                {
+                    id: 55,
+                    title: "Water Quality Monitoring",
+                    description: "Real-time water quality monitoring for lakes, rivers, and reservoirs.",
+                    category: "othersiot",
+                    images: [
+                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    ],
+                    features: [
+                        "Water quality sensors (pH, turbidity, etc.)",
+                        "Real-time monitoring",
+                        "Alert system for contamination",
+                        "Data analysis and reporting"
+                    ],
+                    technologies: ["Water Sensors", "Solar Power", "LoRa", "Cloud Platform", "Python"],
+                    links: [
+                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                    ]
+                }
+            ]
+        };
 
-        const mobileAppsData = [
-            {
-                id: 1,
-                title: "AmeriQuiz Quest",
-                description: "A mobile quiz application with engaging questions and interactive gameplay.",
-                icon: "fas fa-question-circle",
-                category: "quiz",
-                image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                features: [
-                    "Multiple Choice Questions",
-                    "Score Tracking System",
-                    "Progress Tracking",
-                    "Engaging UI/UX"
-                ],
-                technologies: ["Kodular", "Firebase", "Quiz API"],
-                playStoreUrl: "https://play.google.com/store/apps/details?id=com.youproproyou.ameriquizquest",
-                explanation: "This mobile app provides an engaging quiz experience with various categories and difficulty levels."
+        // CV Data for Popup
+        const cvData = {
+            web: {
+                title: "Web Developer CV",
+                description: "Professional web developer with 5+ years of experience in frontend and fullstack development. Specialized in React, Vue.js, and modern web technologies.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                downloadName: "web-developer-cv.pdf"
             },
-            {
-                id: 2,
-                title: "Sensor Android",
-                description: "Android app that detects all available sensors on the device and visualizes their functionality.",
-                icon: "fas fa-mobile-alt",
-                category: "utility",
-                image: "https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                features: [
-                    "Sensor Detection",
-                    "Real-time Data Visualization",
-                    "Hardware Information",
-                    "User-friendly Interface"
-                ],
-                technologies: ["Kodular", "Sensor APIs", "Real-time Data"],
-                playStoreUrl: "https://play.google.com/store/apps/details?id=com.FiveStarApp.Test.Sensors.free",
-                explanation: "This utility app helps users understand their device's capabilities by detecting and displaying all available sensors."
+            iot: {
+                title: "Electrical Engineer / IoT CV",
+                description: "Electrical engineer specializing in IoT solutions with expertise in embedded systems, sensor networks, and industrial automation.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                downloadName: "iot-engineer-cv.pdf"
             }
-        ];
+        };
 
-        const iotProjectsData = [
-            {
-                id: 1,
-                title: "Smart Home Automation",
-                description: "Complete smart home solution using ESP32 microcontrollers and mobile app for IoT device control.",
-                icon: "fas fa-home",
-                category: "home",
-                image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                features: [
-                    "Remote Device Control",
-                    "Automation Scheduling",
-                    "Energy Monitoring",
-                    "Security Features"
-                ],
-                technologies: ["ESP32", "MQTT", "Arduino", "Mobile App"],
-                githubUrl: "https://github.com/username/smart-home-automation",
-                explanation: "This IoT project integrates hardware and software to create a complete smart home automation system."
-            },
-            {
-                id: 2,
-                title: "Industrial Automation System",
-                description: "Automated industrial system for monitoring, controlling, and maintaining electrical equipment efficiently.",
-                icon: "fas fa-industry",
-                category: "industrial",
-                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                features: [
-                    "Fault Detection System",
-                    "Remote Diagnostics",
-                    "Maintenance Alerts",
-                    "Real-time Monitoring"
-                ],
-                technologies: ["PLC", "ESP32", "SCADA", "IoT Sensors"],
-                githubUrl: "https://github.com/username/industrial-automation",
-                explanation: "Industrial IoT solution for monitoring and controlling electrical systems in industrial environments."
-            }
-        ];
-
-        const cvData = [
-            {
-                id: 1,
-                title: "Web Developer",
-                icon: "fas fa-code",
-                description: "Focuses on web development skills and relevant experiences.",
-                fileUrl: "cv/cv-webdev.pdf",
-                cvType: "webdev"
-            },
-            {
-                id: 2,
-                title: "Electrical Engineer / IoT",
-                icon: "fas fa-bolt",
-                description: "Focuses on electrical, electronic projects and Internet of Things.",
-                fileUrl: "cv/cv-electric.pdf",
-                cvType: "electric"
-            }
-        ];
-
-        // Initialize Swiper
-        let gallerySwiper = null;
+        // Global variables
+        let activeCategory = null;
+        let activeSection = null;
+        let webSwiper = null;
+        let mobileSwiper = null;
+        let iotSwiper = null;
+        let imageSwipers = [];
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
             initTheme();
-            generateCV();
             setupEventListeners();
-            updateGridClasses();
             
             // Initialize all navigation systems
             setupSkillsNavigation();
@@ -2253,8 +3514,8 @@
             setupMobileAppsNavigation();
             setupIoTProjectsNavigation();
             
-            // Initialize Swiper
-            initGallerySwiper();
+            // Initialize CV Popup
+            initializeCvPopup();
             
             // Set current year in footer
             updateCurrentYear();
@@ -2285,6 +3546,344 @@
             
             const mobileText = document.querySelector('#mobile-theme-toggle span');
             if (mobileText) mobileText.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        }
+
+        // Setup category navigation for each section
+        function setupWebAppsNavigation() {
+            const webAppNavBtns = document.querySelectorAll('#web-apps-nav .skill-nav-btn');
+            const webSwiperContainer = document.getElementById('web-swiper-container');
+            
+            webAppNavBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    activeCategory = category;
+                    activeSection = 'web';
+                    
+                    // Remove active class from all buttons
+                    webAppNavBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Hide other swiper containers
+                    hideAllSwiperContainers();
+                    
+                    // Show web swiper container
+                    webSwiperContainer.style.display = 'block';
+                    
+                    // Filter and display projects
+                    const filteredProjects = projectData[category] || [];
+                    initializeSwiper('web', filteredProjects);
+                    
+                    // Scroll to swiper
+                    setTimeout(() => {
+                        webSwiperContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 300);
+                    
+                    showToast(`Showing ${filteredProjects.length} ${getCategoryName(category)} projects`, 'info');
+                });
+            });
+        }
+
+        function setupMobileAppsNavigation() {
+            const mobileAppNavBtns = document.querySelectorAll('#mobile-apps-nav .skill-nav-btn');
+            const mobileSwiperContainer = document.getElementById('mobile-swiper-container');
+            
+            mobileAppNavBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    activeCategory = category;
+                    activeSection = 'mobile';
+                    
+                    // Remove active class from all buttons
+                    mobileAppNavBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Hide other swiper containers
+                    hideAllSwiperContainers();
+                    
+                    // Show mobile swiper container
+                    mobileSwiperContainer.style.display = 'block';
+                    
+                    // Filter and display projects
+                    const filteredProjects = projectData[category] || [];
+                    initializeSwiper('mobile', filteredProjects);
+                    
+                    // Scroll to swiper
+                    setTimeout(() => {
+                        mobileSwiperContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 300);
+                    
+                    showToast(`Showing ${filteredProjects.length} ${getCategoryName(category)} projects`, 'info');
+                });
+            });
+        }
+
+        function setupIoTProjectsNavigation() {
+            const iotNavBtns = document.querySelectorAll('#iot-projects-nav .skill-nav-btn');
+            const iotSwiperContainer = document.getElementById('iot-swiper-container');
+            
+            iotNavBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    activeCategory = category;
+                    activeSection = 'iot';
+                    
+                    // Remove active class from all buttons
+                    iotNavBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Hide other swiper containers
+                    hideAllSwiperContainers();
+                    
+                    // Show IoT swiper container
+                    iotSwiperContainer.style.display = 'block';
+                    
+                    // Filter and display projects
+                    const filteredProjects = projectData[category] || [];
+                    initializeSwiper('iot', filteredProjects);
+                    
+                    // Scroll to swiper
+                    setTimeout(() => {
+                        iotSwiperContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 300);
+                    
+                    showToast(`Showing ${filteredProjects.length} ${getCategoryName(category)} projects`, 'info');
+                });
+            });
+        }
+
+        function hideAllSwiperContainers() {
+            document.getElementById('web-swiper-container').style.display = 'none';
+            document.getElementById('mobile-swiper-container').style.display = 'none';
+            document.getElementById('iot-swiper-container').style.display = 'none';
+        }
+
+        function getCategoryName(category) {
+            const categoryNames = {
+                'frontend': 'Frontend',
+                'fullstack': 'Fullstack',
+                'responsive': 'Responsive',
+                'quiz': 'Quiz Apps',
+                'smart': 'Smart Home Apps',
+                'utility': 'Utility Apps',
+                'others': 'Other Apps',
+                'home': 'Smart Home',
+                'industrial': 'Industrial IoT',
+                'sensors': 'Sensor Projects',
+                'othersiot': 'Other IoT Projects'
+            };
+            return categoryNames[category] || category;
+        }
+
+        function initializeSwiper(section, projects) {
+            // Destroy existing swiper
+            if (section === 'web' && webSwiper) {
+                webSwiper.destroy(true, true);
+                webSwiper = null;
+            } else if (section === 'mobile' && mobileSwiper) {
+                mobileSwiper.destroy(true, true);
+                mobileSwiper = null;
+            } else if (section === 'iot' && iotSwiper) {
+                iotSwiper.destroy(true, true);
+                iotSwiper = null;
+            }
+            
+            // Clear image swipers
+            imageSwipers.forEach(swiper => swiper.destroy(true, true));
+            imageSwipers = [];
+            
+            // Get swiper container
+            const swiperId = section === 'web' ? 'webSwiper' : 
+                            section === 'mobile' ? 'mobileSwiper' : 'iotSwiper';
+            const swiperEl = document.getElementById(swiperId);
+            
+            if (!swiperEl) return;
+            
+            // Clear existing content
+            const wrapper = swiperEl.querySelector('.swiper-wrapper');
+            wrapper.innerHTML = '';
+            
+            if (projects.length === 0) {
+                wrapper.innerHTML = `
+                    <div class="swiper-slide">
+                        <div class="project-card">
+                            <div class="project-info" style="display: flex; align-items: center; justify-content: center;">
+                                <h3 style="color: var(--text-secondary);">No projects found in this category</h3>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Initialize empty swiper
+                if (section === 'web') {
+                    webSwiper = new Swiper('#webSwiper', {
+                        loop: false,
+                        allowTouchMove: false
+                    });
+                } else if (section === 'mobile') {
+                    mobileSwiper = new Swiper('#mobileSwiper', {
+                        loop: false,
+                        allowTouchMove: false
+                    });
+                } else {
+                    iotSwiper = new Swiper('#iotSwiper', {
+                        loop: false,
+                        allowTouchMove: false
+                    });
+                }
+                return;
+            }
+            
+            // Add projects to swiper
+            projects.forEach((project, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'swiper-slide';
+                
+                // Generate unique ID for image swiper
+                const imageSwiperId = `imageSwiper-${section}-${project.id}`;
+                
+                slide.innerHTML = `
+                    <div class="project-card">
+                        <div class="image-swiper-container">
+                            <div class="swiper image-swiper ${imageSwiperId}">
+                                <div class="swiper-wrapper">
+                                    ${project.images.map(img => `
+                                        <div class="swiper-slide image-slide">
+                                            <img src="${img}" alt="${project.title}" class="project-image">
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">${project.title}</h3>
+                            <p class="project-description">${project.description}</p>
+                            
+                            <div class="project-features">
+                                <h4 class="features-title">Key Features:</h4>
+                                <ul class="features-list">
+                                    ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+                                </ul>
+                            </div>
+                            
+                            <div class="project-technologies">
+                                <h4 class="tech-title">Technologies:</h4>
+                                <ul class="tech-list">
+                                    ${project.technologies.map(tech => `<li>${tech}</li>`).join('')}
+                                </ul>
+                            </div>
+                            
+                            <div class="project-links">
+                                ${project.links.map(link => `
+                                    <a href="${link.url}" class="project-link" target="_blank">
+                                        <i class="fas ${link.icon}"></i> ${link.name}
+                                    </a>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                wrapper.appendChild(slide);
+            });
+            
+            // Initialize main swiper
+            const swiperConfig = {
+                loop: true,
+                navigation: {
+                    nextEl: `#${swiperId} .swiper-button-next`,
+                    prevEl: `#${swiperId} .swiper-button-prev`,
+                },
+                spaceBetween: 30,
+                centeredSlides: true,
+                speed: 600,
+            };
+            
+            if (section === 'web') {
+                webSwiper = new Swiper(`#${swiperId}`, swiperConfig);
+            } else if (section === 'mobile') {
+                mobileSwiper = new Swiper(`#${swiperId}`, swiperConfig);
+            } else {
+                iotSwiper = new Swiper(`#${swiperId}`, swiperConfig);
+            }
+            
+            // Initialize image swipers after a delay
+            setTimeout(() => {
+                projects.forEach((project, index) => {
+                    const imageSwiperId = `imageSwiper-${section}-${project.id}`;
+                    const imageSwiperEl = document.querySelector(`.${imageSwiperId}`);
+                    
+                    if (imageSwiperEl) {
+                        const imageSwiper = new Swiper(imageSwiperEl, {
+                            loop: true,
+                            autoplay: {
+                                delay: 3000,
+                                disableOnInteraction: false,
+                            },
+                            effect: 'fade',
+                            fadeEffect: {
+                                crossFade: true
+                            },
+                            speed: 800,
+                        });
+                        imageSwipers.push(imageSwiper);
+                    }
+                });
+            }, 100);
+        }
+
+        // CV POPUP FUNCTIONS
+        function initializeCvPopup() {
+            const cvPopup = document.getElementById('cvPopup');
+            const cvPopupTitle = document.getElementById('cvPopupTitle');
+            const cvPopupDescription = document.getElementById('cvPopupDescription');
+            const cvPdfViewer = document.getElementById('cvPdfViewer');
+            const cvDownloadBtn = document.getElementById('cvDownloadBtn');
+            const cvPopupClose = document.getElementById('cvPopupClose');
+            const cvPopupBtns = document.querySelectorAll('.cv-popup-btn');
+
+            function openCvPopup(cvType) {
+                const cv = cvData[cvType];
+                cvPopupTitle.textContent = cv.title;
+                cvPopupDescription.textContent = cv.description;
+                cvPdfViewer.src = cv.pdfUrl;
+                cvDownloadBtn.href = cv.pdfUrl;
+                cvDownloadBtn.download = cv.downloadName;
+                cvPopup.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeCvPopup() {
+                cvPopup.style.display = 'none';
+                cvPdfViewer.src = '';
+                document.body.style.overflow = '';
+            }
+
+            // Event Listeners for CV Popup
+            cvPopupBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const cvType = btn.dataset.cv;
+                    openCvPopup(cvType);
+                });
+            });
+
+            cvPopupClose.addEventListener('click', closeCvPopup);
+            
+            cvPopup.addEventListener('click', (e) => {
+                if (e.target === cvPopup) closeCvPopup();
+            });
+
+            // Close with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && cvPopup.style.display === 'flex') {
+                    closeCvPopup();
+                }
+            });
         }
 
         function setupSkillsNavigation() {
@@ -2327,334 +3926,11 @@
             });
         }
 
-        function setupWebAppsNavigation() {
-            const webAppNavBtns = document.querySelectorAll('#web-apps-nav .skill-nav-btn');
-            
-            webAppNavBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const category = this.dataset.category;
-                    
-                    // Remove active class from all buttons
-                    webAppNavBtns.forEach(b => b.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Filter projects based on category
-                    let filteredProjects;
-                    filteredProjects = webAppsData.filter(project => project.category === category);
-                    
-                    // If no projects in category, show message
-                    if (filteredProjects.length === 0) {
-                        showToast(`No ${category} projects available. Check other categories!`, 'info');
-                        this.classList.remove('active');
-                        return;
-                    }
-                    
-                    // Open gallery with filtered projects
-                    openGalleryPopup(filteredProjects, 'Web Applications');
-                });
-            });
-        }
-
-        function setupMobileAppsNavigation() {
-            const mobileAppNavBtns = document.querySelectorAll('#mobile-apps-nav .skill-nav-btn');
-            
-            mobileAppNavBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const category = this.dataset.category;
-                    
-                    // Remove active class from all buttons
-                    mobileAppNavBtns.forEach(b => b.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Filter projects based on category
-                    let filteredProjects;
-                    filteredProjects = mobileAppsData.filter(project => project.category === category);
-                    
-                    // If no projects in category, show message
-                    if (filteredProjects.length === 0) {
-                        showToast(`No ${category} projects available. Check other categories!`, 'info');
-                        this.classList.remove('active');
-                        return;
-                    }
-                    
-                    // Open gallery with filtered projects
-                    openGalleryPopup(filteredProjects, 'Mobile Applications');
-                });
-            });
-        }
-
-        function setupIoTProjectsNavigation() {
-            const iotNavBtns = document.querySelectorAll('#iot-projects-nav .skill-nav-btn');
-            
-            iotNavBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const category = this.dataset.category;
-                    
-                    // Remove active class from all buttons
-                    iotNavBtns.forEach(b => b.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Filter projects based on category
-                    let filteredProjects;
-                    filteredProjects = iotProjectsData.filter(project => project.category === category);
-                    
-                    // If no projects in category, show message
-                    if (filteredProjects.length === 0) {
-                        showToast(`No ${category} projects available. Check other categories!`, 'info');
-                        this.classList.remove('active');
-                        return;
-                    }
-                    
-                    // Open gallery with filtered projects
-                    openGalleryPopup(filteredProjects, 'IoT Projects');
-                });
-            });
-        }
-
-        function initGallerySwiper() {
-            gallerySwiper = new Swiper('.gallery-swiper', {
-                loop: true,
-                speed: 600,
-                slidesPerView: 1,
-                spaceBetween: 0,
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                effect: 'fade',
-                fadeEffect: {
-                    crossFade: true
-                },
-                grabCursor: true,
-                keyboard: {
-                    enabled: true,
-                },
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                // Infinite loop in both directions
-                loopAdditionalSlides: 10,
-                loopFillGroupWithBlank: true,
-                centeredSlides: true,
-            });
-        }
-
-        function openGalleryPopup(projects, categoryTitle) {
-            const overlay = document.getElementById('gallery-popup-overlay');
-            const wrapper = document.querySelector('.gallery-swiper .swiper-wrapper');
-            const title = document.getElementById('gallery-project-title');
-            const description = document.getElementById('gallery-project-description');
-            const techContainer = document.getElementById('gallery-project-tech');
-            const featuresContainer = document.getElementById('gallery-project-features');
-            const buttonsContainer = document.getElementById('gallery-project-buttons');
-            const closeBtn = document.getElementById('close-gallery-btn');
-            
-            // Clear existing slides
-            wrapper.innerHTML = '';
-            
-            // Add new slides - ONE IMAGE PER PROJECT
-            projects.forEach((project, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'swiper-slide';
-                
-                slide.innerHTML = `
-                    <img src="${project.image}" alt="${project.title}" class="gallery-image">
-                `;
-                
-                wrapper.appendChild(slide);
-            });
-            
-            // Update project info for first slide
-            if (projects.length > 0) {
-                updateProjectInfo(projects[0]);
-            }
-            
-            // Update swiper when slide changes
-            gallerySwiper.on('slideChange', function() {
-                const currentIndex = gallerySwiper.realIndex;
-                if (projects[currentIndex]) {
-                    updateProjectInfo(projects[currentIndex]);
-                }
-            });
-            
-            // Function to update project info - REMOVED "Project Details" button
-            function updateProjectInfo(project) {
-                title.textContent = project.title;
-                description.textContent = project.description || project.explanation;
-                
-                // Update technologies
-                techContainer.innerHTML = '';
-                if (project.technologies) {
-                    project.technologies.forEach(tech => {
-                        const techSpan = document.createElement('span');
-                        techSpan.textContent = tech;
-                        techContainer.appendChild(techSpan);
-                    });
-                }
-                
-                // Update features
-                featuresContainer.innerHTML = '';
-                if (project.features) {
-                    project.features.forEach(feature => {
-                        const featureSpan = document.createElement('span');
-                        featureSpan.textContent = feature;
-                        featuresContainer.appendChild(featureSpan);
-                    });
-                }
-                
-                // Update buttons - ONLY Live Demo/Play Store and GitHub buttons
-                buttonsContainer.innerHTML = '';
-                
-                // Live Demo/Play Store button
-                if (project.liveUrl || project.playStoreUrl) {
-                    const liveBtn = document.createElement('a');
-                    liveBtn.href = project.liveUrl || project.playStoreUrl;
-                    liveBtn.target = '_blank';
-                    liveBtn.className = 'btn btn-small';
-                    liveBtn.innerHTML = project.playStoreUrl ? '<i class="fab fa-google-play"></i> Play Store' : '<i class="fas fa-external-link-alt"></i> Live Demo';
-                    buttonsContainer.appendChild(liveBtn);
-                }
-                
-                // GitHub button
-                if (project.githubUrl) {
-                    const githubBtn = document.createElement('a');
-                    githubBtn.href = project.githubUrl;
-                    githubBtn.target = '_blank';
-                    githubBtn.className = 'btn btn-outline btn-small';
-                    githubBtn.innerHTML = '<i class="fab fa-github"></i> View Code';
-                    buttonsContainer.appendChild(githubBtn);
-                }
-            }
-            
-            // Show gallery
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            
-            // Reinitialize swiper with new content
-            gallerySwiper.update();
-            gallerySwiper.slideTo(0, 0);
-            
-            // Close gallery event
-            closeBtn.onclick = () => closeGalleryPopup();
-            overlay.onclick = (e) => {
-                if (e.target === overlay) {
-                    closeGalleryPopup();
-                }
-            };
-            
-            // Close with Escape key
-            document.addEventListener('keydown', closeOnEscape);
-            
-            // Show toast
-            showToast(`Showing ${projects.length} ${categoryTitle} projects`, 'info');
-        }
-
-        function closeGalleryPopup() {
-            const overlay = document.getElementById('gallery-popup-overlay');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-            
-            // Remove escape key listener
-            document.removeEventListener('keydown', closeOnEscape);
-        }
-
-        function closeOnEscape(e) {
-            if (e.key === 'Escape') {
-                closeGalleryPopup();
-            }
-        }
-
-        function openModal(modalOverlay, category, section) {
-            let modalCards;
-            
-            if (section === 'skills') {
-                modalCards = document.querySelectorAll('#skills-modal .skill-modal-card');
-            }
-            
-            // Hide all modal cards
-            if (modalCards) {
-                modalCards.forEach(card => card.classList.remove('active'));
-                
-                // Show selected modal card
-                const targetCard = document.getElementById(`${category}-modal-card`);
-                if (targetCard) {
-                    targetCard.classList.add('active');
-                }
-            }
-            
-            // Show modal overlay
-            modalOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-        }
-
-        function closeModal(modalOverlay, navBtns) {
-            // Hide modal
-            modalOverlay.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
-            
-            // Remove active class from all buttons
-            if (navBtns) {
-                navBtns.forEach(b => b.classList.remove('active'));
-            }
-        }
-
         function updateCurrentYear() {
             const currentYear = new Date().getFullYear();
             const yearElement = document.getElementById('current-year');
             if (yearElement) {
                 yearElement.textContent = currentYear;
-            }
-        }
-
-        function generateCV() {
-            const container = document.querySelector('.cv-cards');
-            container.innerHTML = '';
-            
-            cvData.forEach(cv => {
-                const cvCard = document.createElement('div');
-                cvCard.className = 'cv-card';
-                
-                cvCard.innerHTML = `
-                    <div class="cv-icon">
-                        <i class="${cv.icon}"></i>
-                    </div>
-                    <h3>${cv.title}</h3>
-                    <p>${cv.description}</p>
-                    <a href="${cv.fileUrl}" class="btn download-cv" data-cv="${cv.cvType}" target="_blank">View/Download PDF</a>
-                `;
-                
-                container.appendChild(cvCard);
-            });
-            
-            updateGridClasses();
-        }
-
-        function updateGridClasses() {
-            // CV Cards
-            const cvCards = document.querySelector('.cv-cards');
-            const cvItems = cvCards.children.length;
-            
-            cvCards.classList.remove('one-item', 'two-items', 'three-items', 'four-items');
-            
-            if (cvItems === 1) {
-                cvCards.classList.add('one-item');
-            } else if (cvItems === 2) {
-                cvCards.classList.add('two-items');
-            } else if (cvItems === 3) {
-                cvCards.classList.add('three-items');
-            } else if (cvItems >= 4) {
-                cvCards.classList.add('four-items');
             }
         }
 
@@ -2665,14 +3941,6 @@
             
             document.querySelectorAll('.mobile-nav-link').forEach(link => {
                 link.addEventListener('click', closeMobileMenu);
-            });
-            
-            document.querySelectorAll('.download-cv').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const cvType = this.dataset.cv;
-                    const cvName = cvType === 'webdev' ? 'Web Developer CV' : 'Electrical Engineer CV';
-                    showToast(`Opening ${cvName}...`, 'success');
-                });
             });
             
             document.getElementById('contactForm').addEventListener('submit', handleContactSubmit);
@@ -2691,8 +3959,6 @@
                     closeMobileMenu();
                 }
             });
-            
-            window.addEventListener('resize', updateGridClasses);
         }
 
         function toggleTheme() {
@@ -2727,6 +3993,40 @@
             
             mobileMenu.classList.remove('active');
             burgerIcon.className = 'fas fa-bars';
+        }
+
+        function openModal(modalOverlay, category, section) {
+            let modalCards;
+            
+            if (section === 'skills') {
+                modalCards = document.querySelectorAll('#skills-modal .skill-modal-card');
+            }
+            
+            // Hide all modal cards
+            if (modalCards) {
+                modalCards.forEach(card => card.classList.remove('active'));
+                
+                // Show selected modal card
+                const targetCard = document.getElementById(`${category}-modal-card`);
+                if (targetCard) {
+                    targetCard.classList.add('active');
+                }
+            }
+            
+            // Show modal overlay
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeModal(modalOverlay, navBtns) {
+            // Hide modal
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+            
+            // Remove active class from all buttons
+            if (navBtns) {
+                navBtns.forEach(b => b.classList.remove('active'));
+            }
         }
 
         function validatePhone(phone) {
