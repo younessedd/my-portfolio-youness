@@ -57,17 +57,78 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Automatic Swiper -->
     <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Hello, I'm a <span>Junior Web Developer</span> <br>& IoT Maker</h1>
-                <p>I build modern web experiences and smart connected applications. My passion is turning ideas into reality using technology.</p>
-                <div class="hero-btns center-buttons">
-                    <a href="#web-apps" class="btn">View Web Apps</a>
-                    <a href="#contact" class="btn btn-outline">Contact Me</a>
-                    <a href="#cv" class="btn btn-secondary">Download CV</a>
+        <div class="hero-swiper-container">
+            <div class="swiper hero-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide hero-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
+                        <div class="container">
+                            <div class="hero-content">
+                                <h1>Hello, I'm a <span>Junior Web Developer</span> <br>& IoT Maker</h1>
+                                <p>I build modern web experiences and smart connected applications. My passion is turning ideas into reality using technology.</p>
+                                <div class="hero-btns center-buttons">
+                                    <a href="#web-apps" class="btn">View Web Apps</a>
+                                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                                    <a href="#cv" class="btn btn-secondary">Download CV</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide hero-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
+                        <div class="container">
+                            <div class="hero-content">
+                                <h1>Creative <span>Problem Solver</span> & <br>Innovative Thinker</h1>
+                                <p>Combining web development skills with IoT expertise to create cutting-edge solutions that bridge the digital and physical worlds.</p>
+                                <div class="hero-btns center-buttons">
+                                    <a href="#iot-projects" class="btn">View IoT Projects</a>
+                                    <a href="#skills" class="btn btn-outline">My Skills</a>
+                                    <a href="#contact" class="btn btn-secondary">Let's Collaborate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide hero-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
+                        <div class="container">
+                            <div class="hero-content">
+                                <h1>Electrical Engineer & <span>Automation Specialist</span></h1>
+                                <p>Expert in industrial electrical maintenance, control systems, and automation with hands-on experience in IoT integration.</p>
+                                <div class="hero-btns center-buttons">
+                                    <a href="#mobile-apps" class="btn">Mobile Apps</a>
+                                    <a href="#iot-projects" class="btn btn-outline">IoT Projects</a>
+                                    <a href="#cv" class="btn btn-secondary">Download CV</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide hero-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
+                        <div class="container">
+                            <div class="hero-content">
+                                <h1>Passionate About <span>Technology</span> & <br>Continuous Learning</h1>
+                                <p>Always exploring new technologies, frameworks, and methodologies to deliver innovative solutions that make a difference.</p>
+                                <div class="hero-btns center-buttons">
+                                    <a href="#web-apps" class="btn">Web Projects</a>
+                                    <a href="#contact" class="btn btn-outline">Hire Me</a>
+                                    <a href="#skills" class="btn btn-secondary">View Skills</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
+                <!-- Swiper Pagination -->
+                <div class="swiper-pagination"></div>
+                
+                <!-- Swiper Navigation (Optional - can be removed) -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
     </section>
@@ -459,11 +520,11 @@
                 </button>
                 <button class="skill-nav-btn" data-category="sensors">
                     <i class="fas fa-thermometer-half"></i>
-                    <span>Sensor Projects</span>
+                                <span>Sensor Projects</span>
                 </button>
                 <button class="skill-nav-btn" data-category="othersiot">
                     <i class="fas fa-microchip"></i>
-                    <span>Other IoT Projects</span>
+                                <span>Other IoT Projects</span>
                 </button>
             </div>
             
@@ -670,7 +731,7 @@
             
             <div class="footer-bottom">
                 <p>&copy; <span id="current-year"></span> Youness Eddanguir. All rights reserved.</p>
-                <p>Developed with passion and dedication.</p>
+                        <p>Developed with passion and dedication.</p>
             </div>
         </div>
     </footer>
@@ -773,6 +834,183 @@
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
             --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
             --shadow-xl: 0 20px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* HERO SWIPER STYLES - UPDATED */
+        .hero {
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        .hero-swiper-container {
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .hero-swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-slide {
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            color: white;
+            position: relative;
+        }
+
+        .hero-slide .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation-delay: 0.3s;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation-delay: 0.6s;
+        }
+
+        .hero-btns {
+            animation-delay: 0.9s;
+        }
+
+        /* Swiper Navigation for Hero */
+        .hero-swiper .swiper-button-next,
+        .hero-swiper .swiper-button-prev {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .hero-swiper .swiper-button-next:hover,
+        .hero-swiper .swiper-button-prev:hover {
+            background: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .hero-swiper .swiper-button-next:after,
+        .hero-swiper .swiper-button-prev:after {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Swiper Pagination for Hero */
+        .hero-swiper .swiper-pagination {
+            bottom: 40px !important;
+        }
+
+        .hero-swiper .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .hero-swiper .swiper-pagination-bullet-active {
+            background: var(--primary-color);
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        /* Responsive Hero */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-swiper .swiper-button-next,
+            .hero-swiper .swiper-button-prev {
+                width: 50px;
+                height: 50px;
+                display: none; /* Hide on mobile for better touch experience */
+            }
+            
+            .hero-swiper .swiper-pagination {
+                bottom: 20px !important;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-btns .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-slide {
+                padding: 0 15px;
+            }
         }
 
         /* تحديث قسم المهارات إلى تخطيط Grid 3x3 */
@@ -1235,26 +1473,7 @@
             font-weight: 600;
         }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, var(--surface) 0%, var(--background) 100%);
-            padding-top: 80px;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 span {
-            color: var(--primary-color);
-        }
-
+        /* Hero Buttons */
         .hero-btns {
             display: flex;
             justify-content: center;
@@ -1633,6 +1852,71 @@
             left: 0;
             color: var(--secondary-color);
         }
+
+        /* NEW: Technology Tags Styling */
+        .tech-tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 1rem 0;
+            justify-content: center;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #4f46e5;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: default;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .tech-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            filter: brightness(1.1);
+        }
+
+        .tech-tag.html5 { background: #e34c26; }
+        .tech-tag.css3 { background: #264de4; }
+        .tech-tag.javascript { background: #f0db4f; color: #323330; }
+        .tech-tag.react { background: #61dbfb; color: #282c34; }
+        .tech-tag.laravel { background: #ff2d20; }
+        .tech-tag.php { background: #777bb4; }
+        .tech-tag.mysql { background: #00758f; }
+        .tech-tag.bootstrap { background: #7952b3; }
+        .tech-tag.tailwind { background: #38bdf8; }
+        .tech-tag.nodejs { background: #339933; }
+        .tech-tag.express { background: #000000; }
+        .tech-tag.mongodb { background: #47a248; }
+        .tech-tag.firebase { background: #ffca28; color: #121212; }
+        .tech-tag.arduino { background: #00979d; }
+        .tech-tag.esp32 { background: #00979d; }
+        .tech-tag.mqtt { background: #660066; }
+        .tech-tag.bluetooth { background: #0082fc; }
+        .tech-tag.python { background: #3776ab; }
+        .tech-tag.kodular { background: #7e57c2; }
+        .tech-tag.android { background: #3ddc84; color: #121212; }
+        .tech-tag.api { background: #ff6b35; }
+        .tech-tag.git { background: #f05032; }
+        .tech-tag.responsive { background: #25a162; }
+        .tech-tag.uiux { background: #ff6b8b; }
+        .tech-tag.iot { background: #00b0ff; }
+        .tech-tag.sensors { background: #8e24aa; }
+        .tech-tag.automation { background: #ff9800; }
+        .tech-tag.raspberry { background: #c51a4a; }
+        .tech-tag.embedded { background: #5d4037; }
+        .tech-tag.wifi { background: #2196f3; }
+        .tech-tag.websocket { background: #010101; }
+        .tech-tag.rest { background: #0052cc; }
 
         .project-links {
             display: flex;
@@ -2340,6 +2624,12 @@
                 width: 36px;
                 height: 36px;
             }
+            
+            .tech-tag {
+                font-size: 0.75rem;
+                padding: 5px 10px;
+                min-width: 60px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -2389,6 +2679,116 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        // Add hero swiper variable
+        let heroSwiper = null;
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            initTheme();
+            setupEventListeners();
+            
+            // Initialize all navigation systems
+            setupSkillsNavigation();
+            setupWebAppsNavigation();
+            setupMobileAppsNavigation();
+            setupIoTProjectsNavigation();
+            
+            // Initialize hero swiper
+            initHeroSwiper();
+            
+            // Set current year in footer
+            updateCurrentYear();
+            
+            // Setup swiper close buttons
+            setupSwiperCloseButtons();
+            
+            // Add event listeners for CV downloads
+            setupCvDownloadTracking();
+        });
+
+        function initHeroSwiper() {
+            heroSwiper = new Swiper('.hero-swiper', {
+                // Optional parameters
+                direction: 'horizontal',
+                loop: true,
+                speed: 1000,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+                
+                // If we need pagination
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    dynamicBullets: true,
+                },
+                
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.hero-swiper .swiper-button-next',
+                    prevEl: '.hero-swiper .swiper-button-prev',
+                },
+                
+                // Responsive breakpoints
+                breakpoints: {
+                    320: {
+                        autoplay: {
+                            delay: 4000,
+                        }
+                    },
+                    768: {
+                        autoplay: {
+                            delay: 5000,
+                        }
+                    },
+                    1024: {
+                        autoplay: {
+                            delay: 6000,
+                        }
+                    }
+                },
+                
+                // Accessibility
+                a11y: {
+                    prevSlideMessage: 'Previous slide',
+                    nextSlideMessage: 'Next slide',
+                    firstSlideMessage: 'This is the first slide',
+                    lastSlideMessage: 'This is the last slide',
+                }
+            });
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') {
+                    heroSwiper.slidePrev();
+                } else if (e.key === 'ArrowRight') {
+                    heroSwiper.slideNext();
+                }
+            });
+            
+            // Pause autoplay on hover for better UX
+            const heroContainer = document.querySelector('.hero-swiper');
+            if (heroContainer) {
+                heroContainer.addEventListener('mouseenter', function() {
+                    heroSwiper.autoplay.stop();
+                });
+                
+                heroContainer.addEventListener('mouseleave', function() {
+                    heroSwiper.autoplay.start();
+                });
+            }
+            
+            // Add slide change event
+            heroSwiper.on('slideChange', function() {
+                console.log('Slide changed to: ', heroSwiper.realIndex);
+            });
+        }
+
         // Project Data for Category Navigation + Dual Swiper System
         const projectData = {
             // WEB PROJECTS - 5 projects per category
@@ -2439,21 +2839,20 @@
                 },
                 {
                     id: 3,
-                    title: "Portfolio Website",
-                    description: "A modern portfolio website with dark/light mode, project showcase, and contact form.",
+                    title: "Travel Agency",
+                    description: "A responsive travel agency website with destination showcases, booking system, and user reviews.",
                     category: "frontend",
                     images: [
-                        "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Dark/Light mode toggle",
-                        "Project gallery with filters",
-                        "Smooth animations",
-                        "Contact form with validation"
+                        "Responsive design with mobile-first approach",
+                        "Destination gallery with filters",
+                        "Booking form with validation",
+                        "User review system"
                     ],
-                    technologies: ["HTML5", "CSS3", "JavaScript", "Swiper.js"],
+                    technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
                     links: [
                         { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2461,21 +2860,20 @@
                 },
                 {
                     id: 4,
-                    title: "Travel Blog",
-                    description: "A responsive travel blog with featured posts, categories, and newsletter subscription.",
+                    title: "Fitness Tracker",
+                    description: "A fitness tracking dashboard with workout plans, progress charts, and calorie counter.",
                     category: "frontend",
                     images: [
-                        "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Blog post layout with featured images",
-                        "Category filtering system",
-                        "Newsletter subscription form",
-                        "Social sharing buttons"
+                        "Interactive progress charts",
+                        "Workout plan customization",
+                        "Calorie tracking calculator",
+                        "Responsive dashboard"
                     ],
-                    technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+                    technologies: ["HTML5", "CSS3", "JavaScript", "Chart.js"],
                     links: [
                         { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2483,45 +2881,44 @@
                 },
                 {
                     id: 5,
-                    title: "E-Commerce Store",
-                    description: "A fully responsive e-commerce website with product filtering, shopping cart, and checkout system.",
+                    title: "E-commerce Product Page",
+                    description: "Modern e-commerce product page with image gallery, reviews, and shopping cart functionality.",
                     category: "frontend",
                     images: [
-                        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Product catalog with search and filters",
-                        "Shopping cart functionality",
-                        "Responsive product grid layout",
-                        "User-friendly checkout process"
+                        "Product image gallery with zoom",
+                        "Product reviews and ratings",
+                        "Add to cart functionality",
+                        "Responsive product details"
                     ],
-                    technologies: ["HTML5", "CSS3", "JavaScript", "LocalStorage"],
+                    technologies: ["HTML5", "CSS3", "JavaScript", "UI/UX"],
                     links: [
                         { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 }
             ],
+            
             fullstack: [
                 {
                     id: 6,
-                    title: "Task Manager Pro",
-                    description: "A full-featured task management application with user authentication and real-time updates.",
+                    title: "Task Management System",
+                    description: "A full-featured task management application with user authentication, team collaboration, and real-time updates.",
                     category: "fullstack",
                     images: [
-                        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
                         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "User authentication with JWT",
+                        "User authentication & authorization",
                         "Real-time task updates",
                         "Team collaboration features",
-                        "Task analytics dashboard"
+                        "Task categorization and filtering"
                     ],
-                    technologies: ["React.js", "Node.js", "MongoDB", "Express", "Socket.io"],
+                    technologies: ["React.js", "Node.js", "Express", "MongoDB", "REST API"],
                     links: [
                         { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2529,21 +2926,20 @@
                 },
                 {
                     id: 7,
-                    title: "Social Media Dashboard",
-                    description: "A comprehensive social media analytics dashboard with user management and reporting.",
+                    title: "Blog Platform",
+                    description: "A blogging platform with rich text editor, user profiles, comments, and likes system.",
                     category: "fullstack",
                     images: [
-                        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Multi-platform social media analytics",
-                        "Real-time data updates",
-                        "Custom report generation",
-                        "User role management system"
+                        "Rich text editor for posts",
+                        "User profiles and follow system",
+                        "Comment and like functionality",
+                        "Admin dashboard"
                     ],
-                    technologies: ["React", "D3.js", "Chart.js", "REST API", "JWT"],
+                    technologies: ["Laravel", "PHP", "MySQL", "JavaScript", "Bootstrap"],
                     links: [
                         { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2551,21 +2947,20 @@
                 },
                 {
                     id: 8,
-                    title: "E-Learning Platform",
-                    description: "An online learning platform with courses, quizzes, and progress tracking.",
+                    title: "Inventory Management",
+                    description: "Inventory management system for small businesses with stock tracking, reporting, and supplier management.",
                     category: "fullstack",
                     images: [
-                        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Course management system",
-                        "Student progress tracking",
-                        "Interactive quiz system",
-                        "Certificate generation"
+                        "Real-time stock tracking",
+                        "Sales and purchase reports",
+                        "Supplier management",
+                        "Low stock alerts"
                     ],
-                    technologies: ["Laravel", "MySQL", "JavaScript", "Bootstrap"],
+                    technologies: ["React.js", "Node.js", "Express", "PostgreSQL", "REST API"],
                     links: [
                         { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2573,21 +2968,20 @@
                 },
                 {
                     id: 9,
-                    title: "Inventory System",
-                    description: "A complete inventory management system for small to medium businesses.",
+                    title: "E-learning Platform",
+                    description: "Online learning platform with course management, video lessons, quizzes, and progress tracking.",
                     category: "fullstack",
                     images: [
-                        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Inventory tracking and management",
-                        "Order processing system",
-                        "Reporting and analytics",
-                        "Barcode scanning integration"
+                        "Course creation and management",
+                        "Video streaming and playback",
+                        "Interactive quizzes",
+                        "Student progress tracking"
                     ],
-                    technologies: ["Vue.js", "Node.js", "MongoDB", "Express"],
+                    technologies: ["Laravel", "PHP", "MySQL", "JavaScript", "Video.js"],
                     links: [
                         { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2595,67 +2989,65 @@
                 },
                 {
                     id: 10,
-                    title: "Booking System",
-                    description: "An appointment booking system with calendar integration and notifications.",
+                    title: "Real Estate Listing",
+                    description: "Real estate listing platform with property search, agent profiles, and appointment scheduling.",
                     category: "fullstack",
                     images: [
-                        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Calendar integration",
-                        "Email and SMS notifications",
-                        "Payment processing",
-                        "Admin dashboard"
+                        "Advanced property search filters",
+                        "Agent profiles and ratings",
+                        "Appointment scheduling system",
+                        "Property comparison tool"
                     ],
-                    technologies: ["React.js", "Node.js", "PostgreSQL", "Stripe API"],
+                    technologies: ["React.js", "Node.js", "MongoDB", "Google Maps API", "REST API"],
                     links: [
                         { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 }
             ],
+            
             responsive: [
                 {
                     id: 11,
-                    title: "PowerGrid Solutions",
-                    description: "A responsive energy management and solutions website project, showcasing services, projects, and company information.",
+                    title: "Portfolio Template",
+                    description: "A fully responsive portfolio template with modern design, smooth animations, and mobile optimization.",
                     category: "responsive",
                     images: [
-                        "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
                         "Mobile-first responsive design",
-                        "Services and project showcase",
-                        "Interactive sections with smooth animations",
-                        "Clean modern design for professional presentation"
+                        "Smooth scroll animations",
+                        "Cross-browser compatibility",
+                        "SEO optimized structure"
                     ],
-                    technologies: ["HTML5", "CSS3", "JavaScript", "Flexbox", "Grid"],
+                    technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
                     links: [
-                        { name: "Live Demo", url: "https://younessedd.github.io/PowerGrid-Solutions-youness/", icon: "fa-external-link-alt" },
-                        { name: "GitHub", url: "https://github.com/younessedd/PowerGrid-Solutions-youness", icon: "fa-code-branch" }
+                        { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
+                        { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 },
                 {
                     id: 12,
-                    title: "Medical Clinic",
-                    description: "A responsive website for a medical clinic with appointment booking and services showcase.",
+                    title: "News Magazine",
+                    description: "Responsive news magazine website with article layouts, category filters, and social sharing.",
                     category: "responsive",
                     images: [
-                        "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Mobile-first responsive design",
-                        "Appointment booking system",
-                        "Doctor profiles and services",
-                        "Patient information portal"
+                        "Responsive article layouts",
+                        "Category and tag filtering",
+                        "Social media integration",
+                        "Newsletter subscription"
                     ],
-                    technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+                    technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Responsive"],
                     links: [
                         { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2663,21 +3055,20 @@
                 },
                 {
                     id: 13,
-                    title: "Real Estate Agency",
-                    description: "A responsive real estate website with property listings and search functionality.",
+                    title: "Event Landing Page",
+                    description: "Responsive landing page for events with countdown timer, registration form, and speaker profiles.",
                     category: "responsive",
                     images: [
-                        "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Property listings with advanced search",
-                        "Virtual tour integration",
-                        "Mortgage calculator",
-                        "Agent contact system"
+                        "Responsive event schedule",
+                        "Countdown timer",
+                        "Speaker profile cards",
+                        "Registration form with validation"
                     ],
-                    technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+                    technologies: ["HTML5", "CSS3", "JavaScript", "Responsive", "UI/UX"],
                     links: [
                         { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2685,21 +3076,20 @@
                 },
                 {
                     id: 14,
-                    title: "Event Management",
-                    description: "A responsive event management website with ticket booking and event calendar.",
+                    title: "SaaS Product Page",
+                    description: "Responsive SaaS product landing page with feature highlights, pricing tables, and testimonials.",
                     category: "responsive",
                     images: [
-                        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Event calendar with filtering",
-                        "Ticket booking system",
-                        "Venue information and maps",
-                        "Event galleries and reviews"
+                        "Responsive pricing tables",
+                        "Feature comparison grid",
+                        "Customer testimonial slider",
+                        "Call-to-action optimization"
                     ],
-                    technologies: ["HTML5", "CSS3", "JavaScript", "jQuery"],
+                    technologies: ["HTML5", "CSS3", "JavaScript", "Tailwind CSS", "Responsive"],
                     links: [
                         { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2707,21 +3097,20 @@
                 },
                 {
                     id: 15,
-                    title: "Charity Organization",
-                    description: "A responsive charity website with donation system and project showcase.",
+                    title: "Charity Donation Site",
+                    description: "Responsive charity donation website with campaign progress tracking, donor recognition, and payment integration.",
                     category: "responsive",
                     images: [
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1551836026-d5c2c2e66a19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Donation system with multiple payment options",
-                        "Project showcase and updates",
-                        "Volunteer registration",
-                        "Impact reports and stories"
+                        "Responsive donation forms",
+                        "Campaign progress tracking",
+                        "Donor wall and recognition",
+                        "Secure payment integration"
                     ],
-                    technologies: ["HTML5", "CSS3", "JavaScript", "PayPal API"],
+                    technologies: ["HTML5", "CSS3", "JavaScript", "Responsive", "Payment API"],
                     links: [
                         { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2733,21 +3122,20 @@
             quiz: [
                 {
                     id: 16,
-                    title: "Trivia Challenge",
-                    description: "A fun trivia game with multiple categories, difficulty levels, and global leaderboards.",
+                    title: "Tech Quiz Challenge",
+                    description: "Interactive quiz app with multiple categories, timed challenges, and leaderboard system.",
                     category: "quiz",
                     images: [
-                        "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Multiple categories (Science, History, Sports, etc.)",
-                        "Difficulty levels (Easy, Medium, Hard)",
-                        "Global leaderboards",
-                        "Daily challenges and rewards"
+                        "Multiple quiz categories",
+                        "Timed challenge mode",
+                        "Global leaderboard",
+                        "Achievement system"
                     ],
-                    technologies: ["Kotlin", "Firebase", "Room Database", "Material Design"],
+                    technologies: ["Kodular", "Android", "Firebase", "Quiz Logic"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2755,21 +3143,20 @@
                 },
                 {
                     id: 17,
-                    title: "Language Quiz Master",
-                    description: "Learn languages through interactive quizzes and vocabulary building exercises.",
+                    title: "Math Brain Trainer",
+                    description: "Math quiz app for improving calculation speed with difficulty levels and progress tracking.",
                     category: "quiz",
                     images: [
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Multiple languages (English, Spanish, French, etc.)",
-                        "Vocabulary builder with flashcards",
-                        "Pronunciation practice with speech recognition",
-                        "Progress tracking and achievement system"
+                        "Progressive difficulty levels",
+                        "Speed calculation training",
+                        "Progress statistics",
+                        "Daily challenges"
                     ],
-                    technologies: ["Flutter", "Google Cloud", "Speech API", "Firebase"],
+                    technologies: ["Kodular", "Android", "Math Engine", "Progress Tracking"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2777,43 +3164,41 @@
                 },
                 {
                     id: 18,
-                    title: "Science Quizzer",
-                    description: "Test your science knowledge with quizzes on physics, chemistry, biology, and astronomy.",
+                    title: "Language Learning Quiz",
+                    description: "Language learning app with vocabulary quizzes, pronunciation practice, and grammar tests.",
                     category: "quiz",
                     images: [
-                        "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Science categories (Physics, Chemistry, Biology, Astronomy)",
-                        "Interactive diagrams and illustrations",
-                        "Educational content with explanations",
-                        "Score tracking and performance analytics"
+                        "Multiple language support",
+                        "Pronunciation practice",
+                        "Grammar tests",
+                        "Vocabulary builder"
                     ],
-                    technologies: ["React Native", "Firebase", "SVG Animations", "Redux"],
+                    technologies: ["Kodular", "Android", "Text-to-Speech", "Language API"],
                     links: [
-                        { name: "App Store", url: "#", icon: "fa-apple" },
+                        { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 },
                 {
                     id: 19,
-                    title: "Movie Quiz",
-                    description: "Test your movie knowledge with quizzes about actors, directors, and film trivia.",
+                    title: "Science Trivia Master",
+                    description: "Science trivia app covering physics, chemistry, biology, and astronomy with expert explanations.",
                     category: "quiz",
                     images: [
-                        "https://images.unsplash.com/photo-1489599809516-9827b6d1cf13?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1489599809516-9827b6d1cf13?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Movie categories (Actors, Directors, Oscars, etc.)",
-                        "Actor recognition quizzes",
-                        "Trivia questions from classic to modern films",
-                        "Watchlist integration with streaming services"
+                        "Four science categories",
+                        "Expert explanations",
+                        "Image-based questions",
+                        "Score history"
                     ],
-                    technologies: ["Android Java", "TMDB API", "Firebase", "Glide"],
+                    technologies: ["Kodular", "Android", "Firebase", "Science Database"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2821,45 +3206,44 @@
                 },
                 {
                     id: 20,
-                    title: "Geography Quiz",
-                    description: "Learn world geography through interactive maps and country recognition quizzes.",
+                    title: "History Quiz Adventure",
+                    description: "Historical timeline quiz app with period-based challenges and educational content.",
                     category: "quiz",
                     images: [
-                        "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1505664194779-8beaceb93744?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Interactive world maps",
-                        "Country and capital city recognition",
-                        "Flag identification quizzes",
-                        "Geographic facts and statistics"
+                        "Historical timeline navigation",
+                        "Period-based challenges",
+                        "Educational facts",
+                        "Multiplayer mode"
                     ],
-                    technologies: ["Kotlin", "Google Maps API", "Firebase", "Material Design"],
+                    technologies: ["Kodular", "Android", "Timeline Engine", "Multiplayer"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 }
             ],
+            
             smart: [
                 {
                     id: 21,
-                    title: "Smart Thermostat Pro",
-                    description: "Control your smart thermostat remotely and create energy-saving schedules.",
+                    title: "Smart Home Control",
+                    description: "Mobile app for controlling smart home devices including lights, thermostats, and security systems.",
                     category: "smart",
                     images: [
                         "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Remote temperature control",
-                        "Energy usage tracking and analytics",
-                        "Smart scheduling based on routines",
-                        "Geofencing for automatic adjustments"
+                        "Device control dashboard",
+                        "Scheduling and automation",
+                        "Energy usage monitoring",
+                        "Remote access"
                     ],
-                    technologies: ["Android", "MQTT", "ESP32", "Firebase", "Google Maps"],
+                    technologies: ["Kodular", "Android", "Bluetooth", "MQTT", "IoT"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2867,21 +3251,20 @@
                 },
                 {
                     id: 22,
-                    title: "Security Camera Hub",
-                    description: "Monitor all your security cameras from one app with motion detection alerts.",
+                    title: "IoT Garden Monitor",
+                    description: "App for monitoring and controlling smart garden systems including irrigation and soil sensors.",
                     category: "smart",
                     images: [
-                        "https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1417733403748-83bbc7c05140?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Multi-camera live view",
-                        "Motion detection with alerts",
-                        "Cloud storage for recordings",
-                        "Two-way audio communication"
+                        "Soil moisture monitoring",
+                        "Automatic irrigation control",
+                        "Plant health tracking",
+                        "Weather integration"
                     ],
-                    technologies: ["Flutter", "WebRTC", "Firebase", "Cloudinary", "Push Notifications"],
+                    technologies: ["Kodular", "Android", "ESP32", "Soil Sensors", "Weather API"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2889,21 +3272,20 @@
                 },
                 {
                     id: 23,
-                    title: "Smart Lighting Control",
-                    description: "Control your smart lights with schedules, scenes, and voice commands.",
+                    title: "Smart Energy Saver",
+                    description: "Energy monitoring app that tracks electricity usage and suggests optimization strategies.",
                     category: "smart",
                     images: [
-                        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1507502707540-9cb6a5e6c8c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1501139083538-0139583c060f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Light scheduling and automation",
-                        "Color scenes and presets",
-                        "Voice control integration",
-                        "Energy monitoring and reports"
+                        "Real-time energy monitoring",
+                        "Cost calculation",
+                        "Usage pattern analysis",
+                        "Energy saving tips"
                     ],
-                    technologies: ["React Native", "Bluetooth", "WiFi", "REST API", "Google Assistant"],
+                    technologies: ["Kodular", "Android", "Energy Sensors", "Data Analytics", "Charts"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2911,21 +3293,20 @@
                 },
                 {
                     id: 24,
-                    title: "Smart Door Lock",
-                    description: "Control and monitor your smart door locks remotely with access management.",
+                    title: "Home Security Monitor",
+                    description: "Security monitoring app with live camera feeds, motion detection alerts, and emergency contacts.",
                     category: "smart",
                     images: [
                         "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Remote lock/unlock control",
-                        "Temporary access codes for guests",
-                        "Activity logs and notifications",
-                        "Integration with security systems"
+                        "Live camera streaming",
+                        "Motion detection alerts",
+                        "Emergency contact list",
+                        "Security logs"
                     ],
-                    technologies: ["Android", "Bluetooth", "Encryption", "Firebase", "Biometrics"],
+                    technologies: ["Kodular", "Android", "IP Cameras", "Push Notifications", "Security"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2933,45 +3314,44 @@
                 },
                 {
                     id: 25,
-                    title: "Home Energy Monitor",
-                    description: "Monitor your home's energy consumption in real-time with cost analysis.",
+                    title: "Voice Home Assistant",
+                    description: "Voice-controlled home automation app with voice commands and scene management.",
                     category: "smart",
                     images: [
-                        "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Real-time energy consumption monitoring",
-                        "Cost analysis and bill prediction",
-                        "Energy saving tips and recommendations",
-                        "Appliance-specific usage tracking"
+                        "Voice command recognition",
+                        "Scene and routine management",
+                        "Device grouping",
+                        "Voice feedback"
                     ],
-                    technologies: ["Flutter", "IoT Sensors", "Cloud Functions", "Charts", "Firebase"],
+                    technologies: ["Kodular", "Android", "Voice Recognition", "Scene Control", "Automation"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 }
             ],
+            
             utility: [
                 {
                     id: 26,
-                    title: "File Manager Pro",
-                    description: "Advanced file management with cloud sync, encryption, and organization tools.",
+                    title: "Unit Converter Pro",
+                    description: "Comprehensive unit conversion app with offline support and calculation history.",
                     category: "utility",
                     images: [
                         "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Cloud storage synchronization",
-                        "File encryption and security",
-                        "Quick search and organization",
-                        "Batch operations and file sharing"
+                        "Multiple unit categories",
+                        "Offline functionality",
+                        "Calculation history",
+                        "Favorites system"
                     ],
-                    technologies: ["Android", "Cloud Storage APIs", "Encryption", "Material Design"],
+                    technologies: ["Kodular", "Android", "Conversion Logic", "Offline Storage"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -2979,21 +3359,20 @@
                 },
                 {
                     id: 27,
-                    title: "System Optimizer",
-                    description: "Optimize your device's performance with cleaning tools and battery management.",
+                    title: "Expense Tracker",
+                    description: "Personal finance app for tracking expenses, setting budgets, and generating reports.",
                     category: "utility",
                     images: [
-                        "https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Junk file cleaner and cache clearing",
-                        "Battery saver and optimization",
-                        "CPU and memory monitor",
-                        "Storage analyzer and manager"
+                        "Expense categorization",
+                        "Budget planning",
+                        "Monthly reports",
+                        "Bill reminders"
                     ],
-                    technologies: ["Android", "System APIs", "Battery Optimization", "Analytics"],
+                    technologies: ["Kodular", "Android", "Financial Calculations", "Charts", "Reminders"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -3002,20 +3381,19 @@
                 {
                     id: 28,
                     title: "Password Manager",
-                    description: "Secure password management with biometric authentication and cloud backup.",
+                    description: "Secure password management app with encryption and biometric authentication.",
                     category: "utility",
                     images: [
                         "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Secure AES-256 encryption",
-                        "Biometric authentication (fingerprint/face)",
-                        "Cloud backup and synchronization",
-                        "Password generator and strength analyzer"
+                        "Military-grade encryption",
+                        "Biometric authentication",
+                        "Password generator",
+                        "Auto-fill capability"
                     ],
-                    technologies: ["Android", "AES Encryption", "Biometrics", "Firebase", "Room DB"],
+                    technologies: ["Kodular", "Android", "Encryption", "Biometrics", "Security"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -3023,21 +3401,20 @@
                 },
                 {
                     id: 29,
-                    title: "Network Analyzer",
-                    description: "Analyze your network connections, speed, and security with detailed reports.",
+                    title: "File Manager Pro",
+                    description: "Advanced file management app with cloud integration and file operations.",
                     category: "utility",
                     images: [
-                        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Internet speed test",
-                        "Network scanner and device discovery",
-                        "Security vulnerability check",
-                        "Connection logs and statistics"
+                        "File browsing and organization",
+                        "Cloud storage integration",
+                        "File compression",
+                        "Search functionality"
                     ],
-                    technologies: ["Android", "Network APIs", "Security Scanner", "Charts"],
+                    technologies: ["Kodular", "Android", "File System", "Cloud API", "Compression"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -3045,45 +3422,44 @@
                 },
                 {
                     id: 30,
-                    title: "Battery Health",
-                    description: "Monitor your battery health with charging optimization and usage statistics.",
+                    title: "Task Reminder",
+                    description: "Smart task reminder app with location-based alerts and priority system.",
                     category: "utility",
                     images: [
-                        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Battery health monitoring and analysis",
-                        "Charging optimization tips",
-                        "Usage statistics and patterns",
-                        "Battery saving recommendations"
+                        "Location-based reminders",
+                        "Priority levels",
+                        "Recurring tasks",
+                        "Voice notes"
                     ],
-                    technologies: ["Android", "Battery APIs", "Analytics", "Firebase", "Notifications"],
+                    technologies: ["Kodular", "Android", "Location Services", "Notifications", "Voice"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 }
             ],
+            
             others: [
                 {
                     id: 31,
-                    title: "Weather Forecast Pro",
-                    description: "Accurate weather forecasting with detailed maps, alerts, and widgets.",
+                    title: "Health Fitness Tracker",
+                    description: "Health and fitness tracking app with workout plans and nutrition logging.",
                     category: "others",
                     images: [
-                        "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Accurate 7-day weather forecasts",
-                        "Interactive weather maps and radar",
-                        "Severe weather alerts",
-                        "Customizable home screen widgets"
+                        "Workout tracking",
+                        "Nutrition logging",
+                        "Progress charts",
+                        "Goal setting"
                     ],
-                    technologies: ["Flutter", "Weather API", "Maps SDK", "Notifications", "Widgets"],
+                    technologies: ["Kodular", "Android", "Health Tracking", "Charts", "Goals"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -3091,21 +3467,20 @@
                 },
                 {
                     id: 32,
-                    title: "Fitness Tracker Pro",
-                    description: "Comprehensive fitness tracking with workout plans, nutrition, and progress analytics.",
+                    title: "Music Player Plus",
+                    description: "Feature-rich music player with equalizer, playlists, and lyrics display.",
                     category: "others",
                     images: [
-                        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Workout tracking and planning",
-                        "Nutrition logging with barcode scanner",
-                        "Progress analytics and charts",
-                        "Social challenges and community"
+                        "Audio equalizer",
+                        "Playlist management",
+                        "Lyrics display",
+                        "Sleep timer"
                     ],
-                    technologies: ["React Native", "Health APIs", "Firebase", "Charts", "Camera API"],
+                    technologies: ["Kodular", "Android", "Audio Player", "Equalizer", "Lyrics API"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -3113,21 +3488,20 @@
                 },
                 {
                     id: 33,
-                    title: "Expense Tracker",
-                    description: "Track your expenses, create budgets, and analyze spending patterns.",
+                    title: "Recipe Manager",
+                    description: "Recipe management app with ingredient scanner and meal planning.",
                     category: "others",
                     images: [
-                        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Expense tracking and categorization",
-                        "Budget creation and monitoring",
-                        "Spending analysis and reports",
-                        "Bill reminders and notifications"
+                        "Recipe database",
+                        "Ingredient scanner",
+                        "Meal planning",
+                        "Shopping list"
                     ],
-                    technologies: ["Android", "SQLite", "Charts", "Notifications", "Material Design"],
+                    technologies: ["Kodular", "Android", "Database", "Scanner", "Planning"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -3135,21 +3509,20 @@
                 },
                 {
                     id: 34,
-                    title: "Meditation Guide",
-                    description: "Guided meditation sessions with breathing exercises and sleep sounds.",
+                    title: "Language Translator",
+                    description: "Real-time language translation app with text and voice input.",
                     category: "others",
                     images: [
-                        "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Guided meditation sessions",
-                        "Breathing exercises and techniques",
-                        "Sleep sounds and white noise",
-                        "Progress tracking and streaks"
+                        "Multiple languages",
+                        "Text translation",
+                        "Voice input",
+                        "Offline mode"
                     ],
-                    technologies: ["Flutter", "Audio Player", "Firebase", "Analytics", "Notifications"],
+                    technologies: ["Kodular", "Android", "Translation API", "Voice Recognition", "Offline"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -3157,21 +3530,20 @@
                 },
                 {
                     id: 35,
-                    title: "Recipe Organizer",
-                    description: "Organize your recipes with shopping lists, meal planning, and nutrition info.",
+                    title: "Weather Forecast Pro",
+                    description: "Advanced weather forecasting app with detailed reports and alerts.",
                     category: "others",
                     images: [
-                        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1561484930-998b6a7b22e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Recipe collection and organization",
-                        "Shopping list generation",
-                        "Meal planning and calendar",
-                        "Nutrition information and analysis"
+                        "Detailed forecasts",
+                        "Weather alerts",
+                        "Radar maps",
+                        "Location-based updates"
                     ],
-                    technologies: ["Android", "Room Database", "Barcode Scanner", "Nutrition API", "Calendar"],
+                    technologies: ["Kodular", "Android", "Weather API", "Maps", "Alerts"],
                     links: [
                         { name: "Play Store", url: "#", icon: "fa-google-play" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -3183,133 +3555,128 @@
             home: [
                 {
                     id: 36,
-                    title: "Voice-Controlled Home",
-                    description: "Complete voice-controlled smart home system with multiple device integration.",
+                    title: "Smart Home Hub",
+                    description: "Centralized smart home control system integrating multiple IoT devices and automation routines.",
                     category: "home",
                     images: [
                         "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Voice control with Google Assistant/Alexa",
-                        "Multi-device integration and automation",
-                        "Scene creation for different moods",
-                        "Energy efficiency monitoring"
+                        "Centralized device control",
+                        "Automation scheduling",
+                        "Voice control integration",
+                        "Energy monitoring"
                     ],
-                    technologies: ["ESP32", "Google Assistant", "MQTT", "Home Assistant", "Node-RED"],
+                    technologies: ["ESP32", "MQTT", "Home Assistant", "Node-RED", "WebSocket"],
                     links: [
-                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "Demo Video", url: "#", icon: "fa-youtube" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 },
                 {
                     id: 37,
-                    title: "Smart Garden System",
-                    description: "Automated garden watering and monitoring system with soil sensors and weather integration.",
+                    title: "Smart Lighting System",
+                    description: "Intelligent lighting system with color control, scheduling, and presence detection.",
                     category: "home",
                     images: [
-                        "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Automated watering based on soil moisture",
-                        "Soil condition monitoring",
-                        "Weather forecast integration",
-                        "Mobile app notifications and control"
+                        "RGB color control",
+                        "Motion detection",
+                        "Sunrise/sunset scheduling",
+                        "Voice control"
                     ],
-                    technologies: ["ESP8266", "Soil Moisture Sensors", "Weather API", "Water Pump", "Relay"],
+                    technologies: ["ESP8266", "PIR Sensors", "RGB LEDs", "HomeKit", "WiFi"],
                     links: [
-                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "Demo Video", url: "#", icon: "fa-youtube" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 },
                 {
                     id: 38,
-                    title: "Smart Security System",
-                    description: "Complete home security system with cameras, motion sensors, and alerts.",
+                    title: "Climate Control System",
+                    description: "Automated climate control for home with temperature, humidity, and air quality monitoring.",
                     category: "home",
                     images: [
-                        "https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Motion detection with PIR sensors",
-                        "Camera streaming and recording",
-                        "Smart alerts via mobile app",
-                        "Remote monitoring and control"
+                        "Temperature monitoring",
+                        "Humidity control",
+                        "Air quality sensors",
+                        "Smart thermostat"
                     ],
-                    technologies: ["Raspberry Pi", "PIR Sensors", "Camera Module", "Telegram API", "Python"],
+                    technologies: ["ESP32", "DHT22", "CO2 Sensor", "Relays", "Mobile App"],
                     links: [
-                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "Demo Video", url: "#", icon: "fa-youtube" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 },
                 {
                     id: 39,
-                    title: "Climate Control System",
-                    description: "Smart climate control with temperature, humidity, and air quality monitoring.",
+                    title: "Security Camera System",
+                    description: "DIY security camera system with motion detection and cloud storage.",
                     category: "home",
                     images: [
-                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Temperature and humidity control",
-                        "Air quality monitoring (PM2.5, CO2)",
-                        "Energy optimization algorithms",
-                        "Mobile app integration"
+                        "Motion detection alerts",
+                        "Cloud storage",
+                        "Live streaming",
+                        "Night vision"
                     ],
-                    technologies: ["ESP32", "DHT22", "Air Quality Sensor", "Relay Module", "MQTT"],
+                    technologies: ["Raspberry Pi", "Camera Module", "Motion Detection", "Cloud API", "Python"],
                     links: [
-                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "Demo Video", url: "#", icon: "fa-youtube" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 },
                 {
                     id: 40,
-                    title: "Smart Lighting Network",
-                    description: "Network of smart lights with automation, scenes, and energy monitoring.",
+                    title: "Smart Irrigation System",
+                    description: "Automated garden irrigation system with soil moisture sensing and weather integration.",
                     category: "home",
                     images: [
-                        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1417733403748-83bbc7c05140?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Color control and dimming",
-                        "Automation scheduling",
-                        "Energy consumption monitoring",
-                        "Group control and scenes"
+                        "Soil moisture sensing",
+                        "Weather-based scheduling",
+                        "Water conservation",
+                        "Mobile notifications"
                     ],
-                    technologies: ["ESP8266", "WS2812B LEDs", "MQTT", "Home Assistant", "Python"],
+                    technologies: ["ESP32", "Soil Sensors", "Solenoid Valves", "Weather API", "MQTT"],
                     links: [
-                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "Demo Video", url: "#", icon: "fa-youtube" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 }
             ],
+            
             industrial: [
                 {
                     id: 41,
-                    title: "Factory Monitoring System",
-                    description: "Real-time factory equipment monitoring with predictive maintenance alerts.",
+                    title: "Industrial Monitoring System",
+                    description: "Real-time monitoring system for industrial equipment with predictive maintenance.",
                     category: "industrial",
                     images: [
                         "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Equipment monitoring and status tracking",
-                        "Predictive maintenance alerts",
-                        "Real-time data visualization",
-                        "Alert system for anomalies"
+                        "Equipment monitoring",
+                        "Predictive maintenance",
+                        "Alert system",
+                        "Performance analytics"
                     ],
-                    technologies: ["PLC", "IoT Sensors", "Cloud Platform", "Dashboard", "MQTT"],
+                    technologies: ["Arduino", "Vibration Sensors", "PLC", "SCADA", "Industrial IoT"],
                     links: [
                         { name: "Case Study", url: "#", icon: "fa-file-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -3321,17 +3688,16 @@
                     description: "Industrial energy consumption monitoring and optimization system.",
                     category: "industrial",
                     images: [
-                        "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1501139083538-0139583c060f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Energy consumption monitoring",
-                        "Cost analysis and reporting",
-                        "Optimization suggestions",
-                        "Real-time alerts for high usage"
+                        "Real-time energy monitoring",
+                        "Cost optimization",
+                        "Peak load management",
+                        "Reporting dashboard"
                     ],
-                    technologies: ["Current Sensors", "ESP32", "Cloud Database", "Analytics", "Python"],
+                    technologies: ["Current Sensors", "ESP32", "Energy Monitoring", "Data Analytics", "Cloud"],
                     links: [
                         { name: "Case Study", url: "#", icon: "fa-file-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -3339,21 +3705,20 @@
                 },
                 {
                     id: 43,
-                    title: "Production Line Monitor",
-                    description: "Monitor production line efficiency with real-time data and alerts.",
+                    title: "Production Line Monitoring",
+                    description: "Automated monitoring system for production line efficiency and quality control.",
                     category: "industrial",
                     images: [
                         "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Production monitoring and tracking",
-                        "Efficiency analysis and reporting",
-                        "Quality control integration",
-                        "Real-time alerts for issues"
+                        "Production counting",
+                        "Quality control sensors",
+                        "Downtime tracking",
+                        "Efficiency reporting"
                     ],
-                    technologies: ["IoT Sensors", "PLC Integration", "Cloud Platform", "Dashboard", "MQTT"],
+                    technologies: ["PLC", "Sensors", "Industrial IoT", "Data Collection", "Analytics"],
                     links: [
                         { name: "Case Study", url: "#", icon: "fa-file-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -3361,21 +3726,20 @@
                 },
                 {
                     id: 44,
-                    title: "Warehouse Management",
-                    description: "Smart warehouse management with inventory tracking and environmental monitoring.",
+                    title: "Warehouse Automation",
+                    description: "IoT-based warehouse management with inventory tracking and automated systems.",
                     category: "industrial",
                     images: [
-                        "https://images.unsplash.com/photo-1553413077-190dd305871c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1553413077-190dd305871c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Inventory tracking with RFID",
-                        "Environmental monitoring (temp, humidity)",
-                        "Security system integration",
-                        "Automated reporting and alerts"
+                        "Inventory tracking",
+                        "Automated sorting",
+                        "RFID technology",
+                        "Real-time updates"
                     ],
-                    technologies: ["RFID", "Environmental Sensors", "ESP32", "Cloud Database", "Python"],
+                    technologies: ["RFID", "ESP32", "Conveyor Systems", "Database", "Industrial IoT"],
                     links: [
                         { name: "Case Study", url: "#", icon: "fa-file-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
@@ -3383,247 +3747,238 @@
                 },
                 {
                     id: 45,
-                    title: "Water Treatment Monitoring",
-                    description: "Monitor water treatment processes with real-time data and quality control.",
+                    title: "Environmental Monitoring",
+                    description: "Industrial environmental monitoring for safety compliance and hazard detection.",
                     category: "industrial",
                     images: [
-                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
                         "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Water quality monitoring (pH, chlorine, turbidity)",
-                        "Process control and automation",
-                        "Alert system for anomalies",
-                        "Compliance reporting"
+                        "Gas leak detection",
+                        "Temperature monitoring",
+                        "Safety compliance",
+                        "Emergency alerts"
                     ],
-                    technologies: ["Water Quality Sensors", "ESP32", "Cloud Platform", "Dashboard", "Python"],
+                    technologies: ["Gas Sensors", "ESP32", "Safety Systems", "Alerts", "Industrial IoT"],
                     links: [
                         { name: "Case Study", url: "#", icon: "fa-file-alt" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 }
             ],
+            
             sensors: [
                 {
                     id: 46,
-                    title: "Environmental Monitor",
-                    description: "Multi-sensor environmental monitoring system with data logging.",
+                    title: "Weather Station",
+                    description: "DIY weather station with multiple sensors for comprehensive weather monitoring.",
                     category: "sensors",
                     images: [
-                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1561484930-998b6a7b22e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Multi-sensor data collection",
-                        "Long-term data logging",
-                        "Mobile app integration",
-                        "Data export and analysis"
+                        "Temperature monitoring",
+                        "Humidity sensing",
+                        "Wind speed measurement",
+                        "Rain detection"
                     ],
-                    technologies: ["Multiple Sensors", "ESP32", "SD Card", "Mobile App", "Python"],
+                    technologies: ["DHT22", "Rain Sensor", "Anemometer", "ESP32", "Weather Station"],
                     links: [
-                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "Demo Video", url: "#", icon: "fa-youtube" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 },
                 {
                     id: 47,
-                    title: "Motion Tracking System",
-                    description: "Advanced motion tracking with multiple sensors and pattern recognition.",
+                    title: "Water Quality Monitor",
+                    description: "Portable water quality monitoring device with multiple parameter measurements.",
                     category: "sensors",
                     images: [
-                        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1417733403748-83bbc7c05140?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Motion detection and tracking",
-                        "Pattern recognition",
-                        "Real-time position tracking",
-                        "Data analysis and visualization"
+                        "pH level measurement",
+                        "Turbidity sensing",
+                        "Temperature monitoring",
+                        "Data logging"
                     ],
-                    technologies: ["PIR Sensors", "Ultrasonic Sensors", "ESP32", "Machine Learning", "Python"],
+                    technologies: ["pH Sensor", "Turbidity Sensor", "Arduino", "Data Logging", "Water Quality"],
                     links: [
-                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "Demo Video", url: "#", icon: "fa-youtube" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 },
                 {
                     id: 48,
-                    title: "Weather Station",
-                    description: "Complete weather station with multiple sensors and web dashboard.",
+                    title: "Air Quality Monitor",
+                    description: "Indoor air quality monitoring system with multiple pollutant detection.",
                     category: "sensors",
                     images: [
-                        "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Weather monitoring (temp, humidity, pressure)",
-                        "Data logging and analysis",
-                        "Web dashboard for visualization",
-                        "Forecast generation"
+                        "CO2 monitoring",
+                        "PM2.5 detection",
+                        "VOC sensing",
+                        "Air quality index"
                     ],
-                    technologies: ["Weather Sensors", "ESP8266", "Web Dashboard", "Data API", "Python"],
+                    technologies: ["CO2 Sensor", "Particulate Sensor", "ESP32", "Air Quality", "Monitoring"],
                     links: [
-                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "Demo Video", url: "#", icon: "fa-youtube" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 },
                 {
                     id: 49,
-                    title: "Smart Parking System",
-                    description: "Smart parking lot management with sensor-based spot detection.",
+                    title: "Smart Parking Sensor",
+                    description: "IoT-based parking space detection and guidance system.",
                     category: "sensors",
                     images: [
                         "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Parking spot detection",
-                        "Availability display system",
+                        "Parking space detection",
+                        "Occupancy monitoring",
                         "Mobile app integration",
-                        "Payment system integration"
+                        "Guidance system"
                     ],
-                    technologies: ["Ultrasonic Sensors", "ESP32", "Mobile App", "Payment System", "Python"],
+                    technologies: ["Ultrasonic Sensors", "ESP8266", "Mobile App", "Parking System", "IoT"],
                     links: [
-                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "Demo Video", url: "#", icon: "fa-youtube" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 },
                 {
                     id: 50,
-                    title: "Health Monitoring System",
-                    description: "Health monitoring with wearable sensors and data analysis.",
+                    title: "Soil Monitoring System",
+                    description: "Comprehensive soil monitoring for agriculture with multiple parameter sensing.",
                     category: "sensors",
                     images: [
-                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1417733403748-83bbc7c05140?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Vital signs monitoring",
-                        "Data analysis and trends",
-                        "Alert system for anomalies",
-                        "Cloud storage for data"
+                        "Soil moisture sensing",
+                        "Nutrient level detection",
+                        "Temperature monitoring",
+                        "Data analytics"
                     ],
-                    technologies: ["Wearable Sensors", "ESP32", "Bluetooth", "Cloud Platform", "Python"],
+                    technologies: ["Soil Sensors", "ESP32", "Agriculture IoT", "Data Analysis", "Farming"],
                     links: [
-                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "Demo Video", url: "#", icon: "fa-youtube" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 }
             ],
+            
             othersiot: [
                 {
                     id: 51,
-                    title: "Smart Agriculture",
-                    description: "Complete smart agriculture system with soil monitoring and automated irrigation.",
+                    title: "IoT Pet Feeder",
+                    description: "Smart pet feeding system with scheduling and remote control capabilities.",
                     category: "othersiot",
                     images: [
-                        "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Soil monitoring and analysis",
-                        "Automated irrigation control",
-                        "Crop health monitoring",
-                        "Weather integration for optimization"
+                        "Scheduled feeding",
+                        "Portion control",
+                        "Mobile app control",
+                        "Food level monitoring"
                     ],
-                    technologies: ["IoT Sensors", "ESP32", "Water Pump", "Cloud Platform", "Python"],
+                    technologies: ["ESP32", "Servo Motors", "Mobile App", "Scheduling", "Pet Tech"],
                     links: [
-                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "Demo Video", url: "#", icon: "fa-youtube" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 },
                 {
                     id: 52,
-                    title: "Asset Tracking System",
-                    description: "Real-time asset tracking with GPS and sensor data.",
+                    title: "Smart Mailbox",
+                    description: "IoT-enabled mailbox with delivery notifications and security features.",
                     category: "othersiot",
                     images: [
                         "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "GPS tracking and location",
-                        "Real-time position updates",
-                        "Geofencing and alerts",
-                        "Asset condition monitoring"
+                        "Delivery detection",
+                        "Notification system",
+                        "Security lock",
+                        "Weather protection"
                     ],
-                    technologies: ["GPS Module", "ESP32", "Cloud Platform", "Mobile App", "Python"],
+                    technologies: ["ESP8266", "Proximity Sensors", "Mobile Notifications", "Security", "IoT"],
                     links: [
-                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "Demo Video", url: "#", icon: "fa-youtube" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 },
                 {
                     id: 53,
-                    title: "Smart Waste Management",
-                    description: "Smart waste bin monitoring with fill level sensors and route optimization.",
+                    title: "Smart Plant Monitor",
+                    description: "Automated plant monitoring system with watering and growth tracking.",
                     category: "othersiot",
                     images: [
-                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1417733403748-83bbc7c05140?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Fill level monitoring",
-                        "Route optimization for collection",
-                        "Collection scheduling",
-                        "Data analytics for efficiency"
+                        "Soil moisture monitoring",
+                        "Automatic watering",
+                        "Light level sensing",
+                        "Growth tracking"
                     ],
-                    technologies: ["Ultrasonic Sensors", "ESP8266", "GPS", "Optimization Algorithms", "Python"],
+                    technologies: ["Soil Sensors", "ESP32", "Water Pump", "Light Sensor", "Plant Care"],
                     links: [
-                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "Demo Video", url: "#", icon: "fa-youtube" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 },
                 {
                     id: 54,
-                    title: "Smart Street Lighting",
-                    description: "Intelligent street lighting system with motion detection and energy optimization.",
+                    title: "IoT Door Lock",
+                    description: "Smart door lock system with multiple access methods and security features.",
                     category: "othersiot",
                     images: [
-                        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Motion detection for activation",
-                        "Energy optimization algorithms",
-                        "Remote control and monitoring",
-                        "Maintenance alerts"
+                        "RFID access",
+                        "Mobile app control",
+                        "Access logs",
+                        "Emergency unlocking"
                     ],
-                    technologies: ["PIR Sensors", "ESP32", "LED Control", "Cloud Platform", "Python"],
+                    technologies: ["RFID", "ESP32", "Electronic Lock", "Security", "Access Control"],
                     links: [
-                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "Demo Video", url: "#", icon: "fa-youtube" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 },
                 {
                     id: 55,
-                    title: "Water Quality Monitoring",
-                    description: "Real-time water quality monitoring for lakes, rivers, and reservoirs.",
+                    title: "IoT Health Monitor",
+                    description: "Wearable health monitoring device with multiple biometric sensors.",
                     category: "othersiot",
                     images: [
-                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+                        "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                     ],
                     features: [
-                        "Water quality sensors (pH, turbidity, etc.)",
-                        "Real-time monitoring",
-                        "Alert system for contamination",
-                        "Data analysis and reporting"
+                        "Heart rate monitoring",
+                        "Body temperature",
+                        "Activity tracking",
+                        "Emergency alerts"
                     ],
-                    technologies: ["Water Sensors", "Solar Power", "LoRa", "Cloud Platform", "Python"],
+                    technologies: ["Biometric Sensors", "ESP32", "Bluetooth", "Health Monitoring", "Wearable"],
                     links: [
-                        { name: "Demo Video", url: "#", icon: "fa-video" },
+                        { name: "Demo Video", url: "#", icon: "fa-youtube" },
                         { name: "GitHub", url: "#", icon: "fa-code-branch" }
                     ]
                 }
@@ -3638,26 +3993,141 @@
         let iotSwiper = null;
         let imageSwipers = [];
 
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            initTheme();
-            setupEventListeners();
-            
-            // Initialize all navigation systems
-            setupSkillsNavigation();
-            setupWebAppsNavigation();
-            setupMobileAppsNavigation();
-            setupIoTProjectsNavigation();
-            
-            // Set current year in footer
-            updateCurrentYear();
-            
-            // Setup swiper close buttons
-            setupSwiperCloseButtons();
-            
-            // Add event listeners for CV downloads
-            setupCvDownloadTracking();
-        });
+        // Technology class mapping
+        const techClassMap = {
+            "HTML5": "html5",
+            "CSS3": "css3",
+            "JavaScript": "javascript",
+            "React.js": "react",
+            "Laravel": "laravel",
+            "PHP": "php",
+            "MySQL": "mysql",
+            "Bootstrap": "bootstrap",
+            "Tailwind CSS": "tailwind",
+            "Node.js": "nodejs",
+            "Express": "express",
+            "MongoDB": "mongodb",
+            "Firebase": "firebase",
+            "Arduino": "arduino",
+            "ESP32": "esp32",
+            "MQTT": "mqtt",
+            "Bluetooth": "bluetooth",
+            "Python": "python",
+            "Kodular": "kodular",
+            "Android": "android",
+            "REST API": "rest",
+            "API": "api",
+            "Git": "git",
+            "Responsive Design": "responsive",
+            "UI/UX": "uiux",
+            "IoT": "iot",
+            "Sensors": "sensors",
+            "Automation": "automation",
+            "Raspberry Pi": "raspberry",
+            "Embedded": "embedded",
+            "WiFi": "wifi",
+            "WebSocket": "websocket",
+            "ESP8266": "esp32",
+            "PIR Sensors": "sensors",
+            "RGB LEDs": "iot",
+            "HomeKit": "iot",
+            "DHT22": "sensors",
+            "CO2 Sensor": "sensors",
+            "Relays": "automation",
+            "Mobile App": "android",
+            "Camera Module": "iot",
+            "Motion Detection": "automation",
+            "Cloud API": "api",
+            "Soil Sensors": "sensors",
+            "Solenoid Valves": "automation",
+            "Weather API": "api",
+            "Vibration Sensors": "sensors",
+            "PLC": "automation",
+            "SCADA": "automation",
+            "Industrial IoT": "iot",
+            "Current Sensors": "sensors",
+            "Energy Monitoring": "iot",
+            "Data Analytics": "api",
+            "Cloud": "api",
+            "RFID": "iot",
+            "Conveyor Systems": "automation",
+            "Database": "api",
+            "Gas Sensors": "sensors",
+            "Safety Systems": "automation",
+            "Alerts": "api",
+            "Rain Sensor": "sensors",
+            "Anemometer": "sensors",
+            "Weather Station": "iot",
+            "pH Sensor": "sensors",
+            "Turbidity Sensor": "sensors",
+            "Data Logging": "api",
+            "Water Quality": "iot",
+            "Particulate Sensor": "sensors",
+            "Air Quality": "iot",
+            "Monitoring": "iot",
+            "Ultrasonic Sensors": "sensors",
+            "Parking System": "iot",
+            "Agriculture IoT": "iot",
+            "Data Analysis": "api",
+            "Farming": "iot",
+            "Servo Motors": "automation",
+            "Scheduling": "automation",
+            "Pet Tech": "iot",
+            "Proximity Sensors": "sensors",
+            "Mobile Notifications": "android",
+            "Security": "iot",
+            "Water Pump": "automation",
+            "Light Sensor": "sensors",
+            "Plant Care": "iot",
+            "Electronic Lock": "automation",
+            "Access Control": "iot",
+            "Biometric Sensors": "sensors",
+            "Health Monitoring": "iot",
+            "Wearable": "iot",
+            "Chart.js": "uiux",
+            "Video.js": "uiux",
+            "Google Maps API": "api",
+            "Payment API": "api",
+            "Quiz Logic": "api",
+            "Math Engine": "api",
+            "Progress Tracking": "api",
+            "Text-to-Speech": "api",
+            "Language API": "api",
+            "Science Database": "api",
+            "Timeline Engine": "api",
+            "Multiplayer": "api",
+            "Energy Sensors": "sensors",
+            "Charts": "uiux",
+            "IP Cameras": "iot",
+            "Push Notifications": "api",
+            "Voice Recognition": "api",
+            "Scene Control": "automation",
+            "Conversion Logic": "api",
+            "Offline Storage": "api",
+            "Financial Calculations": "api",
+            "Reminders": "automation",
+            "Encryption": "security",
+            "Biometrics": "security",
+            "File System": "api",
+            "Compression": "api",
+            "Location Services": "api",
+            "Notifications": "api",
+            "Voice": "api",
+            "Health Tracking": "iot",
+            "Goals": "api",
+            "Audio Player": "api",
+            "Equalizer": "api",
+            "Lyrics API": "api",
+            "Scanner": "api",
+            "Planning": "api",
+            "Translation API": "api",
+            "Voice Recognition": "api",
+            "Offline": "api",
+            "Weather API": "api",
+            "Maps": "api",
+            "Home Assistant": "iot",
+            "Node-RED": "iot"
+        };
 
         function setupCvDownloadTracking() {
             document.querySelectorAll('.cv-popup-btn').forEach(btn => {
@@ -3868,6 +4338,12 @@
             return categoryNames[category] || category;
         }
 
+        function getTechClass(tech) {
+            // Remove any version numbers or extra text
+            const cleanTech = tech.replace(/\([^)]*\)/g, '').trim();
+            return techClassMap[cleanTech] || 'api'; // Default to api class
+        }
+
         function initializeSwiper(section, projects) {
             // Destroy existing swiper
             if (section === 'web' && webSwiper) {
@@ -3935,6 +4411,12 @@
                 // Generate unique ID for image swiper
                 const imageSwiperId = `imageSwiper-${section}-${project.id}`;
                 
+                // Generate technology tags HTML
+                const techTagsHTML = project.technologies.map(tech => {
+                    const techClass = getTechClass(tech);
+                    return `<span class="tech-tag ${techClass}">${tech}</span>`;
+                }).join('');
+                
                 slide.innerHTML = `
                     <div class="project-card">
                         <div class="image-swiper-container">
@@ -3961,9 +4443,9 @@
                             
                             <div class="project-technologies">
                                 <h4 class="tech-title">Technologies:</h4>
-                                <ul class="tech-list">
-                                    ${project.technologies.map(tech => `<li>${tech}</li>`).join('')}
-                                </ul>
+                                <div class="tech-tags-container">
+                                    ${techTagsHTML}
+                                </div>
                             </div>
                             
                             <div class="project-links">
