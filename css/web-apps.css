@@ -1,0 +1,278 @@
+/**
+ * web-apps.css - Web Apps Section Styles
+ * Contains styles for web projects navigation, swiper container, and project cards
+ */
+
+/* DUAL SWIPER SYSTEM STYLES */
+.main-swiper-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 2rem auto;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    position: relative;
+    padding-top: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Swiper Modal Header */
+.swiper-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: var(--background);
+    border-bottom: 2px solid var(--border);
+}
+
+.swiper-modal-title {
+    font-size: 1.5rem;
+    color: var(--text);
+    margin: 0;
+}
+
+.swiper-close-btn {
+    width: 36px;
+    height: 36px;
+}
+
+.main-swiper {
+    width: 100%;
+    height: 600px;
+    background: var(--surface);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Project Card */
+.project-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    padding: 0;
+    border-radius: var(--radius-lg);
+}
+
+/* Nested Image Swiper */
+.image-swiper-container {
+    height: 300px;
+    width: 100%;
+    background: var(--background);
+    border-bottom: 1px solid var(--border);
+}
+
+.image-swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.image-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: var(--background);
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Project Info */
+.project-info {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 300px;
+    text-align: left;
+}
+
+.project-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+    text-align: center;
+}
+
+.project-description {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.project-features {
+    margin: 1rem 0;
+}
+
+.features-title, .tech-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.features-list, .tech-list {
+    list-style-type: none;
+    margin-bottom: 1rem;
+    padding-left: 0;
+}
+
+.features-list li, .tech-list li {
+    margin-bottom: 0.3rem;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.4;
+}
+
+.features-list li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-weight: bold;
+}
+
+.tech-list li:before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+}
+
+/* Technology Tags Styling */
+.tech-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 1rem 0;
+    justify-content: center;
+}
+
+.tech-tag {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #4f46e5;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: default;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 70px;
+    text-align: center;
+}
+
+.tech-tag:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    filter: brightness(1.1);
+}
+
+/* Technology Tag Colors */
+.tech-tag.html5 { background: #e34c26; }
+.tech-tag.css3 { background: #264de4; }
+.tech-tag.javascript { background: #f0db4f; color: #323330; }
+.tech-tag.react { background: #61dbfb; color: #282c34; }
+.tech-tag.laravel { background: #ff2d20; }
+.tech-tag.php { background: #777bb4; }
+.tech-tag.mysql { background: #00758f; }
+.tech-tag.bootstrap { background: #7952b3; }
+.tech-tag.tailwind { background: #38bdf8; }
+.tech-tag.nodejs { background: #339933; }
+.tech-tag.express { background: #000000; }
+.tech-tag.mongodb { background: #47a248; }
+.tech-tag.firebase { background: #ffca28; color: #121212; }
+.tech-tag.arduino { background: #00979d; }
+.tech-tag.esp32 { background: #00979d; }
+.tech-tag.mqtt { background: #660066; }
+.tech-tag.bluetooth { background: #0082fc; }
+.tech-tag.python { background: #3776ab; }
+.tech-tag.kodular { background: #7e57c2; }
+.tech-tag.android { background: #3ddc84; color: #121212; }
+.tech-tag.api { background: #ff6b35; }
+.tech-tag.git { background: #f05032; }
+.tech-tag.responsive { background: #25a162; }
+.tech-tag.uiux { background: #ff6b8b; }
+.tech-tag.iot { background: #00b0ff; }
+.tech-tag.sensors { background: #8e24aa; }
+.tech-tag.automation { background: #ff9800; }
+.tech-tag.raspberry { background: #c51a4a; }
+.tech-tag.embedded { background: #5d4037; }
+.tech-tag.wifi { background: #2196f3; }
+.tech-tag.websocket { background: #010101; }
+.tech-tag.rest { background: #0052cc; }
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.project-link {
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.project-link:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Swiper Navigation */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.9);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.theme-dark .swiper-button-next,
+.theme-dark .swiper-button-prev {
+    background: rgba(30, 41, 59, 0.9);
+    color: var(--secondary-color);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background: var(--primary-color);
+    color: white;
+}

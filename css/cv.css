@@ -1,0 +1,77 @@
+/**
+ * cv.css - CV Download Section Styles
+ * Contains styles for CV cards and download section
+ */
+
+/* CV Cards Container */
+.cv-cards-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.cv-cards {
+    display: grid;
+    gap: 2.5rem;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+/* 2 items - Responsive layout */
+.cv-cards.two-items {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 650px;
+}
+
+/* Card Styles */
+.cv-card {
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    min-height: 320px;
+}
+
+.cv-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
+}
+
+.cv-icon {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.cv-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.cv-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.cv-card .btn {
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.cv-card .btn i {
+    font-size: 0.9rem;
+}

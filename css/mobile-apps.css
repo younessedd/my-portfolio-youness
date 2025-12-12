@@ -1,0 +1,16 @@
+/**
+ * mobile-apps.css - Mobile Apps Section Styles
+ * Contains styles for mobile apps section (inherits from web-apps.css)
+ * 
+ * Note: This section shares most styles with web-apps.css
+ * Additional mobile-specific styles can be added here if needed
+ */
+
+/* Mobile-specific Technology Tags */
+.tech-tag.kodular { background: #7e57c2; }
+.tech-tag.android { background: #3ddc84; color: #121212; }
+.tech-tag.firebase { background: #ffca28; color: #121212; }
+.tech-tag.bluetooth { background: #0082fc; }
+.tech-tag.quiz { background: #9c27b0; }
+.tech-tag.smart-home { background: #00bcd4; }
+.tech-tag.utility { background: #ff9800; }

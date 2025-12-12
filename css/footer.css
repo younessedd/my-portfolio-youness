@@ -1,0 +1,202 @@
+/**
+ * footer.css - Footer Styles
+ * Contains styles for footer, social icons, and contact info
+ */
+
+/* Footer */
+footer {
+    background: var(--surface);
+    padding: 4rem 0 2rem;
+    margin-top: 4rem;
+    width: 100%;
+}
+
+/* Footer Content Grid */
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+/* Footer Columns */
+.footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+    text-align: left;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+/* Footer About */
+.footer-about p {
+    text-align: left;
+    margin: 1rem 0;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* Footer Logo */
+.footer-logo-top {
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo-center {
+    display: none;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.footer-logo-center .logo {
+    justify-content: center;
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+
+/* Quick Links */
+.quick-links {
+    list-style: none;
+}
+
+.quick-links li {
+    margin-bottom: 0.8rem;
+}
+
+.quick-links a {
+    color: var(--text-secondary);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.quick-links a:hover {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.quick-links i {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+/* Contact Info Footer */
+.contact-info-footer {
+    list-style: none;
+}
+
+.contact-info-footer li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+.contact-info-footer a {
+    color: var(--text-secondary);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.contact-info-footer a:hover {
+    color: var(--primary-color);
+}
+
+.contact-info-footer i {
+    color: var(--primary-color);
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Social Section */
+.footer-social-section {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.footer-social-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+}
+
+.footer-social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.footer-social-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--background);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.footer-social-icon:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-5px);
+}
+
+/* Social Icon Colors on Hover */
+.footer-social-icon.twitter:hover {
+    background: #1DA1F2;
+}
+
+.footer-social-icon.linkedin:hover {
+    background: #0077B5;
+}
+
+.footer-social-icon.github:hover {
+    background: #333;
+}
+
+.footer-social-icon.codepen:hover {
+    background: #000000;
+}
+
+.footer-social-icon.whatsapp:hover {
+    background: #25D366;
+}
+
+.footer-social-icon.email:hover {
+    background: #EA4335;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.footer-bottom p {
+    margin: 0.5rem 0;
+}

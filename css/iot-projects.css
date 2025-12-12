@@ -1,0 +1,21 @@
+/**
+ * iot-projects.css - IoT Projects Section Styles
+ * Contains styles for IoT projects section (inherits from web-apps.css)
+ * 
+ * Note: This section shares most styles with web-apps.css
+ * Additional IoT-specific styles can be added here if needed
+ */
+
+/* IoT-specific Technology Tags */
+.tech-tag.arduino { background: #00979d; }
+.tech-tag.esp32 { background: #5a189a; }
+.tech-tag.esp8266 { background: #005f73; }
+.tech-tag.mqtt { background: #660066; }
+.tech-tag.sensors { background: #8e24aa; }
+.tech-tag.automation { background: #ff9800; }
+.tech-tag.raspberry { background: #c51a4a; }
+.tech-tag.embedded { background: #5d4037; }
+.tech-tag.iot { background: #00b0ff; }
+.tech-tag.plc { background: #00695c; }
+.tech-tag.scada { background: #2e7d32; }
+.tech-tag.electrical { background: #ff6d00; }
