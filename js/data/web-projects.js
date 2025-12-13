@@ -1,340 +1,431 @@
 /**
- * web-projects.js - Web Projects Data
- * Contains all web project data organized by categories
+ * Web Projects Data - Complete Version
+ * Easy to edit - Add/remove/modify web projects easily
+ * Supports: frontend, fullstack, responsive categories
  */
 
 const webProjectsData = {
-    // Frontend Projects (5 projects)
+    // File metadata
+    fileId: "web-projects-data-001",
+    fileType: "web-projects",
+    created: "2024-12-17",
+    lastUpdated: "2024-12-17",
+    
+    // Frontend Projects Category
     frontend: [
         {
-            id: 1,
-            title: "Coworker",
-            description: "A modern responsive coworking space website project, showcasing design and front-end development skills.",
-            category: "frontend",
-            images: [
-                "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "web-frontend-001",
+            title: "React E-Commerce Store",
+            description: "A modern e-commerce website built with React.js, featuring product filtering, shopping cart, and user authentication.",
+            technologies: ["React", "Redux", "CSS3", "Firebase", "Responsive Design"],
+            images: ["images/web-projects/ecommerce-react.jpg"],
+            links: [
+                {
+                    name: "Live Demo",
+                    url: "https://demo-react-ecommerce.netlify.app",
+                    icon: "fa-external-link-alt"
+                },
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/react-ecommerce",
+                    icon: "fa-github"
+                }
             ],
             features: [
-                "Responsive layout for desktop and mobile",
-                "Interactive sections with animations",
-                "Hero, About, Projects, and Contact sections",
-                "Clean modern design"
-            ],
-            technologies: ["HTML5", "CSS3", "JavaScript"],
-            links: [
-                { name: "Live Demo", url: "https://younessedd.github.io/coworker-youness/", icon: "fa-external-link-alt" },
-                { name: "GitHub", url: "https://github.com/younessedd/coworker-youness", icon: "fa-code-branch" }
+                "Product catalog with advanced filtering",
+                "Shopping cart with real-time updates",
+                "User authentication with Firebase",
+                "Responsive design for all devices",
+                "Payment gateway integration"
             ]
         },
         {
-            id: 2,
-            title: "Restaurant",
-            description: "A modern responsive restaurant website project, featuring menu display, reservation form, and interactive UI elements.",
-            category: "frontend",
-            images: [
-                "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "web-frontend-002",
+            title: "Weather Dashboard",
+            description: "Real-time weather application with location detection, 5-day forecast, and interactive charts.",
+            technologies: ["JavaScript", "OpenWeather API", "Bootstrap", "Chart.js", "API"],
+            images: ["images/web-projects/weather-dashboard.jpg"],
+            links: [
+                {
+                    name: "Live Demo",
+                    url: "https://your-weather-app.netlify.app",
+                    icon: "fa-external-link-alt"
+                },
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/weather-dashboard",
+                    icon: "fa-github"
+                }
             ],
             features: [
-                "Responsive layout for desktop and mobile",
-                "Menu display with categories",
-                "Reservation/contact form",
-                "Smooth animations and modern design"
-            ],
-            technologies: ["HTML5", "CSS3", "JavaScript"],
-            links: [
-                { name: "Live Demo", url: "https://younessedd.github.io/restarent-youness/", icon: "fa-external-link-alt" },
-                { name: "GitHub", url: "https://github.com/younessedd/restarent-youness", icon: "fa-code-branch" }
+                "Current weather display with icons",
+                "5-day detailed forecast",
+                "Location-based weather detection",
+                "Interactive temperature charts",
+                "Save favorite locations"
             ]
         },
         {
-            id: 3,
-            title: "Travel Agency",
-            description: "A responsive travel agency website with destination showcases, booking system, and user reviews.",
-            category: "frontend",
-            images: [
-                "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "web-frontend-003",
+            title: "Task Management App",
+            description: "Drag-and-drop task manager with project organization, deadline tracking, and team collaboration.",
+            technologies: ["HTML5", "CSS3", "JavaScript", "LocalStorage", "UI/UX"],
+            images: ["images/web-projects/task-manager.jpg"],
+            links: [
+                {
+                    name: "Live Demo",
+                    url: "https://your-task-manager.netlify.app",
+                    icon: "fa-external-link-alt"
+                },
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/task-manager",
+                    icon: "fa-github"
+                }
             ],
             features: [
-                "Responsive design with mobile-first approach",
-                "Destination gallery with filters",
-                "Booking form with validation",
-                "User review system"
-            ],
-            technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
-            links: [
-                { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                "Drag & drop task organization",
+                "Project categorization",
+                "Deadline reminders and notifications",
+                "Data persistence with LocalStorage",
+                "Team collaboration features"
             ]
         },
         {
-            id: 4,
-            title: "Fitness Tracker",
-            description: "A fitness tracking dashboard with workout plans, progress charts, and calorie counter.",
-            category: "frontend",
-            images: [
-                "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "web-frontend-004",
+            title: "Fitness Tracker Dashboard",
+            description: "Interactive fitness tracking dashboard with workout planning and progress visualization.",
+            technologies: ["React", "D3.js", "Chart.js", "REST API", "Responsive Design"],
+            images: ["images/web-projects/fitness-tracker.jpg"],
+            links: [
+                {
+                    name: "Live Demo",
+                    url: "https://fitness-tracker-demo.netlify.app",
+                    icon: "fa-external-link-alt"
+                },
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/fitness-tracker",
+                    icon: "fa-github"
+                }
             ],
             features: [
-                "Interactive progress charts",
-                "Workout plan customization",
-                "Calorie tracking calculator",
-                "Responsive dashboard"
-            ],
-            technologies: ["HTML5", "CSS3", "JavaScript", "Chart.js"],
-            links: [
-                { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 5,
-            title: "E-commerce Product Page",
-            description: "Modern e-commerce product page with image gallery, reviews, and shopping cart functionality.",
-            category: "frontend",
-            images: [
-                "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Product image gallery with zoom",
-                "Product reviews and ratings",
-                "Add to cart functionality",
-                "Responsive product details"
-            ],
-            technologies: ["HTML5", "CSS3", "JavaScript", "UI/UX"],
-            links: [
-                { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                "Workout planning and scheduling",
+                "Progress tracking with charts",
+                "Calorie and nutrition tracking",
+                "Goal setting and achievement",
+                "Mobile-responsive design"
             ]
         }
+        // ADD MORE FRONTEND PROJECTS HERE
     ],
     
-    // Fullstack Projects (5 projects)
+    // Fullstack Projects Category
     fullstack: [
         {
-            id: 6,
-            title: "Task Management System",
-            description: "A full-featured task management application with user authentication, team collaboration, and real-time updates.",
-            category: "fullstack",
-            images: [
-                "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "web-fullstack-001",
+            title: "Social Media Platform",
+            description: "Full-stack social media application with real-time messaging, post sharing, and user interactions.",
+            technologies: ["MERN Stack", "Socket.io", "JWT", "AWS S3", "REST API"],
+            images: ["images/web-projects/social-media.jpg"],
+            links: [
+                {
+                    name: "Live Demo",
+                    url: "https://social-app-demo.herokuapp.com",
+                    icon: "fa-external-link-alt"
+                },
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/social-media-app",
+                    icon: "fa-github"
+                }
             ],
             features: [
-                "User authentication & authorization",
-                "Real-time task updates",
-                "Team collaboration features",
-                "Task categorization and filtering"
-            ],
-            technologies: ["React.js", "Node.js", "Express", "MongoDB", "REST API"],
-            links: [
-                { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                "User profiles with custom avatars",
+                "Real-time chat with Socket.io",
+                "Image and video upload to AWS S3",
+                "Friend system and notifications",
+                "Like, comment, and share posts"
             ]
         },
         {
-            id: 7,
-            title: "Blog Platform",
-            description: "A blogging platform with rich text editor, user profiles, comments, and likes system.",
-            category: "fullstack",
-            images: [
-                "https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "web-fullstack-002",
+            title: "E-Learning Platform",
+            description: "Online learning platform with video courses, quizzes, progress tracking, and payment integration.",
+            technologies: ["Laravel", "MySQL", "Vue.js", "Stripe", "API"],
+            images: ["images/web-projects/elearning.jpg"],
+            links: [
+                {
+                    name: "Live Demo",
+                    url: "https://learn-with-us.com",
+                    icon: "fa-external-link-alt"
+                },
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/e-learning-platform",
+                    icon: "fa-github"
+                }
             ],
             features: [
-                "Rich text editor for posts",
-                "User profiles and follow system",
-                "Comment and like functionality",
-                "Admin dashboard"
-            ],
-            technologies: ["Laravel", "PHP", "MySQL", "JavaScript", "Bootstrap"],
-            links: [
-                { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                "Course management system",
+                "Video streaming with progress tracking",
+                "Payment integration with Stripe",
+                "Student progress dashboard",
+                "Certificate generation"
             ]
         },
         {
-            id: 8,
-            title: "Inventory Management",
-            description: "Inventory management system for small businesses with stock tracking, reporting, and supplier management.",
-            category: "fullstack",
-            images: [
-                "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Real-time stock tracking",
-                "Sales and purchase reports",
-                "Supplier management",
-                "Low stock alerts"
-            ],
-            technologies: ["React.js", "Node.js", "Express", "PostgreSQL", "REST API"],
+            id: "web-fullstack-003",
+            title: "Hospital Management System",
+            description: "Complete hospital management system for patient records, appointments, and billing.",
+            technologies: ["PHP", "MySQL", "JavaScript", "Bootstrap", "REST API"],
+            images: ["images/web-projects/hospital-system.jpg"],
             links: [
-                { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 9,
-            title: "E-learning Platform",
-            description: "Online learning platform with course management, video lessons, quizzes, and progress tracking.",
-            category: "fullstack",
-            images: [
-                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                {
+                    name: "Live Demo",
+                    url: "https://hospital-management-demo.000webhostapp.com",
+                    icon: "fa-external-link-alt"
+                },
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/hospital-management",
+                    icon: "fa-github"
+                }
             ],
             features: [
-                "Course creation and management",
-                "Video streaming and playback",
-                "Interactive quizzes",
-                "Student progress tracking"
-            ],
-            technologies: ["Laravel", "PHP", "MySQL", "JavaScript", "Video.js"],
-            links: [
-                { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 10,
-            title: "Real Estate Listing",
-            description: "Real estate listing platform with property search, agent profiles, and appointment scheduling.",
-            category: "fullstack",
-            images: [
-                "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Advanced property search filters",
-                "Agent profiles and ratings",
+                "Patient record management",
                 "Appointment scheduling system",
-                "Property comparison tool"
-            ],
-            technologies: ["React.js", "Node.js", "MongoDB", "Google Maps API", "REST API"],
-            links: [
-                { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                "Billing and invoice generation",
+                "Doctor and staff management",
+                "Reports and analytics dashboard"
             ]
         }
+        // ADD MORE FULLSTACK PROJECTS HERE
     ],
     
-    // Responsive Projects (5 projects)
+    // Responsive Websites Category
     responsive: [
         {
-            id: 11,
-            title: "Portfolio Template",
-            description: "A fully responsive portfolio template with modern design, smooth animations, and mobile optimization.",
-            category: "responsive",
-            images: [
-                "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "web-responsive-001",
+            title: "Restaurant Website",
+            description: "Responsive restaurant website with online ordering, table reservation, and menu display.",
+            technologies: ["HTML5", "CSS3", "JavaScript", "PHP", "Responsive Design"],
+            images: ["images/web-projects/restaurant.jpg"],
+            links: [
+                {
+                    name: "Live Demo",
+                    url: "https://restaurant-demo.netlify.app",
+                    icon: "fa-external-link-alt"
+                },
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/restaurant-website",
+                    icon: "fa-github"
+                }
             ],
             features: [
                 "Mobile-first responsive design",
-                "Smooth scroll animations",
-                "Cross-browser compatibility",
-                "SEO optimized structure"
-            ],
-            technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
-            links: [
-                { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                "Online food ordering system",
+                "Table reservation with calendar",
+                "Interactive menu with images",
+                "Contact form with Google Maps"
             ]
         },
         {
-            id: 12,
-            title: "News Magazine",
-            description: "Responsive news magazine website with article layouts, category filters, and social sharing.",
-            category: "responsive",
-            images: [
-                "https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "web-responsive-002",
+            title: "Portfolio Template",
+            description: "Modern portfolio template with dark/light mode, smooth animations, and contact form.",
+            technologies: ["HTML5", "CSS3", "JavaScript", "GSAP", "UI/UX"],
+            images: ["images/web-projects/portfolio-template.jpg"],
+            links: [
+                {
+                    name: "Live Demo",
+                    url: "https://portfolio-template-demo.netlify.app",
+                    icon: "fa-external-link-alt"
+                },
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/portfolio-template",
+                    icon: "fa-github"
+                }
             ],
             features: [
-                "Responsive article layouts",
-                "Category and tag filtering",
-                "Social media integration",
-                "Newsletter subscription"
-            ],
-            technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Responsive"],
-            links: [
-                { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                "Dark/light mode toggle",
+                "Smooth scroll animations with GSAP",
+                "Fully responsive layout",
+                "Contact form with validation",
+                "Project showcase with filtering"
             ]
         },
         {
-            id: 13,
-            title: "Event Landing Page",
-            description: "Responsive landing page for events with countdown timer, registration form, and speaker profiles.",
-            category: "responsive",
-            images: [
-                "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "web-responsive-003",
+            title: "Travel Agency Website",
+            description: "Beautiful travel agency website with booking system, destination showcase, and reviews.",
+            technologies: ["Bootstrap", "JavaScript", "PHP", "MySQL", "Responsive Design"],
+            images: ["images/web-projects/travel-agency.jpg"],
+            links: [
+                {
+                    name: "Live Demo",
+                    url: "https://travel-agency-demo.000webhostapp.com",
+                    icon: "fa-external-link-alt"
+                },
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/travel-agency",
+                    icon: "fa-github"
+                }
             ],
             features: [
-                "Responsive event schedule",
-                "Countdown timer",
-                "Speaker profile cards",
-                "Registration form with validation"
-            ],
-            technologies: ["HTML5", "CSS3", "JavaScript", "Responsive", "UI/UX"],
-            links: [
-                { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                "Destination showcase with filters",
+                "Tour booking system",
+                "Customer reviews and ratings",
+                "Gallery with lightbox",
+                "Responsive design for all devices"
             ]
         },
         {
-            id: 14,
-            title: "SaaS Product Page",
-            description: "Responsive SaaS product landing page with feature highlights, pricing tables, and testimonials.",
-            category: "responsive",
-            images: [
-                "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "web-responsive-004",
+            title: "Real Estate Website",
+            description: "Property listing website with search filters, virtual tours, and agent contact.",
+            technologies: ["Tailwind CSS", "JavaScript", "PHP", "MySQL", "API"],
+            images: ["images/web-projects/real-estate.jpg"],
+            links: [
+                {
+                    name: "Live Demo",
+                    url: "https://real-estate-demo.netlify.app",
+                    icon: "fa-external-link-alt"
+                },
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/real-estate-website",
+                    icon: "fa-github"
+                }
             ],
             features: [
-                "Responsive pricing tables",
-                "Feature comparison grid",
-                "Customer testimonial slider",
-                "Call-to-action optimization"
-            ],
-            technologies: ["HTML5", "CSS3", "JavaScript", "Tailwind CSS", "Responsive"],
-            links: [
-                { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 15,
-            title: "Charity Donation Site",
-            description: "Responsive charity donation website with campaign progress tracking, donor recognition, and payment integration.",
-            category: "responsive",
-            images: [
-                "https://images.unsplash.com/photo-1551836026-d5c2c2e66a19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Responsive donation forms",
-                "Campaign progress tracking",
-                "Donor wall and recognition",
-                "Secure payment integration"
-            ],
-            technologies: ["HTML5", "CSS3", "JavaScript", "Responsive", "Payment API"],
-            links: [
-                { name: "Live Demo", url: "#", icon: "fa-external-link-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
+                "Property search with advanced filters",
+                "Image galleries and virtual tours",
+                "Mortgage calculator",
+                "Agent contact system",
+                "Google Maps integration"
             ]
         }
+        // ADD MORE RESPONSIVE WEBSITES HERE
     ]
 };
 
-// Export for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = webProjectsData;
-}
+// 📝 HOW TO ADD NEW WEB PROJECTS:
+// ===============================
+// 1. Choose a category: 'frontend', 'fullstack', or 'responsive'
+// 2. Create a new project object
+// 3. Give it a unique ID (increment the last number)
+// 4. Add it to the array
+
+// Example for adding a new frontend project:
+/*
+const newFrontendProject = {
+    id: "web-frontend-005",
+    title: "Recipe Finder App",
+    description: "Find recipes by ingredients with step-by-step instructions and nutritional info.",
+    technologies: ["React", "Recipe API", "CSS3", "LocalStorage", "UI/UX"],
+    images: ["images/web-projects/recipe-finder.jpg"],
+    links: [
+        {
+            name: "Live Demo",
+            url: "https://recipe-finder-demo.netlify.app",
+            icon: "fa-external-link-alt"
+        },
+        {
+            name: "GitHub",
+            url: "https://github.com/yourusername/recipe-finder",
+            icon: "fa-github"
+        }
+    ],
+    features: [
+        "Search recipes by ingredients",
+        "Step-by-step cooking instructions",
+        "Nutritional information display",
+        "Save favorite recipes",
+        "Shopping list generator"
+    ]
+};
+
+// Add to frontend category:
+webProjectsData.frontend.push(newFrontendProject);
+*/
+
+// Example for adding a new fullstack project:
+/*
+const newFullstackProject = {
+    id: "web-fullstack-004",
+    title: "Job Portal",
+    description: "Job search platform with employer and job seeker profiles, applications, and notifications.",
+    technologies: ["Node.js", "Express", "MongoDB", "React", "REST API"],
+    images: ["images/web-projects/job-portal.jpg"],
+    links: [
+        {
+            name: "Live Demo",
+            url: "https://job-portal-demo.herokuapp.com",
+            icon: "fa-external-link-alt"
+        },
+        {
+            name: "GitHub",
+            url: "https://github.com/yourusername/job-portal",
+            icon: "fa-github"
+        }
+    ],
+    features: [
+        "Job seeker and employer profiles",
+        "Job search with filters",
+        "Application tracking system",
+        "Email notifications",
+        "Admin dashboard"
+    ]
+};
+
+// Add to fullstack category:
+webProjectsData.fullstack.push(newFullstackProject);
+*/
+
+// Example for adding a new responsive website:
+/*
+const newResponsiveProject = {
+    id: "web-responsive-005",
+    title: "Coffee Shop Website",
+    description: "Modern coffee shop website with online ordering, loyalty program, and store locator.",
+    technologies: ["HTML5", "CSS3", "JavaScript", "Google Maps API", "Responsive Design"],
+    images: ["images/web-projects/coffee-shop.jpg"],
+    links: [
+        {
+            name: "Live Demo",
+            url: "https://coffee-shop-demo.netlify.app",
+            icon: "fa-external-link-alt"
+        },
+        {
+            name: "GitHub",
+            url: "https://github.com/yourusername/coffee-shop",
+            icon: "fa-github"
+        }
+    ],
+    features: [
+        "Online coffee ordering",
+        "Loyalty program integration",
+        "Store locator with Google Maps",
+        "Menu with customizations",
+        "Mobile-responsive design"
+    ]
+};
+
+// Add to responsive category:
+webProjectsData.responsive.push(newResponsiveProject);
+*/
+
+// 📌 IMPORTANT NOTES:
+// 1. Keep IDs unique across all categories
+// 2. Add actual image files to images/web-projects/ folder
+// 3. Update demo URLs and GitHub links with your actual projects
+// 4. Technologies array matches techClassMap in your web-projects.js manager
+// 5. Each project should have at least one image
+
+console.log("🌐 Web projects data loaded successfully!");
+console.log(`📊 Total projects: ${webProjectsData.frontend.length + webProjectsData.fullstack.length + webProjectsData.responsive.length}`);
+console.log(`📱 Frontend: ${webProjectsData.frontend.length}, Fullstack: ${webProjectsData.fullstack.length}, Responsive: ${webProjectsData.responsive.length}`);

@@ -1,447 +1,435 @@
 /**
- * iot-projects.js - IoT Projects Data
- * Contains all IoT project data organized by categories
+ * IoT Projects Data - Complete Version
+ * Easy to edit - Add/remove/modify IoT projects easily
+ * Supports: home, industrial, sensors, othersiot categories
  */
 
 const iotProjectsData = {
-    // Smart Home Projects (5 projects)
+    // File metadata
+    fileId: "iot-projects-data-001",
+    fileType: "iot-projects",
+    created: "2024-12-17",
+    lastUpdated: "2024-12-17",
+    
+    // Smart Home Category
     home: [
         {
-            id: 36,
-            title: "Smart Home Hub",
-            description: "Centralized smart home control system integrating multiple IoT devices and automation routines.",
-            category: "home",
-            images: [
-                "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "iot-home-001",
+            title: "Smart Home Automation System",
+            description: "Complete home automation system with voice control, mobile app integration, and energy monitoring.",
+            technologies: ["ESP32", "Node-RED", "MQTT", "React Native", "WiFi"],
+            images: ["images/iot-projects/smart-home-system.jpg"],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/smart-home-iot",
+                    icon: "fa-github"
+                },
+                {
+                    name: "Demo Video",
+                    url: "https://youtube.com/watch?v=example",
+                    icon: "fa-youtube"
+                }
             ],
             features: [
-                "Centralized device control",
-                "Automation scheduling",
-                "Voice control integration",
-                "Energy monitoring"
+                "Voice control with Google Assistant/Alexa",
+                "Real-time energy consumption monitoring",
+                "Security system with motion detection",
+                "Remote access via mobile app",
+                "Scene automation (Good Morning, Good Night)"
             ],
-            technologies: ["ESP32", "MQTT", "Home Assistant", "Node-RED", "WebSocket"],
-            links: [
-                { name: "Demo Video", url: "#", icon: "fa-youtube" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            components: ["ESP32", "Relays", "PIR Sensors", "Raspberry Pi", "LCD Display"]
         },
         {
-            id: 37,
-            title: "Smart Lighting System",
-            description: "Intelligent lighting system with color control, scheduling, and presence detection.",
-            category: "home",
-            images: [
-                "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "iot-home-002",
+            title: "Intelligent Lighting System",
+            description: "Automated lighting system with motion detection, color control, and schedule programming.",
+            technologies: ["Arduino", "PIR Sensors", "RGB LEDs", "WiFi", "Bluetooth"],
+            images: ["images/iot-projects/smart-lighting.jpg"],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/smart-lighting",
+                    icon: "fa-github"
+                }
             ],
             features: [
-                "RGB color control",
-                "Motion detection",
-                "Sunrise/sunset scheduling",
-                "Voice control"
+                "Motion-based automatic activation",
+                "16 million color options",
+                "Energy saving mode",
+                "Schedule programming",
+                "Voice control compatible"
             ],
-            technologies: ["ESP8266", "PIR Sensors", "RGB LEDs", "HomeKit", "WiFi"],
-            links: [
-                { name: "Demo Video", url: "#", icon: "fa-youtube" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            components: ["Arduino Nano", "PIR Sensor", "RGB LED Strip", "Relay Module", "Power Supply"]
         },
         {
-            id: 38,
-            title: "Climate Control System",
-            description: "Automated climate control for home with temperature, humidity, and air quality monitoring.",
-            category: "home",
-            images: [
-                "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Temperature monitoring",
-                "Humidity control",
-                "Air quality sensors",
-                "Smart thermostat"
-            ],
-            technologies: ["ESP32", "DHT22", "CO2 Sensor", "Relays", "Mobile App"],
+            id: "iot-home-003",
+            title: "Smart Security System",
+            description: "Home security system with facial recognition, intrusion detection, and remote monitoring.",
+            technologies: ["Raspberry Pi", "Camera Module", "Python", "OpenCV", "MQTT"],
+            images: ["images/iot-projects/smart-security.jpg"],
             links: [
-                { name: "Demo Video", url: "#", icon: "fa-youtube" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 39,
-            title: "Security Camera System",
-            description: "DIY security camera system with motion detection and cloud storage.",
-            category: "home",
-            images: [
-                "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/smart-security",
+                    icon: "fa-github"
+                }
             ],
             features: [
+                "Facial recognition for authorized access",
+                "Intrusion detection with alarms",
+                "Live camera feed to mobile app",
                 "Motion detection alerts",
-                "Cloud storage",
-                "Live streaming",
-                "Night vision"
+                "Emergency notifications"
             ],
-            technologies: ["Raspberry Pi", "Camera Module", "Motion Detection", "Cloud API", "Python"],
-            links: [
-                { name: "Demo Video", url: "#", icon: "fa-youtube" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 40,
-            title: "Smart Irrigation System",
-            description: "Automated garden irrigation system with soil moisture sensing and weather integration.",
-            category: "home",
-            images: [
-                "https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1417733403748-83bbc7c05140?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Soil moisture sensing",
-                "Weather-based scheduling",
-                "Water conservation",
-                "Mobile notifications"
-            ],
-            technologies: ["ESP32", "Soil Sensors", "Solenoid Valves", "Weather API", "MQTT"],
-            links: [
-                { name: "Demo Video", url: "#", icon: "fa-youtube" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            components: ["Raspberry Pi 4", "Camera Module", "PIR Sensors", "Buzzer", "LCD Screen"]
         }
+        // ADD MORE SMART HOME PROJECTS HERE
     ],
     
-    // Industrial IoT Projects (5 projects)
+    // Industrial IoT Category
     industrial: [
         {
-            id: 41,
-            title: "Industrial Monitoring System",
-            description: "Real-time monitoring system for industrial equipment with predictive maintenance.",
-            category: "industrial",
-            images: [
-                "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "iot-industrial-001",
+            title: "Factory Monitoring System",
+            description: "Real-time monitoring of industrial equipment with predictive maintenance alerts.",
+            technologies: ["ESP8266", "ThingsBoard", "Python", "Grafana", "PLC"],
+            images: ["images/iot-projects/factory-monitoring.jpg"],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/industrial-iot",
+                    icon: "fa-github"
+                }
             ],
             features: [
-                "Equipment monitoring",
-                "Predictive maintenance",
-                "Alert system",
-                "Performance analytics"
+                "Real-time equipment monitoring",
+                "Predictive maintenance alerts",
+                "Energy consumption tracking",
+                "Remote control of machinery",
+                "Production analytics dashboard"
             ],
-            technologies: ["Arduino", "Vibration Sensors", "PLC", "SCADA", "Industrial IoT"],
-            links: [
-                { name: "Case Study", url: "#", icon: "fa-file-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            components: ["ESP8266", "Current Sensors", "Temperature Sensors", "Vibration Sensors", "LCD Display"]
         },
         {
-            id: 42,
-            title: "Energy Management System",
-            description: "Industrial energy consumption monitoring and optimization system.",
-            category: "industrial",
-            images: [
-                "https://images.unsplash.com/photo-1501139083538-0139583c060f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "iot-industrial-002",
+            title: "Warehouse Inventory System",
+            description: "Automated inventory management using RFID and weight sensors.",
+            technologies: ["Arduino", "RFID", "Load Cells", "WiFi", "Database"],
+            images: ["images/iot-projects/warehouse-inventory.jpg"],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/warehouse-iot",
+                    icon: "fa-github"
+                }
             ],
             features: [
-                "Real-time energy monitoring",
-                "Cost optimization",
-                "Peak load management",
-                "Reporting dashboard"
+                "RFID-based item tracking",
+                "Weight-based quantity verification",
+                "Automatic reorder alerts",
+                "Inventory dashboard",
+                "Barcode scanning integration"
             ],
-            technologies: ["Current Sensors", "ESP32", "Energy Monitoring", "Data Analytics", "Cloud"],
-            links: [
-                { name: "Case Study", url: "#", icon: "fa-file-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            components: ["Arduino Mega", "RFID Reader", "Load Cells", "ESP8266", "LCD Touch Screen"]
         },
         {
-            id: 43,
-            title: "Production Line Monitoring",
-            description: "Automated monitoring system for production line efficiency and quality control.",
-            category: "industrial",
-            images: [
-                "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "iot-industrial-003",
+            title: "Safety Monitoring System",
+            description: "Industrial safety system monitoring temperature, gas, and worker presence.",
+            technologies: ["ESP32", "Gas Sensors", "Temperature Sensors", "SCADA", "Safety Systems"],
+            images: ["images/iot-projects/safety-monitoring.jpg"],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/safety-iot",
+                    icon: "fa-github"
+                }
             ],
             features: [
-                "Production counting",
-                "Quality control sensors",
-                "Downtime tracking",
-                "Efficiency reporting"
+                "Gas leak detection and alerts",
+                "Temperature threshold monitoring",
+                "Worker presence detection",
+                "Emergency shutdown control",
+                "Compliance reporting"
             ],
-            technologies: ["PLC", "Sensors", "Industrial IoT", "Data Collection", "Analytics"],
-            links: [
-                { name: "Case Study", url: "#", icon: "fa-file-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 44,
-            title: "Warehouse Automation",
-            description: "IoT-based warehouse management with inventory tracking and automated systems.",
-            category: "industrial",
-            images: [
-                "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Inventory tracking",
-                "Automated sorting",
-                "RFID technology",
-                "Real-time updates"
-            ],
-            technologies: ["RFID", "ESP32", "Conveyor Systems", "Database", "Industrial IoT"],
-            links: [
-                { name: "Case Study", url: "#", icon: "fa-file-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 45,
-            title: "Environmental Monitoring",
-            description: "Industrial environmental monitoring for safety compliance and hazard detection.",
-            category: "industrial",
-            images: [
-                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Gas leak detection",
-                "Temperature monitoring",
-                "Safety compliance",
-                "Emergency alerts"
-            ],
-            technologies: ["Gas Sensors", "ESP32", "Safety Systems", "Alerts", "Industrial IoT"],
-            links: [
-                { name: "Case Study", url: "#", icon: "fa-file-alt" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            components: ["ESP32", "MQ-2 Gas Sensor", "DHT22", "PIR Sensor", "Alarm System"]
         }
+        // ADD MORE INDUSTRIAL IOT PROJECTS HERE
     ],
     
-    // Sensor Projects (5 projects)
+    // Sensor Projects Category
     sensors: [
         {
-            id: 46,
+            id: "iot-sensors-001",
             title: "Weather Station",
-            description: "DIY weather station with multiple sensors for comprehensive weather monitoring.",
-            category: "sensors",
-            images: [
-                "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1561484930-998b6a7b22e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            description: "Wireless weather station measuring temperature, humidity, pressure, and rainfall.",
+            technologies: ["Arduino", "DHT22", "BMP180", "LoRa", "WebSocket"],
+            images: ["images/iot-projects/weather-station.jpg"],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/iot-weather-station",
+                    icon: "fa-github"
+                }
             ],
             features: [
-                "Temperature monitoring",
-                "Humidity sensing",
-                "Wind speed measurement",
-                "Rain detection"
+                "Temperature & humidity monitoring",
+                "Barometric pressure measurement",
+                "Rainfall detection",
+                "Wind speed/direction",
+                "Web dashboard with historical data"
             ],
-            technologies: ["DHT22", "Rain Sensor", "Anemometer", "ESP32", "Weather Station"],
-            links: [
-                { name: "Demo Video", url: "#", icon: "fa-youtube" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            components: ["Arduino Uno", "DHT22", "BMP180", "Rain Sensor", "LoRa Module", "Solar Panel"]
         },
         {
-            id: 47,
-            title: "Water Quality Monitor",
-            description: "Portable water quality monitoring device with multiple parameter measurements.",
-            category: "sensors",
-            images: [
-                "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1417733403748-83bbc7c05140?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "pH level measurement",
-                "Turbidity sensing",
-                "Temperature monitoring",
-                "Data logging"
-            ],
-            technologies: ["pH Sensor", "Turbidity Sensor", "Arduino", "Data Logging", "Water Quality"],
-            links: [
-                { name: "Demo Video", url: "#", icon: "fa-youtube" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 48,
-            title: "Air Quality Monitor",
-            description: "Indoor air quality monitoring system with multiple pollutant detection.",
-            category: "sensors",
-            images: [
-                "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "CO2 monitoring",
-                "PM2.5 detection",
-                "VOC sensing",
-                "Air quality index"
-            ],
-            technologies: ["CO2 Sensor", "Particulate Sensor", "ESP32", "Air Quality", "Monitoring"],
-            links: [
-                { name: "Demo Video", url: "#", icon: "fa-youtube" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 49,
-            title: "Smart Parking Sensor",
-            description: "IoT-based parking space detection and guidance system.",
-            category: "sensors",
-            images: [
-                "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Parking space detection",
-                "Occupancy monitoring",
-                "Mobile app integration",
-                "Guidance system"
-            ],
-            technologies: ["Ultrasonic Sensors", "ESP8266", "Mobile App", "Parking System", "IoT"],
-            links: [
-                { name: "Demo Video", url: "#", icon: "fa-youtube" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 50,
+            id: "iot-sensors-002",
             title: "Soil Monitoring System",
-            description: "Comprehensive soil monitoring for agriculture with multiple parameter sensing.",
-            category: "sensors",
-            images: [
-                "https://images.unsplash.com/photo-1417733403748-83bbc7c05140?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Soil moisture sensing",
-                "Nutrient level detection",
-                "Temperature monitoring",
-                "Data analytics"
-            ],
-            technologies: ["Soil Sensors", "ESP32", "Agriculture IoT", "Data Analysis", "Farming"],
+            description: "Agriculture IoT system for monitoring soil conditions and automatic irrigation.",
+            technologies: ["ESP32", "Soil Moisture Sensors", "Water Pump", "Blynk", "Agriculture IoT"],
+            images: ["images/iot-projects/soil-monitoring.jpg"],
             links: [
-                { name: "Demo Video", url: "#", icon: "fa-youtube" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        }
-    ],
-    
-    // Other IoT Projects (5 projects)
-    othersiot: [
-        {
-            id: 51,
-            title: "IoT Pet Feeder",
-            description: "Smart pet feeding system with scheduling and remote control capabilities.",
-            category: "othersiot",
-            images: [
-                "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Scheduled feeding",
-                "Portion control",
-                "Mobile app control",
-                "Food level monitoring"
-            ],
-            technologies: ["ESP32", "Servo Motors", "Mobile App", "Scheduling", "Pet Tech"],
-            links: [
-                { name: "Demo Video", url: "#", icon: "fa-youtube" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 52,
-            title: "Smart Mailbox",
-            description: "IoT-enabled mailbox with delivery notifications and security features.",
-            category: "othersiot",
-            images: [
-                "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Delivery detection",
-                "Notification system",
-                "Security lock",
-                "Weather protection"
-            ],
-            technologies: ["ESP8266", "Proximity Sensors", "Mobile Notifications", "Security", "IoT"],
-            links: [
-                { name: "Demo Video", url: "#", icon: "fa-youtube" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 53,
-            title: "Smart Plant Monitor",
-            description: "Automated plant monitoring system with watering and growth tracking.",
-            category: "othersiot",
-            images: [
-                "https://images.unsplash.com/photo-1417733403748-83bbc7c05140?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/smart-agriculture",
+                    icon: "fa-github"
+                }
             ],
             features: [
                 "Soil moisture monitoring",
-                "Automatic watering",
-                "Light level sensing",
-                "Growth tracking"
+                "Automatic irrigation control",
+                "Weather forecast integration",
+                "Mobile notifications",
+                "Water usage optimization"
             ],
-            technologies: ["Soil Sensors", "ESP32", "Water Pump", "Light Sensor", "Plant Care"],
-            links: [
-                { name: "Demo Video", url: "#", icon: "fa-youtube" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            components: ["ESP32", "Soil Moisture Sensors", "Water Pump", "Relay Module", "Solar Panel", "Battery"]
         },
         {
-            id: 54,
-            title: "IoT Door Lock",
-            description: "Smart door lock system with multiple access methods and security features.",
-            category: "othersiot",
-            images: [
-                "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "iot-sensors-003",
+            title: "Water Quality Monitor",
+            description: "Real-time water quality monitoring system for pH, turbidity, and temperature.",
+            technologies: ["Arduino", "pH Sensor", "Turbidity Sensor", "IoT", "Sensors"],
+            images: ["images/iot-projects/water-quality.jpg"],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/water-quality-iot",
+                    icon: "fa-github"
+                }
             ],
             features: [
-                "RFID access",
-                "Mobile app control",
-                "Access logs",
-                "Emergency unlocking"
+                "pH level monitoring",
+                "Turbidity measurement",
+                "Water temperature tracking",
+                "Contamination alerts",
+                "Data logging and analysis"
             ],
-            technologies: ["RFID", "ESP32", "Electronic Lock", "Security", "Access Control"],
+            components: ["Arduino Nano", "pH Sensor", "Turbidity Sensor", "Temperature Probe", "LCD Display"]
+        }
+        // ADD MORE SENSOR PROJECTS HERE
+    ],
+    
+    // Other IoT Projects Category
+    othersiot: [
+        {
+            id: "iot-othersiot-001",
+            title: "GPS Tracker",
+            description: "Vehicle tracking system with real-time location, geofencing, and speed monitoring.",
+            technologies: ["ESP32", "GPS Module", "Google Maps API", "Firebase", "API"],
+            images: ["images/iot-projects/gps-tracker.jpg"],
             links: [
-                { name: "Demo Video", url: "#", icon: "fa-youtube" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/gps-tracker-iot",
+                    icon: "fa-github"
+                }
+            ],
+            features: [
+                "Real-time GPS tracking",
+                "Geofencing with alerts",
+                "Speed monitoring",
+                "Historical route playback",
+                "Battery status monitoring"
+            ],
+            components: ["ESP32", "GPS Module", "GSM Module", "Battery Pack", "OLED Display"]
         },
         {
-            id: 55,
-            title: "IoT Health Monitor",
-            description: "Wearable health monitoring device with multiple biometric sensors.",
-            category: "othersiot",
-            images: [
-                "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "iot-othersiot-002",
+            title: "Smart Parking System",
+            description: "IoT-based parking system with availability detection and reservation.",
+            technologies: ["Arduino", "Ultrasonic Sensors", "LED Display", "Web App", "UI/UX"],
+            images: ["images/iot-projects/smart-parking.jpg"],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/smart-parking",
+                    icon: "fa-github"
+                }
+            ],
+            features: [
+                "Parking slot availability detection",
+                "LED display showing free spots",
+                "Mobile app for reservation",
+                "Payment integration",
+                "Parking duration tracking"
+            ],
+            components: ["Arduino Mega", "Ultrasonic Sensors", "LED Matrix Display", "RFID Reader", "Servo Motor"]
+        },
+        {
+            id: "iot-othersiot-003",
+            title: "Wearable Health Monitor",
+            description: "IoT wearable device monitoring heart rate, temperature, and activity.",
+            technologies: ["ESP32", "Heart Rate Sensor", "Temperature Sensor", "Bluetooth", "Wearable"],
+            images: ["images/iot-projects/wearable-health.jpg"],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/yourusername/wearable-health",
+                    icon: "fa-github"
+                }
             ],
             features: [
                 "Heart rate monitoring",
-                "Body temperature",
-                "Activity tracking",
-                "Emergency alerts"
+                "Body temperature tracking",
+                "Activity and step counting",
+                "Fall detection alert",
+                "Mobile app dashboard"
             ],
-            technologies: ["Biometric Sensors", "ESP32", "Bluetooth", "Health Monitoring", "Wearable"],
-            links: [
-                { name: "Demo Video", url: "#", icon: "fa-youtube" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            components: ["ESP32", "Heart Rate Sensor", "Temperature Sensor", "Vibration Motor", "OLED Display"]
         }
+        // ADD MORE OTHER IOT PROJECTS HERE
     ]
 };
 
-// Export for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = iotProjectsData;
-}
+// 📝 HOW TO ADD NEW IOT PROJECTS:
+// ===============================
+// 1. Choose a category: 'home', 'industrial', 'sensors', or 'othersiot'
+// 2. Create a new project object
+// 3. Give it a unique ID (increment the last number)
+// 4. Add it to the array
+
+// Example for adding a new smart home project:
+/*
+const newSmartHomeProject = {
+    id: "iot-home-004",
+    title: "Voice Controlled Curtains",
+    description: "Automated curtains controlled by voice commands and schedule.",
+    technologies: ["ESP32", "Stepper Motor", "Voice Recognition", "HomeKit", "Automation"],
+    images: ["images/iot-projects/smart-curtains.jpg"],
+    links: [
+        {
+            name: "GitHub",
+            url: "https://github.com/yourusername/smart-curtains",
+            icon: "fa-github"
+        }
+    ],
+    features: [
+        "Voice control with Google Assistant",
+        "Schedule-based operation",
+        "Light sensor integration",
+        "Manual override option",
+        "Energy saving mode"
+    ],
+    components: ["ESP32", "Stepper Motor", "Motor Driver", "Light Sensor", "Power Supply"]
+};
+
+// Add to home category:
+iotProjectsData.home.push(newSmartHomeProject);
+*/
+
+// Example for adding a new industrial IoT project:
+/*
+const newIndustrialProject = {
+    id: "iot-industrial-004",
+    title: "Conveyor Belt Monitor",
+    description: "Monitoring system for conveyor belt speed, load, and maintenance.",
+    technologies: ["ESP8266", "Encoder", "Load Cells", "Industrial IoT", "SCADA"],
+    images: ["images/iot-projects/conveyor-monitor.jpg"],
+    links: [
+        {
+            name: "GitHub",
+            url: "https://github.com/yourusername/conveyor-monitor",
+            icon: "fa-github"
+        }
+    ],
+    features: [
+        "Belt speed monitoring",
+        "Load weight measurement",
+        "Predictive maintenance alerts",
+        "Efficiency calculation",
+        "Dashboard with KPIs"
+    ],
+    components: ["ESP8266", "Rotary Encoder", "Load Cells", "Temperature Sensor", "LCD Display"]
+};
+
+// Add to industrial category:
+iotProjectsData.industrial.push(newIndustrialProject);
+*/
+
+// Example for adding a new sensor project:
+/*
+const newSensorProject = {
+    id: "iot-sensors-004",
+    title: "Air Quality Monitor",
+    description: "Monitor air pollution levels with CO2, CO, and particulate matter sensors.",
+    technologies: ["Arduino", "MQ-135", "PMS5003", "API", "Sensors"],
+    images: ["images/iot-projects/air-quality.jpg"],
+    links: [
+        {
+            name: "GitHub",
+            url: "https://github.com/yourusername/air-quality-iot",
+            icon: "fa-github"
+        }
+    ],
+    features: [
+        "CO2 and CO levels monitoring",
+        "PM2.5 and PM10 detection",
+        "Air quality index calculation",
+        "Mobile alerts for poor air quality",
+        "Historical data analysis"
+    ],
+    components: ["Arduino Uno", "MQ-135 Sensor", "PMS5003", "OLED Display", "Buzzer"]
+};
+
+// Add to sensors category:
+iotProjectsData.sensors.push(newSensorProject);
+*/
+
+// Example for adding to othersiot category:
+/*
+const newOtherIoTProject = {
+    id: "iot-othersiot-004",
+    title: "Smart Pet Feeder",
+    description: "Automated pet feeder with schedule, portion control, and remote control.",
+    technologies: ["ESP32", "Servo Motor", "Load Cell", "Mobile App", "Automation"],
+    images: ["images/iot-projects/pet-feeder.jpg"],
+    links: [
+        {
+            name: "GitHub",
+            url: "https://github.com/yourusername/smart-pet-feeder",
+            icon: "fa-github"
+        }
+    ],
+    features: [
+        "Scheduled feeding",
+        "Portion control",
+        "Remote feeding via app",
+        "Food level monitoring",
+        "Feeding history"
+    ],
+    components: ["ESP32", "Servo Motor", "Load Cell", "Food Hopper", "OLED Display"]
+};
+
+// Add to othersiot category:
+iotProjectsData.othersiot.push(newOtherIoTProject);
+*/
+
+// 📌 IMPORTANT NOTES:
+// 1. Keep IDs unique across all categories
+// 2. Add actual image files to images/iot-projects/ folder
+// 3. Update GitHub URLs with your actual repositories
+// 4. Technologies array matches techClassMap in your iot-projects-new.js
+// 5. Components list helps users understand hardware requirements
+
+console.log("📡 IoT projects data loaded successfully!");
+console.log(`📊 Total projects: ${iotProjectsData.home.length + iotProjectsData.industrial.length + iotProjectsData.sensors.length + iotProjectsData.othersiot.length}`);

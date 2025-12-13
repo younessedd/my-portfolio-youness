@@ -1,447 +1,393 @@
 /**
- * mobile-projects.js - Mobile Projects Data
- * Contains all mobile project data organized by categories
+ * Mobile Projects Data - Complete Version
+ * Easy to edit - Add/remove/modify mobile apps easily
+ * Supports: quiz, smart, utility, others categories
  */
 
 const mobileProjectsData = {
-    // Quiz Apps (5 projects)
+    // File metadata
+    fileId: "mobile-projects-data-001",
+    fileType: "mobile-projects",
+    created: "2024-12-17",
+    lastUpdated: "2024-12-17",
+    
+    // Quiz Apps Category
     quiz: [
         {
-            id: 16,
-            title: "Tech Quiz Challenge",
-            description: "Interactive quiz app with multiple categories, timed challenges, and leaderboard system.",
-            category: "quiz",
-            images: [
-                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "mobile-quiz-001",
+            title: "General Knowledge Quiz",
+            description: "Interactive quiz app with 5000+ questions across 10+ categories, featuring leaderboards and daily challenges.",
+            technologies: ["Kodular", "Android", "Quiz Logic"],
+            images: ["images/mobile-projects/quiz-general.jpg"],
+            links: [
+                {
+                    name: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.youness.quiz",
+                    icon: "fa-google-play"
+                }
             ],
             features: [
-                "Multiple quiz categories",
-                "Timed challenge mode",
-                "Global leaderboard",
-                "Achievement system"
+                "5000+ questions in 10+ categories",
+                "Daily challenges and rewards",
+                "Leaderboard system",
+                "Offline mode available",
+                "Progress tracking"
             ],
-            technologies: ["Kodular", "Android", "Firebase", "Quiz Logic"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            downloads: "10K+",
+            rating: 4.5
         },
         {
-            id: 17,
-            title: "Math Brain Trainer",
-            description: "Math quiz app for improving calculation speed with difficulty levels and progress tracking.",
-            category: "quiz",
-            images: [
-                "https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Progressive difficulty levels",
-                "Speed calculation training",
-                "Progress statistics",
-                "Daily challenges"
-            ],
+            id: "mobile-quiz-002",
+            title: "Math Quiz Challenge",
+            description: "Educational math quiz app for students of all levels with step-by-step solutions.",
             technologies: ["Kodular", "Android", "Math Engine", "Progress Tracking"],
+            images: ["images/mobile-projects/quiz-math.jpg"],
             links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 18,
-            title: "Language Learning Quiz",
-            description: "Language learning app with vocabulary quizzes, pronunciation practice, and grammar tests.",
-            category: "quiz",
-            images: [
-                "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                {
+                    name: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.youness.mathquiz",
+                    icon: "fa-google-play"
+                }
             ],
             features: [
-                "Multiple language support",
-                "Pronunciation practice",
-                "Grammar tests",
-                "Vocabulary builder"
+                "Grade levels 1-12",
+                "Step-by-step solutions",
+                "Progress reports",
+                "Parent dashboard",
+                "1000+ math problems"
             ],
-            technologies: ["Kodular", "Android", "Text-to-Speech", "Language API"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            downloads: "20K+",
+            rating: 4.3
         },
         {
-            id: 19,
-            title: "Science Trivia Master",
-            description: "Science trivia app covering physics, chemistry, biology, and astronomy with expert explanations.",
-            category: "quiz",
-            images: [
-                "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "mobile-quiz-003",
+            title: "Science Quiz Master",
+            description: "Comprehensive science quiz covering physics, chemistry, biology, and astronomy.",
+            technologies: ["Android SDK", "Firebase", "Science Database", "Progress Tracking"],
+            images: ["images/mobile-projects/quiz-science.jpg"],
+            links: [
+                {
+                    name: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.youness.sciencequiz",
+                    icon: "fa-google-play"
+                }
             ],
             features: [
-                "Four science categories",
-                "Expert explanations",
+                "Physics, Chemistry, Biology categories",
                 "Image-based questions",
-                "Score history"
+                "Detailed explanations",
+                "Bookmark difficult questions",
+                "Daily science facts"
             ],
-            technologies: ["Kodular", "Android", "Firebase", "Science Database"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 20,
-            title: "History Quiz Adventure",
-            description: "Historical timeline quiz app with period-based challenges and educational content.",
-            category: "quiz",
-            images: [
-                "https://images.unsplash.com/photo-1505664194779-8beaceb93744?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Historical timeline navigation",
-                "Period-based challenges",
-                "Educational facts",
-                "Multiplayer mode"
-            ],
-            technologies: ["Kodular", "Android", "Timeline Engine", "Multiplayer"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            downloads: "15K+",
+            rating: 4.7
         }
+        // ADD MORE QUIZ APPS HERE
     ],
     
-    // Smart Home Apps (5 projects)
+    // Smart Home Apps Category
     smart: [
         {
-            id: 21,
-            title: "Smart Home Control",
-            description: "Mobile app for controlling smart home devices including lights, thermostats, and security systems.",
-            category: "smart",
-            images: [
-                "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "mobile-smart-001",
+            title: "Home Automation Pro",
+            description: "Control your smart home devices from your phone with advanced automation and scheduling.",
+            technologies: ["Android SDK", "Bluetooth", "IoT", "Firebase", "Push Notifications"],
+            images: ["images/mobile-projects/smart-home.jpg"],
+            links: [
+                {
+                    name: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.youness.smarthome",
+                    icon: "fa-google-play"
+                }
             ],
             features: [
-                "Device control dashboard",
-                "Scheduling and automation",
-                "Energy usage monitoring",
-                "Remote access"
+                "Control lights, fans, and appliances",
+                "Schedule automation",
+                "Energy consumption monitoring",
+                "Voice commands integration",
+                "Remote access via internet"
             ],
-            technologies: ["Kodular", "Android", "Bluetooth", "MQTT", "IoT"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            downloads: "50K+",
+            rating: 4.8
         },
         {
-            id: 22,
-            title: "IoT Garden Monitor",
-            description: "App for monitoring and controlling smart garden systems including irrigation and soil sensors.",
-            category: "smart",
-            images: [
-                "https://images.unsplash.com/photo-1417733403748-83bbc7c05140?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Soil moisture monitoring",
-                "Automatic irrigation control",
-                "Plant health tracking",
-                "Weather integration"
-            ],
-            technologies: ["Kodular", "Android", "ESP32", "Soil Sensors", "Weather API"],
+            id: "mobile-smart-002",
+            title: "Smart Security Manager",
+            description: "Monitor your home security system with real-time alerts and camera integration.",
+            technologies: ["Android SDK", "IP Cameras", "Push Notifications", "Encryption"],
+            images: ["images/mobile-projects/smart-security.jpg"],
             links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 23,
-            title: "Smart Energy Saver",
-            description: "Energy monitoring app that tracks electricity usage and suggests optimization strategies.",
-            category: "smart",
-            images: [
-                "https://images.unsplash.com/photo-1507502707540-9cb6a5e6c8c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1501139083538-0139583c060f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                {
+                    name: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.youness.securitymanager",
+                    icon: "fa-google-play"
+                }
             ],
             features: [
-                "Real-time energy monitoring",
-                "Cost calculation",
-                "Usage pattern analysis",
-                "Energy saving tips"
-            ],
-            technologies: ["Kodular", "Android", "Energy Sensors", "Data Analytics", "Charts"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 24,
-            title: "Home Security Monitor",
-            description: "Security monitoring app with live camera feeds, motion detection alerts, and emergency contacts.",
-            category: "smart",
-            images: [
-                "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Live camera streaming",
+                "Live camera feed",
                 "Motion detection alerts",
-                "Emergency contact list",
-                "Security logs"
+                "Door/window sensors",
+                "Emergency contacts",
+                "Activity logs"
             ],
-            technologies: ["Kodular", "Android", "IP Cameras", "Push Notifications", "Security"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 25,
-            title: "Voice Home Assistant",
-            description: "Voice-controlled home automation app with voice commands and scene management.",
-            category: "smart",
-            images: [
-                "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Voice command recognition",
-                "Scene and routine management",
-                "Device grouping",
-                "Voice feedback"
-            ],
-            technologies: ["Kodular", "Android", "Voice Recognition", "Scene Control", "Automation"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            downloads: "30K+",
+            rating: 4.6
         }
+        // ADD MORE SMART HOME APPS HERE
     ],
     
-    // Utility Apps (5 projects)
+    // Utility Apps Category
     utility: [
         {
-            id: 26,
+            id: "mobile-utility-001",
             title: "Unit Converter Pro",
-            description: "Comprehensive unit conversion app with offline support and calculation history.",
-            category: "utility",
-            images: [
-                "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            description: "Convert between 1000+ units across 30+ categories with offline functionality.",
+            technologies: ["Kotlin", "Material Design", "Offline Storage", "Conversion Logic"],
+            images: ["images/mobile-projects/unit-converter.jpg"],
+            links: [
+                {
+                    name: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.youness.unitconverter",
+                    icon: "fa-google-play"
+                }
             ],
             features: [
-                "Multiple unit categories",
-                "Offline functionality",
+                "30+ categories (length, weight, temperature, etc.)",
+                "Offline operation",
                 "Calculation history",
-                "Favorites system"
+                "Favorite conversions",
+                "Dark mode support"
             ],
-            technologies: ["Kodular", "Android", "Conversion Logic", "Offline Storage"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            downloads: "100K+",
+            rating: 4.6
         },
         {
-            id: 27,
+            id: "mobile-utility-002",
             title: "Expense Tracker",
-            description: "Personal finance app for tracking expenses, setting budgets, and generating reports.",
-            category: "utility",
-            images: [
-                "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            description: "Track your daily expenses with charts, budget planning, and financial reports.",
+            technologies: ["Java", "MPAndroidChart", "SQLite", "Financial Calculations"],
+            images: ["images/mobile-projects/expense-tracker.jpg"],
+            links: [
+                {
+                    name: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.youness.expensetracker",
+                    icon: "fa-google-play"
+                }
             ],
             features: [
                 "Expense categorization",
-                "Budget planning",
-                "Monthly reports",
+                "Monthly budget planning",
+                "Visual charts and reports",
+                "Data backup to cloud",
                 "Bill reminders"
             ],
-            technologies: ["Kodular", "Android", "Financial Calculations", "Charts", "Reminders"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            downloads: "25K+",
+            rating: 4.4
         },
         {
-            id: 28,
-            title: "Password Manager",
-            description: "Secure password management app with encryption and biometric authentication.",
-            category: "utility",
-            images: [
-                "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "mobile-utility-003",
+            title: "Voice Notes & Reminders",
+            description: "Record voice notes and set reminders with speech-to-text conversion.",
+            technologies: ["Flutter", "Voice Recognition", "Local Notifications", "Text-to-Speech"],
+            images: ["images/mobile-projects/voice-notes.jpg"],
+            links: [
+                {
+                    name: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.youness.voicenotes",
+                    icon: "fa-google-play"
+                }
             ],
             features: [
-                "Military-grade encryption",
-                "Biometric authentication",
-                "Password generator",
-                "Auto-fill capability"
+                "Voice recording and transcription",
+                "Smart reminders",
+                "Organize by categories",
+                "Search within notes",
+                "Cloud sync"
             ],
-            technologies: ["Kodular", "Android", "Encryption", "Biometrics", "Security"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 29,
-            title: "File Manager Pro",
-            description: "Advanced file management app with cloud integration and file operations.",
-            category: "utility",
-            images: [
-                "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "File browsing and organization",
-                "Cloud storage integration",
-                "File compression",
-                "Search functionality"
-            ],
-            technologies: ["Kodular", "Android", "File System", "Cloud API", "Compression"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 30,
-            title: "Task Reminder",
-            description: "Smart task reminder app with location-based alerts and priority system.",
-            category: "utility",
-            images: [
-                "https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Location-based reminders",
-                "Priority levels",
-                "Recurring tasks",
-                "Voice notes"
-            ],
-            technologies: ["Kodular", "Android", "Location Services", "Notifications", "Voice"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            downloads: "40K+",
+            rating: 4.7
         }
+        // ADD MORE UTILITY APPS HERE
     ],
     
-    // Other Apps (5 projects)
+    // Other Apps Category
     others: [
         {
-            id: 31,
-            title: "Health Fitness Tracker",
-            description: "Health and fitness tracking app with workout plans and nutrition logging.",
-            category: "others",
-            images: [
-                "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "mobile-others-001",
+            title: "Meditation & Relaxation",
+            description: "Guided meditation app with timer, sleep sounds, and progress tracking.",
+            technologies: ["Flutter", "Audio Player", "Local Notifications", "Progress Tracking"],
+            images: ["images/mobile-projects/meditation.jpg"],
+            links: [
+                {
+                    name: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.youness.meditation",
+                    icon: "fa-google-play"
+                }
             ],
             features: [
-                "Workout tracking",
-                "Nutrition logging",
-                "Progress charts",
-                "Goal setting"
+                "50+ guided meditation sessions",
+                "Sleep sounds and white noise",
+                "Breathing exercises",
+                "Progress tracking",
+                "Daily reminders"
             ],
-            technologies: ["Kodular", "Android", "Health Tracking", "Charts", "Goals"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            downloads: "15K+",
+            rating: 4.9
         },
         {
-            id: 32,
-            title: "Music Player Plus",
-            description: "Feature-rich music player with equalizer, playlists, and lyrics display.",
-            category: "others",
-            images: [
-                "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "mobile-others-002",
+            title: "Music Player Pro",
+            description: "Feature-rich music player with equalizer, lyrics, and playlist management.",
+            technologies: ["Android SDK", "Audio Player", "Equalizer", "Lyrics API"],
+            images: ["images/mobile-projects/music-player.jpg"],
+            links: [
+                {
+                    name: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.youness.musicplayer",
+                    icon: "fa-google-play"
+                }
             ],
             features: [
-                "Audio equalizer",
-                "Playlist management",
-                "Lyrics display",
-                "Sleep timer"
+                "10-band equalizer",
+                "Auto-download lyrics",
+                "Create smart playlists",
+                "Sleep timer",
+                "Backup playlists"
             ],
-            technologies: ["Kodular", "Android", "Audio Player", "Equalizer", "Lyrics API"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            downloads: "80K+",
+            rating: 4.8
         },
         {
-            id: 33,
-            title: "Recipe Manager",
-            description: "Recipe management app with ingredient scanner and meal planning.",
-            category: "others",
-            images: [
-                "https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+            id: "mobile-others-003",
+            title: "Document Scanner",
+            description: "Scan documents, receipts, and books with OCR text recognition.",
+            technologies: ["Kotlin", "CameraX", "OCR", "PDF Generation"],
+            images: ["images/mobile-projects/document-scanner.jpg"],
+            links: [
+                {
+                    name: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.youness.documentscanner",
+                    icon: "fa-google-play"
+                }
             ],
             features: [
-                "Recipe database",
-                "Ingredient scanner",
-                "Meal planning",
-                "Shopping list"
+                "High-quality scanning",
+                "OCR text recognition",
+                "Export to PDF/Word",
+                "Cloud storage integration",
+                "Batch scanning"
             ],
-            technologies: ["Kodular", "Android", "Database", "Scanner", "Planning"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 34,
-            title: "Language Translator",
-            description: "Real-time language translation app with text and voice input.",
-            category: "others",
-            images: [
-                "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Multiple languages",
-                "Text translation",
-                "Voice input",
-                "Offline mode"
-            ],
-            technologies: ["Kodular", "Android", "Translation API", "Voice Recognition", "Offline"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
-        },
-        {
-            id: 35,
-            title: "Weather Forecast Pro",
-            description: "Advanced weather forecasting app with detailed reports and alerts.",
-            category: "others",
-            images: [
-                "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                "https://images.unsplash.com/photo-1561484930-998b6a7b22e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-            ],
-            features: [
-                "Detailed forecasts",
-                "Weather alerts",
-                "Radar maps",
-                "Location-based updates"
-            ],
-            technologies: ["Kodular", "Android", "Weather API", "Maps", "Alerts"],
-            links: [
-                { name: "Play Store", url: "#", icon: "fa-google-play" },
-                { name: "GitHub", url: "#", icon: "fa-code-branch" }
-            ]
+            downloads: "60K+",
+            rating: 4.5
         }
+        // ADD MORE OTHER APPS HERE
     ]
 };
 
-// Export for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = mobileProjectsData;
-}
+// 📝 HOW TO ADD NEW MOBILE APPS:
+// ===============================
+// 1. Choose a category: 'quiz', 'smart', 'utility', or 'others'
+// 2. Create a new project object
+// 3. Give it a unique ID (increment the last number)
+// 4. Add it to the array
+
+// Example for adding a new quiz app:
+/*
+const newQuizApp = {
+    id: "mobile-quiz-004",
+    title: "History Quiz Master",
+    description: "Test your history knowledge with timeline-based questions.",
+    technologies: ["Android SDK", "Timeline Engine", "Multiplayer"],
+    images: ["images/mobile-projects/history-quiz.jpg"],
+    links: [
+        {
+            name: "Google Play",
+            url: "https://play.google.com/store/apps/details?id=com.youness.historyquiz",
+            icon: "fa-google-play"
+        }
+    ],
+    features: [
+        "Timeline-based questions",
+        "Historical images and maps",
+        "Multiplayer mode",
+        "Achievement system",
+        "Daily historical facts"
+    ],
+    downloads: "8K+",
+    rating: 4.4
+};
+
+// Add to quiz category:
+mobileProjectsData.quiz.push(newQuizApp);
+*/
+
+// Example for adding a new smart home app:
+/*
+const newSmartApp = {
+    id: "mobile-smart-003",
+    title: "Energy Monitor",
+    description: "Track and optimize your home energy consumption.",
+    technologies: ["Android SDK", "Energy Sensors", "Charts", "IoT"],
+    images: ["images/mobile-projects/energy-monitor.jpg"],
+    links: [
+        {
+            name: "Google Play",
+            url: "https://play.google.com/store/apps/details?id=com.youness.energymonitor",
+            icon: "fa-google-play"
+        }
+    ],
+    features: [
+        "Real-time energy monitoring",
+        "Cost calculation",
+        "Usage patterns analysis",
+        "Energy saving tips",
+        "Monthly reports"
+    ],
+    downloads: "35K+",
+    rating: 4.7
+};
+
+// Add to smart category:
+mobileProjectsData.smart.push(newSmartApp);
+*/
+
+// Example for adding a new utility app:
+/*
+const newUtilityApp = {
+    id: "mobile-utility-004",
+    title: "Task Planner Pro",
+    description: "Advanced task management with project organization.",
+    technologies: ["React Native", "Redux", "Local Storage", "Notifications"],
+    images: ["images/mobile-projects/task-planner.jpg"],
+    links: [
+        {
+            name: "Google Play",
+            url: "https://play.google.com/store/apps/details?id=com.youness.taskplanner",
+            icon: "fa-google-play"
+        }
+    ],
+    features: [
+        "Project-based organization",
+        "Priority levels",
+        "Recurring tasks",
+        "Progress tracking",
+        "Team collaboration"
+    ],
+    downloads: "45K+",
+    rating: 4.6
+};
+
+// Add to utility category:
+mobileProjectsData.utility.push(newUtilityApp);
+*/
+
+// 📌 IMPORTANT NOTES:
+// 1. Keep IDs unique across all categories
+// 2. Add actual image files to images/mobile-projects/ folder
+// 3. Update download counts and ratings based on actual data
+// 4. Add real Google Play URLs
+// 5. Technologies array supports techClassMap in your mobile-projects-new.js
+
+console.log("📱 Mobile projects data loaded successfully!");
+console.log(`📊 Total apps: ${mobileProjectsData.quiz.length + mobileProjectsData.smart.length + mobileProjectsData.utility.length + mobileProjectsData.others.length}`);

@@ -1,396 +1,326 @@
 /**
  * skills-modal.js - Skills Modal Management
- * Handles skills modal, navigation between skill categories, and skills data
+ * مع هيدر صغير يظهر اسم الفئة
+ * زر الإغلاق في الهيدر في المنتصف عمودياً
+ * نفس تصميم Web Apps
  */
 
-const SkillsModalManager = {
-    // DOM Elements
+const SkillsManagerNew = {
     elements: {
-        skillsNav: null,
-        modalOverlay: null,
-        modal: null,
-        closeBtn: null,
-        modalCards: {}
+        nav: null,
+        swiperContainer: null,
+        swiper: null,
+        categoryTitle: null,
+        headerCloseBtn: null
     },
     
-    // Skills data
-    skillsData: {
-        web: {
-            title: "Web Development",
-            subtitle: "Frontend & Backend Development",
-            icon: "fa-code",
-            skills: [
-                { icon: "fab fa-html5", name: "HTML5" },
-                { icon: "fab fa-css3-alt", name: "CSS3" },
-                { icon: "fab fa-js", name: "JavaScript (ES6+)" },
-                { icon: "fas fa-mobile-alt", name: "Responsive Design" },
-                { icon: "fab fa-react", name: "React.js" },
-                { icon: "fas fa-server", name: "REST APIs" },
-                { icon: "fab fa-git-alt", name: "Git / GitHub" },
-                { icon: "fas fa-paint-brush", name: "UI/UX Basics" },
-                { icon: "fab fa-bootstrap", name: "Bootstrap / Tailwind CSS" },
-                { icon: "fab fa-laravel", name: "Laravel" }
-            ]
-        },
-        iot: {
-            title: "IoT & Electronics",
-            subtitle: "Internet of Things & Electrical Engineering",
-            icon: "fa-microchip",
-            skills: [
-                { icon: "fas fa-microchip", name: "ESP32 Programming" },
-                { icon: "fas fa-wifi", name: "ESP8266 Programming" },
-                { icon: "fas fa-robot", name: "Arduino Programming" },
-                { icon: "fas fa-broadcast-tower", name: "MQTT Protocol" },
-                { icon: "fas fa-temperature-high", name: "Sensors & Actuators" },
-                { icon: "fas fa-bluetooth", name: "Bluetooth BLE" },
-                { icon: "fas fa-home", name: "Smart Home Automation" },
-                { icon: "fas fa-wifi", name: "WiFi IoT Systems" },
-                { icon: "fas fa-microchip", name: "NodeMCU Projects" },
-                { icon: "fab fa-google", name: "Firebase (IoT)" },
-                { icon: "fas fa-bolt", name: "Electrical/Electronics" },
-                { icon: "fas fa-project-diagram", name: "Circuit Design" },
-                { icon: "fas fa-industry", name: "Industrial Electrical Maintenance" },
-                { icon: "fas fa-tools", name: "Troubleshooting & Diagnostics" },
-                { icon: "fas fa-file-alt", name: "Electrical Schematics Reading" },
-                { icon: "fas fa-plug", name: "Contactors / Relays / Protection" },
-                { icon: "fas fa-sliders-h", name: "Control Panels" },
-                { icon: "fas fa-industry", name: "Basic PLC Knowledge" },
-                { icon: "fas fa-sensor", name: "Industrial Sensors & Automation Components" }
-            ]
-        },
-        mobile: {
-            title: "Mobile Development",
-            subtitle: "Android App Development",
-            icon: "fa-mobile-alt",
-            skills: [
-                { icon: "fas fa-mobile-alt", name: "Kodular App Development" },
-                { icon: "fas fa-paint-brush", name: "Android UI Design" },
-                { icon: "fas fa-bluetooth", name: "Bluetooth/BLE Integration" },
-                { icon: "fab fa-google", name: "Firebase Integration" },
-                { icon: "fas fa-sync-alt", name: "IoT App Communication" }
-            ]
-        },
-        soft: {
-            title: "Soft Skills",
-            subtitle: "Professional & Interpersonal Skills",
-            icon: "fa-star",
-            skills: [
-                { icon: "fas fa-lightbulb", name: "Problem Solving" },
-                { icon: "fas fa-palette", name: "Creativity" },
-                { icon: "fas fa-clock", name: "Time Management" },
-                { icon: "fas fa-brain", name: "Critical Thinking" },
-                { icon: "fas fa-comments", name: "Communication" },
-                { icon: "fas fa-users", name: "Teamwork" },
-                { icon: "fas fa-chalkboard-teacher", name: "Presentation Skills" },
-                { icon: "fas fa-paint-brush", name: "UI/UX Design" }
-            ]
-        }
-    },
-    
-    // State
     currentCategory: 'web',
+    swiperInstance: null,
+    skillsData: null,
     
-    /**
-     * Initialize skills modal
-     */
-    init: function() {
+    init: function(skillsData) {
+        this.skillsData = skillsData || window.skillsData;
         this.cacheElements();
-        this.setupEventListeners();
-        this.loadSkillsData();
-        console.log('Skills modal manager initialized');
+        this.setupNavigation();
+        this.setupHeaderCloseButton();
+        console.log('✅ Skills manager initialized with data structure');
     },
     
-    /**
-     * Cache DOM elements
-     */
     cacheElements: function() {
-        this.elements.skillsNav = document.getElementById('skills-nav');
-        this.elements.modalOverlay = document.getElementById('skills-modal-overlay');
-        this.elements.modal = document.getElementById('skills-modal');
-        this.elements.closeBtn = document.getElementById('skills-close-modal-btn');
-        
-        // Cache modal cards
-        this.elements.modalCards = {
-            web: document.getElementById('web-modal-card'),
-            iot: document.getElementById('iot-modal-card'),
-            mobile: document.getElementById('mobile-modal-card'),
-            soft: document.getElementById('soft-modal-card')
-        };
+        this.elements.nav = document.getElementById('skills-nav');
+        this.elements.swiperContainer = document.getElementById('skills-swiper-container');
+        this.elements.swiper = document.getElementById('skillsSwiper');
+        this.elements.categoryTitle = document.getElementById('skills-category-title');
+        this.elements.headerCloseBtn = document.querySelector('#skills-swiper-container .header-close-btn');
     },
     
-    /**
-     * Setup event listeners
-     */
-    setupEventListeners: function() {
-        // Skills navigation buttons
-        if (this.elements.skillsNav) {
-            const navButtons = this.elements.skillsNav.querySelectorAll('.skill-nav-btn');
-            navButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const category = e.currentTarget.dataset.category;
-                    this.openModal(category);
-                });
+    setupNavigation: function() {
+        if (!this.elements.nav) return;
+        
+        const navButtons = this.elements.nav.querySelectorAll('.skill-nav-btn');
+        
+        navButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const category = e.currentTarget.dataset.category;
+                const buttonText = e.currentTarget.querySelector('span').textContent;
+                this.showCategory(category, buttonText);
             });
-        }
-        
-        // Close modal button
-        if (this.elements.closeBtn) {
-            this.elements.closeBtn.addEventListener('click', () => this.closeModal());
-        }
-        
-        // Close modal when clicking outside
-        if (this.elements.modalOverlay) {
-            this.elements.modalOverlay.addEventListener('click', (e) => {
-                if (e.target === this.elements.modalOverlay) {
-                    this.closeModal();
-                }
-            });
-        }
-        
-        // Close modal with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.isModalOpen()) {
-                this.closeModal();
-            }
         });
     },
     
-    /**
-     * Load skills data into modal cards
-     */
-    loadSkillsData: function() {
-        Object.keys(this.skillsData).forEach(category => {
-            const data = this.skillsData[category];
-            const card = this.elements.modalCards[category];
-            
-            if (card) {
-                this.populateCard(card, data);
+    setupHeaderCloseButton: function() {
+        if (!this.elements.headerCloseBtn) {
+            console.log('⚠️ زر الإغلاق غير موجود، البحث عنه...');
+            this.elements.headerCloseBtn = document.querySelector('#skills-swiper-container .header-close-btn');
+            if (!this.elements.headerCloseBtn) {
+                console.error('❌ زر الإغلاق غير موجود في DOM');
+                return;
             }
+        }
+        
+        // إزالة أي event listeners سابقة
+        const newBtn = this.elements.headerCloseBtn.cloneNode(true);
+        this.elements.headerCloseBtn.parentNode.replaceChild(newBtn, this.elements.headerCloseBtn);
+        this.elements.headerCloseBtn = newBtn;
+        
+        this.elements.headerCloseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            this.closeSwiper();
         });
         
-        console.log('Skills data loaded');
+        // التأكد من أن الزر مرئي ويعمل
+        this.elements.headerCloseBtn.style.display = 'flex';
+        this.elements.headerCloseBtn.style.visibility = 'visible';
+        this.elements.headerCloseBtn.style.opacity = '1';
+        this.elements.headerCloseBtn.style.pointerEvents = 'auto';
+        this.elements.headerCloseBtn.style.cursor = 'pointer';
     },
     
-    /**
-     * Populate a modal card with skills data
-     */
-    populateCard: function(card, data) {
-        // Create skills grid HTML
-        const skillsHTML = data.skills.map(skill => `
-            <div class="skill-item">
-                <i class="${skill.icon}"></i>
-                <span>${skill.name}</span>
-            </div>
-        `).join('');
-        
-        // Update card content
-        card.innerHTML = `
-            <div class="skill-card-header">
-                <div class="skill-icon">
-                    <i class="fas ${data.icon}"></i>
-                </div>
-                <h3>${data.title}</h3>
-                <p class="skill-subtitle">${data.subtitle}</p>
-            </div>
-            <div class="skills-grid-container">
-                ${skillsHTML}
-            </div>
-        `;
-    },
-    
-    /**
-     * Open modal with specific category
-     * @param {string} category - Skill category ('web', 'iot', 'mobile', 'soft')
-     */
-    openModal: function(category) {
-        if (!this.skillsData[category]) {
-            console.error('Invalid category:', category);
-            return;
-        }
+    showCategory: function(category, buttonText) {
+        console.log(`📋 عرض فئة: ${category} - ${buttonText}`);
         
         this.currentCategory = category;
         
-        // Remove active class from all cards
-        Object.values(this.elements.modalCards).forEach(card => {
-            if (card) card.classList.remove('active');
-        });
+        // تحديث العنوان في الهيدر
+        this.updateCategoryTitle(category, buttonText);
         
-        // Add active class to selected card
-        const targetCard = this.elements.modalCards[category];
-        if (targetCard) {
-            targetCard.classList.add('active');
-        }
+        const skillSets = this.getSkillSetsByCategory(category);
         
-        // Show modal
-        if (this.elements.modalOverlay) {
-            this.elements.modalOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-            
-            // Add active class to clicked button
-            this.updateActiveNavButton(category);
-            
-            console.log(`Modal opened for category: ${category}`);
-            
-            // Show toast notification
-            if (typeof showToast === 'function') {
-                showToast(`Viewing ${this.skillsData[category].title} skills`, 'info');
-            }
-        }
-    },
-    
-    /**
-     * Close modal
-     */
-    closeModal: function() {
-        if (this.elements.modalOverlay) {
-            this.elements.modalOverlay.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
-            
-            // Remove active class from all nav buttons
-            if (this.elements.skillsNav) {
-                const navButtons = this.elements.skillsNav.querySelectorAll('.skill-nav-btn');
-                navButtons.forEach(button => button.classList.remove('active'));
-            }
-            
-            console.log('Modal closed');
-        }
-    },
-    
-    /**
-     * Check if modal is open
-     * @returns {boolean} True if modal is open
-     */
-    isModalOpen: function() {
-        return this.elements.modalOverlay && 
-               this.elements.modalOverlay.classList.contains('active');
-    },
-    
-    /**
-     * Update active navigation button
-     * @param {string} category - Active category
-     */
-    updateActiveNavButton: function(category) {
-        if (!this.elements.skillsNav) return;
-        
-        // Remove active class from all buttons
-        const navButtons = this.elements.skillsNav.querySelectorAll('.skill-nav-btn');
-        navButtons.forEach(button => button.classList.remove('active'));
-        
-        // Add active class to clicked button
-        const activeButton = this.elements.skillsNav.querySelector(`[data-category="${category}"]`);
-        if (activeButton) {
-            activeButton.classList.add('active');
-        }
-    },
-    
-    /**
-     * Get current category
-     * @returns {string} Current category
-     */
-    getCurrentCategory: function() {
-        return this.currentCategory;
-    },
-    
-    /**
-     * Add a new skill to a category
-     * @param {string} category - Skill category
-     * @param {Object} skill - Skill object with icon and name
-     */
-    addSkill: function(category, skill) {
-        if (this.skillsData[category]) {
-            this.skillsData[category].skills.push(skill);
-            
-            // Update the card if it exists
-            const card = this.elements.modalCards[category];
-            if (card) {
-                this.populateCard(card, this.skillsData[category]);
-            }
-            
-            console.log(`Skill added to ${category}:`, skill.name);
-        } else {
-            console.error('Category not found:', category);
-        }
-    },
-    
-    /**
-     * Remove a skill from a category
-     * @param {string} category - Skill category
-     * @param {string} skillName - Name of skill to remove
-     */
-    removeSkill: function(category, skillName) {
-        if (this.skillsData[category]) {
-            this.skillsData[category].skills = this.skillsData[category].skills.filter(
-                skill => skill.name !== skillName
-            );
-            
-            // Update the card if it exists
-            const card = this.elements.modalCards[category];
-            if (card) {
-                this.populateCard(card, this.skillsData[category]);
-            }
-            
-            console.log(`Skill removed from ${category}:`, skillName);
-        } else {
-            console.error('Category not found:', category);
-        }
-    },
-    
-    /**
-     * Add a new category
-     * @param {string} category - New category key
-     * @param {Object} data - Category data (title, subtitle, icon, skills)
-     */
-    addCategory: function(category, data) {
-        if (this.skillsData[category]) {
-            console.warn(`Category ${category} already exists`);
+        if (skillSets.length === 0) {
+            console.warn(`⚠️ No skill sets found for category: ${category}`);
             return;
         }
         
-        this.skillsData[category] = data;
+        // إخفاء الحاويات الأخرى
+        if (typeof hideAllSwiperContainers === 'function') {
+            hideAllSwiperContainers();
+        }
         
-        // Create new modal card
-        this.createModalCard(category, data);
+        if (this.elements.swiperContainer) {
+            this.elements.swiperContainer.style.display = 'flex';
+            console.log('📱 عرض حاوية السلايدر (Skills)');
+        }
         
-        // Add navigation button
-        this.addNavButton(category, data);
+        this.initializeSwiper(skillSets);
+        this.updateActiveButton(category);
         
-        console.log(`Category added: ${category}`);
+        setTimeout(() => {
+            if (this.elements.swiperContainer) {
+                this.elements.swiperContainer.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'nearest' 
+                });
+            }
+        }, 100);
+        
+        console.log(`📊 عرض ${skillSets.length} مجموعة مهارات لفئة: ${category}`);
     },
     
-    /**
-     * Create a new modal card for a category
-     */
-    createModalCard: function(category, data) {
-        // This would require updating the HTML structure
-        // For now, just log that this feature needs HTML updates
-        console.log(`To add category ${category}, update HTML to include modal card`);
+    updateCategoryTitle: function(category, buttonText) {
+        if (!this.elements.categoryTitle) return;
+        
+        const icons = {
+            'web': 'fa-code',
+            'iot': 'fa-microchip',
+            'mobile': 'fa-mobile-alt',
+            'soft': 'fa-star'
+        };
+        
+        const icon = icons[category] || 'fa-star';
+        
+        this.elements.categoryTitle.innerHTML = `
+            <i class="fas ${icon}"></i>
+            <span>${buttonText}</span>
+        `;
     },
     
-    /**
-     * Add navigation button for a category
-     */
-    addNavButton: function(category, data) {
-        // This would require updating the HTML structure
-        // For now, just log that this feature needs HTML updates
-        console.log(`To add category ${category}, update HTML to include nav button`);
+    getSkillSetsByCategory: function(category) {
+        if (this.skillsData && this.skillsData[category]) {
+            return this.skillsData[category];
+        }
+        return [];
+    },
+    
+    initializeSwiper: function(skillSets) {
+        // تدمير السلايدر الحالي إذا كان موجوداً
+        if (this.swiperInstance) {
+            this.swiperInstance.destroy(true, true);
+            this.swiperInstance = null;
+        }
+        
+        // تنظيف الـ wrapper
+        const wrapper = this.elements.swiper?.querySelector('.swiper-wrapper');
+        if (wrapper) {
+            wrapper.innerHTML = '';
+        }
+        
+        if (skillSets.length === 0) {
+            this.showNoSkillSetsMessage();
+            return;
+        }
+        
+        // إضافة مجموعات المهارات للسلايدر
+        skillSets.forEach((skillSet, index) => {
+            this.addSkillSetToSwiper(skillSet, index);
+        });
+        
+        // تهيئة السلايدر الرئيسي بدون أزرار التنقل
+        this.initMainSwiper();
+        
+        // إعادة إعداد زر الإغلاق
+        setTimeout(() => {
+            this.setupHeaderCloseButton();
+            console.log('✅ تهيئة كاملة - مع هيدر وزر إغلاق متمركز');
+        }, 200);
+    },
+    
+    showNoSkillSetsMessage: function() {
+        const wrapper = this.elements.swiper?.querySelector('.swiper-wrapper');
+        if (!wrapper) return;
+        
+        wrapper.innerHTML = `
+            <div class="swiper-slide">
+                <div class="project-card">
+                    <div class="project-info">
+                        <div class="skills-category-container">
+                            <h3 class="skill-main-title">No Skill Sets Found</h3>
+                            <p class="skill-main-description" style="color: var(--text-secondary);">
+                                No skill sets available for this category.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        this.swiperInstance = new Swiper(this.elements.swiper, {
+            loop: false,
+            allowTouchMove: true,
+        });
+    },
+    
+    addSkillSetToSwiper: function(skillSet, index) {
+        const wrapper = this.elements.swiper?.querySelector('.swiper-wrapper');
+        if (!wrapper) return;
+        
+        const skillsHTML = this.generateSkillsHTML(skillSet.skills);
+        const featuresHTML = this.generateFeaturesHTML(skillSet.features);
+        
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+        slide.dataset.category = skillSet.category;
+        
+        slide.innerHTML = `
+            <div class="project-card">
+                <div class="project-info">
+                    <div class="skills-category-container">
+                    
+                        <p class="skill-main-description">${skillSet.description}</p>
+                        
+                        <div class="skills-grid-container">
+                            ${skillsHTML}
+                        </div>
+                        
+                        <div class="skill-set-features">
+                            <h4 class="features-title">Key Competencies:</h4>
+                            <ul class="features-list">
+                                ${featuresHTML}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        wrapper.appendChild(slide);
+    },
+    
+    generateSkillsHTML: function(skills) {
+        return skills.map(skill => `
+            <div class="skill-item" style="background: linear-gradient(135deg, ${skill.color}40, ${skill.color}80); border-left: 4px solid ${skill.color};">
+                <i class="${skill.icon}" style="color: ${skill.color};"></i>
+                <span>${skill.name}</span>
+            </div>
+        `).join('');
+    },
+    
+    generateFeaturesHTML: function(features) {
+        return features.map(feature => `
+            <li>
+                <i class="fas fa-check-circle"></i>
+                ${feature}
+            </li>
+        `).join('');
+    },
+    
+    initMainSwiper: function() {
+        if (!this.elements.swiper) return;
+        
+        this.swiperInstance = new Swiper(this.elements.swiper, {
+            loop: true,
+            spaceBetween: 0,
+            speed: 600,
+            keyboard: { enabled: true },
+            mousewheel: { forceToAxis: true },
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 1,
+            effect: 'slide',
+        });
+        
+        console.log('✅ Main swiper initialized with infinite loop (no navigation buttons)');
+    },
+    
+    closeSwiper: function() {
+        console.log('🔴 محاولة إغلاق Skills Swiper');
+        
+        if (this.elements.swiperContainer) {
+            this.elements.swiperContainer.style.display = 'none';
+            console.log('✅ تم إخفاء حاوية Skills Swiper');
+            
+            // إزالة النشاط من أزرار التنقل
+            if (this.elements.nav) {
+                this.elements.nav.querySelectorAll('.skill-nav-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+            
+            // إعادة تعيين العنوان
+            if (this.elements.categoryTitle) {
+                this.elements.categoryTitle.innerHTML = 'Skills & Expertise';
+            }
+            
+            // إشعار التوافق مع hideAllSwiperContainers
+            if (typeof hideAllSwiperContainers === 'function') {
+                hideAllSwiperContainers();
+            }
+        } else {
+            console.log('⚠️ عنصر swiperContainer غير موجود');
+        }
+    },
+    
+    updateActiveButton: function(category) {
+        if (!this.elements.nav) return;
+        
+        this.elements.nav.querySelectorAll('.skill-nav-btn').forEach(button => {
+            button.classList.remove('active');
+        });
+        
+        const activeButton = this.elements.nav.querySelector(`[data-category="${category}"]`);
+        if (activeButton) {
+            activeButton.classList.add('active');
+        }
     }
 };
 
-// Initialize skills modal when DOM is loaded
+// التهيئة عند تحميل الـ DOM
 document.addEventListener('DOMContentLoaded', function() {
-    SkillsModalManager.init();
+    if (document.getElementById('skills')) {
+        if (typeof skillsData !== 'undefined') {
+            SkillsManagerNew.init(skillsData);
+        } else {
+            console.warn('⚠️ Skills data not loaded.');
+        }
+    }
 });
-
-// Setup skills navigation (called from main.js)
-function setupSkillsNavigation() {
-    // This function is called from main.js to initialize the skills navigation
-    console.log('Skills navigation setup complete');
-}
-
-// Export for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        SkillsModalManager,
-        setupSkillsNavigation
-    };
-}
