@@ -1,83 +1,41 @@
 /**
- * main.js - Main JavaScript File
- * Coordinates all components and provides utility functions
+ * main.js - الملف الرئيسي لجافاسكريبت
+ * منسق ومصحح بدون ميزة التبديل بين الوضع المظلم والفاتح
  */
 
-// Global variables
+// متغيرات عامة
 let heroSwiper = null;
 let imageSwipers = [];
 
 /**
- * Initialize the entire application
+ * تهيئة التطبيق بالكامل
  */
 function initPortfolio() {
-    console.log('🚀 Portfolio initializing...');
+    console.log('🚀 جاري تهيئة البورتفوليو...');
     
-    // Initialize all components
-    initTheme();
+    // تهيئة جميع المكونات
     setupEventListeners();
     
-    // Set current year in footer
+    // تعيين السنة الحالية في الفوتر
     updateCurrentYear();
     
-    // Add event listeners for CV downloads
+    // إضافة مستمعي الأحداث لتنزيل السيرة الذاتية
     setupCvDownloadTracking();
     
-    // Setup click outside to close swipers
+    // إعداد النقر خارجي لإغلاق سوابير
     setupSwiperCloseListeners();
     
-    // Setup keyboard listeners
+    // إعداد مستمعي لوحة المفاتيح
     setupKeyboardListeners();
     
-    console.log('✅ Portfolio initialized successfully');
+    console.log('✅ تم تهيئة البورتفوليو بنجاح');
 }
 
 /**
- * Initialize theme (dark/light mode)
- */
-function initTheme() {
-    // Check for saved theme preference or default to light
-    const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
-    
-    if (savedTheme === 'dark') {
-        document.body.classList.remove('theme-light');
-        document.body.classList.add('theme-dark');
-        document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-        document.body.classList.remove('theme-dark');
-        document.body.classList.add('theme-light');
-        document.documentElement.setAttribute('data-theme', 'light');
-    }
-    
-    // Update theme toggle buttons
-    updateThemeUI(savedTheme);
-}
-
-/**
- * Update theme UI elements
- */
-function updateThemeUI(theme) {
-    const isDark = theme === 'dark';
-    const iconClass = isDark ? 'fas fa-sun' : 'fas fa-moon';
-    const text = isDark ? 'Light Mode' : 'Dark Mode';
-    
-    // Update desktop toggle
-    const desktopIcon = document.querySelector('#theme-toggle-desktop i');
-    if (desktopIcon) desktopIcon.className = iconClass;
-    
-    // Update mobile toggle
-    const mobileIcon = document.querySelector('#mobile-theme-toggle i');
-    if (mobileIcon) mobileIcon.className = iconClass;
-    
-    const mobileText = document.querySelector('#mobile-theme-toggle span');
-    if (mobileText) mobileText.textContent = text;
-}
-
-/**
- * Setup all event listeners
+ * إعداد جميع مستمعي الأحداث
  */
 function setupEventListeners() {
-    // Mobile menu toggle
+    // قائمة الموبايل
     const burgerBtn = document.getElementById('burger-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     
@@ -91,7 +49,7 @@ function setupEventListeners() {
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         });
         
-        // Close menu when clicking on links
+        // إغلاق القائمة عند النقر على الروابط
         const mobileLinks = document.querySelectorAll('.mobile-nav-link');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -102,19 +60,7 @@ function setupEventListeners() {
         });
     }
     
-    // Theme toggles
-    const desktopThemeToggle = document.getElementById('theme-toggle-desktop');
-    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-    
-    if (desktopThemeToggle) {
-        desktopThemeToggle.addEventListener('click', toggleTheme);
-    }
-    
-    if (mobileThemeToggle) {
-        mobileThemeToggle.addEventListener('click', toggleTheme);
-    }
-    
-    // Smooth scrolling for anchor links
+    // التمرير السلس للروابط
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -124,7 +70,7 @@ function setupEventListeners() {
             
             const targetElement = document.querySelector(href);
             if (targetElement) {
-                // Close mobile menu if open
+                // إغلاق قائمة الموبايل إذا كانت مفتوحة
                 if (mobileMenu && mobileMenu.classList.contains('active')) {
                     mobileMenu.classList.remove('active');
                     burgerBtn.querySelector('i').className = 'fas fa-bars';
@@ -144,33 +90,7 @@ function setupEventListeners() {
 }
 
 /**
- * Toggle between light and dark theme
- */
-function toggleTheme() {
-    const isDark = document.body.classList.contains('theme-dark');
-    const newTheme = isDark ? 'light' : 'dark';
-    
-    if (newTheme === 'dark') {
-        document.body.classList.remove('theme-light');
-        document.body.classList.add('theme-dark');
-        document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-        document.body.classList.remove('theme-dark');
-        document.body.classList.add('theme-light');
-        document.documentElement.setAttribute('data-theme', 'light');
-    }
-    
-    localStorage.setItem('portfolio-theme', newTheme);
-    updateThemeUI(newTheme);
-    
-    // Show toast notification
-    if (typeof showToast === 'function') {
-        showToast(`Switched to ${newTheme === 'dark' ? 'Dark' : 'Light'} Mode`, 'success');
-    }
-}
-
-/**
- * Update current year in footer
+ * تحديث السنة الحالية في الفوتر
  */
 function updateCurrentYear() {
     const yearElements = document.querySelectorAll('.current-year');
@@ -182,7 +102,7 @@ function updateCurrentYear() {
         }
     });
     
-    // Also update footer-bottom year
+    // تحديث سنة الفوتر السفلية
     const footerBottomYear = document.getElementById('current-year');
     if (footerBottomYear) {
         footerBottomYear.textContent = currentYear;
@@ -190,20 +110,20 @@ function updateCurrentYear() {
 }
 
 /**
- * Setup CV download tracking
+ * إعداد تتبع تنزيل السيرة الذاتية
  */
 function setupCvDownloadTracking() {
     const cvLinks = document.querySelectorAll('a[href*="cv"]');
     
     cvLinks.forEach(link => {
         link.addEventListener('click', function() {
-            console.log('CV downloaded: ', this.href);
+            console.log('تم تنزيل السيرة الذاتية: ', this.href);
         });
     });
 }
 
 /**
- * Setup click outside to close swipers
+ * إعداد النقر خارجي لإغلاق سوابير
  */
 function setupSwiperCloseListeners() {
     document.addEventListener('click', function(e) {
@@ -212,7 +132,7 @@ function setupSwiperCloseListeners() {
         const iotSwiperContainer = document.getElementById('iot-swiper-container');
         const skillsSwiperContainer = document.getElementById('skills-swiper-container');
         
-        // Check Web Apps swiper
+        // فحص سوابير تطبيقات الويب
         if (webSwiperContainer && webSwiperContainer.style.display === 'block') {
             const webNav = document.getElementById('web-apps-nav');
             const isClickInsideWebSwiper = webSwiperContainer.contains(e.target);
@@ -226,7 +146,7 @@ function setupSwiperCloseListeners() {
             }
         }
         
-        // Check Mobile Apps swiper
+        // فحص سوابير تطبيقات الموبايل
         if (mobileSwiperContainer && mobileSwiperContainer.style.display === 'block') {
             const mobileNav = document.getElementById('mobile-apps-nav');
             const isClickInsideMobileSwiper = mobileSwiperContainer.contains(e.target);
@@ -240,7 +160,7 @@ function setupSwiperCloseListeners() {
             }
         }
         
-        // Check IoT Projects swiper
+        // فحص سوابير مشاريع IoT
         if (iotSwiperContainer && iotSwiperContainer.style.display === 'block') {
             const iotNav = document.getElementById('iot-projects-nav');
             const isClickInsideIotSwiper = iotSwiperContainer.contains(e.target);
@@ -254,7 +174,7 @@ function setupSwiperCloseListeners() {
             }
         }
         
-        // Check Skills swiper
+        // فحص سوابير المهارات
         if (skillsSwiperContainer && skillsSwiperContainer.style.display === 'block') {
             const skillsNav = document.getElementById('skills-nav');
             const isClickInsideSkillsSwiper = skillsSwiperContainer.contains(e.target);
@@ -271,12 +191,12 @@ function setupSwiperCloseListeners() {
 }
 
 /**
- * Setup keyboard listeners
+ * إعداد مستمعي لوحة المفاتيح
  */
 function setupKeyboardListeners() {
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            // Close Web Apps swiper
+            // إغلاق سوابير تطبيقات الويب
             const webSwiperContainer = document.getElementById('web-swiper-container');
             if (webSwiperContainer && webSwiperContainer.style.display === 'block') {
                 if (typeof WebProjectsManager !== 'undefined' && typeof WebProjectsManager.closePopup === 'function') {
@@ -285,7 +205,7 @@ function setupKeyboardListeners() {
                 return;
             }
             
-            // Close Mobile Apps swiper
+            // إغلاق سوابير تطبيقات الموبايل
             const mobileSwiperContainer = document.getElementById('mobile-swiper-container');
             if (mobileSwiperContainer && mobileSwiperContainer.style.display === 'block') {
                 if (typeof MobileProjectsManager !== 'undefined' && typeof MobileProjectsManager.closePopup === 'function') {
@@ -294,7 +214,7 @@ function setupKeyboardListeners() {
                 return;
             }
             
-            // Close IoT Projects swiper
+            // إغلاق سوابير مشاريع IoT
             const iotSwiperContainer = document.getElementById('iot-swiper-container');
             if (iotSwiperContainer && iotSwiperContainer.style.display === 'block') {
                 if (typeof IoTProjectsManager !== 'undefined' && typeof IoTProjectsManager.closePopup === 'function') {
@@ -303,7 +223,7 @@ function setupKeyboardListeners() {
                 return;
             }
             
-            // Close Skills swiper
+            // إغلاق سوابير المهارات
             const skillsSwiperContainer = document.getElementById('skills-swiper-container');
             if (skillsSwiperContainer && skillsSwiperContainer.style.display === 'block') {
                 if (typeof SkillsManager !== 'undefined' && typeof SkillsManager.closePopup === 'function') {
@@ -312,7 +232,7 @@ function setupKeyboardListeners() {
                 return;
             }
             
-            // Close mobile menu
+            // إغلاق قائمة الموبايل
             const mobileMenu = document.getElementById('mobile-menu');
             if (mobileMenu && mobileMenu.classList.contains('active')) {
                 mobileMenu.classList.remove('active');
@@ -327,10 +247,10 @@ function setupKeyboardListeners() {
 }
 
 /**
- * Handle window resize
+ * معالجة تغيير حجم النافذة
  */
 function handleResize() {
-    // Close mobile menu on larger screens
+    // إغلاق قائمة الموبايل على الشاشات الكبيرة
     const mobileMenu = document.getElementById('mobile-menu');
     if (window.innerWidth > 768 && mobileMenu && mobileMenu.classList.contains('active')) {
         mobileMenu.classList.remove('active');
@@ -342,19 +262,19 @@ function handleResize() {
     }
 }
 
-// Initialize everything when DOM is loaded
+// تهيئة كل شيء عند تحميل DOM
 document.addEventListener('DOMContentLoaded', function() {
     initPortfolio();
     
-    // Add resize listener
+    // إضافة مستمع لتغيير الحجم
     window.addEventListener('resize', handleResize);
     
-    // Add scroll listener for active nav links
+    // إضافة مستمع للتمرير للروابط النشطة
     window.addEventListener('scroll', updateActiveNavLink);
 });
 
 /**
- * Update active navigation link based on scroll position
+ * تحديث رابط التنقل النشط بناءً على موضع التمرير
  */
 function updateActiveNavLink() {
     const sections = document.querySelectorAll('section[id]');

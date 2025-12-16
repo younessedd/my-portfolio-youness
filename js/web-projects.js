@@ -1,15 +1,5 @@
 /**
- * Web Projects Manager - FINAL VERSION WITH SEPARATE SCROLL LOGIC
- * Features:
- * 1. Click on images: Scroll images only
- * 2. Click outside images: Scroll cards/categories
- * 3. Images take 100% of container (object-fit: cover)
- * 4. 5-image swiper with finger navigation
- * 5. Auto-scroll every 5 seconds
- * 6. Infinite scroll
- * 7. Better tech tags with colors
- * 8. Colored features list
- * 9. Removed pagination
+ * Web Projects Manager with Infinite Scroll - FIXED
  */
 
 const WebProjectsManager = {
@@ -18,57 +8,19 @@ const WebProjectsManager = {
     currentCardIndex: 0,
     swiperInstance: null,
     imageSwiperInstances: {},
-    isAnimating: false,
+    
+    // نظام قفل محسن
+    navigationLock: false,
+    animationTimeout: null,
+    
     isModalOpen: false,
-    isImageScrollActive: false, // Track if image scrolling is active
+    isImageInteracting: false,
     
     categories: ['frontend', 'fullstack', 'responsive'],
     categoryNames: {
         'frontend': 'Frontend Projects',
         'fullstack': 'Fullstack Projects',
         'responsive': 'Responsive Websites'
-    },
-    
-    // Tech tag colors - FULL COLOR BACKGROUNDS
-    techTagColors: {
-        // Frontend
-        'HTML5': { bgColor: '#E34F26', textColor: 'white', icon: 'fab fa-html5', className: 'html5' },
-        'CSS3': { bgColor: '#1572B6', textColor: 'white', icon: 'fab fa-css3-alt', className: 'css3' },
-        'JavaScript': { bgColor: '#F7DF1E', textColor: 'black', icon: 'fab fa-js', className: 'javascript' },
-        'React.js': { bgColor: '#61DAFB', textColor: 'black', icon: 'fab fa-react', className: 'react' },
-        'Vue.js': { bgColor: '#4FC08D', textColor: 'white', icon: 'fab fa-vuejs', className: 'vue' },
-        'TypeScript': { bgColor: '#3178C6', textColor: 'white', icon: 'fab fa-js', className: 'typescript' },
-        'SASS/SCSS': { bgColor: '#CC6699', textColor: 'white', icon: 'fab fa-sass', className: 'sass' },
-        'Bootstrap': { bgColor: '#7952B3', textColor: 'white', icon: 'fab fa-bootstrap', className: 'bootstrap' },
-        'Tailwind': { bgColor: '#38B2AC', textColor: 'white', icon: 'fas fa-wind', className: 'tailwind' },
-        
-        // Backend
-        'Node.js': { bgColor: '#339933', textColor: 'white', icon: 'fab fa-node-js', className: 'nodejs' },
-        'Express.js': { bgColor: '#000000', textColor: 'white', icon: 'fas fa-server', className: 'express' },
-        'Python': { bgColor: '#3776AB', textColor: 'white', icon: 'fab fa-python', className: 'python' },
-        'PHP': { bgColor: '#777BB4', textColor: 'white', icon: 'fab fa-php', className: 'php' },
-        'Laravel': { bgColor: '#FF2D20', textColor: 'white', icon: 'fab fa-laravel', className: 'laravel' },
-        'Django': { bgColor: '#092E20', textColor: 'white', icon: 'fab fa-python', className: 'django' },
-        'MySQL': { bgColor: '#4479A1', textColor: 'white', icon: 'fas fa-database', className: 'mysql' },
-        'MongoDB': { bgColor: '#47A248', textColor: 'white', icon: 'fas fa-database', className: 'mongodb' },
-        'PostgreSQL': { bgColor: '#336791', textColor: 'white', icon: 'fas fa-database', className: 'postgresql' },
-        'Firebase': { bgColor: '#FFCA28', textColor: 'black', icon: 'fab fa-google', className: 'firebase' },
-        
-        // Fullstack
-        'MERN Stack': { bgColor: '#61DAFB', textColor: 'black', icon: 'fas fa-layer-group', className: 'mern' },
-        'MEAN Stack': { bgColor: '#DD0031', textColor: 'white', icon: 'fas fa-layer-group', className: 'mean' },
-        'REST API': { bgColor: '#6BD5F1', textColor: 'black', icon: 'fas fa-code', className: 'api' },
-        'GraphQL': { bgColor: '#E10098', textColor: 'white', icon: 'fas fa-code', className: 'graphql' },
-        'Docker': { bgColor: '#2496ED', textColor: 'white', icon: 'fab fa-docker', className: 'docker' },
-        'AWS': { bgColor: '#FF9900', textColor: 'black', icon: 'fab fa-aws', className: 'aws' },
-        
-        // Responsive & Others
-        'Responsive Design': { bgColor: '#4A90E2', textColor: 'white', icon: 'fas fa-mobile-alt', className: 'responsive' },
-        'UI/UX Design': { bgColor: '#FF6B6B', textColor: 'white', icon: 'fas fa-palette', className: 'uiux' },
-        'Git': { bgColor: '#F05032', textColor: 'white', icon: 'fab fa-git-alt', className: 'git' },
-        
-        // Default
-        'Default': { bgColor: '#4f46e5', textColor: 'white', icon: 'fas fa-code', className: 'default' }
     },
     
     cardPositions: {},
@@ -156,42 +108,72 @@ const WebProjectsManager = {
     },
     
     setupIconNavigation: function() {
-        if (this.elements.iconNavBtns) {
-            this.elements.iconNavBtns.forEach(iconBtn => {
-                iconBtn.addEventListener('click', (e) => {
-                    if (this.isAnimating) return;
-                    const category = e.currentTarget.dataset.category;
-                    const categoryName = this.categoryNames[category];
-                    this.goToCategory(category, categoryName);
-                });
+        if (!this.elements.iconNavBtns) return;
+        
+        this.elements.iconNavBtns.forEach(btn => {
+            btn.replaceWith(btn.cloneNode(true));
+        });
+        
+        this.elements.iconNavBtns = document.querySelectorAll('#web-icon-nav-top .icon-nav-btn');
+        
+        this.elements.iconNavBtns.forEach(iconBtn => {
+            iconBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                
+                if (this.navigationLock) {
+                    console.log('⏳ Navigation is locked, please wait...');
+                    return;
+                }
+                
+                const category = iconBtn.dataset.category;
+                
+                if (category === this.currentCategory) {
+                    return;
+                }
+                
+                const categoryName = this.categoryNames[category];
+                
+                this.navigationLock = true;
+                this.goToCategory(category, categoryName);
+                
+                setTimeout(() => {
+                    this.navigationLock = false;
+                }, 600);
             });
-        }
+        });
     },
     
     setupCardNavigation: function() {
         if (this.elements.prevCardBtn) {
             this.elements.prevCardBtn.addEventListener('click', () => {
-                if (this.isAnimating || this.isImageScrollActive) return;
+                if (this.navigationLock || this.isImageInteracting) return;
+                this.navigationLock = true;
                 this.navigateToPrevCard();
+                setTimeout(() => { this.navigationLock = false; }, 600);
             });
         }
         
         if (this.elements.nextCardBtn) {
             this.elements.nextCardBtn.addEventListener('click', () => {
-                if (this.isAnimating || this.isImageScrollActive) return;
+                if (this.navigationLock || this.isImageInteracting) return;
+                this.navigationLock = true;
                 this.navigateToNextCard();
+                setTimeout(() => { this.navigationLock = false; }, 600);
             });
         }
         
-        // Keyboard navigation - only when image scroll is NOT active
         document.addEventListener('keydown', (e) => {
-            if (this.isModalOpen && !this.isImageScrollActive) {
+            if (this.isModalOpen && !this.isImageInteracting && !this.navigationLock) {
                 if (e.key === 'ArrowLeft') {
                     e.preventDefault();
+                    this.navigationLock = true;
                     this.navigateToPrevCard();
+                    setTimeout(() => { this.navigationLock = false; }, 600);
                 } else if (e.key === 'ArrowRight') {
                     e.preventDefault();
+                    this.navigationLock = true;
                     this.navigateToNextCard();
+                    setTimeout(() => { this.navigationLock = false; }, 600);
                 } else if (e.key === 'Escape') {
                     this.closePopup();
                 }
@@ -199,79 +181,84 @@ const WebProjectsManager = {
         });
     },
     
-    showCategory: function(category, buttonText) {
-        console.log(`📋 Opening category: ${category} - "${buttonText}"`);
-        
-        this.currentCategory = category;
-        this.currentCardIndex = 0;
-        this.isModalOpen = true;
-        this.isImageScrollActive = false;
-        
-        this.elements.popupContainer.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-        
-        this.updateCategoryTitle(category, buttonText);
-        this.updateIconNavigation(category);
-        this.updateCardCounter(category);
-        this.updateActiveButton(category);
-        
-        this.initializeSwiperWithAllCategories();
-        
-        setTimeout(() => {
-            const targetSlideIndex = this.cardPositions[`${category}-0`];
-            console.log(`🎯 Going to ${category}-0 at slide index: ${targetSlideIndex}`);
-            
-            if (targetSlideIndex !== undefined && this.swiperInstance) {
-                this.currentCardIndex = 0;
-                this.swiperInstance.slideTo(targetSlideIndex, 0);
-            }
-        }, 100);
-    },
+showCategory: function(category, buttonText) {
+    console.log(`📋 Opening category: ${category}`);
     
-    goToCategory: function(category, categoryName) {
-        if (!category || this.isAnimating || this.isImageScrollActive) return;
-        
-        this.currentCategory = category;
-        this.currentCardIndex = 0;
-        this.isAnimating = true;
-        
+    this.currentCategory = category;
+    this.currentCardIndex = 0;
+    this.isModalOpen = true;
+    this.isImageInteracting = false;
+    this.navigationLock = false;
+    
+    this.elements.popupContainer.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    
+    this.updateCategoryTitle(category, buttonText);
+    this.updateIconNavigation(category);
+    this.updateActiveButton(category);
+    
+    this.initializeSwiperWithAllCategories();
+    
+    setTimeout(() => {
         const targetSlideIndex = this.cardPositions[`${category}-0`];
-        console.log(`🔄 Switching to ${category} at slide: ${targetSlideIndex}`);
         
         if (targetSlideIndex !== undefined && this.swiperInstance) {
-            this.swiperInstance.slideTo(targetSlideIndex, 600);
+            this.currentCardIndex = 0;
+            this.swiperInstance.slideTo(targetSlideIndex, 0);
+            this.updateCardCounter(category);
+            
+            // ✅ CRITICAL FIX: Initialize image swipers immediately
+            setTimeout(() => {
+                this.initializeImageSwipers();
+                this.setupImageScrollHandlers();
+            }, 100);
         }
+    }, 100);
+},
+    
+    goToCategory: function(category, categoryName) {
+        if (!category || !this.swiperInstance) {
+            console.error('❌ Cannot go to category:', category);
+            this.navigationLock = false;
+            return;
+        }
+        
+        console.log(`🔄 Switching to category: ${category}`);
+        
+        const targetSlideIndex = this.cardPositions[`${category}-0`];
+        
+        if (targetSlideIndex === undefined) {
+            console.error(`❌ No slides found for category: ${category}`);
+            this.navigationLock = false;
+            return;
+        }
+        
+        this.currentCategory = category;
+        this.currentCardIndex = 0;
         
         this.updateCategoryTitle(category, categoryName);
         this.updateIconNavigation(category);
         this.updateCardCounter(category);
         this.updateActiveButton(category);
         
-        setTimeout(() => {
-            this.isAnimating = false;
-        }, 600);
+        this.swiperInstance.slideTo(targetSlideIndex, 600);
     },
     
     goToCategoryCard: function(category, cardIndex) {
-        if (!this.swiperInstance || !this.elements.swiperWrapper || this.isImageScrollActive) return;
+        if (!this.swiperInstance || this.navigationLock) return;
         
         const key = `${category}-${cardIndex}`;
         const targetSlideIndex = this.cardPositions[key];
         
-        console.log(`🎯 goToCategoryCard: ${key} → slide ${targetSlideIndex}`);
-        
         if (targetSlideIndex !== undefined) {
             this.currentCardIndex = cardIndex;
             this.swiperInstance.slideTo(targetSlideIndex, 600);
-        } else {
-            console.error(`❌ Card not found: ${key}`);
+            this.updateCardCounter(category);
         }
     },
     
     navigateToPrevCard: function() {
-        if (this.isAnimating || !this.swiperInstance || this.isImageScrollActive) return;
-        
-        this.isAnimating = true;
+        if (!this.swiperInstance || this.navigationLock) return;
         
         const currentCardCount = this.getCardCountForCategory(this.currentCategory);
         let prevCardIndex = this.currentCardIndex - 1;
@@ -299,16 +286,10 @@ const WebProjectsManager = {
             this.currentCardIndex = prevCardIndex;
             this.goToCategoryCard(this.currentCategory, this.currentCardIndex);
         }
-        
-        setTimeout(() => {
-            this.isAnimating = false;
-        }, 600);
     },
     
     navigateToNextCard: function() {
-        if (this.isAnimating || !this.swiperInstance || this.isImageScrollActive) return;
-        
-        this.isAnimating = true;
+        if (!this.swiperInstance || this.navigationLock) return;
         
         const currentCardCount = this.getCardCountForCategory(this.currentCategory);
         let nextCardIndex = this.currentCardIndex + 1;
@@ -335,10 +316,6 @@ const WebProjectsManager = {
             this.currentCardIndex = nextCardIndex;
             this.goToCategoryCard(this.currentCategory, this.currentCardIndex);
         }
-        
-        setTimeout(() => {
-            this.isAnimating = false;
-        }, 600);
     },
     
     updateIconNavigation: function(category) {
@@ -393,13 +370,11 @@ const WebProjectsManager = {
     },
     
     initializeSwiperWithAllCategories: function() {
-        // Clean up existing swipers
         if (this.swiperInstance) {
             this.swiperInstance.destroy(true, true);
             this.swiperInstance = null;
         }
         
-        // Clear image swiper instances
         this.imageSwiperInstances = {};
         
         if (this.elements.swiperWrapper) {
@@ -485,7 +460,6 @@ const WebProjectsManager = {
             `;
         }
         
-        // Use only 5 images maximum
         const displayImages = images.slice(0, 5);
         const slides = displayImages.map((img, idx) => `
             <div class="swiper-slide image-slide">
@@ -502,6 +476,12 @@ const WebProjectsManager = {
                 <div class="swiper image-swiper">
                     <div class="swiper-wrapper">
                         ${slides}
+                    </div>
+                    <div class="image-swiper-button-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="image-swiper-button-prev">
+                        <i class="fas fa-chevron-left"></i>
                     </div>
                 </div>
                 <div class="image-nav-dots">
@@ -530,77 +510,138 @@ const WebProjectsManager = {
     },
     
     generateTechTagsHTML: function(technologies) {
+        const techTagColors = {
+            'HTML5': { bgColor: '#E34F26', textColor: 'white' },
+            'CSS3': { bgColor: '#1572B6', textColor: 'white' },
+            'JavaScript': { bgColor: '#F7DF1E', textColor: 'black' },
+            'React.js': { bgColor: '#61DAFB', textColor: 'black' },
+            'Node.js': { bgColor: '#339933', textColor: 'white' },
+            'Default': { bgColor: '#4f46e5', textColor: 'white' }
+        };
+        
         return technologies.map(tech => {
-            const techConfig = this.techTagColors[tech] || this.techTagColors['Default'];
+            const techConfig = techTagColors[tech] || techTagColors['Default'];
             return `
-                <span class="tech-tag ${techConfig.className}" 
-                      data-tech="${tech}"
-                      style="background-color: ${techConfig.bgColor}; color: ${techConfig.textColor};">
-                    <i class="${techConfig.icon}"></i>
+                <span class="tech-tag" style="background-color: ${techConfig.bgColor}; color: ${techConfig.textColor};">
+                    <i class="fas fa-code"></i>
                     ${tech}
                 </span>
             `;
         }).join('');
     },
     
+    // ✅ إصلاح: Infinite Scroll مع إصلاح الخطأ
     initMainSwiper: function() {
         if (!this.elements.swiper) return;
         
+        // ✅ حساب عدد الشرائح الإجمالية
+        const totalSlides = Object.keys(this.cardPositions).length;
+        
         this.swiperInstance = new Swiper(this.elements.swiper, {
-            loop: false,
+            // ✅ Infinite Scroll مع ضبط مناسب
+            loop: true,
+            loopAdditionalSlides: 2,
+            loopedSlides: Math.min(3, totalSlides), // ✅ ضبط ديناميكي
+            
             spaceBetween: 0,
             speed: 600,
-            keyboard: { 
-                enabled: true,
-                onlyInViewport: true 
-            },
-            mousewheel: false,
-            grabCursor: true,
+            
             slidesPerView: 1,
-            effect: 'slide',
-            noSwipingSelector: '.project-images-container, .image-swiper, .project-image, .image-dot',
+            slidesPerGroup: 1,
+            
+            navigation: {
+                nextEl: this.elements.nextCardBtn,
+                prevEl: this.elements.prevCardBtn,
+            },
+            
+            touchRatio: 0.6,
+            grabCursor: true,
+            allowTouchMove: true,
+            shortSwipes: false,
+            longSwipes: true,
+            longSwipesRatio: 0.1,
+            followFinger: true,
+            threshold: 15,
+            
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true,
+            },
+            
+            mousewheel: {
+                forceToAxis: true,
+                invert: false,
+                sensitivity: 0.8,
+                eventsTarget: '.popup-content',
+                releaseOnEdges: true,
+            },
+            
+            noSwipingSelector: '.project-images-container, .image-swiper, .project-image, .image-dot, .image-swiper-button-next, .image-swiper-button-prev, .features-list, .tech-tag, .project-link',
             preventInteractionOnTransition: true,
+            
+            breakpoints: {
+                320: {
+                    spaceBetween: 0,
+                    touchRatio: 0.7
+                },
+                768: {
+                    spaceBetween: 0,
+                    touchRatio: 0.6
+                }
+            },
             
             on: {
                 init: () => {
-                    console.log('✅ Main swiper initialized');
-                    // Initialize image swipers for all slides
+                    console.log('✅ Main swiper initialized with infinite scroll');
                     this.initializeImageSwipers();
                     this.setupImageScrollHandlers();
                 },
-                slideChange: () => {
-                    if (!this.swiperInstance || !this.swiperInstance.slides) return;
-                    
-                    const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
-                    const category = activeSlide.dataset.category;
-                    const cardIndex = parseInt(activeSlide.dataset.cardIndex);
-                    
-                    if (category) {
-                        this.currentCategory = category;
-                        this.currentCardIndex = cardIndex;
-                        
-                        const categoryName = this.categoryNames[category];
-                        this.updateIconNavigation(category);
-                        this.updateCardCounter(category);
-                        this.updateActiveButton(category);
-                        this.updateCategoryTitle(category, categoryName);
-                        
-                        // Reinitialize image handlers for new slide
-                        this.setupImageScrollHandlers();
+                
+slideChangeTransitionEnd: () => {
+    console.log('✅ Slide change completed');
+    
+    if (!this.swiperInstance) return;
+    
+    // ✅ الحصول على الشريحة النشطة
+    const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
+    const category = activeSlide.dataset.category;
+    const cardIndex = parseInt(activeSlide.dataset.cardIndex);
+    
+    if (category) {
+        this.currentCategory = category;
+        this.currentCardIndex = cardIndex;
+        
+        const categoryName = this.categoryNames[category];
+        this.updateIconNavigation(category);
+        this.updateCardCounter(category);
+        this.updateActiveButton(category);
+        this.updateCategoryTitle(category, categoryName);
+        
+        // إعادة تهيئة image swipers
+        setTimeout(() => {
+            this.initializeImageSwipers();
+            this.setupImageScrollHandlers();
+        }, 50);
+    }
+},
+                touchStart: (swiper, event) => {
+                    if (this.isImageInteracting) {
+                        swiper.allowTouchMove = false;
                     }
                 },
-                slideChangeTransitionEnd: () => {
-                    // Initialize image swiper for newly active slide
-                    this.initializeImageSwipers();
-                    this.setupImageScrollHandlers();
+                
+                touchEnd: (swiper, event) => {
+                    swiper.allowTouchMove = true;
                 }
             }
         });
     },
     
-    initializeImageSwipers: function() {
-        if (!this.swiperInstance) return;
-        
+    // ✅ إصلاح جذري لخطأ newImageSwiper
+initializeImageSwipers: function() {
+    if (!this.swiperInstance) return;
+    
+    try {
         const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
         if (!activeSlide) return;
         
@@ -609,58 +650,161 @@ const WebProjectsManager = {
         
         const projectId = activeSlide.dataset.projectId;
         
-        // If image swiper already exists for this project, don't reinitialize
+        // ✅ If swiper already exists, just reinitialize it
         if (this.imageSwiperInstances[projectId]) {
-            return;
+            try {
+                this.imageSwiperInstances[projectId].destroy(true, true);
+            } catch (e) {
+                console.log('Clearing old image swiper instance');
+            }
         }
         
         const imageSwiperEl = imageContainer.querySelector('.image-swiper');
         if (!imageSwiperEl) return;
         
-        // Initialize new image swiper
-        const imageSwiper = new Swiper(imageSwiperEl, {
+        // ✅ Add CSS for better scroll handling
+        imageSwiperEl.style.cssText = `
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        `;
+        
+        const images = imageSwiperEl.querySelectorAll('.project-image');
+        images.forEach(img => {
+            img.style.cssText = `
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                pointer-events: auto;
+            `;
+        });
+        
+        let imageSwiperInstance;
+        
+        imageSwiperInstance = new Swiper(imageSwiperEl, {
             loop: true,
+            loopAdditionalSlides: 1,
+            loopedSlides: 2,
             spaceBetween: 0,
             speed: 500,
+            
             autoplay: {
-                delay: 5000, // 5 seconds
-                disableOnInteraction: true,
+                delay: 5000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
             },
-            pagination: false, // Disable pagination
+            
+            navigation: {
+                nextEl: imageContainer.querySelector('.image-swiper-button-next'),
+                prevEl: imageContainer.querySelector('.image-swiper-button-prev'),
+            },
+            
+            // ✅ Enhanced touch settings
+            touchRatio: 1,
             grabCursor: true,
-            effect: 'slide',
-            slidesPerView: 1,
-            centeredSlides: true,
             allowTouchMove: true,
-            preventInteractionOnTransition: false,
             shortSwipes: true,
             longSwipes: true,
             followFinger: true,
+            threshold: 5,
+            resistance: false,
+            
+            // ✅ Mousewheel with better handling
+            mousewheel: {
+                forceToAxis: true,
+                invert: false,
+                sensitivity: 0.8,
+                eventsTarget: imageContainer,
+                releaseOnEdges: true,
+            },
+            
+            // ✅ Disable swiping on certain elements
+            noSwipingClass: 'no-swipe',
+            noSwipingSelector: '.project-links-top, .tech-tags-container, .features-list',
+            
+            breakpoints: {
+                320: {
+                    touchRatio: 0.9
+                }
+            },
             
             on: {
                 init: () => {
                     console.log(`✅ Image swiper initialized for project ${projectId}`);
-                    // Store reference
-                    this.imageSwiperInstances[projectId] = imageSwiper;
+                    this.imageSwiperInstances[projectId] = imageSwiperInstance;
                     
-                    // Ensure images take 100%
-                    const images = imageContainer.querySelectorAll('.project-image');
-                    images.forEach(img => {
-                        img.style.width = '100%';
-                        img.style.height = '100%';
-                        img.style.objectFit = 'cover';
-                    });
+                    // Force update
+                    imageSwiperInstance.update();
+                    imageSwiperInstance.slideTo(0, 0);
+                    
+                    // Ensure autoplay starts
+                    if (imageSwiperInstance.autoplay && imageSwiperInstance.autoplay.running === false) {
+                        imageSwiperInstance.autoplay.start();
+                    }
                 },
+                
                 slideChange: (swiper) => {
-                    // Update navigation dots
                     this.updateImageDots(imageContainer, swiper.realIndex);
+                },
+                
+                slideChangeTransitionStart: () => {
+                    this.isImageInteracting = true;
+                },
+                
+                slideChangeTransitionEnd: () => {
+                    this.isImageInteracting = false;
+                },
+                
+                touchStart: () => {
+                    this.isImageInteracting = true;
+                },
+                
+                touchEnd: () => {
+                    this.isImageInteracting = false;
+                },
+                
+                destroy: () => {
+                    console.log(`🗑️ Image swiper destroyed for project ${projectId}`);
                 }
             }
         });
         
-        // Start autoplay
-        imageSwiper.autoplay.start();
-    },
+        // ✅ Initialize dots
+        const totalSlides = imageSwiperInstance.slides.length;
+        const realTotal = imageSwiperInstance.loopedSlides ? 
+            totalSlides - (imageSwiperInstance.loopedSlides * 2) : totalSlides;
+        
+        this.updateImageDots(imageContainer, 0);
+        
+        // ✅ Setup dot click handlers
+        this.setupImageDotsHandlers(imageContainer, imageSwiperInstance);
+        
+        // ✅ Ensure autoplay starts
+        setTimeout(() => {
+            if (imageSwiperInstance.autoplay && !imageSwiperInstance.autoplay.running) {
+                imageSwiperInstance.autoplay.start();
+            }
+        }, 300);
+        
+    } catch (error) {
+        console.error('Error initializing image swiper:', error);
+    }
+},
+
+// ✅ New helper method for dot handlers
+setupImageDotsHandlers: function(imageContainer, imageSwiper) {
+    const dots = imageContainer.querySelectorAll('.image-dot');
+    dots.forEach(dot => {
+        dot.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const index = parseInt(e.currentTarget.dataset.index);
+            if (!isNaN(index)) {
+                imageSwiper.slideToLoop(index);
+                this.updateImageDots(imageContainer, index);
+            }
+        });
+    });
+},
     
     setupImageScrollHandlers: function() {
         if (!this.swiperInstance) return;
@@ -676,64 +820,26 @@ const WebProjectsManager = {
         
         if (!imageSwiper) return;
         
-        // Clear any existing handlers
-        imageContainer.removeEventListener('mousedown', this.handleImageMouseDown);
-        imageContainer.removeEventListener('mouseup', this.handleImageMouseUp);
-        imageContainer.removeEventListener('touchstart', this.handleImageTouchStart);
-        imageContainer.removeEventListener('touchend', this.handleImageTouchEnd);
+        // تنظيف المستمعات القديمة
+        const newImageContainer = imageContainer.cloneNode(true);
+        imageContainer.parentNode.replaceChild(newImageContainer, imageContainer);
         
-        // Add new handlers
-        this.handleImageMouseDown = (e) => {
-            if (e.target.closest('.project-images-container')) {
-                this.isImageScrollActive = true;
-                imageContainer.classList.add('image-scroll-active');
-                imageSwiper.autoplay.stop();
-            }
-        };
+        // الحصول على imageContainer الجديد
+        const currentImageContainer = activeSlide.querySelector('.project-images-container');
         
-        this.handleImageMouseUp = () => {
-            this.isImageScrollActive = false;
-            imageContainer.classList.remove('image-scroll-active');
-            setTimeout(() => {
-                imageSwiper.autoplay.start();
-            }, 5000);
-        };
+        // إعادة الحصول على imageSwiper
+        const currentImageSwiper = this.imageSwiperInstances[projectId];
         
-        this.handleImageTouchStart = (e) => {
-            if (e.target.closest('.project-images-container')) {
-                this.isImageScrollActive = true;
-                imageContainer.classList.add('image-scroll-active');
-                imageSwiper.autoplay.stop();
-            }
-        };
+        if (!currentImageSwiper) return;
         
-        this.handleImageTouchEnd = () => {
-            this.isImageScrollActive = false;
-            imageContainer.classList.remove('image-scroll-active');
-            setTimeout(() => {
-                imageSwiper.autoplay.start();
-            }, 5000);
-        };
-        
-        imageContainer.addEventListener('mousedown', this.handleImageMouseDown);
-        imageContainer.addEventListener('mouseup', this.handleImageMouseUp);
-        imageContainer.addEventListener('touchstart', this.handleImageTouchStart);
-        imageContainer.addEventListener('touchend', this.handleImageTouchEnd);
-        
-        // Add click handlers for dots
-        const dots = imageContainer.querySelectorAll('.image-dot');
+        // إضافة مستمعات الأحداث للنقاط
+        const dots = currentImageContainer.querySelectorAll('.image-dot');
         dots.forEach(dot => {
             dot.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const index = parseInt(e.currentTarget.dataset.index);
-                imageSwiper.slideToLoop(index);
-                this.updateImageDots(imageContainer, index);
-                
-                // Pause autoplay when user interacts with dots
-                imageSwiper.autoplay.stop();
-                setTimeout(() => {
-                    imageSwiper.autoplay.start();
-                }, 5000);
+                currentImageSwiper.slideTo(index);
+                this.updateImageDots(currentImageContainer, index);
             });
         });
     },
@@ -748,7 +854,10 @@ const WebProjectsManager = {
     closePopup: function() {
         console.log('🔴 Closing web popup');
         
-        // Destroy all image swipers
+        this.navigationLock = false;
+        this.isImageInteracting = false;
+        this.isModalOpen = false;
+        
         Object.values(this.imageSwiperInstances).forEach(swiper => {
             if (swiper && !swiper.destroyed) {
                 swiper.destroy(true, true);
@@ -756,15 +865,12 @@ const WebProjectsManager = {
         });
         this.imageSwiperInstances = {};
         
-        // Destroy main swiper
         if (this.swiperInstance) {
             this.swiperInstance.destroy(true, true);
             this.swiperInstance = null;
         }
         
         this.elements.popupContainer.style.display = 'none';
-        this.isModalOpen = false;
-        this.isImageScrollActive = false;
         document.body.style.overflow = '';
         
         if (this.elements.nav) {
@@ -791,14 +897,12 @@ const WebProjectsManager = {
     }
 };
 
-// Initialize when DOM is loaded
+// التهيئة عند تحميل DOM
 document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('web-apps')) {
         WebProjectsManager.init();
     }
 });
 
-// Make available globally
+// جعل المدير متاحًا عالميًا
 window.WebProjectsManager = WebProjectsManager;
-
-console.log('🌐 web-projects.js loaded with SEPARATE SCROLL LOGIC');

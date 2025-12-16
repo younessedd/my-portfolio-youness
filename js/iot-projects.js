@@ -1,15 +1,5 @@
 /**
- * IoT Projects Manager - FINAL VERSION WITH SEPARATE SCROLL LOGIC
- * Features:
- * 1. Click on images: Scroll images only
- * 2. Click outside images: Scroll cards/categories
- * 3. Images take 100% of container (object-fit: cover)
- * 4. 5-image swiper with finger navigation
- * 5. Auto-scroll every 5 seconds
- * 6. Infinite scroll
- * 7. Better tech tags with colors
- * 8. Colored features list
- * 9. Removed pagination
+ * IoT Projects Manager - FIXED WITH INFINITE SCROLL (ENHANCED VERSION)
  */
 
 const IoTProjectsManager = {
@@ -18,9 +8,13 @@ const IoTProjectsManager = {
     currentCardIndex: 0,
     swiperInstance: null,
     imageSwiperInstances: {},
-    isAnimating: false,
+    
+    // نظام قفل محسن
+    navigationLock: false,
+    animationTimeout: null,
+    
     isModalOpen: false,
-    isImageScrollActive: false, // Track if image scrolling is active
+    isImageInteracting: false,
     
     categories: ['home', 'industrial', 'sensors', 'othersiot'],
     categoryNames: {
@@ -30,77 +24,10 @@ const IoTProjectsManager = {
         'othersiot': 'Other IoT Projects'
     },
     
-    // Tech tag colors - FULL COLOR BACKGROUNDS (IoT specific)
-    techTagColors: {
-        // IoT Hardware
-        'Arduino': { bgColor: '#00979D', textColor: 'white', icon: 'fas fa-microchip', className: 'arduino' },
-        'ESP32': { bgColor: '#5C2D91', textColor: 'white', icon: 'fas fa-wifi', className: 'esp32' },
-        'ESP8266': { bgColor: '#005F73', textColor: 'white', icon: 'fas fa-wifi', className: 'esp8266' },
-        'Raspberry Pi': { bgColor: '#C51A4A', textColor: 'white', icon: 'fab fa-raspberry-pi', className: 'raspberry-pi' },
-        'STM32': { bgColor: '#0047AB', textColor: 'white', icon: 'fas fa-microchip', className: 'stm32' },
-        'NodeMCU': { bgColor: '#4ECDC4', textColor: 'black', icon: 'fas fa-microchip', className: 'nodemcu' },
-        
-        // Communication Protocols
-        'MQTT': { bgColor: '#660066', textColor: 'white', icon: 'fas fa-satellite', className: 'mqtt' },
-        'Bluetooth': { bgColor: '#0082FC', textColor: 'white', icon: 'fab fa-bluetooth-b', className: 'bluetooth' },
-        'WiFi': { bgColor: '#FF6B00', textColor: 'white', icon: 'fas fa-wifi', className: 'wifi' },
-        'LoRa': { bgColor: '#00A8E8', textColor: 'white', icon: 'fas fa-satellite-dish', className: 'lora' },
-        'Zigbee': { bgColor: '#FFC107', textColor: 'black', icon: 'fas fa-network-wired', className: 'zigbee' },
-        'Z-Wave': { bgColor: '#1E88E5', textColor: 'white', icon: 'fas fa-wave-square', className: 'z-wave' },
-        'RFID': { bgColor: '#FF6D00', textColor: 'white', icon: 'fas fa-id-card', className: 'rfid' },
-        
-        // Sensors & Actuators
-        'Sensors': { bgColor: '#8E24AA', textColor: 'white', icon: 'fas fa-thermometer-half', className: 'sensors' },
-        'Actuators': { bgColor: '#607D8B', textColor: 'white', icon: 'fas fa-cogs', className: 'actuators' },
-        'GPS': { bgColor: '#4285F4', textColor: 'white', icon: 'fas fa-map-marker-alt', className: 'gps' },
-        'DHT11/DHT22': { bgColor: '#4CAF50', textColor: 'white', icon: 'fas fa-thermometer', className: 'dht' },
-        'Ultrasonic': { bgColor: '#2196F3', textColor: 'white', icon: 'fas fa-wave-square', className: 'ultrasonic' },
-        'PIR': { bgColor: '#FF9800', textColor: 'white', icon: 'fas fa-eye', className: 'pir' },
-        'Relay': { bgColor: '#795548', textColor: 'white', icon: 'fas fa-toggle-on', className: 'relay' },
-        
-        // IoT Platforms
-        'Node-RED': { bgColor: '#8F0000', textColor: 'white', icon: 'fas fa-code', className: 'node-red' },
-        'Home Assistant': { bgColor: '#41BDF5', textColor: 'white', icon: 'fas fa-home', className: 'home-assistant' },
-        'AWS IoT': { bgColor: '#FF9900', textColor: 'black', icon: 'fab fa-aws', className: 'aws-iot' },
-        'Azure IoT': { bgColor: '#0078D4', textColor: 'white', icon: 'fab fa-microsoft', className: 'azure-iot' },
-        'Google Cloud IoT': { bgColor: '#4285F4', textColor: 'white', icon: 'fab fa-google', className: 'google-cloud-iot' },
-        
-        // Industrial IoT
-        'PLC': { bgColor: '#00695C', textColor: 'white', icon: 'fas fa-industry', className: 'plc' },
-        'SCADA': { bgColor: '#2E7D32', textColor: 'white', icon: 'fas fa-desktop', className: 'scada' },
-        'Modbus': { bgColor: '#D84315', textColor: 'white', icon: 'fas fa-exchange-alt', className: 'modbus' },
-        'OPC UA': { bgColor: '#5D4037', textColor: 'white', icon: 'fas fa-server', className: 'opc-ua' },
-        
-        // Programming & Frameworks
-        'C++': { bgColor: '#00599C', textColor: 'white', icon: 'fas fa-code', className: 'cpp' },
-        'Python': { bgColor: '#3776AB', textColor: 'white', icon: 'fab fa-python', className: 'python' },
-        'Micropython': { bgColor: '#2B5B84', textColor: 'white', icon: 'fab fa-python', className: 'micropython' },
-        'JavaScript': { bgColor: '#F7DF1E', textColor: 'black', icon: 'fab fa-js', className: 'javascript' },
-        'CircuitPython': { bgColor: '#8B4513', textColor: 'white', icon: 'fab fa-python', className: 'circuitpython' },
-        
-        // General IoT
-        'Automation': { bgColor: '#FF9800', textColor: 'white', icon: 'fas fa-robot', className: 'automation' },
-        'IoT': { bgColor: '#00BCD4', textColor: 'white', icon: 'fas fa-network-wired', className: 'iot' },
-        'Embedded': { bgColor: '#5D4037', textColor: 'white', icon: 'fas fa-microchip', className: 'embedded' },
-        'Security': { bgColor: '#FF5722', textColor: 'white', icon: 'fas fa-shield-alt', className: 'security' },
-        'Monitoring': { bgColor: '#9C27B0', textColor: 'white', icon: 'fas fa-chart-line', className: 'monitoring' },
-        
-        // Web technologies that might be used in IoT
-        'HTML5': { bgColor: '#E34F26', textColor: 'white', icon: 'fab fa-html5', className: 'html5' },
-        'CSS3': { bgColor: '#1572B6', textColor: 'white', icon: 'fab fa-css3-alt', className: 'css3' },
-        'API': { bgColor: '#6BD5F1', textColor: 'black', icon: 'fas fa-code', className: 'api' },
-        'SQLite': { bgColor: '#003B57', textColor: 'white', icon: 'fas fa-database', className: 'sqlite' },
-        'REST API': { bgColor: '#6BD5F1', textColor: 'black', icon: 'fas fa-code', className: 'rest-api' },
-        'Material Design': { bgColor: '#6200EE', textColor: 'white', icon: 'fas fa-palette', className: 'material-design' },
-        
-        // Default
-        'Default': { bgColor: '#4f46e5', textColor: 'white', icon: 'fas fa-microchip', className: 'default' }
-    },
-    
     cardPositions: {},
     
     init: function() {
-        console.log('🏠 IoT Projects Manager Initializing...');
+        console.log('🔌 IoT Projects Manager Initializing...');
         
         if (!window.iotProjectsData) {
             console.error('❌ iotProjectsData not found!');
@@ -182,42 +109,72 @@ const IoTProjectsManager = {
     },
     
     setupIconNavigation: function() {
-        if (this.elements.iconNavBtns) {
-            this.elements.iconNavBtns.forEach(iconBtn => {
-                iconBtn.addEventListener('click', (e) => {
-                    if (this.isAnimating) return;
-                    const category = e.currentTarget.dataset.category;
-                    const categoryName = this.categoryNames[category];
-                    this.goToCategory(category, categoryName);
-                });
+        if (!this.elements.iconNavBtns) return;
+        
+        this.elements.iconNavBtns.forEach(btn => {
+            btn.replaceWith(btn.cloneNode(true));
+        });
+        
+        this.elements.iconNavBtns = document.querySelectorAll('#iot-icon-nav-top .icon-nav-btn');
+        
+        this.elements.iconNavBtns.forEach(iconBtn => {
+            iconBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                
+                if (this.navigationLock) {
+                    console.log('⏳ Navigation is locked, please wait...');
+                    return;
+                }
+                
+                const category = iconBtn.dataset.category;
+                
+                if (category === this.currentCategory) {
+                    return;
+                }
+                
+                const categoryName = this.categoryNames[category];
+                
+                this.navigationLock = true;
+                this.goToCategory(category, categoryName);
+                
+                setTimeout(() => {
+                    this.navigationLock = false;
+                }, 600);
             });
-        }
+        });
     },
     
     setupCardNavigation: function() {
         if (this.elements.prevCardBtn) {
             this.elements.prevCardBtn.addEventListener('click', () => {
-                if (this.isAnimating || this.isImageScrollActive) return;
+                if (this.navigationLock || this.isImageInteracting) return;
+                this.navigationLock = true;
                 this.navigateToPrevCard();
+                setTimeout(() => { this.navigationLock = false; }, 600);
             });
         }
         
         if (this.elements.nextCardBtn) {
             this.elements.nextCardBtn.addEventListener('click', () => {
-                if (this.isAnimating || this.isImageScrollActive) return;
+                if (this.navigationLock || this.isImageInteracting) return;
+                this.navigationLock = true;
                 this.navigateToNextCard();
+                setTimeout(() => { this.navigationLock = false; }, 600);
             });
         }
         
-        // Keyboard navigation - only when image scroll is NOT active
         document.addEventListener('keydown', (e) => {
-            if (this.isModalOpen && !this.isImageScrollActive) {
+            if (this.isModalOpen && !this.isImageInteracting && !this.navigationLock) {
                 if (e.key === 'ArrowLeft') {
                     e.preventDefault();
+                    this.navigationLock = true;
                     this.navigateToPrevCard();
+                    setTimeout(() => { this.navigationLock = false; }, 600);
                 } else if (e.key === 'ArrowRight') {
                     e.preventDefault();
+                    this.navigationLock = true;
                     this.navigateToNextCard();
+                    setTimeout(() => { this.navigationLock = false; }, 600);
                 } else if (e.key === 'Escape') {
                     this.closePopup();
                 }
@@ -226,78 +183,83 @@ const IoTProjectsManager = {
     },
     
     showCategory: function(category, buttonText) {
-        console.log(`🏠 OPENING CATEGORY: ${category} - "${buttonText}"`);
+        console.log(`🔌 Opening category: ${category}`);
         
         this.currentCategory = category;
         this.currentCardIndex = 0;
         this.isModalOpen = true;
-        this.isImageScrollActive = false;
+        this.isImageInteracting = false;
+        this.navigationLock = false;
         
         this.elements.popupContainer.style.display = 'block';
         document.body.style.overflow = 'hidden';
         
         this.updateCategoryTitle(category, buttonText);
         this.updateIconNavigation(category);
-        this.updateCardCounter(category);
         this.updateActiveButton(category);
         
         this.initializeSwiperWithAllCategories();
         
         setTimeout(() => {
             const targetSlideIndex = this.cardPositions[`${category}-0`];
-            console.log(`🎯 Going to ${category}-0 at slide index: ${targetSlideIndex}`);
             
             if (targetSlideIndex !== undefined && this.swiperInstance) {
                 this.currentCardIndex = 0;
                 this.swiperInstance.slideTo(targetSlideIndex, 0);
+                this.updateCardCounter(category);
+                
+                // ✅ CRITICAL FIX: Initialize image swipers immediately
+                setTimeout(() => {
+                    this.initializeImageSwipers();
+                    this.setupImageScrollHandlers();
+                }, 100);
             }
         }, 100);
     },
     
     goToCategory: function(category, categoryName) {
-        if (!category || this.isAnimating || this.isImageScrollActive) return;
+        if (!category || !this.swiperInstance) {
+            console.error('❌ Cannot go to category:', category);
+            this.navigationLock = false;
+            return;
+        }
+        
+        console.log(`🔄 Switching to category: ${category}`);
+        
+        const targetSlideIndex = this.cardPositions[`${category}-0`];
+        
+        if (targetSlideIndex === undefined) {
+            console.error(`❌ No slides found for category: ${category}`);
+            this.navigationLock = false;
+            return;
+        }
         
         this.currentCategory = category;
         this.currentCardIndex = 0;
-        this.isAnimating = true;
-        
-        const targetSlideIndex = this.cardPositions[`${category}-0`];
-        console.log(`🔄 Switching to ${category} at slide: ${targetSlideIndex}`);
-        
-        if (targetSlideIndex !== undefined && this.swiperInstance) {
-            this.swiperInstance.slideTo(targetSlideIndex, 600);
-        }
         
         this.updateCategoryTitle(category, categoryName);
         this.updateIconNavigation(category);
         this.updateCardCounter(category);
         this.updateActiveButton(category);
         
-        setTimeout(() => {
-            this.isAnimating = false;
-        }, 600);
+        this.swiperInstance.slideTo(targetSlideIndex, 600);
     },
     
     goToCategoryCard: function(category, cardIndex) {
-        if (!this.swiperInstance || !this.elements.swiperWrapper || this.isImageScrollActive) return;
+        if (!this.swiperInstance || this.navigationLock) return;
         
         const key = `${category}-${cardIndex}`;
         const targetSlideIndex = this.cardPositions[key];
         
-        console.log(`🎯 goToCategoryCard: ${key} → slide ${targetSlideIndex}`);
-        
         if (targetSlideIndex !== undefined) {
             this.currentCardIndex = cardIndex;
             this.swiperInstance.slideTo(targetSlideIndex, 600);
-        } else {
-            console.error(`❌ Card not found: ${key}`);
+            this.updateCardCounter(category);
         }
     },
     
     navigateToPrevCard: function() {
-        if (this.isAnimating || !this.swiperInstance || this.isImageScrollActive) return;
-        
-        this.isAnimating = true;
+        if (!this.swiperInstance || this.navigationLock) return;
         
         const currentCardCount = this.getCardCountForCategory(this.currentCategory);
         let prevCardIndex = this.currentCardIndex - 1;
@@ -325,16 +287,10 @@ const IoTProjectsManager = {
             this.currentCardIndex = prevCardIndex;
             this.goToCategoryCard(this.currentCategory, this.currentCardIndex);
         }
-        
-        setTimeout(() => {
-            this.isAnimating = false;
-        }, 600);
     },
     
     navigateToNextCard: function() {
-        if (this.isAnimating || !this.swiperInstance || this.isImageScrollActive) return;
-        
-        this.isAnimating = true;
+        if (!this.swiperInstance || this.navigationLock) return;
         
         const currentCardCount = this.getCardCountForCategory(this.currentCategory);
         let nextCardIndex = this.currentCardIndex + 1;
@@ -361,10 +317,6 @@ const IoTProjectsManager = {
             this.currentCardIndex = nextCardIndex;
             this.goToCategoryCard(this.currentCategory, this.currentCardIndex);
         }
-        
-        setTimeout(() => {
-            this.isAnimating = false;
-        }, 600);
     },
     
     updateIconNavigation: function(category) {
@@ -420,13 +372,11 @@ const IoTProjectsManager = {
     },
     
     initializeSwiperWithAllCategories: function() {
-        // Clean up existing swipers
         if (this.swiperInstance) {
             this.swiperInstance.destroy(true, true);
             this.swiperInstance = null;
         }
         
-        // Clear image swiper instances
         this.imageSwiperInstances = {};
         
         if (this.elements.swiperWrapper) {
@@ -512,7 +462,6 @@ const IoTProjectsManager = {
             `;
         }
         
-        // Use only 5 images maximum
         const displayImages = images.slice(0, 5);
         const slides = displayImages.map((img, idx) => `
             <div class="swiper-slide image-slide">
@@ -529,6 +478,12 @@ const IoTProjectsManager = {
                 <div class="swiper image-swiper">
                     <div class="swiper-wrapper">
                         ${slides}
+                    </div>
+                    <div class="image-swiper-button-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="image-swiper-button-prev">
+                        <i class="fas fa-chevron-left"></i>
                     </div>
                 </div>
                 <div class="image-nav-dots">
@@ -557,47 +512,107 @@ const IoTProjectsManager = {
     },
     
     generateTechTagsHTML: function(technologies) {
+        const techTagColors = {
+            'Arduino': { bgColor: '#00979D', textColor: 'white' },
+            'ESP32': { bgColor: '#5C2D91', textColor: 'white' },
+            'ESP8266': { bgColor: '#005F73', textColor: 'white' },
+            'Raspberry Pi': { bgColor: '#C51A4A', textColor: 'white' },
+            'MQTT': { bgColor: '#660066', textColor: 'white' },
+            'Bluetooth': { bgColor: '#0082FC', textColor: 'white' },
+            'WiFi': { bgColor: '#FF6B00', textColor: 'white' },
+            'LoRa': { bgColor: '#00A8E8', textColor: 'white' },
+            'Sensors': { bgColor: '#8E24AA', textColor: 'white' },
+            'PLC': { bgColor: '#00695C', textColor: 'white' },
+            'SCADA': { bgColor: '#2E7D32', textColor: 'white' },
+            'IoT': { bgColor: '#00BCD4', textColor: 'white' },
+            'Automation': { bgColor: '#FF9800', textColor: 'black' },
+            'Default': { bgColor: '#4f46e5', textColor: 'white' }
+        };
+        
         return technologies.map(tech => {
-            const techConfig = this.techTagColors[tech] || this.techTagColors['Default'];
+            const techConfig = techTagColors[tech] || techTagColors['Default'];
             return `
-                <span class="tech-tag ${techConfig.className}" 
-                      data-tech="${tech}"
-                      style="background-color: ${techConfig.bgColor}; color: ${techConfig.textColor};">
-                    <i class="${techConfig.icon}"></i>
+                <span class="tech-tag" style="background-color: ${techConfig.bgColor}; color: ${techConfig.textColor};">
+                    <i class="fas fa-microchip"></i>
                     ${tech}
                 </span>
             `;
         }).join('');
     },
     
+    // ✅ Infinite Scroll مع إصلاح الخطأ
     initMainSwiper: function() {
         if (!this.elements.swiper) return;
         
+        // ✅ حساب عدد الشرائح الإجمالية
+        const totalSlides = Object.keys(this.cardPositions).length;
+        
         this.swiperInstance = new Swiper(this.elements.swiper, {
-            loop: false,
+            // ✅ Infinite Scroll مع ضبط مناسب
+            loop: true,
+            loopAdditionalSlides: 2,
+            loopedSlides: Math.min(3, totalSlides), // ✅ ضبط ديناميكي
+            
             spaceBetween: 0,
             speed: 600,
-            keyboard: { 
-                enabled: true,
-                onlyInViewport: true 
-            },
-            mousewheel: false,
-            grabCursor: true,
+            
             slidesPerView: 1,
-            effect: 'slide',
-            noSwipingSelector: '.project-images-container, .image-swiper, .project-image, .image-dot',
+            slidesPerGroup: 1,
+            
+            navigation: {
+                nextEl: this.elements.nextCardBtn,
+                prevEl: this.elements.prevCardBtn,
+            },
+            
+            touchRatio: 0.6,
+            grabCursor: true,
+            allowTouchMove: true,
+            shortSwipes: false,
+            longSwipes: true,
+            longSwipesRatio: 0.1,
+            followFinger: true,
+            threshold: 15,
+            
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true,
+            },
+            
+            mousewheel: {
+                forceToAxis: true,
+                invert: false,
+                sensitivity: 0.8,
+                eventsTarget: '.popup-content',
+                releaseOnEdges: true,
+            },
+            
+            noSwipingSelector: '.project-images-container, .image-swiper, .project-image, .image-dot, .image-swiper-button-next, .image-swiper-button-prev, .features-list, .tech-tag, .project-link',
             preventInteractionOnTransition: true,
+            
+            breakpoints: {
+                320: {
+                    spaceBetween: 0,
+                    touchRatio: 0.7
+                },
+                768: {
+                    spaceBetween: 0,
+                    touchRatio: 0.6
+                }
+            },
             
             on: {
                 init: () => {
-                    console.log('✅ IoT main swiper initialized');
-                    // Initialize image swipers for all slides
+                    console.log('✅ IoT main swiper initialized with infinite scroll');
                     this.initializeImageSwipers();
                     this.setupImageScrollHandlers();
                 },
-                slideChange: () => {
-                    if (!this.swiperInstance || !this.swiperInstance.slides) return;
+                
+                slideChangeTransitionEnd: () => {
+                    console.log('✅ Slide change completed');
                     
+                    if (!this.swiperInstance) return;
+                    
+                    // ✅ الحصول على الشريحة النشطة
                     const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
                     const category = activeSlide.dataset.category;
                     const cardIndex = parseInt(activeSlide.dataset.cardIndex);
@@ -612,81 +627,194 @@ const IoTProjectsManager = {
                         this.updateActiveButton(category);
                         this.updateCategoryTitle(category, categoryName);
                         
-                        // Reinitialize image handlers for new slide
-                        this.setupImageScrollHandlers();
+                        // إعادة تهيئة image swipers
+                        setTimeout(() => {
+                            this.initializeImageSwipers();
+                            this.setupImageScrollHandlers();
+                        }, 50);
                     }
                 },
-                slideChangeTransitionEnd: () => {
-                    // Initialize image swiper for newly active slide
-                    this.initializeImageSwipers();
-                    this.setupImageScrollHandlers();
+                
+                touchStart: (swiper, event) => {
+                    if (this.isImageInteracting) {
+                        swiper.allowTouchMove = false;
+                    }
+                },
+                
+                touchEnd: (swiper, event) => {
+                    swiper.allowTouchMove = true;
                 }
             }
         });
     },
     
+    // ✅ إصلاح جذري لخطأ newImageSwiper
     initializeImageSwipers: function() {
         if (!this.swiperInstance) return;
         
-        const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
-        if (!activeSlide) return;
-        
-        const imageContainer = activeSlide.querySelector('.project-images-container');
-        if (!imageContainer) return;
-        
-        const projectId = activeSlide.dataset.projectId;
-        
-        // If image swiper already exists for this project, don't reinitialize
-        if (this.imageSwiperInstances[projectId]) {
-            return;
-        }
-        
-        const imageSwiperEl = imageContainer.querySelector('.image-swiper');
-        if (!imageSwiperEl) return;
-        
-        // Initialize new image swiper
-        const imageSwiper = new Swiper(imageSwiperEl, {
-            loop: true,
-            spaceBetween: 0,
-            speed: 500,
-            autoplay: {
-                delay: 5000, // 5 seconds
-                disableOnInteraction: true,
-            },
-            pagination: false, // Disable pagination
-            grabCursor: true,
-            effect: 'slide',
-            slidesPerView: 1,
-            centeredSlides: true,
-            allowTouchMove: true,
-            preventInteractionOnTransition: false,
-            shortSwipes: true,
-            longSwipes: true,
-            followFinger: true,
+        try {
+            const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
+            if (!activeSlide) return;
             
-            on: {
-                init: () => {
-                    console.log(`✅ Image swiper initialized for project ${projectId}`);
-                    // Store reference
-                    this.imageSwiperInstances[projectId] = imageSwiper;
-                    
-                    // Ensure images take 100%
-                    const images = imageContainer.querySelectorAll('.project-image');
-                    images.forEach(img => {
-                        img.style.width = '100%';
-                        img.style.height = '100%';
-                        img.style.objectFit = 'cover';
-                    });
-                },
-                slideChange: (swiper) => {
-                    // Update navigation dots
-                    this.updateImageDots(imageContainer, swiper.realIndex);
+            const imageContainer = activeSlide.querySelector('.project-images-container');
+            if (!imageContainer) return;
+            
+            const projectId = activeSlide.dataset.projectId;
+            
+            // ✅ If swiper already exists, just reinitialize it
+            if (this.imageSwiperInstances[projectId]) {
+                try {
+                    this.imageSwiperInstances[projectId].destroy(true, true);
+                } catch (e) {
+                    console.log('Clearing old image swiper instance');
                 }
             }
+            
+            const imageSwiperEl = imageContainer.querySelector('.image-swiper');
+            if (!imageSwiperEl) return;
+            
+            // ✅ Add CSS for better scroll handling
+            imageSwiperEl.style.cssText = `
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            `;
+            
+            const images = imageSwiperEl.querySelectorAll('.project-image');
+            images.forEach(img => {
+                img.style.cssText = `
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    pointer-events: auto;
+                `;
+            });
+            
+            let imageSwiperInstance;
+            
+            imageSwiperInstance = new Swiper(imageSwiperEl, {
+                loop: true,
+                loopAdditionalSlides: 1,
+                loopedSlides: 2,
+                spaceBetween: 0,
+                speed: 500,
+                
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                },
+                
+                navigation: {
+                    nextEl: imageContainer.querySelector('.image-swiper-button-next'),
+                    prevEl: imageContainer.querySelector('.image-swiper-button-prev'),
+                },
+                
+                // ✅ Enhanced touch settings
+                touchRatio: 1,
+                grabCursor: true,
+                allowTouchMove: true,
+                shortSwipes: true,
+                longSwipes: true,
+                followFinger: true,
+                threshold: 5,
+                resistance: false,
+                
+                // ✅ Mousewheel with better handling
+                mousewheel: {
+                    forceToAxis: true,
+                    invert: false,
+                    sensitivity: 0.8,
+                    eventsTarget: imageContainer,
+                    releaseOnEdges: true,
+                },
+                
+                // ✅ Disable swiping on certain elements
+                noSwipingClass: 'no-swipe',
+                noSwipingSelector: '.project-links-top, .tech-tags-container, .features-list',
+                
+                breakpoints: {
+                    320: {
+                        touchRatio: 0.9
+                    }
+                },
+                
+                on: {
+                    init: () => {
+                        console.log(`✅ Image swiper initialized for project ${projectId}`);
+                        this.imageSwiperInstances[projectId] = imageSwiperInstance;
+                        
+                        // Force update
+                        imageSwiperInstance.update();
+                        imageSwiperInstance.slideTo(0, 0);
+                        
+                        // Ensure autoplay starts
+                        if (imageSwiperInstance.autoplay && imageSwiperInstance.autoplay.running === false) {
+                            imageSwiperInstance.autoplay.start();
+                        }
+                    },
+                    
+                    slideChange: (swiper) => {
+                        this.updateImageDots(imageContainer, swiper.realIndex);
+                    },
+                    
+                    slideChangeTransitionStart: () => {
+                        this.isImageInteracting = true;
+                    },
+                    
+                    slideChangeTransitionEnd: () => {
+                        this.isImageInteracting = false;
+                    },
+                    
+                    touchStart: () => {
+                        this.isImageInteracting = true;
+                    },
+                    
+                    touchEnd: () => {
+                        this.isImageInteracting = false;
+                    },
+                    
+                    destroy: () => {
+                        console.log(`🗑️ Image swiper destroyed for project ${projectId}`);
+                    }
+                }
+            });
+            
+            // ✅ Initialize dots
+            const totalSlides = imageSwiperInstance.slides.length;
+            const realTotal = imageSwiperInstance.loopedSlides ? 
+                totalSlides - (imageSwiperInstance.loopedSlides * 2) : totalSlides;
+            
+            this.updateImageDots(imageContainer, 0);
+            
+            // ✅ Setup dot click handlers
+            this.setupImageDotsHandlers(imageContainer, imageSwiperInstance);
+            
+            // ✅ Ensure autoplay starts
+            setTimeout(() => {
+                if (imageSwiperInstance.autoplay && !imageSwiperInstance.autoplay.running) {
+                    imageSwiperInstance.autoplay.start();
+                }
+            }, 300);
+            
+        } catch (error) {
+            console.error('Error initializing image swiper:', error);
+        }
+    },
+    
+    // ✅ New helper method for dot handlers
+    setupImageDotsHandlers: function(imageContainer, imageSwiper) {
+        const dots = imageContainer.querySelectorAll('.image-dot');
+        dots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const index = parseInt(e.currentTarget.dataset.index);
+                if (!isNaN(index)) {
+                    imageSwiper.slideToLoop(index);
+                    this.updateImageDots(imageContainer, index);
+                }
+            });
         });
-        
-        // Start autoplay
-        imageSwiper.autoplay.start();
     },
     
     setupImageScrollHandlers: function() {
@@ -703,64 +831,26 @@ const IoTProjectsManager = {
         
         if (!imageSwiper) return;
         
-        // Clear any existing handlers
-        imageContainer.removeEventListener('mousedown', this.handleImageMouseDown);
-        imageContainer.removeEventListener('mouseup', this.handleImageMouseUp);
-        imageContainer.removeEventListener('touchstart', this.handleImageTouchStart);
-        imageContainer.removeEventListener('touchend', this.handleImageTouchEnd);
+        // تنظيف المستمعات القديمة
+        const newImageContainer = imageContainer.cloneNode(true);
+        imageContainer.parentNode.replaceChild(newImageContainer, imageContainer);
         
-        // Add new handlers
-        this.handleImageMouseDown = (e) => {
-            if (e.target.closest('.project-images-container')) {
-                this.isImageScrollActive = true;
-                imageContainer.classList.add('image-scroll-active');
-                imageSwiper.autoplay.stop();
-            }
-        };
+        // الحصول على imageContainer الجديد
+        const currentImageContainer = activeSlide.querySelector('.project-images-container');
         
-        this.handleImageMouseUp = () => {
-            this.isImageScrollActive = false;
-            imageContainer.classList.remove('image-scroll-active');
-            setTimeout(() => {
-                imageSwiper.autoplay.start();
-            }, 5000);
-        };
+        // إعادة الحصول على imageSwiper
+        const currentImageSwiper = this.imageSwiperInstances[projectId];
         
-        this.handleImageTouchStart = (e) => {
-            if (e.target.closest('.project-images-container')) {
-                this.isImageScrollActive = true;
-                imageContainer.classList.add('image-scroll-active');
-                imageSwiper.autoplay.stop();
-            }
-        };
+        if (!currentImageSwiper) return;
         
-        this.handleImageTouchEnd = () => {
-            this.isImageScrollActive = false;
-            imageContainer.classList.remove('image-scroll-active');
-            setTimeout(() => {
-                imageSwiper.autoplay.start();
-            }, 5000);
-        };
-        
-        imageContainer.addEventListener('mousedown', this.handleImageMouseDown);
-        imageContainer.addEventListener('mouseup', this.handleImageMouseUp);
-        imageContainer.addEventListener('touchstart', this.handleImageTouchStart);
-        imageContainer.addEventListener('touchend', this.handleImageTouchEnd);
-        
-        // Add click handlers for dots
-        const dots = imageContainer.querySelectorAll('.image-dot');
+        // إضافة مستمعات الأحداث للنقاط
+        const dots = currentImageContainer.querySelectorAll('.image-dot');
         dots.forEach(dot => {
             dot.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const index = parseInt(e.currentTarget.dataset.index);
-                imageSwiper.slideToLoop(index);
-                this.updateImageDots(imageContainer, index);
-                
-                // Pause autoplay when user interacts with dots
-                imageSwiper.autoplay.stop();
-                setTimeout(() => {
-                    imageSwiper.autoplay.start();
-                }, 5000);
+                currentImageSwiper.slideTo(index);
+                this.updateImageDots(currentImageContainer, index);
             });
         });
     },
@@ -775,7 +865,10 @@ const IoTProjectsManager = {
     closePopup: function() {
         console.log('🔴 Closing IoT popup');
         
-        // Destroy all image swipers
+        this.navigationLock = false;
+        this.isImageInteracting = false;
+        this.isModalOpen = false;
+        
         Object.values(this.imageSwiperInstances).forEach(swiper => {
             if (swiper && !swiper.destroyed) {
                 swiper.destroy(true, true);
@@ -783,15 +876,12 @@ const IoTProjectsManager = {
         });
         this.imageSwiperInstances = {};
         
-        // Destroy main swiper
         if (this.swiperInstance) {
             this.swiperInstance.destroy(true, true);
             this.swiperInstance = null;
         }
         
         this.elements.popupContainer.style.display = 'none';
-        this.isModalOpen = false;
-        this.isImageScrollActive = false;
         document.body.style.overflow = '';
         
         if (this.elements.nav) {
@@ -818,14 +908,12 @@ const IoTProjectsManager = {
     }
 };
 
-// Initialize when DOM is loaded
+// التهيئة عند تحميل DOM
 document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('iot-projects')) {
         IoTProjectsManager.init();
     }
 });
 
-// Make available globally
+// جعل المدير متاحًا عالميًا
 window.IoTProjectsManager = IoTProjectsManager;
-
-console.log('📡 iot-projects.js loaded with SEPARATE SCROLL LOGIC (like web)');

@@ -96,7 +96,7 @@ const SkillsManager = {
         this.elements.prevCardBtn = document.getElementById('skills-prev-card');
         this.elements.nextCardBtn = document.getElementById('skills-next-card');
         this.elements.cardCounter = document.getElementById('skills-card-counter');
-        this.elements.counterNumber = document.querySelector('#skills-card-counter .counter-number');
+        this.elements.counterNumber = this.elements.cardCounter?.querySelector('.counter-number');
     },
     
     setupNavigation: function() {
@@ -437,18 +437,51 @@ const SkillsManager = {
         this.elements.swiperWrapper.appendChild(slide);
     },
     
+    // ============================
+    // التعديل المهم هنا: استخدام الألوان الفردية
+    // ============================
     generateSkillsHTML: function(skills, category) {
-        const categoryColor = this.categoryColors[category] || this.categoryColors['web'];
-        
         return skills.map(skill => `
             <div class="skill-item" style="
-                background: ${categoryColor.gradient};
-                border-color: ${categoryColor.primary};
+                background: ${skill.color};
+                border-color: ${this.darkenColor(skill.color, 20)};
             ">
                 <i class="${skill.icon}" style="color: white;"></i>
                 <span style="color: white;">${skill.name}</span>
             </div>
         `).join('');
+    },
+    
+    // ============================
+    // دالة مساعدة لتغميق الألوان للحدود
+    // ============================
+    darkenColor: function(color, percent) {
+        // تحويل اللون من HEX إلى RGB
+        let R = parseInt(color.substring(1,3), 16);
+        let G = parseInt(color.substring(3,5), 16);
+        let B = parseInt(color.substring(5,7), 16);
+        
+        // تخفيف اللون بنسبة معينة
+        R = parseInt(R * (100 - percent) / 100);
+        G = parseInt(G * (100 - percent) / 100);
+        B = parseInt(B * (100 - percent) / 100);
+        
+        // التأكد من أن القيم لا تقل عن 0
+        R = (R < 0) ? 0 : R;
+        G = (G < 0) ? 0 : G;
+        B = (B < 0) ? 0 : B;
+        
+        // تقريب القيم
+        R = Math.round(R);
+        G = Math.round(G);
+        B = Math.round(B);
+        
+        // تحويل إلى HEX مع إضافة الصفر إذا لزم الأمر
+        const RR = ((R.toString(16).length === 1) ? "0" + R.toString(16) : R.toString(16));
+        const GG = ((G.toString(16).length === 1) ? "0" + G.toString(16) : G.toString(16));
+        const BB = ((B.toString(16).length === 1) ? "0" + B.toString(16) : B.toString(16));
+        
+        return "#" + RR + GG + BB;
     },
     
     generateFeaturesHTML: function(features) {
@@ -537,4 +570,4 @@ document.addEventListener('DOMContentLoaded', function() {
 // Make available globally
 window.SkillsManager = SkillsManager;
 
-console.log('🎯 skills-manager.js loaded (same logic as web)');
+console.log('🎯 skills-manager.js loaded with individual skill colors');
