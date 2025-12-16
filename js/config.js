@@ -32,25 +32,16 @@ const PortfolioConfig = {
     
     // External Services
     services: {
-        // EmailJS Configuration (loaded from email-config.js)
+        // EmailJS Configuration
         emailjs: {
             serviceID: 'service_l953yi6',
             templateID: 'template_5aimrbz',
             publicKey: 'IbbG69TuO-Uyx_4I8'
-        },
-        
-        // CDN Links
-        cdn: {
-            fontAwesome: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-            swiperCSS: 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css',
-            swiperJS: 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js',
-            emailJS: 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js'
         }
     },
     
     // Feature Flags
     features: {
-        // Enable/disable features
         heroSwiper: true,
         skillsModal: true,
         projectsSwiper: true,
@@ -70,21 +61,15 @@ const PortfolioConfig = {
     performance: {
         // Lazy loading
         lazyLoadImages: true,
-        lazyLoadThreshold: 100, // pixels from viewport
+        lazyLoadThreshold: 100,
         
         // Debounce settings
-        scrollDebounce: 100, // milliseconds
-        resizeDebounce: 200, // milliseconds
+        scrollDebounce: 100,
+        resizeDebounce: 200,
         
         // Cache settings
         localStorageEnabled: true,
         sessionStorageEnabled: true
-    },
-    
-    // Analytics (if implemented)
-    analytics: {
-        enabled: false,
-        // Add your analytics configuration here
     },
     
     /**
@@ -107,7 +92,6 @@ const PortfolioConfig = {
             if (savedConfig) {
                 const parsed = JSON.parse(savedConfig);
                 this.mergeConfig(parsed);
-                console.log('Configuration loaded from localStorage');
             }
         } catch (error) {
             console.warn('Failed to load configuration from localStorage:', error);
@@ -121,14 +105,12 @@ const PortfolioConfig = {
         if (!this.performance.localStorageEnabled) return;
         
         try {
-            // Only save user-modifiable settings
             const saveableConfig = {
                 features: this.features,
                 contact: this.contact
             };
             
             localStorage.setItem('portfolio-config', JSON.stringify(saveableConfig));
-            console.log('Configuration saved to localStorage');
         } catch (error) {
             console.warn('Failed to save configuration to localStorage:', error);
         }
@@ -139,7 +121,6 @@ const PortfolioConfig = {
      * @param {Object} newConfig - New configuration to merge
      */
     mergeConfig: function(newConfig) {
-        // Deep merge function
         const deepMerge = (target, source) => {
             for (const key in source) {
                 if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
@@ -167,8 +148,6 @@ const PortfolioConfig = {
             this.saveToLocalStorage();
         }
         
-        console.log('Configuration updated:', updates);
-        
         // Dispatch configuration change event
         this.dispatchChangeEvent();
     },
@@ -187,83 +166,9 @@ const PortfolioConfig = {
      * Setup configuration update listener
      */
     setupConfigUpdateListener: function() {
-        // Listen for configuration change events
         document.addEventListener('portfolioConfigChanged', (event) => {
             console.log('Configuration changed:', event.detail);
         });
-    },
-    
-    /**
-     * Reset configuration to defaults
-     */
-    reset: function() {
-        // Create a new instance with defaults
-        const defaultConfig = new PortfolioConfig.constructor();
-        
-        // Merge defaults
-        this.mergeConfig(defaultConfig);
-        
-        // Clear localStorage
-        if (this.performance.localStorageEnabled) {
-            localStorage.removeItem('portfolio-config');
-        }
-        
-        console.log('Configuration reset to defaults');
-        this.dispatchChangeEvent();
-    },
-    
-    /**
-     * Get configuration as JSON string
-     * @returns {string} JSON string
-     */
-    toJSON: function() {
-        return JSON.stringify(this, null, 2);
-    },
-    
-    /**
-     * Check if a feature is enabled
-     * @param {string} featurePath - Dot notation path to feature
-     * @returns {boolean} True if feature is enabled
-     */
-    isFeatureEnabled: function(featurePath) {
-        const parts = featurePath.split('.');
-        let value = this.features;
-        
-        for (const part of parts) {
-            if (value[part] === undefined) {
-                return false;
-            }
-            value = value[part];
-        }
-        
-        return value === true;
-    },
-    
-    /**
-     * Enable/disable a feature
-     * @param {string} featurePath - Dot notation path to feature
-     * @param {boolean} enabled - Whether to enable the feature
-     */
-    setFeature: function(featurePath, enabled) {
-        const parts = featurePath.split('.');
-        let obj = this.features;
-        
-        // Navigate to the parent object
-        for (let i = 0; i < parts.length - 1; i++) {
-            if (!obj[parts[i]]) {
-                obj[parts[i]] = {};
-            }
-            obj = obj[parts[i]];
-        }
-        
-        // Set the value
-        obj[parts[parts.length - 1]] = enabled;
-        
-        // Save and notify
-        this.saveToLocalStorage();
-        this.dispatchChangeEvent();
-        
-        console.log(`Feature ${featurePath} ${enabled ? 'enabled' : 'disabled'}`);
     },
     
     /**
@@ -281,7 +186,6 @@ const PortfolioConfig = {
     updateContactInfo: function(newContact) {
         this.contact = { ...this.contact, ...newContact };
         this.saveToLocalStorage();
-        console.log('Contact information updated');
     }
 };
 
@@ -293,9 +197,4 @@ document.addEventListener('DOMContentLoaded', function() {
 // Make configuration available globally
 if (typeof window !== 'undefined') {
     window.PortfolioConfig = PortfolioConfig;
-}
-
-// Export for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = PortfolioConfig;
 }

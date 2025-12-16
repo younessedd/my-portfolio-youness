@@ -136,8 +136,6 @@ const ToastManager = {
         // Enforce maximum toasts
         this.enforceMaxToasts();
         
-        console.log(`Toast shown: ${type} - ${message}`);
-        
         return toast;
     },
     
@@ -188,12 +186,12 @@ const ToastManager = {
         // Apply styles
         Object.assign(toast.style, {
             background: typeConfig.backgroundColor,
-            color: 'var(--text)',
+            color: '#333',
             borderLeft: `4px solid ${typeConfig.color}`,
             padding: '16px 20px',
-            borderRadius: 'var(--radius-md)',
+            borderRadius: '8px',
             marginTop: '10px',
-            boxShadow: 'var(--shadow)',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
             display: 'flex',
             alignItems: 'center',
             maxWidth: '350px',
@@ -308,21 +306,6 @@ const ToastManager = {
     },
     
     /**
-     * Update toast configuration
-     * @param {Object} newConfig - New configuration
-     */
-    updateConfig: function(newConfig) {
-        this.config = { ...this.config, ...newConfig };
-        
-        // Reapply position styles if position changed
-        if (newConfig.position && this.container) {
-            this.applyPositionStyles();
-        }
-        
-        console.log('Toast configuration updated');
-    },
-    
-    /**
      * Get current configuration
      * @returns {Object} Current configuration
      */
@@ -344,15 +327,11 @@ document.addEventListener('DOMContentLoaded', function() {
     ToastManager.init();
 });
 
-// Global function for easy access (compatible with existing code)
+// Global function for easy access
 function showToast(message, type = 'info', options = {}) {
     return ToastManager.show(message, type, options);
 }
 
-// Export for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        ToastManager,
-        showToast
-    };
-}
+// Make available globally
+window.ToastManager = ToastManager;
+window.showToast = showToast;

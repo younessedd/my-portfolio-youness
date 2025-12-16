@@ -28,23 +28,7 @@ const EmailServiceManager = {
      * Load email configuration
      */
     loadConfig: function() {
-        // Try multiple sources for configuration
-        
-        // 1. From external config file (email-config.js)
-        if (typeof window !== 'undefined' && window.emailConfig) {
-            this.config = window.emailConfig;
-            console.log('Email config loaded from window.emailConfig');
-            return;
-        }
-        
-        // 2. From module (if imported)
-        if (typeof emailConfig !== 'undefined') {
-            this.config = emailConfig;
-            console.log('Email config loaded from emailConfig module');
-            return;
-        }
-        
-        // 3. From hardcoded values (fallback - should be in email-config.js)
+        // Use hardcoded values
         this.config = {
             serviceID: 'service_l953yi6',
             templateID: 'template_5aimrbz',
@@ -54,7 +38,7 @@ const EmailServiceManager = {
             subject: 'New Message from Portfolio'
         };
         
-        console.warn('Using fallback email configuration. Consider creating email-config.js file.');
+        console.log('Email config loaded');
     },
     
     /**
@@ -152,8 +136,6 @@ const EmailServiceManager = {
             timestamp: formattedTime,
             date: now.toLocaleDateString(),
             time: now.toLocaleTimeString(),
-            ip_address: this.getClientIP(),
-            user_agent: navigator.userAgent,
             page_url: window.location.href
         };
     },
@@ -189,54 +171,6 @@ const EmailServiceManager = {
         parsedError.status = error.status;
         
         return parsedError;
-    },
-    
-    /**
-     * Get client IP address (approximate)
-     * @returns {string} Client IP or 'unknown'
-     */
-    getClientIP: function() {
-        // Note: This is a client-side approximation
-        // Real IP should be obtained server-side
-        return 'client-ip-not-available';
-    },
-    
-    /**
-     * Test email configuration
-     * @returns {Promise} Test result
-     */
-    testConfiguration: async function() {
-        if (!this.isInitialized) {
-            return {
-                success: false,
-                message: 'Email service not initialized',
-                details: 'Check if EmailJS is loaded and configured'
-            };
-        }
-        
-        const testData = {
-            name: 'Test User',
-            email: 'test@example.com',
-            phone: '+212 600 000 000',
-            message: 'This is a test message from the portfolio contact form.',
-            subject: 'Test Message - Portfolio Contact Form'
-        };
-        
-        try {
-            const result = await this.sendEmail(testData);
-            return {
-                success: true,
-                message: 'Email configuration test successful',
-                details: result
-            };
-        } catch (error) {
-            return {
-                success: false,
-                message: 'Email configuration test failed',
-                details: error.message,
-                technical: error.technicalMessage
-            };
-        }
     },
     
     /**
@@ -281,91 +215,13 @@ const EmailServiceManager = {
             hasPublicKey: !!this.config?.publicKey,
             configSource: this.config ? 'loaded' : 'not loaded'
         };
-    },
-    
-    /**
-     * Update email configuration
-     * @param {Object} newConfig - New configuration object
-     */
-    updateConfig: function(newConfig) {
-        if (!newConfig || typeof newConfig !== 'object') {
-            console.error('Invalid configuration object');
-            return;
-        }
-        
-        // Merge new configuration
-        this.config = { ...this.config, ...newConfig };
-        
-        // Reinitialize if public key changed
-        if (newConfig.publicKey && newConfig.publicKey !== this.config.publicKey) {
-            this.initializeEmailJS();
-        }
-        
-        console.log('Email configuration updated');
-    },
-    
-    /**
-     * Send automated response to user
-     * @param {Object} userData - User data from contact form
-     * @returns {Promise} Promise that resolves when response is sent
-     */
-    sendAutoResponse: async function(userData) {
-        // This would require a separate template for auto-responses
-        // For now, this is a placeholder for future implementation
-        
-        console.log('Auto-response would be sent to:', userData.email);
-        return Promise.resolve({ status: 'not_implemented' });
-    },
-    
-    /**
-     * Log email sending attempt (for analytics)
-     * @param {Object} data - Email data
-     * @param {boolean} success - Whether email was sent successfully
-     * @param {string} error - Error message if any
-     */
-    logEmailAttempt: function(data, success, error = null) {
-        const logEntry = {
-            timestamp: new Date().toISOString(),
-            success: success,
-            to: this.config.toEmail,
-            from: data.email,
-            name: data.name,
-            error: error,
-            userAgent: navigator.userAgent,
-            page: window.location.href
-        };
-        
-        // In a real application, this would send to a logging service
-        console.log('Email attempt logged:', logEntry);
-        
-        // Store in localStorage for debugging (limited to last 10 attempts)
-        try {
-            const logs = JSON.parse(localStorage.getItem('emailLogs') || '[]');
-            logs.unshift(logEntry);
-            
-            // Keep only last 10 entries
-            if (logs.length > 10) {
-                logs.pop();
-            }
-            
-            localStorage.setItem('emailLogs', JSON.stringify(logs));
-        } catch (e) {
-            console.warn('Could not save email log:', e);
-        }
     }
 };
 
 // Initialize email service when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     EmailServiceManager.init();
-    
-    // Test configuration on load (optional - remove in production)
-    // EmailServiceManager.testConfiguration().then(result => {
-    //     console.log('Email config test:', result);
-    // });
 });
 
-// Export for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = EmailServiceManager;
-}
+// Make available globally
+window.EmailServiceManager = EmailServiceManager;

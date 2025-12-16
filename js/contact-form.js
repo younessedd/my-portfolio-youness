@@ -231,7 +231,6 @@ const ContactFormManager = {
         if (errorElement) {
             errorElement.textContent = message;
             errorElement.style.display = 'block';
-            errorElement.classList.add('show');
         }
         
         // Add error class to input
@@ -249,7 +248,6 @@ const ContactFormManager = {
         const errorElement = this.elements.errorElements[field];
         if (errorElement) {
             errorElement.style.display = 'none';
-            errorElement.classList.remove('show');
         }
         
         // Remove error class from input
@@ -325,56 +323,13 @@ const ContactFormManager = {
             throw new Error('EmailJS is not loaded');
         }
         
-        // Get email configuration
-        const emailConfig = this.getEmailConfig();
-        
-        if (!emailConfig || !emailConfig.publicKey) {
-            throw new Error('Email configuration not found');
+        // Check if EmailServiceManager is available
+        if (typeof EmailServiceManager === 'undefined' || !EmailServiceManager.isInitialized) {
+            throw new Error('Email service is not initialized');
         }
-        
-        // Initialize EmailJS
-        emailjs.init(emailConfig.publicKey);
-        
-        // Prepare template parameters
-        const templateParams = {
-            name: formData.name,
-            email: formData.email,
-            time: formData.time,
-            message: `${formData.message}\n\nPhone: ${formData.phone}`
-        };
         
         // Send email
-        const response = await emailjs.send(
-            emailConfig.serviceID,
-            emailConfig.templateID,
-            templateParams
-        );
-        
-        console.log('Email sent successfully:', response);
-        return response;
-    },
-    
-    /**
-     * Get email configuration
-     * @returns {Object} Email configuration object
-     */
-    getEmailConfig: function() {
-        // Try to get from window object (loaded from email-config.js)
-        if (typeof window !== 'undefined' && window.emailConfig) {
-            return window.emailConfig;
-        }
-        
-        // Try to get from module
-        if (typeof emailConfig !== 'undefined') {
-            return emailConfig;
-        }
-        
-        // Fallback to hardcoded values (should be in email-config.js)
-        return {
-            serviceID: 'service_l953yi6',
-            templateID: 'template_5aimrbz',
-            publicKey: 'IbbG69TuO-Uyx_4I8'
-        };
+        return await EmailServiceManager.sendEmail(formData);
     },
     
     /**
@@ -384,12 +339,12 @@ const ContactFormManager = {
     handleSubmissionError: function(error) {
         let errorMessage = 'There was an error sending your message. Please try again later.';
         
-        if (error.text && error.text.includes('Invalid login credentials')) {
-            errorMessage = 'Email service configuration error. Please check your EmailJS settings.';
-        } else if (error.status === 0) {
+        if (error.message.includes('Network error')) {
             errorMessage = 'Network error. Please check your internet connection.';
-        } else if (error.text && error.text.includes('Template not found')) {
-            errorMessage = 'Email template not found. Please check your template ID.';
+        } else if (error.message.includes('Email service configuration')) {
+            errorMessage = 'Email service configuration error. Please try again later.';
+        } else if (error.message.includes('Template not found')) {
+            errorMessage = 'Email template not found. Please try again later.';
         }
         
         this.showError(errorMessage, 'error');
@@ -454,25 +409,6 @@ const ContactFormManager = {
             phone: this.elements.phoneInput?.value.trim() || '',
             message: this.elements.messageInput?.value.trim() || ''
         };
-    },
-    
-    /**
-     * Set form data from object
-     * @param {Object} data - Form data object
-     */
-    setFormData: function(data) {
-        if (data.name && this.elements.nameInput) {
-            this.elements.nameInput.value = data.name;
-        }
-        if (data.email && this.elements.emailInput) {
-            this.elements.emailInput.value = data.email;
-        }
-        if (data.phone && this.elements.phoneInput) {
-            this.elements.phoneInput.value = data.phone;
-        }
-        if (data.message && this.elements.messageInput) {
-            this.elements.messageInput.value = data.message;
-        }
     }
 };
 
@@ -481,7 +417,5 @@ document.addEventListener('DOMContentLoaded', function() {
     ContactFormManager.init();
 });
 
-// Export for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = ContactFormManager;
-}
+// Make available globally
+window.ContactFormManager = ContactFormManager;

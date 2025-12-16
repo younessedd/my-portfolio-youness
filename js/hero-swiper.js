@@ -101,14 +101,6 @@ const HeroSwiperManager = {
                 nextSlideMessage: 'Next slide',
                 firstSlideMessage: 'This is the first slide',
                 lastSlideMessage: 'This is the last slide',
-            },
-            on: {
-                init: function() {
-                    console.log('Hero swiper initialized');
-                },
-                slideChange: function() {
-                    console.log('Slide changed to:', this.realIndex);
-                }
             }
         }
     },
@@ -153,6 +145,8 @@ const HeroSwiperManager = {
         const slideDiv = document.createElement('div');
         slideDiv.className = 'swiper-slide hero-slide';
         slideDiv.style.background = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('${slide.backgroundImage}')`;
+        slideDiv.style.backgroundSize = 'cover';
+        slideDiv.style.backgroundPosition = 'center';
         
         // Create buttons HTML
         const buttonsHTML = slide.buttons.map(button => 
@@ -185,8 +179,22 @@ const HeroSwiperManager = {
             return;
         }
         
-        this.swiper = new Swiper('.hero-swiper', this.config.swiperConfig);
-        console.log('Swiper instance created');
+        try {
+            this.swiper = new Swiper('.hero-swiper', this.config.swiperConfig);
+            
+            // Add event listeners for the swiper
+            this.swiper.on('init', function() {
+                console.log('Hero swiper initialized');
+            });
+            
+            this.swiper.on('slideChange', function() {
+                console.log('Slide changed to:', this.realIndex);
+            });
+            
+            console.log('Swiper instance created');
+        } catch (error) {
+            console.error('Failed to initialize swiper:', error);
+        }
     },
     
     /**
@@ -200,13 +208,15 @@ const HeroSwiperManager = {
         const heroContainer = document.querySelector('.hero-swiper');
         if (heroContainer && this.swiper) {
             heroContainer.addEventListener('mouseenter', () => {
-                this.swiper.autoplay.stop();
-                console.log('Autoplay paused');
+                if (this.swiper.autoplay) {
+                    this.swiper.autoplay.stop();
+                }
             });
             
             heroContainer.addEventListener('mouseleave', () => {
-                this.swiper.autoplay.start();
-                console.log('Autoplay resumed');
+                if (this.swiper.autoplay) {
+                    this.swiper.autoplay.start();
+                }
             });
         }
     },
@@ -219,10 +229,8 @@ const HeroSwiperManager = {
         
         if (e.key === 'ArrowLeft') {
             this.swiper.slidePrev();
-            console.log('Previous slide (keyboard)');
         } else if (e.key === 'ArrowRight') {
             this.swiper.slideNext();
-            console.log('Next slide (keyboard)');
         }
     },
     
@@ -233,7 +241,6 @@ const HeroSwiperManager = {
     goToSlide: function(index) {
         if (this.swiper && index >= 0 && index < this.config.slides.length) {
             this.swiper.slideToLoop(index);
-            console.log(`Navigated to slide ${index}`);
         }
     },
     
@@ -241,9 +248,8 @@ const HeroSwiperManager = {
      * Start autoplay
      */
     startAutoplay: function() {
-        if (this.swiper) {
+        if (this.swiper && this.swiper.autoplay) {
             this.swiper.autoplay.start();
-            console.log('Autoplay started');
         }
     },
     
@@ -251,9 +257,8 @@ const HeroSwiperManager = {
      * Stop autoplay
      */
     stopAutoplay: function() {
-        if (this.swiper) {
+        if (this.swiper && this.swiper.autoplay) {
             this.swiper.autoplay.stop();
-            console.log('Autoplay stopped');
         }
     },
     
@@ -264,7 +269,6 @@ const HeroSwiperManager = {
         if (this.swiper) {
             this.swiper.destroy(true, true);
             this.swiper = null;
-            console.log('Swiper destroyed');
         }
     },
     
@@ -274,20 +278,6 @@ const HeroSwiperManager = {
      */
     getCurrentSlide: function() {
         return this.swiper ? this.swiper.realIndex : 0;
-    },
-    
-    /**
-     * Add a new slide dynamically
-     * @param {Object} slide - Slide data
-     */
-    addSlide: function(slide) {
-        this.config.slides.push(slide);
-        
-        if (this.swiper) {
-            const slideElement = this.createSlideElement(slide);
-            this.swiper.appendSlide(slideElement);
-            console.log('Slide added:', slide.title);
-        }
     }
 };
 
@@ -296,7 +286,5 @@ document.addEventListener('DOMContentLoaded', function() {
     HeroSwiperManager.init();
 });
 
-// Export for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = HeroSwiperManager;
-}
+// Make available globally
+window.HeroSwiperManager = HeroSwiperManager;

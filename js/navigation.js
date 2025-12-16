@@ -1,82 +1,170 @@
 /**
  * navigation.js - Navigation Management
- * Handles mobile menu, smooth scrolling, and navigation interactions
+ * SIMPLE & WORKING VERSION: Hamburger works on first click
  */
 
 const NavigationManager = {
-    // DOM Elements
-    elements: {
-        burgerBtn: null,
-        mobileMenu: null,
-        desktopNav: null,
-        mobileNavLinks: null
-    },
-    
-    // State
-    isMobileMenuOpen: false,
-    
-    /**
-     * Initialize navigation
-     */
+    // Initialize
     init: function() {
-        this.cacheElements();
-        this.setupEventListeners();
-        this.setupSmoothScrolling();
-        console.log('Navigation manager initialized');
+        console.log('🚀 Initializing Navigation...');
+        this.setupHamburger();
+        this.setupMobileLinks();
+        this.setupThemeToggle();
+        this.setupSmoothScroll();
+        console.log('✅ Navigation Ready');
     },
-    
-    /**
-     * Cache DOM elements
-     */
-    cacheElements: function() {
-        this.elements.burgerBtn = document.getElementById('burger-btn');
-        this.elements.mobileMenu = document.getElementById('mobile-menu');
-        this.elements.desktopNav = document.querySelector('.desktop-nav');
-        this.elements.mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-    },
-    
-    /**
-     * Setup all event listeners
-     */
-    setupEventListeners: function() {
-        // Burger button click
-        if (this.elements.burgerBtn) {
-            this.elements.burgerBtn.addEventListener('click', () => this.toggleMobileMenu());
+
+    // 1. HAMBURGER - SIMPLE & WORKING
+    setupHamburger: function() {
+        const burgerBtn = document.getElementById('burger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (!burgerBtn || !mobileMenu) {
+            console.error('❌ Hamburger elements not found!');
+            return;
         }
         
-        // Mobile nav link clicks
-        this.elements.mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => this.closeMobileMenu());
+        console.log('🍔 Found hamburger elements');
+        
+        // SIMPLE CLICK HANDLER - WORKS ON FIRST CLICK
+        burgerBtn.addEventListener('click', function(e) {
+            console.log('🎯 Hamburger clicked!');
+            e.stopPropagation();
+            e.preventDefault();
+            
+            // Toggle menu
+            mobileMenu.classList.toggle('active');
+            
+            // Toggle icon
+            const icon = this.querySelector('i');
+            if (icon) {
+                icon.className = mobileMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+            }
+            
+            // Toggle body scroll
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            
+            console.log('📱 Menu state:', mobileMenu.classList.contains('active') ? 'OPEN' : 'CLOSED');
         });
         
-        // Close menu when clicking outside
-        document.addEventListener('click', (event) => this.handleOutsideClick(event));
+        // Close when clicking outside
+        document.addEventListener('click', function(e) {
+            if (mobileMenu.classList.contains('active') &&
+                !mobileMenu.contains(e.target) &&
+                !burgerBtn.contains(e.target)) {
+                
+                mobileMenu.classList.remove('active');
+                burgerBtn.querySelector('i').className = 'fas fa-bars';
+                document.body.style.overflow = '';
+            }
+        });
         
-        // Close menu with Escape key
-        document.addEventListener('keydown', (event) => this.handleKeydown(event));
-        
-        // Update navigation on resize
-        window.addEventListener('resize', () => this.handleResize());
+        // Close with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                burgerBtn.querySelector('i').className = 'fas fa-bars';
+                document.body.style.overflow = '';
+            }
+        });
     },
-    
-    /**
-     * Setup smooth scrolling for anchor links
-     */
-    setupSmoothScrolling: function() {
-        // Select all links with hashes
+
+    // 2. MOBILE LINKS - Close menu when clicked
+    setupMobileLinks: function() {
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                console.log('📱 Mobile link clicked:', this.textContent);
+                
+                // Close mobile menu
+                const mobileMenu = document.getElementById('mobile-menu');
+                const burgerBtn = document.getElementById('burger-btn');
+                
+                if (mobileMenu) mobileMenu.classList.remove('active');
+                if (burgerBtn) burgerBtn.querySelector('i').className = 'fas fa-bars';
+                document.body.style.overflow = '';
+            });
+        });
+    },
+
+    // 3. THEME TOGGLE - FIXED FOR MOBILE
+    setupThemeToggle: function() {
+        const themeToggleDesktop = document.getElementById('theme-toggle-desktop');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        
+        const toggleTheme = () => {
+            const isDark = document.body.classList.contains('theme-dark');
+            const newTheme = isDark ? 'light' : 'dark';
+            
+            if (newTheme === 'dark') {
+                document.body.classList.remove('theme-light');
+                document.body.classList.add('theme-dark');
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.body.classList.remove('theme-dark');
+                document.body.classList.add('theme-light');
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+            
+            localStorage.setItem('portfolio-theme', newTheme);
+            updateThemeUI(newTheme);
+            
+            if (typeof showToast === 'function') {
+                showToast(`Switched to ${newTheme === 'dark' ? 'Dark' : 'Light'} Mode`, 'success');
+            }
+        };
+        
+        const updateThemeUI = (theme) => {
+            const isDark = theme === 'dark';
+            const iconClass = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            const text = isDark ? 'Light Mode' : 'Dark Mode';
+            
+            const desktopIcon = document.querySelector('#theme-toggle-desktop i');
+            if (desktopIcon) desktopIcon.className = iconClass;
+            
+            const mobileIcon = document.querySelector('#mobile-theme-toggle i');
+            if (mobileIcon) mobileIcon.className = iconClass;
+            
+            const mobileText = document.querySelector('#mobile-theme-toggle span');
+            if (mobileText) mobileText.textContent = text;
+        };
+        
+        if (themeToggleDesktop) {
+            themeToggleDesktop.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleTheme();
+            });
+        }
+        
+        if (mobileThemeToggle) {
+            mobileThemeToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleTheme();
+                
+                // Close mobile menu after theme change
+                const mobileMenu = document.getElementById('mobile-menu');
+                const burgerBtn = document.getElementById('burger-btn');
+                if (mobileMenu) mobileMenu.classList.remove('active');
+                if (burgerBtn) burgerBtn.querySelector('i').className = 'fas fa-bars';
+                document.body.style.overflow = '';
+            });
+        }
+    },
+
+    // 4. SMOOTH SCROLL
+    setupSmoothScroll: function() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
                 
-                // Skip if it's just "#" or empty
                 if (href === '#' || href === '') return;
                 
                 const targetElement = document.querySelector(href);
                 if (targetElement) {
                     e.preventDefault();
                     
-                    // Calculate header height for offset
-                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const headerHeight = document.querySelector('header').offsetHeight || 80;
                     const targetPosition = targetElement.offsetTop - headerHeight;
                     
                     window.scrollTo({
@@ -84,135 +172,56 @@ const NavigationManager = {
                         behavior: 'smooth'
                     });
                     
-                    // Update URL without jumping
                     history.pushState(null, null, href);
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    const burgerBtn = document.getElementById('burger-btn');
+                    if (mobileMenu && mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        if (burgerBtn) burgerBtn.querySelector('i').className = 'fas fa-bars';
+                        document.body.style.overflow = '';
+                    }
                 }
             });
         });
-    },
-    
-    /**
-     * Toggle mobile menu visibility
-     */
-    toggleMobileMenu: function() {
-        this.isMobileMenuOpen = !this.isMobileMenuOpen;
-        
-        if (this.elements.mobileMenu) {
-            this.elements.mobileMenu.classList.toggle('active');
-        }
-        
-        if (this.elements.burgerBtn) {
-            const icon = this.elements.burgerBtn.querySelector('i');
-            if (icon) {
-                icon.className = this.isMobileMenuOpen ? 'fas fa-times' : 'fas fa-bars';
-            }
-        }
-        
-        // Toggle body scroll
-        document.body.style.overflow = this.isMobileMenuOpen ? 'hidden' : '';
-        
-        console.log('Mobile menu toggled:', this.isMobileMenuOpen);
-    },
-    
-    /**
-     * Close mobile menu
-     */
-    closeMobileMenu: function() {
-        this.isMobileMenuOpen = false;
-        
-        if (this.elements.mobileMenu) {
-            this.elements.mobileMenu.classList.remove('active');
-        }
-        
-        if (this.elements.burgerBtn) {
-            const icon = this.elements.burgerBtn.querySelector('i');
-            if (icon) {
-                icon.className = 'fas fa-bars';
-            }
-        }
-        
-        document.body.style.overflow = '';
-        
-        console.log('Mobile menu closed');
-    },
-    
-    /**
-     * Handle clicks outside mobile menu
-     */
-    handleOutsideClick: function(event) {
-        const { burgerBtn, mobileMenu } = this.elements;
-        
-        if (this.isMobileMenuOpen && 
-            mobileMenu && !mobileMenu.contains(event.target) && 
-            burgerBtn && !burgerBtn.contains(event.target)) {
-            this.closeMobileMenu();
-        }
-    },
-    
-    /**
-     * Handle keyboard events
-     */
-    handleKeydown: function(event) {
-        // Close menu with Escape key
-        if (event.key === 'Escape' && this.isMobileMenuOpen) {
-            this.closeMobileMenu();
-        }
-    },
-    
-    /**
-     * Handle window resize
-     */
-    handleResize: function() {
-        // Close mobile menu on larger screens
-        if (window.innerWidth > 768 && this.isMobileMenuOpen) {
-            this.closeMobileMenu();
-        }
-    },
-    
-    /**
-     * Update active navigation link based on scroll position
-     */
-    updateActiveNavLink: function() {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
-        
-        let currentSection = '';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            const headerHeight = document.querySelector('header').offsetHeight;
-            
-            if (scrollY >= (sectionTop - headerHeight - 100)) {
-                currentSection = section.getAttribute('id');
-            }
-        });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            const href = link.getAttribute('href');
-            if (href === `#${currentSection}`) {
-                link.classList.add('active');
-            }
-        });
-    },
-    
-    /**
-     * Initialize scroll spy for active navigation
-     */
-    initScrollSpy: function() {
-        window.addEventListener('scroll', () => this.updateActiveNavLink());
-        this.updateActiveNavLink(); // Initial call
     }
 };
 
-// Initialize navigation when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => NavigationManager.init());
+} else {
     NavigationManager.init();
-    NavigationManager.initScrollSpy();
-});
-
-// Export for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = NavigationManager;
 }
+
+// Emergency fix: Direct event binding as fallback
+setTimeout(() => {
+    const burgerBtn = document.getElementById('burger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (burgerBtn && mobileMenu) {
+        console.log('⚡ Applying emergency hamburger fix...');
+        
+        // Force remove all existing events
+        burgerBtn.onclick = null;
+        
+        // Add direct onclick
+        burgerBtn.onclick = function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            
+            mobileMenu.classList.toggle('active');
+            
+            const icon = this.querySelector('i');
+            if (icon) {
+                icon.className = mobileMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+            }
+            
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            
+            console.log('⚡ Emergency fix: Menu toggled');
+            return false;
+        };
+    }
+}, 1000);

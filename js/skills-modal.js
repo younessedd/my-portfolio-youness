@@ -1,37 +1,102 @@
 /**
- * skills-modal.js - Skills Modal Management
- * مع هيدر صغير يظهر اسم الفئة
- * زر الإغلاق في الهيدر في المنتصف عمودياً
- * نفس تصميم Web Apps
+ * Skills Manager - FINAL VERSION WITH SEPARATE SCROLL LOGIC
+ * Features:
+ * 1. Same navigation logic as Web Apps
+ * 2. Colored skills grid
+ * 3. Colored features list
+ * 4. Card navigation between categories
+ * 5. Keyboard navigation support
  */
 
-const SkillsManagerNew = {
-    elements: {
-        nav: null,
-        swiperContainer: null,
-        swiper: null,
-        categoryTitle: null,
-        headerCloseBtn: null
+const SkillsManager = {
+    elements: {},
+    currentCategory: 'web',
+    currentCardIndex: 0,
+    swiperInstance: null,
+    isAnimating: false,
+    isModalOpen: false,
+    
+    categories: ['web', 'iot', 'mobile', 'soft'],
+    categoryNames: {
+        'web': 'Web Development',
+        'iot': 'IoT & Electronics',
+        'mobile': 'Mobile Development',
+        'soft': 'Soft Skills'
     },
     
-    currentCategory: 'web',
-    swiperInstance: null,
-    skillsData: null,
+    // Category colors for skill items
+    categoryColors: {
+        'web': { 
+            primary: '#4f46e5', 
+            secondary: '#06b6d4',
+            gradient: 'linear-gradient(135deg, #4f46e5, #06b6d4)'
+        },
+        'iot': { 
+            primary: '#00979D', 
+            secondary: '#5C2D91',
+            gradient: 'linear-gradient(135deg, #00979D, #5C2D91)'
+        },
+        'mobile': { 
+            primary: '#3ddc84', 
+            secondary: '#7F52FF',
+            gradient: 'linear-gradient(135deg, #3ddc84, #7F52FF)'
+        },
+        'soft': { 
+            primary: '#FF6B6B', 
+            secondary: '#4ECDC4',
+            gradient: 'linear-gradient(135deg, #FF6B6B, #4ECDC4)'
+        }
+    },
     
-    init: function(skillsData) {
-        this.skillsData = skillsData || window.skillsData;
+    cardPositions: {},
+    
+    init: function() {
+        console.log('🎯 Skills Manager Initializing...');
+        
+        if (!window.skillsData) {
+            console.error('❌ skillsData not found!');
+            return;
+        }
+        
+        this.skillsData = window.skillsData;
+        this.analyzeCardPositions();
         this.cacheElements();
         this.setupNavigation();
-        this.setupHeaderCloseButton();
-        console.log('✅ Skills manager initialized with data structure');
+        this.setupCloseButton();
+        this.setupIconNavigation();
+        this.setupCardNavigation();
+        this.setupOverlayClick();
+        console.log('✅ Skills Manager initialized');
+    },
+    
+    analyzeCardPositions: function() {
+        this.cardPositions = {};
+        let slideIndex = 0;
+        
+        this.categories.forEach(category => {
+            const skillSets = this.getSkillSetsByCategory(category);
+            skillSets.forEach((skillSet, index) => {
+                const key = `${category}-${index}`;
+                this.cardPositions[key] = slideIndex;
+                slideIndex++;
+            });
+        });
     },
     
     cacheElements: function() {
         this.elements.nav = document.getElementById('skills-nav');
-        this.elements.swiperContainer = document.getElementById('skills-swiper-container');
+        this.elements.popupContainer = document.getElementById('skills-swiper-container');
+        this.elements.popupOverlay = document.getElementById('skills-popup-overlay');
         this.elements.swiper = document.getElementById('skillsSwiper');
+        this.elements.swiperWrapper = this.elements.swiper?.querySelector('.swiper-wrapper');
         this.elements.categoryTitle = document.getElementById('skills-category-title');
-        this.elements.headerCloseBtn = document.querySelector('#skills-swiper-container .header-close-btn');
+        this.elements.closeBtn = document.getElementById('skills-close-btn');
+        
+        this.elements.iconNavBtns = document.querySelectorAll('#skills-icon-nav-top .icon-nav-btn');
+        this.elements.prevCardBtn = document.getElementById('skills-prev-card');
+        this.elements.nextCardBtn = document.getElementById('skills-next-card');
+        this.elements.cardCounter = document.getElementById('skills-card-counter');
+        this.elements.counterNumber = document.querySelector('#skills-card-counter .counter-number');
     },
     
     setupNavigation: function() {
@@ -48,73 +113,228 @@ const SkillsManagerNew = {
         });
     },
     
-    setupHeaderCloseButton: function() {
-        if (!this.elements.headerCloseBtn) {
-            console.log('⚠️ زر الإغلاق غير موجود، البحث عنه...');
-            this.elements.headerCloseBtn = document.querySelector('#skills-swiper-container .header-close-btn');
-            if (!this.elements.headerCloseBtn) {
-                console.error('❌ زر الإغلاق غير موجود في DOM');
-                return;
+    setupCloseButton: function() {
+        if (!this.elements.closeBtn) return;
+        
+        this.elements.closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.closePopup();
+        });
+    },
+    
+    setupOverlayClick: function() {
+        if (!this.elements.popupOverlay) return;
+        
+        this.elements.popupOverlay.addEventListener('click', (e) => {
+            if (e.target === this.elements.popupOverlay) {
+                this.closePopup();
             }
+        });
+    },
+    
+    setupIconNavigation: function() {
+        if (this.elements.iconNavBtns) {
+            this.elements.iconNavBtns.forEach(iconBtn => {
+                iconBtn.addEventListener('click', (e) => {
+                    if (this.isAnimating) return;
+                    const category = e.currentTarget.dataset.category;
+                    const categoryName = this.categoryNames[category];
+                    this.goToCategory(category, categoryName);
+                });
+            });
+        }
+    },
+    
+    setupCardNavigation: function() {
+        if (this.elements.prevCardBtn) {
+            this.elements.prevCardBtn.addEventListener('click', () => {
+                if (this.isAnimating) return;
+                this.navigateToPrevCard();
+            });
         }
         
-        // إزالة أي event listeners سابقة
-        const newBtn = this.elements.headerCloseBtn.cloneNode(true);
-        this.elements.headerCloseBtn.parentNode.replaceChild(newBtn, this.elements.headerCloseBtn);
-        this.elements.headerCloseBtn = newBtn;
+        if (this.elements.nextCardBtn) {
+            this.elements.nextCardBtn.addEventListener('click', () => {
+                if (this.isAnimating) return;
+                this.navigateToNextCard();
+            });
+        }
         
-        this.elements.headerCloseBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            this.closeSwiper();
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (this.isModalOpen) {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    this.navigateToPrevCard();
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    this.navigateToNextCard();
+                } else if (e.key === 'Escape') {
+                    this.closePopup();
+                }
+            }
         });
-        
-        // التأكد من أن الزر مرئي ويعمل
-        this.elements.headerCloseBtn.style.display = 'flex';
-        this.elements.headerCloseBtn.style.visibility = 'visible';
-        this.elements.headerCloseBtn.style.opacity = '1';
-        this.elements.headerCloseBtn.style.pointerEvents = 'auto';
-        this.elements.headerCloseBtn.style.cursor = 'pointer';
     },
     
     showCategory: function(category, buttonText) {
-        console.log(`📋 عرض فئة: ${category} - ${buttonText}`);
+        console.log(`📋 Opening category: ${category} - "${buttonText}"`);
         
         this.currentCategory = category;
+        this.currentCardIndex = 0;
+        this.isModalOpen = true;
         
-        // تحديث العنوان في الهيدر
+        this.elements.popupContainer.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
         this.updateCategoryTitle(category, buttonText);
+        this.updateIconNavigation(category);
+        this.updateCardCounter(category);
+        this.updateActiveButton(category);
         
-        const skillSets = this.getSkillSetsByCategory(category);
+        this.initializeSwiperWithAllCategories();
         
-        if (skillSets.length === 0) {
-            console.warn(`⚠️ No skill sets found for category: ${category}`);
-            return;
+        setTimeout(() => {
+            const targetSlideIndex = this.cardPositions[`${category}-0`];
+            console.log(`🎯 Going to ${category}-0 at slide index: ${targetSlideIndex}`);
+            
+            if (targetSlideIndex !== undefined && this.swiperInstance) {
+                this.currentCardIndex = 0;
+                this.swiperInstance.slideTo(targetSlideIndex, 0);
+            }
+        }, 100);
+    },
+    
+    goToCategory: function(category, categoryName) {
+        if (!category || this.isAnimating) return;
+        
+        this.currentCategory = category;
+        this.currentCardIndex = 0;
+        this.isAnimating = true;
+        
+        const targetSlideIndex = this.cardPositions[`${category}-0`];
+        console.log(`🔄 Switching to ${category} at slide: ${targetSlideIndex}`);
+        
+        if (targetSlideIndex !== undefined && this.swiperInstance) {
+            this.swiperInstance.slideTo(targetSlideIndex, 600);
         }
         
-        // إخفاء الحاويات الأخرى
-        if (typeof hideAllSwiperContainers === 'function') {
-            hideAllSwiperContainers();
-        }
-        
-        if (this.elements.swiperContainer) {
-            this.elements.swiperContainer.style.display = 'flex';
-            console.log('📱 عرض حاوية السلايدر (Skills)');
-        }
-        
-        this.initializeSwiper(skillSets);
+        this.updateCategoryTitle(category, categoryName);
+        this.updateIconNavigation(category);
+        this.updateCardCounter(category);
         this.updateActiveButton(category);
         
         setTimeout(() => {
-            if (this.elements.swiperContainer) {
-                this.elements.swiperContainer.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'nearest' 
-                });
-            }
-        }, 100);
+            this.isAnimating = false;
+        }, 600);
+    },
+    
+    goToCategoryCard: function(category, cardIndex) {
+        if (!this.swiperInstance || !this.elements.swiperWrapper) return;
         
-        console.log(`📊 عرض ${skillSets.length} مجموعة مهارات لفئة: ${category}`);
+        const key = `${category}-${cardIndex}`;
+        const targetSlideIndex = this.cardPositions[key];
+        
+        console.log(`🎯 goToCategoryCard: ${key} → slide ${targetSlideIndex}`);
+        
+        if (targetSlideIndex !== undefined) {
+            this.currentCardIndex = cardIndex;
+            this.swiperInstance.slideTo(targetSlideIndex, 600);
+        } else {
+            console.error(`❌ Card not found: ${key}`);
+        }
+    },
+    
+    navigateToPrevCard: function() {
+        if (this.isAnimating || !this.swiperInstance) return;
+        
+        this.isAnimating = true;
+        
+        const currentCardCount = this.getCardCountForCategory(this.currentCategory);
+        let prevCardIndex = this.currentCardIndex - 1;
+        
+        if (prevCardIndex < 0) {
+            const currentCategoryIndex = this.categories.indexOf(this.currentCategory);
+            let prevCategoryIndex = currentCategoryIndex - 1;
+            
+            if (prevCategoryIndex < 0) {
+                prevCategoryIndex = this.categories.length - 1;
+            }
+            
+            const prevCategory = this.categories[prevCategoryIndex];
+            const prevCategoryCardCount = this.getCardCountForCategory(prevCategory);
+            
+            this.currentCategory = prevCategory;
+            this.currentCardIndex = prevCategoryCardCount - 1;
+            
+            this.goToCategoryCard(prevCategory, this.currentCardIndex);
+            this.updateCardCounter(prevCategory);
+            this.updateCategoryTitle(prevCategory, this.categoryNames[prevCategory]);
+            this.updateIconNavigation(prevCategory);
+            this.updateActiveButton(prevCategory);
+        } else {
+            this.currentCardIndex = prevCardIndex;
+            this.goToCategoryCard(this.currentCategory, this.currentCardIndex);
+        }
+        
+        setTimeout(() => {
+            this.isAnimating = false;
+        }, 600);
+    },
+    
+    navigateToNextCard: function() {
+        if (this.isAnimating || !this.swiperInstance) return;
+        
+        this.isAnimating = true;
+        
+        const currentCardCount = this.getCardCountForCategory(this.currentCategory);
+        let nextCardIndex = this.currentCardIndex + 1;
+        
+        if (nextCardIndex >= currentCardCount) {
+            const currentCategoryIndex = this.categories.indexOf(this.currentCategory);
+            let nextCategoryIndex = currentCategoryIndex + 1;
+            
+            if (nextCategoryIndex >= this.categories.length) {
+                nextCategoryIndex = 0;
+            }
+            
+            const nextCategory = this.categories[nextCategoryIndex];
+            
+            this.currentCategory = nextCategory;
+            this.currentCardIndex = 0;
+            
+            this.goToCategoryCard(nextCategory, this.currentCardIndex);
+            this.updateCardCounter(nextCategory);
+            this.updateCategoryTitle(nextCategory, this.categoryNames[nextCategory]);
+            this.updateIconNavigation(nextCategory);
+            this.updateActiveButton(nextCategory);
+        } else {
+            this.currentCardIndex = nextCardIndex;
+            this.goToCategoryCard(this.currentCategory, this.currentCardIndex);
+        }
+        
+        setTimeout(() => {
+            this.isAnimating = false;
+        }, 600);
+    },
+    
+    updateIconNavigation: function(category) {
+        if (!this.elements.iconNavBtns) return;
+        
+        this.elements.iconNavBtns.forEach(iconBtn => {
+            iconBtn.classList.remove('active');
+            if (iconBtn.dataset.category === category) {
+                iconBtn.classList.add('active');
+            }
+        });
+    },
+    
+    updateCardCounter: function(category) {
+        if (!this.elements.cardCounter || !this.elements.counterNumber) return;
+        
+        const cardCount = this.getCardCountForCategory(category);
+        const currentCard = this.currentCardIndex + 1;
+        
+        this.elements.counterNumber.textContent = `${currentCard}/${cardCount}`;
     },
     
     updateCategoryTitle: function(category, buttonText) {
@@ -135,6 +355,13 @@ const SkillsManagerNew = {
         `;
     },
     
+    getCardCountForCategory: function(category) {
+        if (this.skillsData && this.skillsData[category]) {
+            return this.skillsData[category].length;
+        }
+        return 0;
+    },
+    
     getSkillSetsByCategory: function(category) {
         if (this.skillsData && this.skillsData[category]) {
             return this.skillsData[category];
@@ -142,80 +369,54 @@ const SkillsManagerNew = {
         return [];
     },
     
-    initializeSwiper: function(skillSets) {
-        // تدمير السلايدر الحالي إذا كان موجوداً
+    initializeSwiperWithAllCategories: function() {
         if (this.swiperInstance) {
             this.swiperInstance.destroy(true, true);
             this.swiperInstance = null;
         }
         
-        // تنظيف الـ wrapper
-        const wrapper = this.elements.swiper?.querySelector('.swiper-wrapper');
-        if (wrapper) {
-            wrapper.innerHTML = '';
+        if (this.elements.swiperWrapper) {
+            this.elements.swiperWrapper.innerHTML = '';
         }
         
-        if (skillSets.length === 0) {
-            this.showNoSkillSetsMessage();
-            return;
-        }
+        let slideIndex = 0;
+        const newCardPositions = {};
         
-        // إضافة مجموعات المهارات للسلايدر
-        skillSets.forEach((skillSet, index) => {
-            this.addSkillSetToSwiper(skillSet, index);
+        this.categories.forEach(category => {
+            const skillSets = this.getSkillSetsByCategory(category);
+            if (skillSets.length > 0) {
+                skillSets.forEach((skillSet, index) => {
+                    this.addSkillSetToSwiper(skillSet, index);
+                    
+                    const key = `${category}-${index}`;
+                    newCardPositions[key] = slideIndex;
+                    slideIndex++;
+                });
+            }
         });
         
-        // تهيئة السلايدر الرئيسي بدون أزرار التنقل
+        this.cardPositions = newCardPositions;
+        
         this.initMainSwiper();
-        
-        // إعادة إعداد زر الإغلاق
-        setTimeout(() => {
-            this.setupHeaderCloseButton();
-            console.log('✅ تهيئة كاملة - مع هيدر وزر إغلاق متمركز');
-        }, 200);
-    },
-    
-    showNoSkillSetsMessage: function() {
-        const wrapper = this.elements.swiper?.querySelector('.swiper-wrapper');
-        if (!wrapper) return;
-        
-        wrapper.innerHTML = `
-            <div class="swiper-slide">
-                <div class="project-card">
-                    <div class="project-info">
-                        <div class="skills-category-container">
-                            <h3 class="skill-main-title">No Skill Sets Found</h3>
-                            <p class="skill-main-description" style="color: var(--text-secondary);">
-                                No skill sets available for this category.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        this.swiperInstance = new Swiper(this.elements.swiper, {
-            loop: false,
-            allowTouchMove: true,
-        });
     },
     
     addSkillSetToSwiper: function(skillSet, index) {
-        const wrapper = this.elements.swiper?.querySelector('.swiper-wrapper');
-        if (!wrapper) return;
+        if (!this.elements.swiperWrapper) return;
         
-        const skillsHTML = this.generateSkillsHTML(skillSet.skills);
+        const skillsHTML = this.generateSkillsHTML(skillSet.skills, skillSet.category);
         const featuresHTML = this.generateFeaturesHTML(skillSet.features);
         
         const slide = document.createElement('div');
         slide.className = 'swiper-slide';
         slide.dataset.category = skillSet.category;
+        slide.dataset.cardIndex = index;
+        slide.dataset.projectId = skillSet.id;
         
         slide.innerHTML = `
             <div class="project-card">
                 <div class="project-info">
-                    <div class="skills-category-container">
-                    
+                    <div class="skills-category-container" data-category="${skillSet.category}">
+                        <h3 class="skill-main-title">${skillSet.title}</h3>
                         <p class="skill-main-description">${skillSet.description}</p>
                         
                         <div class="skills-grid-container">
@@ -233,24 +434,26 @@ const SkillsManagerNew = {
             </div>
         `;
         
-        wrapper.appendChild(slide);
+        this.elements.swiperWrapper.appendChild(slide);
     },
     
-    generateSkillsHTML: function(skills) {
+    generateSkillsHTML: function(skills, category) {
+        const categoryColor = this.categoryColors[category] || this.categoryColors['web'];
+        
         return skills.map(skill => `
-            <div class="skill-item" style="background: linear-gradient(135deg, ${skill.color}40, ${skill.color}80); border-left: 4px solid ${skill.color};">
-                <i class="${skill.icon}" style="color: ${skill.color};"></i>
-                <span>${skill.name}</span>
+            <div class="skill-item" style="
+                background: ${categoryColor.gradient};
+                border-color: ${categoryColor.primary};
+            ">
+                <i class="${skill.icon}" style="color: white;"></i>
+                <span style="color: white;">${skill.name}</span>
             </div>
         `).join('');
     },
     
     generateFeaturesHTML: function(features) {
-        return features.map(feature => `
-            <li>
-                <i class="fas fa-check-circle"></i>
-                ${feature}
-            </li>
+        return features.map((feature, index) => `
+            <li>${feature}</li>
         `).join('');
     },
     
@@ -258,46 +461,56 @@ const SkillsManagerNew = {
         if (!this.elements.swiper) return;
         
         this.swiperInstance = new Swiper(this.elements.swiper, {
-            loop: true,
+            loop: false,
             spaceBetween: 0,
             speed: 600,
-            keyboard: { enabled: true },
-            mousewheel: { forceToAxis: true },
+            keyboard: { 
+                enabled: true,
+                onlyInViewport: true 
+            },
+            mousewheel: false,
             grabCursor: true,
-            centeredSlides: true,
             slidesPerView: 1,
             effect: 'slide',
+            
+            on: {
+                slideChange: () => {
+                    if (!this.swiperInstance || !this.swiperInstance.slides) return;
+                    
+                    const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
+                    const category = activeSlide.dataset.category;
+                    const cardIndex = parseInt(activeSlide.dataset.cardIndex);
+                    
+                    if (category) {
+                        this.currentCategory = category;
+                        this.currentCardIndex = cardIndex;
+                        
+                        const categoryName = this.categoryNames[category];
+                        this.updateIconNavigation(category);
+                        this.updateCardCounter(category);
+                        this.updateActiveButton(category);
+                        this.updateCategoryTitle(category, categoryName);
+                    }
+                }
+            }
         });
-        
-        console.log('✅ Main swiper initialized with infinite loop (no navigation buttons)');
     },
     
-    closeSwiper: function() {
-        console.log('🔴 محاولة إغلاق Skills Swiper');
+    closePopup: function() {
+        console.log('🔴 Closing skills popup');
         
-        if (this.elements.swiperContainer) {
-            this.elements.swiperContainer.style.display = 'none';
-            console.log('✅ تم إخفاء حاوية Skills Swiper');
-            
-            // إزالة النشاط من أزرار التنقل
-            if (this.elements.nav) {
-                this.elements.nav.querySelectorAll('.skill-nav-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-            }
-            
-            // إعادة تعيين العنوان
-            if (this.elements.categoryTitle) {
-                this.elements.categoryTitle.innerHTML = 'Skills & Expertise';
-            }
-            
-            // إشعار التوافق مع hideAllSwiperContainers
-            if (typeof hideAllSwiperContainers === 'function') {
-                hideAllSwiperContainers();
-            }
-        } else {
-            console.log('⚠️ عنصر swiperContainer غير موجود');
+        this.elements.popupContainer.style.display = 'none';
+        this.isModalOpen = false;
+        document.body.style.overflow = '';
+        
+        if (this.elements.nav) {
+            this.elements.nav.querySelectorAll('.skill-nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
         }
+        
+        this.currentCategory = 'web';
+        this.currentCardIndex = 0;
     },
     
     updateActiveButton: function(category) {
@@ -314,13 +527,14 @@ const SkillsManagerNew = {
     }
 };
 
-// التهيئة عند تحميل الـ DOM
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('skills')) {
-        if (typeof skillsData !== 'undefined') {
-            SkillsManagerNew.init(skillsData);
-        } else {
-            console.warn('⚠️ Skills data not loaded.');
-        }
+        SkillsManager.init();
     }
 });
+
+// Make available globally
+window.SkillsManager = SkillsManager;
+
+console.log('🎯 skills-manager.js loaded (same logic as web)');

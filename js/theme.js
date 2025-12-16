@@ -1,68 +1,135 @@
 /**
- * theme.js - Theme Management
- * Handles light/dark theme switching, localStorage, and system preferences
+ * theme.js - Theme Management بدون تأخير
+ * الحل النهائي لمشكلة زر البرجر والرأس
  */
 
-// Theme configuration
 const ThemeManager = {
-    // Theme names
     LIGHT: 'light',
     DARK: 'dark',
-    
-    // CSS class names
     LIGHT_CLASS: 'theme-light',
     DARK_CLASS: 'theme-dark',
-    
-    // LocalStorage key
     STORAGE_KEY: 'portfolio-theme',
     
+    // DOM Elements
+    elements: {},
+    
     /**
-     * Initialize theme on page load
+     * Initialize theme
      */
     init: function() {
+        console.log('🎨 Theme Manager - Initializing');
+        this.cacheElements();
         this.loadTheme();
         this.setupEventListeners();
-        console.log('Theme manager initialized');
     },
     
     /**
-     * Load theme from localStorage or system preference
+     * Cache DOM elements
+     */
+    cacheElements: function() {
+        this.elements = {
+            desktopToggle: document.getElementById('theme-toggle-desktop'),
+            mobileToggle: document.getElementById('mobile-theme-toggle'),
+            burgerBtn: document.getElementById('burger-btn'),
+            mobileMenu: document.getElementById('mobile-menu'),
+            header: document.querySelector('header')
+        };
+    },
+    
+    /**
+     * Load saved theme
      */
     loadTheme: function() {
         const savedTheme = localStorage.getItem(this.STORAGE_KEY);
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         
         let theme = this.LIGHT;
+        if (savedTheme) theme = savedTheme;
+        else if (prefersDark) theme = this.DARK;
         
-        if (savedTheme) {
-            theme = savedTheme;
-        } else if (prefersDark) {
-            theme = this.DARK;
-        }
-        
-        this.applyTheme(theme);
+        this.applyTheme(theme, false);
         this.updateUI(theme);
     },
     
     /**
-     * Apply theme to the document
+     * Apply theme without delay
      * @param {string} theme - 'light' or 'dark'
+     * @param {boolean} isToggle - إذا كان تغيير ثيم من المستخدم
      */
-    applyTheme: function(theme) {
+    applyTheme: function(theme, isToggle = true) {
+        // إضافة صنف لمنع الانتقالات
+        if (isToggle) {
+            document.body.classList.add('theme-changing');
+        }
+        
+        // حفظ الانتقالات الحالية وتعطيلها مؤقتًا
+        const originalTransitions = this.disableTransitions();
+        
+        // تغيير الثيم
         if (theme === this.DARK) {
             document.body.classList.remove(this.LIGHT_CLASS);
             document.body.classList.add(this.DARK_CLASS);
+            document.documentElement.setAttribute('data-theme', 'dark');
         } else {
             document.body.classList.remove(this.DARK_CLASS);
             document.body.classList.add(this.LIGHT_CLASS);
+            document.documentElement.setAttribute('data-theme', 'light');
         }
         
+        // حفظ في التخزين المحلي
         localStorage.setItem(this.STORAGE_KEY, theme);
+        
+        // إعادة تفعيل الانتقالات بعد التأكد من تطبيق الثيم
+        setTimeout(() => {
+            this.restoreTransitions(originalTransitions);
+            if (isToggle) {
+                setTimeout(() => {
+                    document.body.classList.remove('theme-changing');
+                }, 50);
+            }
+        }, 10);
+        
+        console.log('🎭 Theme applied:', theme);
     },
     
     /**
-     * Update UI elements based on theme
-     * @param {string} theme - 'light' or 'dark'
+     * تعطيل الانتقالات مؤقتًا
+     */
+    disableTransitions: function() {
+        const elements = [
+            this.elements.header,
+            this.elements.burgerBtn,
+            this.elements.desktopToggle,
+            this.elements.mobileToggle
+        ];
+        
+        const originalTransitions = [];
+        
+        elements.forEach((element, index) => {
+            if (element) {
+                originalTransitions[index] = element.style.transition;
+                element.style.transition = 'none';
+            }
+        });
+        
+        return { elements, originalTransitions };
+    },
+    
+    /**
+     * إعادة تفعيل الانتقالات
+     */
+    restoreTransitions: function(transitionData) {
+        setTimeout(() => {
+            transitionData.elements.forEach((element, index) => {
+                if (element && transitionData.originalTransitions[index] !== undefined) {
+                    element.style.transition = transitionData.originalTransitions[index];
+                }
+            });
+        }, 0);
+    },
+    
+    /**
+     * Update UI elements
      */
     updateUI: function(theme) {
         const isDark = theme === this.DARK;
@@ -70,102 +137,101 @@ const ThemeManager = {
         const text = isDark ? 'Light Mode' : 'Dark Mode';
         
         // Update desktop toggle
-        const desktopIcon = document.querySelector('#theme-toggle-desktop i');
-        if (desktopIcon) desktopIcon.className = iconClass;
+        if (this.elements.desktopToggle) {
+            const icon = this.elements.desktopToggle.querySelector('i');
+            if (icon) icon.className = iconClass;
+        }
         
         // Update mobile toggle
-        const mobileIcon = document.querySelector('#mobile-theme-toggle i');
-        if (mobileIcon) mobileIcon.className = iconClass;
-        
-        const mobileText = document.querySelector('#mobile-theme-toggle span');
-        if (mobileText) mobileText.textContent = text;
-    },
-    
-    /**
-     * Toggle between light and dark theme
-     */
-    toggle: function() {
-        const isDark = document.body.classList.contains(this.DARK_CLASS);
-        const newTheme = isDark ? this.LIGHT : this.DARK;
-        
-        this.applyTheme(newTheme);
-        this.updateUI(newTheme);
-        
-        // Show toast notification
-        if (typeof showToast === 'function') {
-            showToast(`Switched to ${newTheme === this.DARK ? 'Dark' : 'Light'} Mode`, 'success');
-        }
-        
-        // Close mobile menu if open
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenu && mobileMenu.classList.contains('active')) {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
+        if (this.elements.mobileToggle) {
+            const icon = this.elements.mobileToggle.querySelector('i');
+            if (icon) icon.className = iconClass;
+            
+            const textSpan = this.elements.mobileToggle.querySelector('span');
+            if (textSpan) textSpan.textContent = text;
         }
     },
     
     /**
-     * Get current theme
-     * @returns {string} Current theme ('light' or 'dark')
-     */
-    getCurrentTheme: function() {
-        return document.body.classList.contains(this.DARK_CLASS) ? this.DARK : this.LIGHT;
-    },
-    
-    /**
-     * Check if dark theme is active
-     * @returns {boolean} True if dark theme is active
-     */
-    isDark: function() {
-        return this.getCurrentTheme() === this.DARK;
-    },
-    
-    /**
-     * Setup event listeners for theme toggles
+     * Setup event listeners
      */
     setupEventListeners: function() {
         // Desktop toggle
-        const desktopToggle = document.getElementById('theme-toggle-desktop');
-        if (desktopToggle) {
-            desktopToggle.addEventListener('click', () => this.toggle());
+        if (this.elements.desktopToggle) {
+            this.elements.desktopToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleTheme();
+            });
         }
         
         // Mobile toggle
-        const mobileToggle = document.getElementById('mobile-theme-toggle');
-        if (mobileToggle) {
-            mobileToggle.addEventListener('click', () => this.toggle());
+        if (this.elements.mobileToggle) {
+            this.elements.mobileToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleTheme();
+                
+                // Close mobile menu
+                if (this.elements.mobileMenu && this.elements.mobileMenu.classList.contains('active')) {
+                    this.elements.mobileMenu.classList.remove('active');
+                    if (this.elements.burgerBtn) {
+                        const icon = this.elements.burgerBtn.querySelector('i');
+                        if (icon) icon.className = 'fas fa-bars';
+                    }
+                    document.body.style.overflow = '';
+                }
+            });
         }
         
-        // Listen for system theme changes
+        // System theme change
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
             if (!localStorage.getItem(this.STORAGE_KEY)) {
                 const theme = e.matches ? this.DARK : this.LIGHT;
-                this.applyTheme(theme);
+                this.applyTheme(theme, false);
                 this.updateUI(theme);
             }
         });
     },
     
     /**
-     * Force a specific theme (for testing)
-     * @param {string} theme - 'light' or 'dark'
+     * Toggle theme
      */
-    setTheme: function(theme) {
+    toggleTheme: function() {
+        const isDark = document.body.classList.contains(this.DARK_CLASS);
+        const newTheme = isDark ? this.LIGHT : this.DARK;
+        
+        this.applyTheme(newTheme, true);
+        this.updateUI(newTheme);
+        
+        // Show toast
+        if (typeof showToast === 'function') {
+            showToast(`تم التبديل إلى وضع ${newTheme === 'dark' ? 'الداكن' : 'الفاتح'}`, 'success');
+        }
+    },
+    
+    /**
+     * Get current theme
+     */
+    getCurrentTheme: function() {
+        return document.body.classList.contains(this.DARK_CLASS) ? this.DARK : this.LIGHT;
+    },
+    
+    /**
+     * Force theme (for debugging)
+     */
+    forceTheme: function(theme) {
         if (theme === this.LIGHT || theme === this.DARK) {
-            this.applyTheme(theme);
+            this.applyTheme(theme, false);
             this.updateUI(theme);
-        } else {
-            console.error('Invalid theme:', theme);
         }
     }
 };
 
-// Initialize theme manager when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
+// Initialize
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => ThemeManager.init());
+} else {
     ThemeManager.init();
-});
-
-// Export for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = ThemeManager;
 }
+
+// Global access
+window.ThemeManager = ThemeManager;

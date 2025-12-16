@@ -1,18 +1,54 @@
-/**
- * about.css - About Section Styles
- * Contains styles for about me section, profile image, and text layout
- */
+/* ============================================
+   about.css - About Section Styles
+   UPDATED: Light theme with 25% gray background
+   ============================================ */
 
-/* About Section Layout */
+/* About Section - Takes full viewport height */
+#about {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background);
+    padding: 80px 0 40px;
+    position: relative;
+}
+
+/* Container centers content */
+#about .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Main heading - centered */
+#about h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+/* Description text - centered */
+#about > .container > p {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* About Content Layout - Grid for desktop, column for mobile */
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
-    margin-top: 3rem;
+    margin-top: 2rem;
+    width: 100%;
 }
 
-/* About Text */
+/* About Text - Left aligned on desktop, centered on mobile */
 .about-text {
     text-align: left;
 }
@@ -20,8 +56,20 @@
 .about-text h3 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    color: var(--primary-color);
-    text-align: left;
+    color: var(--text);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.about-text h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
 }
 
 .about-text p {
@@ -30,9 +78,10 @@
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
     line-height: 1.8;
+    color: var(--text-secondary);
 }
 
-/* About Image */
+/* About Image Container */
 .about-img {
     border-radius: var(--radius-xl);
     overflow: hidden;
@@ -43,6 +92,21 @@
     align-items: center;
     justify-content: center;
     transition: var(--transition);
+    position: relative;
+}
+
+.about-img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(var(--primary-color-rgb, 79, 70, 229), 0.1) 0%,
+        rgba(var(--secondary-color-rgb, 6, 182, 212), 0.05) 100%);
+    z-index: 1;
+    pointer-events: none;
 }
 
 .about-img:hover {
@@ -55,8 +119,183 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
+    position: relative;
+    z-index: 2;
 }
 
 .about-img:hover img {
     transform: scale(1.05);
+}
+
+/* ============================================
+   MOBILE RESPONSIVE - About Section
+============================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .about-content {
+        gap: 3rem;
+    }
+    
+    .about-img {
+        height: 350px;
+    }
+    
+    .about-text h3 {
+        font-size: 1.8rem;
+    }
+    
+    .about-text p {
+        font-size: 1.05rem;
+    }
+}
+
+/* Mobile - Switch to column layout */
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+    
+    .about-text {
+        text-align: center;
+        order: 1;
+    }
+    
+    .about-text h3 {
+        text-align: center;
+        padding-bottom: 15px;
+    }
+    
+    .about-text h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .about-text p {
+        text-align: center;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+    
+    .about-img {
+        order: 2;
+        height: 300px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .about-text {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    #about h2 {
+        font-size: 2rem;
+    }
+    
+    .about-text h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
+    .about-text p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .about-img {
+        height: 250px;
+        max-width: 320px;
+    }
+    
+    .about-content {
+        gap: 2.5rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    .about-img {
+        height: 220px;
+        max-width: 280px;
+    }
+    
+    .about-text h3 {
+        font-size: 1.5rem;
+    }
+    
+    .about-text p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Landscape mode for mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+    #about {
+        min-height: auto;
+        padding: 100px 0 60px;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    
+    .about-img {
+        height: 250px;
+    }
+}
+
+/* ============================================
+   ANIMATIONS
+============================================ */
+@keyframes fadeInAbout {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.about-text h3,
+.about-text p,
+.about-img {
+    animation: fadeInAbout 0.8s ease-out forwards;
+}
+
+.about-text p:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.about-text p:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.about-img {
+    animation-delay: 0.6s;
+}
+
+/* ============================================
+   DARK MODE ADJUSTMENTS
+============================================ */
+.theme-dark .about-img {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.theme-dark .about-text h3 {
+    color: var(--text);
+}
+
+.theme-dark .about-text p {
+    color: var(--text-secondary);
 }

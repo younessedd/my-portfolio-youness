@@ -1,257 +1,17 @@
 /**
  * main.js - Main JavaScript File
- * متوافق مع نظام السلايدرات الجديد
+ * Coordinates all components and provides utility functions
  */
 
 // Global variables
 let heroSwiper = null;
 let imageSwipers = [];
 
-// دالة لإخفاء جميع حاويات السلايدر
-function hideAllSwiperContainers() {
-    const containers = [
-        'web-swiper-container',
-        'mobile-swiper-container', 
-        'iot-swiper-container',
-        'skills-swiper-container'
-    ];
-    
-    containers.forEach(id => {
-        const container = document.getElementById(id);
-        if (container) {
-            container.style.display = 'none';
-            console.log(`🗑️ إخفاء حاوية: ${id}`);
-        }
-    });
-    
-    // إزالة النشاط من جميع أزرار التنقل
-    const navSections = ['web-apps-nav', 'mobile-apps-nav', 'iot-projects-nav', 'skills-nav'];
-    navSections.forEach(navId => {
-        const nav = document.getElementById(navId);
-        if (nav) {
-            nav.querySelectorAll('.skill-nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-        }
-    });
-}
-
-// Skills Section Management
-const SkillsManagerNew = {
-    elements: {
-        nav: null,
-        swiperContainer: null,
-        swiper: null,
-        categoryTitle: null,
-        headerCloseBtn: null
-    },
-    
-    currentCategory: 'web',
-    swiperInstance: null,
-    
-    init: function() {
-        this.cacheElements();
-        this.setupNavigation();
-        this.setupHeaderCloseButton();
-        this.initSwiper();
-        console.log('✅ Skills manager initialized');
-    },
-    
-    cacheElements: function() {
-        this.elements.nav = document.getElementById('skills-nav');
-        this.elements.swiperContainer = document.getElementById('skills-swiper-container');
-        this.elements.swiper = document.getElementById('skillsSwiper');
-        this.elements.categoryTitle = document.getElementById('skills-category-title');
-        this.elements.headerCloseBtn = document.getElementById('skills-close-btn');
-        
-        console.log('🔍 عناصر Skills:');
-        console.log('- nav:', this.elements.nav ? '✅ موجود' : '❌ غير موجود');
-        console.log('- swiperContainer:', this.elements.swiperContainer ? '✅ موجود' : '❌ غير موجود');
-        console.log('- headerCloseBtn:', this.elements.headerCloseBtn ? '✅ موجود' : '❌ غير موجود');
-    },
-    
-    setupNavigation: function() {
-        if (!this.elements.nav) return;
-        
-        const navButtons = this.elements.nav.querySelectorAll('.skill-nav-btn');
-        
-        navButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const category = e.currentTarget.dataset.category;
-                const buttonText = e.currentTarget.querySelector('span').textContent;
-                this.showCategory(category, buttonText);
-            });
-        });
-    },
-    
-    setupHeaderCloseButton: function() {
-        if (!this.elements.headerCloseBtn) {
-            console.log('⚠️ زر الإغلاق غير موجود، البحث عنه...');
-            this.elements.headerCloseBtn = document.querySelector('#skills-swiper-container .header-close-btn');
-            if (!this.elements.headerCloseBtn) {
-                console.error('❌ زر الإغلاق غير موجود في DOM');
-                return;
-            }
-        }
-        
-        console.log('🔄 إعداد زر الإغلاق لـ Skills...');
-        
-        // إزالة أي event listeners سابقة
-        const newBtn = this.elements.headerCloseBtn.cloneNode(true);
-        this.elements.headerCloseBtn.parentNode.replaceChild(newBtn, this.elements.headerCloseBtn);
-        this.elements.headerCloseBtn = newBtn;
-        
-        this.elements.headerCloseBtn.addEventListener('click', (e) => {
-            console.log('🟢 زر الإغلاق في الهيدر تم النقر عليه (Skills)');
-            e.stopPropagation();
-            e.preventDefault();
-            this.closeSwiper();
-        });
-        
-        // التأكد من أن الزر مرئي ويعمل
-        this.elements.headerCloseBtn.style.display = 'flex';
-        this.elements.headerCloseBtn.style.visibility = 'visible';
-        this.elements.headerCloseBtn.style.opacity = '1';
-        this.elements.headerCloseBtn.style.pointerEvents = 'auto';
-        this.elements.headerCloseBtn.style.cursor = 'pointer';
-        
-        console.log('✅ زر الإغلاق جاهز للعمل (Skills)');
-    },
-    
-    initSwiper: function() {
-        if (!this.elements.swiper) return;
-        
-        this.swiperInstance = new Swiper(this.elements.swiper, {
-            loop: true,
-            spaceBetween: 0,
-            speed: 600,
-            keyboard: { enabled: true },
-            mousewheel: { forceToAxis: true },
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 1,
-            effect: 'slide',
-        });
-        
-        console.log('✅ Skills swiper initialized (no navigation buttons)');
-    },
-    
-    showCategory: function(category, buttonText) {
-        console.log(`📋 عرض فئة: ${category} - ${buttonText}`);
-        
-        this.currentCategory = category;
-        
-        // تحديث العنوان في الهيدر
-        this.updateCategoryTitle(category, buttonText);
-        
-        // إخفاء الحاويات الأخرى
-        hideAllSwiperContainers();
-        
-        if (this.elements.swiperContainer) {
-            this.elements.swiperContainer.style.display = 'flex';
-            console.log('📱 عرض حاوية السلايدر (Skills)');
-        } else {
-            console.error('❌ عنصر swiperContainer غير موجود');
-        }
-        
-        // تحديد السلايد المناسب
-        this.goToCategorySlide(category);
-        
-        // تحديث زر التنقل النشط
-        this.updateActiveButton(category);
-        
-        // إعادة إعداد زر الإغلاق بعد عرض السلايدر
-        setTimeout(() => {
-            this.setupHeaderCloseButton();
-        }, 100);
-        
-        setTimeout(() => {
-            if (this.elements.swiperContainer) {
-                this.elements.swiperContainer.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'nearest' 
-                });
-            }
-        }, 100);
-    },
-    
-    updateCategoryTitle: function(category, buttonText) {
-        if (!this.elements.categoryTitle) return;
-        
-        const icons = {
-            'web': 'fa-code',
-            'iot': 'fa-microchip',
-            'mobile': 'fa-mobile-alt',
-            'soft': 'fa-star'
-        };
-        
-        const icon = icons[category] || 'fa-star';
-        
-        this.elements.categoryTitle.innerHTML = `
-            <i class="fas ${icon}"></i>
-            <span>${buttonText}</span>
-        `;
-    },
-    
-    goToCategorySlide: function(category) {
-        if (!this.swiperInstance) return;
-        
-        const slides = this.elements.swiper.querySelectorAll('.swiper-slide');
-        let targetSlideIndex = 0;
-        
-        slides.forEach((slide, index) => {
-            if (slide.dataset.category === category) {
-                targetSlideIndex = index;
-            }
-        });
-        
-        this.swiperInstance.slideTo(targetSlideIndex, 600);
-        
-        console.log(`🎯 الانتقال إلى سلايد: ${category} (Index: ${targetSlideIndex})`);
-    },
-    
-    closeSwiper: function() {
-        console.log('🔴 محاولة إغلاق Skills Swiper');
-        
-        if (this.elements.swiperContainer) {
-            this.elements.swiperContainer.style.display = 'none';
-            console.log('✅ تم إخفاء حاوية Skills Swiper');
-            
-            // إزالة النشاط من أزرار التنقل
-            if (this.elements.nav) {
-                this.elements.nav.querySelectorAll('.skill-nav-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-            }
-            
-            // إعادة تعيين العنوان
-            if (this.elements.categoryTitle) {
-                this.elements.categoryTitle.innerHTML = 'Skills & Expertise';
-            }
-            
-            // إشعار التوافق مع hideAllSwiperContainers
-            hideAllSwiperContainers();
-        } else {
-            console.log('⚠️ عنصر swiperContainer غير موجود');
-        }
-    },
-    
-    updateActiveButton: function(category) {
-        if (!this.elements.nav) return;
-        
-        this.elements.nav.querySelectorAll('.skill-nav-btn').forEach(button => {
-            button.classList.remove('active');
-        });
-        
-        const activeButton = this.elements.nav.querySelector(`[data-category="${category}"]`);
-        if (activeButton) {
-            activeButton.classList.add('active');
-        }
-    }
-};
-
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Portfolio initialized');
+/**
+ * Initialize the entire application
+ */
+function initPortfolio() {
+    console.log('🚀 Portfolio initializing...');
     
     // Initialize all components
     initTheme();
@@ -269,181 +29,48 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup keyboard listeners
     setupKeyboardListeners();
     
-    // Initialize Skills Manager if skills section exists
-    if (document.getElementById('skills')) {
-        // تحميل بيانات المهارات أولاً إذا لم تكن محملة
-        if (typeof skillsData !== 'undefined') {
-            SkillsManagerNew.init();
-        } else {
-            console.log('⏳ Waiting for skills data to load...');
-            // إعادة المحاولة بعد تأخير
-            setTimeout(() => {
-                if (typeof skillsData !== 'undefined') {
-                    SkillsManagerNew.init();
-                } else {
-                    console.error('❌ Skills data not loaded. Please check the skills-data.js file.');
-                }
-            }, 500);
-        }
-    }
-});
-
-/**
- * إضافة Event Listener لإغلاق السلايدر عند النقر خارج المحتوى
- */
-function setupSwiperCloseListeners() {
-    document.addEventListener('click', function(e) {
-        console.log('🖱️ تم النقر خارج المحتوى');
-        
-        const webSwiperContainer = document.getElementById('web-swiper-container');
-        const mobileSwiperContainer = document.getElementById('mobile-swiper-container');
-        const iotSwiperContainer = document.getElementById('iot-swiper-container');
-        const skillsSwiperContainer = document.getElementById('skills-swiper-container');
-        
-        // Check if any swiper is open
-        const isAnySwiperOpen = (
-            (webSwiperContainer && webSwiperContainer.style.display === 'flex') ||
-            (mobileSwiperContainer && mobileSwiperContainer.style.display === 'flex') ||
-            (iotSwiperContainer && iotSwiperContainer.style.display === 'flex') ||
-            (skillsSwiperContainer && skillsSwiperContainer.style.display === 'flex')
-        );
-        
-        if (!isAnySwiperOpen) return;
-        
-        console.log('🔍 التحقق من النقر خارج المحتوى...');
-        
-        // Check Web Apps swiper
-        if (webSwiperContainer && webSwiperContainer.style.display === 'flex') {
-            const webNav = document.getElementById('web-apps-nav');
-            const isClickInsideWebSwiper = webSwiperContainer.contains(e.target);
-            const isClickOnWebNav = webNav && (webNav.contains(e.target) || e.target.closest('#web-apps-nav'));
-            
-            if (!isClickInsideWebSwiper && !isClickOnWebNav) {
-                console.log('❌ النقر خارج Web Apps swiper - إغلاقه');
-                if (typeof WebProjectsManager !== 'undefined' && typeof WebProjectsManager.closeSwiper === 'function') {
-                    WebProjectsManager.closeSwiper();
-                }
-                return;
-            }
-        }
-        
-        // Check Mobile Apps swiper
-        if (mobileSwiperContainer && mobileSwiperContainer.style.display === 'flex') {
-            const mobileNav = document.getElementById('mobile-apps-nav');
-            const isClickInsideMobileSwiper = mobileSwiperContainer.contains(e.target);
-            const isClickOnMobileNav = mobileNav && (mobileNav.contains(e.target) || e.target.closest('#mobile-apps-nav'));
-            
-            if (!isClickInsideMobileSwiper && !isClickOnMobileNav) {
-                console.log('❌ النقر خارج Mobile Apps swiper - إغلاقه');
-                if (typeof MobileProjectsManagerNew !== 'undefined' && typeof MobileProjectsManagerNew.closeSwiper === 'function') {
-                    MobileProjectsManagerNew.closeSwiper();
-                }
-                return;
-            }
-        }
-        
-        // Check IoT Projects swiper
-        if (iotSwiperContainer && iotSwiperContainer.style.display === 'flex') {
-            const iotNav = document.getElementById('iot-projects-nav');
-            const isClickInsideIotSwiper = iotSwiperContainer.contains(e.target);
-            const isClickOnIotNav = iotNav && (iotNav.contains(e.target) || e.target.closest('#iot-projects-nav'));
-            
-            if (!isClickInsideIotSwiper && !isClickOnIotNav) {
-                console.log('❌ النقر خارج IoT Projects swiper - إغلاقه');
-                if (typeof IoTProjectsManagerNew !== 'undefined' && typeof IoTProjectsManagerNew.closeSwiper === 'function') {
-                    IoTProjectsManagerNew.closeSwiper();
-                }
-                return;
-            }
-        }
-        
-        // Check Skills swiper
-        if (skillsSwiperContainer && skillsSwiperContainer.style.display === 'flex') {
-            const skillsNav = document.getElementById('skills-nav');
-            const isClickInsideSkillsSwiper = skillsSwiperContainer.contains(e.target);
-            const isClickOnSkillsNav = skillsNav && (skillsNav.contains(e.target) || e.target.closest('#skills-nav'));
-            
-            if (!isClickInsideSkillsSwiper && !isClickOnSkillsNav) {
-                console.log('❌ النقر خارج Skills swiper - إغلاقه');
-                if (typeof SkillsManagerNew !== 'undefined' && typeof SkillsManagerNew.closeSwiper === 'function') {
-                    SkillsManagerNew.closeSwiper();
-                }
-                return;
-            }
-        }
-    });
-}
-
-/**
- * إضافة Event Listener للزر Escape
- */
-function setupKeyboardListeners() {
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            console.log('⎋ ضغط على زر Escape');
-            
-            const webSwiperContainer = document.getElementById('web-swiper-container');
-            const mobileSwiperContainer = document.getElementById('mobile-swiper-container');
-            const iotSwiperContainer = document.getElementById('iot-swiper-container');
-            const skillsSwiperContainer = document.getElementById('skills-swiper-container');
-            
-            // Close Web Apps swiper
-            if (webSwiperContainer && webSwiperContainer.style.display === 'flex') {
-                console.log('❌ إغلاق Web Apps swiper باستخدام Escape');
-                if (typeof WebProjectsManager !== 'undefined' && typeof WebProjectsManager.closeSwiper === 'function') {
-                    WebProjectsManager.closeSwiper();
-                }
-                return;
-            }
-            
-            // Close Mobile Apps swiper
-            if (mobileSwiperContainer && mobileSwiperContainer.style.display === 'flex') {
-                console.log('❌ إغلاق Mobile Apps swiper باستخدام Escape');
-                if (typeof MobileProjectsManagerNew !== 'undefined' && typeof MobileProjectsManagerNew.closeSwiper === 'function') {
-                    MobileProjectsManagerNew.closeSwiper();
-                }
-                return;
-            }
-            
-            // Close IoT Projects swiper
-            if (iotSwiperContainer && iotSwiperContainer.style.display === 'flex') {
-                console.log('❌ إغلاق IoT Projects swiper باستخدام Escape');
-                if (typeof IoTProjectsManagerNew !== 'undefined' && typeof IoTProjectsManagerNew.closeSwiper === 'function') {
-                    IoTProjectsManagerNew.closeSwiper();
-                }
-                return;
-            }
-            
-            // Close Skills swiper
-            if (skillsSwiperContainer && skillsSwiperContainer.style.display === 'flex') {
-                console.log('❌ إغلاق Skills swiper باستخدام Escape');
-                if (typeof SkillsManagerNew !== 'undefined' && typeof SkillsManagerNew.closeSwiper === 'function') {
-                    SkillsManagerNew.closeSwiper();
-                }
-                return;
-            }
-        }
-    });
+    console.log('✅ Portfolio initialized successfully');
 }
 
 /**
  * Initialize theme (dark/light mode)
  */
 function initTheme() {
-    // Check for saved theme preference or default to dark
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
+    // Check for saved theme preference or default to light
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
     
-    // Update theme toggle button if exists
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        themeToggle.checked = savedTheme === 'dark';
-        themeToggle.addEventListener('change', function() {
-            const newTheme = this.checked ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
+    if (savedTheme === 'dark') {
+        document.body.classList.remove('theme-light');
+        document.body.classList.add('theme-dark');
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        document.body.classList.remove('theme-dark');
+        document.body.classList.add('theme-light');
+        document.documentElement.setAttribute('data-theme', 'light');
     }
+    
+    // Update theme toggle buttons
+    updateThemeUI(savedTheme);
+}
+
+/**
+ * Update theme UI elements
+ */
+function updateThemeUI(theme) {
+    const isDark = theme === 'dark';
+    const iconClass = isDark ? 'fas fa-sun' : 'fas fa-moon';
+    const text = isDark ? 'Light Mode' : 'Dark Mode';
+    
+    // Update desktop toggle
+    const desktopIcon = document.querySelector('#theme-toggle-desktop i');
+    if (desktopIcon) desktopIcon.className = iconClass;
+    
+    // Update mobile toggle
+    const mobileIcon = document.querySelector('#mobile-theme-toggle i');
+    if (mobileIcon) mobileIcon.className = iconClass;
+    
+    const mobileText = document.querySelector('#mobile-theme-toggle span');
+    if (mobileText) mobileText.textContent = text;
 }
 
 /**
@@ -451,25 +78,41 @@ function initTheme() {
  */
 function setupEventListeners() {
     // Mobile menu toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    const burgerBtn = document.getElementById('burger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
     
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('show');
-            menuToggle.classList.toggle('active');
+    if (burgerBtn && mobileMenu) {
+        burgerBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            const icon = this.querySelector('i');
+            if (icon) {
+                icon.className = mobileMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+            }
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close menu when clicking on links
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                burgerBtn.querySelector('i').className = 'fas fa-bars';
+                document.body.style.overflow = '';
+            });
         });
     }
     
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (menuToggle && navLinks && navLinks.classList.contains('show')) {
-            if (!menuToggle.contains(event.target) && !navLinks.contains(event.target)) {
-                navLinks.classList.remove('show');
-                menuToggle.classList.remove('active');
-            }
-        }
-    });
+    // Theme toggles
+    const desktopThemeToggle = document.getElementById('theme-toggle-desktop');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    
+    if (desktopThemeToggle) {
+        desktopThemeToggle.addEventListener('click', toggleTheme);
+    }
+    
+    if (mobileThemeToggle) {
+        mobileThemeToggle.addEventListener('click', toggleTheme);
+    }
     
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -479,20 +122,51 @@ function setupEventListeners() {
             
             e.preventDefault();
             
-            if (menuToggle && navLinks && navLinks.classList.contains('show')) {
-                navLinks.classList.remove('show');
-                menuToggle.classList.remove('active');
-            }
-            
             const targetElement = document.querySelector(href);
             if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                // Close mobile menu if open
+                if (mobileMenu && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    burgerBtn.querySelector('i').className = 'fas fa-bars';
+                    document.body.style.overflow = '';
+                }
+                
+                const headerHeight = document.querySelector('header').offsetHeight || 80;
+                const targetPosition = targetElement.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
             }
         });
     });
+}
+
+/**
+ * Toggle between light and dark theme
+ */
+function toggleTheme() {
+    const isDark = document.body.classList.contains('theme-dark');
+    const newTheme = isDark ? 'light' : 'dark';
+    
+    if (newTheme === 'dark') {
+        document.body.classList.remove('theme-light');
+        document.body.classList.add('theme-dark');
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        document.body.classList.remove('theme-dark');
+        document.body.classList.add('theme-light');
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+    
+    localStorage.setItem('portfolio-theme', newTheme);
+    updateThemeUI(newTheme);
+    
+    // Show toast notification
+    if (typeof showToast === 'function') {
+        showToast(`Switched to ${newTheme === 'dark' ? 'Dark' : 'Light'} Mode`, 'success');
+    }
 }
 
 /**
@@ -503,8 +177,16 @@ function updateCurrentYear() {
     const currentYear = new Date().getFullYear();
     
     yearElements.forEach(element => {
-        element.textContent = currentYear;
+        if (element) {
+            element.textContent = currentYear;
+        }
     });
+    
+    // Also update footer-bottom year
+    const footerBottomYear = document.getElementById('current-year');
+    if (footerBottomYear) {
+        footerBottomYear.textContent = currentYear;
+    }
 }
 
 /**
@@ -520,10 +202,181 @@ function setupCvDownloadTracking() {
     });
 }
 
-// Export for other modules
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        hideAllSwiperContainers,
-        SkillsManagerNew
-    };
+/**
+ * Setup click outside to close swipers
+ */
+function setupSwiperCloseListeners() {
+    document.addEventListener('click', function(e) {
+        const webSwiperContainer = document.getElementById('web-swiper-container');
+        const mobileSwiperContainer = document.getElementById('mobile-swiper-container');
+        const iotSwiperContainer = document.getElementById('iot-swiper-container');
+        const skillsSwiperContainer = document.getElementById('skills-swiper-container');
+        
+        // Check Web Apps swiper
+        if (webSwiperContainer && webSwiperContainer.style.display === 'block') {
+            const webNav = document.getElementById('web-apps-nav');
+            const isClickInsideWebSwiper = webSwiperContainer.contains(e.target);
+            const isClickOnWebNav = webNav && (webNav.contains(e.target) || e.target.closest('#web-apps-nav'));
+            
+            if (!isClickInsideWebSwiper && !isClickOnWebNav) {
+                if (typeof WebProjectsManager !== 'undefined' && typeof WebProjectsManager.closePopup === 'function') {
+                    WebProjectsManager.closePopup();
+                }
+                return;
+            }
+        }
+        
+        // Check Mobile Apps swiper
+        if (mobileSwiperContainer && mobileSwiperContainer.style.display === 'block') {
+            const mobileNav = document.getElementById('mobile-apps-nav');
+            const isClickInsideMobileSwiper = mobileSwiperContainer.contains(e.target);
+            const isClickOnMobileNav = mobileNav && (mobileNav.contains(e.target) || e.target.closest('#mobile-apps-nav'));
+            
+            if (!isClickInsideMobileSwiper && !isClickOnMobileNav) {
+                if (typeof MobileProjectsManager !== 'undefined' && typeof MobileProjectsManager.closePopup === 'function') {
+                    MobileProjectsManager.closePopup();
+                }
+                return;
+            }
+        }
+        
+        // Check IoT Projects swiper
+        if (iotSwiperContainer && iotSwiperContainer.style.display === 'block') {
+            const iotNav = document.getElementById('iot-projects-nav');
+            const isClickInsideIotSwiper = iotSwiperContainer.contains(e.target);
+            const isClickOnIotNav = iotNav && (iotNav.contains(e.target) || e.target.closest('#iot-projects-nav'));
+            
+            if (!isClickInsideIotSwiper && !isClickOnIotNav) {
+                if (typeof IoTProjectsManager !== 'undefined' && typeof IoTProjectsManager.closePopup === 'function') {
+                    IoTProjectsManager.closePopup();
+                }
+                return;
+            }
+        }
+        
+        // Check Skills swiper
+        if (skillsSwiperContainer && skillsSwiperContainer.style.display === 'block') {
+            const skillsNav = document.getElementById('skills-nav');
+            const isClickInsideSkillsSwiper = skillsSwiperContainer.contains(e.target);
+            const isClickOnSkillsNav = skillsNav && (skillsNav.contains(e.target) || e.target.closest('#skills-nav'));
+            
+            if (!isClickInsideSkillsSwiper && !isClickOnSkillsNav) {
+                if (typeof SkillsManager !== 'undefined' && typeof SkillsManager.closePopup === 'function') {
+                    SkillsManager.closePopup();
+                }
+                return;
+            }
+        }
+    });
+}
+
+/**
+ * Setup keyboard listeners
+ */
+function setupKeyboardListeners() {
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            // Close Web Apps swiper
+            const webSwiperContainer = document.getElementById('web-swiper-container');
+            if (webSwiperContainer && webSwiperContainer.style.display === 'block') {
+                if (typeof WebProjectsManager !== 'undefined' && typeof WebProjectsManager.closePopup === 'function') {
+                    WebProjectsManager.closePopup();
+                }
+                return;
+            }
+            
+            // Close Mobile Apps swiper
+            const mobileSwiperContainer = document.getElementById('mobile-swiper-container');
+            if (mobileSwiperContainer && mobileSwiperContainer.style.display === 'block') {
+                if (typeof MobileProjectsManager !== 'undefined' && typeof MobileProjectsManager.closePopup === 'function') {
+                    MobileProjectsManager.closePopup();
+                }
+                return;
+            }
+            
+            // Close IoT Projects swiper
+            const iotSwiperContainer = document.getElementById('iot-swiper-container');
+            if (iotSwiperContainer && iotSwiperContainer.style.display === 'block') {
+                if (typeof IoTProjectsManager !== 'undefined' && typeof IoTProjectsManager.closePopup === 'function') {
+                    IoTProjectsManager.closePopup();
+                }
+                return;
+            }
+            
+            // Close Skills swiper
+            const skillsSwiperContainer = document.getElementById('skills-swiper-container');
+            if (skillsSwiperContainer && skillsSwiperContainer.style.display === 'block') {
+                if (typeof SkillsManager !== 'undefined' && typeof SkillsManager.closePopup === 'function') {
+                    SkillsManager.closePopup();
+                }
+                return;
+            }
+            
+            // Close mobile menu
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                const burgerBtn = document.getElementById('burger-btn');
+                if (burgerBtn) {
+                    burgerBtn.querySelector('i').className = 'fas fa-bars';
+                }
+                document.body.style.overflow = '';
+            }
+        }
+    });
+}
+
+/**
+ * Handle window resize
+ */
+function handleResize() {
+    // Close mobile menu on larger screens
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (window.innerWidth > 768 && mobileMenu && mobileMenu.classList.contains('active')) {
+        mobileMenu.classList.remove('active');
+        const burgerBtn = document.getElementById('burger-btn');
+        if (burgerBtn) {
+            burgerBtn.querySelector('i').className = 'fas fa-bars';
+        }
+        document.body.style.overflow = '';
+    }
+}
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initPortfolio();
+    
+    // Add resize listener
+    window.addEventListener('resize', handleResize);
+    
+    // Add scroll listener for active nav links
+    window.addEventListener('scroll', updateActiveNavLink);
+});
+
+/**
+ * Update active navigation link based on scroll position
+ */
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
+    
+    let currentSection = '';
+    const headerHeight = document.querySelector('header').offsetHeight || 80;
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (window.scrollY >= (sectionTop - headerHeight - 100)) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        if (href === `#${currentSection}`) {
+            link.classList.add('active');
+        }
+    });
 }

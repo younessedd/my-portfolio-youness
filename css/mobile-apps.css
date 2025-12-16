@@ -1,1032 +1,990 @@
-/**
- * mobile-apps.css - Mobile Apps Section Styles
- * بنفس تصميم Web Apps مع هيدر صغير وزر إغلاق متمركز
- * أزرار التنقل تظهر فقط على الشاشات الكبيرة
- * روابط المشروع تحت الوصف مباشرة
- */
+/* ============================================
+   MOBILE APPS SECTION - EXACT SAME AS WEB APPS
+============================================ */
 
-/* MAIN POPUP CONTAINER - نفس تصميم Web Apps */
-.main-swiper-container {
-    width: 95%;
-    max-width: 1400px;
-    height: 90vh;
-    margin: 2rem auto;
-    animation: fadeIn 0.3s ease;
-    background: var(--surface);
-    border-radius: 20px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    border: 2px solid var(--border);
-    z-index: 1000;
+/* MOBILE APPS SECTION CONTAINER */
+#mobile-apps {
+    padding: 4rem 1rem;
     position: relative;
+    min-height: auto;
+    background: var(--background);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px) scale(0.98); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-/* هيدر صغير في الأعلى - يظهر اسم الفئة وزر الإغلاق */
-.swiper-mini-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.8rem 1.5rem;
+#mobile-apps h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-bottom: 2px solid var(--border);
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    flex-shrink: 0;
-    min-height: 50px;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    position: relative; /* لجعل العناصر المطلقة داخل الهيدر */
-}
-
-.swiper-category-title {
-    font-size: 1.4rem;
-    color: white;
-    margin: 0;
-    text-align: center;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    padding-right: 50px; /* مساحة لزر الإغلاق */
-    padding-left: 50px; /* توازن للجانبين */
-    flex: 1;
-    justify-content: center;
-}
-
-.swiper-category-title i {
-    font-size: 1.3rem;
-}
-
-/* زر الإغلاق في الهيدر - POSITIONED IN HEADER (متمركز عمودياً) */
-.swiper-mini-header .header-close-btn {
-    position: absolute !important;
-    top: 50% !important;
-    right: 20px !important;
-    transform: translateY(-50%) !important;
-    width: 42px !important;
-    height: 42px !important;
-    background: rgba(255, 255, 255, 0.15) !important;
-    color: white !important;
-    border: 2px solid rgba(255, 255, 255, 0.3) !important;
-    border-radius: 50% !important;
-    cursor: pointer !important;
-    z-index: 101 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    transition: all 0.3s ease !important;
-    backdrop-filter: blur(8px) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-    font-size: 1.1rem !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    margin: 0 !important;
-}
-
-.swiper-mini-header .header-close-btn:hover {
-    background: rgba(255, 255, 255, 0.25) !important;
-    border-color: rgba(255, 255, 255, 0.5) !important;
-    transform: translateY(-50%) rotate(90deg) scale(1.1) !important;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25) !important;
-}
-
-/* إخفاء أزرار الإغلاق القديمة داخل الصور */
-.image-close-btn:not(.header-close-btn) {
-    display: none !important;
-}
-
-/* MAIN SWIPER - يأخذ المساحة المتبقية */
-.main-swiper {
-    width: 100%;
-    height: calc(100% - 50px);
-    background: var(--surface);
-    overflow: hidden;
-    position: relative;
-    flex: 1;
-}
-
-/* PROJECT CARD - TAKES FULL SWIPER */
-.project-card {
-    position: relative;
-    height: 100% !important;
-    width: 100% !important;
-    display: block;
-    background: var(--surface);
-    overflow: hidden;
-}
-
-/* PROJECT INFO - TAKES FULL WIDTH & HEIGHT OF PROJECT CARD */
-.project-info {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100% !important;
-    height: 100% !important;
-    max-height: 100% !important;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    text-align: left;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) var(--background);
-    background: var(--surface);
-    z-index: 1;
-    box-sizing: border-box;
-}
-
-/* SCROLLBAR STYLING */
-.project-info::-webkit-scrollbar {
-    width: 8px;
-}
-
-.project-info::-webkit-scrollbar-track {
-    background: var(--background);
-    border-radius: 10px;
-    margin: 4px 0;
-}
-
-.project-info::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
-    border-radius: 10px;
-    border: 2px solid var(--background);
-}
-
-.project-info::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, var(--secondary-color), var(--primary-color));
-}
-
-/* IMAGE CONTAINER - 50% HEIGHT */
-.image-swiper-container {
-    width: 100%;
-    height: 50%;
-    min-height: 300px;
-    background: var(--background);
-    position: relative;
-    overflow: hidden;
-    border-radius: 15px;
-    margin-bottom: 2rem;
-    border: 2px solid var(--border);
-}
-
-/* IMAGE SWIPER - TAKES FULL CONTAINER */
-.image-swiper {
-    width: 100%;
-    height: 100%;
-}
-
-/* IMAGE SLIDE - TAKES FULL SWIPER */
-.image-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background: var(--background);
-    width: 100%;
-    height: 100%;
-}
-
-/* PROJECT IMAGE - TAKES FULL SIZE */
-.project-image {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: contain !important;
-    padding: 10px;
-    transition: transform 0.5s ease;
-}
-
-.project-image:hover {
-    transform: scale(1.03);
-}
-
-/* CONTENT SECTIONS */
-.project-title {
-    font-size: 2.2rem;
-    margin-bottom: 1.5rem;
-    color: var(--text);
-    text-align: center;
-    padding-bottom: 1rem;
-    border-bottom: 3px solid var(--border);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: 700;
 }
 
-.project-description {
-    margin-bottom: 2rem;
-    color: var(--text-secondary);
+#mobile-apps > .container > p {
     text-align: center;
-    font-size: 1.2rem;
-    line-height: 1.7;
-    padding: 0 1rem;
-}
-
-/* PROJECT LINKS - تحت الوصف مباشرة */
-.project-links-top {
-    display: flex;
-    gap: 1.2rem;
+    color: var(--text-secondary);
     margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 3px solid var(--border);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* MOBILE APPS NAVIGATION BUTTONS - 4 BUTTONS LAYOUT */
+#mobile-apps .skills-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 3rem auto 0;
+    max-width: 900px;
+}
+
+@media (min-width: 768px) {
+    #mobile-apps .skills-nav {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+#mobile-apps .skill-nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    gap: 0.8rem;
+    padding: 1.5rem 1.2rem;
+    background: var(--surface);
+    border-radius: 20px;
+    border: 2px solid var(--border);
+    transition: var(--transition);
+    cursor: pointer;
+    color: var(--text-secondary);
+    height: 140px;
+    box-sizing: border-box;
+    text-align: center;
 }
 
-/* KEY FEATURES SECTION */
-.project-features {
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background: rgba(var(--primary-color-rgb, 79, 70, 229), 0.05);
-    border-radius: 15px;
-    border-left: 5px solid var(--primary-color);
-}
-
-.features-title {
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+#mobile-apps .skill-nav-btn:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
     color: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+}
+
+#mobile-apps .skill-nav-btn.active {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-color: transparent;
+    color: white;
+    transform: translateY(-5px);
+}
+
+#mobile-apps .skill-nav-btn i {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+#mobile-apps .skill-nav-btn span {
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* MOBILE APPS POPUP CONTAINER */
+#mobile-swiper-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+}
+
+#mobile-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+    animation: fadeIn 0.3s ease;
+}
+
+#mobile-swiper-container .popup-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 1000px;
+    height: 80vh;
+    max-height: 700px;
+    background: var(--surface);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 2;
+    animation: popupAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+}
+
+/* MOBILE APPS POPUP HEADER */
+#mobile-swiper-container .popup-header {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: space-between;
+    padding: 1.2rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
 }
 
-.features-title:before {
-    content: '🚀';
-    font-size: 1.2rem;
-}
-
-.features-list {
-    list-style-type: none;
-    padding-left: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+#mobile-swiper-container .popup-title {
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
     gap: 0.8rem;
 }
 
-.features-list li {
-    padding: 1rem 1.2rem 1rem 2.5rem;
-    position: relative;
-    line-height: 1.5;
-    font-size: 1rem;
-    background: var(--background);
-    border-radius: 10px;
-    border: 1px solid var(--border);
+#mobile-swiper-container .popup-title i {
+    font-size: 1.3rem;
 }
 
-.features-list li:before {
-    content: '✓';
+#mobile-close-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    font-size: 1.2rem;
+}
+
+#mobile-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: rotate(90deg);
+}
+
+/* MOBILE APPS ICON NAVIGATION */
+#mobile-icon-nav-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+#mobile-icon-nav-top .icon-nav-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    border: 2px solid var(--border);
+    background: var(--surface);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    font-size: 1.4rem;
+}
+
+#mobile-icon-nav-top .icon-nav-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+#mobile-icon-nav-top .icon-nav-btn.active {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-color: transparent;
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(var(--primary-color-rgb), 0.3);
+}
+
+/* MOBILE APPS SWIPER */
+#mobileSwiper {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    overflow: hidden;
+}
+
+#mobileSwiper .swiper-wrapper {
+    height: 100%;
+}
+
+#mobileSwiper .swiper-slide {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* MOBILE APPS PROJECT CARD */
+#mobileSwiper .project-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#mobileSwiper .project-info {
+    height: 100%;
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--border);
+    position: relative;
+    overscroll-behavior: contain;
+}
+
+#mobileSwiper .project-info::-webkit-scrollbar {
+    width: 8px;
+}
+
+#mobileSwiper .project-info::-webkit-scrollbar-track {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+#mobileSwiper .project-info::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 4px;
+}
+
+/* MOBILE APPS CATEGORY CONTENT */
+#mobileSwiper .skills-category-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#mobileSwiper .skill-main-title {
+    font-size: 2rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+#mobileSwiper .skill-main-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* ============================================
+   PROJECT IMAGES - EXACT SAME AS WEB
+============================================ */
+#mobileSwiper .project-images-container {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 2rem;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid var(--border);
+    background: var(--background);
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+#mobileSwiper .project-images-container.image-scroll-active {
+    cursor: grab;
+}
+
+#mobileSwiper .project-images-container.image-scroll-active:active {
+    cursor: grabbing;
+}
+
+/* Image Swiper Container */
+#mobileSwiper .image-swiper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#mobileSwiper .image-swiper .swiper-wrapper {
+    height: 100%;
+}
+
+#mobileSwiper .image-slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* IMAGE TAKES 100% OF CONTAINER - COVER */
+#mobileSwiper .project-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 12px;
+    display: block;
+}
+
+/* Image Navigation Dots (Hidden by default, shown on hover) */
+#mobileSwiper .image-nav-dots {
     position: absolute;
-    left: 1rem;
-    color: #10b981;
-    font-weight: bold;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 8px;
+}
+
+#mobileSwiper .project-images-container:hover .image-nav-dots {
+    opacity: 1;
+}
+
+#mobileSwiper .image-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+#mobileSwiper .image-dot:hover {
+    background: white;
+    transform: scale(1.2);
+}
+
+#mobileSwiper .image-dot.active {
+    background: white;
+    transform: scale(1.2);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* إزالة Pagination بالكامل */
+#mobileSwiper .image-pagination,
+#mobileSwiper .swiper-pagination,
+#mobileSwiper .swiper-pagination-bullets,
+#mobileSwiper .swiper-pagination-horizontal,
+#mobileSwiper .swiper-pagination-clickable,
+#mobileSwiper .swiper-pagination-bullets-dynamic {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+/* ============================================
+   PROJECT STATS - MOBILE SPECIFIC
+============================================ */
+#mobileSwiper .project-stats {
+    display: flex;
+    gap: 2rem;
+    margin: 1.5rem 0 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#mobileSwiper .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(var(--primary-color-rgb), 0.1);
+    border-radius: 12px;
+    border: 2px solid var(--border);
+    transition: var(--transition);
+}
+
+#mobileSwiper .stat-item:hover {
+    transform: translateY(-3px);
+    background: rgba(var(--primary-color-rgb), 0.15);
+    border-color: var(--primary-color);
+}
+
+#mobileSwiper .stat-item i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+#mobileSwiper .stat-item span {
+    font-weight: 600;
+    color: var(--text);
     font-size: 1.1rem;
 }
 
-/* TECHNOLOGIES SECTION */
-.project-technologies {
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background: rgba(var(--secondary-color-rgb, 236, 72, 153), 0.05);
-    border-radius: 15px;
-    border-left: 5px solid var(--secondary-color);
+/* ============================================
+   TECH TAGS - EXACT SAME FULL COLOR STYLE
+============================================ */
+#mobileSwiper .tech-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 1.5rem 0;
 }
 
-.tech-title {
-    font-size: 1.4rem;
-    font-weight: 600;
+#mobileSwiper .tech-tag {
+    padding: 0.7rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    cursor: default;
+}
+
+#mobileSwiper .tech-tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.05) 100%);
+    z-index: 1;
+    opacity: 0.6;
+}
+
+#mobileSwiper .tech-tag span,
+#mobileSwiper .tech-tag i {
+    position: relative;
+    z-index: 2;
+}
+
+#mobileSwiper .tech-tag:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Mobile Tech Tag Colors - Full Color */
+#mobileSwiper .tech-tag.android { background: #3DDC84; color: white !important; }
+#mobileSwiper .tech-tag.kodular { background: #7e57c2; color: white !important; }
+#mobileSwiper .tech-tag.react-native { background: #61DAFB; color: black !important; }
+#mobileSwiper .tech-tag.flutter { background: #02569B; color: white !important; }
+#mobileSwiper .tech-tag.kotlin { background: #7F52FF; color: white !important; }
+#mobileSwiper .tech-tag.java { background: #007396; color: white !important; }
+#mobileSwiper .tech-tag.swift { background: #FA7343; color: white !important; }
+#mobileSwiper .tech-tag.ios { background: #000000; color: white !important; }
+#mobileSwiper .tech-tag.firebase { background: #FFCA28; color: black !important; }
+#mobileSwiper .tech-tag.google-play { background: #0F9D58; color: white !important; }
+#mobileSwiper .tech-tag.app-store { background: #0D96F6; color: white !important; }
+#mobileSwiper .tech-tag.quiz-logic { background: #9c27b0; color: white !important; }
+#mobileSwiper .tech-tag.iot { background: #00BCD4; color: white !important; }
+#mobileSwiper .tech-tag.encryption { background: #607D8B; color: white !important; }
+#mobileSwiper .tech-tag.biometrics { background: #795548; color: white !important; }
+
+/* ============================================
+   FEATURES LIST - EXACT SAME COLORED STYLE
+============================================ */
+#mobileSwiper .skill-set-features {
+    background: linear-gradient(135deg, 
+        rgba(var(--primary-color-rgb), 0.1), 
+        rgba(var(--secondary-color-rgb), 0.05));
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(var(--primary-color-rgb), 0.2);
+    margin-top: 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+#mobileSwiper .features-title {
+    font-size: 1.3rem;
+    color: var(--text);
     margin-bottom: 1rem;
-    color: var(--secondary-color);
+    font-weight: 600;
+    padding-left: 0;
+    position: relative;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.tech-title:before {
-    content: '⚡';
-    font-size: 1.2rem;
+#mobileSwiper .features-title::before {
+    content: '▶';
+    position: absolute;
+    left: -20px;
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
-.tech-tags-container {
+#mobileSwiper .features-title:hover::before {
+    opacity: 1;
+}
+
+#mobileSwiper .features-list {
+    list-style: none;
+    padding-left: 0;
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 1rem 0;
-    justify-content: center;
+    flex-direction: column;
+    gap: 0.8rem;
+    counter-reset: feature-counter;
 }
 
-.tech-tag {
-    display: inline-block;
-    padding: 8px 16px;
+#mobileSwiper .features-list li {
+    padding: 1rem 1.2rem;
+    color: var(--text);
+    background: linear-gradient(135deg, 
+        rgba(var(--primary-color-rgb), 0.1), 
+        rgba(var(--secondary-color-rgb), 0.05));
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.3s ease;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+#mobileSwiper .features-list li::before {
+    counter-increment: feature-counter;
+    content: counter(feature-counter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    cursor: default;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    min-width: 90px;
-    text-align: center;
-    border: 2px solid transparent;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
 }
 
-.tech-tag:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    border-color: white;
+/* ALTERNATING COLORS FOR FEATURES - SAME AS WEB */
+#mobileSwiper .features-list li:nth-child(1) {
+    border-left-color: #4f46e5;
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(79, 70, 229, 0.05));
 }
 
-/* Mobile-specific Technology Tags */
-.tech-tag.kodular { background: linear-gradient(135deg, #7e57c2, #673ab7); }
-.tech-tag.android { background: linear-gradient(135deg, #3ddc84, #34a853); color: #121212; }
-.tech-tag.firebase { background: linear-gradient(135deg, #ffca28, #f57c00); color: #121212; }
-.tech-tag.bluetooth { background: linear-gradient(135deg, #0082fc, #0066cc); }
-.tech-tag.iot { background: linear-gradient(135deg, #00b0ff, #0091ea); }
-.tech-tag.quiz { background: linear-gradient(135deg, #9c27b0, #7b1fa2); }
-.tech-tag.smart-home { background: linear-gradient(135deg, #00bcd4, #0097a7); }
-.tech-tag.utility { background: linear-gradient(135deg, #ff9800, #f57c00); }
-.tech-tag.security { background: linear-gradient(135deg, #f44336, #d32f2f); }
-.tech-tag.sensors { background: linear-gradient(135deg, #8e24aa, #7b1fa2); }
-.tech-tag.automation { background: linear-gradient(135deg, #ff9800, #f57c00); }
-.tech-tag.api { background: linear-gradient(135deg, #ff6b35, #e94e1b); }
-.tech-tag.uiux { background: linear-gradient(135deg, #ff6b8b, #e84393); }
+#mobileSwiper .features-list li:nth-child(2) {
+    border-left-color: #06b6d4;
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.05));
+}
 
-/* PROJECT LINKS */
-.project-link {
-    padding: 0.9rem 1.8rem;
+#mobileSwiper .features-list li:nth-child(3) {
+    border-left-color: #10b981;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+}
+
+#mobileSwiper .features-list li:nth-child(4) {
+    border-left-color: #f59e0b;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+}
+
+#mobileSwiper .features-list li:nth-child(5) {
+    border-left-color: #ef4444;
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+}
+
+#mobileSwiper .features-list li:nth-child(6) {
+    border-left-color: #8b5cf6;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05));
+}
+
+#mobileSwiper .features-list li:hover {
+    transform: translateX(5px);
+    background: linear-gradient(135deg, 
+        rgba(var(--primary-color-rgb), 0.15), 
+        rgba(var(--secondary-color-rgb), 0.08));
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    border-left-width: 6px;
+}
+
+/* ============================================
+   MOBILE APPS PROJECT LINKS
+============================================ */
+#mobileSwiper .project-links-top {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#mobileSwiper .project-link {
+    padding: 1rem 2rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     text-decoration: none;
     border-radius: 12px;
     font-size: 1rem;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    min-width: 160px;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
-    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.project-link:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.5);
-    border-color: white;
+#mobileSwiper .project-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%);
+    z-index: -1;
+    transition: opacity 0.3s ease;
 }
 
-.project-link i {
-    font-size: 1.1rem;
+#mobileSwiper .project-link:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(var(--primary-color-rgb), 0.3);
 }
 
-/* روابط المشروع في الأسفل (القديمة - سنخفيها) */
-.project-links {
-    display: none !important; /* إخفاء الروابط القديمة في الأسفل */
+#mobileSwiper .project-link i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
 }
 
-/* SWIPER NAVIGATION BUTTONS - تعديل الموضع بسبب الهيدر */
-.swiper-button-next,
-.swiper-button-prev {
-    color: white;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    top: calc(50% + 25px);
+#mobileSwiper .project-link:hover i {
+    transform: translateX(5px);
+}
+
+/* MOBILE APPS CARD NAVIGATION */
+#mobile-card-navigation {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
     transform: translateY(-50%);
-    z-index: 100;
-    border: 3px solid var(--surface);
-    display: flex !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    z-index: 10;
+    pointer-events: none;
+}
+
+#mobile-prev-card,
+#mobile-next-card {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(var(--surface-rgb), 0.9);
+    border: 2px solid var(--border);
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 1 !important;
-    visibility: visible !important;
+    transition: var(--transition);
+    pointer-events: all;
+    backdrop-filter: blur(10px);
+    font-size: 1.2rem;
+}
+
+#mobile-prev-card:hover,
+#mobile-next-card:hover {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-color: transparent;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* MOBILE APPS CARD COUNTER */
+#mobile-card-counter {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(var(--surface-rgb), 0.9);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+#mobile-card-counter .counter-number {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+/* NO IMAGES PLACEHOLDER */
+#mobileSwiper .no-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    background: var(--background);
+}
+
+#mobileSwiper .no-image-placeholder i {
+    font-size: 4rem;
+    opacity: 0.3;
+    color: var(--primary-color);
     transition: all 0.3s ease;
-    display: none; /* مخفية افتراضياً */
 }
 
-.swiper-button-next:after,
-.swiper-button-prev:after {
-    font-size: 1.5rem;
-    font-weight: bold;
+#mobileSwiper .no-image-placeholder:hover i {
+    transform: scale(1.1);
+    opacity: 0.4;
 }
 
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+#mobileSwiper .no-image-placeholder span {
+    font-size: 1.1rem;
+    opacity: 0.6;
+    font-weight: 500;
 }
 
-.swiper-button-prev {
-    left: 25px !important;
-}
+/* ============================================
+   RESPONSIVE DESIGN - EXACT SAME AS WEB
+============================================ */
 
-.swiper-button-next {
-    right: 25px !important;
-}
-
-/* MEDIA QUERIES - للتحكم بعرض أزرار التنقل */
-
-/* SHOW NAV BUTTONS ONLY ON LARGE SCREENS (1024px and above) */
-@media (min-width: 1024px) {
-    .swiper-button-next,
-    .swiper-button-prev {
-        display: flex !important; /* تظهر فقط على الشاشات الكبيرة */
-    }
-}
-
-/* HIDE NAV BUTTONS ON TABLETS AND PHONES (below 1024px) */
-@media (max-width: 1023px) {
-    .swiper-button-next,
-    .swiper-button-prev {
-        display: none !important; /* مخفية على التابلت والموبايل */
-    }
-}
-
-/* RESPONSIVE DESIGN - LARGE LAPTOP/DESKTOP (1440px+) */
-@media (min-width: 1440px) {
-    .main-swiper-container {
-        width: 90%;
-        max-width: 1600px;
-        height: 88vh;
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    #mobile-apps h2 {
+        font-size: 2.2rem;
     }
     
-    .swiper-mini-header {
-        padding: 1rem 2rem;
-        min-height: 60px;
+    #mobile-apps .skill-nav-btn {
+        height: 130px;
+        padding: 1.3rem 1.8rem;
     }
     
-    .swiper-category-title {
-        font-size: 1.6rem;
-        padding-right: 60px;
-        padding-left: 60px;
-    }
-    
-    .main-swiper {
-        height: calc(100% - 60px);
-    }
-    
-    .swiper-mini-header .header-close-btn {
-        width: 48px !important;
-        height: 48px !important;
-        right: 25px !important;
-        font-size: 1.2rem !important;
-    }
-    
-    .project-info {
-        padding: 3rem 4rem;
-        max-height: 100% !important;
-    }
-    
-    .image-swiper-container {
-        height: 55%;
-        min-height: 450px;
-        margin-bottom: 3rem;
-    }
-    
-    .project-title {
-        font-size: 2.8rem;
-    }
-    
-    .project-description {
-        font-size: 1.4rem;
-        line-height: 1.9;
-    }
-    
-    .project-links-top {
-        margin-bottom: 4rem;
-        padding-bottom: 3rem;
-    }
-    
-    .features-list {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.2rem;
-    }
-    
-    .features-list li {
-        font-size: 1.1rem;
-        padding: 1.2rem 1.5rem 1.2rem 3rem;
-    }
-    
-    .tech-tag {
-        font-size: 1rem;
-        padding: 10px 20px;
-        min-width: 110px;
-    }
-    
-    .project-link {
-        padding: 1.1rem 2.2rem;
-        font-size: 1.2rem;
-        min-width: 180px;
-    }
-    
-    .swiper-button-next,
-    .swiper-button-prev {
-        width: 70px;
-        height: 70px;
-        top: calc(50% + 30px);
-    }
-    
-    .swiper-button-next:after,
-    .swiper-button-prev:after {
-        font-size: 1.8rem;
-    }
-    
-    .swiper-button-prev {
-        left: 35px !important;
-    }
-    
-    .swiper-button-next {
-        right: 35px !important;
-    }
-}
-
-/* LAPTOP (1024px - 1439px) */
-@media (max-width: 1439px) and (min-width: 1024px) {
-    .main-swiper-container {
-        width: 92%;
+    #mobile-swiper-container .popup-content {
+        width: 95%;
         height: 85vh;
     }
     
-    .swiper-mini-header {
-        padding: 0.9rem 1.8rem;
-        min-height: 55px;
+    #mobileSwiper .project-images-container {
+        height: 350px;
     }
     
-    .swiper-category-title {
-        font-size: 1.5rem;
-        padding-right: 55px;
-        padding-left: 55px;
-    }
-    
-    .main-swiper {
-        height: calc(100% - 55px);
-    }
-    
-    .swiper-mini-header .header-close-btn {
-        width: 45px !important;
-        height: 45px !important;
-        right: 22px !important;
-        font-size: 1.15rem !important;
-    }
-    
-    .project-info {
-        padding: 2.5rem 3rem;
-        max-height: 100% !important;
-    }
-    
-    .image-swiper-container {
-        height: 50%;
-        min-height: 380px;
-        margin-bottom: 2.5rem;
-    }
-    
-    .project-title {
-        font-size: 2.4rem;
-    }
-    
-    .project-description {
-        font-size: 1.3rem;
-        line-height: 1.8;
-    }
-    
-    .project-links-top {
-        margin-bottom: 3.5rem;
-        padding-bottom: 2.5rem;
-    }
-    
-    .features-list {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-    
-    .tech-tag {
-        font-size: 0.95rem;
-        padding: 9px 18px;
-        min-width: 100px;
-    }
-    
-    .project-link {
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
-        min-width: 170px;
-    }
-    
-    .swiper-button-next,
-    .swiper-button-prev {
-        width: 65px;
-        height: 65px;
-        top: calc(50% + 27px);
-    }
-    
-    .swiper-button-next:after,
-    .swiper-button-prev:after {
-        font-size: 1.7rem;
-    }
-    
-    .swiper-button-prev {
-        left: 30px !important;
-    }
-    
-    .swiper-button-next {
-        right: 30px !important;
-    }
-}
-
-/* TABLET LANDSCAPE (768px - 1023px) */
-@media (max-width: 1023px) and (min-width: 768px) {
-    .main-swiper-container {
-        width: 94%;
-        height: 80vh;
-        margin: 1.5rem auto;
-    }
-    
-    .swiper-mini-header {
-        padding: 0.8rem 1.5rem;
-        min-height: 50px;
-    }
-    
-    .swiper-category-title {
-        font-size: 1.4rem;
-        padding-right: 50px;
-        padding-left: 50px;
-    }
-    
-    .main-swiper {
-        height: calc(100% - 50px);
-    }
-    
-    .swiper-mini-header .header-close-btn {
-        width: 42px !important;
-        height: 42px !important;
-        right: 20px !important;
-        font-size: 1.1rem !important;
-    }
-    
-    .project-info {
-        padding: 2rem;
-        max-height: 100% !important;
-    }
-    
-    .image-swiper-container {
-        height: 45%;
-        min-height: 320px;
-        margin-bottom: 2rem;
-    }
-    
-    .project-title {
-        font-size: 2rem;
-    }
-    
-    .project-description {
-        font-size: 1.15rem;
-        line-height: 1.7;
-    }
-    
-    .project-links-top {
-        margin-bottom: 3rem;
-        padding-bottom: 2rem;
-    }
-    
-    .features-list {
-        grid-template-columns: 1fr;
-        gap: 0.9rem;
-    }
-    
-    .tech-tag {
-        font-size: 0.9rem;
-        padding: 8px 16px;
-        min-width: 90px;
-    }
-    
-    .project-link {
-        padding: 0.9rem 1.8rem;
-        font-size: 1.05rem;
-        min-width: 150px;
-    }
-    
-    .swiper-button-next,
-    .swiper-button-prev {
-        display: none !important; /* متأكد من إخفائها */
-    }
-}
-
-/* TABLET PORTRAIT (576px - 767px) */
-@media (max-width: 767px) and (min-width: 576px) {
-    .main-swiper-container {
-        width: 96%;
-        height: 75vh;
-        margin: 1rem auto;
-        border-radius: 15px;
-    }
-    
-    .swiper-mini-header {
-        padding: 0.7rem 1.2rem;
-        min-height: 45px;
-    }
-    
-    .swiper-category-title {
-        font-size: 1.2rem;
-        gap: 0.5rem;
-        padding-right: 45px;
-        padding-left: 45px;
-    }
-    
-    .main-swiper {
-        height: calc(100% - 45px);
-    }
-    
-    .swiper-mini-header .header-close-btn {
-        width: 40px !important;
-        height: 40px !important;
-        right: 18px !important;
-        font-size: 1.05rem !important;
-    }
-    
-    .project-info {
-        padding: 1.5rem;
-        max-height: 100% !important;
-    }
-    
-    .image-swiper-container {
-        height: 40%;
-        min-height: 250px;
-        margin-bottom: 1.5rem;
-    }
-    
-    .project-title {
-        font-size: 1.8rem;
-        margin-bottom: 1.2rem;
-    }
-    
-    .project-description {
-        font-size: 1.05rem;
-        line-height: 1.6;
-    }
-    
-    .project-links-top {
-        margin-bottom: 2.5rem;
-        padding-bottom: 1.5rem;
-    }
-    
-    .project-features,
-    .project-technologies {
-        padding: 1.2rem;
-        margin: 1.5rem 0;
-    }
-    
-    .features-title,
-    .tech-title {
-        font-size: 1.3rem;
-    }
-    
-    .features-list li {
-        padding: 0.9rem 1rem 0.9rem 2.5rem;
-        font-size: 0.95rem;
-    }
-    
-    .tech-tag {
-        font-size: 0.85rem;
-        padding: 7px 14px;
-        min-width: 85px;
-    }
-    
-    .project-link {
-        padding: 0.8rem 1.6rem;
-        font-size: 1rem;
-        min-width: 140px;
-    }
-    
-    .project-links-top {
-        gap: 1rem;
-    }
-    
-    .swiper-button-next,
-    .swiper-button-prev {
-        display: none !important;
-    }
-}
-
-/* MOBILE (375px - 575px) */
-@media (max-width: 575px) and (min-width: 375px) {
-    .main-swiper-container {
-        width: 98%;
-        height: 70vh;
-        margin: 0.5rem auto;
-        border-radius: 12px;
-    }
-    
-    .swiper-mini-header {
-        padding: 0.6rem 1rem;
-        min-height: 40px;
-    }
-    
-    .swiper-category-title {
-        font-size: 1.1rem;
-        gap: 0.4rem;
-        padding-right: 40px;
-        padding-left: 40px;
-    }
-    
-    .swiper-category-title i {
-        font-size: 1.1rem;
-    }
-    
-    .main-swiper {
-        height: calc(100% - 40px);
-    }
-    
-    .swiper-mini-header .header-close-btn {
-        width: 38px !important;
-        height: 38px !important;
-        right: 15px !important;
-        font-size: 1rem !important;
-    }
-    
-    .project-info {
-        padding: 1.2rem;
-        max-height: 100% !important;
-    }
-    
-    .image-swiper-container {
-        height: 35%;
-        min-height: 220px;
-        margin-bottom: 1.2rem;
-    }
-    
-    .project-title {
-        font-size: 1.6rem;
-        margin-bottom: 1rem;
-    }
-    
-    .project-description {
-        font-size: 0.95rem;
-        line-height: 1.5;
-    }
-    
-    .project-links-top {
-        margin-bottom: 2rem;
-        padding-bottom: 1.2rem;
-    }
-    
-    .project-features,
-    .project-technologies {
-        padding: 1rem;
-        margin: 1.2rem 0;
-    }
-    
-    .features-title,
-    .tech-title {
-        font-size: 1.2rem;
-    }
-    
-    .features-list li {
-        padding: 0.8rem 0.9rem 0.8rem 2.2rem;
-        font-size: 0.9rem;
-    }
-    
-    .tech-tags-container {
-        gap: 8px;
-    }
-    
-    .tech-tag {
-        font-size: 0.8rem;
-        padding: 6px 12px;
-        min-width: 80px;
-    }
-    
-    .project-link {
-        padding: 0.7rem 1.4rem;
-        font-size: 0.95rem;
-        min-width: 130px;
-    }
-    
-    .project-links-top {
+    #mobileSwiper .tech-tags-container {
         gap: 0.8rem;
     }
     
-    .swiper-button-next,
-    .swiper-button-prev {
-        display: none !important;
+    #mobileSwiper .tech-tag {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
     }
 }
 
-/* SMALL MOBILE (< 375px) */
-@media (max-width: 374px) {
-    .main-swiper-container {
-        width: 99%;
-        height: 65vh;
-        margin: 0.3rem auto;
-        border-radius: 10px;
+/* Mobile Styles */
+@media (max-width: 768px) {
+    #mobile-apps {
+        padding: 3rem 1rem;
     }
     
-    .swiper-mini-header {
-        padding: 0.5rem 0.8rem;
-        min-height: 35px;
+    #mobile-apps h2 {
+        font-size: 2rem;
     }
     
-    .swiper-category-title {
-        font-size: 1rem;
-        gap: 0.3rem;
-        padding-right: 35px;
-        padding-left: 35px;
+    #mobile-apps .skills-nav {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
     
-    .swiper-category-title i {
-        font-size: 1rem;
+    #mobile-apps .skill-nav-btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        height: 120px;
+        padding: 1.2rem;
     }
     
-    .main-swiper {
-        height: calc(100% - 35px);
+    #mobile-swiper-container .popup-content {
+        width: 95%;
+        height: 90vh;
+        max-height: none;
+        border-radius: 15px;
     }
     
-    .swiper-mini-header .header-close-btn {
-        width: 36px !important;
-        height: 36px !important;
-        right: 12px !important;
-        font-size: 0.95rem !important;
+    #mobile-card-navigation {
+        display: none;
     }
     
-    .project-info {
-        padding: 1rem;
-        max-height: 100% !important;
+    #mobile-icon-nav-top {
+        gap: 1rem;
     }
     
-    .image-swiper-container {
-        height: 30%;
-        min-height: 180px;
-        margin-bottom: 1rem;
+    #mobile-icon-nav-top .icon-nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
     }
     
-    .project-title {
-        font-size: 1.4rem;
-        margin-bottom: 0.8rem;
-    }
-    
-    .project-description {
-        font-size: 0.9rem;
-        line-height: 1.4;
-        padding: 0 0.5rem;
-    }
-    
-    .project-links-top {
+    #mobileSwiper .project-images-container {
+        height: 300px;
         margin-bottom: 1.5rem;
-        padding-bottom: 1rem;
     }
     
-    .project-features,
-    .project-technologies {
-        padding: 0.8rem;
-        margin: 1rem 0;
+    #mobileSwiper .project-links-top {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
     }
     
-    .features-title,
-    .tech-title {
-        font-size: 1.1rem;
+    #mobileSwiper .project-link {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+        padding: 0.9rem 1.5rem;
     }
     
-    .features-list li {
-        padding: 0.7rem 0.8rem 0.7rem 2rem;
-        font-size: 0.85rem;
+    #mobileSwiper .tech-tags-container {
+        gap: 0.6rem;
     }
     
-    .tech-tags-container {
-        gap: 6px;
+    #mobileSwiper .tech-tag {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
     }
     
-    .tech-tag {
-        font-size: 0.75rem;
-        padding: 5px 10px;
-        min-width: 70px;
-    }
-    
-    .project-link {
-        padding: 0.6rem 1.2rem;
+    #mobileSwiper .features-list li {
+        padding: 0.8rem 1rem;
         font-size: 0.9rem;
-        min-width: 120px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    #mobile-apps {
+        padding: 2.5rem 1rem;
+    }
+    
+    #mobile-apps h2 {
+        font-size: 1.8rem;
+    }
+    
+    #mobile-apps > .container > p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    #mobile-apps .skill-nav-btn {
+        padding: 1rem;
+        height: 110px;
+    }
+    
+    #mobile-apps .skill-nav-btn i {
+        font-size: 2rem;
+    }
+    
+    #mobile-apps .skill-nav-btn span {
+        font-size: 1rem;
+    }
+    
+    #mobile-swiper-container .popup-content {
+        width: 97%;
+        height: 92vh;
+        border-radius: 12px;
+    }
+    
+    #mobileSwiper .project-info {
+        padding: 1.5rem;
+    }
+    
+    #mobileSwiper .skill-main-title {
+        font-size: 1.6rem;
+    }
+    
+    #mobileSwiper .skill-main-description {
+        font-size: 1rem;
+    }
+    
+    #mobileSwiper .project-images-container {
+        height: 250px;
+        margin-bottom: 1.2rem;
+    }
+    
+    #mobileSwiper .project-link {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    #mobileSwiper .tech-tags-container {
         gap: 0.5rem;
     }
     
-    .project-links-top {
-        gap: 0.7rem;
+    #mobileSwiper .tech-tag {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.75rem;
     }
     
-    .swiper-button-next,
-    .swiper-button-prev {
-        display: none !important;
+    #mobileSwiper .skill-set-features {
+        padding: 1.2rem;
+        margin-top: 1.5rem;
+    }
+    
+    #mobileSwiper .features-title {
+        font-size: 1.1rem;
+    }
+    
+    #mobileSwiper .features-list li {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+    }
+}
+
+/* Landscape Mode */
+@media (max-height: 600px) and (orientation: landscape) {
+    #mobile-swiper-container .popup-content {
+        height: 95vh;
+        max-height: none;
+    }
+    
+    #mobileSwiper .project-images-container {
+        height: 220px;
+    }
+    
+    #mobileSwiper .project-info {
+        padding: 1.2rem;
     }
 }
