@@ -386,6 +386,59 @@
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
+/* Image Swiper Navigation Buttons */
+#iotSwiper .image-swiper-button-next,
+#iotSwiper .image-swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+    opacity: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#iotSwiper .image-swiper-button-next {
+    right: 15px;
+}
+
+#iotSwiper .image-swiper-button-prev {
+    left: 15px;
+}
+
+#iotSwiper .project-images-container:hover .image-swiper-button-next,
+#iotSwiper .project-images-container:hover .image-swiper-button-prev {
+    opacity: 1;
+}
+
+#iotSwiper .image-swiper-button-next:hover,
+#iotSwiper .image-swiper-button-prev:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+#iotSwiper .image-swiper-button-next:active,
+#iotSwiper .image-swiper-button-prev:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+#iotSwiper .image-swiper-button-next i,
+#iotSwiper .image-swiper-button-prev i {
+    font-size: 1.2rem;
+}
+
 /* إزالة Pagination بالكامل */
 #iotSwiper .image-pagination,
 #iotSwiper .swiper-pagination,

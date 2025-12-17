@@ -481,16 +481,8 @@ showCategory: function(category, buttonText) {
                     <div class="swiper-wrapper">
                         ${slides}
                     </div>
-                    <div class="image-swiper-button-next">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="image-swiper-button-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
                 </div>
-                <div class="image-nav-dots">
-                    ${dots}
-                </div>
+                <div class="swiper-pagination image-nav-dots"></div>
             </div>
         `;
     },
@@ -595,6 +587,8 @@ showCategory: function(category, buttonText) {
             allowTouchMove: true,
             shortSwipes: false,
             longSwipes: true,
+            longSwipesRatio: 0.3,
+            longSwipesMs: 200,
             longSwipesRatio: 0.1,
             followFinger: true,
             threshold: 15,
@@ -607,7 +601,7 @@ showCategory: function(category, buttonText) {
             mousewheel: {
                 forceToAxis: true,
                 invert: false,
-                sensitivity: 0.8,
+                sensitivity: 1,
                 eventsTarget: '.popup-content',
                 releaseOnEdges: true,
             },
@@ -705,7 +699,10 @@ initializeImageSwipers: function() {
             height: 100%;
             overflow: hidden;
         `;
-        
+
+        const imageSlides = imageSwiperEl.querySelectorAll('.swiper-slide');
+        const slideCount = imageSlides.length;
+
         const images = imageSwiperEl.querySelectorAll('.project-image');
         images.forEach(img => {
             img.style.cssText = `
@@ -715,119 +712,33 @@ initializeImageSwipers: function() {
                 pointer-events: auto;
             `;
         });
-        
+
         let imageSwiperInstance;
-        
+
+        // Simple clean swiper with autoplay every 4000ms
         imageSwiperInstance = new Swiper(imageSwiperEl, {
-            loop: true,
-            loopAdditionalSlides: 1,
-            loopedSlides: 2,
+            slidesPerView: 1,
             spaceBetween: 0,
-            speed: 500,
+            loop: true,
             
             autoplay: {
-                delay: 5000,
+                delay: 4000,
                 disableOnInteraction: false,
-                pauseOnMouseEnter: true,
             },
             
-            navigation: {
-                nextEl: imageContainer.querySelector('.image-swiper-button-next'),
-                prevEl: imageContainer.querySelector('.image-swiper-button-prev'),
+            pagination: {
+                el: imageContainer.querySelector('.image-nav-dots'),
+                clickable: true,
             },
-            
-            // ✅ Enhanced touch settings
-            touchRatio: 1,
-            grabCursor: true,
-            allowTouchMove: true,
-            shortSwipes: true,
-            longSwipes: true,
-            followFinger: true,
-            threshold: 5,
-            resistance: false,
-            
-            // ✅ Mousewheel with better handling
-            mousewheel: {
-                forceToAxis: true,
-                invert: false,
-                sensitivity: 0.8,
-                eventsTarget: imageContainer,
-                releaseOnEdges: true,
-            },
-            
-            // ✅ Disable swiping on certain elements
-            noSwipingClass: 'no-swipe',
-            noSwipingSelector: '.project-links-top, .tech-tags-container, .features-list',
-            
-            breakpoints: {
-                320: {
-                    touchRatio: 0.9
-                }
-            },
-            
-            on: {
-                init: () => {
-                    console.log(`✅ Image swiper initialized for project ${projectId}`);
-                    this.imageSwiperInstances[projectId] = imageSwiperInstance;
-                    
-                    // Force update
-                    imageSwiperInstance.update();
-                    imageSwiperInstance.slideTo(0, 0);
-                    
-                    // Ensure autoplay starts
-                    if (imageSwiperInstance.autoplay && imageSwiperInstance.autoplay.running === false) {
-                        imageSwiperInstance.autoplay.start();
-                    }
-                },
-                
-                slideChange: (swiper) => {
-                    this.updateImageDots(imageContainer, swiper.realIndex);
-                },
-                
-                slideChangeTransitionStart: () => {
-                    this.isImageInteracting = true;
-                },
-                
-                slideChangeTransitionEnd: () => {
-                    this.isImageInteracting = false;
-                },
-                
-                touchStart: () => {
-                    this.isImageInteracting = true;
-                },
-                
-                touchEnd: () => {
-                    this.isImageInteracting = false;
-                },
-                
-                destroy: () => {
-                    console.log(`🗑️ Image swiper destroyed for project ${projectId}`);
-                }
-            }
         });
         
-        // ✅ Initialize dots
-        const totalSlides = imageSwiperInstance.slides.length;
-        const realTotal = imageSwiperInstance.loopedSlides ? 
-            totalSlides - (imageSwiperInstance.loopedSlides * 2) : totalSlides;
-        
-        this.updateImageDots(imageContainer, 0);
-        
-        // ✅ Setup dot click handlers
-        this.setupImageDotsHandlers(imageContainer, imageSwiperInstance);
-        
-        // ✅ Ensure autoplay starts
-        setTimeout(() => {
-            if (imageSwiperInstance.autoplay && !imageSwiperInstance.autoplay.running) {
-                imageSwiperInstance.autoplay.start();
-            }
-        }, 300);
+        // Store instance
+        this.imageSwiperInstances[projectId] = imageSwiperInstance;
         
     } catch (error) {
         console.error('Error initializing image swiper:', error);
     }
 },
-
 // ✅ إضافة دالة جديدة لمعالجة نقاط الصور
 setupImageDotsHandlers: function(imageContainer, imageSwiper) {
     const dots = imageContainer.querySelectorAll('.image-dot');
