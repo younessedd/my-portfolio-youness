@@ -1,5 +1,5 @@
 /* ============================================
-   MOBILE APPS SECTION - EXACT SAME AS WEB APPS
+   MOBILE APPS SECTION - EXACT SAME AS IOT
 ============================================ */
 
 /* MOBILE APPS SECTION CONTAINER */
@@ -295,7 +295,7 @@
 }
 
 /* ============================================
-   PROJECT IMAGES - EXACT SAME AS WEB
+   PROJECT IMAGES - EXACT SAME AS IOT
 ============================================ */
 #mobileSwiper .project-images-container {
     width: 100%;
@@ -452,45 +452,6 @@
 }
 
 /* ============================================
-   PROJECT STATS - MOBILE SPECIFIC
-============================================ */
-#mobileSwiper .project-stats {
-    display: flex;
-    gap: 2rem;
-    margin: 1.5rem 0 2rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-#mobileSwiper .stat-item {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    padding: 0.8rem 1.5rem;
-    background: rgba(var(--primary-color-rgb), 0.1);
-    border-radius: 12px;
-    border: 2px solid var(--border);
-    transition: var(--transition);
-}
-
-#mobileSwiper .stat-item:hover {
-    transform: translateY(-3px);
-    background: rgba(var(--primary-color-rgb), 0.15);
-    border-color: var(--primary-color);
-}
-
-#mobileSwiper .stat-item i {
-    color: var(--primary-color);
-    font-size: 1.2rem;
-}
-
-#mobileSwiper .stat-item span {
-    font-weight: 600;
-    color: var(--text);
-    font-size: 1.1rem;
-}
-
-/* ============================================
    TECH TAGS - EXACT SAME FULL COLOR STYLE
 ============================================ */
 #mobileSwiper .tech-tags-container {
@@ -547,20 +508,19 @@
 
 /* Mobile Tech Tag Colors - Full Color */
 #mobileSwiper .tech-tag.android { background: #3DDC84; color: white !important; }
-#mobileSwiper .tech-tag.kodular { background: #7e57c2; color: white !important; }
-#mobileSwiper .tech-tag.react-native { background: #61DAFB; color: black !important; }
-#mobileSwiper .tech-tag.flutter { background: #02569B; color: white !important; }
 #mobileSwiper .tech-tag.kotlin { background: #7F52FF; color: white !important; }
 #mobileSwiper .tech-tag.java { background: #007396; color: white !important; }
-#mobileSwiper .tech-tag.swift { background: #FA7343; color: white !important; }
+#mobileSwiper .tech-tag.react { background: #61DAFB; color: black !important; }
+#mobileSwiper .tech-tag.flutter { background: #02569B; color: white !important; }
 #mobileSwiper .tech-tag.ios { background: #000000; color: white !important; }
+#mobileSwiper .tech-tag.swift { background: #FA7343; color: white !important; }
 #mobileSwiper .tech-tag.firebase { background: #FFCA28; color: black !important; }
-#mobileSwiper .tech-tag.google-play { background: #0F9D58; color: white !important; }
-#mobileSwiper .tech-tag.app-store { background: #0D96F6; color: white !important; }
-#mobileSwiper .tech-tag.quiz-logic { background: #9c27b0; color: white !important; }
-#mobileSwiper .tech-tag.iot { background: #00BCD4; color: white !important; }
-#mobileSwiper .tech-tag.encryption { background: #607D8B; color: white !important; }
-#mobileSwiper .tech-tag.biometrics { background: #795548; color: white !important; }
+#mobileSwiper .tech-tag.kodular { background: #7e57c2; color: white !important; }
+#mobileSwiper .tech-tag.xamarin { background: #3498DB; color: white !important; }
+#mobileSwiper .tech-tag.ionic { background: #3880FF; color: white !important; }
+#mobileSwiper .tech-tag.unity { background: #000000; color: white !important; }
+#mobileSwiper .tech-tag.google { background: #4285F4; color: white !important; }
+#mobileSwiper .tech-tag.apple { background: #A2AAAD; color: white !important; }
 
 /* ============================================
    FEATURES LIST - EXACT SAME COLORED STYLE
@@ -646,7 +606,7 @@
     margin-top: 0.1rem;
 }
 
-/* ALTERNATING COLORS FOR FEATURES - SAME AS WEB */
+/* ALTERNATING COLORS FOR FEATURES - SAME AS IoT */
 #mobileSwiper .features-list li:nth-child(1) {
     border-left-color: #4f46e5;
     background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(79, 70, 229, 0.05));
@@ -836,7 +796,7 @@
 }
 
 /* ============================================
-   RESPONSIVE DESIGN - EXACT SAME AS WEB
+   RESPONSIVE DESIGN - EXACT SAME AS IoT
 ============================================ */
 
 /* Tablet Styles */

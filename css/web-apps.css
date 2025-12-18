@@ -1,5 +1,5 @@
 /* ============================================
-   WEB APPS SECTION - FINAL CSS (WITH SEPARATE SCROLL LOGIC)
+   WEB APPS SECTION - EXACT SAME AS IOT
 ============================================ */
 
 /* WEB APPS SECTION CONTAINER */
@@ -32,14 +32,19 @@
     margin-right: auto;
 }
 
-/* WEB APPS NAVIGATION BUTTONS - 3 BUTTONS PER ROW */
+/* WEB APPS NAVIGATION BUTTONS - 4 BUTTONS LAYOUT */
 #web-apps .skills-nav {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     margin: 3rem auto 0;
-    flex-wrap: wrap;
     max-width: 900px;
+}
+
+@media (min-width: 768px) {
+    #web-apps .skills-nav {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 #web-apps .skill-nav-btn {
@@ -48,14 +53,13 @@
     align-items: center;
     justify-content: center;
     gap: 0.8rem;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 1.2rem;
     background: var(--surface);
     border-radius: 20px;
     border: 2px solid var(--border);
     transition: var(--transition);
     cursor: pointer;
     color: var(--text-secondary);
-    width: calc(33.333% - 1rem);
     height: 140px;
     box-sizing: border-box;
     text-align: center;
@@ -76,13 +80,13 @@
 }
 
 #web-apps .skill-nav-btn i {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     margin-bottom: 0.5rem;
 }
 
 #web-apps .skill-nav-btn span {
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-align: center;
     line-height: 1.2;
 }
@@ -291,7 +295,7 @@
 }
 
 /* ============================================
-   PROJECT IMAGES - FIXED: SEPARATE SCROLL LOGIC
+   PROJECT IMAGES - EXACT SAME AS IOT
 ============================================ */
 #webSwiper .project-images-container {
     width: 100%;
@@ -311,68 +315,54 @@
 }
 
 #webSwiper .project-images-container.image-scroll-active:active {
-cursor: grabbing;
+    cursor: grabbing;
 }
 
-/* Image Swiper Container - Performance Optimized */
+/* Image Swiper Container */
 #webSwiper .image-swiper {
-width: 100%;
-height: 100%;
-position: relative;
-will-change: transform;
-transform: translateZ(0);
-backface-visibility: hidden;
-perspective: 1000px;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
 #webSwiper .image-swiper .swiper-wrapper {
-height: 100%;
-will-change: transform;
-transform: translateZ(0);
+    height: 100%;
 }
 
 #webSwiper .image-slide {
-width: 100%;
-height: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-will-change: transform;
-transform: translateZ(0);
-backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* IMAGE TAKES 100% OF CONTAINER - COVER - Performance Optimized */
+/* IMAGE TAKES 100% OF CONTAINER - COVER */
 #webSwiper .project-image {
-width: 100% !important;
-height: 100% !important;
-object-fit: cover !important;
-border-radius: 12px;
-display: block;
-will-change: transform;
-transform: translateZ(0);
-backface-visibility: hidden;
-image-rendering: -webkit-optimize-contrast;
-image-rendering: crisp-edges;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 12px;
+    display: block;
 }
 
 /* Image Navigation Dots (Hidden by default, shown on hover) */
 #webSwiper .image-nav-dots {
-position: absolute;
-bottom: 15px;
-left: 0;
-right: 0;
-display: flex;
-justify-content: center;
-gap: 8px;
-z-index: 10;
-opacity: 0;
-transition: opacity 0.3s ease;
-padding: 8px;
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 8px;
 }
 
 #webSwiper .project-images-container:hover .image-nav-dots {
-opacity: 1;
+    opacity: 1;
 }
 
 #webSwiper .image-dot {
@@ -396,6 +386,63 @@ opacity: 1;
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
+/* Image Swiper Navigation Buttons */
+#webSwiper .image-swiper-button-next,
+#webSwiper .image-swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+    opacity: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#webSwiper .image-swiper-button-next {
+    right: 15px;
+}
+
+#webSwiper .image-swiper-button-prev {
+    left: 15px;
+}
+
+#webSwiper .project-images-container:hover .image-swiper-button-next,
+#webSwiper .project-images-container:hover .image-swiper-button-prev {
+    opacity: 1;
+}
+
+#webSwiper .image-swiper-button-next:hover,
+#webSwiper .image-swiper-button-prev:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+#webSwiper .image-swiper-button-next:active,
+#webSwiper .image-swiper-button-prev:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+#webSwiper .image-swiper-button-next i,
+#webSwiper .image-swiper-button-prev i {
+    font-size: 1.2rem;
+}
+
+/* إزالة Pagination بالكامل */
+#webSwiper .image-pagination,
+#webSwiper .swiper-pagination,
+#webSwiper .swiper-pagination-bullets,
 #webSwiper .swiper-pagination-horizontal,
 #webSwiper .swiper-pagination-clickable,
 #webSwiper .swiper-pagination-bullets-dynamic {
@@ -405,7 +452,7 @@ opacity: 1;
 }
 
 /* ============================================
-   TECH TAGS - FULL COLOR
+   TECH TAGS - EXACT SAME FULL COLOR STYLE
 ============================================ */
 #webSwiper .tech-tags-container {
     display: flex;
@@ -459,38 +506,33 @@ opacity: 1;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* Tech Tag Colors - Full Color */
+/* Web Tech Tag Colors - Full Color */
 #webSwiper .tech-tag.html5 { background: #E34F26; color: white !important; }
 #webSwiper .tech-tag.css3 { background: #1572B6; color: white !important; }
 #webSwiper .tech-tag.javascript { background: #F7DF1E; color: black !important; }
 #webSwiper .tech-tag.react { background: #61DAFB; color: black !important; }
+#webSwiper .tech-tag.nodejs { background: #339933; color: white !important; }
 #webSwiper .tech-tag.vue { background: #4FC08D; color: white !important; }
+#webSwiper .tech-tag.angular { background: #DD0031; color: white !important; }
 #webSwiper .tech-tag.typescript { background: #3178C6; color: white !important; }
 #webSwiper .tech-tag.sass { background: #CC6699; color: white !important; }
 #webSwiper .tech-tag.bootstrap { background: #7952B3; color: white !important; }
 #webSwiper .tech-tag.tailwind { background: #38B2AC; color: white !important; }
-#webSwiper .tech-tag.nodejs { background: #339933; color: white !important; }
 #webSwiper .tech-tag.express { background: #000000; color: white !important; }
-#webSwiper .tech-tag.python { background: #3776AB; color: white !important; }
-#webSwiper .tech-tag.php { background: #777BB4; color: white !important; }
-#webSwiper .tech-tag.laravel { background: #FF2D20; color: white !important; }
-#webSwiper .tech-tag.django { background: #092E20; color: white !important; }
-#webSwiper .tech-tag.mysql { background: #4479A1; color: white !important; }
 #webSwiper .tech-tag.mongodb { background: #47A248; color: white !important; }
+#webSwiper .tech-tag.mysql { background: #4479A1; color: white !important; }
 #webSwiper .tech-tag.postgresql { background: #336791; color: white !important; }
 #webSwiper .tech-tag.firebase { background: #FFCA28; color: black !important; }
-#webSwiper .tech-tag.mern { background: #61DAFB; color: black !important; }
-#webSwiper .tech-tag.mean { background: #DD0031; color: white !important; }
-#webSwiper .tech-tag.api { background: #6BD5F1; color: black !important; }
-#webSwiper .tech-tag.graphql { background: #E10098; color: white !important; }
-#webSwiper .tech-tag.docker { background: #2496ED; color: white !important; }
 #webSwiper .tech-tag.aws { background: #FF9900; color: black !important; }
-#webSwiper .tech-tag.responsive { background: #4A90E2; color: white !important; }
-#webSwiper .tech-tag.uiux { background: #FF6B6B; color: white !important; }
+#webSwiper .tech-tag.docker { background: #2496ED; color: white !important; }
 #webSwiper .tech-tag.git { background: #F05032; color: white !important; }
+#webSwiper .tech-tag.python { background: #3776AB; color: white !important; }
+#webSwiper .tech-tag.django { background: #092E20; color: white !important; }
+#webSwiper .tech-tag.php { background: #777BB4; color: white !important; }
+#webSwiper .tech-tag.laravel { background: #FF2D20; color: white !important; }
 
 /* ============================================
-   FEATURES LIST - COLORED
+   FEATURES LIST - EXACT SAME COLORED STYLE
 ============================================ */
 #webSwiper .skill-set-features {
     background: linear-gradient(135deg, 
@@ -573,7 +615,7 @@ opacity: 1;
     margin-top: 0.1rem;
 }
 
-/* ALTERNATING COLORS FOR FEATURES */
+/* ALTERNATING COLORS FOR FEATURES - SAME AS IoT */
 #webSwiper .features-list li:nth-child(1) {
     border-left-color: #4f46e5;
     background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(79, 70, 229, 0.05));
@@ -730,8 +772,40 @@ opacity: 1;
     color: var(--text);
 }
 
+/* NO IMAGES PLACEHOLDER */
+#webSwiper .no-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    background: var(--background);
+}
+
+#webSwiper .no-image-placeholder i {
+    font-size: 4rem;
+    opacity: 0.3;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+#webSwiper .no-image-placeholder:hover i {
+    transform: scale(1.1);
+    opacity: 0.4;
+}
+
+#webSwiper .no-image-placeholder span {
+    font-size: 1.1rem;
+    opacity: 0.6;
+    font-weight: 500;
+}
+
 /* ============================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN - EXACT SAME AS IoT
 ============================================ */
 
 /* Tablet Styles */
@@ -740,12 +814,7 @@ opacity: 1;
         font-size: 2.2rem;
     }
     
-    #web-apps .skills-nav {
-        gap: 1rem;
-    }
-    
     #web-apps .skill-nav-btn {
-        width: calc(33.333% - 1rem);
         height: 130px;
         padding: 1.3rem 1.8rem;
     }
@@ -780,15 +849,14 @@ opacity: 1;
     }
     
     #web-apps .skills-nav {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
         gap: 1rem;
     }
     
     #web-apps .skill-nav-btn {
         width: 100%;
         max-width: 300px;
-        min-width: auto;
+        margin: 0 auto;
         height: 120px;
         padding: 1.2rem;
     }

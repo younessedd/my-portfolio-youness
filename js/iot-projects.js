@@ -469,14 +469,26 @@ const IoTProjectsManager = {
             </div>
         `).join('');
         
+        const dots = displayImages.map((_, idx) => `
+            <div class="image-dot ${idx === 0 ? 'active' : ''}" data-index="${idx}"></div>
+        `).join('');
+        
         return `
             <div class="project-images-container" data-project-id="${projectId}">
                 <div class="swiper image-swiper">
                     <div class="swiper-wrapper">
                         ${slides}
                     </div>
+                    <div class="image-swiper-button-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="image-swiper-button-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
                 </div>
-                <div class="swiper-pagination image-nav-dots"></div>
+                <div class="image-nav-dots">
+                    ${dots}
+                </div>
             </div>
         `;
     },
@@ -528,79 +540,33 @@ const IoTProjectsManager = {
         }).join('');
     },
     
-    // ✅ Infinite Scroll مع إصلاح الخطأ
     initMainSwiper: function() {
         if (!this.elements.swiper) return;
         
-        // ✅ حساب عدد الشرائح الإجمالية
-        const totalSlides = Object.keys(this.cardPositions).length;
-        
         this.swiperInstance = new Swiper(this.elements.swiper, {
-            // ✅ Infinite Scroll مع ضبط مناسب
-            loop: true,
-            loopAdditionalSlides: 2,
-            loopedSlides: Math.min(3, totalSlides), // ✅ ضبط ديناميكي
-            
-            spaceBetween: 0,
-            speed: 600,
-            
             slidesPerView: 1,
-            slidesPerGroup: 1,
+            spaceBetween: 30,
+            loop: true,
+            
+            pagination: {
+                el: '.popup-counter',
+                type: 'fraction',
+                clickable: true,
+            },
             
             navigation: {
                 nextEl: this.elements.nextCardBtn,
                 prevEl: this.elements.prevCardBtn,
             },
             
-            touchRatio: 0.6,
-            grabCursor: true,
-            allowTouchMove: true,
-            shortSwipes: false,
-            longSwipes: true,
-            longSwipesRatio: 0.1,
-            followFinger: true,
-            threshold: 15,
-            
-            keyboard: {
-                enabled: true,
-                onlyInViewport: true,
-            },
-            
-            mousewheel: {
-                forceToAxis: true,
-                invert: false,
-                sensitivity: 0.8,
-                eventsTarget: '.popup-content',
-                releaseOnEdges: true,
-            },
-            
-            noSwipingSelector: '.project-images-container, .image-swiper, .project-image, .image-dot, .image-swiper-button-next, .image-swiper-button-prev, .features-list, .tech-tag, .project-link',
-            preventInteractionOnTransition: true,
-            
-            breakpoints: {
-                320: {
-                    spaceBetween: 0,
-                    touchRatio: 0.7
-                },
-                768: {
-                    spaceBetween: 0,
-                    touchRatio: 0.6
-                }
-            },
-            
             on: {
                 init: () => {
-                    console.log('✅ IoT main swiper initialized with infinite scroll');
                     this.initializeImageSwipers();
-                    this.setupImageScrollHandlers();
                 },
                 
-                slideChangeTransitionEnd: () => {
-                    console.log('✅ Slide change completed');
-                    
+                slideChange: () => {
                     if (!this.swiperInstance) return;
                     
-                    // ✅ الحصول على الشريحة النشطة
                     const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
                     const category = activeSlide.dataset.category;
                     const cardIndex = parseInt(activeSlide.dataset.cardIndex);
@@ -615,22 +581,10 @@ const IoTProjectsManager = {
                         this.updateActiveButton(category);
                         this.updateCategoryTitle(category, categoryName);
                         
-                        // إعادة تهيئة image swipers
                         setTimeout(() => {
                             this.initializeImageSwipers();
-                            this.setupImageScrollHandlers();
                         }, 50);
                     }
-                },
-                
-                touchStart: (swiper, event) => {
-                    if (this.isImageInteracting) {
-                        swiper.allowTouchMove = false;
-                    }
-                },
-                
-                touchEnd: (swiper, event) => {
-                    swiper.allowTouchMove = true;
                 }
             }
         });
@@ -680,25 +634,43 @@ const IoTProjectsManager = {
             
             let imageSwiperInstance;
             
-            // Simple clean swiper with autoplay every 4000ms
             imageSwiperInstance = new Swiper(imageSwiperEl, {
                 slidesPerView: 1,
-                spaceBetween: 0,
+                spaceBetween: 30,
                 loop: true,
                 
                 autoplay: {
-                    delay: 4000,
+                    delay: 3000,
                     disableOnInteraction: false,
                 },
                 
                 pagination: {
-                    el: imageContainer.querySelector('.image-nav-dots'),
+                    el: imageSwiperEl.querySelector('.swiper-pagination'),
                     clickable: true,
+                },
+                
+                navigation: {
+                    nextEl: imageSwiperEl.querySelector('.image-swiper-button-next'),
+                    prevEl: imageSwiperEl.querySelector('.image-swiper-button-prev'),
                 },
             });
             
-            // Store instance
-            this.imageSwiperInstances[projectId] = imageSwiperInstance;
+            // Initialize dots
+            const totalSlides = imageSwiperInstance.slides.length;
+            const realTotal = imageSwiperInstance.loopedSlides ? 
+                totalSlides - (imageSwiperInstance.loopedSlides * 2) : totalSlides;
+            
+            this.updateImageDots(imageContainer, 0);
+            
+            // ✅ Setup dot click handlers
+            this.setupImageDotsHandlers(imageContainer, imageSwiperInstance);
+            
+            // ✅ Ensure autoplay starts
+            setTimeout(() => {
+                if (imageSwiperInstance.autoplay && !imageSwiperInstance.autoplay.running) {
+                    imageSwiperInstance.autoplay.start();
+                }
+            }, 300);
             
         } catch (error) {
             console.error('Error initializing image swiper:', error);

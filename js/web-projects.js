@@ -1,5 +1,5 @@
 /**
- * Web Projects Manager with Infinite Scroll - FIXED
+ * Web Projects Manager - EXACT SAME LOGIC AS IoT
  */
 
 const WebProjectsManager = {
@@ -16,17 +16,18 @@ const WebProjectsManager = {
     isModalOpen: false,
     isImageInteracting: false,
     
-    categories: ['frontend', 'fullstack', 'responsive'],
+    categories: ['frontend', 'fullstack', 'responsive', 'othersweb'],
     categoryNames: {
         'frontend': 'Frontend Projects',
         'fullstack': 'Fullstack Projects',
-        'responsive': 'Responsive Websites'
+        'responsive': 'Responsive Websites',
+        'othersweb': 'Other Web Projects'
     },
     
     cardPositions: {},
     
     init: function() {
-        console.log('🚀 Web Projects Manager Initializing...');
+        console.log('🌐 Web Projects Manager Initializing...');
         
         if (!window.webProjectsData) {
             console.error('❌ webProjectsData not found!');
@@ -181,40 +182,39 @@ const WebProjectsManager = {
         });
     },
     
-showCategory: function(category, buttonText) {
-    console.log(`📋 Opening category: ${category}`);
-    
-    this.currentCategory = category;
-    this.currentCardIndex = 0;
-    this.isModalOpen = true;
-    this.isImageInteracting = false;
-    this.navigationLock = false;
-    
-    this.elements.popupContainer.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-    
-    this.updateCategoryTitle(category, buttonText);
-    this.updateIconNavigation(category);
-    this.updateActiveButton(category);
-    
-    this.initializeSwiperWithAllCategories();
-    
-    setTimeout(() => {
-        const targetSlideIndex = this.cardPositions[`${category}-0`];
+    showCategory: function(category, buttonText) {
+        console.log(`🌐 Opening category: ${category}`);
         
-        if (targetSlideIndex !== undefined && this.swiperInstance) {
-            this.currentCardIndex = 0;
-            this.swiperInstance.slideTo(targetSlideIndex, 0);
-            this.updateCardCounter(category);
+        this.currentCategory = category;
+        this.currentCardIndex = 0;
+        this.isModalOpen = true;
+        this.isImageInteracting = false;
+        this.navigationLock = false;
+        
+        this.elements.popupContainer.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        this.updateCategoryTitle(category, buttonText);
+        this.updateIconNavigation(category);
+        this.updateActiveButton(category);
+        
+        this.initializeSwiperWithAllCategories();
+        
+        setTimeout(() => {
+            const targetSlideIndex = this.cardPositions[`${category}-0`];
             
-            // ✅ CRITICAL FIX: Initialize image swipers immediately
-            setTimeout(() => {
-                this.initializeImageSwipers();
-                this.setupImageScrollHandlers();
-            }, 100);
-        }
-    }, 100);
-},
+            if (targetSlideIndex !== undefined && this.swiperInstance) {
+                this.currentCardIndex = 0;
+                this.swiperInstance.slideTo(targetSlideIndex, 0);
+                this.updateCardCounter(category);
+                
+                setTimeout(() => {
+                    this.initializeImageSwipers();
+                    this.setupImageScrollHandlers();
+                }, 100);
+            }
+        }, 100);
+    },
     
     goToCategory: function(category, categoryName) {
         if (!category || !this.swiperInstance) {
@@ -344,10 +344,11 @@ showCategory: function(category, buttonText) {
         const icons = {
             'frontend': 'fa-code',
             'fullstack': 'fa-server',
-            'responsive': 'fa-mobile-alt'
+            'responsive': 'fa-mobile-alt',
+            'othersweb': 'fa-globe'
         };
         
-        const icon = icons[category] || 'fa-star';
+        const icon = icons[category] || 'fa-globe';
         
         this.elements.categoryTitle.innerHTML = `
             <i class="fas ${icon}"></i>
@@ -463,7 +464,7 @@ showCategory: function(category, buttonText) {
         const displayImages = images.slice(0, 5);
         const slides = displayImages.map((img, idx) => `
             <div class="swiper-slide image-slide">
-                <img src="${img}" alt="Project Image ${idx + 1}" class="project-image">
+                <img src="${img}" alt="Web Project Image ${idx + 1}" class="project-image">
             </div>
         `).join('');
         
@@ -477,8 +478,16 @@ showCategory: function(category, buttonText) {
                     <div class="swiper-wrapper">
                         ${slides}
                     </div>
+                    <div class="image-swiper-button-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="image-swiper-button-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
                 </div>
-                <div class="swiper-pagination image-nav-dots"></div>
+                <div class="image-nav-dots">
+                    ${dots}
+                </div>
             </div>
         `;
     },
@@ -522,197 +531,150 @@ showCategory: function(category, buttonText) {
         }).join('');
     },
     
-    // ✅ إصلاح: Infinite Scroll مع إصلاح الخطأ
     initMainSwiper: function() {
         if (!this.elements.swiper) return;
         
-        // ✅ حساب عدد الشرائح الإجمالية
-        const totalSlides = Object.keys(this.cardPositions).length;
-        
         this.swiperInstance = new Swiper(this.elements.swiper, {
-            // ✅ Infinite Scroll مع ضبط مناسب
-            loop: true,
-            loopAdditionalSlides: 2,
-            loopedSlides: Math.min(3, totalSlides), // ✅ ضبط ديناميكي
-            
-            spaceBetween: 0,
-            speed: 600,
-            
             slidesPerView: 1,
-            slidesPerGroup: 1,
+            spaceBetween: 30,
+            loop: true,
+            
+            pagination: {
+                el: '.popup-counter',
+                type: 'fraction',
+                clickable: true,
+            },
             
             navigation: {
                 nextEl: this.elements.nextCardBtn,
                 prevEl: this.elements.prevCardBtn,
             },
             
-            touchRatio: 0.6,
-            grabCursor: true,
-            allowTouchMove: true,
-            shortSwipes: false,
-            longSwipes: true,
-            longSwipesRatio: 0.1,
-            followFinger: true,
-            threshold: 15,
-            
-            keyboard: {
-                enabled: true,
-                onlyInViewport: true,
-            },
-            
-            mousewheel: {
-                forceToAxis: true,
-                invert: false,
-                sensitivity: 0.8,
-                eventsTarget: '.popup-content',
-                releaseOnEdges: true,
-            },
-            
-            noSwipingSelector: '.project-images-container, .image-swiper, .project-image, .image-dot, .image-swiper-button-next, .image-swiper-button-prev, .features-list, .tech-tag, .project-link',
-            preventInteractionOnTransition: true,
-            
-            breakpoints: {
-                320: {
-                    spaceBetween: 0,
-                    touchRatio: 0.7
-                },
-                768: {
-                    spaceBetween: 0,
-                    touchRatio: 0.6
-                }
-            },
-            
             on: {
                 init: () => {
-                    console.log('✅ Main swiper initialized with infinite scroll');
                     this.initializeImageSwipers();
-                    this.setupImageScrollHandlers();
                 },
                 
-slideChangeTransitionEnd: () => {
-    console.log('✅ Slide change completed');
-    
-    if (!this.swiperInstance) return;
-    
-    // ✅ الحصول على الشريحة النشطة
-    const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
-    const category = activeSlide.dataset.category;
-    const cardIndex = parseInt(activeSlide.dataset.cardIndex);
-    
-    if (category) {
-        this.currentCategory = category;
-        this.currentCardIndex = cardIndex;
-        
-        const categoryName = this.categoryNames[category];
-        this.updateIconNavigation(category);
-        this.updateCardCounter(category);
-        this.updateActiveButton(category);
-        this.updateCategoryTitle(category, categoryName);
-        
-        // إعادة تهيئة image swipers
-        setTimeout(() => {
-            this.initializeImageSwipers();
-            this.setupImageScrollHandlers();
-        }, 50);
-    }
-},
-                touchStart: (swiper, event) => {
-                    if (this.isImageInteracting) {
-                        swiper.allowTouchMove = false;
+                slideChange: () => {
+                    if (!this.swiperInstance) return;
+                    
+                    const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
+                    const category = activeSlide.dataset.category;
+                    const cardIndex = parseInt(activeSlide.dataset.cardIndex);
+                    
+                    if (category) {
+                        this.currentCategory = category;
+                        this.currentCardIndex = cardIndex;
+                        
+                        const categoryName = this.categoryNames[category];
+                        this.updateIconNavigation(category);
+                        this.updateCardCounter(category);
+                        this.updateActiveButton(category);
+                        this.updateCategoryTitle(category, categoryName);
+                        
+                        setTimeout(() => {
+                            this.initializeImageSwipers();
+                        }, 50);
                     }
-                },
-                
-                touchEnd: (swiper, event) => {
-                    swiper.allowTouchMove = true;
                 }
             }
         });
     },
     
-    // ✅ إصلاح جذري لخطأ newImageSwiper
-initializeImageSwipers: function() {
-    if (!this.swiperInstance) return;
-    
-    try {
-        const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
-        if (!activeSlide) return;
+    initializeImageSwipers: function() {
+        if (!this.swiperInstance) return;
         
-        const imageContainer = activeSlide.querySelector('.project-images-container');
-        if (!imageContainer) return;
-        
-        const projectId = activeSlide.dataset.projectId;
-        
-        // ✅ If swiper already exists, just reinitialize it
-        if (this.imageSwiperInstances[projectId]) {
-            try {
-                this.imageSwiperInstances[projectId].destroy(true, true);
-            } catch (e) {
-                console.log('Clearing old image swiper instance');
+        try {
+            const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
+            if (!activeSlide) return;
+            
+            const imageContainer = activeSlide.querySelector('.project-images-container');
+            if (!imageContainer) return;
+            
+            const projectId = activeSlide.dataset.projectId;
+            
+            if (this.imageSwiperInstances[projectId]) {
+                try {
+                    this.imageSwiperInstances[projectId].destroy(true, true);
+                } catch (e) {
+                    console.log('Clearing old image swiper instance');
+                }
             }
-        }
-        
-        const imageSwiperEl = imageContainer.querySelector('.image-swiper');
-        if (!imageSwiperEl) return;
-        
-        // ✅ Add CSS for better scroll handling
-        imageSwiperEl.style.cssText = `
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        `;
-        
-        const images = imageSwiperEl.querySelectorAll('.project-image');
-        images.forEach(img => {
-            img.style.cssText = `
+            
+            const imageSwiperEl = imageContainer.querySelector('.image-swiper');
+            if (!imageSwiperEl) return;
+            
+            imageSwiperEl.style.cssText = `
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
-                pointer-events: auto;
+                overflow: hidden;
             `;
-        });
-        
-        let imageSwiperInstance;
-        
-        // Simple swiper like demo: loop + pagination + autoplay
-        imageSwiperInstance = new Swiper(imageSwiperEl, {
-            slidesPerView: 1,
-            spaceBetween: 0,
-            loop: true,
             
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
+            const images = imageSwiperEl.querySelectorAll('.project-image');
+            images.forEach(img => {
+                img.style.cssText = `
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    pointer-events: auto;
+                `;
+            });
             
-            pagination: {
-                el: imageContainer.querySelector('.image-nav-dots'),
-                clickable: true,
-            },
+            let imageSwiperInstance;
+            
+            imageSwiperInstance = new Swiper(imageSwiperEl, {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                
+                pagination: {
+                    el: imageSwiperEl.querySelector('.swiper-pagination'),
+                    clickable: true,
+                },
+                
+                navigation: {
+                    nextEl: imageSwiperEl.querySelector('.image-swiper-button-next'),
+                    prevEl: imageSwiperEl.querySelector('.image-swiper-button-prev'),
+                },
+            });
+            
+            const totalSlides = imageSwiperInstance.slides.length;
+            const realTotal = imageSwiperInstance.loopedSlides ? 
+                totalSlides - (imageSwiperInstance.loopedSlides * 2) : totalSlides;
+            
+            this.updateImageDots(imageContainer, 0);
+            
+            this.setupImageDotsHandlers(imageContainer, imageSwiperInstance);
+            
+            setTimeout(() => {
+                if (imageSwiperInstance.autoplay && !imageSwiperInstance.autoplay.running) {
+                    imageSwiperInstance.autoplay.start();
+                }
+            }, 300);
+            
+        } catch (error) {
+            console.error('Error initializing image swiper:', error);
+        }
+    },
+    
+    setupImageDotsHandlers: function(imageContainer, imageSwiper) {
+        const dots = imageContainer.querySelectorAll('.image-dot');
+        dots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const index = parseInt(e.currentTarget.dataset.index);
+                if (!isNaN(index)) {
+                    imageSwiper.slideToLoop(index);
+                    this.updateImageDots(imageContainer, index);
+                }
+            });
         });
-        
-        // Store instance
-        this.imageSwiperInstances[projectId] = imageSwiperInstance;
-        
-    } catch (error) {
-        console.error('Error initializing image swiper:', error);
-    }
-},
-
-// New helper method for dot handlers
-// ✅ New helper method for dot handlers
-setupImageDotsHandlers: function(imageContainer, imageSwiper) {
-    const dots = imageContainer.querySelectorAll('.image-dot');
-    dots.forEach(dot => {
-        dot.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const index = parseInt(e.currentTarget.dataset.index);
-            if (!isNaN(index)) {
-                imageSwiper.slideToLoop(index);
-                this.updateImageDots(imageContainer, index);
-            }
-        });
-    });
-},
+    },
     
     setupImageScrollHandlers: function() {
         if (!this.swiperInstance) return;
@@ -728,19 +690,15 @@ setupImageDotsHandlers: function(imageContainer, imageSwiper) {
         
         if (!imageSwiper) return;
         
-        // تنظيف المستمعات القديمة
         const newImageContainer = imageContainer.cloneNode(true);
         imageContainer.parentNode.replaceChild(newImageContainer, imageContainer);
         
-        // الحصول على imageContainer الجديد
         const currentImageContainer = activeSlide.querySelector('.project-images-container');
         
-        // إعادة الحصول على imageSwiper
         const currentImageSwiper = this.imageSwiperInstances[projectId];
         
         if (!currentImageSwiper) return;
         
-        // إضافة مستمعات الأحداث للنقاط
         const dots = currentImageContainer.querySelectorAll('.image-dot');
         dots.forEach(dot => {
             dot.addEventListener('click', (e) => {
@@ -760,7 +718,7 @@ setupImageDotsHandlers: function(imageContainer, imageSwiper) {
     },
     
     closePopup: function() {
-        console.log('🔴 Closing web popup');
+        console.log('🔴 Closing Web popup');
         
         this.navigationLock = false;
         this.isImageInteracting = false;
