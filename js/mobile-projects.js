@@ -11,11 +11,12 @@ const MobileProjectsManager = {
     navigationLock: false,
     isModalOpen: false,
     
-    categories: ['quiz', 'smart', 'utility'],
+    categories: ['quiz', 'smart', 'utility', 'othersmobile'],
     categoryNames: {
         'quiz': 'Quiz Apps',
         'smart': 'Smart Home Apps',
-        'utility': 'Utility Apps'
+        'utility': 'Utility Apps',
+        'othersmobile': 'Other Mobile Apps'
     },
     
     cardPositions: {},
@@ -193,15 +194,13 @@ const MobileProjectsManager = {
         
         this.initializeSwiperWithAllCategories();
         
-        setTimeout(() => {
-            const targetSlideIndex = this.cardPositions[`${category}-0`];
-            
-            if (targetSlideIndex !== undefined && this.swiperInstance) {
-                this.currentCardIndex = 0;
-                this.swiperInstance.slideTo(targetSlideIndex, 0);
-                this.updateCardCounter(category);
-            }
-        }, 50);
+        const targetSlideIndex = this.cardPositions[`${category}-0`];
+        
+        if (targetSlideIndex !== undefined && this.swiperInstance) {
+            this.currentCardIndex = 0;
+            this.swiperInstance.slideTo(targetSlideIndex, 0);
+            this.updateCardCounter(category);
+        }
     },
     
     goToCategory: function(category, categoryName) {

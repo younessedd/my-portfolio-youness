@@ -174,14 +174,12 @@ const SkillsManager = {
         this.updateIconNavigation(category);
         this.updateActiveButton(category);
         this.initializeSwiperWithAllCategories();
-        setTimeout(() => {
-            const targetSlideIndex = this.cardPositions[`${category}-0`];
-            if (targetSlideIndex !== undefined && this.swiperInstance) {
-                this.currentCardIndex = 0;
-                this.swiperInstance.slideTo(targetSlideIndex, 0);
-                this.updateCardCounter(category);
-            }
-        }, 50);
+        const targetSlideIndex = this.cardPositions[`${category}-0`];
+        if (targetSlideIndex !== undefined && this.swiperInstance) {
+            this.currentCardIndex = 0;
+            this.swiperInstance.slideTo(targetSlideIndex, 0);
+            this.updateCardCounter(category);
+        }
     },
 
     goToCategory: function(category, categoryName) {

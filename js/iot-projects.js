@@ -11,11 +11,12 @@ const IoTProjectsManager = {
     navigationLock: false,
     isModalOpen: false,
     
-    categories: ['home', 'industrial', 'sensors'],
+    categories: ['home', 'industrial', 'sensors', 'othersiot'],
     categoryNames: {
         'home': 'Smart Home',
         'industrial': 'Industrial IoT',
-        'sensors': 'Sensor Projects'
+        'sensors': 'Sensor Projects',
+        'othersiot': 'Other IoT Projects'
     },
     
     cardPositions: {},
@@ -193,15 +194,13 @@ const IoTProjectsManager = {
         
         this.initializeSwiperWithAllCategories();
         
-        setTimeout(() => {
-            const targetSlideIndex = this.cardPositions[`${category}-0`];
-            
-            if (targetSlideIndex !== undefined && this.swiperInstance) {
-                this.currentCardIndex = 0;
-                this.swiperInstance.slideTo(targetSlideIndex, 0);
-                this.updateCardCounter(category);
-            }
-        }, 50);
+        const targetSlideIndex = this.cardPositions[`${category}-0`];
+        
+        if (targetSlideIndex !== undefined && this.swiperInstance) {
+            this.currentCardIndex = 0;
+            this.swiperInstance.slideTo(targetSlideIndex, 0);
+            this.updateCardCounter(category);
+        }
     },
     
     goToCategory: function(category, categoryName) {

@@ -1,0 +1,64 @@
+/* Splash Screen Styles */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #030712;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 1;
+    transition: opacity 0.8s ease-out, visibility 0.8s;
+    visibility: visible;
+}
+
+#splash-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.splash-content {
+    text-align: center;
+}
+
+.tech-icons {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.tech-icon {
+    font-size: 3rem;
+    color: #6b7280;
+    animation: float 3s ease-in-out infinite;
+}
+
+.tech-icon:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.tech-icon:nth-child(3) {
+    animation-delay: 1s;
+}
+
+#splash-screen p {
+    color: #f3f3f3;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+        color: #3498db;
+    }
+}

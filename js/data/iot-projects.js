@@ -3,6 +3,35 @@
  */
 
 window.iotProjectsData = {
+    "othersiot": [
+        {
+            "id": "other-iot-1",
+            "title": "Automated Plant Watering System",
+            "category": "othersiot",
+            "description": "An IoT system that automatically waters plants based on soil moisture levels.",
+            "images": [
+                "https://placehold.co/600x400/6b7280/ffffff?text=Plant+Watering"
+            ],
+            "technologies": ["Arduino", "Soil Moisture Sensor", "Node-RED"],
+            "features": [
+                "Automatic watering schedule",
+                "Remote monitoring via dashboard",
+                "Low water level alerts"
+            ],
+            "links": [
+                {
+                    "name": "GitHub",
+                    "url": "#",
+                    "icon": "fa-github"
+                },
+                {
+                    "name": "Live Demo",
+                    "url": "#",
+                    "icon": "fa-external-link-alt"
+                }
+            ]
+        }
+    ],
     home: [
         {
             id: "iot-home-001",

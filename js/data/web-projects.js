@@ -4,6 +4,35 @@
  */
 
 window.webProjectsData = {
+    "othersweb": [
+        {
+            "id": "other-web-1",
+            "title": "Community Forum",
+            "category": "othersweb",
+            "description": "A full-featured community forum for discussions and knowledge sharing.",
+            "images": [
+                "https://placehold.co/600x400/374151/ffffff?text=Forum+View"
+            ],
+            "technologies": ["PHP", "MySQL", "Vanilla JS"],
+            "features": [
+                "User authentication and profiles",
+                "Threaded discussions",
+                "Admin moderation tools"
+            ],
+            "links": [
+                {
+                    "name": "GitHub",
+                    "url": "#",
+                    "icon": "fa-github"
+                },
+                {
+                    "name": "Live Demo",
+                    "url": "#",
+                    "icon": "fa-external-link-alt"
+                }
+            ]
+        }
+    ],
     frontend: [
         {
             id: "web-frontend-001",

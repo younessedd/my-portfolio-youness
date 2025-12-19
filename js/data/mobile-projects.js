@@ -4,6 +4,40 @@
  */
 
 window.mobileProjectsData = {
+    "othersmobile": [
+        {
+            "id": "other-mobile-1",
+            "title": "Fitness Tracker App",
+            "category": "othersmobile",
+            "description": "A comprehensive fitness tracking application for monitoring workouts and daily activity.",
+            "images": [
+                "https://placehold.co/600x400/4b5563/ffffff?text=Fitness+App"
+            ],
+            "technologies": ["React Native", "Firebase", "Google Fit API"],
+            "features": [
+                "Real-time workout tracking",
+                "Historical data and progress charts",
+                "Social sharing features"
+            ],
+            "links": [
+                {
+                    "name": "GitHub",
+                    "url": "#",
+                    "icon": "fa-github"
+                },
+                {
+                    "name": "App Store",
+                    "url": "#",
+                    "icon": "fa-app-store"
+                },
+                {
+                    "name": "Google Play",
+                    "url": "#",
+                    "icon": "fa-google-play"
+                }
+            ]
+        }
+    ],
     // Quiz Apps Category
     quiz: [
         {
