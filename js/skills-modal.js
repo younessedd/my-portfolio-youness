@@ -487,26 +487,35 @@ const SkillsManager = {
         if (!this.elements.swiper) return;
         
         this.swiperInstance = new Swiper(this.elements.swiper, {
-            loop: false,
-            spaceBetween: 0,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
             speed: 100, // ⚡ Super Fast
             
-            // إعدادات السلاسة
-            resistanceRatio: 0.4,
+            // Smoothness settings
+            resistanceRatio: 0.3,
             touchRatio: 1, // Optimal touch response
             followFinger: true,
             threshold: 2, // Lower threshold for swipe
-            shortSwipes: true,
+            shortSwipes: true, // Enable short swipes
             longSwipesRatio: 0.5,
             
-            keyboard: { 
-                enabled: true,
-                onlyInViewport: true 
+            // Smooth transition
+            transitionStart: true,
+            transitionEnd: true,
+            
+            // Pagination
+            pagination: {
+                el: '.popup-counter',
+                type: 'fraction',
+                clickable: true,
             },
-            mousewheel: false,
-            grabCursor: true,
-            slidesPerView: 1,
-            effect: 'slide',
+            
+            // Navigation
+            navigation: {
+                nextEl: this.elements.nextCardBtn,
+                prevEl: this.elements.prevCardBtn,
+            },
             
             on: {
                 slideChange: () => {
