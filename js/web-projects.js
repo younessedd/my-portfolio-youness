@@ -539,56 +539,56 @@ const WebProjectsManager = {
         }).join('');
     },
     
-    initMainSwiper: function() {
-        if (!this.elements.swiper) return;
+initMainSwiper: function() {
+    if (!this.elements.swiper) return;
+    
+    this.swiperInstance = new Swiper(this.elements.swiper, {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        speed: 250, // ⚡ تغيير من 300 إلى 250 (أسرع)
         
-        this.swiperInstance = new Swiper(this.elements.swiper, {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            speed: 400,
-            
-            pagination: {
-                el: '.popup-counter',
-                type: 'fraction',
-                clickable: true,
+        pagination: {
+            el: '.popup-counter',
+            type: 'fraction',
+            clickable: true,
+        },
+        
+        navigation: {
+            nextEl: this.elements.nextCardBtn,
+            prevEl: this.elements.prevCardBtn,
+        },
+        
+        on: {
+            init: () => {
+                this.initializeImageSwipers();
             },
             
-            navigation: {
-                nextEl: this.elements.nextCardBtn,
-                prevEl: this.elements.prevCardBtn,
-            },
-            
-            on: {
-                init: () => {
-                    this.initializeImageSwipers();
-                },
+            slideChange: () => {
+                if (!this.swiperInstance) return;
                 
-                slideChange: () => {
-                    if (!this.swiperInstance) return;
+                const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
+                const category = activeSlide.dataset.category;
+                const cardIndex = parseInt(activeSlide.dataset.cardIndex);
+                
+                if (category) {
+                    this.currentCategory = category;
+                    this.currentCardIndex = cardIndex;
                     
-                    const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
-                    const category = activeSlide.dataset.category;
-                    const cardIndex = parseInt(activeSlide.dataset.cardIndex);
+                    const categoryName = this.categoryNames[category];
+                    this.updateIconNavigation(category);
+                    this.updateCardCounter(category);
+                    this.updateActiveButton(category);
+                    this.updateCategoryTitle(category, categoryName);
                     
-                    if (category) {
-                        this.currentCategory = category;
-                        this.currentCardIndex = cardIndex;
-                        
-                        const categoryName = this.categoryNames[category];
-                        this.updateIconNavigation(category);
-                        this.updateCardCounter(category);
-                        this.updateActiveButton(category);
-                        this.updateCategoryTitle(category, categoryName);
-                        
-                        setTimeout(() => {
-                            this.initializeImageSwipers();
-                        }, 50);
-                    }
+                    setTimeout(() => {
+                        this.initializeImageSwipers();
+                    }, 50);
                 }
             }
-        });
-    },
+        }
+    });
+},
     
     initializeImageSwipers: function() {
         if (!this.swiperInstance) return;
@@ -615,76 +615,83 @@ const WebProjectsManager = {
             if (!imageSwiperEl) return;
             
             // AUTO-PLAY INFINITE SWIPER CONFIGURATION (SAME AS IOT & MOBILE)
-            const imageSwiperInstance = new Swiper(imageSwiperEl, {
-                // INFINITE LOOP
-                loop: true,
-                
-                // AUTO PLAY SETTINGS
-                autoplay: {
-                    delay: 2000, // 3 seconds between slides
-                    disableOnInteraction: false, // Continue autoplay after interaction
-                    pauseOnMouseEnter: true, // Pause when mouse enters
-                },
-                
-                // SPEED AND EFFECT
-                speed: 400, // Smooth transition speed
-                effect: 'slide', // Slide effect
-                
-                // NAVIGATION BUTTONS
-                navigation: {
-                    nextEl: imageSwiperEl.querySelector('.swiper-button-next'),
-                    prevEl: imageSwiperEl.querySelector('.swiper-button-prev'),
-                },
-                
-                // PAGINATION DOTS
-                pagination: {
-                    el: imageContainer.querySelector('.swiper-pagination'),
-                    clickable: true,
-                    dynamicBullets: true,
-                },
-                
-                // RESPONSIVE BREAKPOINTS
-                breakpoints: {
-                    320: {
-                        slidesPerView: 1,
-                        spaceBetween: 10,
-                    },
-                    768: {
-                        slidesPerView: 1,
-                        spaceBetween: 15,
-                    },
-                    1024: {
-                        slidesPerView: 1,
-                        spaceBetween: 20,
-                    }
-                },
-                
-                // PERFORMANCE OPTIMIZATIONS
-                observer: true,
-                observeParents: true,
-                watchSlidesProgress: true,
-                
-                // SMOOTH TRANSITIONS
-                grabCursor: true,
-                centeredSlides: true,
-                
-                // SLIDE CHANGE CALLBACKS
-                on: {
-                    init: function() {
-                        console.log('🌐 Web Image Swiper initialized with autoplay');
-                        // Start autoplay immediately
-                        this.autoplay.start();
-                    },
-                    
-                    slideChange: function() {
-                        // You can add any slide change logic here
-                    },
-                    
-                    autoplayTimeLeft: function(swiper, time, progress) {
-                        // Optional: Add autoplay progress indicator
-                    }
-                }
-            });
+// AUTO-PLAY INFINITE SWIPER CONFIGURATION (SAME AS IOT & MOBILE)
+const imageSwiperInstance = new Swiper(imageSwiperEl, {
+    // INFINITE LOOP
+    loop: true,
+    
+    // AUTO PLAY SETTINGS
+    autoplay: {
+        delay: 1200, // ⚡ تغيير من 1500 إلى 1200 (أسرع)
+        disableOnInteraction: false, // Continue autoplay after interaction
+        pauseOnMouseEnter: true, // Pause when mouse enters
+    },
+    
+    // SPEED AND EFFECT
+    speed: 250, // ⚡ تغيير من 300 إلى 250 (أسرع)
+    effect: 'slide', // Slide effect
+    
+    // NAVIGATION BUTTONS
+    navigation: {
+        nextEl: imageSwiperEl.querySelector('.swiper-button-next'),
+        prevEl: imageSwiperEl.querySelector('.swiper-button-prev'),
+    },
+    
+    // PAGINATION DOTS
+    pagination: {
+        el: imageContainer.querySelector('.swiper-pagination'),
+        clickable: true,
+        dynamicBullets: true,
+    },
+    
+    // RESPONSIVE BREAKPOINTS
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+        },
+        768: {
+            slidesPerView: 1,
+            spaceBetween: 15,
+        },
+        1024: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+        }
+    },
+    
+    // PERFORMANCE OPTIMIZATIONS
+    observer: true,
+    observeParents: true,
+    watchSlidesProgress: true,
+    
+    // ⚡ إضافة إعدادات للأداء والسلاسة
+    resistanceRatio: 0.3, // مقاومة أقل للتمرير
+    touchRatio: 0.5, // حساسية أعلى للمس
+    followFinger: true, // يتابع الإصبع مباشرة
+    threshold: 5, // عتبة أقل للتمرير
+    
+    // SMOOTH TRANSITIONS
+    grabCursor: true,
+    centeredSlides: true,
+    
+    // SLIDE CHANGE CALLBACKS
+    on: {
+        init: function() {
+            console.log('🌐 Web Image Swiper initialized with autoplay');
+            // Start autoplay immediately
+            this.autoplay.start();
+        },
+        
+        slideChange: function() {
+            // You can add any slide change logic here
+        },
+        
+        autoplayTimeLeft: function(swiper, time, progress) {
+            // Optional: Add autoplay progress indicator
+        }
+    }
+});
             
             // Ensure autoplay starts
             setTimeout(() => {
