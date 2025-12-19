@@ -489,13 +489,13 @@ const SkillsManager = {
         this.swiperInstance = new Swiper(this.elements.swiper, {
             loop: false,
             spaceBetween: 0,
-            speed: 250, // ⚡ أسرع بكثير (400 → 250)
+            speed: 100, // ⚡ Super Fast
             
             // إعدادات السلاسة
             resistanceRatio: 0.4,
-            touchRatio: 0.8,
+            touchRatio: 1.5, // Faster touch response
             followFinger: true,
-            threshold: 5,
+            threshold: 2, // Lower threshold for swipe
             shortSwipes: false,
             longSwipesRatio: 0.5,
             

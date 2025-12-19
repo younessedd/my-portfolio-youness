@@ -524,17 +524,17 @@ const WebProjectsManager = {
             slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
-            speed: 150, // ⚡ أسرع بكثير
+            speed: 100, // ⚡ Super Fast
             
-            // إعدادات السلاسة
+            // Smoothness settings
             resistanceRatio: 0.3,
-            touchRatio: 0.8,
+            touchRatio: 1.5, // Faster touch response
             followFinger: true,
-            threshold: 5,
+            threshold: 2, // Lower threshold for swipe
             shortSwipes: false,
             longSwipesRatio: 0.5,
             
-            // الانتقال السلس
+            // Smooth transition
             transitionStart: true,
             transitionEnd: true,
             
@@ -573,7 +573,7 @@ const WebProjectsManager = {
             }
         });
     },
-    
+
     closePopup: function() {
         console.log('🔴 Closing Web popup');
         
