@@ -496,7 +496,7 @@ const SkillsManager = {
         this.swiperInstance = new Swiper(this.elements.swiper, {
             loop: false,
             spaceBetween: 0,
-            speed: 600,
+            speed: 400,
             keyboard: { 
                 enabled: true,
                 onlyInViewport: true 

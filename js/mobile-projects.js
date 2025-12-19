@@ -607,13 +607,13 @@ const MobileProjectsManager = {
                 
                 // AUTO PLAY SETTINGS
                 autoplay: {
-                    delay: 3000, // 3 seconds between slides
+                    delay: 2000, // 3 seconds between slides
                     disableOnInteraction: false, // Continue autoplay after interaction
                     pauseOnMouseEnter: true, // Pause when mouse enters
                 },
                 
                 // SPEED AND EFFECT
-                speed: 800, // Smooth transition speed
+                speed: 400, // Smooth transition speed
                 effect: 'slide', // Slide effect
                 
                 // NAVIGATION BUTTONS

@@ -3,6 +3,11 @@
  * Optimized: Fixed event handling and mobile menu toggle
  */
 
+/**
+ * navigation.js - Navigation Management
+ * Optimized: Fixed event handling and mobile menu toggle
+ */
+
 const NavigationManager = {
     init: function() {
         console.log('🚀 Navigation initialization...');
@@ -24,12 +29,12 @@ const NavigationManager = {
         
         console.log('🍔 Found hamburger elements');
         
-        // Simple click handler
+        // Simple click handler - إصلاح: التبديل بين عرض وإخفاء mobile-menu
         burgerBtn.addEventListener('click', function(e) {
             console.log('🎯 Hamburger clicked!');
             e.stopPropagation();
             
-            // Toggle menu
+            // Toggle menu - إصلاح: استخدام mobile-menu بدلاً من desktop-nav
             const isActive = mobileMenu.classList.toggle('active');
             
             // Toggle icon
@@ -119,6 +124,13 @@ const NavigationManager = {
         });
     }
 };
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => NavigationManager.init());
+} else {
+    NavigationManager.init();
+}
 
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
