@@ -493,10 +493,10 @@ const SkillsManager = {
             
             // إعدادات السلاسة
             resistanceRatio: 0.4,
-            touchRatio: 1.5, // Faster touch response
+            touchRatio: 1, // Optimal touch response
             followFinger: true,
             threshold: 2, // Lower threshold for swipe
-            shortSwipes: false,
+            shortSwipes: true,
             longSwipesRatio: 0.5,
             
             keyboard: { 
