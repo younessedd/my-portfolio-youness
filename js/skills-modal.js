@@ -1,11 +1,10 @@
 /**
- * Skills Manager - FINAL VERSION WITH SEPARATE SCROLL LOGIC
+ * Skills Manager - FAST SINGLE IMAGE VERSION
  * Features:
- * 1. Same navigation logic as Web Apps
+ * 1. Fast card swiper (no images for skills)
  * 2. Colored skills grid
- * 3. Colored features list
- * 4. Card navigation between categories
- * 5. Keyboard navigation support
+ * 3. Card navigation between categories
+ * 4. Keyboard navigation support
  */
 
 const SkillsManager = {
@@ -201,7 +200,7 @@ const SkillsManager = {
                 this.currentCardIndex = 0;
                 this.swiperInstance.slideTo(targetSlideIndex, 0);
             }
-        }, 100);
+        }, 50);
     },
     
     goToCategory: function(category, categoryName) {
@@ -215,7 +214,7 @@ const SkillsManager = {
         console.log(`🔄 Switching to ${category} at slide: ${targetSlideIndex}`);
         
         if (targetSlideIndex !== undefined && this.swiperInstance) {
-            this.swiperInstance.slideTo(targetSlideIndex, 600);
+            this.swiperInstance.slideTo(targetSlideIndex, 300);
         }
         
         this.updateCategoryTitle(category, categoryName);
@@ -225,7 +224,7 @@ const SkillsManager = {
         
         setTimeout(() => {
             this.isAnimating = false;
-        }, 600);
+        }, 300);
     },
     
     goToCategoryCard: function(category, cardIndex) {
@@ -238,7 +237,7 @@ const SkillsManager = {
         
         if (targetSlideIndex !== undefined) {
             this.currentCardIndex = cardIndex;
-            this.swiperInstance.slideTo(targetSlideIndex, 600);
+            this.swiperInstance.slideTo(targetSlideIndex, 300);
         } else {
             console.error(`❌ Card not found: ${key}`);
         }
@@ -278,7 +277,7 @@ const SkillsManager = {
         
         setTimeout(() => {
             this.isAnimating = false;
-        }, 600);
+        }, 300);
     },
     
     navigateToNextCard: function() {
@@ -314,7 +313,7 @@ const SkillsManager = {
         
         setTimeout(() => {
             this.isAnimating = false;
-        }, 600);
+        }, 300);
     },
     
     updateIconNavigation: function(category) {
@@ -437,9 +436,6 @@ const SkillsManager = {
         this.elements.swiperWrapper.appendChild(slide);
     },
     
-    // ============================
-    // التعديل المهم هنا: استخدام الألوان الفردية
-    // ============================
     generateSkillsHTML: function(skills, category) {
         return skills.map(skill => `
             <div class="skill-item" style="
@@ -452,9 +448,6 @@ const SkillsManager = {
         `).join('');
     },
     
-    // ============================
-    // دالة مساعدة لتغميق الألوان للحدود
-    // ============================
     darkenColor: function(color, percent) {
         // تحويل اللون من HEX إلى RGB
         let R = parseInt(color.substring(1,3), 16);
@@ -496,7 +489,16 @@ const SkillsManager = {
         this.swiperInstance = new Swiper(this.elements.swiper, {
             loop: false,
             spaceBetween: 0,
-            speed: 400,
+            speed: 250, // ⚡ أسرع بكثير (400 → 250)
+            
+            // إعدادات السلاسة
+            resistanceRatio: 0.4,
+            touchRatio: 0.8,
+            followFinger: true,
+            threshold: 5,
+            shortSwipes: false,
+            longSwipesRatio: 0.5,
+            
             keyboard: { 
                 enabled: true,
                 onlyInViewport: true 

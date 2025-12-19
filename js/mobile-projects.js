@@ -1,5 +1,5 @@
 /**
- * Mobile Projects Manager - AUTO PLAY INFINITE SWIPER
+ * Mobile Projects Manager - FAST SINGLE IMAGE VERSION
  */
 
 const MobileProjectsManager = {
@@ -7,17 +7,15 @@ const MobileProjectsManager = {
     currentCategory: 'quiz',
     currentCardIndex: 0,
     swiperInstance: null,
-    imageSwiperInstances: {},
     
     navigationLock: false,
     isModalOpen: false,
     
-    categories: ['quiz', 'smart', 'utility', 'othersmobile'],
+    categories: ['quiz', 'smart', 'utility'],
     categoryNames: {
         'quiz': 'Quiz Apps',
         'smart': 'Smart Home Apps',
-        'utility': 'Utility Apps',
-        'othersmobile': 'Other Mobile Apps'
+        'utility': 'Utility Apps'
     },
     
     cardPositions: {},
@@ -135,7 +133,7 @@ const MobileProjectsManager = {
                 
                 setTimeout(() => {
                     this.navigationLock = false;
-                }, 400);
+                }, 300);
             });
         });
     },
@@ -146,7 +144,7 @@ const MobileProjectsManager = {
                 if (this.navigationLock) return;
                 this.navigationLock = true;
                 this.navigateToPrevCard();
-                setTimeout(() => { this.navigationLock = false; }, 400);
+                setTimeout(() => { this.navigationLock = false; }, 300);
             });
         }
         
@@ -155,7 +153,7 @@ const MobileProjectsManager = {
                 if (this.navigationLock) return;
                 this.navigationLock = true;
                 this.navigateToNextCard();
-                setTimeout(() => { this.navigationLock = false; }, 400);
+                setTimeout(() => { this.navigationLock = false; }, 300);
             });
         }
         
@@ -165,12 +163,12 @@ const MobileProjectsManager = {
                     e.preventDefault();
                     this.navigationLock = true;
                     this.navigateToPrevCard();
-                    setTimeout(() => { this.navigationLock = false; }, 400);
+                    setTimeout(() => { this.navigationLock = false; }, 300);
                 } else if (e.key === 'ArrowRight') {
                     e.preventDefault();
                     this.navigationLock = true;
                     this.navigateToNextCard();
-                    setTimeout(() => { this.navigationLock = false; }, 400);
+                    setTimeout(() => { this.navigationLock = false; }, 300);
                 } else if (e.key === 'Escape') {
                     this.closePopup();
                 }
@@ -202,11 +200,6 @@ const MobileProjectsManager = {
                 this.currentCardIndex = 0;
                 this.swiperInstance.slideTo(targetSlideIndex, 0);
                 this.updateCardCounter(category);
-                
-                // Initialize image swipers immediately
-                setTimeout(() => {
-                    this.initializeImageSwipers();
-                }, 50);
             }
         }, 50);
     },
@@ -236,7 +229,7 @@ const MobileProjectsManager = {
         this.updateCardCounter(category);
         this.updateActiveButton(category);
         
-        this.swiperInstance.slideTo(targetSlideIndex, 400);
+        this.swiperInstance.slideTo(targetSlideIndex, 300);
     },
     
     goToCategoryCard: function(category, cardIndex) {
@@ -247,7 +240,7 @@ const MobileProjectsManager = {
         
         if (targetSlideIndex !== undefined) {
             this.currentCardIndex = cardIndex;
-            this.swiperInstance.slideTo(targetSlideIndex, 400);
+            this.swiperInstance.slideTo(targetSlideIndex, 300);
             this.updateCardCounter(category);
         }
     },
@@ -339,8 +332,7 @@ const MobileProjectsManager = {
         const icons = {
             'quiz': 'fa-question-circle',
             'smart': 'fa-home',
-            'utility': 'fa-tools',
-            'othersmobile': 'fa-mobile-alt'
+            'utility': 'fa-tools'
         };
         
         const icon = icons[category] || 'fa-mobile-alt';
@@ -370,8 +362,6 @@ const MobileProjectsManager = {
             this.swiperInstance.destroy(true, true);
             this.swiperInstance = null;
         }
-        
-        this.imageSwiperInstances = {};
         
         if (this.elements.swiperWrapper) {
             this.elements.swiperWrapper.innerHTML = '';
@@ -404,7 +394,7 @@ const MobileProjectsManager = {
         const featuresHTML = this.generateFeaturesHTML(skillSet.features);
         const techTagsHTML = this.generateTechTagsHTML(skillSet.technologies);
         const linksHTML = skillSet.links ? this.generateProjectLinksHTML(skillSet.links) : '';
-        const imagesHTML = this.generateImagesHTML(skillSet.images, skillSet.id);
+        const imagesHTML = this.generateImagesHTML(skillSet.images);
         
         const slide = document.createElement('div');
         slide.className = 'swiper-slide';
@@ -444,10 +434,10 @@ const MobileProjectsManager = {
         this.elements.swiperWrapper.appendChild(slide);
     },
     
-    generateImagesHTML: function(images, projectId) {
+    generateImagesHTML: function(images) {
         if (!images || images.length === 0) {
             return `
-                <div class="project-images-container">
+                <div class="project-images-container single-image-container">
                     <div class="no-image-placeholder">
                         <i class="fas fa-mobile-alt"></i>
                         <span>No preview available</span>
@@ -456,23 +446,11 @@ const MobileProjectsManager = {
             `;
         }
         
-        const displayImages = images.slice(0, 5);
-        const slides = displayImages.map((img, idx) => `
-            <div class="swiper-slide">
-                <img src="${img}" alt="Mobile App Preview ${idx + 1}" class="project-image">
-            </div>
-        `).join('');
-        
+        // عرض الصورة الأولى فقط
+        const firstImage = images[0];
         return `
-            <div class="project-images-container" data-project-id="${projectId}">
-                <div class="swiper image-swiper">
-                    <div class="swiper-wrapper">
-                        ${slides}
-                    </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-                <div class="swiper-pagination"></div>
+            <div class="project-images-container single-image-container">
+                <img src="${firstImage}" alt="Mobile App" class="project-image-single">
             </div>
         `;
     },
@@ -525,175 +503,61 @@ const MobileProjectsManager = {
         }).join('');
     },
     
-initMainSwiper: function() {
-    if (!this.elements.swiper) return;
-    
-    this.swiperInstance = new Swiper(this.elements.swiper, {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-        speed: 250, // ⚡ تغيير من 400 إلى 250 (أسرع بكثير)
+    initMainSwiper: function() {
+        if (!this.elements.swiper) return;
         
-        pagination: {
-            el: '.popup-counter',
-            type: 'fraction',
-            clickable: true,
-        },
-        
-        navigation: {
-            nextEl: this.elements.nextCardBtn,
-            prevEl: this.elements.prevCardBtn,
-        },
-        
-        on: {
-            init: () => {
-                this.initializeImageSwipers();
+        this.swiperInstance = new Swiper(this.elements.swiper, {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            speed: 150, // ⚡ أسرع بكثير
+            
+            // إعدادات السلاسة
+            resistanceRatio: 0.3,
+            touchRatio: 0.8,
+            followFinger: true,
+            threshold: 5,
+            shortSwipes: false,
+            longSwipesRatio: 0.5,
+            
+            // الانتقال السلس
+            transitionStart: true,
+            transitionEnd: true,
+            
+            // Pagination
+            pagination: {
+                el: '.popup-counter',
+                type: 'fraction',
+                clickable: true,
             },
             
-            slideChange: () => {
-                if (!this.swiperInstance) return;
-                
-                const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
-                const category = activeSlide.dataset.category;
-                const cardIndex = parseInt(activeSlide.dataset.cardIndex);
-                
-                if (category) {
-                    this.currentCategory = category;
-                    this.currentCardIndex = cardIndex;
+            // Navigation
+            navigation: {
+                nextEl: this.elements.nextCardBtn,
+                prevEl: this.elements.prevCardBtn,
+            },
+            
+            on: {
+                slideChange: () => {
+                    if (!this.swiperInstance) return;
                     
-                    const categoryName = this.categoryNames[category];
-                    this.updateIconNavigation(category);
-                    this.updateCardCounter(category);
-                    this.updateActiveButton(category);
-                    this.updateCategoryTitle(category, categoryName);
+                    const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
+                    const category = activeSlide.dataset.category;
+                    const cardIndex = parseInt(activeSlide.dataset.cardIndex);
                     
-                    setTimeout(() => {
-                        this.initializeImageSwipers();
-                    }, 50);
+                    if (category) {
+                        this.currentCategory = category;
+                        this.currentCardIndex = cardIndex;
+                        
+                        const categoryName = this.categoryNames[category];
+                        this.updateIconNavigation(category);
+                        this.updateCardCounter(category);
+                        this.updateActiveButton(category);
+                        this.updateCategoryTitle(category, categoryName);
+                    }
                 }
             }
-        }
-    });
-},
-    
-    initializeImageSwipers: function() {
-        if (!this.swiperInstance) return;
-        
-        try {
-            const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
-            if (!activeSlide) return;
-            
-            const imageContainer = activeSlide.querySelector('.project-images-container');
-            if (!imageContainer) return;
-            
-            const projectId = activeSlide.dataset.projectId;
-            
-            // If swiper already exists, destroy it
-            if (this.imageSwiperInstances[projectId]) {
-                try {
-                    this.imageSwiperInstances[projectId].destroy(true, true);
-                } catch (e) {
-                    console.log('Clearing old image swiper instance');
-                }
-            }
-            
-            const imageSwiperEl = imageContainer.querySelector('.image-swiper');
-            if (!imageSwiperEl) return;
-            
-            // AUTO-PLAY INFINITE SWIPER CONFIGURATION (SAME AS IOT)
-// AUTO-PLAY INFINITE SWIPER CONFIGURATION (SAME AS IOT)
-// AUTO-PLAY INFINITE SWIPER CONFIGURATION
-// AUTO-PLAY INFINITE SWIPER CONFIGURATION (SAME AS IOT)
-const imageSwiperInstance = new Swiper(imageSwiperEl, {
-    // INFINITE LOOP
-    loop: true,
-    
-    // AUTO PLAY SETTINGS
-    autoplay: {
-        delay: 1200, // ⚡ تغيير من 2000 إلى 1200 (أسرع)
-        disableOnInteraction: false, // Continue autoplay after interaction
-        pauseOnMouseEnter: true, // Pause when mouse enters
-    },
-    
-    // SPEED AND EFFECT
-    speed: 250, // ⚡ تغيير من 400 إلى 250 (أسرع بكثير)
-    effect: 'slide', // Slide effect
-    
-    // NAVIGATION BUTTONS
-    navigation: {
-        nextEl: imageSwiperEl.querySelector('.swiper-button-next'),
-        prevEl: imageSwiperEl.querySelector('.swiper-button-prev'),
-    },
-    
-    // PAGINATION DOTS
-    pagination: {
-        el: imageContainer.querySelector('.swiper-pagination'),
-        clickable: true,
-        dynamicBullets: true,
-    },
-    
-    // RESPONSIVE BREAKPOINTS
-    breakpoints: {
-        320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-        },
-        768: {
-            slidesPerView: 1,
-            spaceBetween: 15,
-        },
-        1024: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-        }
-    },
-    
-    // PERFORMANCE OPTIMIZATIONS
-    observer: true,
-    observeParents: true,
-    watchSlidesProgress: true,
-    
-    // ⚡ إضافة إعدادات للأداء والسلاسة
-    resistanceRatio: 0.3,
-    touchRatio: 0.5,
-    followFinger: true,
-    threshold: 5,
-    
-    // SMOOTH TRANSITIONS
-    grabCursor: true,
-    centeredSlides: true,
-    
-    // SLIDE CHANGE CALLBACKS
-    on: {
-        init: function() {
-            console.log('📱 Mobile Image Swiper initialized with autoplay');
-            // Start autoplay immediately
-            this.autoplay.start();
-        },
-        
-        slideChange: function() {
-            // You can add any slide change logic here
-        },
-        
-        autoplayTimeLeft: function(swiper, time, progress) {
-            // Optional: Add autoplay progress indicator
-        }
-    }
-});
-            
-            // Ensure autoplay starts
-            setTimeout(() => {
-                if (imageSwiperInstance && imageSwiperInstance.autoplay) {
-                    imageSwiperInstance.autoplay.start();
-                }
-            }, 100);
-            
-            // Store instance
-            this.imageSwiperInstances[projectId] = imageSwiperInstance;
-            
-        } catch (error) {
-            console.error('Error initializing image swiper:', error);
-        }
+        });
     },
     
     closePopup: function() {
@@ -701,19 +565,6 @@ const imageSwiperInstance = new Swiper(imageSwiperEl, {
         
         this.navigationLock = false;
         this.isModalOpen = false;
-        
-        // Stop and destroy all image swipers
-        Object.values(this.imageSwiperInstances).forEach(swiper => {
-            if (swiper && !swiper.destroyed) {
-                // Stop autoplay first
-                if (swiper.autoplay) {
-                    swiper.autoplay.stop();
-                }
-                // Then destroy
-                swiper.destroy(true, true);
-            }
-        });
-        this.imageSwiperInstances = {};
         
         // Destroy main swiper
         if (this.swiperInstance) {

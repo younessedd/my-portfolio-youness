@@ -1,8 +1,8 @@
 /* ============================================
-   WEB PROJECTS SECTION - IDENTICAL TO IOT SECTION
+   WEB APPS SECTION - SINGLE IMAGE VERSION
 ============================================ */
 
-/* Section Container - Identical to IoT */
+/* WEB APPS SECTION CONTAINER */
 #web-apps {
     padding: 4rem 1rem;
     position: relative;
@@ -32,14 +32,13 @@
     margin-right: auto;
 }
 
-/* Navigation Buttons - Identical to IoT */
+/* WEB APPS NAVIGATION BUTTONS */
 #web-apps .skills-nav {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     margin: 3rem auto 0;
     max-width: 900px;
-    align-items: stretch;
 }
 
 @media (min-width: 768px) {
@@ -86,19 +85,6 @@
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-#web-apps .skill-nav-btn.active::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-radius: 22px;
-    z-index: -1;
-    animation: pulse-glow 2s infinite;
-}
-
 #web-apps .skill-nav-btn i {
     font-size: 2.2rem;
     margin-bottom: 0.5rem;
@@ -123,7 +109,7 @@
     max-width: 100%;
 }
 
-/* Popup Container - Identical to IoT */
+/* WEB APPS POPUP CONTAINER */
 #web-swiper-container {
     position: fixed;
     top: 0;
@@ -161,12 +147,12 @@
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 2;
-    animation: popupAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: popupAppear 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     flex-direction: column;
 }
 
-/* Popup Header - Identical to IoT */
+/* Popup Header */
 #web-swiper-container .popup-header {
     display: flex;
     align-items: center;
@@ -211,7 +197,7 @@
     transform: rotate(90deg);
 }
 
-/* Icon Navigation - Identical to IoT */
+/* Icon Navigation */
 #web-icon-nav-top {
     display: flex;
     justify-content: center;
@@ -252,7 +238,7 @@
     box-shadow: 0 10px 20px rgba(var(--primary-color-rgb), 0.3);
 }
 
-/* Main Swiper - Identical to IoT */
+/* Main Swiper Container */
 #webSwiper {
     width: 100%;
     height: 100%;
@@ -269,7 +255,7 @@
     overflow: hidden;
 }
 
-/* Project Card Content - Identical to IoT */
+/* Project Card */
 #webSwiper .project-card {
     height: 100%;
     display: flex;
@@ -301,16 +287,17 @@
     border-radius: 4px;
 }
 
+/* Category Content */
 #webSwiper .skills-category-container {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 #webSwiper .skill-main-title {
     font-size: 2rem;
     color: var(--text);
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     font-weight: 700;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
@@ -322,124 +309,42 @@
     font-size: 1.1rem;
     color: var(--text-secondary);
     line-height: 1.6;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
-/* Image Swiper with Auto-play - Identical to IoT */
-#webSwiper .project-images-container {
+/* SINGLE IMAGE CONTAINER - NEW STYLE */
+#webSwiper .single-image-container {
     width: 100%;
-    height: 400px;
-    margin-bottom: 2rem;
+    height: 300px;
+    margin-bottom: 1.5rem;
     border-radius: 15px;
     overflow: hidden;
     background: #000;
     position: relative;
+    border: 2px solid var(--border);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-#webSwiper .image-swiper {
-    width: 100%;
-    height: 100%;
-    position: relative;
+#webSwiper .single-image-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary-color);
 }
 
-#webSwiper .image-swiper .swiper-wrapper {
-    height: 100%;
-}
-
-#webSwiper .image-swiper .swiper-slide {
-    background: #444;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-}
-
-#webSwiper .image-swiper.swiper-container-autoplay .swiper-slide {
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#webSwiper .image-swiper .swiper-slide-active {
-    transform: scale(1);
-    z-index: 2;
-    animation: slideIn 0.8s ease-out;
-}
-
-#webSwiper .image-swiper .swiper-slide-prev,
-#webSwiper .image-swiper .swiper-slide-next {
-    transform: scale(0.95);
-    opacity: 0.7;
-}
-
-#webSwiper .project-image {
+#webSwiper .project-image-single {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.8s ease;
+    transition: transform 0.5s ease;
 }
 
-#webSwiper .image-swiper .swiper-slide-active .project-image {
-    transform: scale(1.02);
+#webSwiper .single-image-container:hover .project-image-single {
+    transform: scale(1.05);
 }
 
-/* Swiper Navigation - Identical to IoT */
-#webSwiper .swiper-button-next,
-#webSwiper .swiper-button-prev {
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-    opacity: 1 !important;
-    visibility: visible !important;
-    display: flex !important;
-    z-index: 20;
-}
-
-#webSwiper .swiper-button-next:after,
-#webSwiper .swiper-button-prev:after {
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
-}
-
-#webSwiper .swiper-button-next:hover,
-#webSwiper .swiper-button-prev:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
-}
-
-#webSwiper .swiper-button-prev {
-    left: 15px;
-}
-
-#webSwiper .swiper-button-next {
-    right: 15px;
-}
-
-#webSwiper .swiper-pagination {
-    bottom: 10px !important;
-    z-index: 20;
-}
-
-#webSwiper .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.5);
-    opacity: 1;
-    transition: all 0.3s ease;
-    margin: 0 5px !important;
-}
-
-#webSwiper .swiper-pagination-bullet-active {
-    background: white;
-    transform: scale(1.3);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-/* No Images Placeholder - Identical to IoT */
+/* No Images Placeholder */
 #webSwiper .no-image-placeholder {
     width: 100%;
     height: 100%;
@@ -450,11 +355,13 @@
     gap: 1.5rem;
     color: var(--text-secondary);
     font-style: italic;
-    background: var(--background);
+    background: linear-gradient(135deg, 
+        rgba(var(--primary-color-rgb), 0.05), 
+        rgba(var(--secondary-color-rgb), 0.02));
 }
 
 #webSwiper .no-image-placeholder i {
-    font-size: 4rem;
+    font-size: 3.5rem;
     opacity: 0.3;
     color: var(--primary-color);
     transition: all 0.3s ease;
@@ -466,157 +373,27 @@
 }
 
 #webSwiper .no-image-placeholder span {
-    font-size: 1.1rem;
+    font-size: 1rem;
     opacity: 0.6;
     font-weight: 500;
 }
 
-/* Tech Tags - Identical to IoT */
-#webSwiper .tech-tags-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    margin: 1.5rem 0;
-}
-
-#webSwiper .tech-tag {
-    padding: 0.7rem 1.2rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    border: none;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    cursor: default;
-}
-
-#webSwiper .tech-tag::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.2) 0%,
-        rgba(255, 255, 255, 0.1) 50%,
-        rgba(255, 255, 255, 0.05) 100%);
-    z-index: 1;
-    opacity: 0.6;
-}
-
-#webSwiper .tech-tag span,
-#webSwiper .tech-tag i {
-    position: relative;
-    z-index: 2;
-}
-
-#webSwiper .tech-tag:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-}
-
-/* Features List - Identical to IoT */
-#webSwiper .skill-set-features {
-    background: linear-gradient(135deg, 
-        rgba(var(--primary-color-rgb), 0.1), 
-        rgba(var(--secondary-color-rgb), 0.05));
-    border-radius: 15px;
-    padding: 1.5rem;
-    border: 1px solid rgba(var(--primary-color-rgb), 0.2);
-    margin-top: 2rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-#webSwiper .features-title {
-    font-size: 1.3rem;
-    color: var(--text);
-    margin-bottom: 1rem;
-    font-weight: 600;
-    padding-left: 0;
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-#webSwiper .features-list {
-    list-style: none;
-    padding-left: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    counter-reset: feature-counter;
-}
-
-#webSwiper .features-list li {
-    padding: 1rem 1.2rem;
-    color: var(--text);
-    background: linear-gradient(135deg, 
-        rgba(var(--primary-color-rgb), 0.1), 
-        rgba(var(--secondary-color-rgb), 0.05));
-    border-radius: 12px;
-    border-left: 4px solid var(--primary-color);
-    transition: all 0.3s ease;
-    position: relative;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    display: flex;
-    align-items: flex-start;
-    gap: 0.8rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-}
-
-#webSwiper .features-list li::before {
-    counter-increment: feature-counter;
-    content: counter(feature-counter);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 28px;
-    height: 28px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 0.1rem;
-}
-
-#webSwiper .features-list li:hover {
-    transform: translateX(5px);
-    background: linear-gradient(135deg, 
-        rgba(var(--primary-color-rgb), 0.15), 
-        rgba(var(--secondary-color-rgb), 0.08));
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    border-left-width: 6px;
-}
-
-/* Project Links - Identical to IoT */
+/* Project Links */
 #webSwiper .project-links-top {
     display: flex;
     gap: 1rem;
-    margin: 2rem 0;
+    margin: 1.5rem 0;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 #webSwiper .project-link {
-    padding: 1rem 2rem;
+    padding: 0.9rem 1.8rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     text-decoration: none;
-    border-radius: 12px;
-    font-size: 1rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
     font-weight: 600;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
@@ -642,23 +419,122 @@
 }
 
 #webSwiper .project-link:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(var(--primary-color-rgb), 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(var(--primary-color-rgb), 0.3);
 }
 
 #webSwiper .project-link i {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     transition: transform 0.3s ease;
 }
 
 #webSwiper .project-link:hover i {
-    transform: translateX(5px);
+    transform: translateX(3px);
 }
 
-/* Card Navigation - Identical to IoT */
+/* Tech Tags */
+#webSwiper .tech-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin: 1rem 0;
+}
+
+#webSwiper .tech-tag {
+    padding: 0.6rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    cursor: default;
+}
+
+#webSwiper .tech-tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.05) 100%);
+    z-index: 1;
+    opacity: 0.6;
+}
+
+#webSwiper .tech-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Features Section */
+#webSwiper .skill-set-features {
+    background: linear-gradient(135deg, 
+        rgba(var(--primary-color-rgb), 0.08), 
+        rgba(var(--secondary-color-rgb), 0.03));
+    border-radius: 12px;
+    padding: 1.3rem;
+    border: 1px solid rgba(var(--primary-color-rgb), 0.15);
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+#webSwiper .features-title {
+    font-size: 1.2rem;
+    color: var(--text);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#webSwiper .features-title i {
+    color: var(--primary-color);
+}
+
+#webSwiper .features-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+#webSwiper .features-list li {
+    padding: 0.8rem 1rem;
+    color: var(--text-secondary);
+    background: rgba(var(--surface-rgb), 0.7);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+    transition: all 0.3s ease;
+    position: relative;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+#webSwiper .features-list li:hover {
+    transform: translateX(3px);
+    background: rgba(var(--primary-color-rgb), 0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Card Navigation */
 #web-card-navigation {
     position: absolute;
-    top: 95%;
+    top: 50%;
     left: 0;
     right: 0;
     transform: translateY(-50%);
@@ -672,8 +548,8 @@
 
 #web-prev-card,
 #web-next-card {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     background: rgba(var(--surface-rgb), 0.9);
     border: 2px solid var(--border);
@@ -685,7 +561,8 @@
     transition: var(--transition);
     pointer-events: all;
     backdrop-filter: blur(10px);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 #web-prev-card:hover,
@@ -694,30 +571,32 @@
     border-color: transparent;
     color: white;
     transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(var(--primary-color-rgb), 0.3);
 }
 
-/* Card Counter - Identical to IoT */
+/* Card Counter */
 #web-card-counter {
     position: absolute;
     bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(var(--surface-rgb), 0.9);
-    padding: 0.5rem 1.5rem;
+    padding: 0.5rem 1.2rem;
     border-radius: 20px;
     border: 1px solid var(--border);
     backdrop-filter: blur(10px);
     z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 #web-card-counter .counter-number {
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text);
 }
 
 /* ============================================
-   RESPONSIVE DESIGN - IDENTICAL TO IOT
+   RESPONSIVE DESIGN
 ============================================ */
 
 /* Tablet Styles */
@@ -741,14 +620,18 @@
         height: 85vh;
     }
     
-    #webSwiper .project-images-container {
-        height: 350px;
+    #webSwiper .single-image-container {
+        height: 280px;
     }
     
-    #webSwiper .swiper-button-next,
-    #webSwiper .swiper-button-prev {
-        width: 45px;
-        height: 45px;
+    #web-card-navigation {
+        padding: 0 1.5rem;
+    }
+    
+    #web-prev-card,
+    #web-next-card {
+        width: 44px;
+        height: 44px;
     }
 }
 
@@ -793,6 +676,7 @@
     
     #web-icon-nav-top {
         gap: 1rem;
+        padding: 0.8rem;
     }
     
     #web-icon-nav-top .icon-nav-btn {
@@ -801,15 +685,17 @@
         font-size: 1.2rem;
     }
     
-    #webSwiper .project-images-container {
-        height: 300px;
-        margin-bottom: 1.5rem;
+    #webSwiper .single-image-container {
+        height: 250px;
+        margin-bottom: 1.2rem;
     }
     
-    #webSwiper .swiper-button-next,
-    #webSwiper .swiper-button-prev {
-        width: 40px;
-        height: 40px;
+    #webSwiper .project-info {
+        padding: 1.5rem;
+    }
+    
+    #webSwiper .skill-main-title {
+        font-size: 1.7rem;
     }
     
     #webSwiper .project-links-top {
@@ -822,7 +708,8 @@
         width: 100%;
         max-width: 250px;
         justify-content: center;
-        padding: 0.9rem 1.5rem;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
     }
     
     #webSwiper .tech-tags-container {
@@ -871,34 +758,54 @@
     }
     
     #webSwiper .project-info {
-        padding: 1.5rem;
+        padding: 1.2rem;
     }
     
     #webSwiper .skill-main-title {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
     
     #webSwiper .skill-main-description {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
     
-    #webSwiper .project-images-container {
-        height: 250px;
-        margin-bottom: 1.2rem;
+    #webSwiper .single-image-container {
+        height: 220px;
+        margin-bottom: 1rem;
+        border-radius: 12px;
     }
     
-    #webSwiper .swiper-button-next,
-    #webSwiper .swiper-button-prev {
-        width: 35px;
-        height: 35px;
+    #webSwiper .project-link {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
     }
     
-    #webSwiper .swiper-button-prev {
-        left: 10px;
+    #webSwiper .tech-tags-container {
+        gap: 0.5rem;
     }
     
-    #webSwiper .swiper-button-next {
-        right: 10px;
+    #webSwiper .tech-tag {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.75rem;
+    }
+    
+    #webSwiper .skill-set-features {
+        padding: 1rem;
+        margin-top: 1.2rem;
+    }
+    
+    #webSwiper .features-title {
+        font-size: 1.1rem;
+    }
+    
+    #webSwiper .features-list li {
+        font-size: 0.85rem;
+        padding: 0.6rem 0.8rem;
+    }
+    
+    #web-card-counter {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
     }
 }
 
@@ -909,38 +816,16 @@
         max-height: none;
     }
     
-    #webSwiper .project-images-container {
-        height: 220px;
+    #webSwiper .single-image-container {
+        height: 200px;
+    }
+    
+    #webSwiper .project-info {
+        padding: 1rem;
     }
 }
 
 /* Animations */
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes pulse-glow {
-    0% {
-        opacity: 0.8;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.02);
-    }
-    100% {
-        opacity: 0.8;
-        transform: scale(1);
-    }
-}
-
 @keyframes fadeIn {
     from {
         opacity: 0;
