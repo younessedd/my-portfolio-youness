@@ -1,8 +1,8 @@
 /* ============================================
-   WEB APPS SECTION - EXACT SAME AS IOT
+   WEB PROJECTS SECTION - IDENTICAL TO IOT SECTION
 ============================================ */
 
-/* WEB APPS SECTION CONTAINER */
+/* Section Container - Identical to IoT */
 #web-apps {
     padding: 4rem 1rem;
     position: relative;
@@ -32,13 +32,14 @@
     margin-right: auto;
 }
 
-/* WEB APPS NAVIGATION BUTTONS - 4 BUTTONS LAYOUT */
+/* Navigation Buttons - Identical to IoT */
 #web-apps .skills-nav {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     margin: 3rem auto 0;
     max-width: 900px;
+    align-items: stretch;
 }
 
 @media (min-width: 768px) {
@@ -57,12 +58,17 @@
     background: var(--surface);
     border-radius: 20px;
     border: 2px solid var(--border);
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     color: var(--text-secondary);
     height: 140px;
+    min-height: 140px;
     box-sizing: border-box;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    flex: 1;
 }
 
 #web-apps .skill-nav-btn:hover {
@@ -77,11 +83,31 @@
     border-color: transparent;
     color: white;
     transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+#web-apps .skill-nav-btn.active::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 22px;
+    z-index: -1;
+    animation: pulse-glow 2s infinite;
 }
 
 #web-apps .skill-nav-btn i {
     font-size: 2.2rem;
     margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+#web-apps .skill-nav-btn:hover i,
+#web-apps .skill-nav-btn.active i {
+    transform: scale(1.1);
 }
 
 #web-apps .skill-nav-btn span {
@@ -89,9 +115,15 @@
     font-size: 1rem;
     text-align: center;
     line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
-/* WEB APPS POPUP CONTAINER */
+/* Popup Container - Identical to IoT */
 #web-swiper-container {
     position: fixed;
     top: 0;
@@ -134,7 +166,7 @@
     flex-direction: column;
 }
 
-/* WEB APPS POPUP HEADER */
+/* Popup Header - Identical to IoT */
 #web-swiper-container .popup-header {
     display: flex;
     align-items: center;
@@ -179,7 +211,7 @@
     transform: rotate(90deg);
 }
 
-/* WEB APPS ICON NAVIGATION */
+/* Icon Navigation - Identical to IoT */
 #web-icon-nav-top {
     display: flex;
     justify-content: center;
@@ -220,7 +252,7 @@
     box-shadow: 0 10px 20px rgba(var(--primary-color-rgb), 0.3);
 }
 
-/* WEB APPS SWIPER */
+/* Main Swiper - Identical to IoT */
 #webSwiper {
     width: 100%;
     height: 100%;
@@ -237,7 +269,7 @@
     overflow: hidden;
 }
 
-/* WEB APPS PROJECT CARD */
+/* Project Card Content - Identical to IoT */
 #webSwiper .project-card {
     height: 100%;
     display: flex;
@@ -269,7 +301,6 @@
     border-radius: 4px;
 }
 
-/* WEB APPS CATEGORY CONTENT */
 #webSwiper .skills-category-container {
     display: flex;
     flex-direction: column;
@@ -294,31 +325,17 @@
     margin-bottom: 2rem;
 }
 
-/* ============================================
-   PROJECT IMAGES - EXACT SAME AS IOT
-============================================ */
+/* Image Swiper with Auto-play - Identical to IoT */
 #webSwiper .project-images-container {
     width: 100%;
     height: 400px;
     margin-bottom: 2rem;
     border-radius: 15px;
     overflow: hidden;
-    border: 2px solid var(--border);
-    background: var(--background);
+    background: #000;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
 }
 
-#webSwiper .project-images-container.image-scroll-active {
-    cursor: grab;
-}
-
-#webSwiper .project-images-container.image-scroll-active:active {
-    cursor: grabbing;
-}
-
-/* Image Swiper Container */
 #webSwiper .image-swiper {
     width: 100%;
     height: 100%;
@@ -329,131 +346,132 @@
     height: 100%;
 }
 
-#webSwiper .image-slide {
+#webSwiper .image-swiper .swiper-slide {
+    background: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+#webSwiper .image-swiper.swiper-container-autoplay .swiper-slide {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#webSwiper .image-swiper .swiper-slide-active {
+    transform: scale(1);
+    z-index: 2;
+    animation: slideIn 0.8s ease-out;
+}
+
+#webSwiper .image-swiper .swiper-slide-prev,
+#webSwiper .image-swiper .swiper-slide-next {
+    transform: scale(0.95);
+    opacity: 0.7;
+}
+
+#webSwiper .project-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+#webSwiper .image-swiper .swiper-slide-active .project-image {
+    transform: scale(1.02);
+}
+
+/* Swiper Navigation - Identical to IoT */
+#webSwiper .swiper-button-next,
+#webSwiper .swiper-button-prev {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+    z-index: 20;
+}
+
+#webSwiper .swiper-button-next:after,
+#webSwiper .swiper-button-prev:after {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+#webSwiper .swiper-button-next:hover,
+#webSwiper .swiper-button-prev:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+#webSwiper .swiper-button-prev {
+    left: 15px;
+}
+
+#webSwiper .swiper-button-next {
+    right: 15px;
+}
+
+#webSwiper .swiper-pagination {
+    bottom: 10px !important;
+    z-index: 20;
+}
+
+#webSwiper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+    transition: all 0.3s ease;
+    margin: 0 5px !important;
+}
+
+#webSwiper .swiper-pagination-bullet-active {
+    background: white;
+    transform: scale(1.3);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* No Images Placeholder - Identical to IoT */
+#webSwiper .no-image-placeholder {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    background: var(--background);
 }
 
-/* IMAGE TAKES 100% OF CONTAINER - COVER */
-#webSwiper .project-image {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    border-radius: 12px;
-    display: block;
-}
-
-/* Image Navigation Dots (Hidden by default, shown on hover) */
-#webSwiper .image-nav-dots {
-    position: absolute;
-    bottom: 15px;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    z-index: 10;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    padding: 8px;
-}
-
-#webSwiper .project-images-container:hover .image-nav-dots {
-    opacity: 1;
-}
-
-#webSwiper .image-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.8);
-}
-
-#webSwiper .image-dot:hover {
-    background: white;
-    transform: scale(1.2);
-}
-
-#webSwiper .image-dot.active {
-    background: white;
-    transform: scale(1.2);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-}
-
-/* Image Swiper Navigation Buttons */
-#webSwiper .image-swiper-button-next,
-#webSwiper .image-swiper-button-prev {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid var(--primary-color);
+#webSwiper .no-image-placeholder i {
+    font-size: 4rem;
+    opacity: 0.3;
     color: var(--primary-color);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
     transition: all 0.3s ease;
-    opacity: 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-#webSwiper .image-swiper-button-next {
-    right: 15px;
+#webSwiper .no-image-placeholder:hover i {
+    transform: scale(1.1);
+    opacity: 0.4;
 }
 
-#webSwiper .image-swiper-button-prev {
-    left: 15px;
+#webSwiper .no-image-placeholder span {
+    font-size: 1.1rem;
+    opacity: 0.6;
+    font-weight: 500;
 }
 
-#webSwiper .project-images-container:hover .image-swiper-button-next,
-#webSwiper .project-images-container:hover .image-swiper-button-prev {
-    opacity: 1;
-}
-
-#webSwiper .image-swiper-button-next:hover,
-#webSwiper .image-swiper-button-prev:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-}
-
-#webSwiper .image-swiper-button-next:active,
-#webSwiper .image-swiper-button-prev:active {
-    transform: translateY(-50%) scale(0.95);
-}
-
-#webSwiper .image-swiper-button-next i,
-#webSwiper .image-swiper-button-prev i {
-    font-size: 1.2rem;
-}
-
-/* إزالة Pagination بالكامل */
-#webSwiper .image-pagination,
-#webSwiper .swiper-pagination,
-#webSwiper .swiper-pagination-bullets,
-#webSwiper .swiper-pagination-horizontal,
-#webSwiper .swiper-pagination-clickable,
-#webSwiper .swiper-pagination-bullets-dynamic {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-}
-
-/* ============================================
-   TECH TAGS - EXACT SAME FULL COLOR STYLE
-============================================ */
+/* Tech Tags - Identical to IoT */
 #webSwiper .tech-tags-container {
     display: flex;
     flex-wrap: wrap;
@@ -506,34 +524,7 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* Web Tech Tag Colors - Full Color */
-#webSwiper .tech-tag.html5 { background: #E34F26; color: white !important; }
-#webSwiper .tech-tag.css3 { background: #1572B6; color: white !important; }
-#webSwiper .tech-tag.javascript { background: #F7DF1E; color: black !important; }
-#webSwiper .tech-tag.react { background: #61DAFB; color: black !important; }
-#webSwiper .tech-tag.nodejs { background: #339933; color: white !important; }
-#webSwiper .tech-tag.vue { background: #4FC08D; color: white !important; }
-#webSwiper .tech-tag.angular { background: #DD0031; color: white !important; }
-#webSwiper .tech-tag.typescript { background: #3178C6; color: white !important; }
-#webSwiper .tech-tag.sass { background: #CC6699; color: white !important; }
-#webSwiper .tech-tag.bootstrap { background: #7952B3; color: white !important; }
-#webSwiper .tech-tag.tailwind { background: #38B2AC; color: white !important; }
-#webSwiper .tech-tag.express { background: #000000; color: white !important; }
-#webSwiper .tech-tag.mongodb { background: #47A248; color: white !important; }
-#webSwiper .tech-tag.mysql { background: #4479A1; color: white !important; }
-#webSwiper .tech-tag.postgresql { background: #336791; color: white !important; }
-#webSwiper .tech-tag.firebase { background: #FFCA28; color: black !important; }
-#webSwiper .tech-tag.aws { background: #FF9900; color: black !important; }
-#webSwiper .tech-tag.docker { background: #2496ED; color: white !important; }
-#webSwiper .tech-tag.git { background: #F05032; color: white !important; }
-#webSwiper .tech-tag.python { background: #3776AB; color: white !important; }
-#webSwiper .tech-tag.django { background: #092E20; color: white !important; }
-#webSwiper .tech-tag.php { background: #777BB4; color: white !important; }
-#webSwiper .tech-tag.laravel { background: #FF2D20; color: white !important; }
-
-/* ============================================
-   FEATURES LIST - EXACT SAME COLORED STYLE
-============================================ */
+/* Features List - Identical to IoT */
 #webSwiper .skill-set-features {
     background: linear-gradient(135deg, 
         rgba(var(--primary-color-rgb), 0.1), 
@@ -555,20 +546,6 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-}
-
-#webSwiper .features-title::before {
-    content: '▶';
-    position: absolute;
-    left: -20px;
-    color: var(--primary-color);
-    font-size: 0.8rem;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-#webSwiper .features-title:hover::before {
-    opacity: 1;
 }
 
 #webSwiper .features-list {
@@ -615,37 +592,6 @@
     margin-top: 0.1rem;
 }
 
-/* ALTERNATING COLORS FOR FEATURES - SAME AS IoT */
-#webSwiper .features-list li:nth-child(1) {
-    border-left-color: #4f46e5;
-    background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(79, 70, 229, 0.05));
-}
-
-#webSwiper .features-list li:nth-child(2) {
-    border-left-color: #06b6d4;
-    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.05));
-}
-
-#webSwiper .features-list li:nth-child(3) {
-    border-left-color: #10b981;
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
-}
-
-#webSwiper .features-list li:nth-child(4) {
-    border-left-color: #f59e0b;
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
-}
-
-#webSwiper .features-list li:nth-child(5) {
-    border-left-color: #ef4444;
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
-}
-
-#webSwiper .features-list li:nth-child(6) {
-    border-left-color: #8b5cf6;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05));
-}
-
 #webSwiper .features-list li:hover {
     transform: translateX(5px);
     background: linear-gradient(135deg, 
@@ -655,9 +601,7 @@
     border-left-width: 6px;
 }
 
-/* ============================================
-   WEB APPS PROJECT LINKS
-============================================ */
+/* Project Links - Identical to IoT */
 #webSwiper .project-links-top {
     display: flex;
     gap: 1rem;
@@ -711,10 +655,10 @@
     transform: translateX(5px);
 }
 
-/* WEB APPS CARD NAVIGATION */
+/* Card Navigation - Identical to IoT */
 #web-card-navigation {
     position: absolute;
-    top: 50%;
+    top: 95%;
     left: 0;
     right: 0;
     transform: translateY(-50%);
@@ -752,7 +696,7 @@
     transform: scale(1.1);
 }
 
-/* WEB APPS CARD COUNTER */
+/* Card Counter - Identical to IoT */
 #web-card-counter {
     position: absolute;
     bottom: 1rem;
@@ -772,40 +716,8 @@
     color: var(--text);
 }
 
-/* NO IMAGES PLACEHOLDER */
-#webSwiper .no-image-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 1.5rem;
-    color: var(--text-secondary);
-    font-style: italic;
-    background: var(--background);
-}
-
-#webSwiper .no-image-placeholder i {
-    font-size: 4rem;
-    opacity: 0.3;
-    color: var(--primary-color);
-    transition: all 0.3s ease;
-}
-
-#webSwiper .no-image-placeholder:hover i {
-    transform: scale(1.1);
-    opacity: 0.4;
-}
-
-#webSwiper .no-image-placeholder span {
-    font-size: 1.1rem;
-    opacity: 0.6;
-    font-weight: 500;
-}
-
 /* ============================================
-   RESPONSIVE DESIGN - EXACT SAME AS IoT
+   RESPONSIVE DESIGN - IDENTICAL TO IOT
 ============================================ */
 
 /* Tablet Styles */
@@ -816,7 +728,12 @@
     
     #web-apps .skill-nav-btn {
         height: 130px;
-        padding: 1.3rem 1.8rem;
+        min-height: 130px;
+        padding: 1.3rem 1.2rem;
+    }
+    
+    #web-apps .skill-nav-btn i {
+        font-size: 2rem;
     }
     
     #web-swiper-container .popup-content {
@@ -828,13 +745,10 @@
         height: 350px;
     }
     
-    #webSwiper .tech-tags-container {
-        gap: 0.8rem;
-    }
-    
-    #webSwiper .tech-tag {
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
+    #webSwiper .swiper-button-next,
+    #webSwiper .swiper-button-prev {
+        width: 45px;
+        height: 45px;
     }
 }
 
@@ -858,7 +772,12 @@
         max-width: 300px;
         margin: 0 auto;
         height: 120px;
+        min-height: 120px;
         padding: 1.2rem;
+    }
+    
+    #web-apps .skill-nav-btn i {
+        font-size: 1.8rem;
     }
     
     #web-swiper-container .popup-content {
@@ -887,6 +806,12 @@
         margin-bottom: 1.5rem;
     }
     
+    #webSwiper .swiper-button-next,
+    #webSwiper .swiper-button-prev {
+        width: 40px;
+        height: 40px;
+    }
+    
     #webSwiper .project-links-top {
         flex-direction: column;
         align-items: center;
@@ -908,11 +833,6 @@
         padding: 0.5rem 0.8rem;
         font-size: 0.8rem;
     }
-    
-    #webSwiper .features-list li {
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
-    }
 }
 
 /* Small Mobile */
@@ -933,14 +853,15 @@
     #web-apps .skill-nav-btn {
         padding: 1rem;
         height: 110px;
+        min-height: 110px;
     }
     
     #web-apps .skill-nav-btn i {
-        font-size: 2rem;
+        font-size: 1.6rem;
     }
     
     #web-apps .skill-nav-btn span {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
     
     #web-swiper-container .popup-content {
@@ -966,32 +887,18 @@
         margin-bottom: 1.2rem;
     }
     
-    #webSwiper .project-link {
-        padding: 0.8rem 1.2rem;
-        font-size: 0.9rem;
+    #webSwiper .swiper-button-next,
+    #webSwiper .swiper-button-prev {
+        width: 35px;
+        height: 35px;
     }
     
-    #webSwiper .tech-tags-container {
-        gap: 0.5rem;
+    #webSwiper .swiper-button-prev {
+        left: 10px;
     }
     
-    #webSwiper .tech-tag {
-        padding: 0.4rem 0.7rem;
-        font-size: 0.75rem;
-    }
-    
-    #webSwiper .skill-set-features {
-        padding: 1.2rem;
-        margin-top: 1.5rem;
-    }
-    
-    #webSwiper .features-title {
-        font-size: 1.1rem;
-    }
-    
-    #webSwiper .features-list li {
-        font-size: 0.9rem;
-        padding: 0.6rem 0.8rem;
+    #webSwiper .swiper-button-next {
+        right: 10px;
     }
 }
 
@@ -1005,8 +912,51 @@
     #webSwiper .project-images-container {
         height: 220px;
     }
-    
-    #webSwiper .project-info {
-        padding: 1.2rem;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse-glow {
+    0% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.02);
+    }
+    100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popupAppear {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
     }
 }

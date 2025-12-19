@@ -1,6 +1,6 @@
 /* ============================================
    responsive.css - Responsive Design Styles
-   UPDATED: Light theme with 25% gray background
+   FIXED: Corrected mobile menu visibility issue
    ============================================ */
 
 /* Large Screens (max-width: 1200px) */
@@ -85,17 +85,51 @@
         max-width: 576px;
     }
     
-    /* Hide desktop nav, show burger */
+    /* ✅ FIXED: Burger button visibility */
     .burger-btn {
         display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1000;
     }
     
     .desktop-nav {
         display: none;
     }
     
-    .mobile-menu {
+    /* ✅ FIXED: Mobile menu styles */
+    /* ملاحظة: .mobile-menu لا نجعله display: block هنا */
+    /* سيظهر فقط عندما يكون لديه class .active */
+    
+    .mobile-nav {
+        list-style: none;
+        padding: 20px;
+        margin: 0;
+    }
+    
+    .mobile-nav li {
+        margin-bottom: 15px;
+    }
+    
+    .mobile-nav-link {
         display: block;
+        padding: 12px 20px;
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-nav-link:hover {
+        background: rgba(0, 0, 0, 0.05);
+        color: var(--primary-color);
+    }
+    
+    .mobile-nav-link i {
+        margin-right: 10px;
+        color: var(--primary-color);
     }
     
     /* Hero adjustments */
@@ -413,31 +447,26 @@
         max-width: 1400px;
     }
 }
-/* ============================================
-   إصلاحات التأخير في الثيم - NEW
-============================================ */
 
-/* إزالة الانتقالات المؤقتة أثناء تغيير الثيم */
+/* ============================================
+   إصلاحات التأخير في الثيم
+============================================ */
 [data-theme] header,
 [data-theme] .burger-btn {
     transition-duration: 0.1s !important;
 }
 
-/* خاص للأجهزة المحمولة لمنع التأخير */
 @media (max-width: 768px) {
-    /* إجبار العناصر على الظهور بدون تأخير */
     .burger-btn {
         animation: none !important;
         transition: opacity 0.1s ease !important;
     }
     
-    /* منع أي تأثيرات جانبية */
     header {
         animation: none !important;
         transition: background-color 0.3s ease !important;
     }
     
-    /* حالة النقال */
     @media (hover: none) and (pointer: coarse) {
         .burger-btn,
         header {
@@ -446,7 +475,6 @@
     }
 }
 
-/* إصلاح للرأس في جميع الأحوال */
 header {
     position: fixed !important;
     top: 0 !important;

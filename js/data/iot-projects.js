@@ -12,6 +12,7 @@ window.iotProjectsData = {
             technologies: ["ESP32", "Arduino", "MQTT", "Bluetooth", "WiFi", "Automation"],
             images: [
                 "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800&auto=format&fit=crop",
                 "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&auto=format&fit=crop"
             ],
             features: [

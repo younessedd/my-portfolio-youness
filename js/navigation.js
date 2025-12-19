@@ -1,52 +1,50 @@
 /**
  * navigation.js - Navigation Management
- * إصدار منقح مع إزالة ميزة التبديل بين الوضع المظلم والفاتح
+ * Optimized: Fixed event handling and mobile menu toggle
  */
 
 const NavigationManager = {
-    // تهيئة
     init: function() {
-        console.log('🚀 تهيئة التنقل...');
+        console.log('🚀 Navigation initialization...');
         this.setupHamburger();
         this.setupMobileLinks();
         this.setupSmoothScroll();
-        console.log('✅ التنقل جاهز');
+        console.log('✅ Navigation ready');
     },
 
-    // 1. قائمة الهامبرغر - بسيطة وتعمل
+    // 1. Hamburger menu - Simple and working
     setupHamburger: function() {
         const burgerBtn = document.getElementById('burger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         
         if (!burgerBtn || !mobileMenu) {
-            console.error('❌ عناصر الهامبرغر غير موجودة!');
+            console.error('❌ Hamburger elements not found!');
             return;
         }
         
-        console.log('🍔 تم العثور على عناصر الهامبرغر');
+        console.log('🍔 Found hamburger elements');
         
-        // معالج النقر البسيط - يعمل من أول نقرة
+        // Simple click handler
         burgerBtn.addEventListener('click', function(e) {
-            console.log('🎯 تم النقر على الهامبرغر!');
+            console.log('🎯 Hamburger clicked!');
             e.stopPropagation();
-            e.preventDefault();
             
-            // تبديل القائمة
-            mobileMenu.classList.toggle('active');
+            // Toggle menu
+            const isActive = mobileMenu.classList.toggle('active');
             
-            // تبديل الأيقونة
+            // Toggle icon
             const icon = this.querySelector('i');
             if (icon) {
-                icon.className = mobileMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+                icon.className = isActive ? 'fas fa-times' : 'fas fa-bars';
             }
             
-            // تبديل التمرير
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            // Toggle body scroll
+            document.body.style.overflow = isActive ? 'hidden' : '';
             
-            console.log('📱 حالة القائمة:', mobileMenu.classList.contains('active') ? 'مفتوحة' : 'مغلقة');
+            console.log('📱 Menu state:', isActive ? 'OPEN' : 'CLOSED');
         });
         
-        // إغلاق عند النقر خارج القائمة
+        // Close when clicking outside
         document.addEventListener('click', function(e) {
             if (mobileMenu.classList.contains('active') &&
                 !mobileMenu.contains(e.target) &&
@@ -58,7 +56,7 @@ const NavigationManager = {
             }
         });
         
-        // إغلاق بمفتاح Escape
+        // Close with Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
                 mobileMenu.classList.remove('active');
@@ -68,15 +66,14 @@ const NavigationManager = {
         });
     },
 
-    // 2. روابط الموبايل - إغلاق القائمة عند النقر
+    // 2. Mobile links - Close menu on click
     setupMobileLinks: function() {
         const mobileLinks = document.querySelectorAll('.mobile-nav-link');
         
         mobileLinks.forEach(link => {
             link.addEventListener('click', function() {
-                console.log('📱 تم النقر على رابط الموبايل:', this.textContent);
+                console.log('📱 Mobile link clicked:', this.textContent);
                 
-                // إغلاق قائمة الموبايل
                 const mobileMenu = document.getElementById('mobile-menu');
                 const burgerBtn = document.getElementById('burger-btn');
                 
@@ -87,7 +84,7 @@ const NavigationManager = {
         });
     },
 
-    // 3. التمرير السلس
+    // 3. Smooth scrolling
     setupSmoothScroll: function() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -109,7 +106,7 @@ const NavigationManager = {
                     
                     history.pushState(null, null, href);
                     
-                    // إغلاق قائمة الموبايل إذا كانت مفتوحة
+                    // Close mobile menu if open
                     const mobileMenu = document.getElementById('mobile-menu');
                     const burgerBtn = document.getElementById('burger-btn');
                     if (mobileMenu && mobileMenu.classList.contains('active')) {
@@ -123,7 +120,7 @@ const NavigationManager = {
     }
 };
 
-// تهيئة عند تحميل DOM
+// Initialize when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => NavigationManager.init());
 } else {

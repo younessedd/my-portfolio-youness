@@ -1,5 +1,5 @@
 /* ============================================
-   MOBILE APPS SECTION - EXACT SAME AS IOT
+   MOBILE APPS SECTION - CLEAN MODERN STYLE
 ============================================ */
 
 /* MOBILE APPS SECTION CONTAINER */
@@ -32,7 +32,7 @@
     margin-right: auto;
 }
 
-/* MOBILE APPS NAVIGATION BUTTONS - 4 BUTTONS LAYOUT */
+/* MOBILE APPS NAVIGATION BUTTONS */
 #mobile-apps .skills-nav {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -220,7 +220,7 @@
     box-shadow: 0 10px 20px rgba(var(--primary-color-rgb), 0.3);
 }
 
-/* MOBILE APPS SWIPER */
+/* MOBILE APPS MAIN SWIPER */
 #mobileSwiper {
     width: 100%;
     height: 100%;
@@ -295,7 +295,7 @@
 }
 
 /* ============================================
-   PROJECT IMAGES - EXACT SAME AS IOT
+   IMAGE SWIPER - AUTO PLAY INFINITE STYLE
 ============================================ */
 #mobileSwiper .project-images-container {
     width: 100%;
@@ -303,22 +303,10 @@
     margin-bottom: 2rem;
     border-radius: 15px;
     overflow: hidden;
-    border: 2px solid var(--border);
-    background: var(--background);
+    background: #000;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
 }
 
-#mobileSwiper .project-images-container.image-scroll-active {
-    cursor: grab;
-}
-
-#mobileSwiper .project-images-container.image-scroll-active:active {
-    cursor: grabbing;
-}
-
-/* Image Swiper Container */
 #mobileSwiper .image-swiper {
     width: 100%;
     height: 100%;
@@ -329,130 +317,167 @@
     height: 100%;
 }
 
-#mobileSwiper .image-slide {
+#mobileSwiper .image-swiper .swiper-slide {
+    background: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+/* SMOOTH AUTO-PLAY ANIMATION */
+#mobileSwiper .image-swiper.swiper-container-autoplay .swiper-slide {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* CENTERED SLIDES FOR INFINITE EFFECT */
+#mobileSwiper .image-swiper .swiper-slide-active {
+    transform: scale(1);
+    z-index: 2;
+}
+
+#mobileSwiper .image-swiper .swiper-slide-prev,
+#mobileSwiper .image-swiper .swiper-slide-next {
+    transform: scale(0.95);
+    opacity: 0.7;
+}
+
+#mobileSwiper .project-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+#mobileSwiper .image-swiper .swiper-slide-active .project-image {
+    transform: scale(1.02);
+}
+
+/* AUTO-PLAY INDICATOR (OPTIONAL) */
+#mobileSwiper .autoplay-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
+
+#mobileSwiper .autoplay-indicator i {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* SWIPER BUTTONS - CLEAN STYLE */
+#mobileSwiper .swiper-button-next,
+#mobileSwiper .swiper-button-prev {
+    width: 50px;
+    height: 50px;
+   
+    border-radius: 50%;
+    
+    transition: all 0.3s ease;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+    z-index: 20;
+}
+
+#mobileSwiper .swiper-button-next:after,
+#mobileSwiper .swiper-button-prev:after {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+#mobileSwiper .swiper-button-next:hover,
+#mobileSwiper .swiper-button-prev:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+#mobileSwiper .swiper-button-prev {
+    left: 15px;
+}
+
+#mobileSwiper .swiper-button-next {
+    right: 15px;
+}
+
+/* SWIPER PAGINATION - CLEAN STYLE */
+#mobileSwiper .swiper-pagination {
+    bottom: 10px !important;
+    z-index: 20;
+}
+
+#mobileSwiper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+    transition: all 0.3s ease;
+    margin: 0 5px !important;
+}
+
+#mobileSwiper .swiper-pagination-bullet-active {
+    background: white;
+    transform: scale(1.3);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Dynamic bullets for infinite effect */
+#mobileSwiper .swiper-pagination-bullets-dynamic {
+    overflow: hidden;
+}
+
+/* NO IMAGES PLACEHOLDER */
+#mobileSwiper .no-image-placeholder {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    background: var(--background);
 }
 
-/* IMAGE TAKES 100% OF CONTAINER - COVER */
-#mobileSwiper .project-image {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    border-radius: 12px;
-    display: block;
-}
-
-/* Image Navigation Dots (Hidden by default, shown on hover) */
-#mobileSwiper .image-nav-dots {
-    position: absolute;
-    bottom: 15px;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    z-index: 10;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    padding: 8px;
-}
-
-#mobileSwiper .project-images-container:hover .image-nav-dots {
-    opacity: 1;
-}
-
-#mobileSwiper .image-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.8);
-}
-
-#mobileSwiper .image-dot:hover {
-    background: white;
-    transform: scale(1.2);
-}
-
-#mobileSwiper .image-dot.active {
-    background: white;
-    transform: scale(1.2);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-}
-
-/* Image Swiper Navigation Buttons */
-#mobileSwiper .image-swiper-button-next,
-#mobileSwiper .image-swiper-button-prev {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid var(--primary-color);
+#mobileSwiper .no-image-placeholder i {
+    font-size: 4rem;
+    opacity: 0.3;
     color: var(--primary-color);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
     transition: all 0.3s ease;
-    opacity: 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-#mobileSwiper .image-swiper-button-next {
-    right: 15px;
+#mobileSwiper .no-image-placeholder:hover i {
+    transform: scale(1.1);
+    opacity: 0.4;
 }
 
-#mobileSwiper .image-swiper-button-prev {
-    left: 15px;
-}
-
-#mobileSwiper .project-images-container:hover .image-swiper-button-next,
-#mobileSwiper .project-images-container:hover .image-swiper-button-prev {
-    opacity: 1;
-}
-
-#mobileSwiper .image-swiper-button-next:hover,
-#mobileSwiper .image-swiper-button-prev:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-}
-
-#mobileSwiper .image-swiper-button-next:active,
-#mobileSwiper .image-swiper-button-prev:active {
-    transform: translateY(-50%) scale(0.95);
-}
-
-#mobileSwiper .image-swiper-button-next i,
-#mobileSwiper .image-swiper-button-prev i {
-    font-size: 1.2rem;
-}
-
-/* إزالة Pagination بالكامل */
-#mobileSwiper .image-pagination,
-#mobileSwiper .swiper-pagination,
-#mobileSwiper .swiper-pagination-bullets,
-#mobileSwiper .swiper-pagination-horizontal,
-#mobileSwiper .swiper-pagination-clickable,
-#mobileSwiper .swiper-pagination-bullets-dynamic {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
+#mobileSwiper .no-image-placeholder span {
+    font-size: 1.1rem;
+    opacity: 0.6;
+    font-weight: 500;
 }
 
 /* ============================================
-   TECH TAGS - EXACT SAME FULL COLOR STYLE
+   TECH TAGS - CLEAN STYLE
 ============================================ */
 #mobileSwiper .tech-tags-container {
     display: flex;
@@ -507,23 +532,23 @@
 }
 
 /* Mobile Tech Tag Colors - Full Color */
-#mobileSwiper .tech-tag.android { background: #3DDC84; color: white !important; }
-#mobileSwiper .tech-tag.kotlin { background: #7F52FF; color: white !important; }
-#mobileSwiper .tech-tag.java { background: #007396; color: white !important; }
-#mobileSwiper .tech-tag.react { background: #61DAFB; color: black !important; }
-#mobileSwiper .tech-tag.flutter { background: #02569B; color: white !important; }
-#mobileSwiper .tech-tag.ios { background: #000000; color: white !important; }
-#mobileSwiper .tech-tag.swift { background: #FA7343; color: white !important; }
-#mobileSwiper .tech-tag.firebase { background: #FFCA28; color: black !important; }
-#mobileSwiper .tech-tag.kodular { background: #7e57c2; color: white !important; }
-#mobileSwiper .tech-tag.xamarin { background: #3498DB; color: white !important; }
-#mobileSwiper .tech-tag.ionic { background: #3880FF; color: white !important; }
-#mobileSwiper .tech-tag.unity { background: #000000; color: white !important; }
-#mobileSwiper .tech-tag.google { background: #4285F4; color: white !important; }
-#mobileSwiper .tech-tag.apple { background: #A2AAAD; color: white !important; }
+#mobileSwiper .tech-tag.android { background: #3DDC84 !important; color: white !important; }
+#mobileSwiper .tech-tag.kotlin { background: #7F52FF !important; color: white !important; }
+#mobileSwiper .tech-tag.java { background: #007396 !important; color: white !important; }
+#mobileSwiper .tech-tag.react { background: #61DAFB !important; color: black !important; }
+#mobileSwiper .tech-tag.flutter { background: #02569B !important; color: white !important; }
+#mobileSwiper .tech-tag.ios { background: #000000 !important; color: white !important; }
+#mobileSwiper .tech-tag.swift { background: #FA7343 !important; color: white !important; }
+#mobileSwiper .tech-tag.firebase { background: #FFCA28 !important; color: black !important; }
+#mobileSwiper .tech-tag.kodular { background: #7e57c2 !important; color: white !important; }
+#mobileSwiper .tech-tag.xamarin { background: #3498DB !important; color: white !important; }
+#mobileSwiper .tech-tag.ionic { background: #3880FF !important; color: white !important; }
+#mobileSwiper .tech-tag.unity { background: #000000 !important; color: white !important; }
+#mobileSwiper .tech-tag.google { background: #4285F4 !important; color: white !important; }
+#mobileSwiper .tech-tag.apple { background: #A2AAAD !important; color: white !important; }
 
 /* ============================================
-   FEATURES LIST - EXACT SAME COLORED STYLE
+   FEATURES LIST - CLEAN STYLE
 ============================================ */
 #mobileSwiper .skill-set-features {
     background: linear-gradient(135deg, 
@@ -606,37 +631,6 @@
     margin-top: 0.1rem;
 }
 
-/* ALTERNATING COLORS FOR FEATURES - SAME AS IoT */
-#mobileSwiper .features-list li:nth-child(1) {
-    border-left-color: #4f46e5;
-    background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(79, 70, 229, 0.05));
-}
-
-#mobileSwiper .features-list li:nth-child(2) {
-    border-left-color: #06b6d4;
-    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.05));
-}
-
-#mobileSwiper .features-list li:nth-child(3) {
-    border-left-color: #10b981;
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
-}
-
-#mobileSwiper .features-list li:nth-child(4) {
-    border-left-color: #f59e0b;
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
-}
-
-#mobileSwiper .features-list li:nth-child(5) {
-    border-left-color: #ef4444;
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
-}
-
-#mobileSwiper .features-list li:nth-child(6) {
-    border-left-color: #8b5cf6;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05));
-}
-
 #mobileSwiper .features-list li:hover {
     transform: translateX(5px);
     background: linear-gradient(135deg, 
@@ -683,7 +677,7 @@
     bottom: 0;
     background: linear-gradient(135deg, 
         rgba(255, 255, 255, 0.1) 0%,
-        rgba(255, 255, 255, 0.05) 100%);
+        rgba(255, 255,255, 0.05) 100%);
     z-index: -1;
     transition: opacity 0.3s ease;
 }
@@ -705,7 +699,7 @@
 /* MOBILE APPS CARD NAVIGATION */
 #mobile-card-navigation {
     position: absolute;
-    top: 50%;
+    top: 95%;
     left: 0;
     right: 0;
     transform: translateY(-50%);
@@ -763,40 +757,8 @@
     color: var(--text);
 }
 
-/* NO IMAGES PLACEHOLDER */
-#mobileSwiper .no-image-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 1.5rem;
-    color: var(--text-secondary);
-    font-style: italic;
-    background: var(--background);
-}
-
-#mobileSwiper .no-image-placeholder i {
-    font-size: 4rem;
-    opacity: 0.3;
-    color: var(--primary-color);
-    transition: all 0.3s ease;
-}
-
-#mobileSwiper .no-image-placeholder:hover i {
-    transform: scale(1.1);
-    opacity: 0.4;
-}
-
-#mobileSwiper .no-image-placeholder span {
-    font-size: 1.1rem;
-    opacity: 0.6;
-    font-weight: 500;
-}
-
 /* ============================================
-   RESPONSIVE DESIGN - EXACT SAME AS IoT
+   RESPONSIVE DESIGN
 ============================================ */
 
 /* Tablet Styles */
@@ -819,13 +781,10 @@
         height: 350px;
     }
     
-    #mobileSwiper .tech-tags-container {
-        gap: 0.8rem;
-    }
-    
-    #mobileSwiper .tech-tag {
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
+    #mobileSwiper .swiper-button-next,
+    #mobileSwiper .swiper-button-prev {
+        width: 45px;
+        height: 45px;
     }
 }
 
@@ -878,6 +837,12 @@
         margin-bottom: 1.5rem;
     }
     
+    #mobileSwiper .swiper-button-next,
+    #mobileSwiper .swiper-button-prev {
+        width: 40px;
+        height: 40px;
+    }
+    
     #mobileSwiper .project-links-top {
         flex-direction: column;
         align-items: center;
@@ -898,11 +863,6 @@
     #mobileSwiper .tech-tag {
         padding: 0.5rem 0.8rem;
         font-size: 0.8rem;
-    }
-    
-    #mobileSwiper .features-list li {
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
     }
 }
 
@@ -926,14 +886,6 @@
         height: 110px;
     }
     
-    #mobile-apps .skill-nav-btn i {
-        font-size: 2rem;
-    }
-    
-    #mobile-apps .skill-nav-btn span {
-        font-size: 1rem;
-    }
-    
     #mobile-swiper-container .popup-content {
         width: 97%;
         height: 92vh;
@@ -955,6 +907,20 @@
     #mobileSwiper .project-images-container {
         height: 250px;
         margin-bottom: 1.2rem;
+    }
+    
+    #mobileSwiper .swiper-button-next,
+    #mobileSwiper .swiper-button-prev {
+        width: 35px;
+        height: 35px;
+    }
+    
+    #mobileSwiper .swiper-button-prev {
+        left: 10px;
+    }
+    
+    #mobileSwiper .swiper-button-next {
+        right: 10px;
     }
     
     #mobileSwiper .project-link {
@@ -996,8 +962,20 @@
     #mobileSwiper .project-images-container {
         height: 220px;
     }
-    
-    #mobileSwiper .project-info {
-        padding: 1.2rem;
+}
+
+/* AUTO-PLAY ANIMATIONS */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
     }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#mobileSwiper .image-swiper .swiper-slide-active {
+    animation: slideIn 0.8s ease-out;
 }

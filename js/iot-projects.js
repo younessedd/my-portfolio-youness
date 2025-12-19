@@ -1,5 +1,5 @@
 /**
- * IoT Projects Manager - FIXED WITH INFINITE SCROLL (ENHANCED VERSION)
+ * IoT Projects Manager - AUTO PLAY INFINITE SWIPER
  */
 
 const IoTProjectsManager = {
@@ -9,12 +9,8 @@ const IoTProjectsManager = {
     swiperInstance: null,
     imageSwiperInstances: {},
     
-    // نظام قفل محسن
     navigationLock: false,
-    animationTimeout: null,
-    
     isModalOpen: false,
-    isImageInteracting: false,
     
     categories: ['home', 'industrial', 'sensors', 'othersiot'],
     categoryNames: {
@@ -139,7 +135,7 @@ const IoTProjectsManager = {
                 
                 setTimeout(() => {
                     this.navigationLock = false;
-                }, 600);
+                }, 400);
             });
         });
     },
@@ -147,34 +143,34 @@ const IoTProjectsManager = {
     setupCardNavigation: function() {
         if (this.elements.prevCardBtn) {
             this.elements.prevCardBtn.addEventListener('click', () => {
-                if (this.navigationLock || this.isImageInteracting) return;
+                if (this.navigationLock) return;
                 this.navigationLock = true;
                 this.navigateToPrevCard();
-                setTimeout(() => { this.navigationLock = false; }, 600);
+                setTimeout(() => { this.navigationLock = false; }, 400);
             });
         }
         
         if (this.elements.nextCardBtn) {
             this.elements.nextCardBtn.addEventListener('click', () => {
-                if (this.navigationLock || this.isImageInteracting) return;
+                if (this.navigationLock) return;
                 this.navigationLock = true;
                 this.navigateToNextCard();
-                setTimeout(() => { this.navigationLock = false; }, 600);
+                setTimeout(() => { this.navigationLock = false; }, 400);
             });
         }
         
         document.addEventListener('keydown', (e) => {
-            if (this.isModalOpen && !this.isImageInteracting && !this.navigationLock) {
+            if (this.isModalOpen && !this.navigationLock) {
                 if (e.key === 'ArrowLeft') {
                     e.preventDefault();
                     this.navigationLock = true;
                     this.navigateToPrevCard();
-                    setTimeout(() => { this.navigationLock = false; }, 600);
+                    setTimeout(() => { this.navigationLock = false; }, 400);
                 } else if (e.key === 'ArrowRight') {
                     e.preventDefault();
                     this.navigationLock = true;
                     this.navigateToNextCard();
-                    setTimeout(() => { this.navigationLock = false; }, 600);
+                    setTimeout(() => { this.navigationLock = false; }, 400);
                 } else if (e.key === 'Escape') {
                     this.closePopup();
                 }
@@ -188,7 +184,6 @@ const IoTProjectsManager = {
         this.currentCategory = category;
         this.currentCardIndex = 0;
         this.isModalOpen = true;
-        this.isImageInteracting = false;
         this.navigationLock = false;
         
         this.elements.popupContainer.style.display = 'block';
@@ -208,13 +203,12 @@ const IoTProjectsManager = {
                 this.swiperInstance.slideTo(targetSlideIndex, 0);
                 this.updateCardCounter(category);
                 
-                // ✅ CRITICAL FIX: Initialize image swipers immediately
+                // Initialize image swipers immediately
                 setTimeout(() => {
                     this.initializeImageSwipers();
-                    this.setupImageScrollHandlers();
-                }, 100);
+                }, 50);
             }
-        }, 100);
+        }, 50);
     },
     
     goToCategory: function(category, categoryName) {
@@ -242,7 +236,7 @@ const IoTProjectsManager = {
         this.updateCardCounter(category);
         this.updateActiveButton(category);
         
-        this.swiperInstance.slideTo(targetSlideIndex, 600);
+        this.swiperInstance.slideTo(targetSlideIndex, 400);
     },
     
     goToCategoryCard: function(category, cardIndex) {
@@ -253,7 +247,7 @@ const IoTProjectsManager = {
         
         if (targetSlideIndex !== undefined) {
             this.currentCardIndex = cardIndex;
-            this.swiperInstance.slideTo(targetSlideIndex, 600);
+            this.swiperInstance.slideTo(targetSlideIndex, 400);
             this.updateCardCounter(category);
         }
     },
@@ -464,13 +458,9 @@ const IoTProjectsManager = {
         
         const displayImages = images.slice(0, 5);
         const slides = displayImages.map((img, idx) => `
-            <div class="swiper-slide image-slide">
+            <div class="swiper-slide">
                 <img src="${img}" alt="IoT Project Image ${idx + 1}" class="project-image">
             </div>
-        `).join('');
-        
-        const dots = displayImages.map((_, idx) => `
-            <div class="image-dot ${idx === 0 ? 'active' : ''}" data-index="${idx}"></div>
         `).join('');
         
         return `
@@ -479,16 +469,10 @@ const IoTProjectsManager = {
                     <div class="swiper-wrapper">
                         ${slides}
                     </div>
-                    <div class="image-swiper-button-next">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="image-swiper-button-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
-                <div class="image-nav-dots">
-                    ${dots}
-                </div>
+                <div class="swiper-pagination"></div>
             </div>
         `;
     },
@@ -547,6 +531,7 @@ const IoTProjectsManager = {
             slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
+            speed: 400,
             
             pagination: {
                 el: '.popup-counter',
@@ -590,7 +575,6 @@ const IoTProjectsManager = {
         });
     },
     
-    // ✅ إصلاح جذري لخطأ newImageSwiper
     initializeImageSwipers: function() {
         if (!this.swiperInstance) return;
         
@@ -603,7 +587,7 @@ const IoTProjectsManager = {
             
             const projectId = activeSlide.dataset.projectId;
             
-            // ✅ If swiper already exists, just reinitialize it
+            // If swiper already exists, destroy it
             if (this.imageSwiperInstances[projectId]) {
                 try {
                     this.imageSwiperInstances[projectId].destroy(true, true);
@@ -615,142 +599,113 @@ const IoTProjectsManager = {
             const imageSwiperEl = imageContainer.querySelector('.image-swiper');
             if (!imageSwiperEl) return;
             
-            // ✅ Add CSS for better scroll handling
-            imageSwiperEl.style.cssText = `
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-            `;
-            
-            const images = imageSwiperEl.querySelectorAll('.project-image');
-            images.forEach(img => {
-                img.style.cssText = `
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    pointer-events: auto;
-                `;
-            });
-            
-            let imageSwiperInstance;
-            
-            imageSwiperInstance = new Swiper(imageSwiperEl, {
-                slidesPerView: 1,
-                spaceBetween: 30,
+            // AUTO-PLAY INFINITE SWIPER CONFIGURATION
+            const imageSwiperInstance = new Swiper(imageSwiperEl, {
+                // INFINITE LOOP
                 loop: true,
                 
+                // AUTO PLAY SETTINGS
                 autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
+                    delay: 3000, // 3 seconds between slides
+                    disableOnInteraction: false, // Continue autoplay after interaction
+                    pauseOnMouseEnter: true, // Pause when mouse enters
                 },
                 
-                pagination: {
-                    el: imageSwiperEl.querySelector('.swiper-pagination'),
-                    clickable: true,
-                },
+                // SPEED AND EFFECT
+                speed: 800, // Smooth transition speed
+                effect: 'slide', // Slide effect
                 
+                // NAVIGATION BUTTONS
                 navigation: {
-                    nextEl: imageSwiperEl.querySelector('.image-swiper-button-next'),
-                    prevEl: imageSwiperEl.querySelector('.image-swiper-button-prev'),
+                    nextEl: imageSwiperEl.querySelector('.swiper-button-next'),
+                    prevEl: imageSwiperEl.querySelector('.swiper-button-prev'),
                 },
+                
+                // PAGINATION DOTS
+                pagination: {
+                    el: imageContainer.querySelector('.swiper-pagination'),
+                    clickable: true,
+                    dynamicBullets: true,
+                },
+                
+                // RESPONSIVE BREAKPOINTS
+                breakpoints: {
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    },
+                    768: {
+                        slidesPerView: 1,
+                        spaceBetween: 15,
+                    },
+                    1024: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    }
+                },
+                
+                // PERFORMANCE OPTIMIZATIONS
+                observer: true,
+                observeParents: true,
+                watchSlidesProgress: true,
+                
+                // SMOOTH TRANSITIONS
+                grabCursor: true,
+                centeredSlides: true,
+                
+                // SLIDE CHANGE CALLBACKS
+                on: {
+                    init: function() {
+                        console.log('🖼️ Image Swiper initialized with autoplay');
+                        // Start autoplay immediately
+                        this.autoplay.start();
+                    },
+                    
+                    slideChange: function() {
+                        // You can add any slide change logic here
+                    },
+                    
+                    autoplayTimeLeft: function(swiper, time, progress) {
+                        // Optional: Add autoplay progress indicator
+                    }
+                }
             });
             
-            // Initialize dots
-            const totalSlides = imageSwiperInstance.slides.length;
-            const realTotal = imageSwiperInstance.loopedSlides ? 
-                totalSlides - (imageSwiperInstance.loopedSlides * 2) : totalSlides;
-            
-            this.updateImageDots(imageContainer, 0);
-            
-            // ✅ Setup dot click handlers
-            this.setupImageDotsHandlers(imageContainer, imageSwiperInstance);
-            
-            // ✅ Ensure autoplay starts
+            // Ensure autoplay starts
             setTimeout(() => {
-                if (imageSwiperInstance.autoplay && !imageSwiperInstance.autoplay.running) {
+                if (imageSwiperInstance && imageSwiperInstance.autoplay) {
                     imageSwiperInstance.autoplay.start();
                 }
-            }, 300);
+            }, 100);
+            
+            // Store instance
+            this.imageSwiperInstances[projectId] = imageSwiperInstance;
             
         } catch (error) {
             console.error('Error initializing image swiper:', error);
         }
     },
     
-    // ✅ New helper method for dot handlers
-    setupImageDotsHandlers: function(imageContainer, imageSwiper) {
-        const dots = imageContainer.querySelectorAll('.image-dot');
-        dots.forEach(dot => {
-            dot.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const index = parseInt(e.currentTarget.dataset.index);
-                if (!isNaN(index)) {
-                    imageSwiper.slideToLoop(index);
-                    this.updateImageDots(imageContainer, index);
-                }
-            });
-        });
-    },
-    
-    setupImageScrollHandlers: function() {
-        if (!this.swiperInstance) return;
-        
-        const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
-        if (!activeSlide) return;
-        
-        const imageContainer = activeSlide.querySelector('.project-images-container');
-        if (!imageContainer) return;
-        
-        const projectId = activeSlide.dataset.projectId;
-        const imageSwiper = this.imageSwiperInstances[projectId];
-        
-        if (!imageSwiper) return;
-        
-        // تنظيف المستمعات القديمة
-        const newImageContainer = imageContainer.cloneNode(true);
-        imageContainer.parentNode.replaceChild(newImageContainer, imageContainer);
-        
-        // الحصول على imageContainer الجديد
-        const currentImageContainer = activeSlide.querySelector('.project-images-container');
-        
-        // إعادة الحصول على imageSwiper
-        const currentImageSwiper = this.imageSwiperInstances[projectId];
-        
-        if (!currentImageSwiper) return;
-        
-        // إضافة مستمعات الأحداث للنقاط
-        const dots = currentImageContainer.querySelectorAll('.image-dot');
-        dots.forEach(dot => {
-            dot.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const index = parseInt(e.currentTarget.dataset.index);
-                currentImageSwiper.slideTo(index);
-                this.updateImageDots(currentImageContainer, index);
-            });
-        });
-    },
-    
-    updateImageDots: function(imageContainer, activeIndex) {
-        const dots = imageContainer.querySelectorAll('.image-dot');
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === activeIndex);
-        });
-    },
-    
     closePopup: function() {
         console.log('🔴 Closing IoT popup');
         
         this.navigationLock = false;
-        this.isImageInteracting = false;
         this.isModalOpen = false;
         
+        // Stop and destroy all image swipers
         Object.values(this.imageSwiperInstances).forEach(swiper => {
             if (swiper && !swiper.destroyed) {
+                // Stop autoplay first
+                if (swiper.autoplay) {
+                    swiper.autoplay.stop();
+                }
+                // Then destroy
                 swiper.destroy(true, true);
             }
         });
         this.imageSwiperInstances = {};
         
+        // Destroy main swiper
         if (this.swiperInstance) {
             this.swiperInstance.destroy(true, true);
             this.swiperInstance = null;
@@ -783,12 +738,12 @@ const IoTProjectsManager = {
     }
 };
 
-// التهيئة عند تحميل DOM
+// Initialize on DOM load
 document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('iot-projects')) {
         IoTProjectsManager.init();
     }
 });
 
-// جعل المدير متاحًا عالميًا
+// Make manager globally available
 window.IoTProjectsManager = IoTProjectsManager;

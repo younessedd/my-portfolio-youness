@@ -1,5 +1,5 @@
 /* ============================================
-   IOT PROJECTS SECTION - EXACT SAME AS WEB APPS
+   IOT PROJECTS SECTION - CLEAN MODERN STYLE
 ============================================ */
 
 /* IOT PROJECTS SECTION CONTAINER */
@@ -32,7 +32,7 @@
     margin-right: auto;
 }
 
-/* IOT PROJECTS NAVIGATION BUTTONS - 4 BUTTONS LAYOUT */
+/* IOT PROJECTS NAVIGATION BUTTONS */
 #iot-projects .skills-nav {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -220,7 +220,7 @@
     box-shadow: 0 10px 20px rgba(var(--primary-color-rgb), 0.3);
 }
 
-/* IOT PROJECTS SWIPER */
+/* IOT PROJECTS MAIN SWIPER */
 #iotSwiper {
     width: 100%;
     height: 100%;
@@ -295,7 +295,7 @@
 }
 
 /* ============================================
-   PROJECT IMAGES - EXACT SAME AS WEB
+   IMAGE SWIPER - AUTO PLAY INFINITE STYLE
 ============================================ */
 #iotSwiper .project-images-container {
     width: 100%;
@@ -303,22 +303,10 @@
     margin-bottom: 2rem;
     border-radius: 15px;
     overflow: hidden;
-    border: 2px solid var(--border);
-    background: var(--background);
+    background: #000;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
 }
 
-#iotSwiper .project-images-container.image-scroll-active {
-    cursor: grab;
-}
-
-#iotSwiper .project-images-container.image-scroll-active:active {
-    cursor: grabbing;
-}
-
-/* Image Swiper Container */
 #iotSwiper .image-swiper {
     width: 100%;
     height: 100%;
@@ -329,130 +317,167 @@
     height: 100%;
 }
 
-#iotSwiper .image-slide {
+#iotSwiper .image-swiper .swiper-slide {
+    background: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+/* SMOOTH AUTO-PLAY ANIMATION */
+#iotSwiper .image-swiper.swiper-container-autoplay .swiper-slide {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* CENTERED SLIDES FOR INFINITE EFFECT */
+#iotSwiper .image-swiper .swiper-slide-active {
+    transform: scale(1);
+    z-index: 2;
+}
+
+#iotSwiper .image-swiper .swiper-slide-prev,
+#iotSwiper .image-swiper .swiper-slide-next {
+    transform: scale(0.95);
+    opacity: 0.7;
+}
+
+#iotSwiper .project-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+#iotSwiper .image-swiper .swiper-slide-active .project-image {
+    transform: scale(1.02);
+}
+
+/* AUTO-PLAY INDICATOR (OPTIONAL) */
+#iotSwiper .autoplay-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
+
+#iotSwiper .autoplay-indicator i {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* SWIPER BUTTONS - CLEAN STYLE */
+#iotSwiper .swiper-button-next,
+#iotSwiper .swiper-button-prev {
+    width: 50px;
+    height: 50px;
+    
+    border-radius: 50%;
+    
+    transition: all 0.3s ease;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+    z-index: 20;
+}
+
+#iotSwiper .swiper-button-next:after,
+#iotSwiper .swiper-button-prev:after {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+#iotSwiper .swiper-button-next:hover,
+#iotSwiper .swiper-button-prev:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+#iotSwiper .swiper-button-prev {
+    left: 15px;
+}
+
+#iotSwiper .swiper-button-next {
+    right: 15px;
+}
+
+/* SWIPER PAGINATION - CLEAN STYLE */
+#iotSwiper .swiper-pagination {
+    bottom: 10px !important;
+    z-index: 20;
+}
+
+#iotSwiper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+    transition: all 0.3s ease;
+    margin: 0 5px !important;
+}
+
+#iotSwiper .swiper-pagination-bullet-active {
+    background: white;
+    transform: scale(1.3);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Dynamic bullets for infinite effect */
+#iotSwiper .swiper-pagination-bullets-dynamic {
+    overflow: hidden;
+}
+
+/* NO IMAGES PLACEHOLDER */
+#iotSwiper .no-image-placeholder {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    background: var(--background);
 }
 
-/* IMAGE TAKES 100% OF CONTAINER - COVER */
-#iotSwiper .project-image {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    border-radius: 12px;
-    display: block;
-}
-
-/* Image Navigation Dots (Hidden by default, shown on hover) */
-#iotSwiper .image-nav-dots {
-    position: absolute;
-    bottom: 15px;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    z-index: 10;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    padding: 8px;
-}
-
-#iotSwiper .project-images-container:hover .image-nav-dots {
-    opacity: 1;
-}
-
-#iotSwiper .image-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.8);
-}
-
-#iotSwiper .image-dot:hover {
-    background: white;
-    transform: scale(1.2);
-}
-
-#iotSwiper .image-dot.active {
-    background: white;
-    transform: scale(1.2);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-}
-
-/* Image Swiper Navigation Buttons */
-#iotSwiper .image-swiper-button-next,
-#iotSwiper .image-swiper-button-prev {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid var(--primary-color);
+#iotSwiper .no-image-placeholder i {
+    font-size: 4rem;
+    opacity: 0.3;
     color: var(--primary-color);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
     transition: all 0.3s ease;
-    opacity: 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-#iotSwiper .image-swiper-button-next {
-    right: 15px;
+#iotSwiper .no-image-placeholder:hover i {
+    transform: scale(1.1);
+    opacity: 0.4;
 }
 
-#iotSwiper .image-swiper-button-prev {
-    left: 15px;
-}
-
-#iotSwiper .project-images-container:hover .image-swiper-button-next,
-#iotSwiper .project-images-container:hover .image-swiper-button-prev {
-    opacity: 1;
-}
-
-#iotSwiper .image-swiper-button-next:hover,
-#iotSwiper .image-swiper-button-prev:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-}
-
-#iotSwiper .image-swiper-button-next:active,
-#iotSwiper .image-swiper-button-prev:active {
-    transform: translateY(-50%) scale(0.95);
-}
-
-#iotSwiper .image-swiper-button-next i,
-#iotSwiper .image-swiper-button-prev i {
-    font-size: 1.2rem;
-}
-
-/* إزالة Pagination بالكامل */
-#iotSwiper .image-pagination,
-#iotSwiper .swiper-pagination,
-#iotSwiper .swiper-pagination-bullets,
-#iotSwiper .swiper-pagination-horizontal,
-#iotSwiper .swiper-pagination-clickable,
-#iotSwiper .swiper-pagination-bullets-dynamic {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
+#iotSwiper .no-image-placeholder span {
+    font-size: 1.1rem;
+    opacity: 0.6;
+    font-weight: 500;
 }
 
 /* ============================================
-   TECH TAGS - EXACT SAME FULL COLOR STYLE
+   TECH TAGS - CLEAN STYLE
 ============================================ */
 #iotSwiper .tech-tags-container {
     display: flex;
@@ -506,23 +531,8 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* IoT Tech Tag Colors - Full Color */
-#iotSwiper .tech-tag.arduino { background: #00979D; color: white !important; }
-#iotSwiper .tech-tag.esp32 { background: #5C2D91; color: white !important; }
-#iotSwiper .tech-tag.esp8266 { background: #005F73; color: white !important; }
-#iotSwiper .tech-tag.raspberry-pi { background: #C51A4A; color: white !important; }
-#iotSwiper .tech-tag.mqtt { background: #660066; color: white !important; }
-#iotSwiper .tech-tag.bluetooth { background: #0082FC; color: white !important; }
-#iotSwiper .tech-tag.wifi { background: #FF6B00; color: white !important; }
-#iotSwiper .tech-tag.lora { background: #00A8E8; color: white !important; }
-#iotSwiper .tech-tag.sensors { background: #8E24AA; color: white !important; }
-#iotSwiper .tech-tag.plc { background: #00695C; color: white !important; }
-#iotSwiper .tech-tag.scada { background: #2E7D32; color: white !important; }
-#iotSwiper .tech-tag.iot { background: #00BCD4; color: white !important; }
-#iotSwiper .tech-tag.automation { background: #FF9800; color: black !important; }
-
 /* ============================================
-   FEATURES LIST - EXACT SAME COLORED STYLE
+   FEATURES LIST - CLEAN STYLE
 ============================================ */
 #iotSwiper .skill-set-features {
     background: linear-gradient(135deg, 
@@ -605,37 +615,6 @@
     margin-top: 0.1rem;
 }
 
-/* ALTERNATING COLORS FOR FEATURES - SAME AS WEB */
-#iotSwiper .features-list li:nth-child(1) {
-    border-left-color: #4f46e5;
-    background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(79, 70, 229, 0.05));
-}
-
-#iotSwiper .features-list li:nth-child(2) {
-    border-left-color: #06b6d4;
-    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.05));
-}
-
-#iotSwiper .features-list li:nth-child(3) {
-    border-left-color: #10b981;
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
-}
-
-#iotSwiper .features-list li:nth-child(4) {
-    border-left-color: #f59e0b;
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
-}
-
-#iotSwiper .features-list li:nth-child(5) {
-    border-left-color: #ef4444;
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
-}
-
-#iotSwiper .features-list li:nth-child(6) {
-    border-left-color: #8b5cf6;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05));
-}
-
 #iotSwiper .features-list li:hover {
     transform: translateX(5px);
     background: linear-gradient(135deg, 
@@ -704,7 +683,7 @@
 /* IOT PROJECTS CARD NAVIGATION */
 #iot-card-navigation {
     position: absolute;
-    top: 50%;
+    top: 95%;
     left: 0;
     right: 0;
     transform: translateY(-50%);
@@ -762,40 +741,8 @@
     color: var(--text);
 }
 
-/* NO IMAGES PLACEHOLDER */
-#iotSwiper .no-image-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 1.5rem;
-    color: var(--text-secondary);
-    font-style: italic;
-    background: var(--background);
-}
-
-#iotSwiper .no-image-placeholder i {
-    font-size: 4rem;
-    opacity: 0.3;
-    color: var(--primary-color);
-    transition: all 0.3s ease;
-}
-
-#iotSwiper .no-image-placeholder:hover i {
-    transform: scale(1.1);
-    opacity: 0.4;
-}
-
-#iotSwiper .no-image-placeholder span {
-    font-size: 1.1rem;
-    opacity: 0.6;
-    font-weight: 500;
-}
-
 /* ============================================
-   RESPONSIVE DESIGN - EXACT SAME AS WEB
+   RESPONSIVE DESIGN
 ============================================ */
 
 /* Tablet Styles */
@@ -818,13 +765,10 @@
         height: 350px;
     }
     
-    #iotSwiper .tech-tags-container {
-        gap: 0.8rem;
-    }
-    
-    #iotSwiper .tech-tag {
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
+    #iotSwiper .swiper-button-next,
+    #iotSwiper .swiper-button-prev {
+        width: 45px;
+        height: 45px;
     }
 }
 
@@ -877,6 +821,12 @@
         margin-bottom: 1.5rem;
     }
     
+    #iotSwiper .swiper-button-next,
+    #iotSwiper .swiper-button-prev {
+        width: 40px;
+        height: 40px;
+    }
+    
     #iotSwiper .project-links-top {
         flex-direction: column;
         align-items: center;
@@ -898,11 +848,6 @@
         padding: 0.5rem 0.8rem;
         font-size: 0.8rem;
     }
-    
-    #iotSwiper .features-list li {
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
-    }
 }
 
 /* Small Mobile */
@@ -923,14 +868,6 @@
     #iot-projects .skill-nav-btn {
         padding: 1rem;
         height: 110px;
-    }
-    
-    #iot-projects .skill-nav-btn i {
-        font-size: 2rem;
-    }
-    
-    #iot-projects .skill-nav-btn span {
-        font-size: 1rem;
     }
     
     #iot-swiper-container .popup-content {
@@ -956,32 +893,18 @@
         margin-bottom: 1.2rem;
     }
     
-    #iotSwiper .project-link {
-        padding: 0.8rem 1.2rem;
-        font-size: 0.9rem;
+    #iotSwiper .swiper-button-next,
+    #iotSwiper .swiper-button-prev {
+        width: 35px;
+        height: 35px;
     }
     
-    #iotSwiper .tech-tags-container {
-        gap: 0.5rem;
+    #iotSwiper .swiper-button-prev {
+        left: 10px;
     }
     
-    #iotSwiper .tech-tag {
-        padding: 0.4rem 0.7rem;
-        font-size: 0.75rem;
-    }
-    
-    #iotSwiper .skill-set-features {
-        padding: 1.2rem;
-        margin-top: 1.5rem;
-    }
-    
-    #iotSwiper .features-title {
-        font-size: 1.1rem;
-    }
-    
-    #iotSwiper .features-list li {
-        font-size: 0.9rem;
-        padding: 0.6rem 0.8rem;
+    #iotSwiper .swiper-button-next {
+        right: 10px;
     }
 }
 
@@ -995,8 +918,20 @@
     #iotSwiper .project-images-container {
         height: 220px;
     }
-    
-    #iotSwiper .project-info {
-        padding: 1.2rem;
+}
+
+/* AUTO-PLAY ANIMATIONS */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
     }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#iotSwiper .image-swiper .swiper-slide-active {
+    animation: slideIn 0.8s ease-out;
 }

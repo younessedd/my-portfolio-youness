@@ -1,8 +1,9 @@
 /* ============================================
    header.css - Header Styles
+   Fixed: Removed transitions and fixed mobile menu
    ============================================ */
 
-/* Header - إزالة جميع الانتقالات */
+/* Header - بدون انتقالات */
 header {
     position: fixed;
     top: 0;
@@ -13,7 +14,6 @@ header {
     box-shadow: var(--shadow);
     padding: 0;
     height: 70px;
-    /* إزالة transition تمامًا */
     transform: translateY(0);
 }
 
@@ -96,33 +96,9 @@ header {
     width: 100%;
 }
 
-/* Theme Toggle */
-.theme-toggle {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 1.3rem;
-    transition: all 0.3s ease;
-    margin-left: 2rem;
-    color: var(--text-secondary);
-}
-
-.theme-toggle:hover {
-    transform: rotate(30deg);
-    background: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
-}
-
-/* Burger Button - بدون transition */
+/* Burger Button - مرئي فقط على الجوال */
 .burger-btn {
-    display: none;
+    display: none; /* مخفي افتراضيًا */
     font-size: 1.5rem;
     cursor: pointer;
     background: var(--surface);
@@ -131,7 +107,6 @@ header {
     border-radius: var(--radius-md);
     align-items: center;
     justify-content: center;
-    /* إزالة transition */
     color: var(--text-secondary);
     border: 1px solid var(--border);
     z-index: 1001;
@@ -144,26 +119,25 @@ header {
     border-color: var(--primary-color);
 }
 
-/* Mobile Menu */
+/* Mobile Menu - مخفي افتراضيًا */
 .mobile-menu {
+    display: none; /* مخفي افتراضيًا */
     position: fixed;
-    top: 0;
-    right: 0;
-    width: 300px;
-    height: 100vh;
+    top: 70px;
+    left: 0;
+    width: 100%;
     background: var(--surface);
     box-shadow: var(--shadow-xl);
-    z-index: 1000;
-    transform: translateX(100%);
-    transition: transform 0.25s ease;
+    z-index: 999;
+    max-height: calc(100vh - 70px);
     overflow-y: auto;
-    padding: 90px 25px 30px;
-    visibility: hidden;
+    padding: 20px;
+    border-top: 1px solid var(--border);
 }
 
+/* Mobile Menu عندما يكون نشطًا */
 .mobile-menu.active {
-    transform: translateX(0);
-    visibility: visible;
+    display: block; /* يظهر فقط عندما يكون نشطًا */
 }
 
 .mobile-nav {
@@ -197,76 +171,24 @@ header {
     border-color: var(--primary-color);
 }
 
-/* Mobile Theme Toggle */
-.mobile-theme-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 20px;
-    background: var(--background);
-    border-radius: var(--radius-md);
-    margin-top: 2rem;
-    cursor: pointer;
-    color: var(--text);
-    transition: all 0.3s ease;
-    border: 1px solid var(--border);
-    text-decoration: none;
-}
-
-.mobile-theme-toggle:hover {
-    background: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
-    transform: translateX(5px);
-}
-
-.mobile-theme-toggle span {
-    font-weight: 600;
-    font-size: 1rem;
-}
-
-.mobile-theme-toggle i {
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
-}
-
-.mobile-theme-toggle:hover i {
-    transform: rotate(30deg);
-}
-
-/* ============================================
-   إصلاحات خاصة
-============================================ */
-/* إجبار العناصر على الظهور بدون تأخير */
-.burger-btn,
-.theme-toggle,
-.mobile-theme-toggle {
-    animation: none !important;
-}
-
-/* التأكد من أن الرأس ثابت دائمًا */
-header {
-    animation: none !important;
-}
-
 /* ============================================
    RESPONSIVE DESIGN
 ============================================ */
 
 @media (max-width: 768px) {
+    /* إظهار زر البرجر وإخفاء التنقل المكتبي */
     .burger-btn {
-        display: flex !important; /* إجبار الظهور */
+        display: flex !important; /* إجبار الظهور على الجوال */
         opacity: 1 !important;
         visibility: visible !important;
     }
     
     .desktop-nav {
-        display: none;
+        display: none; /* إخفاء التنقل المكتبي */
     }
     
-    .mobile-menu {
-        display: block;
-    }
+    /* ملاحظة: .mobile-menu لا نجعله display: block هنا */
+    /* سيكون مخفيًا افتراضيًا ويظهر فقط بـ .active class */
     
     header {
         height: 65px;
@@ -278,6 +200,10 @@ header {
     
     .logo {
         font-size: 1.6rem;
+    }
+    
+    .mobile-menu {
+        top: 65px; /* يتناسب مع ارتفاع الرأس */
     }
 }
 
@@ -297,7 +223,7 @@ header {
     }
     
     .mobile-menu {
-        width: 100%;
-        padding: 80px 20px 25px;
+        top: 60px;
+        padding: 15px;
     }
 }
