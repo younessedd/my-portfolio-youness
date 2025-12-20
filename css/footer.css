@@ -1,5 +1,5 @@
 /* ============================================
-   footer.css - Modern Footer Styles
+   footer.css - Modern Footer Styles - FULL RESPONSIVE CENTERING
    ============================================ */
 
 /* Main footer container */
@@ -8,36 +8,48 @@ footer {
     color: var(--text-secondary);
     padding: 5rem 2rem 2rem;
     border-top: 1px solid var(--border);
+    width: 100%;
+    overflow-x: hidden;
 }
 
+/* Footer container with full width centering */
 footer .container {
-    max-width: 1200px;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 3rem;
+    text-align: center;
 }
 
-/* Footer top section with logo and social links */
+/* Footer top section with logo and social links - CENTERED */
 .footer-top {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
     width: 100%;
     padding-bottom: 3rem;
     border-bottom: 1px solid var(--border);
+    text-align: center;
 }
 
 .footer-logo .logo {
     font-size: 2.5rem;
     font-weight: 700;
+    text-align: center;
 }
 
 .footer-social-icons {
     display: flex;
     gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .footer-social-icon {
@@ -59,35 +71,96 @@ footer .container {
     transform: translateY(-5px) scale(1.1);
 }
 
-/* Footer main content grid */
+/* Footer main content grid - RESPONSIVE CENTERING */
 .footer-main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2.5rem;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
+    justify-items: center;
+    text-align: center;
 }
 
+/* Desktop layout - 4 columns centered */
 @media (min-width: 1200px) {
     .footer-main {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+        text-align: center;
     }
 }
 
-@media (max-width: 767px) {
+/* Tablet layout - 2 columns centered */
+@media (min-width: 768px) and (max-width: 1199px) {
     .footer-main {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
         text-align: center;
         gap: 2rem;
     }
 }
 
+/* Mobile layout - 1 column centered */
+@media (max-width: 767px) {
+    .footer-main {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+        justify-items: center;
+        width: 100%;
+        padding: 0 1rem;
+    }
+    
+    footer .container {
+        padding: 0 1rem;
+    }
+    
+    footer {
+        padding: 3rem 1rem 1.5rem;
+    }
+}
+
+/* Small mobile layout */
+@media (max-width: 480px) {
+    .footer-main {
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    footer .container {
+        padding: 0 0.5rem;
+    }
+    
+    footer {
+        padding: 2rem 0.5rem 1rem;
+    }
+    
+    .footer-social-icons {
+        gap: 1rem;
+    }
+    
+    .footer-social-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Footer columns - CENTERED ACROSS ALL SCREENS */
 .footer-column {
     padding: 1.5rem;
     border-radius: var(--radius-md);
     background: var(--background);
     transition: var(--transition);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
 }
 
 .footer-column:hover {
@@ -102,6 +175,7 @@ footer .container {
     margin-bottom: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-align: center;
 }
 
 .footer-column ul {
@@ -109,10 +183,16 @@ footer .container {
     padding: 0;
     margin: 0;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer-column li {
     margin-bottom: 1rem;
+    text-align: center;
+    width: 100%;
 }
 
 .footer-column a {
@@ -121,8 +201,11 @@ footer .container {
     transition: var(--transition);
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.75rem;
     font-size: 1.05rem;
+    text-align: center;
+    width: 100%;
 }
 
 .footer-column a:hover {
@@ -133,15 +216,17 @@ footer .container {
 .footer-column .contact-info-footer i {
     width: 25px;
     font-size: 1.2rem;
+    text-align: center;
 }
 
 .footer-column p {
     font-size: 1.05rem;
     line-height: 1.7;
     text-align: center;
+    margin: 0;
 }
 
-/* Footer bottom section */
+/* Footer bottom section - CENTERED */
 .footer-bottom {
     width: 100%;
     text-align: center;
@@ -149,4 +234,54 @@ footer .container {
     margin-top: 2rem;
     border-top: 1px solid var(--border);
     font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Mobile responsive footer adjustments */
+@media (max-width: 768px) {
+    .footer-column {
+        max-width: 100%;
+        padding: 1rem;
+    }
+    
+    .footer-column h3 {
+        font-size: 1.3rem;
+    }
+    
+    .footer-column a {
+        font-size: 1rem;
+    }
+    
+    .footer-bottom {
+        font-size: 0.9rem;
+        padding-top: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-column {
+        padding: 0.8rem;
+    }
+    
+    .footer-column h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .footer-column a {
+        font-size: 0.95rem;
+        gap: 0.5rem;
+    }
+    
+    .footer-column li {
+        margin-bottom: 0.8rem;
+    }
+    
+    .footer-bottom {
+        font-size: 0.85rem;
+        padding-top: 1.5rem;
+    }
 }

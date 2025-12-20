@@ -89,7 +89,7 @@
 }
 
 /* ============================================
-   RESET & BASE
+   RESET & BASE - MOBILE FIRST APPROACH
 ============================================ */
 * {
     margin: 0;
@@ -100,6 +100,8 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
+    /* Prevent horizontal scroll */
+    overflow-x: hidden;
 }
 
 body {
@@ -109,10 +111,28 @@ body {
     line-height: 1.5;
     transition: background-color 0.3s ease, color 0.3s ease;
     min-height: 100vh;
+    /* Prevent horizontal scroll on mobile */
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+}
+
+/* Mobile-first base styles */
+@media (max-width: 768px) {
+    body {
+        width: 100vw;
+        overflow-x: hidden;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+    }
+    
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
 }
 
 /* ============================================
-   SECTIONS TAKE FULL VIEWPORT HEIGHT
+   SECTIONS TAKE FULL VIEWPORT HEIGHT - RESPONSIVE FIXES
 ============================================ */
 section {
     width: 100%;
@@ -133,6 +153,21 @@ section .container {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+/* Ensure full width on mobile */
+@media (max-width: 768px) {
+    section {
+        width: 100vw;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    section .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 1rem;
+    }
 }
 
 /* ============================================
@@ -230,7 +265,7 @@ p {
 }
 
 /* ============================================
-   SKILLS NAVIGATION BUTTONS
+   SKILLS NAVIGATION BUTTONS - RESPONSIVE FIXES
 ============================================ */
 .skills-nav {
     display: flex;
@@ -240,6 +275,7 @@ p {
     flex-wrap: wrap;
     max-width: 1000px;
     width: 100%;
+    padding: 0 1rem;
 }
 
 .skill-nav-btn {
@@ -260,6 +296,24 @@ p {
     text-align: center;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Mobile responsive navigation */
+@media (max-width: 768px) {
+    .skills-nav {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 0 1rem;
+    }
+    
+    .skill-nav-btn {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        min-height: 120px;
+    }
 }
 
 .skill-nav-btn:hover {
@@ -290,7 +344,7 @@ p {
 }
 
 /* ============================================
-   UNIFIED POPUP STYLES
+   UNIFIED POPUP STYLES - MOBILE RESPONSIVE
 ============================================ */
 .popup-container {
     position: fixed;
@@ -332,6 +386,34 @@ p {
     animation: popupAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     flex-direction: column;
+}
+
+/* Mobile popup fixes */
+@media (max-width: 768px) {
+    .popup-content {
+        width: 95%;
+        height: 90vh;
+        max-width: none;
+        top: 5vh;
+        left: 2.5%;
+        transform: none;
+        position: fixed;
+        border-radius: 20px;
+    }
+    
+    .popup-container.active .popup-content {
+        transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .popup-content {
+        width: 98%;
+        height: 95vh;
+        left: 1%;
+        top: 2.5vh;
+        border-radius: 15px;
+    }
 }
 
 /* Popup Header */

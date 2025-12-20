@@ -1,18 +1,42 @@
 /* Responsive Design */
 
 /* Tablet */
-@media (max-width: 1024px) {
+@media (max-width: 1024px) and (min-width: 769px) {
+    /* Ensure full width on tablets */
+    body {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 2rem;
+    }
+    
+    section {
+        width: 100vw;
+    }
+    
+    /* Tablet popup adjustments */
+    .popup-content {
+        width: 90%;
+        height: 85vh;
+        max-width: 900px;
+    }
+    
     section h2 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 
     .about-content {
         grid-template-columns: 1fr;
+        width: 100%;
     }
 
     .form-row {
         flex-direction: column;
-        gap: 0;
+        gap: 1rem;
     }
 
     /* Hide slider buttons in tablet */
@@ -24,6 +48,7 @@
     .hero-content h1 {
         font-size: 2.8rem;
         text-align: center;
+        padding: 0 2rem;
     }
 
     .hero-content p {
@@ -31,10 +56,26 @@
         text-align: center;
         padding: 0 2rem;
     }
+    
+    /* Navigation buttons for tablet */
+    .skills-nav {
+        padding: 0 2rem;
+    }
+    
+    .skill-nav-btn {
+        width: calc(50% - 1rem);
+        max-width: none;
+    }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
+    /* Ensure full width on mobile */
+    body {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+    
     header .desktop-nav {
         display: none;
     }
@@ -42,10 +83,42 @@
     header .burger-btn {
         display: flex;
     }
+    
+    /* Fix container for mobile */
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 1rem;
+        margin: 0;
+    }
+    
+    /* Ensure sections take full width */
+    section {
+        width: 100vw;
+        min-height: 100vh;
+        padding: 80px 0 40px;
+    }
+    
+    /* Fix popup containers for mobile */
+    .popup-content {
+        width: 95%;
+        height: 90vh;
+        max-width: none;
+        margin: 0;
+        top: 5vh;
+        left: 2.5%;
+        transform: none;
+        position: fixed;
+    }
+    
+    .popup-container.active .popup-content {
+        transform: none;
+    }
 
     .hero-content h1 {
         font-size: 2.5rem;
         text-align: center;
+        padding: 0 1rem;
     }
 
     .hero-content p {
@@ -63,16 +136,32 @@
     .skills-nav {
         flex-direction: column;
         align-items: center;
+        width: 100%;
+        padding: 0 1rem;
     }
 
     .skill-nav-btn {
         width: 100%;
         max-width: 350px;
+        height: auto;
+        min-height: 120px;
+    }
+    
+    /* Fix navigation buttons for mobile */
+    #web-apps .skill-nav-btn,
+    #mobile-apps .skill-nav-btn,
+    #iot-projects .skill-nav-btn {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        min-height: 120px;
+        margin-bottom: 1rem;
     }
 
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
+        width: 100%;
     }
 
     .footer-column h3 {
@@ -83,14 +172,72 @@
     .contact-info-footer {
         justify-content: center;
     }
+    
+    /* Fix contact form for mobile */
+    .contact-container {
+        width: 100%;
+        padding: 0 1rem;
+    }
+    
+    .form-group {
+        width: 100%;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
 
 /* Small Mobile */
 @media (max-width: 480px) {
+    /* Ensure full viewport width */
+    body {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 0.5rem;
+    }
+    
+    section {
+        width: 100vw;
+        padding: 60px 0 30px;
+    }
+    
+    /* Enhanced popup for small mobile */
+    .popup-content {
+        width: 98%;
+        height: 95vh;
+        left: 1%;
+        top: 2.5vh;
+        border-radius: 15px;
+    }
+    
+    .popup-header {
+        padding: 1rem;
+    }
+    
+    .popup-title {
+        font-size: 1.1rem;
+    }
+    
+    .project-info {
+        padding: 1rem;
+    }
+    
+    .project-images-container {
+        height: 250px;
+    }
+
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
         text-align: center;
         line-height: 1.3;
+        padding: 0 0.5rem;
     }
 
     .hero-content p {
@@ -103,6 +250,7 @@
         flex-direction: column;
         align-items: center;
         gap: 1rem;
+        padding: 0 1rem;
     }
 
     .hero-btns .btn {
@@ -112,16 +260,107 @@
     }
 
     section h2 {
+        font-size: 1.8rem;
+        text-align: center;
+        padding: 0 0.5rem;
+    }
+    
+    /* Navigation buttons for very small screens */
+    .skill-nav-btn {
+        width: 100%;
+        max-width: 300px;
+        min-height: 100px;
+        padding: 1rem;
+    }
+    
+    .skill-nav-btn i {
         font-size: 2rem;
+    }
+    
+    .skill-nav-btn span {
+        font-size: 0.9rem;
+    }
+    
+    /* Icon navigation for popups */
+    .popup-icon-nav {
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+    
+    .icon-nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    
+    /* FOOTER SMALL MOBILE CENTERING */
+    footer {
+        width: 100vw;
+        padding: 2rem 0.5rem 1rem;
+        overflow-x: hidden;
         text-align: center;
     }
-
-    .container {
-        padding: 0 1rem;
+    
+    footer .container {
+        width: 100%;
+        padding: 0 0.5rem;
+        text-align: center;
+    }
+    
+    .footer-main {
+        width: 100%;
+        gap: 1.5rem;
+        text-align: center;
+        justify-items: center;
+    }
+    
+    .footer-column {
+        width: 100%;
+        max-width: 100%;
+        padding: 0.8rem;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .footer-column h3 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    
+    .footer-column ul {
+        text-align: center;
+        align-items: center;
+    }
+    
+    .footer-column a {
+        font-size: 0.95rem;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .footer-social-icons {
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .footer-social-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+    
+    .footer-bottom {
+        font-size: 0.85rem;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        padding-top: 1.5rem;
     }
 }
 
-/* Center all app content in responsive view */
+/* Center all app content in responsive view - INCLUDING FOOTER */
 @media (max-width: 768px) {
     section {
         text-align: center;
@@ -156,5 +395,55 @@
     form {
         max-width: 100%;
         margin: 0 auto;
+    }
+    
+    /* FOOTER RESPONSIVE CENTERING */
+    footer {
+        width: 100vw;
+        overflow-x: hidden;
+        text-align: center;
+    }
+    
+    footer .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 1rem;
+        text-align: center;
+    }
+    
+    .footer-main {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+        width: 100%;
+    }
+    
+    .footer-column {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .footer-column ul {
+        text-align: center;
+        align-items: center;
+    }
+    
+    .footer-column a {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .footer-social-icons {
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .footer-bottom {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
     }
 }
