@@ -11,12 +11,11 @@ const WebProjectsManager = {
     navigationLock: false,
     isModalOpen: false,
     
-    categories: ['frontend', 'fullstack', 'responsive', 'othersweb'],
+    categories: ['frontend', 'backend', 'fullstack'],
     categoryNames: {
-        'frontend': 'Frontend Projects',
-        'fullstack': 'Fullstack Projects',
-        'responsive': 'Responsive Websites',
-        'othersweb': 'Other Web Projects'
+        'frontend': 'Frontend',
+        'backend': 'Backend',
+        'fullstack': 'Full Stack'
     },
     
     cardPositions: {},
