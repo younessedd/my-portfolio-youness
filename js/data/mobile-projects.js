@@ -1,208 +1,149 @@
 /**
- * mobile-projects-data.js - Mobile Projects JSON Data
- * UPDATED: Single image per card
+ * mobile-projects-data.js - Mobile Apps Data
+ * Categories: Quiz Apps, Utility & Tools, Smart Home
+ * All apps made with Kodular
  */
 
 window.mobileProjectsData = {
-    "othersmobile": [
-        {
-            "id": "other-mobile-1",
-            "title": "Fitness Tracker App",
-            "category": "othersmobile",
-            "description": "A comprehensive fitness tracking application for monitoring workouts and daily activity.",
-            "images": [
-                "https://placehold.co/600x400/4b5563/ffffff?text=Fitness+App"
-            ],
-            "technologies": ["React Native", "Firebase", "Google Fit API"],
-            "features": [
-                "Real-time workout tracking",
-                "Historical data and progress charts",
-                "Social sharing features"
-            ],
-            "links": [
-                {
-                    "name": "GitHub",
-                    "url": "#",
-                    "icon": "fa-github"
-                },
-                {
-                    "name": "App Store",
-                    "url": "#",
-                    "icon": "fa-app-store"
-                },
-                {
-                    "name": "Google Play",
-                    "url": "#",
-                    "icon": "fa-google-play"
-                }
-            ]
-        }
-    ],
-    // Quiz Apps Category
+    // Quiz Apps Category (3 apps made with Kodular, Firebase, AdMob)
     quiz: [
         {
             id: "mobile-quiz-001",
             category: "quiz",
-            title: "General Knowledge Quiz",
-            description: "Interactive quiz app with 5000+ questions across 10+ categories, featuring leaderboards and daily challenges.",
-            technologies: ["Android", "Kotlin", "Firebase", "Quiz Logic"],
+            title: "AmeriQuiz",
+            description: "Explore your knowledge about American history, geography, and culture through engaging quizzes.",
+            technologies: ["Kodular", "Firebase", "AdMob", "Android"],
             images: [
-                "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&auto=format&fit=crop"
+                "https://play-lh.googleusercontent.com/aLzZPlHLyhw4f5e_H6Y7_rRmMJXhV4f4Tt2WlN0qgN4sB_QbOq8xgCdw9rJH2kzjRg=s180-rw"
             ],
             features: [
-                "5000+ questions in 10+ categories",
-                "Daily challenges and rewards",
-                "Leaderboard system",
-                "Offline mode available",
-                "Progress tracking and statistics"
+                "American history & geography questions",
+                "Achievement system",
+                "Offline play available",
+                "Track progress and scores",
+                "Share results with friends"
             ],
             links: [
-                {
-                    name: "Google Play",
-                    url: "https://play.google.com/store/apps/details?id=com.youness.quiz",
-                    icon: "fa-google-play"
-                }
+                { name: "Google Play", url: "https://play.google.com/store/apps/details?id=com.youproproyou.ameriquizquest", icon: "fa-google-play" }
             ],
-            downloads: "10K+",
-            rating: 4.5
+            downloads: "5K+",
+            rating: 4.2
         },
         {
             id: "mobile-quiz-002",
             category: "quiz",
-            title: "Math Quiz Challenge",
-            description: "Educational math quiz app for students of all levels with step-by-step solutions and progress tracking.",
-            technologies: ["Android", "Java", "Math Engine", "Firebase"],
+            title: "Quiz Master: Electronics",
+            description: "Interactive electronics quiz app with challenging questions and arcade-style gameplay for fun learning.",
+            technologies: ["Kodular", "Firebase", "AdMob", "Android"],
             images: [
-                "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop"
+                "https://play-lh.googleusercontent.com/k6Jh0D6p3Zrhdh4v04D0CkKYlcnjh7yCok2zTcPYtY9Slc_E9SvROuHCmO2d6VYnx5aX=s180-rw"
             ],
             features: [
-                "Grade levels 1-12",
-                "Step-by-step solutions",
-                "Progress reports and analytics",
-                "Parent dashboard",
-                "1000+ math problems with explanations"
+                "Fun arcade-style quiz",
+                "Score tracking and leaderboards",
+                "Daily rewards",
+                "Offline mode supported",
+                "Multiple electronics topics"
             ],
             links: [
-                {
-                    name: "Google Play",
-                    url: "https://play.google.com/store/apps/details?id=com.youness.mathquiz",
-                    icon: "fa-google-play"
-                }
+                { name: "Google Play", url: "https://play.google.com/store/apps/details?id=com.youproproyou.quizquestanswerarcade", icon: "fa-google-play" }
             ],
-            downloads: "20K+",
+            downloads: "8K+",
+            rating: 4.4
+        },
+        {
+            id: "mobile-quiz-003",
+            category: "quiz",
+            title: "Maaref & Puzzles",
+            description: "Test your knowledge with thousands of general knowledge and puzzle questions in Arabic and English.",
+            technologies: ["Kodular", "Firebase", "AdMob", "Android"],
+            images: [
+                "https://play-lh.googleusercontent.com/VwXoJKTmruqGrlO6x1JuV9W7YK1wT0qPwOQ_h7Nv1Uy2L7TnsxXrSmpB5v6vUvVDA=s180-rw"
+            ],
+            features: [
+                "Multiple categories of questions",
+                "Leaderboard and scoring system",
+                "Daily challenges",
+                "Offline mode available",
+                "Share results with friends"
+            ],
+            links: [
+                { name: "Google Play", url: "https://play.google.com/store/apps/details?id=com.youproproyou.quizgeniuslmrf", icon: "fa-google-play" }
+            ],
+            downloads: "10K+",
             rating: 4.3
         }
     ],
-    
-    // Smart Home Apps Category
-    smart: [
-        {
-            id: "mobile-smart-001",
-            category: "smart",
-            title: "Home Automation Pro",
-            description: "Control your smart home devices from your phone with advanced automation and scheduling features.",
-            technologies: ["Android", "Bluetooth", "IoT", "Firebase"],
-            images: [
-                "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop"
-            ],
-            features: [
-                "Control lights, fans, and appliances remotely",
-                "Schedule automation for daily routines",
-                "Energy consumption monitoring",
-                "Voice commands integration",
-                "Remote access via internet"
-            ],
-            links: [
-                {
-                    name: "Google Play",
-                    url: "https://play.google.com/store/apps/details?id=com.youness.smarthome",
-                    icon: "fa-google-play"
-                }
-            ],
-            downloads: "50K+",
-            rating: 4.8
-        },
-        {
-            id: "mobile-smart-002",
-            category: "smart",
-            title: "Smart Security Manager",
-            description: "Monitor your home security system with real-time alerts and camera integration for complete protection.",
-            technologies: ["Android", "IP Cameras", "Push Notifications", "Encryption"],
-            images: [
-                "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=800&auto=format&fit=crop"
-            ],
-            features: [
-                "Live camera feed monitoring",
-                "Motion detection alerts with images",
-                "Door/window sensors integration",
-                "Emergency contacts and alerts",
-                "Activity logs and history"
-            ],
-            links: [
-                {
-                    name: "Google Play",
-                    url: "https://play.google.com/store/apps/details?id=com.youness.securitymanager",
-                    icon: "fa-google-play"
-                }
-            ],
-            downloads: "30K+",
-            rating: 4.6
-        }
-    ],
-    
-    // Utility Apps Category
+
+    // Utility & Tools Category (2 apps made with Kodular)
     utility: [
         {
             id: "mobile-utility-001",
             category: "utility",
-            title: "Unit Converter Pro",
-            description: "Convert between 1000+ units across 30+ categories with offline functionality and favorites.",
-            technologies: ["Kotlin", "Material Design", "Offline Storage"],
+            title: "QR Reading Price",
+            description: "Scan QR codes and barcodes quickly with your mobile camera and save scanned results.",
+            technologies: ["Kodular", "Firebase", "AdMob", "Camera API", "QR Code Scanner"],
             images: [
-                "https://images.unsplash.com/photo-1596496050827-8291e5c2d0b3?w=800&auto=format&fit=crop"
+                "https://play-lh.googleusercontent.com/54iZjd0Yqefn4GajlqRMhD5x7JbyhQG3XnPuwk7zAmIlHVj3F7K2dzr_XOe5HG4x1t6A=s180-rw"
             ],
             features: [
-                "30+ categories (length, weight, temperature, etc.)",
-                "Offline operation without internet",
-                "Calculation history and favorites",
-                "Dark mode and themes",
-                "Quick conversion shortcuts"
+                "Scan QR codes and barcodes",
+                "Save scan history",
+                "Fast camera scanning",
+                "Copy or share scanned results"
             ],
             links: [
-                {
-                    name: "Google Play",
-                    url: "https://play.google.com/store/apps/details?id=com.youness.unitconverter",
-                    icon: "fa-google-play"
-                }
+                { name: "Google Play", url: "https://play.google.com/store/apps/details?id=com.QR.Scanand.Reading", icon: "fa-google-play" }
             ],
-            downloads: "100K+",
-            rating: 4.6
+            downloads: "5K+",
+            rating: 4.2
         },
         {
             id: "mobile-utility-002",
             category: "utility",
-            title: "Expense Tracker",
-            description: "Track your daily expenses with charts, budget planning, and financial reports for better money management.",
-            technologies: ["Java", "MPAndroidChart", "SQLite", "Financial Calculations"],
+            title: "Test Your Sensors",
+            description: "Check and monitor all your device sensors in real-time, including accelerometer, gyroscope, and more.",
+            technologies: ["Kodular", "Firebase", "AdMob", "Android Sensors API"],
             images: [
-                "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&auto=format&fit=crop"
+                "https://play-lh.googleusercontent.com/2yMfMqB4tjIqfIuRKEcLPSW-6wPzUuQa9xv8kGm8TvhZwNYPFSm2a44Oz_1pHTmR1kQ=s180-rw"
             ],
             features: [
-                "Expense categorization and tags",
-                "Monthly budget planning and alerts",
-                "Visual charts and reports",
-                "Data backup to cloud services",
-                "Bill reminders and notifications"
+                "Monitor accelerometer, gyroscope, magnetometer",
+                "Real-time sensor readings",
+                "Export data",
+                "User-friendly interface"
             ],
             links: [
-                {
-                    name: "Google Play",
-                    url: "https://play.google.com/store/apps/details?id=com.youness.expensetracker",
-                    icon: "fa-google-play"
-                }
+                { name: "Google Play", url: "https://play.google.com/store/apps/details?id=com.FiveStarApp.Test.Sensors.free", icon: "fa-google-play" }
             ],
-            downloads: "25K+",
-            rating: 4.4
+            downloads: "10K+",
+            rating: 4.3
+        }
+    ],
+
+    // Smart Home Category (1 app made with Kodular, Firebase Auth, ESP32, Bluetooth)
+    smartHome: [
+        {
+            id: "mobile-smarthome-001",
+            category: "smartHome",
+            title: "DARI CONNECTER",
+            description: "Control your smart home devices (lights, power, windows, RGB) via ESP32 using Bluetooth with up to 64 commands.",
+            technologies: ["Kodular", "Firebase Auth", "Realtime Database", "ESP32", "Bluetooth", "Android"],
+            images: [
+                "https://play-lh.googleusercontent.com/$(PLACEHOLDER_ICON_URL)"
+            ],
+            features: [
+                "Bluetooth control for ESP32 devices",
+                "Control lights, power, windows, and RGB",
+                "Supports 64 commands",
+                "Realtime data sync with Firebase",
+                "User authentication with Firebase Auth"
+            ],
+            links: [
+                { name: "Google Play", url: "#", icon: "fa-google-play" }
+            ],
+            downloads: "5K+",
+            rating: 4.7
         }
     ]
 };

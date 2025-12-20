@@ -101,16 +101,38 @@
 /* MOBILE APPS NAVIGATION BUTTONS */
 #mobile-apps .skills-nav {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 220px);
     gap: 1.5rem;
     margin: 3rem auto 0;
-    max-width: 900px;
+    max-width: 800px;
+    justify-content: center;
+    justify-items: center;
 }
 
-@media (min-width: 768px) {
-    #mobile-apps .skills-nav {
-        grid-template-columns: repeat(4, 1fr);
-    }
+/* For 1 button - center it */
+#mobile-apps .skills-nav:has(:only-child) {
+    grid-template-columns: 220px;
+    justify-content: center;
+}
+
+/* For 2 buttons - center them */
+#mobile-apps .skills-nav:has(:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, 220px);
+    justify-content: center;
+    max-width: 500px;
+}
+
+/* For 3 buttons - current layout */
+#mobile-apps .skills-nav:has(:nth-child(3):last-child) {
+    grid-template-columns: repeat(3, 220px);
+    justify-content: center;
+}
+
+/* For 4 buttons - wider layout */
+#mobile-apps .skills-nav:has(:nth-child(4):last-child) {
+    grid-template-columns: repeat(4, 220px);
+    justify-content: center;
+    max-width: 1000px;
 }
 
 #mobile-apps .skill-nav-btn {

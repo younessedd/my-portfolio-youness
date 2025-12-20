@@ -337,15 +337,42 @@ p {
 /* ============================================
    SKILLS NAVIGATION BUTTONS - RESPONSIVE FIXES
 ============================================ */
-/* Skills Navigation - Responsive Grid Layout */
+/* Skills Navigation - Responsive Grid Layout with Auto-Centering */
 .skills-nav {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.5rem;
     margin: 3rem auto;
     max-width: 1000px;
     width: 100%;
     padding: 0 1rem;
+    justify-items: center; /* Center buttons within grid cells */
+}
+
+/* For 1 button - center it */
+.skills-nav:has(:only-child) {
+    grid-template-columns: 220px;
+    justify-content: center;
+}
+
+/* For 2 buttons - center them */
+.skills-nav:has(:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, 220px);
+    justify-content: center;
+    max-width: 500px;
+}
+
+/* For 3 buttons - current layout */
+.skills-nav:has(:nth-child(3):last-child) {
+    grid-template-columns: repeat(3, 220px);
+    justify-content: center;
+}
+
+/* For 4 buttons - current layout */
+.skills-nav:has(:nth-child(4):last-child) {
+    grid-template-columns: repeat(4, 220px);
+    justify-content: center;
+    max-width: 1000px;
 }
 
 /* Tablet - Show 2 buttons */

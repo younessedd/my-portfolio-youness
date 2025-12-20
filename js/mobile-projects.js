@@ -11,12 +11,11 @@ const MobileProjectsManager = {
     navigationLock: false,
     isModalOpen: false,
     
-    categories: ['quiz', 'smart', 'utility', 'othersmobile'],
+    categories: ['quiz', 'utility', 'smartHome'],
     categoryNames: {
         'quiz': 'Quiz Apps',
-        'smart': 'Smart Home Apps',
-        'utility': 'Utility Apps',
-        'othersmobile': 'Other Mobile Apps'
+        'utility': 'Utility & Tools',
+        'smartHome': 'Smart Home'
     },
     
     cardPositions: {},
