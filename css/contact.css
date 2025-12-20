@@ -32,6 +32,23 @@
     margin-top: 2rem;
 }
 
+/* Mobile contact-container 95% width */
+@media (max-width: 768px) {
+    .contact-container {
+        width: 95%;
+        margin: 2rem auto 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-container {
+        width: 95%;
+        margin: 2rem auto 0;
+        text-align: center;
+    }
+}
+
 .contact-form-wrapper {
     background: rgba(2, 6, 23, 0.8);
     backdrop-filter: blur(10px);
@@ -42,10 +59,39 @@
         0 20px 40px rgba(0, 0, 0, 0.3),
         0 0 60px rgba(16, 185, 129, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    width: 100%;
-    max-width: 800px;
+    width: 95%;
+    max-width: none;
     position: relative;
     z-index: 1;
+    margin: 0 auto;
+}
+
+/* Responsive contact form wrapper - 95% width maintained across all sizes */
+@media (max-width: 1024px) {
+    .contact-form-wrapper {
+        width: 95%;
+        max-width: none;
+        margin: 0 auto;
+        padding: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-form-wrapper {
+        width: 95%;
+        max-width: none;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form-wrapper {
+        width: 95%;
+        max-width: none;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
 }
 
 .contact-form-wrapper h3 {

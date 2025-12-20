@@ -84,6 +84,20 @@
         max-width: none;
         text-align: center;
     }
+    
+    /* Contact form wrapper 95% width for tablet */
+    .contact-form-wrapper {
+        width: 95%;
+        max-width: none;
+        margin: 0 auto;
+        padding: 2.5rem;
+        text-align: center;
+    }
+    
+    .contact-container {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 /* Mobile - WITH BODY CENTERING */
@@ -214,10 +228,18 @@
         align-items: center;
     }
     
-    /* Fix contact form for mobile */
+    /* Fix contact form for mobile with 95% width */
     .contact-container {
         width: 100%;
         padding: 0 1rem;
+        text-align: center;
+    }
+    
+    .contact-form-wrapper {
+        width: 95%;
+        max-width: none;
+        margin: 0 auto;
+        padding: 2rem;
         text-align: center;
     }
     
@@ -400,6 +422,15 @@
         align-items: center;
         justify-content: center;
         padding-top: 1.5rem;
+    }
+    
+    /* Contact form wrapper 95% width for small mobile */
+    .contact-form-wrapper {
+        width: 95%;
+        max-width: none;
+        margin: 0 auto;
+        padding: 1.5rem;
+        text-align: center;
     }
 }
 

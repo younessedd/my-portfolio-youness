@@ -10,52 +10,63 @@ const HeroSwiperManager = {
     // Configuration
     config: {
         // Hero slides data
-        slides: [
-            {
-                id: 1,
-                title: "Hello, I'm a <span>Junior Web Developer</span> <br>& IoT Maker",
-                description: "I build modern web experiences and smart connected applications. My passion is turning ideas into reality using technology.",
-                backgroundImage: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                buttons: [
-                    { text: "View Web Apps", href: "#web-apps", class: "btn" },
-                    { text: "Contact Me", href: "#contact", class: "btn btn-outline" },
-                    { text: "Download CV", href: "#cv", class: "btn btn-secondary" }
-                ]
-            },
-            {
-                id: 2,
-                title: "Creative <span>Problem Solver</span> & <br>Innovative Thinker",
-                description: "Combining web development skills with IoT expertise to create cutting-edge solutions that bridge the digital and physical worlds.",
-                backgroundImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                buttons: [
-                    { text: "View IoT Projects", href: "#iot-projects", class: "btn" },
-                    { text: "My Skills", href: "#skills", class: "btn btn-outline" },
-                    { text: "Let's Collaborate", href: "#contact", class: "btn btn-secondary" }
-                ]
-            },
-            {
-                id: 3,
-                title: "Electrical Engineer & <span>Automation Specialist</span>",
-                description: "Expert in industrial electrical maintenance, control systems, and automation with hands-on experience in IoT integration.",
-                backgroundImage: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                buttons: [
-                    { text: "Mobile Apps", href: "#mobile-apps", class: "btn" },
-                    { text: "IoT Projects", href: "#iot-projects", class: "btn btn-outline" },
-                    { text: "Download CV", href: "#cv", class: "btn btn-secondary" }
-                ]
-            },
-            {
-                id: 4,
-                title: "Passionate About <span>Technology</span> & <br>Continuous Learning",
-                description: "Always exploring new technologies, frameworks, and methodologies to deliver innovative solutions that make a difference.",
-                backgroundImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-                buttons: [
-                    { text: "Web Projects", href: "#web-apps", class: "btn" },
-                    { text: "Hire Me", href: "#contact", class: "btn btn-outline" },
-                    { text: "View Skills", href: "#skills", class: "btn btn-secondary" }
-                ]
-            }
-        ],
+slides: [
+    {
+        id: 1,
+        title: "Développeur <span>Web Full Stack</span><br>Front-end & Back-end",
+        description: "Je développe des applications web modernes et performantes avec HTML, CSS, JavaScript, React.js et Laravel.",
+        backgroundImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        buttons: [
+            { text: "Web Projects", href: "#web-apps", class: "btn" },
+            { text: "Download CV", href: "#cv", class: "btn btn-secondary" }
+        ]
+    },
+    {
+        id: 2,
+        title: "Développeur <span>Mobile</span><br>Android & Cross-Platform",
+        description: "Création d’applications mobiles avec App Inventor, Kodular et Flutter (niveau débutant), orientées performance et simplicité.",
+        backgroundImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        buttons: [
+         { text: "Download CV", href: "#cv", class: "btn btn-secondary" },
+            { text: "Mobile Apps", href: "#mobile-apps", class: "btn" }
+           
+     
+        ]
+    },
+    {
+        id: 3,
+        title: "IoT & <span>Domotique</span><br>Smart Home • Arduino • ESP32",
+        description: "Conception de systèmes IoT et domotiques pour maisons intelligentes, intégrant capteurs, actionneurs, automatisation et supervision à distance.",
+        backgroundImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        buttons: [
+            { text: "IoT Projects", href: "#iot-projects", class: "btn" },
+            { text: "Download CV", href: "#cv", class: "btn btn-secondary" }
+        
+        ]
+    },
+    {
+        id: 4,
+        title: "Électricité, <span>Automatisation & Domotique</span>",
+        description: "Technicien en électricité industrielle et domestique, automatisation et domotique, spécialisé en électronique analogique et numérique.",
+        backgroundImage: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        buttons: [
+          { text: "Contact Me", href: "#contact", class: "btn btn-outline" },
+            { text: "View Skills", href: "#skills", class: "btn btn-secondary" }
+        ]
+    },
+    {
+        id: 5,
+        title: "Maintenance <span>Électrique</span><br>Industrielle & Domotique",
+        description: "Maintenance électrique industrielle, domestique et domotique : diagnostic, dépannage, amélioration et modernisation des installations.",
+        backgroundImage: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        buttons: [
+            { text: "View Skills", href: "#skills", class: "btn btn-secondary" },
+            { text: "Contact Me", href: "#contact", class: "btn btn-outline" }
+            
+        ]
+    }
+],
+
         
         // Swiper configuration
         swiperConfig: {
