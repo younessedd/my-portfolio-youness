@@ -115,15 +115,30 @@ body {
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
+    /* Body centering for all screens */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
 }
 
-/* Mobile-first base styles */
+/* Mobile-first base styles with body centering */
 @media (max-width: 768px) {
     body {
         width: 100vw;
         overflow-x: hidden;
         -webkit-text-size-adjust: 100%;
         -ms-text-size-adjust: 100%;
+        /* Enhanced mobile body centering */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+        padding: 0;
     }
     
     * {
@@ -131,8 +146,38 @@ body {
     }
 }
 
+/* Tablet body centering */
+@media (min-width: 769px) and (max-width: 1024px) {
+    body {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+    }
+}
+
+/* Desktop body centering */
+@media (min-width: 1025px) {
+    body {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+    }
+}
+
 /* ============================================
-   SECTIONS TAKE FULL VIEWPORT HEIGHT - RESPONSIVE FIXES
+   SECTIONS TAKE FULL VIEWPORT HEIGHT - BODY CENTERING INTEGRATION
 ============================================ */
 section {
     width: 100%;
@@ -142,6 +187,9 @@ section {
     justify-content: center;
     position: relative;
     padding: 80px 0 40px;
+    /* Work with centered body */
+    margin: 0 auto;
+    text-align: center;
 }
 
 section .container {
@@ -153,20 +201,42 @@ section .container {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
-/* Ensure full width on mobile */
+/* Ensure full width on mobile with body centering */
 @media (max-width: 768px) {
     section {
         width: 100vw;
         padding-left: 0;
         padding-right: 0;
+        margin: 0 auto;
+        text-align: center;
     }
     
     section .container {
         width: 100%;
         max-width: 100%;
         padding: 0 1rem;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+
+/* Tablet sections with body centering */
+@media (min-width: 769px) and (max-width: 1024px) {
+    section {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    section .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 2rem;
+        margin: 0 auto;
+        text-align: center;
     }
 }
 
