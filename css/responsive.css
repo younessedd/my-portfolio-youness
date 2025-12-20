@@ -94,9 +94,11 @@
         text-align: center;
     }
     
+    /* Contact container 90% width for tablet */
     .contact-container {
-        width: 100%;
+        width: 90%;
         text-align: center;
+        margin: 2rem auto 0;
     }
 }
 
@@ -228,11 +230,12 @@
         align-items: center;
     }
     
-    /* Fix contact form for mobile with 95% width */
+    /* Contact container 90% width for mobile */
     .contact-container {
-        width: 100%;
+        width: 90%;
         padding: 0 1rem;
         text-align: center;
+        margin: 2rem auto 0;
     }
     
     .contact-form-wrapper {

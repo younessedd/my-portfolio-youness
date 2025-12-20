@@ -27,12 +27,12 @@ const ContactFormManager = {
             required: true
         },
         phone: {
-            pattern: /^[\+]?[0-9\s\-\(\)]{8,20}$/,
+            pattern: /^[\+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,9}$/,
             required: true
         },
         message: {
-            minLength: 10,
-            maxLength: 2000,
+            minLength: 5,
+            maxLength: 10000,
             required: true
         }
     },
@@ -46,6 +46,7 @@ const ContactFormManager = {
     init: function() {
         this.cacheElements();
         this.setupEventListeners();
+        this.initializeTextarea();
         console.log('Contact form manager initialized');
     },
     
@@ -82,7 +83,20 @@ const ContactFormManager = {
         this.elements.nameInput?.addEventListener('input', () => this.validateName());
         this.elements.emailInput?.addEventListener('input', () => this.validateEmail());
         this.elements.phoneInput?.addEventListener('input', () => this.validatePhone());
-        this.elements.messageInput?.addEventListener('input', () => this.validateMessage());
+        this.elements.messageInput?.addEventListener('input', () => {
+            this.validateMessage();
+            this.autoResizeTextarea();
+        });
+        
+        // Auto-resize textarea on paste
+        this.elements.messageInput?.addEventListener('paste', () => {
+            setTimeout(() => this.autoResizeTextarea(), 10);
+        });
+        
+        // Auto-resize on cut
+        this.elements.messageInput?.addEventListener('cut', () => {
+            setTimeout(() => this.autoResizeTextarea(), 10);
+        });
         
         // Form reset
         this.elements.form.addEventListener('reset', () => this.resetForm());
@@ -132,21 +146,25 @@ const ContactFormManager = {
         const rules = this.validationRules.name;
         
         if (!name && rules.required) {
-            this.showFieldError('name', 'Name is required');
+            this.showFieldError('name', 'Please enter your name');
+            this.removeSuccessState('name');
             return false;
         }
         
         if (name.length < rules.minLength) {
-            this.showFieldError('name', `Name must be at least ${rules.minLength} characters`);
+            this.showFieldError('name', 'Name is too short');
+            this.removeSuccessState('name');
             return false;
         }
         
         if (name.length > rules.maxLength) {
-            this.showFieldError('name', `Name must not exceed ${rules.maxLength} characters`);
+            this.showFieldError('name', 'Name is too long');
+            this.removeSuccessState('name');
             return false;
         }
         
         this.hideFieldError('name');
+        this.addSuccessState('name');
         return true;
     },
     
@@ -159,16 +177,19 @@ const ContactFormManager = {
         const rules = this.validationRules.email;
         
         if (!email && rules.required) {
-            this.showFieldError('email', 'Email is required');
+            this.showFieldError('email', 'Please enter your email');
+            this.removeSuccessState('email');
             return false;
         }
         
         if (email && !rules.pattern.test(email)) {
-            this.showFieldError('email', 'Please enter a valid email address');
+            this.showFieldError('email', 'Invalid email address');
+            this.removeSuccessState('email');
             return false;
         }
         
         this.hideFieldError('email');
+        this.addSuccessState('email');
         return true;
     },
     
@@ -181,16 +202,19 @@ const ContactFormManager = {
         const rules = this.validationRules.phone;
         
         if (!phone && rules.required) {
-            this.showFieldError('phone', 'Phone number is required');
+            this.showFieldError('phone', 'Please enter your phone number');
+            this.removeSuccessState('phone');
             return false;
         }
         
         if (phone && !rules.pattern.test(phone)) {
-            this.showFieldError('phone', 'Please enter a valid phone number');
+            this.showFieldError('phone', 'Invalid phone number');
+            this.removeSuccessState('phone');
             return false;
         }
         
         this.hideFieldError('phone');
+        this.addSuccessState('phone');
         return true;
     },
     
@@ -203,21 +227,25 @@ const ContactFormManager = {
         const rules = this.validationRules.message;
         
         if (!message && rules.required) {
-            this.showFieldError('message', 'Message is required');
+            this.showFieldError('message', 'Please enter your message');
+            this.removeSuccessState('message');
             return false;
         }
         
         if (message.length < rules.minLength) {
-            this.showFieldError('message', `Message must be at least ${rules.minLength} characters`);
+            this.showFieldError('message', 'Message is too short');
+            this.removeSuccessState('message');
             return false;
         }
         
         if (message.length > rules.maxLength) {
-            this.showFieldError('message', `Message must not exceed ${rules.maxLength} characters`);
+            this.showFieldError('message', 'Message is too long');
+            this.removeSuccessState('message');
             return false;
         }
         
         this.hideFieldError('message');
+        this.addSuccessState('message');
         return true;
     },
     
@@ -231,13 +259,15 @@ const ContactFormManager = {
         if (errorElement) {
             errorElement.textContent = message;
             errorElement.style.display = 'block';
+            errorElement.classList.add('show');
         }
         
-        // Add error class to input
-        const inputElement = this.elements[`${field}Input`];
-        if (inputElement) {
-            inputElement.classList.add('error');
-        }
+        // Don't add error class to input - keep input looking normal
+        // const inputElement = this.elements[`${field}Input`];
+        // if (inputElement) {
+        //     inputElement.classList.add('error');
+        //     inputElement.setAttribute('aria-invalid', 'true');
+        // }
     },
     
     /**
@@ -248,13 +278,39 @@ const ContactFormManager = {
         const errorElement = this.elements.errorElements[field];
         if (errorElement) {
             errorElement.style.display = 'none';
+            errorElement.classList.remove('show');
         }
         
-        // Remove error class from input
-        const inputElement = this.elements[`${field}Input`];
-        if (inputElement) {
-            inputElement.classList.remove('error');
-        }
+        // Don't remove error class from input - keep input looking normal
+        // const inputElement = this.elements[`${field}Input`];
+        // if (inputElement) {
+        //     inputElement.classList.remove('error');
+        //     inputElement.setAttribute('aria-invalid', 'false');
+        // }
+    },
+    
+    /**
+     * Add success state to a field
+     * @param {string} field - Field name
+     */
+    addSuccessState: function(field) {
+        // Don't add success class to input - keep input looking normal
+        // const inputElement = this.elements[`${field}Input`];
+        // if (inputElement) {
+        //     inputElement.classList.add('success');
+        // }
+    },
+    
+    /**
+     * Remove success state from a field
+     * @param {string} field - Field name
+     */
+    removeSuccessState: function(field) {
+        // Don't remove success class from input - keep input looking normal
+        // const inputElement = this.elements[`${field}Input`];
+        // if (inputElement) {
+        //     inputElement.classList.remove('success');
+        // }
     },
     
     /**
@@ -383,19 +439,70 @@ const ContactFormManager = {
             this.elements.form.reset();
         }
         
-        // Hide all error messages
+        // Hide all error messages and clear states
         Object.keys(this.elements.errorElements).forEach(field => {
             this.hideFieldError(field);
+            this.removeSuccessState(field);
         });
         
-        // Remove error classes from inputs
-        Object.keys(this.elements).forEach(key => {
-            if (key.endsWith('Input') && this.elements[key]) {
-                this.elements[key].classList.remove('error');
-            }
-        });
+        // Reset textarea height
+        this.resetTextareaHeight();
+        
+        // Clear submission state
+        this.isSubmitting = false;
         
         console.log('Form reset');
+    },
+    
+    /**
+     * Auto-resize textarea based on content
+     */
+    autoResizeTextarea: function() {
+        const textarea = this.elements.messageInput;
+        if (!textarea) return;
+        
+        // Reset height to auto to get the correct scrollHeight
+        textarea.style.height = 'auto';
+        
+        // Set new height based on scrollHeight
+        const newHeight = Math.max(textarea.scrollHeight, 120); // Minimum height of 120px
+        textarea.style.height = newHeight + 'px';
+        
+        // Maximum height to prevent too tall textarea
+        if (newHeight > 400) {
+            textarea.style.height = '400px';
+            textarea.style.overflowY = 'auto';
+        } else {
+            textarea.style.overflowY = 'hidden';
+        }
+    },
+    
+    /**
+     * Reset textarea to initial height
+     */
+    resetTextareaHeight: function() {
+        const textarea = this.elements.messageInput;
+        if (textarea) {
+            textarea.style.height = '120px';
+            textarea.style.overflowY = 'hidden';
+        }
+    },
+    
+    /**
+     * Initialize textarea with proper styling
+     */
+    initializeTextarea: function() {
+        const textarea = this.elements.messageInput;
+        if (textarea) {
+            // Set initial styles
+            textarea.style.minHeight = '120px';
+            textarea.style.resize = 'none'; // Disable manual resize
+            textarea.style.overflowY = 'hidden';
+            textarea.style.transition = 'height 0.2s ease';
+            
+            // Set initial height
+            this.resetTextareaHeight();
+        }
     },
     
     /**

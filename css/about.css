@@ -177,25 +177,109 @@
 }
 
 /* ============================================
+   DESKTOP AND MEDIUM SCREENS - Keep original layout
+============================================ */
+
+/* Laptop and Medium Screens - Image on right side of name and paragraphs */
+@media (min-width: 1025px) {
+    .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-top: 2rem;
+        width: 100%;
+    }
+    
+    .about-text {
+        order: 1; /* Text on left */
+        text-align: center;
+    }
+    
+    .about-text .about-img {
+        display: none; /* Hide image inside text in laptop view */
+    }
+    
+    .about-content > .about-img {
+        display: block; /* Show separate image in laptop view */
+        order: 2; /* Image on right */
+        margin: 0;
+        max-width: none;
+        height: 400px;
+    }
+    
+    .about-name {
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .about-bio {
+        text-align: center;
+        font-size: 1.1rem;
+    }
+}
+
+/* ============================================
    MOBILE RESPONSIVE - About Section
 ============================================ */
 
-/* Tablet */
+/* Tablet - Switch to column layout like mobile */
 @media (max-width: 1024px) {
-    .about-content {
-        gap: 3rem;
+    #about {
+        width: 100vw;
+        padding: 4rem 2rem;
+        overflow-x: hidden;
     }
     
-    .about-img {
+    #about .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 2rem;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .about-text {
+        order: 1; /* Text content first */
+        text-align: center;
+        width: 100%;
+    }
+    
+    .about-text .about-img {
+        display: block; /* Show image inside text in tablet view */
+        margin: 2rem auto;
+        max-width: 350px;
         height: 350px;
+    }
+    
+    .about-content > .about-img {
+        display: none; /* Hide separate image in tablet view */
     }
     
     .about-name {
         font-size: 2.5rem;
+        text-align: center;
+        padding-bottom: 15px;
+        margin-bottom: 2rem;
+    }
+    
+    .about-name::after {
+        left: 50%;
+        transform: translateX(-50%);
     }
     
     .about-bio {
         font-size: 1.1rem;
+        text-align: center;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -221,15 +305,27 @@
     }
     
     .about-text {
+        order: 1; /* Text content first */
         text-align: center;
-        order: 1;
         width: 100%;
+    }
+    
+    .about-text .about-img {
+        display: block; /* Show image inside text in mobile view */
+        margin: 2rem auto;
+        max-width: 300px;
+        height: 300px;
+    }
+    
+    .about-content > .about-img {
+        display: none; /* Hide separate image in mobile view */
     }
     
     .about-text h3 {
         text-align: center;
         padding-bottom: 15px;
         font-size: 2rem;
+        margin-bottom: 2rem;
     }
     
     .about-text h3::after {
@@ -245,18 +341,6 @@
         font-size: 1rem;
         line-height: 1.7;
         padding: 0 1rem;
-    }
-    
-    .about-img {
-        order: 2;
-        height: 300px;
-        max-width: 100%;
-        margin: 0 auto;
-        width: 100%;
-    }
-    
-    .about-text {
-        margin-bottom: 1.5rem;
     }
 }
 

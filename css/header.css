@@ -45,9 +45,10 @@ header::before {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
 }
 
-/* Logo - Modern Gradient Style */
+/* Logo - Left Side */
 .logo {
     font-size: 1.8rem;
     font-weight: 800;
@@ -63,6 +64,7 @@ header::before {
     transition: all 0.3s ease;
     white-space: nowrap;
     text-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+    order: 1; /* Ensure logo stays on left */
 }
 
 .logo:hover {
@@ -91,12 +93,13 @@ header::before {
     text-shadow: 0 0 40px rgba(102, 126, 234, 0.4);
 }
 
-/* Desktop Navigation */
+/* Desktop Navigation - Right Side */
 .desktop-nav {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     flex: 1;
+    order: 2; /* Ensure navigation stays on right */
 }
 
 .desktop-nav ul {
@@ -144,7 +147,7 @@ header::before {
     text-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
 }
 
-/* Burger Button - Modern Style */
+/* Burger Button - Positioned on right side */
 .burger-btn {
     display: none; /* مخفي افتراضيًا */
     font-size: 1.5rem;
@@ -164,6 +167,7 @@ header::before {
     box-shadow: 
         0 4px 15px rgba(16, 185, 129, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    order: 3; /* Ensure burger button stays on right */
 }
 
 .burger-btn::before {
@@ -315,17 +319,51 @@ header::before {
    RESPONSIVE DESIGN
 ============================================ */
 
-@media (max-width: 768px) {
-    /* إظهار زر البرجر وإخفاء التنقل المكتبي */
+/* 75% Laptop Width - Show burger button for smaller laptop screens */
+@media (max-width: 1440px) {
+    /* Show burger button on smaller laptops */
     .burger-btn {
-        display: flex !important; /* إجبار الظهور على الجوال */
+        display: flex !important;
         opacity: 1 !important;
         visibility: visible !important;
     }
     
     .desktop-nav {
-        display: none; /* إخفاء التنقل المكتبي */
+        display: none; /* Hide desktop navigation */
     }
+    
+    /* Smaller laptop mobile menu adjustments */
+    .mobile-menu {
+        width: 50%; /* Smaller on laptop screens */
+        max-width: 450px;
+    }
+}
+
+/* Tablet - Show burger button and hide desktop nav */
+@media (max-width: 1024px) {
+    /* Show burger button on tablet */
+    .burger-btn {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    .desktop-nav {
+        display: none; /* Hide desktop navigation */
+    }
+    
+    /* Tablet mobile menu adjustments */
+    .mobile-menu {
+        width: 60%; /* Slightly smaller on tablet */
+        max-width: 400px;
+    }
+    
+    /* Note: .mobile-menu will be shown via JavaScript when burger is clicked */
+}
+
+/* Mobile - Additional mobile styles */
+@media (max-width: 768px) {
+    /* Burger button already visible from tablet styles */
     
     /* ملاحظة: .mobile-menu لا نجعله display: block هنا */
     /* سيكون مخفيًا افتراضيًا ويظهر فقط بـ .active class */

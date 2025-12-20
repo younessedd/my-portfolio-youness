@@ -337,15 +337,33 @@ p {
 /* ============================================
    SKILLS NAVIGATION BUTTONS - RESPONSIVE FIXES
 ============================================ */
+/* Skills Navigation - Responsive Grid Layout */
 .skills-nav {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin: 3rem auto;
-    flex-wrap: wrap;
     max-width: 1000px;
     width: 100%;
     padding: 0 1rem;
+}
+
+/* Tablet - Show 2 buttons */
+@media (max-width: 1024px) {
+    .skills-nav {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 700px;
+        gap: 1.2rem;
+    }
+}
+
+/* Mobile - Show 1 button */
+@media (max-width: 768px) {
+    .skills-nav {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+        gap: 1rem;
+    }
 }
 
 .skill-nav-btn {
@@ -361,29 +379,12 @@ p {
     transition: var(--transition);
     cursor: pointer;
     color: var(--text-secondary);
-    width: 220px;
+    width: 100%;
     height: 140px;
     text-align: center;
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
-}
-
-/* Mobile responsive navigation */
-@media (max-width: 768px) {
-    .skills-nav {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        padding: 0 1rem;
-    }
-    
-    .skill-nav-btn {
-        width: 100%;
-        max-width: 350px;
-        height: auto;
-        min-height: 120px;
-    }
 }
 
 .skill-nav-btn:hover {
@@ -1601,12 +1602,29 @@ footer {
 
 /* Skills Navigation Buttons */
 #skills .skills-nav {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin: 3rem auto 0;
-    flex-wrap: wrap;
     max-width: 1000px;
+}
+
+/* Tablet - Show 2 buttons */
+@media (max-width: 1024px) {
+    #skills .skills-nav {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 700px;
+        gap: 1.2rem;
+    }
+}
+
+/* Mobile - Show 1 button */
+@media (max-width: 768px) {
+    #skills .skills-nav {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+        gap: 1rem;
+    }
 }
 
 #skills .skill-nav-btn {
@@ -1622,7 +1640,7 @@ footer {
     transition: var(--transition);
     cursor: pointer;
     color: var(--text-secondary);
-    width: 220px;
+    width: 100%;
     height: 140px;
     box-sizing: border-box;
     text-align: center;
@@ -1721,16 +1739,6 @@ footer {
         font-size: 2.2rem;
     }
     
-    .skills-nav {
-        gap: 1rem;
-    }
-    
-    .skill-nav-btn {
-        width: 200px;
-        height: 130px;
-        padding: 1.3rem 1.8rem;
-    }
-    
     #web-apps .skill-nav-btn {
         width: calc(33.333% - 1rem);
         height: 130px;
@@ -1759,27 +1767,6 @@ footer {
     
     h2 {
         font-size: 2rem;
-    }
-    
-    .skills-nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-    
-    .skill-nav-btn {
-        width: 100%;
-        max-width: 300px;
-        height: 120px;
-        padding: 1.2rem;
-    }
-    
-    #web-apps .skill-nav-btn {
-        width: 100%;
-        max-width: 300px;
-        min-width: auto;
-        height: 120px;
-        padding: 1.2rem;
     }
     
     .popup-content {

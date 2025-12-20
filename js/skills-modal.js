@@ -15,12 +15,14 @@ const SkillsManager = {
     navigationLock: false,
     isModalOpen: false,
 
-    categories: ['web', 'iot', 'mobile', 'soft'],
+    categories: ['webDevelopment', 'mobileDevelopment', 'iotAndDomotic', 'electronicsAndElectric', 'roboticsAndAutomatism', 'softSkills'],
     categoryNames: {
-        'web': 'Web Development',
-        'iot': 'IoT & Electronics',
-        'mobile': 'Mobile Development',
-        'soft': 'Soft Skills'
+        'webDevelopment': 'Web Development',
+        'mobileDevelopment': 'Mobile Development',
+        'iotAndDomotic': 'IoT and Domotic',
+        'electronicsAndElectric': 'Electronics and Electric',
+        'roboticsAndAutomatism': 'Robotics and Automatism',
+        'softSkills': 'Soft Skills'
     },
 
     cardPositions: {},
@@ -281,21 +283,6 @@ const SkillsManager = {
         this.elements.counterNumber.textContent = `${currentCard}/${cardCount}`;
     },
 
-    updateCategoryTitle: function(category, buttonText) {
-        if (!this.elements.categoryTitle) return;
-        const icons = {
-            'web': 'fa-code',
-            'iot': 'fa-microchip',
-            'mobile': 'fa-mobile-alt',
-            'soft': 'fa-star'
-        };
-        const icon = icons[category] || 'fa-star';
-        this.elements.categoryTitle.innerHTML = `
-            <i class="fas ${icon}"></i>
-            <span>${buttonText}</span>
-        `;
-    },
-
     getCardCountForCategory: function(category) {
         if (this.skillsData && this.skillsData[category]) {
             return this.skillsData[category].length;
@@ -405,6 +392,14 @@ const SkillsManager = {
 
     initMainSwiper: function() {
         if (!this.elements.swiper) return;
+        const icons = {
+            'webDevelopment': 'fa-code',
+            'mobileDevelopment': 'fa-mobile-alt',
+            'iotAndDomotic': 'fa-home',
+            'electronicsAndElectric': 'fa-bolt',
+            'roboticsAndAutomatism': 'fa-robot',
+            'softSkills': 'fa-star'
+        };
         this.swiperInstance = new Swiper(this.elements.swiper, {
             slidesPerView: 1,
             spaceBetween: 30,
@@ -461,7 +456,7 @@ const SkillsManager = {
                 btn.classList.remove('active');
             });
         }
-        this.currentCategory = 'web';
+ this.currentCategory = 'webDevelopment';
         this.currentCardIndex = 0;
     },
 
@@ -474,6 +469,23 @@ const SkillsManager = {
         if (activeButton) {
             activeButton.classList.add('active');
         }
+    },
+
+    updateCategoryTitle: function(category, categoryName) {
+        if (!this.elements.categoryTitle) return;
+        const icons = {
+            'webDevelopment': 'fa-code',
+            'mobileDevelopment': 'fa-mobile-alt',
+            'iotAndDomotic': 'fa-home',
+            'electronicsAndElectric': 'fa-bolt',
+            'roboticsAndAutomatism': 'fa-robot',
+            'softSkills': 'fa-star'
+        };
+        const icon = icons[category] || 'fa-code';
+        this.elements.categoryTitle.innerHTML = `
+            <i class="fas ${icon}"></i>
+            <span>${categoryName}</span>
+        `;
     }
 };
 

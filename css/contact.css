@@ -30,12 +30,23 @@
     display: flex;
     justify-content: center;
     margin-top: 2rem;
+    width: 70%; /* Laptop and desktop width */
+    margin: 2rem auto 0;
 }
 
-/* Mobile contact-container 95% width */
+/* Tablet and responsive view - 90% width */
+@media (max-width: 1024px) {
+    .contact-container {
+        width: 90%;
+        margin: 2rem auto 0;
+        text-align: center;
+    }
+}
+
+/* Mobile contact-container 90% width */
 @media (max-width: 768px) {
     .contact-container {
-        width: 95%;
+        width: 90%;
         margin: 2rem auto 0;
         text-align: center;
     }
@@ -43,7 +54,7 @@
 
 @media (max-width: 480px) {
     .contact-container {
-        width: 95%;
+        width: 90%;
         margin: 2rem auto 0;
         text-align: center;
     }
@@ -171,17 +182,67 @@
 }
 
 /* Form Error Messages */
+/* Error Messages */
 .error {
     color: #ef4444;
     font-size: 0.875rem;
     margin-top: 0.5rem;
-    margin-top: 5px;
     display: none;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 8px;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+    animation: slideDown 0.3s ease;
 }
 
 .error.show {
     display: block;
 }
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Input Error States - REMOVED - Keep inputs normal */
+/* .form-control.error {
+    border-color: #ef4444 !important;
+    box-shadow: 
+        0 0 0 2px rgba(239, 68, 68, 0.2),
+        0 4px 15px rgba(239, 68, 68, 0.1) !important;
+    background: rgba(239, 68, 68, 0.05);
+    transition: all 0.3s ease;
+}
+
+.form-control.error:focus {
+    border-color: #ef4444 !important;
+    box-shadow: 
+        0 0 0 3px rgba(239, 68, 68, 0.3),
+        0 4px 20px rgba(239, 68, 68, 0.2) !important;
+} */
+
+/* Success States - REMOVED - Keep inputs normal */
+/* .form-control.success {
+    border-color: #10b981 !important;
+    box-shadow: 
+        0 0 0 2px rgba(16, 185, 129, 0.2),
+        0 4px 15px rgba(16, 185, 129, 0.1) !important;
+    background: rgba(16, 185, 129, 0.05);
+}
+
+.form-control.success:focus {
+    border-color: #10b981 !important;
+    box-shadow: 
+        0 0 0 3px rgba(16, 185, 129, 0.3),
+        0 4px 20px rgba(16, 185, 129, 0.2) !important;
+} */
 
 /* Submit Button */
 .form-btn {
