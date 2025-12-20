@@ -93,19 +93,20 @@
 .hero-swiper .swiper-button-next,
 .hero-swiper .swiper-button-prev {
     color: white;
-    background: rgba(255, 255, 255, 0.1);
+    background: transparent;
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: none;
+    border: none;
     transition: var(--transition);
 }
 
 .hero-swiper .swiper-button-next:hover,
 .hero-swiper .swiper-button-prev:hover {
-    background: var(--primary-color);
+    background: transparent;
     transform: scale(1.1);
+    color: #10b981;
 }
 
 .hero-swiper .swiper-button-next:after,

@@ -1,20 +1,39 @@
 /* ============================================
-   header.css - Header Styles
-   Fixed: Removed transitions and fixed mobile menu
-   ============================================ */
+   HEADER SECTION - MODERN STYLE
+============================================ */
 
-/* Header - بدون انتقالات */
+/* Header - Modern Glassmorphism */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: var(--background);
-    box-shadow: var(--shadow);
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 80px rgba(16, 185, 129, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     padding: 0;
     height: 70px;
     transform: translateY(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.05) 0%,
+        rgba(249, 115, 22, 0.03) 50%,
+        rgba(139, 92, 246, 0.02) 100%);
+    pointer-events: none;
 }
 
 .header-container {
@@ -28,19 +47,48 @@ header {
     padding: 0 20px;
 }
 
-/* Logo */
+/* Logo - Modern Gradient Style */
 .logo {
     font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary-color);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     display: flex;
     align-items: center;
     height: 100%;
     z-index: 1001;
+    position: relative;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    text-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+}
+
+.logo:hover {
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--tech-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 40px rgba(240, 147, 251, 0.4);
+    transform: translateY(-2px);
 }
 
 .logo span {
-    color: var(--secondary-color);
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--tech-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(240, 147, 251, 0.3);
+    transition: all 0.3s ease;
+}
+
+.logo:hover span {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 40px rgba(102, 126, 234, 0.4);
 }
 
 /* Desktop Navigation */
@@ -63,82 +111,144 @@ header {
 .desktop-nav a {
     font-weight: 600;
     position: relative;
-    padding: 10px 5px;
+    padding: 8px 16px;
     font-size: 1.05rem;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     color: var(--text-secondary);
+    text-decoration: none;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
 }
 
 .desktop-nav a::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: -2px;
+    left: 50%;
     width: 0;
-    height: 3px;
-    background: var(--primary-color);
-    transition: width 0.3s;
-}
-
-.desktop-nav a:hover {
-    color: var(--primary-color);
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+    border-radius: 1px;
 }
 
 .desktop-nav a:hover::after {
     width: 100%;
 }
 
-.desktop-nav a.active {
+.desktop-nav a:hover {
     color: var(--primary-color);
+    transform: translateY(-2px);
+    text-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
 }
 
-.desktop-nav a.active::after {
-    width: 100%;
-}
-
-/* Burger Button - مرئي فقط على الجوال */
+/* Burger Button - Modern Style */
 .burger-btn {
     display: none; /* مخفي افتراضيًا */
     font-size: 1.5rem;
     cursor: pointer;
-    background: var(--surface);
+    background: rgba(16, 185, 129, 0.1);
+    backdrop-filter: blur(10px);
     width: 50px;
     height: 50px;
-    border-radius: var(--radius-md);
+    border-radius: 15px;
     align-items: center;
     justify-content: center;
-    color: var(--text-secondary);
-    border: 1px solid var(--border);
+    color: #10b981;
+    border: 2px solid rgba(16, 185, 129, 0.2);
     z-index: 1001;
     position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 4px 15px rgba(16, 185, 129, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.burger-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.1) 0%,
+        rgba(118, 75, 162, 0.05) 100%);
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .burger-btn:hover {
-    background: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border-color: rgba(16, 185, 129, 0.4);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 
+        0 8px 25px rgba(16, 185, 129, 0.2),
+        0 0 40px rgba(16, 185, 129, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-/* Mobile Menu - مخفي افتراضيًا */
+.burger-btn:hover::before {
+    opacity: 1;
+}
+
+/* Mobile Menu - Modern Glassmorphism */
 .mobile-menu {
     display: none; /* مخفي افتراضيًا */
     position: fixed;
     top: 70px;
     right: 0;
     width: 75%;
-    background: var(--surface);
-    box-shadow: var(--shadow-xl);
+    background: rgba(2, 6, 23, 0.9);
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(16, 185, 129, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     z-index: 999;
     max-height: (100vh - 70px);
     overflow-y: auto;
     padding: 20px;
-    border-top: 1px solid var(--border);
+    border-left: 1px solid rgba(16, 185, 129, 0.2);
+    border-top: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.mobile-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.05) 0%,
+        rgba(249, 115, 22, 0.03) 50%,
+        rgba(6, 182, 212, 0.02) 100%);
+    pointer-events: none;
 }
 
 /* Mobile Menu عندما يكون نشطًا */
 .mobile-menu.active {
     display: block;
-     /* يظهر فقط عندما يكون نشطًا */
+    background: rgba(2, 6, 23, 0.95);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(16, 185, 129, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(16, 185, 129, 0.32);
+    border-top: 1px solid rgba(16, 185, 129, 0.32);
+}
+
+.mobile-menu.active::before {
+    background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.08) 0%,
+        rgba(249, 115, 22, 0.05) 50%,
+        rgba(6, 182, 212, 0.03) 100%);
 }
 
 .mobile-nav {
@@ -155,21 +265,50 @@ header {
 .mobile-nav-link {
     display: block;
     padding: 15px 20px;
-    background: var(--background);
-    border-radius: var(--radius-md);
+    background: rgba(16, 185, 129, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-align: left;
-    color: var(--text);
+    color: var(--text-secondary);
     text-decoration: none;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.1) 0%,
+        rgba(249, 115, 22, 0.05) 50%,
+        rgba(6, 182, 212, 0.02) 100%);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .mobile-nav-link:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateX(5px);
-    border-color: var(--primary-color);
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    transform: translateY(-2px);
+    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: 
+        0 8px 25px rgba(16, 185, 129, 0.2),
+        0 0 40px rgba(16, 185, 129, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.mobile-nav-link:hover::before {
+    opacity: 1;
 }
 
 /* ============================================

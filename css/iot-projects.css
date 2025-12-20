@@ -2,23 +2,89 @@
    IOT PROJECTS SECTION - SINGLE IMAGE VERSION
 ============================================ */
 
+/* Technology-Specific Icon Colors for IoT Projects */
+/* Smart Home Colors */
+.skill-nav-btn[data-category="home"] i,
+.icon-nav-btn[data-category="home"] i,
+.popup-title i.fa-home {
+    color: #16a34a !important; /* Green for Smart Home */
+}
+
+.skill-nav-btn[data-category="home"] span,
+.popup-title span:has(+ i.fa-home) {
+    color: #16a34a !important;
+}
+
+/* Industrial IoT Colors */
+.skill-nav-btn[data-category="industrial"] i,
+.icon-nav-btn[data-category="industrial"] i,
+.popup-title i.fa-industry {
+    color: #ea580c !important; /* Orange for Industrial IoT */
+}
+
+.skill-nav-btn[data-category="industrial"] span,
+.popup-title span:has(+ i.fa-industry) {
+    color: #ea580c !important;
+}
+
+/* Sensor Projects Colors */
+.skill-nav-btn[data-category="sensors"] i,
+.icon-nav-btn[data-category="sensors"] i,
+.popup-title i.fa-thermometer-half {
+    color: #0891b2 !important; /* Cyan for Sensor Projects */
+}
+
+.skill-nav-btn[data-category="sensors"] span,
+.popup-title span:has(+ i.fa-thermometer-half) {
+    color: #0891b2 !important;
+}
+
+/* Other IoT Projects Colors */
+.skill-nav-btn[data-category="othersiot"] i,
+.icon-nav-btn[data-category="othersiot"] i,
+.popup-title i.fa-microchip {
+    color: #7c3aed !important; /* Purple for Other IoT */
+}
+
+.skill-nav-btn[data-category="othersiot"] span,
+.popup-title span:has(+ i.fa-microchip) {
+    color: #7c3aed !important;
+}
+
 /* IOT PROJECTS SECTION CONTAINER */
 #iot-projects {
     padding: 4rem 1rem;
     position: relative;
     min-height: auto;
-    background: var(--background);
+    background: var(--iot-projects-bg);
+    overflow: hidden;
+}
+
+#iot-projects::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 25% 75%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 75% 25%, rgba(249, 115, 22, 0.09) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.06) 0%, transparent 60%);
+    pointer-events: none;
 }
 
 #iot-projects h2 {
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 1rem;
+    color: var(--text);
+    font-weight: 700;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-weight: 700;
+    text-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
 }
 
 #iot-projects > .container > p {
@@ -54,9 +120,10 @@
     justify-content: center;
     gap: 0.8rem;
     padding: 1.5rem 1.2rem;
-    background: var(--surface);
+    background: rgba(2, 6, 23, 0.6);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
-    border: 2px solid var(--border);
+    border: 2px solid rgba(16, 185, 129, 0.25);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     color: var(--text-secondary);
@@ -68,21 +135,50 @@
     overflow: hidden;
     width: 100%;
     flex: 1;
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+#iot-projects .skill-nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.1) 0%,
+        rgba(249, 115, 22, 0.05) 50%,
+        rgba(6, 182, 212, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 #iot-projects .skill-nav-btn:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(16, 185, 129, 0.65);
+    color: #10b981;
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.32),
+        0 0 60px rgba(16, 185, 129, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+#iot-projects .skill-nav-btn:hover::before {
+    opacity: 1;
 }
 
 #iot-projects .skill-nav-btn.active {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-color: transparent;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.82), rgba(249, 115, 22, 0.82));
+    border-color: rgba(16, 185, 129, 0.82);
     color: white;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.42),
+        0 0 80px rgba(16, 185, 129, 0.32),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 #iot-projects .skill-nav-btn i {
@@ -103,6 +199,7 @@
     line-height: 1.2;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -141,10 +238,14 @@
     max-width: 1000px;
     height: 80vh;
     max-height: 700px;
-    background: var(--surface);
+    background: rgba(2, 6, 23, 0.92);
+    backdrop-filter: blur(20px);
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(16, 185, 129, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 2;
     animation: popupAppear 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -158,22 +259,19 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.2rem 1.5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, #10b981, #f97316);
+    color: white;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     flex-shrink: 0;
 }
 
 #iot-swiper-container .popup-title {
     font-size: 1.4rem;
-    color: white;
-    font-weight: 600;
+    font-weight: 700;
     display: flex;
     align-items: center;
     gap: 0.8rem;
-}
-
-#iot-swiper-container .popup-title i {
-    font-size: 1.3rem;
+    color: white;
 }
 
 #iot-close-btn {
@@ -187,7 +285,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     font-size: 1.2rem;
 }
 
@@ -197,45 +295,56 @@
     transform: rotate(90deg);
 }
 
-/* Icon Navigation */
-#iot-icon-nav-top {
+#iot-swiper-container .popup-icon-nav {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
     padding: 1rem;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
+    background: rgba(2, 6, 23, 0.62);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(16, 185, 129, 0.22);
     flex-shrink: 0;
 }
 
-#iot-icon-nav-top .icon-nav-btn {
+#iot-swiper-container .icon-nav-btn {
     width: 50px;
     height: 50px;
     border-radius: 15px;
-    border: 2px solid var(--border);
-    background: var(--surface);
+    border: 2px solid rgba(16, 185, 129, 0.32);
+    background: rgba(2, 6, 23, 0.42);
+    backdrop-filter: blur(10px);
     color: var(--text-secondary);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 1.4rem;
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 #iot-icon-nav-top .icon-nav-btn:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-    transform: translateY(-3px);
+    border-color: rgba(16, 185, 129, 0.6);
+    color: #10b981;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 8px 20px rgba(16, 185, 129, 0.3),
+        0 0 40px rgba(16, 185, 129, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 #iot-icon-nav-top .icon-nav-btn.active {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-color: transparent;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.8), rgba(249, 115, 22, 0.8));
+    border-color: rgba(16, 185, 129, 0.8);
     color: white;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(var(--primary-color-rgb), 0.3);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 
+        0 12px 30px rgba(16, 185, 129, 0.4),
+        0 0 60px rgba(16, 185, 129, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 /* Main Swiper Container */
@@ -299,10 +408,11 @@
     color: var(--text);
     margin-bottom: 0.8rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, #10b981, #f97316);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
 }
 
 #iotSwiper .skill-main-description {
@@ -319,17 +429,22 @@
     margin-bottom: 1.5rem;
     border-radius: 15px;
     overflow: hidden;
-    background: #000;
+    background: rgba(2, 6, 23, 0.42);
     position: relative;
-    border: 2px solid var(--border);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(16, 185, 129, 0.32);
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #iotSwiper .single-image-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-    border-color: var(--primary-color);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.32),
+        0 0 60px rgba(16, 185, 129, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(16, 185, 129, 0.62);
 }
 
 #iotSwiper .project-image-single {
@@ -389,7 +504,7 @@
 
 #iotSwiper .project-link {
     padding: 0.9rem 1.8rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.82), rgba(249, 115, 22, 0.82));
     color: white;
     text-decoration: none;
     border-radius: 10px;
@@ -402,6 +517,9 @@
     position: relative;
     overflow: hidden;
     z-index: 1;
+    box-shadow: 
+        0 4px 12px rgba(16, 185, 129, 0.32),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 #iotSwiper .project-link::before {
@@ -413,14 +531,18 @@
     bottom: 0;
     background: linear-gradient(135deg, 
         rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
         rgba(255, 255, 255, 0.05) 100%);
     z-index: -1;
     transition: opacity 0.3s ease;
 }
 
 #iotSwiper .project-link:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(var(--primary-color-rgb), 0.3);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 12px 30px rgba(16, 185, 129, 0.4),
+        0 0 50px rgba(16, 185, 129, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 #iotSwiper .project-link i {

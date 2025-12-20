@@ -1,8 +1,98 @@
 /* ============================================
-   SKILLS SECTION POPUP - SAME STYLE AS IOT
+   SKILLS SECTION - MODERN STYLE LIKE WEB APPS
 ============================================ */
 
-/* SKILLS SECTION POPUP CONTAINER */
+/* Technology-Specific Icon Colors */
+/* Web Development Colors */
+.skill-nav-btn[data-category="web"] i,
+.icon-nav-btn[data-category="web"] i,
+.popup-title i.fa-code {
+    color: #f97316 !important; /* Orange for Web Development */
+}
+
+.skill-nav-btn[data-category="web"] span,
+.popup-title span:has(+ i.fa-code) {
+    color: #f97316 !important;
+}
+
+/* IoT & Electronics Colors */
+.skill-nav-btn[data-category="iot"] i,
+.icon-nav-btn[data-category="iot"] i,
+.popup-title i.fa-microchip {
+    color: #10b981 !important; /* Green for IoT */
+}
+
+.skill-nav-btn[data-category="iot"] span,
+.popup-title span:has(+ i.fa-microchip) {
+    color: #10b981 !important;
+}
+
+/* Mobile Development Colors */
+.skill-nav-btn[data-category="mobile"] i,
+.icon-nav-btn[data-category="mobile"] i,
+.popup-title i.fa-mobile-alt {
+    color: #06b6d4 !important; /* Cyan for Mobile */
+}
+
+.skill-nav-btn[data-category="mobile"] span,
+.popup-title span:has(+ i.fa-mobile-alt) {
+    color: #06b6d4 !important;
+}
+
+/* Soft Skills Colors */
+.skill-nav-btn[data-category="soft"] i,
+.icon-nav-btn[data-category="soft"] i,
+.popup-title i.fa-star {
+    color: #8b5cf6 !important; /* Purple for Soft Skills */
+}
+
+.skill-nav-btn[data-category="soft"] span,
+.popup-title span:has(+ i.fa-star) {
+    color: #8b5cf6 !important;
+}
+
+/* SKILLS SECTION CONTAINER */
+#skills {
+    padding: 4rem 1rem;
+    position: relative;
+    min-height: auto;
+    background: var(--skills-bg);
+    overflow: hidden;
+}
+
+#skills::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        url('../images/skills-background.png'),
+        radial-gradient(circle at 30% 70%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(249, 115, 22, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.03) 0%, transparent 60%);
+    background-size: cover, 100% 100%, 100% 100%, 100% 100%;
+    background-position: center, 0 0, 0 0, 0 0;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Skills Section Main Heading - LIKE MOBILE APPS */
+#skills h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text);
+    font-weight: 700;
+    background: linear-gradient(135deg, #10b981, #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+}
+
 #skills-swiper-container {
     position: fixed;
     top: 0;
@@ -34,13 +124,17 @@
     max-width: 1000px;
     height: 80vh;
     max-height: 700px;
-    background: var(--surface);
+    background: rgba(2, 6, 23, 0.92);
+    backdrop-filter: blur(20px);
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(16, 185, 129, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 2;
-    animation: popupAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: popupAppear 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     flex-direction: column;
 }
@@ -51,15 +145,15 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.2rem 1.5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, #10b981, #f97316);
+    color: white;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     flex-shrink: 0;
 }
 
 #skills-swiper-container .popup-title {
     font-size: 1.4rem;
-    color: white;
-    font-weight: 600;
+    font-weight: 700;
     display: flex;
     align-items: center;
     gap: 0.8rem;
@@ -97,8 +191,9 @@
     align-items: center;
     gap: 1.5rem;
     padding: 1rem;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
+    background: rgba(2, 6, 23, 0.62);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(16, 185, 129, 0.22);
     flex-shrink: 0;
 }
 
@@ -106,29 +201,40 @@
     width: 50px;
     height: 50px;
     border-radius: 15px;
-    border: 2px solid var(--border);
-    background: var(--surface);
+    border: 2px solid rgba(16, 185, 129, 0.32);
+    background: rgba(2, 6, 23, 0.42);
+    backdrop-filter: blur(10px);
     color: var(--text-secondary);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 1.4rem;
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 #skills-icon-nav-top .icon-nav-btn:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-    transform: translateY(-3px);
+    border-color: rgba(16, 185, 129, 0.6);
+    color: #10b981;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 8px 20px rgba(16, 185, 129, 0.3),
+        0 0 40px rgba(16, 185, 129, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 #skills-icon-nav-top .icon-nav-btn.active {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-color: transparent;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.8), rgba(249, 115, 22, 0.8));
+    border-color: rgba(16, 185, 129, 0.8);
     color: white;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(var(--primary-color-rgb), 0.3);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 
+        0 12px 30px rgba(16, 185, 129, 0.4),
+        0 0 60px rgba(16, 185, 129, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 /* SKILLS MAIN SWIPER */
@@ -206,17 +312,67 @@
     color: var(--text);
     margin-bottom: 1rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, #10b981, #f97316);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    text-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
 }
 
 #skillsSwiper .skill-main-description {
     font-size: 1.1rem;
     color: var(--text-secondary);
     line-height: 1.6;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* SINGLE IMAGE CONTAINER - LIKE MOBILE APPS */
+#skillsSwiper .single-image-container {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 1.5rem;
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(2, 6, 23, 0.42);
+    position: relative;
+    border: 2px solid rgba(16, 185, 129, 0.32);
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#skillsSwiper .single-image-container:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.32),
+        0 0 60px rgba(16, 185, 129, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(16, 185, 129, 0.62);
+}
+
+#skillsSwiper .project-image-single {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+#skillsSwiper .single-image-container:hover .project-image-single {
+    transform: scale(1.05);
+}
+
+/* No Images Placeholder */
+#skillsSwiper .no-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: var(--text-secondary);
 }
 
 /* ============================================
@@ -476,7 +632,7 @@
 
 #skillsSwiper .features-list li:nth-child(6) {
     border-left-color: #8b5cf6;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05));
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
 }
 
 #skillsSwiper .features-list li:hover {

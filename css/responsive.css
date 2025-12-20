@@ -1,484 +1,56 @@
-/* ============================================
-   responsive.css - Responsive Design Styles
-   FIXED: Corrected mobile menu visibility issue
-   ============================================ */
+/* Responsive Design */
 
-/* Large Screens (max-width: 1200px) */
-@media (max-width: 1200px) {
-    .container {
-        max-width: 992px;
-    }
-    
-    .hero h1 {
-        font-size: 3rem;
-    }
-    
-    .footer-content {
-        gap: 2rem;
-    }
-}
-
-/* Medium Screens (max-width: 992px) - Tablet Landscape */
-@media (max-width: 992px) {
-    .container {
-        max-width: 768px;
-    }
-    
-    /* About Section */
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    
-    .about-img {
-        height: 350px;
-    }
-    
-    /* Hero */
-    .hero h1 {
+/* Tablet */
+@media (max-width: 1024px) {
+    section h2 {
         font-size: 2.5rem;
     }
-    
-    /* Footer */
-    .footer-content {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-    }
-    
-    /* Typography */
-    h1 {
-        font-size: 2.8rem;
-    }
-    
-    h2 {
-        font-size: 2.2rem;
-    }
-    
-    p {
-        font-size: 1.05rem;
-    }
-    
-    /* Skills */
-    .skills-nav {
-        max-width: 600px;
-    }
-    
-    /* Swiper */
-    .main-swiper {
-        height: 550px;
-    }
-    
-    /* CV Cards */
-    .cv-cards.two-items {
+
+    .about-content {
         grid-template-columns: 1fr;
-        max-width: 400px;
     }
-    
-    .project-info {
-        max-height: 250px;
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
     }
 }
 
-/* Small Screens (max-width: 768px) - Tablet Portrait */
+/* Mobile */
 @media (max-width: 768px) {
-    .container {
-        max-width: 576px;
-    }
-    
-    /* ✅ FIXED: Burger button visibility */
-    .burger-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        z-index: 1000;
-    }
-    
-    .desktop-nav {
+    header .desktop-nav {
         display: none;
     }
-    
-    /* ✅ FIXED: Mobile menu styles */
-    /* ملاحظة: .mobile-menu لا نجعله display: block هنا */
-    /* سيظهر فقط عندما يكون لديه class .active */
-    
-    .mobile-nav {
-        list-style: none;
-        padding: 20px;
-        margin: 0;
+
+    header .burger-btn {
+        display: flex;
     }
-    
-    .mobile-nav li {
-        margin-bottom: 15px;
+
+    .hero-content h1 {
+        font-size: 3rem;
     }
-    
-    .mobile-nav-link {
-        display: block;
-        padding: 12px 20px;
-        color: var(--text-color);
-        text-decoration: none;
-        font-size: 1.1rem;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-    }
-    
-    .mobile-nav-link:hover {
-        background: rgba(0, 0, 0, 0.05);
-        color: var(--primary-color);
-    }
-    
-    .mobile-nav-link i {
-        margin-right: 10px;
-        color: var(--primary-color);
-    }
-    
-    /* Hero adjustments */
-    .hero h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-btns {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .btn {
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
-    }
-    
-    /* Form adjustments */
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    /* Skills nav adjustments */
+
     .skills-nav {
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
     }
-    
+
     .skill-nav-btn {
         width: 100%;
-        max-width: 280px;
-        flex-direction: row;
-        justify-content: flex-start;
-        text-align: left;
-        padding: 1.2rem 1.5rem;
+        max-width: 350px;
     }
-    
-    .skill-nav-btn i {
-        margin-right: 1rem;
-        margin-bottom: 0;
-    }
-    
-    /* Swiper adjustments */
-    .main-swiper {
-        height: 650px;
-    }
-    
-    .project-info {
-        max-height: 100%;
-    }
-    
-    .swiper-modal-header {
-        padding: 1rem 1.5rem;
-    }
-    
-    /* Footer adjustments */
+
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 2.5rem;
     }
-    
+
     .footer-column h3 {
         text-align: center;
     }
-    
-    .footer-column h3::after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    .footer-about p,
+
     .quick-links,
     .contact-info-footer {
-        text-align: center;
-    }
-    
-    .quick-links a {
         justify-content: center;
     }
-    
-    .contact-info-footer li {
-        justify-content: center;
-    }
-    
-    .footer-logo-top {
-        display: none;
-    }
-    
-    .footer-logo-center {
-        display: block;
-        text-align: center;
-        margin-bottom: 2rem;
-    }
-    
-    .footer-logo-center .logo {
-        justify-content: center;
-        height: auto;
-        margin-bottom: 1.5rem;
-    }
-    
-    /* Skills Grid */
-    .skills-grid-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 18px;
-        padding: 25px 15px;
-    }
-    
-    .skill-item {
-        padding: 18px 15px;
-        min-height: 110px;
-    }
-    
-    .skill-item i {
-        font-size: 1.8rem;
-    }
-    
-    .skill-item span {
-        font-size: 0.9rem;
-    }
-    
-    /* Hero Swiper */
-    .hero-swiper .swiper-button-next,
-    .hero-swiper .swiper-button-prev {
-        width: 50px;
-        height: 50px;
-        display: none;
-    }
-    
-    .hero-swiper .swiper-pagination {
-        bottom: 20px !important;
-    }
-    
-    .hero-btns {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .hero-btns .btn {
-        width: 100%;
-        max-width: 250px;
-    }
-}
-
-/* Extra Small Screens (max-width: 576px) - Mobile Landscape */
-@media (max-width: 576px) {
-    .container {
-        padding: 0 15px;
-    }
-    
-    section {
-        padding: 60px 0;
-    }
-    
-    /* Typography */
-    h1 {
-        font-size: 2rem;
-    }
-    
-    h2 {
-        font-size: 1.8rem;
-    }
-    
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-    
-    /* About Image */
-    .about-img {
-        height: 300px;
-    }
-    
-    /* Skills Modal */
-    .skill-icon {
-        font-size: 2.5rem;
-        width: 60px;
-        height: 60px;
-    }
-    
-    .skill-card-header h3 {
-        font-size: 1.5rem;
-    }
-    
-    /* Swiper */
-    .main-swiper {
-        height: 700px;
-    }
-    
-    .image-swiper-container {
-        height: 250px;
-    }
-    
-    .project-info {
-        padding: 1rem;
-        max-height: 100%;
-    }
-    
-    .project-links {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .project-link {
-        width: 100%;
-        max-width: 200px;
-        justify-content: center;
-    }
-    
-    /* CV Cards */
-    .cv-card {
-        padding: 1.5rem;
-    }
-    
-    .cv-icon {
-        font-size: 2.5rem;
-    }
-    
-    /* Skills Modal */
-    .skills-modal {
-        padding: 1.5rem;
-        width: 95%;
-    }
-    
-    .close-modal-btn {
-        width: 36px;
-        height: 36px;
-    }
-    
-    /* Technology Tags */
-    .tech-tag {
-        font-size: 0.75rem;
-        padding: 5px 10px;
-        min-width: 60px;
-    }
-    
-    /* Skills Grid */
-    .skills-grid-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 20px 10px;
-    }
-    
-    .skill-item {
-        padding: 15px;
-        min-height: 100px;
-        border-radius: 10px;
-    }
-    
-    .skill-item i {
-        font-size: 1.6rem;
-        margin-bottom: 10px;
-    }
-    
-    .skill-item span {
-        font-size: 0.85rem;
-    }
-}
-
-/* Very Small Screens (max-width: 480px) - Mobile Portrait */
-@media (max-width: 480px) {
-    /* Typography */
-    h1 {
-        font-size: 1.6rem;
-    }
-    
-    h2 {
-        font-size: 1.4rem;
-    }
-    
-    /* Buttons */
-    .btn {
-        padding: 12px 24px;
-        font-size: 0.9rem;
-    }
-    
-    .skill-nav-btn {
-        padding: 1rem;
-    }
-    
-    /* Skills Modal */
-    .skills-modal {
-        padding: 1rem;
-    }
-    
-    .skill-card-header h3 {
-        font-size: 1.5rem;
-    }
-    
-    .skill-subtitle {
-        font-size: 1rem;
-    }
-    
-    /* Swiper */
-    .main-swiper {
-        height: 750px;
-    }
-    
-    .project-info {
-        max-height: 100%;
-    }
-    
-    /* Hero Slide */
-    .hero-slide {
-        padding: 0 15px;
-    }
-}
-
-/* Very Large Screens (min-width: 1600px) */
-@media (min-width: 1600px) {
-    .skills-grid-container {
-        grid-template-columns: repeat(4, 1fr);
-        max-width: 1400px;
-    }
-}
-
-/* ============================================
-   إصلاحات التأخير في الثيم
-============================================ */
-[data-theme] header,
-[data-theme] .burger-btn {
-    transition-duration: 0.1s !important;
-}
-
-@media (max-width: 768px) {
-    .burger-btn {
-        animation: none !important;
-        transition: opacity 0.1s ease !important;
-    }
-    
-    header {
-        animation: none !important;
-        transition: background-color 0.3s ease !important;
-    }
-    
-    @media (hover: none) and (pointer: coarse) {
-        .burger-btn,
-        header {
-            transition: none !important;
-        }
-    }
-}
-
-header {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    transform: translateY(0) !important;
 }

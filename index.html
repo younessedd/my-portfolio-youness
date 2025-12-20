@@ -30,12 +30,116 @@
     <!-- Splash Screen -->
     <div id="splash-screen">
         <div class="splash-content">
-            <div class="tech-icons">
-                <i class="fas fa-code tech-icon"></i>
-                <i class="fas fa-microchip tech-icon"></i>
-                <i class="fas fa-mobile-alt tech-icon"></i>
+            <div class="code-editor">
+                <div class="editor-header">
+                    <div class="editor-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="editor-title">portfolio.js</div>
+                    <div class="editor-actions">
+                        <i class="fas fa-code-branch"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <div class="code-line">
+                        <span class="line-number">1</span>
+                        <span class="code-text"><span class="comment">// Modern Web Developer Portfolio</span></span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">2</span>
+                        <span class="code-text"><span class="keyword">import</span> { <span class="variable">React</span>, <span class="variable">NodeJS</span>, <span class="variable">IoT</span> } <span class="keyword">from</span> <span class="string">'technologies'</span>;</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">3</span>
+                        <span class="code-text"></span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">4</span>
+                        <span class="code-text"><span class="keyword">class</span> <span class="class-name">Developer</span> {</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">5</span>
+                        <span class="code-text">  <span class="keyword">constructor</span>() {</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">6</span>
+                        <span class="code-text">    <span class="keyword">this</span>.<span class="property">name</span> = <span class="string">"Youness Eddanguir"</span>;</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">7</span>
+                        <span class="code-text">    <span class="keyword">this</span>.<span class="property">skills</span> = [</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">8</span>
+                        <span class="code-text">      <span class="string">"JavaScript"</span>, <span class="string">"React.js"</span>, <span class="string">"Node.js"</span>,</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">9</span>
+                        <span class="code-text">      <span class="string">"HTML5"</span>, <span class="string">"CSS3"</span>, <span class="string">"Laravel"</span></span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">10</span>
+                        <span class="code-text">    ];</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">11</span>
+                        <span class="code-text">    <span class="keyword">this</span>.<span class="property">passion</span> = <span class="string">"Web Development & IoT"</span>;</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">12</span>
+                        <span class="code-text">  }</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">13</span>
+                        <span class="code-text"></span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">14</span>
+                        <span class="code-text">  <span class="function">createPortfolio</span>() {</span>
+                    </div>
+                    <div class="code-line typing">
+                        <span class="line-number">15</span>
+                        <span class="code-text">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="class-name">Promise</span>(<span class="variable">resolve</span> => {</span><span class="cursor">|</span></span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">16</span>
+                        <span class="code-text">      <span class="variable">setTimeout</span>(() => {</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">17</span>
+                        <span class="code-text">        <span class="variable">console</span>.<span class="function">log</span>(<span class="string">"Portfolio Ready!"</span>);</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">18</span>
+                        <span class="code-text">        <span class="variable">resolve</span>(<span class="keyword">this</span>.<span class="property">showcase</span>());</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">19</span>
+                        <span class="code-text">      }, <span class="number">3000</span>);</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">20</span>
+                        <span class="code-text">    });</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">21</span>
+                        <span class="code-text">  }</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">22</span>
+                        <span class="code-text">}</span>
+                    </div>
+                </div>
             </div>
-            <p>Loading Portfolio...</p>
+            <div class="loading-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="loading-text">Initializing development environment...</div>
+            </div>
         </div>
     </div>
     <!-- Header -->
@@ -103,10 +207,10 @@
             <h2>About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>YOUNESS EDDANGUIR</h3>
-                    <p>Junior Web Developer with a strong passion for innovation in web technologies and IoT. Leveraging my background in electrical engineering, I seamlessly integrate digital solutions with physical systems to create intelligent and practical applications.</p>
-                    <p>I thrive on quickly learning new technologies and solving complex technical challenges. My goal is to deliver efficient, scalable, and user-friendly solutions that enhance productivity and improve everyday life.</p>
-                    <p>Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, and IoT platforms including Arduino, ESP32, ESP8266, and robotics, aiming to develop cutting-edge projects that bridge the digital and physical worlds.</p>
+                    <h3 class="about-name">YOUNESS EDDANGUIR</h3>
+                    <p class="about-bio">Junior Web Developer with a strong passion for innovation in web technologies and IoT. Leveraging my background in electrical engineering, I seamlessly integrate digital solutions with physical systems to create intelligent and practical applications.</p>
+                    <p class="about-bio">I thrive on quickly learning new technologies and solving complex technical challenges. My goal is to deliver efficient, scalable, and user-friendly solutions that enhance productivity and improve everyday life.</p>
+                    <p class="about-bio">Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, and IoT platforms including Arduino, ESP32, ESP8266, and robotics, aiming to develop cutting-edge projects that bridge the digital and physical worlds.</p>
                 </div>
                 <div class="about-img">
                     <img src="images/my.jpeg" alt="Youness Eddanguir" style="width:100%;height:100%;border-radius:10px;">
@@ -563,104 +667,58 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-logo-center">
-                <div class="logo">Portfo<span>lio</span></div>
-            </div>
-            
-            <div class="footer-social-section">
-                <h3>Connect With Me</h3>
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <a href="#" class="logo">Portfo<span>lio</span></a>
+                </div>
                 <div class="footer-social-icons">
-                    <a href="https://github.com/younessedd" target="_blank" class="footer-social-icon github">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="footer-social-icon linkedin">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://twitter.com/yourusername" target="_blank" class="footer-social-icon twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://codepen.io/yourusername" target="_blank" class="footer-social-icon codepen">
-                        <i class="fab fa-codepen"></i>
-                    </a>
-                    <a href="https://wa.me/212664837281" target="_blank" class="footer-social-icon whatsapp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="mailto:eddanguiryouness@gmail.com" class="footer-social-icon email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
+                    <a href="https://github.com/younessedd" target="_blank" class="footer-social-icon github"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="footer-social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://twitter.com/yourusername" target="_blank" class="footer-social-icon twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://codepen.io/yourusername" target="_blank" class="footer-social-icon codepen"><i class="fab fa-codepen"></i></a>
+                    <a href="https://wa.me/212664837281" target="_blank" class="footer-social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:eddanguiryouness@gmail.com" class="footer-social-icon email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-            
-            <div class="footer-content">
-                <div class="footer-column">
-                    <div class="footer-logo-top">
-                        <div class="logo">Portfo<span>lio</span></div>
-                    </div>
-                    <div class="footer-about">
-                        <p>Junior Web Developer & IoT Maker with passion for creating innovative digital solutions and smart connected applications.</p>
-                    </div>
-                </div>
-                
+    
+            <div class="footer-main">
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="quick-links">
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
-                        <li><a href="#skills"><i class="fas fa-chevron-right"></i> Skills</a></li>
-                        <li><a href="#web-apps"><i class="fas fa-chevron-right"></i> Web Apps</a></li>
-                        <li><a href="#mobile-apps"><i class="fas fa-chevron-right"></i> Mobile Apps</a></li>
-                        <li><a href="#iot-projects"><i class="fas fa-chevron-right"></i> IoT Projects</a></li>
-                        <li><a href="#cv"><i class="fas fa-chevron-right"></i> CV</a></li>
-                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#web-apps">Web Apps</a></li>
                     </ul>
                 </div>
                 
+                <div class="footer-column">
+                     <h3>Projects</h3>
+                    <ul class="quick-links">
+                        <li><a href="#mobile-apps">Mobile Apps</a></li>
+                        <li><a href="#iot-projects">IoT Projects</a></li>
+                        <li><a href="#cv">CV</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+    
                 <div class="footer-column">
                     <h3>Contact Info</h3>
                     <ul class="contact-info-footer">
-                        <li>
-                            <a href="https://www.google.com/maps/place/Casablanca" target="_blank">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Morocco</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tel:+212664837281">
-                                <i class="fas fa-phone"></i>
-                                <span>+212 6 6483 7281</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="mailto:eddanguiryouness@gmail.com">
-                                <i class="fas fa-envelope"></i>
-                                <span>eddanguiryouness@gmail.com</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://wa.me/212664837281" target="_blank">
-                                <i class="fab fa-whatsapp"></i>
-                                <span>+212 6 6483 7281</span>
-                            </a>
-                        </li>
+                        <li><a href="https://www.google.com/maps/place/Casablanca" target="_blank"><i class="fas fa-map-marker-alt"></i><span>Morocco</span></a></li>
+                        <li><a href="tel:+212664837281"><i class="fas fa-phone"></i><span>+212 6 6483 7281</span></a></li>
+                        <li><a href="mailto:eddanguiryouness@gmail.com"><i class="fas fa-envelope"></i><span>eddanguiryouness@gmail.com</span></a></li>
                     </ul>
                 </div>
-                
+    
                 <div class="footer-column">
-                    <h3>Expertise</h3>
-                    <ul class="quick-links">
-                        <li><a href="#"><i class="fas fa-check"></i> Web Development</a></li>
-                        <li><a href="#"><i class="fas fa-check"></i> IoT Solutions</a></li>
-                        <li><a href="#"><i class="fas fa-check"></i> Mobile Apps</a></li>
-                        <li><a href="#"><i class="fas fa-check"></i> Electrical Engineering</a></li>
-                        <li><a href="#"><i class="fas fa-check"></i> Responsive Design</a></li>
-                        <li><a href="#"><i class="fas fa-check"></i> Problem Solving</a></li>
-                    </ul>
+                    <h3>About</h3>
+                    <p>Junior Web Developer & IoT Maker creating innovative digital solutions.</p>
                 </div>
             </div>
-            
+    
             <div class="footer-bottom">
                 <p>&copy; <span id="current-year"></span> Youness Eddanguir. All rights reserved.</p>
-                        <p>Developed with passion and dedication.</p>
             </div>
         </div>
     </footer>
