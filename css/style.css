@@ -407,8 +407,6 @@ p {
 
 .icon-nav-btn:hover {
     border-color: var(--primary-accent);
-    color: var(--primary-accent);
-    transform: translateY(-3px);
 }
 
 .icon-nav-btn.active {
@@ -840,12 +838,13 @@ footer {
     justify-content: center;
     transition: var(--transition);
     font-size: 1.4rem;
+    justify-content: center;
+    transition: var(--transition);
+    font-size: 1.4rem;
 }
 
 #web-icon-nav-top .icon-nav-btn:hover {
     border-color: var(--primary-color);
-    color: var(--primary-color);
-    transform: translateY(-3px);
 }
 
 #web-icon-nav-top .icon-nav-btn.active {
