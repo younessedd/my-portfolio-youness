@@ -208,186 +208,233 @@ window.webProjectsData = {
                     icon: "fa-external-link-alt"
                 }
             ]
-        }
-    ],
-
-    // Backend Category (unchanged)
-    backend: [
+        },
         {
-            id: "web-backend-001",
-            category: "backend",
-            title: "REST API Service",
-            description: "A scalable REST API service with authentication, data validation, and comprehensive documentation.",
-            technologies: ["Node.js", "Express.js", "MongoDB", "JWT", "Swagger"],
+            id: "web-frontend-008",
+            category: "frontend",
+            title: "Movies-scope",
+            description: "A modern web application for exploring movies, featuring search functionality, movie details, and interactive filtering.",
+            technologies: ["React.js", "CSS3", "File/Excel Handling"],
             images: [
-                "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop"
+                "https://raw.githubusercontent.com/younessedd/Movies-scope_simplon/main/screenshot.png"
             ],
             features: [
-                "RESTful API endpoints",
-                "JWT authentication",
-                "Data validation and sanitization",
-                "API documentation",
-                "Rate limiting and security"
+                "Movie search and discovery",
+                "Movie details and information",
+                "Interactive filtering and sorting",
+                "Responsive design for all devices",
+                "Excel file data import/management"
             ],
             links: [
                 {
                     name: "GitHub",
-                    url: "#",
+                    url: "https://github.com/younessedd/Movies-scope_simplon.git",
                     icon: "fa-github"
                 },
                 {
-                    name: "API Docs",
-                    url: "#",
-                    icon: "fa-book"
+                    name: "Live Demo",
+                    url: "https://younessedd.github.io/Movies-scope_simplon/",
+                    icon: "fa-external-link-alt"
+                }
+            ]
+        },
+        {
+            id: "web-frontend-009",
+            category: "frontend",
+            title: "Foodie Foodie",
+            description: "A modern food discovery web application showcasing recipes, restaurants, and culinary experiences with interactive features.",
+            technologies: ["React.js", "CSS3", "API Integration"],
+            images: [
+                "https://raw.githubusercontent.com/younessedd/Foodie_Simplon/main/screenshot.png"
+            ],
+            features: [
+                "Food and recipe discovery via API",
+                "Restaurant and cuisine showcase",
+                "Interactive food browsing",
+                "Responsive design for all devices",
+                "Real-time data fetching from external APIs"
+            ],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/younessedd/Foodie_Simplon.git",
+                    icon: "fa-github"
+                }
+            ]
+        },
+        {
+            id: "web-frontend-010",
+            category: "frontend",
+            title: "Blog API Frontend",
+            description: "A React-based frontend application for a blog system that connects to a backend API to display, create, and manage blog content.",
+            technologies: ["React.js", "CSS3", "JavaScript", "API Integration"],
+            images: [
+                "https://raw.githubusercontent.com/younessedd/Blog-Api_Simplon/main/screenshot.png"
+            ],
+            features: [
+                "Blog post display and management",
+                "API integration for CRUD operations",
+                "Responsive blog interface",
+                "User-friendly content creation",
+                "Modern React components"
+            ],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/younessedd/Blog-Api_Simplon.git",
+                    icon: "fa-github"
+                }
+            ]
+        }
+    ],
+
+    // Backend Category (only real projects)
+    backend: [
+        {
+            id: "web-backend-001",
+            category: "backend",
+            title: "Job API",
+            description: "A backend API service for job listings and employment opportunities with data management capabilities.",
+            technologies: ["Node.js", "Express.js", "MongoDB", "REST API"],
+            images: [
+                "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&auto=format&fit=crop"
+            ],
+            features: [
+                "Job listing management",
+                "RESTful API endpoints",
+                "Data persistence",
+                "CRUD operations",
+                "Backend service architecture"
+            ],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/younessedd/Job-Api_Simplon.git",
+                    icon: "fa-github"
                 }
             ]
         },
         {
             id: "web-backend-002",
             category: "backend",
-            title: "Microservices Architecture",
-            description: "A microservices-based application with service discovery, load balancing, and containerization.",
-            technologies: ["Python", "Django", "Docker", "Kubernetes", "Redis", "PostgreSQL"],
+            title: "Music Box API",
+            description: "A backend API service for managing music data, including tracks, artists, playlists, and music metadata.",
+            technologies: ["Node.js", "Express.js", "Database", "REST API", "Music Data Management"],
             images: [
-                "https://images.unsplash.com/photo-1558494949-ef010cbcc31c?w=800&auto=format&fit=crop"
+                "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&auto=format&fit=crop"
             ],
             features: [
-                "Microservices design",
-                "Container orchestration",
-                "Service discovery",
-                "Load balancing",
-                "Monitoring and logging"
+                "Music track management",
+                "Artist and album data",
+                "Playlist creation and organization",
+                "RESTful API endpoints",
+                "Music metadata handling"
             ],
             links: [
                 {
                     name: "GitHub",
-                    url: "#",
+                    url: "https://github.com/younessedd/Music-Box-Api_Simplon.git",
                     icon: "fa-github"
-                },
-                {
-                    name: "Documentation",
-                    url: "#",
-                    icon: "fa-book"
-                }
-            ]
-        },
-        {
-            id: "web-backend-003",
-            category: "backend",
-            title: "Real-time Chat Server",
-            description: "A WebSocket-based real-time chat server with room management and message history.",
-            technologies: ["Node.js", "Socket.io", "Redis", "MySQL", "PM2"],
-            images: [
-                "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&auto=format&fit=crop"
-            ],
-            features: [
-                "Real-time messaging",
-                "Room management",
-                "Message history",
-                "User presence",
-                "File sharing"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "#",
-                    icon: "fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "#",
-                    icon: "fa-external-link-alt"
                 }
             ]
         }
     ],
 
-    // Full Stack Category (unchanged)
+    // Full Stack Category (only real projects)
     fullstack: [
         {
             id: "web-fullstack-001",
             category: "fullstack",
-            title: "Task Management System",
-            description: "A comprehensive task management application with team collaboration, project tracking, and reporting.",
-            technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Socket.io", "JWT"],
+            title: "Eventify",
+            description: "A full-stack event management application for creating, organizing, and managing events with interactive features.",
+            technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "REST API", "Authentication"],
             images: [
-                "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&auto=format&fit=crop"
+                "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&auto=format&fit=crop"
             ],
             features: [
-                "Task creation and assignment",
-                "Team collaboration",
-                "Progress tracking",
+                "Event creation and management",
+                "User authentication and authorization",
                 "Real-time updates",
-                "Reporting and analytics"
+                "Responsive frontend interface",
+                "Database persistence"
             ],
             links: [
                 {
                     name: "GitHub",
-                    url: "#",
+                    url: "https://github.com/younessedd/Eventify_Simplon.git",
                     icon: "fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "#",
-                    icon: "fa-external-link-alt"
                 }
             ]
         },
         {
             id: "web-fullstack-002",
             category: "fullstack",
-            title: "Learning Management System",
-            description: "An educational platform with course management, video streaming, and student progress tracking.",
-            technologies: ["Vue.js", "Python", "Django", "PostgreSQL", "AWS S3", "WebRTC"],
+            title: "Task Flow Project",
+            description: "A full-stack task management and workflow application for organizing, tracking, and optimizing task completion processes.",
+            technologies: ["React.js", "Node.js", "Express.js", "Database", "Task Management", "Workflow Engine"],
             images: [
-                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format&fit=crop"
+                "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format&fit=crop"
             ],
             features: [
-                "Course management",
-                "Video streaming",
-                "Student progress tracking",
-                "Quiz and assessments",
-                "Certificate generation"
+                "Task organization and categorization",
+                "Workflow automation",
+                "Progress tracking and analytics",
+                "User collaboration features",
+                "Responsive task management interface"
             ],
             links: [
                 {
                     name: "GitHub",
-                    url: "#",
+                    url: "https://github.com/younessedd/Task-Flow-Project_Simplon.git",
                     icon: "fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "#",
-                    icon: "fa-external-link-alt"
                 }
             ]
         },
         {
             id: "web-fullstack-003",
             category: "fullstack",
-            title: "E-Learning Platform",
-            description: "A comprehensive online learning platform with interactive courses, live sessions, and community features.",
-            technologies: ["Next.js", "Node.js", "GraphQL", "PostgreSQL", "Stripe", "WebRTC"],
+            title: "E-Commerce",
+            description: "A comprehensive full-stack e-commerce platform with product management, shopping cart, user authentication, and payment processing.",
+            technologies: ["React.js", "Node.js", "Express.js", "Database", "Payment Integration", "Authentication"],
             images: [
-                "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop"
+                "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop"
             ],
             features: [
-                "Interactive courses",
-                "Live video sessions",
-                "Payment processing",
-                "Community forums",
-                "Progress analytics"
+                "Product catalog and management",
+                "Shopping cart functionality",
+                "User authentication and accounts",
+                "Payment processing integration",
+                "Order management system"
             ],
             links: [
                 {
                     name: "GitHub",
-                    url: "#",
+                    url: "https://github.com/younessedd/E-Commecres-Fil-Rouge_Simplon.git",
                     icon: "fa-github"
-                },
+                }
+            ]
+        },
+        {
+            id: "web-fullstack-004",
+            category: "fullstack",
+            title: "User Manager",
+            description: "A full-stack user management system with authentication, user profiles, and administrative controls.",
+            technologies: ["React.js", "Node.js", "CSS3", "API Integration", "Express.js", "Authentication"],
+            images: [
+                "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&auto=format&fit=crop"
+            ],
+            features: [
+                "User authentication and registration",
+                "Profile management and editing",
+                "Administrative user controls",
+                "API-based user data management",
+                "Responsive admin interface"
+            ],
+            links: [
                 {
-                    name: "Live Demo",
-                    url: "#",
-                    icon: "fa-external-link-alt"
+                    name: "GitHub",
+                    url: "https://github.com/younessedd/User-Manager_Simplon.git",
+                    icon: "fa-github"
                 }
             ]
         }
