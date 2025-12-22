@@ -98,82 +98,122 @@
     margin-right: auto;
 }
 
-/* WEB APPS NAVIGATION BUTTONS */
+/* WEB APPS NAVIGATION BUTTONS - Using Skills Section Approach */
 #web-apps .skills-nav {
     display: grid;
-    grid-template-columns: repeat(4, 220px);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin: 3rem auto 0;
-    max-width: 1000px;
+    padding: 1rem;
     justify-content: center;
     justify-items: center;
+    max-width: 900px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* For 1 button - center it */
+/* Center remaining buttons in incomplete rows for web apps */
+#web-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+1):last-child {
+    grid-column: 2; /* Center single remaining button */
+}
+
+#web-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+2):last-child {
+    grid-column: 1 / span 2; /* Center 2 buttons in 3-column grid */
+}
+
+/* For 1 button - center it perfectly */
 #web-apps .skills-nav:has(:only-child) {
-    grid-template-columns: 220px;
+    grid-template-columns: 1fr;
     justify-content: center;
-    max-width: 220px;
+    justify-items: center;
+    max-width: 300px;
 }
 
-/* For 2 buttons - center them */
+/* For 2 buttons - center them perfectly */
 #web-apps .skills-nav:has(:nth-child(2):last-child) {
-    grid-template-columns: repeat(2, 220px);
+    grid-template-columns: repeat(2, 1fr);
     justify-content: center;
-    max-width: 500px;
+    justify-items: center;
+    max-width: 600px;
 }
 
 /* For 3 buttons - center them */
 #web-apps .skills-nav:has(:nth-child(3):last-child) {
-    grid-template-columns: repeat(3, 220px);
+    grid-template-columns: repeat(3, 1fr);
     justify-content: center;
-    max-width: 750px;
+    max-width: 900px;
 }
 
-/* For 4 buttons - center them */
-#web-apps .skills-nav:has(:nth-child(4):last-child) {
-    grid-template-columns: repeat(4, 220px);
-    justify-content: center;
-    max-width: 1000px;
-}
-
-/* Override :has() selectors for responsive behavior */
-@media (max-width: 1200px) {
-    #web-apps .skills-nav:has(:only-child) {
-        grid-template-columns: 220px;
-        max-width: 220px;
-        justify-content: center;
-    }
-    #web-apps .skills-nav:has(:nth-child(2):last-child) {
-        grid-template-columns: repeat(2, 220px);
-        max-width: 500px;
-        justify-content: center;
-    }
-    #web-apps .skills-nav:has(:nth-child(3):last-child),
-    #web-apps .skills-nav:has(:nth-child(4):last-child) {
-        grid-template-columns: repeat(3, 220px);
-        max-width: 800px;
-        justify-content: center;
-    }
-}
-
+/* Tablet Styles - 2 buttons per row for web apps */
 @media (max-width: 1024px) {
+    #web-apps .skills-nav {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 600px;
+        gap: 1.2rem;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
     #web-apps .skills-nav:has(:only-child) {
-        grid-template-columns: 220px;
-        max-width: 220px;
+        grid-template-columns: 1fr;
+        max-width: 300px;
         justify-content: center;
+        justify-items: center;
     }
     #web-apps .skills-nav:has(:nth-child(2):last-child) {
-        grid-template-columns: repeat(2, 220px);
-        max-width: 500px;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 600px;
         justify-content: center;
+        justify-items: center;
     }
     #web-apps .skills-nav:has(:nth-child(3):last-child),
     #web-apps .skills-nav:has(:nth-child(4):last-child) {
-        grid-template-columns: repeat(3, 220px);
-        max-width: 800px;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 600px;
         justify-content: center;
+        justify-items: center;
     }
+    
+    /* Center remaining button in tablet layout for web apps */
+    #web-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(odd):last-child {
+        grid-column: 1 / span 2; /* Center odd remaining button across 2 columns */
+    }
+/* Mobile Styles - 1 button per row for web apps */
+@media (max-width: 768px) {
+    #web-apps .skills-nav {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        gap: 1rem;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    #web-apps .skills-nav:has(:only-child),
+    #web-apps .skills-nav:has(:nth-child(2):last-child),
+    #web-apps .skills-nav:has(:nth-child(3):last-child),
+    #web-apps .skills-nav:has(:nth-child(4):last-child) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 300px;
+        justify-content: center;
+        justify-items: center;
+    }
+    
+    #web-apps .skill-nav-btn {
+        width: 100%;
+        height: 120px;
+        min-height: 120px;
+        padding: 1.2rem;
+    }
+    
+    /* Reset grid positioning for mobile (single column) for web apps */
+    #web-apps .skills-nav.center-buttons .skill-nav-btn {
+        grid-column: auto !important;
+    }
+}
 }
 
 @media (max-width: 900px) {

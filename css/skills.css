@@ -2,7 +2,11 @@
    SKILLS SECTION - MODERN STYLE LIKE WEB APPS
 ============================================ */
 
-#skills .skills-nav.center-buttons {
+/* Skills Navigation - Clean Grid Layout for All Sections */
+#skills .skills-nav.center-buttons,
+#web-apps .skills-nav.center-buttons,
+#mobile-apps .skills-nav.center-buttons,
+#iot-projects .skills-nav.center-buttons {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
@@ -10,25 +14,25 @@
     padding: 1rem;
     justify-content: center;
     justify-items: center;
-    max-width: 900px; /* 3 buttons per row with flex */
+    max-width: 900px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Center remaining buttons in incomplete rows */
-#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(7):last-child {
-    grid-column: 2; /* Center the 7th button in 3-column grid */
-}
-
-#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(5):last-child,
-#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(8):last-child {
+/* Center remaining buttons in incomplete rows for all sections */
+#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+1):last-child,
+#web-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+1):last-child,
+#mobile-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+1):last-child,
+#iot-projects .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+1):last-child {
     grid-column: 2; /* Center single remaining button */
 }
 
-#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(4):last-child {
+#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+2):last-child,
+#web-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+2):last-child,
+#mobile-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+2):last-child,
+#iot-projects .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+2):last-child {
     grid-column: 1 / span 2; /* Center 2 buttons in 3-column grid */
-}
-
-#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(5):not(:last-child) {
-    grid-column: auto; /* Reset for normal positioning */
 }
 
 #skills .skill-nav-btn {
@@ -124,36 +128,58 @@
     max-width: 100%;
 }
 
-/* Skills nav responsive columns */
+/* Tablet Styles - 2 buttons per row for all sections */
 @media (max-width: 1024px) {
-    #skills .skills-nav.center-buttons {
+    #skills .skills-nav.center-buttons,
+    #web-apps .skills-nav.center-buttons,
+    #mobile-apps .skills-nav.center-buttons,
+    #iot-projects .skills-nav.center-buttons {
         grid-template-columns: repeat(2, 1fr);
-        max-width: 600px; /* 2 buttons per row on tablet */
+        max-width: 600px;
         gap: 1.2rem;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
     }
     
-    /* Center remaining button in tablet layout */
-    #skills .skills-nav.center-buttons .skill-nav-btn:nth-child(odd):last-child:nth-child(7) {
+    /* Center remaining button in tablet layout for all sections */
+    #skills .skills-nav.center-buttons .skill-nav-btn:nth-child(odd):last-child,
+    #web-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(odd):last-child,
+    #mobile-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(odd):last-child,
+    #iot-projects .skills-nav.center-buttons .skill-nav-btn:nth-child(odd):last-child {
         grid-column: 1 / span 2; /* Center odd remaining button across 2 columns */
     }
 }
 
+/* Mobile Styles - 1 button per row for all sections */
 @media (max-width: 768px) {
-    #skills .skills-nav.center-buttons {
+    #skills .skills-nav.center-buttons,
+    #web-apps .skills-nav.center-buttons,
+    #mobile-apps .skills-nav.center-buttons,
+    #iot-projects .skills-nav.center-buttons {
         grid-template-columns: 1fr;
-        max-width: 300px; /* 1 button per row on mobile */
+        max-width: 300px;
         gap: 1rem;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    #skills .skills-nav.center-buttons .skill-nav-btn {
+    #skills .skills-nav.center-buttons .skill-nav-btn,
+    #web-apps .skills-nav.center-buttons .skill-nav-btn,
+    #mobile-apps .skills-nav.center-buttons .skill-nav-btn,
+    #iot-projects .skills-nav.center-buttons .skill-nav-btn {
         width: 100%;
         height: 120px;
         min-height: 120px;
         padding: 1.2rem;
     }
     
-    /* Reset grid positioning for mobile (single column) */
-    #skills .skills-nav.center-buttons .skill-nav-btn {
+    /* Reset grid positioning for mobile (single column) for all sections */
+    #skills .skills-nav.center-buttons .skill-nav-btn,
+    #web-apps .skills-nav.center-buttons .skill-nav-btn,
+    #mobile-apps .skills-nav.center-buttons .skill-nav-btn,
+    #iot-projects .skills-nav.center-buttons .skill-nav-btn {
         grid-column: auto !important;
     }
 }
