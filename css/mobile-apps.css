@@ -101,10 +101,10 @@
 /* MOBILE APPS NAVIGATION BUTTONS */
 #mobile-apps .skills-nav {
     display: grid;
-    grid-template-columns: repeat(3, 220px);
+    grid-template-columns: repeat(4, 220px);
     gap: 1.5rem;
     margin: 3rem auto 0;
-    max-width: 800px;
+    max-width: 1000px;
     justify-content: center;
     justify-items: center;
 }
@@ -113,6 +113,7 @@
 #mobile-apps .skills-nav:has(:only-child) {
     grid-template-columns: 220px;
     justify-content: center;
+    max-width: 220px;
 }
 
 /* For 2 buttons - center them */
@@ -122,17 +123,85 @@
     max-width: 500px;
 }
 
-/* For 3 buttons - current layout */
+/* For 3 buttons - center them */
 #mobile-apps .skills-nav:has(:nth-child(3):last-child) {
     grid-template-columns: repeat(3, 220px);
     justify-content: center;
+    max-width: 750px;
 }
 
-/* For 4 buttons - wider layout */
+/* For 4 buttons - center them */
 #mobile-apps .skills-nav:has(:nth-child(4):last-child) {
     grid-template-columns: repeat(4, 220px);
     justify-content: center;
     max-width: 1000px;
+}
+
+/* Override :has() selectors for responsive behavior */
+@media (max-width: 1200px) {
+    #mobile-apps .skills-nav:has(:only-child) {
+        grid-template-columns: 220px;
+        max-width: 220px;
+        justify-content: center;
+    }
+    #mobile-apps .skills-nav:has(:nth-child(2):last-child) {
+        grid-template-columns: repeat(2, 220px);
+        max-width: 500px;
+        justify-content: center;
+    }
+    #mobile-apps .skills-nav:has(:nth-child(3):last-child),
+    #mobile-apps .skills-nav:has(:nth-child(4):last-child) {
+        grid-template-columns: repeat(3, 220px);
+        max-width: 800px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1024px) {
+    #mobile-apps .skills-nav:has(:only-child) {
+        grid-template-columns: 220px;
+        max-width: 220px;
+        justify-content: center;
+    }
+    #mobile-apps .skills-nav:has(:nth-child(2):last-child) {
+        grid-template-columns: repeat(2, 220px);
+        max-width: 500px;
+        justify-content: center;
+    }
+    #mobile-apps .skills-nav:has(:nth-child(3):last-child),
+    #mobile-apps .skills-nav:has(:nth-child(4):last-child) {
+        grid-template-columns: repeat(3, 220px);
+        max-width: 800px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 900px) {
+    #mobile-apps .skills-nav:has(:only-child) {
+        grid-template-columns: 220px;
+        max-width: 220px;
+        justify-content: center;
+    }
+    #mobile-apps .skills-nav:has(:nth-child(2):last-child),
+    #mobile-apps .skills-nav:has(:nth-child(3):last-child),
+    #mobile-apps .skills-nav:has(:nth-child(4):last-child) {
+        grid-template-columns: repeat(2, 220px);
+        max-width: 500px;
+        gap: 1.2rem;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    #mobile-apps .skills-nav:has(:only-child),
+    #mobile-apps .skills-nav:has(:nth-child(2):last-child),
+    #mobile-apps .skills-nav:has(:nth-child(3):last-child),
+    #mobile-apps .skills-nav:has(:nth-child(4):last-child) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 350px;
+        justify-content: center;
+    }
 }
 
 #mobile-apps .skill-nav-btn {
@@ -724,10 +793,23 @@
    RESPONSIVE DESIGN
 ============================================ */
 
+/* Large Desktop - Show 3 buttons */
+@media (max-width: 1200px) {
+    #mobile-apps .skills-nav {
+        grid-template-columns: repeat(3, 220px);
+        max-width: 800px;
+    }
+}
+
 /* Tablet Styles */
 @media (max-width: 1024px) {
     #mobile-apps h2 {
         font-size: 2.2rem;
+    }
+    
+    #mobile-apps .skills-nav {
+        grid-template-columns: repeat(3, 220px);
+        max-width: 800px;
     }
     
     #mobile-apps .skill-nav-btn {
@@ -760,6 +842,25 @@
     }
 }
 
+/* Small Tablet - Show 2 buttons */
+@media (max-width: 900px) {
+    #mobile-apps .skills-nav {
+        grid-template-columns: repeat(2, 220px);
+        max-width: 500px;
+        gap: 1.2rem;
+    }
+    
+    #mobile-apps .skill-nav-btn {
+        height: 125px;
+        min-height: 125px;
+        padding: 1.2rem;
+    }
+    
+    #mobile-apps .skill-nav-btn i {
+        font-size: 1.9rem;
+    }
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
     #mobile-apps {
@@ -773,6 +874,7 @@
     #mobile-apps .skills-nav {
         grid-template-columns: 1fr;
         gap: 1rem;
+        max-width: 350px;
     }
     
     #mobile-apps .skill-nav-btn {

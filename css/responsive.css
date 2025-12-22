@@ -79,9 +79,10 @@
         text-align: center;
     }
     
-    .skill-nav-btn {
-        width: calc(50% - 1rem);
-        max-width: none;
+    /* Keep Skills section 3/2/1 layout - do not override */
+    #skills .skill-nav-btn {
+        width: 220px;
+        max-width: 220px;
         text-align: center;
     }
     
@@ -191,9 +192,10 @@
         justify-content: center;
     }
 
-    .skill-nav-btn {
-        width: 100%;
-        max-width: 350px;
+    /* Keep Skills section 3/2/1 layout - do not override */
+    #skills .skill-nav-btn {
+        width: 220px;
+        max-width: 220px;
         height: auto;
         min-height: 120px;
         text-align: center;

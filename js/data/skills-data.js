@@ -177,6 +177,34 @@ window.skillsData = {
         "Autonomy & responsibility"
       ]
     }
+  ],
+
+  /* =======================
+     7️⃣ Ai prompt
+  ======================== */
+  aiPrompt: [
+    {
+      id: "skill-ai-001",
+      category: "aiPrompt",
+      title: "AI Prompt Engineering",
+      description: "Crafting and optimizing prompts for large language models (LLMs)",
+      skills: [
+        { name: "Prompt Design", icon: "fas fa-lightbulb", color: "#FFC107" },
+        { name: "ChatGPT", icon: "fas fa-robot", color: "#74AA9C" },
+        { name: "Gemini", icon: "fas fa-robot", color: "#4285F4" },
+        { name: "Midjourney", icon: "fas fa-image", color: "#1E90FF" },
+        { name: "Stable Diffusion", icon: "fas fa-image", color: "#8E44AD" },
+        { name: "Contextual Prompting", icon: "fas fa-align-left", color: "#2ECC71" },
+        { name: "Chain of Thought", icon: "fas fa-project-diagram", color: "#F39C12" }
+      ],
+      features: [
+        "Effective prompt writing",
+        "Image generation prompts",
+        "Code generation prompts",
+        "Fine-tuning prompts",
+        "Ethical AI usage"
+      ]
+    }
   ]
 };
 

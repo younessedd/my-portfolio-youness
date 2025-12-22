@@ -101,16 +101,40 @@
 /* IOT PROJECTS NAVIGATION BUTTONS */
 #iot-projects .skills-nav {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 220px);
     gap: 1.5rem;
     margin: 3rem auto 0;
-    max-width: 900px;
+    max-width: 1000px;
+    justify-content: center;
+    justify-items: center;
 }
 
-@media (min-width: 768px) {
-    #iot-projects .skills-nav {
-        grid-template-columns: repeat(4, 1fr);
-    }
+/* For 1 button - center it */
+#iot-projects .skills-nav:has(:only-child) {
+    grid-template-columns: 220px;
+    justify-content: center;
+    max-width: 220px;
+}
+
+/* For 2 buttons - center them */
+#iot-projects .skills-nav:has(:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, 220px);
+    justify-content: center;
+    max-width: 500px;
+}
+
+/* For 3 buttons - center them */
+#iot-projects .skills-nav:has(:nth-child(3):last-child) {
+    grid-template-columns: repeat(3, 220px);
+    justify-content: center;
+    max-width: 750px;
+}
+
+/* For 4 buttons - center them */
+#iot-projects .skills-nav:has(:nth-child(4):last-child) {
+    grid-template-columns: repeat(4, 220px);
+    justify-content: center;
+    max-width: 1000px;
 }
 
 #iot-projects .skill-nav-btn {
@@ -715,10 +739,47 @@
    RESPONSIVE DESIGN
 ============================================ */
 
+/* Override :has() selectors for responsive behavior */
+@media (max-width: 1200px) {
+    #iot-projects .skills-nav:has(:only-child) {
+        grid-template-columns: 220px;
+        max-width: 220px;
+        justify-content: center;
+    }
+    #iot-projects .skills-nav:has(:nth-child(2):last-child) {
+        grid-template-columns: repeat(2, 220px);
+        max-width: 500px;
+        justify-content: center;
+    }
+    #iot-projects .skills-nav:has(:nth-child(3):last-child),
+    #iot-projects .skills-nav:has(:nth-child(4):last-child) {
+        grid-template-columns: repeat(3, 220px);
+        max-width: 800px;
+        justify-content: center;
+    }
+}
+
 /* Tablet Styles */
 @media (max-width: 1024px) {
     #iot-projects h2 {
         font-size: 2.2rem;
+    }
+    
+    #iot-projects .skills-nav:has(:only-child) {
+        grid-template-columns: 220px;
+        max-width: 220px;
+        justify-content: center;
+    }
+    #iot-projects .skills-nav:has(:nth-child(2):last-child) {
+        grid-template-columns: repeat(2, 220px);
+        max-width: 500px;
+        justify-content: center;
+    }
+    #iot-projects .skills-nav:has(:nth-child(3):last-child),
+    #iot-projects .skills-nav:has(:nth-child(4):last-child) {
+        grid-template-columns: repeat(3, 220px);
+        max-width: 800px;
+        justify-content: center;
     }
     
     #iot-projects .skill-nav-btn {
@@ -751,6 +812,33 @@
     }
 }
 
+/* Small Tablet - Show 2 buttons */
+@media (max-width: 900px) {
+    #iot-projects .skills-nav:has(:only-child) {
+        grid-template-columns: 220px;
+        max-width: 220px;
+        justify-content: center;
+    }
+    #iot-projects .skills-nav:has(:nth-child(2):last-child),
+    #iot-projects .skills-nav:has(:nth-child(3):last-child),
+    #iot-projects .skills-nav:has(:nth-child(4):last-child) {
+        grid-template-columns: repeat(2, 220px);
+        max-width: 500px;
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    
+    #iot-projects .skill-nav-btn {
+        height: 125px;
+        min-height: 125px;
+        padding: 1.2rem;
+    }
+    
+    #iot-projects .skill-nav-btn i {
+        font-size: 1.9rem;
+    }
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
     #iot-projects {
@@ -761,9 +849,14 @@
         font-size: 2rem;
     }
     
-    #iot-projects .skills-nav {
+    #iot-projects .skills-nav:has(:only-child),
+    #iot-projects .skills-nav:has(:nth-child(2):last-child),
+    #iot-projects .skills-nav:has(:nth-child(3):last-child),
+    #iot-projects .skills-nav:has(:nth-child(4):last-child) {
         grid-template-columns: 1fr;
         gap: 1rem;
+        max-width: 350px;
+        justify-content: center;
     }
     
     #iot-projects .skill-nav-btn {

@@ -2,53 +2,311 @@
    SKILLS SECTION - MODERN STYLE LIKE WEB APPS
 ============================================ */
 
-/* Technology-Specific Icon Colors */
-/* Web Development Colors */
-.skill-nav-btn[data-category="web"] i,
-.icon-nav-btn[data-category="web"] i,
-.popup-title i.fa-code {
-    color: #f97316 !important; /* Orange for Web Development */
+#skills .skills-nav.center-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 3rem auto 0;
+    padding: 1rem;
+    justify-content: center;
+    justify-items: center;
+    max-width: 900px; /* 3 buttons per row with flex */
 }
 
-.skill-nav-btn[data-category="web"] span,
-.popup-title span:has(+ i.fa-code) {
+/* Center remaining buttons in incomplete rows */
+#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(7):last-child {
+    grid-column: 2; /* Center the 7th button in 3-column grid */
+}
+
+#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(5):last-child,
+#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(8):last-child {
+    grid-column: 2; /* Center single remaining button */
+}
+
+#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(4):last-child {
+    grid-column: 1 / span 2; /* Center 2 buttons in 3-column grid */
+}
+
+#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(5):not(:last-child) {
+    grid-column: auto; /* Reset for normal positioning */
+}
+
+#skills .skill-nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1.5rem 1.2rem;
+    background: rgba(2, 6, 23, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 2px solid rgba(16, 185, 129, 0.22);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    color: var(--text-secondary);
+    height: 140px;
+    min-height: 140px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    flex: 1;
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+#skills .skill-nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(139, 92, 246, 0.11) 0%,
+        rgba(168, 85, 247, 0.05) 50%,
+        rgba(147, 51, 234, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+#skills .skill-nav-btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(139, 92, 246, 0.6);
+    color: #8b5cf6;
+    box-shadow: 
+        0 20px 40px rgba(139, 92, 246, 0.3),
+        0 0 60px rgba(139, 92, 246, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+#skills .skill-nav-btn:hover::before {
+    opacity: 1;
+}
+
+#skills .skill-nav-btn.active {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(249, 115, 22, 0.8));
+    border-color: rgba(139, 92, 246, 0.8);
+    color: white;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 20px 40px rgba(139, 92, 246, 0.4),
+        0 0 80px rgba(139, 92, 246, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+#skills .skill-nav-btn i {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+#skills .skill-nav-btn:hover i,
+#skills .skill-nav-btn.active i {
+    transform: scale(1.1);
+}
+
+#skills .skill-nav-btn span {
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+/* Skills nav responsive columns */
+@media (max-width: 1024px) {
+    #skills .skills-nav.center-buttons {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 600px; /* 2 buttons per row on tablet */
+        gap: 1.2rem;
+    }
+    
+    /* Center remaining button in tablet layout */
+    #skills .skills-nav.center-buttons .skill-nav-btn:nth-child(odd):last-child:nth-child(7) {
+        grid-column: 1 / span 2; /* Center odd remaining button across 2 columns */
+    }
+}
+
+@media (max-width: 768px) {
+    #skills .skills-nav.center-buttons {
+        grid-template-columns: 1fr;
+        max-width: 300px; /* 1 button per row on mobile */
+        gap: 1rem;
+    }
+
+    #skills .skills-nav.center-buttons .skill-nav-btn {
+        width: 100%;
+        height: 120px;
+        min-height: 120px;
+        padding: 1.2rem;
+    }
+    
+    /* Reset grid positioning for mobile (single column) */
+    #skills .skills-nav.center-buttons .skill-nav-btn {
+        grid-column: auto !important;
+    }
+}
+
+/* Category Colors for Skill Navigation Buttons */
+
+/* Web Development - Orange */
+.skill-nav-btn[data-category="webDevelopment"] i,
+.skill-nav-btn[data-category="webDevelopment"] span {
     color: #f97316 !important;
 }
 
-/* IoT & Electronics Colors */
-.skill-nav-btn[data-category="iot"] i,
-.icon-nav-btn[data-category="iot"] i,
-.popup-title i.fa-microchip {
-    color: #10b981 !important; /* Green for IoT */
+/* Mobile Development - Blue */
+.skill-nav-btn[data-category="mobileDevelopment"] i,
+.skill-nav-btn[data-category="mobileDevelopment"] span {
+    color: #3b82f6 !important;
 }
 
-.skill-nav-btn[data-category="iot"] span,
-.popup-title span:has(+ i.fa-microchip) {
+/* IoT and Domotic - Green */
+.skill-nav-btn[data-category="iotAndDomotic"] i,
+.skill-nav-btn[data-category="iotAndDomotic"] span {
     color: #10b981 !important;
 }
 
-/* Mobile Development Colors */
-.skill-nav-btn[data-category="mobile"] i,
-.icon-nav-btn[data-category="mobile"] i,
-.popup-title i.fa-mobile-alt {
-    color: #06b6d4 !important; /* Cyan for Mobile */
+/* Electronics and Electric - Yellow */
+.skill-nav-btn[data-category="electronicsAndElectric"] i,
+.skill-nav-btn[data-category="electronicsAndElectric"] span {
+    color: #eab308 !important;
 }
 
-.skill-nav-btn[data-category="mobile"] span,
-.popup-title span:has(+ i.fa-mobile-alt) {
-    color: #06b6d4 !important;
-}
-
-/* Soft Skills Colors */
-.skill-nav-btn[data-category="soft"] i,
-.icon-nav-btn[data-category="soft"] i,
-.popup-title i.fa-star {
-    color: #8b5cf6 !important; /* Purple for Soft Skills */
-}
-
-.skill-nav-btn[data-category="soft"] span,
-.popup-title span:has(+ i.fa-star) {
+/* Robotics and Automatism - Purple */
+.skill-nav-btn[data-category="roboticsAndAutomatism"] i,
+.skill-nav-btn[data-category="roboticsAndAutomatism"] span {
     color: #8b5cf6 !important;
+}
+
+/* Soft Skills - Pink */
+.skill-nav-btn[data-category="softSkills"] i,
+.skill-nav-btn[data-category="softSkills"] span {
+    color: #ec4899 !important;
+}
+
+/* AI Prompt - Yellow/Orange */
+.skill-nav-btn[data-category="aiPrompt"] i,
+.skill-nav-btn[data-category="aiPrompt"] span {
+    color: #f59e0b !important;
+}
+
+/* Hover effects for colored buttons */
+.skill-nav-btn[data-category="webDevelopment"]:hover {
+    border-color: rgba(249, 115, 22, 0.6);
+    color: #f97316;
+    box-shadow: 
+        0 20px 40px rgba(249, 115, 22, 0.3),
+        0 0 60px rgba(249, 115, 22, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.skill-nav-btn[data-category="mobileDevelopment"]:hover {
+    border-color: rgba(59, 130, 246, 0.6);
+    color: #3b82f6;
+    box-shadow: 
+        0 20px 40px rgba(59, 130, 246, 0.3),
+        0 0 60px rgba(59, 130, 246, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.skill-nav-btn[data-category="iotAndDomotic"]:hover {
+    border-color: rgba(16, 185, 129, 0.6);
+    color: #10b981;
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.3),
+        0 0 60px rgba(16, 185, 129, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.skill-nav-btn[data-category="electronicsAndElectric"]:hover {
+    border-color: rgba(234, 179, 8, 0.6);
+    color: #eab308;
+    box-shadow: 
+        0 20px 40px rgba(234, 179, 8, 0.3),
+        0 0 60px rgba(234, 179, 8, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.skill-nav-btn[data-category="roboticsAndAutomatism"]:hover {
+    border-color: rgba(139, 92, 246, 0.6);
+    color: #8b5cf6;
+    box-shadow: 
+        0 20px 40px rgba(139, 92, 246, 0.3),
+        0 0 60px rgba(139, 92, 246, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.skill-nav-btn[data-category="softSkills"]:hover {
+    border-color: rgba(236, 72, 153, 0.6);
+    color: #ec4899;
+    box-shadow: 
+        0 20px 40px rgba(236, 72, 153, 0.3),
+        0 0 60px rgba(236, 72, 153, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.skill-nav-btn[data-category="aiPrompt"]:hover {
+    border-color: rgba(245, 158, 11, 0.6);
+    color: #f59e0b;
+    box-shadow: 
+        0 20px 40px rgba(245, 158, 11, 0.3),
+        0 0 60px rgba(245, 158, 11, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Active states for colored buttons */
+.skill-nav-btn[data-category="webDevelopment"].active {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.8), rgba(251, 146, 60, 0.8));
+    border-color: rgba(249, 115, 22, 0.8);
+    color: white;
+}
+
+.skill-nav-btn[data-category="mobileDevelopment"].active {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(96, 165, 250, 0.8));
+    border-color: rgba(59, 130, 246, 0.8);
+    color: white;
+}
+
+.skill-nav-btn[data-category="iotAndDomotic"].active {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.8), rgba(52, 211, 153, 0.8));
+    border-color: rgba(16, 185, 129, 0.8);
+    color: white;
+}
+
+.skill-nav-btn[data-category="electronicsAndElectric"].active {
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.8), rgba(251, 191, 36, 0.8));
+    border-color: rgba(234, 179, 8, 0.8);
+    color: white;
+}
+
+.skill-nav-btn[data-category="roboticsAndAutomatism"].active {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(167, 139, 250, 0.8));
+    border-color: rgba(139, 92, 246, 0.8);
+    color: white;
+}
+
+.skill-nav-btn[data-category="softSkills"].active {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.8), rgba(244, 114, 182, 0.8));
+    border-color: rgba(236, 72, 153, 0.8);
+    color: white;
+}
+
+.skill-nav-btn[data-category="aiPrompt"].active {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.8), rgba(251, 191, 36, 0.8));
+    border-color: rgba(245, 158, 11, 0.8);
+    color: white;
 }
 
 /* SKILLS SECTION CONTAINER */

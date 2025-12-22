@@ -15,14 +15,15 @@ const SkillsManager = {
     navigationLock: false,
     isModalOpen: false,
 
-    categories: ['webDevelopment', 'mobileDevelopment', 'iotAndDomotic', 'electronicsAndElectric', 'roboticsAndAutomatism', 'softSkills'],
+    categories: ['webDevelopment', 'mobileDevelopment', 'iotAndDomotic', 'electronicsAndElectric', 'roboticsAndAutomatism', 'softSkills', 'aiPrompt'],
     categoryNames: {
         'webDevelopment': 'Web Development',
         'mobileDevelopment': 'Mobile Development',
         'iotAndDomotic': 'IoT and Domotic',
         'electronicsAndElectric': 'Electronics and Electric',
         'roboticsAndAutomatism': 'Robotics and Automatism',
-        'softSkills': 'Soft Skills'
+        'softSkills': 'Soft Skills',
+        'aiPrompt': 'AI Prompt Engineering'
     },
 
     cardPositions: {},
@@ -398,7 +399,8 @@ const SkillsManager = {
             'iotAndDomotic': 'fa-home',
             'electronicsAndElectric': 'fa-bolt',
             'roboticsAndAutomatism': 'fa-robot',
-            'softSkills': 'fa-star'
+            'softSkills': 'fa-star',
+            'aiPrompt': 'fa-brain'
         };
         this.swiperInstance = new Swiper(this.elements.swiper, {
             slidesPerView: 1,
@@ -479,7 +481,8 @@ const SkillsManager = {
             'iotAndDomotic': 'fa-home',
             'electronicsAndElectric': 'fa-bolt',
             'roboticsAndAutomatism': 'fa-robot',
-            'softSkills': 'fa-star'
+            'softSkills': 'fa-star',
+            'aiPrompt': 'fa-brain'
         };
         const icon = icons[category] || 'fa-code';
         this.elements.categoryTitle.innerHTML = `
