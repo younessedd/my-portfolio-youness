@@ -13,7 +13,7 @@ window.webProjectsData = {
             description: "A modern web application for managing co-working spaces, showcasing services, booking options, and interactive features.",
             technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
             images: [
-                "/images/web/workly.png"
+                "images/web/workly.png"
             ],
             features: [
                 "Co-working space showcase",
@@ -42,7 +42,7 @@ window.webProjectsData = {
             description: "A modern web application displaying weather data using API integration with interactive UI and responsive design.",
             technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages", "API Integration"],
             images: [
-                "/images/web/weather.png"
+                "images/web/weather.png"
             ],
             features: [
                 "Real-time weather information",
