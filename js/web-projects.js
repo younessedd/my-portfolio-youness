@@ -403,9 +403,9 @@ const WebProjectsManager = {
         slide.innerHTML = `
             <div class="project-card">
                 <div class="project-info">
+                    ${imagesHTML}
+                    
                     <div class="skills-category-container">
-                        ${imagesHTML}
-                        
                         <h3 class="skill-main-title">${skillSet.title}</h3>
                         <p class="skill-main-description">${skillSet.description}</p>
                         

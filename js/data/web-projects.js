@@ -13,7 +13,7 @@ window.webProjectsData = {
             description: "A modern web application for managing co-working spaces, showcasing services, booking options, and interactive features.",
             technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
             images: [
-                "https://raw.githubusercontent.com/younessedd/kow_worker_Simplon/main/screenshot.png"
+                "/images/web/workly.png"
             ],
             features: [
                 "Co-working space showcase",
@@ -42,7 +42,7 @@ window.webProjectsData = {
             description: "A modern web application displaying weather data using API integration with interactive UI and responsive design.",
             technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages", "API Integration"],
             images: [
-                "https://raw.githubusercontent.com/younessedd/Weather-api_Simplon/main/screenshot.png"
+                "/images/web/weather.png"
             ],
             features: [
                 "Real-time weather information",
@@ -71,7 +71,7 @@ window.webProjectsData = {
             description: "A website for WoodCraft artisans displaying products, craftsmanship, and company information with a clean design.",
             technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
             images: [
-                "https://raw.githubusercontent.com/younessedd/wood-mini-company/main/screenshot.png"
+                "images/web/woodcompany.png"
             ],
             features: [
                 "Artisan product showcase",
@@ -88,7 +88,7 @@ window.webProjectsData = {
                 },
                 {
                     name: "Live Demo",
-                    url: "https://younessedd.github.io/Weather-api_Simplon/",
+                    url: "https://younessedd.github.io/wood-mini-company/",
                     icon: "fa-external-link-alt"
                 }
             ]
@@ -100,7 +100,7 @@ window.webProjectsData = {
             description: "A professional web application for PowerGrid Solutions company, showcasing services, solutions, and projects.",
             technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
             images: [
-                "https://raw.githubusercontent.com/younessedd/PowerGrid-Solutions_Company/main/screenshot.png"
+                "images/web/powergride.png"
             ],
             features: [
                 "Company services and solutions",
@@ -129,7 +129,7 @@ window.webProjectsData = {
             description: "A website for CoWork Hub company displaying services, workspace options, and interactive booking features.",
             technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
             images: [
-                "https://raw.githubusercontent.com/younessedd/CoWork-Hub_company/main/screenshot.png"
+                "images/web/CoWork-Hub.png"
             ],
             features: [
                 "Workspace showcase",
@@ -158,7 +158,7 @@ window.webProjectsData = {
             description: "A modern web application for Bella Vista Food company showcasing menus, services, and interactive features.",
             technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
             images: [
-                "https://raw.githubusercontent.com/younessedd/Bella-Vista-Food_company/main/screenshot.png"
+                "images/web/Bella-Vista.png"
             ],
             features: [
                 "Food company showcase",
@@ -187,7 +187,7 @@ window.webProjectsData = {
             description: "A modern web application for a gourmet food company, showcasing menus, services, and interactive customer features with responsive design.",
             technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
             images: [
-                "https://raw.githubusercontent.com/younessedd/GourmetDelight-Food_company/main/screenshot.png"
+                "images/web/GourmetDelight.png"
             ],
             features: [
                 "Gourmet food company showcase",
@@ -216,7 +216,7 @@ window.webProjectsData = {
             description: "A modern web application for exploring movies, featuring search functionality, movie details, and interactive filtering.",
             technologies: ["React.js", "CSS3", "File/Excel Handling"],
             images: [
-                "https://raw.githubusercontent.com/younessedd/Movies-scope_simplon/main/screenshot.png"
+                "images/web/movis-scoop.png"
             ],
             features: [
                 "Movie search and discovery",
@@ -245,7 +245,7 @@ window.webProjectsData = {
             description: "A modern food discovery web application showcasing recipes, restaurants, and culinary experiences with interactive features.",
             technologies: ["React.js", "CSS3", "API Integration"],
             images: [
-                "https://raw.githubusercontent.com/younessedd/Foodie_Simplon/main/screenshot.png"
+                "images/web/foody.png"
             ],
             features: [
                 "Food and recipe discovery via API",
@@ -269,7 +269,7 @@ window.webProjectsData = {
             description: "A React-based frontend application for a blog system that connects to a backend API to display, create, and manage blog content.",
             technologies: ["React.js", "CSS3", "JavaScript", "API Integration"],
             images: [
-                "https://raw.githubusercontent.com/younessedd/Blog-Api_Simplon/main/screenshot.png"
+                "images/web/bloger.png"
             ],
             features: [
                 "Blog post display and management",
@@ -297,7 +297,7 @@ window.webProjectsData = {
             description: "A backend API service for job listings and employment opportunities with data management capabilities.",
             technologies: ["Node.js", "Express.js", "MongoDB", "REST API"],
             images: [
-                "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&auto=format&fit=crop"
+                "images/web/swagger.webp"
             ],
             features: [
                 "Job listing management",
@@ -321,7 +321,8 @@ window.webProjectsData = {
             description: "A backend API service for managing music data, including tracks, artists, playlists, and music metadata.",
             technologies: ["Node.js", "Express.js", "Database", "REST API", "Music Data Management"],
             images: [
-                "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&auto=format&fit=crop"
+                "images/web/swager1.png"
+
             ],
             features: [
                 "Music track management",
@@ -349,7 +350,7 @@ window.webProjectsData = {
             description: "A full-stack event management application for creating, organizing, and managing events with interactive features.",
             technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "REST API", "Authentication"],
             images: [
-                "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&auto=format&fit=crop"
+                "images/web/eventy.jpg"
             ],
             features: [
                 "Event creation and management",
@@ -373,7 +374,7 @@ window.webProjectsData = {
             description: "A full-stack task management and workflow application for organizing, tracking, and optimizing task completion processes.",
             technologies: ["React.js", "Node.js", "Express.js", "Database", "Task Management", "Workflow Engine"],
             images: [
-                "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format&fit=crop"
+                "images/web/task-flow.png"
             ],
             features: [
                 "Task organization and categorization",
@@ -397,7 +398,7 @@ window.webProjectsData = {
             description: "A comprehensive full-stack e-commerce platform with product management, shopping cart, user authentication, and payment processing.",
             technologies: ["React.js", "Node.js", "Express.js", "Database", "Payment Integration", "Authentication"],
             images: [
-                "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop"
+                "images/web/e-comerce.png"
             ],
             features: [
                 "Product catalog and management",
@@ -421,7 +422,7 @@ window.webProjectsData = {
             description: "A full-stack user management system with authentication, user profiles, and administrative controls.",
             technologies: ["React.js", "Node.js", "CSS3", "API Integration", "Express.js", "Authentication"],
             images: [
-                "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&auto=format&fit=crop"
+                "images/web/user-manger.png"
             ],
             features: [
                 "User authentication and registration",

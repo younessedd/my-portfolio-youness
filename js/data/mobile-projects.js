@@ -14,7 +14,7 @@ window.mobileProjectsData = {
             description: "Explore your knowledge about American history, geography, and culture through engaging quizzes.",
             technologies: ["Kodular", "Firebase", "AdMob", "Android"],
             images: [
-                "https://play-lh.googleusercontent.com/aLzZPlHLyhw4f5e_H6Y7_rRmMJXhV4f4Tt2WlN0qgN4sB_QbOq8xgCdw9rJH2kzjRg=s180-rw"
+                "images/mob/ameriaue-quiz.png"
             ],
             features: [
                 "American history & geography questions",
@@ -36,7 +36,7 @@ window.mobileProjectsData = {
             description: "Interactive electronics quiz app with challenging questions and arcade-style gameplay for fun learning.",
             technologies: ["Kodular", "Firebase", "AdMob", "Android"],
             images: [
-                "https://play-lh.googleusercontent.com/k6Jh0D6p3Zrhdh4v04D0CkKYlcnjh7yCok2zTcPYtY9Slc_E9SvROuHCmO2d6VYnx5aX=s180-rw"
+                "images/mob/quiz-electronic.png"
             ],
             features: [
                 "Fun arcade-style quiz",
@@ -58,7 +58,7 @@ window.mobileProjectsData = {
             description: "Test your knowledge with thousands of general knowledge and puzzle questions in Arabic and English.",
             technologies: ["Kodular", "Firebase", "AdMob", "Android"],
             images: [
-                "https://play-lh.googleusercontent.com/VwXoJKTmruqGrlO6x1JuV9W7YK1wT0qPwOQ_h7Nv1Uy2L7TnsxXrSmpB5v6vUvVDA=s180-rw"
+                "images/mob/quiz-ar.png"
             ],
             features: [
                 "Multiple categories of questions",
@@ -84,7 +84,7 @@ window.mobileProjectsData = {
             description: "Scan QR codes and barcodes quickly with your mobile camera and save scanned results.",
             technologies: ["Kodular", "Firebase", "AdMob", "Camera API", "QR Code Scanner"],
             images: [
-                "https://play-lh.googleusercontent.com/54iZjd0Yqefn4GajlqRMhD5x7JbyhQG3XnPuwk7zAmIlHVj3F7K2dzr_XOe5HG4x1t6A=s180-rw"
+                "images/mob/qr.png"
             ],
             features: [
                 "Scan QR codes and barcodes",
@@ -105,7 +105,7 @@ window.mobileProjectsData = {
             description: "Check and monitor all your device sensors in real-time, including accelerometer, gyroscope, and more.",
             technologies: ["Kodular", "Firebase", "AdMob", "Android Sensors API"],
             images: [
-                "https://play-lh.googleusercontent.com/2yMfMqB4tjIqfIuRKEcLPSW-6wPzUuQa9xv8kGm8TvhZwNYPFSm2a44Oz_1pHTmR1kQ=s180-rw"
+                "images/mob/test-sensor.png"
             ],
             features: [
                 "Monitor accelerometer, gyroscope, magnetometer",
@@ -130,7 +130,7 @@ window.mobileProjectsData = {
             description: "Control your smart home devices (lights, power, windows, RGB) via ESP32 using Bluetooth with up to 64 commands.",
             technologies: ["Kodular", "Firebase Auth", "Realtime Database", "ESP32", "Bluetooth", "Android"],
             images: [
-                "https://play-lh.googleusercontent.com/$(PLACEHOLDER_ICON_URL)"
+                "images/mob/home-smart.png"
             ],
             features: [
                 "Bluetooth control for ESP32 devices",
