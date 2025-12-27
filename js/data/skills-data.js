@@ -179,33 +179,47 @@ window.skillsData = {
     }
   ],
 
-  /* =======================
-     7️⃣ Ai prompt
-  ======================== */
-  aiPrompt: [
-    {
-      id: "skill-ai-001",
-      category: "aiPrompt",
-      title: "AI Prompt Engineering",
-      description: "Crafting and optimizing prompts for large language models (LLMs)",
-      skills: [
-        { name: "Prompt Design", icon: "fas fa-lightbulb", color: "#FFC107" },
-        { name: "ChatGPT", icon: "fas fa-robot", color: "#74AA9C" },
-        { name: "Gemini", icon: "fas fa-robot", color: "#4285F4" },
-        { name: "Midjourney", icon: "fas fa-image", color: "#1E90FF" },
-        { name: "Stable Diffusion", icon: "fas fa-image", color: "#8E44AD" },
-        { name: "Contextual Prompting", icon: "fas fa-align-left", color: "#2ECC71" },
-        { name: "Chain of Thought", icon: "fas fa-project-diagram", color: "#F39C12" }
-      ],
-      features: [
-        "Effective prompt writing",
-        "Image generation prompts",
-        "Code generation prompts",
-        "Fine-tuning prompts",
-        "Ethical AI usage"
-      ]
-    }
-  ]
+/* =======================
+1️⃣ AI Prompt Engineering
+======================== */
+aiPrompt: [
+{
+id: "skill-ai-001",
+category: "aiPrompt",
+title: "AI Prompt Engineering",
+description: "Crafting and optimizing prompts for large language models (LLMs)",
+skills: [
+{ name: "Prompt Design", icon: "fas fa-lightbulb", color: "#FFC107" },
+{ name: "ChatGPT", icon: "fas fa-robot", color: "#74AA9C" },
+{ name: "Gemini", icon: "fas fa-robot", color: "#4285F4" },
+{ name: "Midjourney", icon: "fas fa-image", color: "#1E90FF" },
+{ name: "Stable Diffusion", icon: "fas fa-image", color: "#8E44AD" },
+{ name: "Contextual Prompting", icon: "fas fa-align-left", color: "#2ECC71" },
+{ name: "Chain of Thought", icon: "fas fa-project-diagram", color: "#F39C12" },
+{ name: "GitHub Copilot", icon: "fab fa-github", color: "#4078C0" },
+{ name: "Cursor AI", icon: "fas fa-cursor", color: "#5865F2" },
+{ name: "Vibe Coding", icon: "fas fa-wave-square", color: "#00BCD4" },
+{ name: "Ideogram", icon: "fas fa-video", color: "#E91E63" },
+{ name: "DALL-E", icon: "fas fa-palette", color: "#9C27B0" },
+{ name: "Adobe Firefly", icon: "fab fa-adobe", color: "#FF0000" },
+{ name: "Runway ML", icon: "fas fa-film", color: "#000000" },
+{ name: "Figma AI", icon: "fab fa-figma", color: "#F24E1E" }
+],
+features: [
+"Effective prompt writing",
+"Image generation prompts",
+"Code generation prompts",
+"Fine-tuning prompts",
+"Ethical AI usage",
+"AI-powered coding assistance",
+"Design AI tools integration",
+"Video generation AI",
+"UI/UX design with AI"
+]
+}
+]
+
+
 };
 
 console.log("🚀 Extended skills data with Bluetooth loaded successfully!");

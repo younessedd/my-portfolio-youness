@@ -5,94 +5,102 @@
 
 window.webProjectsData = {
     // Frontend Category (real projects)
-    frontend: [
+frontend: [
+    {
+        id: "web-frontend-001",
+        category: "frontend",
+        title: "Workly Space",
+        description: "A modern web application for managing co-working spaces, showcasing services, booking options, and interactive features.",
+        technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages", "Vercel"],
+        images: [
+            "images/web/workly.png"
+        ],
+        features: [
+            "Co-working space showcase",
+            "Booking and service features",
+            "Interactive dashboards",
+            "Responsive design for all devices",
+            "Hosted on GitHub Pages",
+            "Deployed on Vercel"
+        ],
+        links: [
+            {
+                name: "GitHub",
+                url: "https://github.com/younessedd/kow_worker_Simplon.git",
+                icon: "fa-github"
+            },
+            {
+                name: "Live Demo",
+                url: "https://kow-worker-simplon-main.vercel.app/",
+                icon: "fa-external-link-alt"
+            }
+        ],
+    
+    },
+{
+    id: "web-frontend-002",
+    category: "frontend",
+    title: "Weather App",
+    description: "A modern web application displaying weather data using API integration with interactive UI and responsive design.",
+    technologies: ["HTML5", "CSS3", "JavaScript", "API Integration", "GitHub Pages", "Vercel"],
+    images: [
+        "images/web/weather.png"
+    ],
+    features: [
+        "Real-time weather information",
+        "Responsive design",
+        "Multiple location support",
+        "Interactive UI elements",
+        "Hosted on GitHub Pages",
+        "Deployed on Vercel"
+    ],
+    links: [
         {
-            id: "web-frontend-001",
-            category: "frontend",
-            title: "Workly Space",
-            description: "A modern web application for managing co-working spaces, showcasing services, booking options, and interactive features.",
-            technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
-            images: [
-                "images/web/workly.png"
-            ],
-            features: [
-                "Co-working space showcase",
-                "Booking and service features",
-                "Interactive dashboards",
-                "Responsive design for all devices",
-                "Hosted on GitHub Pages"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/kow_worker_Simplon.git",
-                    icon: "fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "https://younessedd.github.io/kow_worker_Simplon/",
-                    icon: "fa-external-link-alt"
-                }
-            ]
+            name: "GitHub",
+            url: "https://github.com/younessedd/Weather-api_Simplon.git",
+            icon: "fa-github"
+        },
+     
+        {
+            name: "Live Demo",
+            url: "https://weather-api-simplon-main.vercel.app/",
+            icon: "fa-external-link-alt"
+        }
+    ],
+
+},
+{
+    id: "web-frontend-004",
+    category: "frontend",
+    title: "Movies Scope",
+    description: "A movie discovery application with search functionality, movie details, and filtering options.",
+    technologies: ["HTML5", "CSS3", "JavaScript", "API Integration", "Vercel"],
+    images: [
+        "images/web/movis-scoop.png"
+    ],
+    features: [
+        "Movie search and discovery",
+        "Detailed movie information",
+        "Filtering and sorting options",
+        "Responsive design",
+        "API integration for real-time data",
+        "Deployed on Vercel"
+    ],
+    links: [
+        {
+            name: "GitHub",
+            url: "https://github.com/younessedd/movies-scope-simplon.git", // Update with actual GitHub repo
+            icon: "fa-github"
         },
         {
-            id: "web-frontend-002",
-            category: "frontend",
-            title: "Weather App",
-            description: "A modern web application displaying weather data using API integration with interactive UI and responsive design.",
-            technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages", "API Integration"],
-            images: [
-                "images/web/weather.png"
-            ],
-            features: [
-                "Real-time weather information",
-                "Responsive design",
-                "Multiple location support",
-                "Interactive UI elements",
-                "Hosted on GitHub Pages"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/Weather-api_Simplon.git",
-                    icon: "fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "https://younessedd.github.io/Weather-api_Simplon/home/home.html",
-                    icon: "fa-external-link-alt"
-                }
-            ]
-        },
-        {
-            id: "web-frontend-003",
-            category: "frontend",
-            title: "WoodCraft Artisans",
-            description: "A website for WoodCraft artisans displaying products, craftsmanship, and company information with a clean design.",
-            technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
-            images: [
-                "images/web/woodcompany.png"
-            ],
-            features: [
-                "Artisan product showcase",
-                "Interactive UI elements",
-                "Responsive design",
-                "Company information pages",
-                "Hosted on GitHub Pages"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/wood-mini-company.git",
-                    icon: "fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "https://younessedd.github.io/wood-mini-company/",
-                    icon: "fa-external-link-alt"
-                }
-            ]
-        },
+            name: "Live Demo",
+            url: "https://movies-scope-simplon-main.vercel.app/",
+            icon: "fa-external-link-alt"
+        }
+    ],
+     
+},
+
         {
             id: "web-frontend-004",
             category: "frontend",
@@ -209,61 +217,40 @@ window.webProjectsData = {
                 }
             ]
         },
+   
+{
+    id: "web-frontend-008",
+    category: "frontend",
+    title: "Foodie Foodie",
+    description: "A modern food discovery web application showcasing recipes, restaurants, and culinary experiences with interactive features using TheMealDB API.",
+    technologies: ["React.js", "CSS3", "API Integration", "Vercel", "JavaScript ES6+"],
+    images: [
+        "images/web/foody.png"
+    ],
+    features: [
+        "Food and recipe discovery via TheMealDB API",
+        "Restaurant and cuisine showcase",
+        "Interactive food browsing with search functionality",
+        "Recipe details and instructions",
+        "Responsive design for all devices",
+        "Real-time data fetching from external APIs",
+        "Deployed on Vercel for live demo"
+    ],
+    links: [
         {
-            id: "web-frontend-008",
-            category: "frontend",
-            title: "Movies-scope",
-            description: "A modern web application for exploring movies, featuring search functionality, movie details, and interactive filtering.",
-            technologies: ["React.js", "CSS3", "File/Excel Handling"],
-            images: [
-                "images/web/movis-scoop.png"
-            ],
-            features: [
-                "Movie search and discovery",
-                "Movie details and information",
-                "Interactive filtering and sorting",
-                "Responsive design for all devices",
-                "Excel file data import/management"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/Movies-scope_simplon.git",
-                    icon: "fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "https://younessedd.github.io/Movies-scope_simplon/",
-                    icon: "fa-external-link-alt"
-                }
-            ]
+            name: "GitHub",
+            url: "https://github.com/younessedd/Foodie_Simplon.git",
+            icon: "fa-github"
         },
+        {
+            name: "Live Demo",
+            url: "https://foodie-simplon-main.vercel.app/",
+            icon: "fa-external-link-alt"
+        }
+    ],
+   },
         {
             id: "web-frontend-009",
-            category: "frontend",
-            title: "Foodie Foodie",
-            description: "A modern food discovery web application showcasing recipes, restaurants, and culinary experiences with interactive features.",
-            technologies: ["React.js", "CSS3", "API Integration"],
-            images: [
-                "images/web/foody.png"
-            ],
-            features: [
-                "Food and recipe discovery via API",
-                "Restaurant and cuisine showcase",
-                "Interactive food browsing",
-                "Responsive design for all devices",
-                "Real-time data fetching from external APIs"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/Foodie_Simplon.git",
-                    icon: "fa-github"
-                }
-            ]
-        },
-        {
-            id: "web-frontend-010",
             category: "frontend",
             title: "Blog API Frontend",
             description: "A React-based frontend application for a blog system that connects to a backend API to display, create, and manage blog content.",
