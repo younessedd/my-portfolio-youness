@@ -392,7 +392,7 @@ const MobileProjectsManager = {
         const featuresHTML = this.generateFeaturesHTML(skillSet.features);
         const techTagsHTML = this.generateTechTagsHTML(skillSet.technologies);
         const linksHTML = skillSet.links ? this.generateProjectLinksHTML(skillSet.links) : '';
-        const imagesHTML = this.generateImagesHTML(skillSet.images);
+        const imagesHTML = this.generateImagesHTML(skillSet.images, skillSet.id);
         
         const slide = document.createElement('div');
         slide.className = 'swiper-slide';
@@ -404,11 +404,13 @@ const MobileProjectsManager = {
             <div class="project-card">
                 <div class="project-info">
                     <div class="skills-category-container">
-                        ${imagesHTML}
-                        
                         <h3 class="skill-main-title">${skillSet.title}</h3>
                         <p class="skill-main-description">${skillSet.description}</p>
-                        
+                    </div>
+                    
+                    ${imagesHTML}
+                    
+                    <div class="skills-category-container">
                         ${linksHTML}
                         
                         <div class="skill-set-features">
@@ -432,7 +434,7 @@ const MobileProjectsManager = {
         this.elements.swiperWrapper.appendChild(slide);
     },
     
-    generateImagesHTML: function(images) {
+    generateImagesHTML: function(images, projectId) {
         if (!images || images.length === 0) {
             return `
                 <div class="project-images-container single-image-container">
@@ -443,12 +445,32 @@ const MobileProjectsManager = {
                 </div>
             `;
         }
-        
-        // عرض الصورة الأولى فقط
-        const firstImage = images[0];
+
+        if (images.length === 1) {
+            return `
+                <div class="project-images-container single-image-container">
+                    <img src="${images[0]}" alt="Project Image" class="project-image-single">
+                </div>
+            `;
+        }
+
+        const galleryId = `image-gallery-${projectId}`;
+        const slides = images.map(image => `
+            <div class="swiper-slide">
+                <img src="${image}" alt="Project Image">
+            </div>
+        `).join('');
+
         return `
-            <div class="project-images-container single-image-container">
-                <img src="${firstImage}" alt="Mobile App" class="project-image-single">
+            <div class="project-images-container image-gallery-container">
+                <div class="swiper-container ${galleryId}">
+                    <div class="swiper-wrapper">
+                        ${slides}
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
             </div>
         `;
     },
@@ -536,17 +558,30 @@ const MobileProjectsManager = {
             },
             
             on: {
+                init: () => {
+                    this.elements.swiper.querySelectorAll('.image-gallery-container .swiper-container').forEach(container => {
+                        new Swiper(container, {
+                            loop: true,
+                            pagination: {
+                                el: container.querySelector('.swiper-pagination'),
+                                clickable: true,
+                            },
+                            navigation: {
+                                nextEl: container.querySelector('.swiper-button-next'),
+                                prevEl: container.querySelector('.swiper-button-prev'),
+                            },
+                        });
+                    });
+                },
                 slideChange: () => {
                     if (!this.swiperInstance) return;
-                    
                     const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
                     const category = activeSlide.dataset.category;
-                    const cardIndex = parseInt(activeSlide.dataset.cardIndex);
-                    
+                    const cardIndex = parseInt(activeSlide.dataset.cardIndex, 10);
+
                     if (category) {
                         this.currentCategory = category;
                         this.currentCardIndex = cardIndex;
-                        
                         const categoryName = this.categoryNames[category];
                         this.updateIconNavigation(category);
                         this.updateCardCounter(category);

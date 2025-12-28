@@ -352,6 +352,10 @@ header::before {
         display: none; /* Hide desktop navigation */
     }
     
+    header {
+        z-index: 1000;
+    }
+    
     /* Tablet mobile menu adjustments */
     .mobile-menu {
         width: 60%; /* Slightly smaller on tablet */
@@ -370,6 +374,7 @@ header::before {
     
     header {
         height: 65px;
+        z-index: 1000;
     }
     
     .header-container {
@@ -388,6 +393,29 @@ header::before {
 @media (max-width: 480px) {
     header {
         height: 60px;
+        z-index: 1000;
+    }
+    
+    .burger-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .mobile-menu {
+        top: 60px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        height: 60px;
+        z-index: 1000;
     }
     
     .burger-btn {

@@ -391,6 +391,7 @@ const SkillsManager = {
         `).join('');
     },
 
+
     initMainSwiper: function() {
         if (!this.elements.swiper) return;
         const icons = {

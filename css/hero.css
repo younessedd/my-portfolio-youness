@@ -38,6 +38,13 @@
     padding: 0;
     color: white;
     position: relative;
+    filter: none !important;
+}
+
+.swiper-slide-visible .hero-slide,
+.swiper-slide-fully-visible .hero-slide,
+.swiper-slide-active .hero-slide {
+    filter: none !important;
 }
 
 .hero-slide .container {

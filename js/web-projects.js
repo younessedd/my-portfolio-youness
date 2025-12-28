@@ -392,7 +392,7 @@ const WebProjectsManager = {
         const featuresHTML = this.generateFeaturesHTML(skillSet.features);
         const techTagsHTML = this.generateTechTagsHTML(skillSet.technologies);
         const linksHTML = skillSet.links ? this.generateProjectLinksHTML(skillSet.links) : '';
-        const imagesHTML = this.generateImagesHTML(skillSet.images);
+        const imagesHTML = this.generateImagesHTML(skillSet.images, skillSet.id);
         
         const slide = document.createElement('div');
         slide.className = 'swiper-slide';
@@ -403,12 +403,14 @@ const WebProjectsManager = {
         slide.innerHTML = `
             <div class="project-card">
                 <div class="project-info">
-                    ${imagesHTML}
-                    
                     <div class="skills-category-container">
                         <h3 class="skill-main-title">${skillSet.title}</h3>
                         <p class="skill-main-description">${skillSet.description}</p>
-                        
+                    </div>
+                    
+                    ${imagesHTML}
+                    
+                    <div class="skills-category-container">
                         ${linksHTML}
                         
                         <div class="skill-set-features">
@@ -517,50 +519,52 @@ const WebProjectsManager = {
     
     initMainSwiper: function() {
         if (!this.elements.swiper) return;
-        
+
         this.swiperInstance = new Swiper(this.elements.swiper, {
             slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
-            speed: 100, // ⚡ Super Fast
-            
-            // Smoothness settings
+            speed: 100,
             resistanceRatio: 0.3,
-            touchRatio: 1, // Optimal touch response
+            touchRatio: 1,
             followFinger: true,
-            threshold: 2, // Lower threshold for swipe
-            shortSwipes: true, // Enable short swipes
+            threshold: 2,
+            shortSwipes: true,
             longSwipesRatio: 0.5,
-            
-            // Smooth transition
-            transitionStart: true,
-            transitionEnd: true,
-            
-            // Pagination
             pagination: {
                 el: '.popup-counter',
                 type: 'fraction',
                 clickable: true,
             },
-            
-            // Navigation
             navigation: {
                 nextEl: this.elements.nextCardBtn,
                 prevEl: this.elements.prevCardBtn,
             },
-            
             on: {
+                init: () => {
+                    this.elements.swiper.querySelectorAll('.image-gallery-container .swiper-container').forEach(container => {
+                        new Swiper(container, {
+                            loop: true,
+                            pagination: {
+                                el: container.querySelector('.swiper-pagination'),
+                                clickable: true,
+                            },
+                            navigation: {
+                                nextEl: container.querySelector('.swiper-button-next'),
+                                prevEl: container.querySelector('.swiper-button-prev'),
+                            },
+                        });
+                    });
+                },
                 slideChange: () => {
                     if (!this.swiperInstance) return;
-                    
                     const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
                     const category = activeSlide.dataset.category;
-                    const cardIndex = parseInt(activeSlide.dataset.cardIndex);
-                    
+                    const cardIndex = parseInt(activeSlide.dataset.cardIndex, 10);
+
                     if (category) {
                         this.currentCategory = category;
                         this.currentCardIndex = cardIndex;
-                        
                         const categoryName = this.categoryNames[category];
                         this.updateIconNavigation(category);
                         this.updateCardCounter(category);
