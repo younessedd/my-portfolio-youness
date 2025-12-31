@@ -155,7 +155,7 @@ slides: [
     createSlideElement: function(slide) {
         const slideDiv = document.createElement('div');
         slideDiv.className = 'swiper-slide hero-slide';
-        slideDiv.style.background = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('${slide.backgroundImage}')`;
+        slideDiv.style.background = `url('${slide.backgroundImage}')`;
         slideDiv.style.backgroundSize = 'cover';
         slideDiv.style.backgroundPosition = 'center';
         

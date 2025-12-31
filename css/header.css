@@ -42,9 +42,9 @@ header::before {
     align-items: center;
     height: 100%;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 30px;
     position: relative;
 }
 
@@ -105,7 +105,7 @@ header::before {
 .desktop-nav ul {
     display: flex;
     list-style: none;
-    gap: 2.5rem;
+    gap: 1rem;
     align-items: center;
     margin: 0;
     padding: 0;
@@ -114,7 +114,7 @@ header::before {
 .desktop-nav a {
     font-weight: 600;
     position: relative;
-    padding: 8px 16px;
+    padding: 12px 20px;
     font-size: 1.05rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     color: var(--text-secondary);
@@ -122,6 +122,7 @@ header::before {
     white-space: nowrap;
     display: inline-flex;
     align-items: center;
+    border-radius: 8px;
 }
 
 .desktop-nav a::after {
@@ -142,9 +143,24 @@ header::before {
 }
 
 .desktop-nav a:hover {
-    color: var(--primary-color);
+    color: var(--text);
     transform: translateY(-2px);
-    text-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    background: rgba(16, 185, 129, 0.1);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+/* Active desktop navigation link - shows hover effects when section is visible */
+.desktop-nav a.active {
+    color: var(--text);
+    transform: translateY(-2px);
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    background: rgba(16, 185, 129, 0.1);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.desktop-nav a.active::after {
+    width: 100%;
 }
 
 /* Burger Button - Positioned on right side */
@@ -201,25 +217,23 @@ header::before {
     opacity: 1;
 }
 
-/* Mobile Menu - Modern Glassmorphism */
+/* Mobile Menu - Full Screen Modern Glassmorphism */
 .mobile-menu {
     display: none; /* مخفي افتراضيًا */
     position: fixed;
-    top: 70px;
-    right: 0;
-    width: 75%;
-    background: rgba(2, 6, 23, 0.9);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(2, 6, 23, 0.98);
     backdrop-filter: blur(20px);
     box-shadow: 
-        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 8px 32px rgba(0, 0, 0, 0.5),
         0 0 80px rgba(16, 185, 129, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
     z-index: 999;
-    max-height: (100vh - 70px);
     overflow-y: auto;
-    padding: 20px;
-    border-left: 1px solid rgba(16, 185, 129, 0.2);
-    border-top: 1px solid rgba(16, 185, 129, 0.2);
+    padding: 30px;
 }
 
 .mobile-menu::before {
@@ -239,13 +253,11 @@ header::before {
 /* Mobile Menu عندما يكون نشطًا */
 .mobile-menu.active {
     display: block;
-    background: rgba(2, 6, 23, 0.95);
+    background: rgba(2, 6, 23, 0.98);
     box-shadow: 
-        0 20px 60px rgba(0, 0, 0, 0.4),
-        0 0 80px rgba(16, 185, 129, 0.22),
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        0 0 80px rgba(16, 185, 129, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    border-left: 1px solid rgba(16, 185, 129, 0.32);
-    border-top: 1px solid rgba(16, 185, 129, 0.32);
 }
 
 .mobile-menu.active::before {
@@ -260,26 +272,43 @@ header::before {
     width: 100%;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 2rem;
 }
 
 .mobile-nav li {
-    margin-bottom: 1rem;
+    list-style: none;
+    width: 90%;
+    max-width: 500px;
+    min-width: 300px;
 }
 
 .mobile-nav-link {
     display: block;
-    padding: 15px 20px;
-    background: rgba(16, 185, 129, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
+    padding: 20px 30px;
+    background: rgba(16, 185, 129, 0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
     font-weight: 600;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    text-align: left;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
     color: var(--text-secondary);
     text-decoration: none;
-    border: 1px solid rgba(16, 185, 129, 0.1);
+    border: 2px solid rgba(16, 185, 129, 0.15);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    width: 100%;
+    white-space: nowrap;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .mobile-nav-link::before {
@@ -300,15 +329,33 @@ header::before {
 }
 
 .mobile-nav-link:hover {
-    background: rgba(16, 185, 129, 0.15);
+    background: rgba(16, 185, 129, 0.25);
     color: #10b981;
-    transform: translateY(-2px);
-    border-color: rgba(16, 185, 129, 0.3);
+    transform: translateY(-4px) scale(1.02);
+    border-color: rgba(16, 185, 129, 0.5);
     box-shadow: 
-        0 8px 25px rgba(16, 185, 129, 0.2),
-        0 0 40px rgba(16, 185, 129, 0.1),
+        0 12px 35px rgba(16, 185, 129, 0.3),
+        0 0 60px rgba(16, 185, 129, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    text-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+    text-shadow: 0 2px 12px rgba(16, 185, 129, 0.4);
+}
+
+.mobile-nav-link:active {
+    transform: translateY(-2px) scale(0.98);
+    transition: all 0.1s ease;
+}
+
+/* Active navigation link when section is visible */
+.mobile-nav-link.active {
+    background: rgba(16, 185, 129, 0.3);
+    color: #10b981;
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: 
+        0 12px 35px rgba(16, 185, 129, 0.4),
+        0 0 60px rgba(16, 185, 129, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-shadow: 0 2px 12px rgba(16, 185, 129, 0.5);
+    transform: translateY(-2px) scale(1.02);
 }
 
 .mobile-nav-link:hover::before {
@@ -332,11 +379,7 @@ header::before {
         display: none; /* Hide desktop navigation */
     }
     
-    /* Smaller laptop mobile menu adjustments */
-    .mobile-menu {
-        width: 50%; /* Smaller on laptop screens */
-        max-width: 450px;
-    }
+    /* Full screen mobile menu on laptop screens - inherits full screen styles */
 }
 
 /* Tablet - Show burger button and hide desktop nav */
@@ -356,11 +399,7 @@ header::before {
         z-index: 1000;
     }
     
-    /* Tablet mobile menu adjustments */
-    .mobile-menu {
-        width: 60%; /* Slightly smaller on tablet */
-        max-width: 400px;
-    }
+    /* Full screen mobile menu on tablet - inherits full screen styles */
     
     /* Note: .mobile-menu will be shown via JavaScript when burger is clicked */
 }
@@ -385,9 +424,7 @@ header::before {
         font-size: 1.6rem;
     }
     
-    .mobile-menu {
-        top: 65px; /* يتناسب مع ارتفاع الرأس */
-    }
+    /* Mobile menu inherits full screen styles */
 }
 
 @media (max-width: 480px) {
@@ -406,10 +443,7 @@ header::before {
         font-size: 1.5rem;
     }
     
-    .mobile-menu {
-        top: 60px;
-        padding: 15px;
-    }
+    /* Mobile menu inherits full screen styles */
 }
 
 @media (max-width: 480px) {
@@ -428,8 +462,5 @@ header::before {
         font-size: 1.5rem;
     }
     
-    .mobile-menu {
-        top: 60px;
-        padding: 15px;
-    }
+    /* Mobile menu inherits full screen styles */
 }

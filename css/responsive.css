@@ -95,9 +95,9 @@
         text-align: center;
     }
     
-    /* Contact container 90% width for tablet */
+    /* Contact container 100% width for tablet */
     .contact-container {
-        width: 90%;
+        width: 100%;
         text-align: center;
         margin: 2rem auto 0;
     }
@@ -232,9 +232,9 @@
         align-items: center;
     }
     
-    /* Contact container 90% width for mobile */
+    /* Contact container 100% width for mobile */
     .contact-container {
-        width: 90%;
+        width: 100%;
         padding: 0 1rem;
         text-align: center;
         margin: 2rem auto 0;
@@ -244,7 +244,7 @@
         width: 100%;
         max-width: 100%;
         margin: 0 auto;
-        padding: 2rem;
+        padding: 2rem 1rem;
         text-align: center;
     }
     
@@ -438,7 +438,7 @@
         width: 100%;
         max-width: 100%;
         margin: 0 auto;
-        padding: 1.5rem;
+        padding: 2rem 1rem;
         text-align: center;
     }
 }

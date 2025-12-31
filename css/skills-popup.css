@@ -35,10 +35,10 @@
     overflow: hidden;
     box-shadow: 
         0 20px 60px rgba(0, 0, 0, 0.4),
-        0 0 80px rgba(139, 92, 246, 0.22),
+        0 0 80px rgba(16, 185, 129, 0.22),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
     z-index: 2;
-    animation: popupAppear 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Removed animation for instant center appearance */
     display: flex;
     flex-direction: column;
 }
@@ -48,7 +48,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.2rem 1.5rem;
-    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    background: linear-gradient(135deg, #10b981, #f97316);
     color: white;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     flex-shrink: 0;
@@ -94,7 +94,7 @@
     padding: 1rem;
     background: rgba(2, 6, 23, 0.62);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(139, 92, 246, 0.22);
+    border-bottom: 1px solid rgba(16, 185, 129, 0.22);
     flex-shrink: 0;
     flex-wrap: wrap;
 }
@@ -103,7 +103,7 @@
     width: 50px;
     height: 50px;
     border-radius: 15px;
-    border: 2px solid rgba(139, 92, 246, 0.32);
+    border: 2px solid rgba(16, 185, 129, 0.32);
     background: rgba(2, 6, 23, 0.42);
     backdrop-filter: blur(10px);
     color: var(--text-secondary);
@@ -119,23 +119,23 @@
 }
 
 #skills-icon-nav-top .icon-nav-btn:hover {
-    border-color: rgba(139, 92, 246, 0.62);
-    color: #8b5cf6;
+    border-color: rgba(16, 185, 129, 0.62);
+    color: #10b981;
     transform: translateY(-3px) scale(1.05);
     box-shadow: 
-        0 8px 20px rgba(139, 92, 246, 0.32),
-        0 0 40px rgba(139, 92, 246, 0.22),
+        0 8px 20px rgba(16, 185, 129, 0.32),
+        0 0 40px rgba(16, 185, 129, 0.22),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 #skills-icon-nav-top .icon-nav-btn.active {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.82), rgba(236, 72, 153, 0.82));
-    border-color: rgba(139, 92, 246, 0.82);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.82), rgba(249, 115, 22, 0.82));
+    border-color: rgba(16, 185, 129, 0.82);
     color: white;
     transform: translateY(-5px) scale(1.1);
     box-shadow: 
-        0 12px 30px rgba(139, 92, 246, 0.42),
-        0 0 60px rgba(139, 92, 246, 0.32),
+        0 12px 30px rgba(16, 185, 129, 0.42),
+        0 0 60px rgba(16, 185, 129, 0.32),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
@@ -197,11 +197,11 @@
     color: var(--text);
     margin-bottom: 0.8rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    background: linear-gradient(135deg, #10b981, #f97316);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
 }
 
 #skillsSwiper .skill-main-description {

@@ -40,7 +40,7 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 2;
-    animation: popupAppear 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Removed animation for instant center appearance */
     display: flex;
     flex-direction: column;
 }

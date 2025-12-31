@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="css/skills-popup.css">
     <link rel="stylesheet" href="css/iot-projects-popup.css">
     <link rel="stylesheet" href="css/mobile-apps-popup.css">
+    <!-- Scroll Reveal Animation System -->
+    <link rel="stylesheet" href="css/scroll-reveal.css">
 </head>
 <body class="theme-light">
     <!-- Splash Screen -->
@@ -149,7 +151,7 @@
     <!-- Header -->
     <header>
         <div class="header-container">
-            <a href="#home" class="logo">Portfo<span>lio</span></a>
+            <a href="#home" class="logo">Portfo <span>lio</span></a>
             
             <nav class="desktop-nav">
                 <ul>
@@ -207,16 +209,16 @@
     <!-- About Section -->
     <section id="about">
         <div class="container">
-            <div class="about-header-box">
+            <div class="about-header-box reveal from-top">
                 <h2>About Me</h2>
             </div>
             <div class="about-content">
-                <div class="about-name-container">
+                <div class="about-name-container reveal from-left">
                     <h3 class="about-name">YOUNESS EDDANGUIR</h3>
                 </div>
-                <img class="about-img-circle" src="images/mypic.jpg" alt="Youness Eddanguir">
+                <img class="about-img-circle reveal from-right" src="images/mypic.jpg" alt="Youness Eddanguir">
                 <div class="about-text">
-                    <div class="about-bio-container">
+                    <div class="about-bio-container reveal from-bottom">
                     <p class="about-bio">Junior Web Developer with a strong passion for innovation in web technologies and IoT. Leveraging my background in electrical engineering, I seamlessly integrate digital solutions with physical systems to create intelligent and practical applications.
 
 I thrive on quickly learning new technologies and solving complex technical challenges. My goal is to deliver efficient, scalable, and user-friendly solutions that enhance productivity and improve everyday life.
@@ -234,38 +236,38 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
 <!-- Skills Section -->
 <section id="skills">
     <div class="container">
-        <div class="skill-header-box">
+        <div class="skill-header-box reveal from-top">
             <h2>Skills & Expertise</h2>
             <p>Comprehensive technical skills across multiple domains</p>
         </div>
         
-        <!-- Skills Navigation - 6 buttons -->
-        <div class="skills-nav center-buttons" id="skills-nav">
-            <button class="skill-nav-btn" data-category="webDevelopment">
+        <!-- Skills Navigation - 6 buttons with staggered animation -->
+        <div class="skills-nav center-buttons reveal-grid" id="skills-nav">
+            <button class="skill-nav-btn zoom" data-category="webDevelopment">
                 <i class="fas fa-code"></i>
                 <span>Web Development</span>
             </button>
-            <button class="skill-nav-btn" data-category="mobileDevelopment">
+            <button class="skill-nav-btn zoom" data-category="mobileDevelopment">
                 <i class="fas fa-mobile-alt"></i>
                 <span>Mobile Development</span>
             </button>
-            <button class="skill-nav-btn" data-category="iotAndDomotic">
+            <button class="skill-nav-btn zoom" data-category="iotAndDomotic">
                 <i class="fas fa-home"></i>
                 <span>IoT and Domotic</span>
             </button>
-            <button class="skill-nav-btn" data-category="electronicsAndElectric">
+            <button class="skill-nav-btn zoom" data-category="electronicsAndElectric">
                 <i class="fas fa-bolt"></i>
                 <span>Electronics and Electric</span>
             </button>
-            <button class="skill-nav-btn" data-category="roboticsAndAutomatism">
+            <button class="skill-nav-btn zoom" data-category="roboticsAndAutomatism">
                 <i class="fas fa-robot"></i>
                 <span>Robotics and Automatism</span>
             </button>
-            <button class="skill-nav-btn" data-category="softSkills">
+            <button class="skill-nav-btn zoom" data-category="softSkills">
                 <i class="fas fa-star"></i>
                 <span>Soft Skills</span>
             </button>
-            <button class="skill-nav-btn" data-category="aiPrompt">
+            <button class="skill-nav-btn zoom" data-category="aiPrompt">
                 <i class="fas fa-brain"></i>
                 <span>Ai prompt</span>
             </button>
@@ -348,22 +350,22 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
 <!-- Web Apps Section - Clean Modern Style -->
 <section id="web-apps">
     <div class="container">
-        <div class="web-header-box">
+        <div class="web-header-box reveal from-top">
             <h2>Web Applications</h2>
             <p>Modern web applications built with latest technologies</p>
         </div>
         
-        <!-- Web Apps Navigation - 3 BUTTONS LAYOUT -->
-        <div class="skills-nav center-buttons" id="web-apps-nav">
-            <button class="skill-nav-btn" data-category="frontend">
+        <!-- Web Apps Navigation - 3 BUTTONS LAYOUT with stagger animation -->
+        <div class="skills-nav center-buttons reveal-grid" id="web-apps-nav">
+            <button class="skill-nav-btn zoom" data-category="frontend">
                 <i class="fas fa-code"></i>
                 <span>Frontend</span>
             </button>
-            <button class="skill-nav-btn" data-category="backend">
+            <button class="skill-nav-btn zoom" data-category="backend">
                 <i class="fas fa-server"></i>
                 <span>Backend</span>
             </button>
-            <button class="skill-nav-btn" data-category="fullstack">
+            <button class="skill-nav-btn zoom" data-category="fullstack">
                 <i class="fas fa-globe"></i>
                 <span>Full Stack</span>
             </button>
@@ -432,22 +434,22 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
 <!-- Mobile Apps Section - Clean Modern Style -->
 <section id="mobile-apps">
     <div class="container">
-        <div class="mobile-header-box">
+        <div class="mobile-header-box reveal from-top">
             <h2>Mobile Applications</h2>
             <p>Native and cross-platform mobile apps built with latest technologies</p>
         </div>
         
-        <!-- Mobile Apps Navigation - 3 BUTTONS LAYOUT -->
-        <div class="skills-nav center-buttons" id="mobile-apps-nav">
-            <button class="skill-nav-btn" data-category="quiz">
+        <!-- Mobile Apps Navigation - 3 BUTTONS LAYOUT with stagger animation -->
+        <div class="skills-nav center-buttons reveal-grid" id="mobile-apps-nav">
+            <button class="skill-nav-btn zoom" data-category="quiz">
                 <i class="fas fa-question-circle"></i>
                 <span>Quiz Apps</span>
             </button>
-            <button class="skill-nav-btn" data-category="utility">
+            <button class="skill-nav-btn zoom" data-category="utility">
                 <i class="fas fa-tools"></i>
                 <span>Utility & Tools</span>
             </button>
-            <button class="skill-nav-btn" data-category="smartHome">
+            <button class="skill-nav-btn zoom" data-category="smartHome">
                 <i class="fas fa-home"></i>
                 <span>Smart Home</span>
             </button>
@@ -516,26 +518,26 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
 <!-- IoT Projects Section -->
 <section id="iot-projects">
     <div class="container">
-        <div class="iot-header-box">
+        <div class="iot-header-box reveal from-top">
             <h2>IoT Projects</h2>
             <p>Internet of Things projects combining hardware and software</p>
         </div>
         
-        <!-- IoT Projects Navigation - Same Style -->
-        <div class="skills-nav center-buttons" id="iot-projects-nav">
-            <button class="skill-nav-btn" data-category="home">
+        <!-- IoT Projects Navigation - Same Style with stagger animation -->
+        <div class="skills-nav center-buttons reveal-grid" id="iot-projects-nav">
+            <button class="skill-nav-btn zoom" data-category="home">
                 <i class="fas fa-home"></i>
                 <span>Smart Home</span>
             </button>
-            <button class="skill-nav-btn" data-category="industrial">
+            <button class="skill-nav-btn zoom" data-category="industrial">
                 <i class="fas fa-industry"></i>
                 <span>Industrial IoT</span>
             </button>
-            <button class="skill-nav-btn" data-category="sensors">
+            <button class="skill-nav-btn zoom" data-category="sensors">
                 <i class="fas fa-thermometer-half"></i>
                 <span>Sensor Projects</span>
             </button>
-            <button class="skill-nav-btn" data-category="othersiot">
+            <button class="skill-nav-btn zoom" data-category="othersiot">
                 <i class="fas fa-microchip"></i>
                 <span>Other IoT Projects</span>
             </button>
@@ -609,34 +611,34 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
     <!-- CV Download Section -->
     <section id="cv" class="cv-section">
         <div class="container">
-            <div class="cv-header-box">
+            <div class="cv-header-box reveal from-top">
                 <h2>Curriculum Vitae</h2>
                 <p>View and download my specialized CVs according to field</p>
             </div>
             <div class="cv-cards-container">
                 <div class="cv-cards two-items">
-                    <div class="cv-card">
+                    <div class="cv-card reveal from-left">
                         <div class="cv-icon">
                             <i class="fas fa-code"></i>
                         </div>
                         <h3>Web Developer CV</h3>
                         <p>Professional web developer with 5+ years of experience in frontend and fullstack development.</p>
                         <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" 
-                           class="btn cv-popup-btn" 
+                           class="btn cv-popup-btn zoom" 
                            target="_blank" 
                            download="web-developer-cv.pdf">
                             <i class="fas fa-external-link-alt"></i>
                             View/Download CV
                         </a>
                     </div>
-                    <div class="cv-card">
+                    <div class="cv-card reveal from-right">
                         <div class="cv-icon">
                             <i class="fas fa-microchip"></i>
                         </div>
                         <h3>Electrical Engineer / IoT CV</h3>
                         <p>Electrical engineer specializing in IoT solutions with expertise in embedded systems and industrial automation.</p>
                         <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" 
-                           class="btn cv-popup-btn" 
+                           class="btn cv-popup-btn zoom" 
                            target="_blank" 
                            download="iot-engineer-cv.pdf">
                             <i class="fas fa-external-link-alt"></i>
@@ -651,13 +653,14 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
-            <h2>Contact Me</h2>
-            <p class="section-subtitle">Get in touch for opportunities or collaborations</p>
+            <div class="reveal from-top">
+                <h2>Contact Me</h2>
+                <p class="section-subtitle">Get in touch for opportunities or collaborations</p>
+            </div>
             
             <div class="contact-container">
-                <div class="contact-form-wrapper">
-                    <h3>Send a Message</h3>
-                    <form id="contactForm">
+                <div class="contact-form-wrapper reveal from-bottom">
+                    <form id="contactForm" class="reveal-form">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" class="form-control" required placeholder="Enter your full name" title="Enter your full name">
@@ -678,7 +681,7 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
                             <textarea id="message" class="form-control" required placeholder="Enter your message here" title="Enter your message here"></textarea>
                             <div class="error" id="messageError">Message required (minimum 5 characters)</div>
                         </div>
-                        <button type="submit" class="btn form-btn">
+                        <button type="submit" class="btn form-btn zoom">
                             <i class="fas fa-paper-plane"></i>
                             Send Message
                         </button>
@@ -771,5 +774,11 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
     <script src="js/toast.js" defer></script>
     <script src="js/splash.js" defer></script>
     <script src="js/main.js" defer></script>
+    <!-- Scroll Reveal Animation System -->
+    <script src="js/scroll-reveal.js" defer></script>
+    <!-- Active Navigation Detection -->
+    <script src="js/navigation-active.js" defer></script>
+    <!-- Force Home Link Hover on App Load -->
+    <script src="js/force-home-hover.js" defer></script>
 </body>
 </html>
