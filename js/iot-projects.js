@@ -19,6 +19,29 @@ const IoTProjectsManager = {
         'othersiot': 'Other IoT Projects'
     },
     
+    categoryColors: {
+        'home': {
+            primary: '#059669',
+            secondary: '#10b981',
+            gradient: 'linear-gradient(135deg, #059669, #10b981)'
+        },
+        'industrial': {
+            primary: '#2563eb',
+            secondary: '#3b82f6',
+            gradient: 'linear-gradient(135deg, #2563eb, #3b82f6)'
+        },
+        'sensors': {
+            primary: '#dc2626',
+            secondary: '#ef4444',
+            gradient: 'linear-gradient(135deg, #dc2626, #ef4444)'
+        },
+        'othersiot': {
+            primary: '#f59e0b',
+            secondary: '#fbbf24',
+            gradient: 'linear-gradient(135deg, #f59e0b, #fbbf24)'
+        }
+    },
+    
     cardPositions: {},
     
     init: function() {
@@ -325,16 +348,119 @@ const IoTProjectsManager = {
         this.elements.counterNumber.textContent = `${currentCard}/${cardCount}`;
     },
     
+    updateIconNavigationColors: function(category) {
+        if (!this.elements.iconNavBtns) return;
+        
+        // Get the actual color from the selected skill-nav-btn icon
+        const selectedButton = document.querySelector(`#iot-projects-nav .skill-nav-btn[data-category="${category}"]`);
+        let selectedColor = this.categoryColors[category]?.primary || '#059669'; // fallback
+        
+        if (selectedButton) {
+            const iconElement = selectedButton.querySelector('i.fas');
+            if (iconElement) {
+                const computedStyle = window.getComputedStyle(iconElement);
+                const iconColor = computedStyle.color;
+                if (iconColor && iconColor !== 'rgb(255, 255, 255)' && iconColor !== 'rgba(255, 255, 255, 0)') {
+                    // Convert rgb to hex
+                    selectedColor = this.rgbToHex(iconColor);
+                }
+            }
+        }
+        
+        this.elements.iconNavBtns.forEach(iconBtn => {
+            const btnCategory = iconBtn.dataset.category;
+            const btnColors = this.categoryColors[btnCategory] || this.categoryColors['home'];
+            
+            // Get color for this button's category
+            let buttonColor = btnColors.primary;
+            if (btnCategory === category) {
+                buttonColor = selectedColor; // Use actual selected color
+            }
+            
+            // Update border colors
+            iconBtn.style.borderColor = btnCategory === category ? 
+                buttonColor : `${buttonColor}32`;
+            
+            // Update active state
+            if (btnCategory === category) {
+                iconBtn.classList.add('active');
+                // Create gradient using the actual selected color
+                const rgb = this.hexToRgb(selectedColor);
+                iconBtn.style.background = `linear-gradient(135deg, rgba(${rgb.join(', ')}, 0.8), rgba(${rgb.join(', ')}, 0.6))`;
+                iconBtn.style.color = 'white';
+            } else {
+                iconBtn.classList.remove('active');
+                iconBtn.style.background = 'rgba(2, 6, 23, 0.42)';
+                iconBtn.style.color = 'var(--text-secondary)';
+            }
+        });
+        
+        // Update icon navigation border
+        const iconNav = this.elements.popupContainer.querySelector('.popup-icon-nav');
+        if (iconNav) {
+            iconNav.style.borderBottomColor = `${selectedColor}22`;
+        }
+    },
+    
+    rgbToHex: function(rgb) {
+        if (rgb.startsWith('#')) return rgb;
+        
+        const result = rgb.match(/\d+/g);
+        if (!result || result.length < 3) return '#059669';
+        
+        const r = parseInt(result[0]);
+        const g = parseInt(result[1]);
+        const b = parseInt(result[2]);
+        
+        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    },
+    
+    hexToRgb: function(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? [
+            parseInt(result[1], 16),
+            parseInt(result[2], 16),
+            parseInt(result[3], 16)
+        ] : null;
+    },
+    
     updateCategoryTitle: function(category, buttonText) {
         if (!this.elements.categoryTitle) return;
         
         const icons = {
             'home': 'fa-home',
             'industrial': 'fa-industry',
-            'sensors': 'fa-thermometer-half'
+            'sensors': 'fa-thermometer-half',
+            'othersiot': 'fa-microchip'
         };
         
+        // Get the actual color from the selected skill-nav-btn icon
+        const selectedButton = document.querySelector(`#iot-projects-nav .skill-nav-btn[data-category="${category}"]`);
+        let selectedColor = this.categoryColors[category]?.primary || '#059669'; // fallback
+        
+        if (selectedButton) {
+            const iconElement = selectedButton.querySelector('i.fas');
+            if (iconElement) {
+                const computedStyle = window.getComputedStyle(iconElement);
+                const iconColor = computedStyle.color;
+                if (iconColor && iconColor !== 'rgb(255, 255, 255)' && iconColor !== 'rgba(255, 255, 255, 0)') {
+                    // Convert rgb to hex
+                    selectedColor = this.rgbToHex(iconColor);
+                }
+            }
+        }
+        
         const icon = icons[category] || 'fa-microchip';
+        
+        // Update header background with actual selected color
+        const header = this.elements.popupContainer.querySelector('.popup-header');
+        if (header) {
+            const rgb = this.hexToRgb(selectedColor);
+            header.style.background = `linear-gradient(135deg, rgba(${rgb.join(', ')}, 0.8), rgba(${rgb.join(', ')}, 0.6))`;
+        }
+        
+        // Update icon navigation border colors
+        this.updateIconNavigationColors(category);
         
         this.elements.categoryTitle.innerHTML = `
             <i class="fas ${icon}"></i>

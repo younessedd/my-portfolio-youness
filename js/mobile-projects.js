@@ -18,6 +18,24 @@ const MobileProjectsManager = {
         'smartHome': 'Smart Home'
     },
     
+    categoryColors: {
+        'quiz': {
+            primary: '#2563eb',
+            secondary: '#3b82f6',
+            gradient: 'linear-gradient(135deg, #2563eb, #3b82f6)'
+        },
+        'utility': {
+            primary: '#dc2626',
+            secondary: '#ef4444',
+            gradient: 'linear-gradient(135deg, #dc2626, #ef4444)'
+        },
+        'smartHome': {
+            primary: '#059669',
+            secondary: '#10b981',
+            gradient: 'linear-gradient(135deg, #059669, #10b981)'
+        }
+    },
+    
     cardPositions: {},
     
     init: function() {
@@ -324,16 +342,69 @@ const MobileProjectsManager = {
         this.elements.counterNumber.textContent = `${currentCard}/${cardCount}`;
     },
     
+    updateIconNavigationColors: function(category) {
+        if (!this.elements.iconNavBtns) return;
+        
+        const colors = this.categoryColors[category] || this.categoryColors['quiz'];
+        
+        this.elements.iconNavBtns.forEach(iconBtn => {
+            const btnCategory = iconBtn.dataset.category;
+            const btnColors = this.categoryColors[btnCategory] || this.categoryColors['quiz'];
+            
+            // Update border colors
+            iconBtn.style.borderColor = btnCategory === category ? 
+                btnColors.primary : `${btnColors.primary}32`;
+            
+            // Update active state
+            if (btnCategory === category) {
+                iconBtn.classList.add('active');
+                iconBtn.style.background = btnColors.gradient.replace('135deg', '135deg, rgba(' + 
+                    this.hexToRgb(btnColors.primary).join(', ') + ', 0.8), rgba(' + 
+                    this.hexToRgb(btnColors.secondary).join(', ') + ', 0.8)');
+                iconBtn.style.color = 'white';
+            } else {
+                iconBtn.classList.remove('active');
+                iconBtn.style.background = 'rgba(2, 6, 23, 0.42)';
+                iconBtn.style.color = 'var(--text-secondary)';
+            }
+        });
+        
+        // Update icon navigation border
+        const iconNav = this.elements.popupContainer.querySelector('.popup-icon-nav');
+        if (iconNav) {
+            iconNav.style.borderBottomColor = `${colors.primary}22`;
+        }
+    },
+    
+    hexToRgb: function(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? [
+            parseInt(result[1], 16),
+            parseInt(result[2], 16),
+            parseInt(result[3], 16)
+        ] : [0, 0, 0];
+    },
+
     updateCategoryTitle: function(category, buttonText) {
         if (!this.elements.categoryTitle) return;
         
         const icons = {
             'quiz': 'fa-question-circle',
-            'smart': 'fa-home',
+            'smartHome': 'fa-home',
             'utility': 'fa-tools'
         };
         
+        const colors = this.categoryColors[category] || this.categoryColors['quiz'];
         const icon = icons[category] || 'fa-mobile-alt';
+        
+        // Update header background
+        const header = this.elements.popupContainer.querySelector('.popup-header');
+        if (header) {
+            header.style.background = colors.gradient;
+        }
+        
+        // Update icon navigation border colors
+        this.updateIconNavigationColors(category);
         
         this.elements.categoryTitle.innerHTML = `
             <i class="fas ${icon}"></i>

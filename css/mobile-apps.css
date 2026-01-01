@@ -7,24 +7,51 @@
 .skill-nav-btn[data-category="quiz"] i,
 .icon-nav-btn[data-category="quiz"] i,
 .popup-title i.fa-question-circle {
-    color: #9333ea !important; /* Purple for Quiz Apps */
+    color: #2563eb !important; /* Blue for Quiz Apps */
 }
 
 .skill-nav-btn[data-category="quiz"] span,
 .popup-title span:has(+ i.fa-question-circle) {
-    color: #9333ea !important;
+    color: #2563eb !important;
 }
 
 /* Smart Home Apps Colors */
-.skill-nav-btn[data-category="smart"] i,
-.icon-nav-btn[data-category="smart"] i,
-.popup-title i.fa-home {
+.skill-nav-btn[data-category="smartHome"] i,
+.icon-nav-btn[data-category="smartHome"] i,
+.popup-title i.fa-code {
     color: #059669 !important; /* Green for Smart Home */
 }
 
-.skill-nav-btn[data-category="smart"] span,
-.popup-title span:has(+ i.fa-home) {
+.skill-nav-btn[data-category="smartHome"] span,
+.popup-title span:has(+ i.fa-code) {
     color: #059669 !important;
+}
+
+/* Center all skill-nav-btn zoom buttons content */
+.skill-nav-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.skill-nav-btn i {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto 0.5rem auto !important;
+    width: 100% !important;
+}
+
+.skill-nav-btn span {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
 }
 
 /* Utility Apps Colors */
@@ -98,10 +125,10 @@
     margin-right: auto;
 }
 
-/* MOBILE APPS NAVIGATION BUTTONS - Using Skills Section Approach */
+/* MOBILE APPS NAVIGATION BUTTONS - 3-2-1 Layout with Consistent Width */
 #mobile-apps .skills-nav {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 220px);
     gap: 1.5rem;
     margin: 3rem auto 0;
     padding: 1rem;
@@ -113,36 +140,76 @@
     margin-right: auto;
 }
 
-/* Center remaining buttons in incomplete rows for mobile apps */
-#mobile-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+1):last-child {
-    grid-column: 2; /* Center single remaining button */
+/* 3-2-1 Layout Pattern for Mobile Apps - Fixed Width Buttons */
+/* First row: 3 buttons (full row) */
+#mobile-apps .skills-nav .skill-nav-btn:nth-child(-n+3) {
+    width: 220px;
+    min-width: 220px;
+    grid-column: span 1;
 }
 
-#mobile-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+2):last-child {
-    grid-column: 1 / span 2; /* Center 2 buttons in 3-column grid */
+/* Second row: 2 buttons (centered) */
+#mobile-apps .skills-nav .skill-nav-btn:nth-child(4):nth-last-child(-n+2),
+#mobile-apps .skills-nav .skill-nav-btn:nth-child(5):nth-last-child(-n+1) {
+    width: 220px;
+    min-width: 220px;
+    grid-column: 1 / span 2;
+    justify-self: center;
 }
 
-/* For 1 button - center it perfectly */
-#mobile-apps .skills-nav:has(:only-child) {
-    grid-template-columns: 1fr;
-    justify-content: center;
-    justify-items: center;
-    max-width: 300px;
+/* Third row: 1 button (perfectly centered) */
+#mobile-apps .skills-nav .skill-nav-btn:nth-child(6):last-child {
+    width: 220px;
+    min-width: 220px;
+    grid-column: 2;
+    justify-self: center;
 }
 
-/* For 2 buttons - center them perfectly */
-#mobile-apps .skills-nav:has(:nth-child(2):last-child) {
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: center;
-    justify-items: center;
-    max-width: 600px;
+/* Ensure all skill-nav-btn have consistent width */
+#mobile-apps .skill-nav-btn {
+    width: 220px;
+    min-width: 220px;
 }
 
-/* For 3 buttons - center them */
-#mobile-apps .skills-nav:has(:nth-child(3):last-child) {
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
-    max-width: 900px;
+/* Zoom Effects for skill-nav-btn - Matching Skills Section */
+#mobile-apps .skill-nav-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+#mobile-apps .skill-nav-btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(16, 185, 129, 0.6);
+    color: #10b981;
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        0 0 100px rgba(16, 185, 129, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+#mobile-apps .skill-nav-btn:active {
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* Enhanced zoom animation for better visual feedback */
+#mobile-apps .skill-nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.05) 0%,
+        rgba(249, 115, 22, 0.03) 50%,
+        rgba(139, 92, 246, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+#mobile-apps .skill-nav-btn:hover::before {
+    opacity: 1;
 }
 
 /* Tablet Styles - 2 buttons per row for mobile apps */
@@ -330,9 +397,15 @@
     text-align: center;
     line-height: 1.2;
     max-width: 100%;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+    word-wrap: break-word;
+    hyphens: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .mobile-header-box {

@@ -15,6 +15,33 @@
     color: #16a34a !important;
 }
 
+/* Center all skill-nav-btn zoom buttons content */
+.skill-nav-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.skill-nav-btn i {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto 0.5rem auto !important;
+    width: 100% !important;
+}
+
+.skill-nav-btn span {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
 /* Industrial IoT Colors */
 .skill-nav-btn[data-category="industrial"] i,
 .icon-nav-btn[data-category="industrial"] i,
@@ -145,10 +172,10 @@
     margin-right: auto;
 }
 
-/* IOT PROJECTS NAVIGATION BUTTONS - Using Skills Section Approach */
+/* IOT PROJECTS NAVIGATION BUTTONS - 3-2-1 Layout with Consistent Width */
 #iot-projects .skills-nav {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 220px);
     gap: 1.5rem;
     margin: 3rem auto 0;
     padding: 1rem;
@@ -160,36 +187,130 @@
     margin-right: auto;
 }
 
-/* Center remaining buttons in incomplete rows for IoT projects */
-#iot-projects .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+1):last-child {
-    grid-column: 2; /* Center single remaining button */
+/* 3-2-1 Layout Pattern for IoT Projects - Fixed Width Buttons */
+/* First row: 3 buttons (full row) */
+#iot-projects .skills-nav .skill-nav-btn:nth-child(-n+3) {
+    width: 220px;
+    min-width: 220px;
+    grid-column: span 1;
 }
 
-#iot-projects .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+2):last-child {
-    grid-column: 1 / span 2; /* Center 2 buttons in 3-column grid */
+/* Second row: 2 buttons (centered) */
+#iot-projects .skills-nav .skill-nav-btn:nth-child(4):nth-last-child(-n+2),
+#iot-projects .skills-nav .skill-nav-btn:nth-child(5):nth-last-child(-n+1) {
+    width: 220px;
+    min-width: 220px;
+    grid-column: 1 / span 2;
+    justify-self: center;
 }
 
-/* For 1 button - center it perfectly */
-#iot-projects .skills-nav:has(:only-child) {
-    grid-template-columns: 1fr;
-    justify-content: center;
-    justify-items: center;
-    max-width: 300px;
+/* Third row: 1 button (perfectly centered) */
+#iot-projects .skills-nav .skill-nav-btn:nth-child(6):last-child {
+    width: 220px;
+    min-width: 220px;
+    grid-column: 2;
+    justify-self: center;
 }
 
-/* For 2 buttons - center them perfectly */
-#iot-projects .skills-nav:has(:nth-child(2):last-child) {
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: center;
-    justify-items: center;
-    max-width: 600px;
+/* Alternative centering for different button counts */
+/* For 2 buttons in second row (when total is 5) */
+#iot-projects .skills-nav .skill-nav-btn:nth-child(4):nth-last-child(2) {
+    grid-column: 1;
+    justify-self: end;
 }
 
-/* For 3 buttons - center them */
-#iot-projects .skills-nav:has(:nth-child(3):last-child) {
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
-    max-width: 900px;
+#iot-projects .skills-nav .skill-nav-btn:nth-child(5):nth-last-child(1) {
+    grid-column: 3;
+    justify-self: start;
+}
+
+/* For 1 button in third row (when total is 4) */
+#iot-projects .skills-nav .skill-nav-btn:nth-child(4):last-child {
+    grid-column: 2;
+    justify-self: center;
+}
+
+/* For 1 button in second row (when total is 4) */
+#iot-projects .skills-nav .skill-nav-btn:nth-child(4):nth-last-child(1) {
+    grid-column: 2;
+    justify-self: center;
+}
+
+/* General centering rules for incomplete rows */
+/* Single button in any row - center it */
+#iot-projects .skills-nav .skill-nav-btn:last-child:nth-child(3n+1) {
+    grid-column: 2;
+    justify-self: center;
+}
+
+/* Two buttons in any row - center them */
+#iot-projects .skills-nav .skill-nav-btn:last-child:nth-child(3n+2) {
+    grid-column: 1 / span 2;
+    justify-self: center;
+}
+
+/* Ensure proper centering for 4 buttons (3+1) */
+#iot-projects .skills-nav .skill-nav-btn:nth-child(4):last-child {
+    grid-column: 2;
+    justify-self: center;
+}
+
+/* Ensure proper centering for 5 buttons (3+2) */
+#iot-projects .skills-nav .skill-nav-btn:nth-child(4):nth-last-child(2) {
+    grid-column: 1;
+    justify-self: end;
+}
+
+#iot-projects .skills-nav .skill-nav-btn:nth-child(5):nth-last-child(1) {
+    grid-column: 3;
+    justify-self: start;
+}
+
+/* Ensure all skill-nav-btn have consistent width */
+#iot-projects .skill-nav-btn {
+    width: 220px;
+    min-width: 220px;
+}
+
+/* Zoom Effects for skill-nav-btn - Matching Skills Section */
+#iot-projects .skill-nav-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+#iot-projects .skill-nav-btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(16, 185, 129, 0.6);
+    color: #10b981;
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        0 0 100px rgba(16, 185, 129, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+#iot-projects .skill-nav-btn:active {
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* Enhanced zoom animation for better visual feedback */
+#iot-projects .skill-nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.05) 0%,
+        rgba(249, 115, 22, 0.03) 50%,
+        rgba(139, 92, 246, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+#iot-projects .skill-nav-btn:hover::before {
+    opacity: 1;
 }
 
 #iot-projects .skill-nav-btn {
@@ -278,9 +399,15 @@
     text-align: center;
     line-height: 1.2;
     max-width: 100%;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+    word-wrap: break-word;
+    hyphens: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 

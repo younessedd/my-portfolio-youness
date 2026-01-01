@@ -3,43 +3,303 @@ project-images-container single-image-container/* ==============================
 ============================================ */
 
 /* Technology-Specific Icon Colors for Web Apps */
-/* Frontend Projects Colors */
-.skill-nav-btn[data-category="frontend"] i.fa-code,
-.skill-nav-btn[data-category="frontend"] span {
-    color: #8b5cf6 !important; /* Purple for Frontend */
+/* Frontend Projects Colors - Red */
+#web-apps .skill-nav-btn[data-category="frontend"] i.fa-code,
+#web-apps .skill-nav-btn[data-category="frontend"] span {
+    color: #dc2626 !important; /* Red for Frontend */
 }
 
-.skill-nav-btn[data-category="backend"] i.fa-server,
-.skill-nav-btn[data-category="backend"] span {
-    color: #68a063 !important; /* Node Green for Backend */
+/* Force red color for fas fa-code icon in frontend button */
+#web-apps .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
 }
 
-.skill-nav-btn[data-category="fullstack"] i.fa-globe,
-.skill-nav-btn[data-category="fullstack"] span {
-    color: #f59e42 !important; /* Orange for Fullstack */
+/* Additional specificity to override general icon styles */
+#web-apps .skills-nav .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Maximum specificity to ensure red color overrides all other styles */
+body #web-apps .skills-nav .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Override global white color styles for frontend button icon */
+html body #web-apps .skill-nav-btn[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn.active[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Force red color with inline style if needed */
+#web-apps .skill-nav-btn[data-category="frontend"] i.fa-code[style*="color"] {
+    color: #dc2626 !important;
+}
+
+/* Target specific icon class with maximum specificity */
+#web-apps .skills-nav .skill-nav-btn[data-category="frontend"] i.fa-code.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Ultimate specificity to override ALL conflicting styles */
+html body #web-apps .skills-nav .skill-nav-btn[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn.active[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn[data-category="frontend"] i.fa-code.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Target all possible icon states */
+#web-apps .skill-nav-btn[data-category="frontend"] i.fa-code,
+#web-apps .skill-nav-btn[data-category="frontend"]:hover i.fa-code,
+#web-apps .skill-nav-btn[data-category="frontend"]:active i.fa-code,
+#web-apps .skill-nav-btn[data-category="frontend"].active i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Target the exact HTML structure for web-apps frontend button */
+#web-apps #web-apps-nav .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Force red color with !important on all possible selectors */
+#web-apps-nav .skill-nav-btn[data-category="frontend"] i.fa-code,
+.skills-nav.center-buttons .skill-nav-btn[data-category="frontend"] i.fa-code,
+#web-apps .skills-nav .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Ultimate override for fas fa-code icon in frontend button */
+html body #web-apps-nav .skill-nav-btn[data-category="frontend"] i.fa-code,
+html body .skills-nav.center-buttons .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Target the exact button in web-apps section */
+#web-apps #web-apps-nav .skill-nav-btn[data-category="frontend"] i.fa-code,
+#web-apps .skills-nav.center-buttons .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Force red color with inline style if CSS fails */
+#web-apps-nav .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+    text-shadow: 0 0 8px rgba(220, 38, 38, 0.5);
+}
+
+/* Override ALL conflicting styles including active states */
+html body #web-apps .skill-nav-btn[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn.active[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn:hover[data-category="frontend"] i.fa-code,
+html body .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Ultimate specificity to override style.css rules */
+html body #web-apps .skill-nav-btn.active[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn[data-category="frontend"].active i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Force red color with !important on all possible states */
+#web-apps .skill-nav-btn[data-category="frontend"] i.fa-code,
+#web-apps .skill-nav-btn.active[data-category="frontend"] i.fa-code,
+#web-apps .skill-nav-btn:hover[data-category="frontend"] i.fa-code,
+#web-apps .skill-nav-btn:focus[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Center all skill-nav-btn zoom buttons content */
+#web-apps .skill-nav-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+#web-apps .skill-nav-btn i {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto 0.5rem auto !important;
+    width: 100% !important;
+}
+
+#web-apps .skill-nav-btn span {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+/* Target the exact HTML structure with maximum specificity */
+html body #web-apps #web-apps-nav .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Override any inherited styles */
+#web-apps .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+    filter: none !important;
+}
+
+/* Force red color with multiple approaches */
+#web-apps-nav .skill-nav-btn[data-category="frontend"] i.fa-code,
+#web-apps .skills-nav .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+    text-shadow: 0 0 5px rgba(220, 38, 38, 0.8) !important;
+}
+
+/* Ultimate override for fas fa-code icon */
+#web-apps .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+    text-shadow: 0 0 10px rgba(220, 38, 38, 1) !important;
+    filter: hue-rotate(0deg) !important;
+}
+
+/* Target all possible icon states with maximum specificity */
+html body #web-apps .skill-nav-btn[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn.active[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn:hover[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn:focus[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+    text-shadow: 0 0 8px rgba(220, 38, 38, 0.9) !important;
+}
+
+/* Force red color with !important on all possible selectors */
+#web-apps-nav .skill-nav-btn[data-category="frontend"] i.fa-code,
+.skills-nav.center-buttons .skill-nav-btn[data-category="frontend"] i.fa-code,
+#web-apps .skills-nav .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+    text-shadow: 0 0 6px rgba(220, 38, 38, 0.8) !important;
+}
+
+/* Backend Projects Colors - Node.js */
+#web-apps .skill-nav-btn[data-category="backend"] i.fa-server,
+#web-apps .skill-nav-btn[data-category="backend"] span {
+    color: #339933 !important; /* Node.js Green */
+}
+
+/* Fullstack Projects Colors - React.js */
+#web-apps .skill-nav-btn[data-category="fullstack"] i.fa-globe,
+#web-apps .skill-nav-btn[data-category="fullstack"] span {
+    color: #61DAFB !important; /* React.js Light Blue */
+}
+
+/* Additional technology-specific colors for mixed technology buttons */
+/* JavaScript Technology */
+#web-apps .skill-nav-btn[data-category="javascript"] i,
+#web-apps .skill-nav-btn[data-category="javascript"] span {
+    color: #F7DF1E !important; /* JavaScript Yellow */
+}
+
+/* CSS3 Technology */
+#web-apps .skill-nav-btn[data-category="css3"] i,
+#web-apps .skill-nav-btn[data-category="css3"] span {
+    color: #1572B6 !important; /* CSS3 Blue */
+}
+
+/* React.js Technology */
+#web-apps .skill-nav-btn[data-category="react"] i,
+#web-apps .skill-nav-btn[data-category="react"] span {
+    color: #61DAFB !important; /* React.js Light Blue */
+}
+
+/* Node.js Technology */
+#web-apps .skill-nav-btn[data-category="nodejs"] i,
+#web-apps .skill-nav-btn[data-category="nodejs"] span {
+    color: #339933 !important; /* Node.js Green */
+}
+
+/* Vue.js Technology */
+#web-apps .skill-nav-btn[data-category="vue"] i,
+#web-apps .skill-nav-btn[data-category="vue"] span {
+    color: #4FC08D !important; /* Vue.js Green */
+}
+
+/* Angular Technology */
+#web-apps .skill-nav-btn[data-category="angular"] i,
+#web-apps .skill-nav-btn[data-category="angular"] span {
+    color: #DD0031 !important; /* Angular Red */
+}
+
+/* TypeScript Technology */
+#web-apps .skill-nav-btn[data-category="typescript"] i,
+#web-apps .skill-nav-btn[data-category="typescript"] span {
+    color: #3178C6 !important; /* TypeScript Blue */
+}
+
+/* Bootstrap Technology */
+#web-apps .skill-nav-btn[data-category="bootstrap"] i,
+#web-apps .skill-nav-btn[data-category="bootstrap"] span {
+    color: #7952B3 !important; /* Bootstrap Purple */
+}
+
+/* Sass Technology */
+#web-apps .skill-nav-btn[data-category="sass"] i,
+#web-apps .skill-nav-btn[data-category="sass"] span {
+    color: #CC6699 !important; /* Sass Pink */
+}
+
+/* Tailwind CSS Technology */
+#web-apps .skill-nav-btn[data-category="tailwind"] i,
+#web-apps .skill-nav-btn[data-category="tailwind"] span {
+    color: #38B2AC !important; /* Tailwind Teal */
+}
+
+/* Express.js Technology */
+#web-apps .skill-nav-btn[data-category="express"] i,
+#web-apps .skill-nav-btn[data-category="express"] span {
+    color: #000000 !important; /* Express.js Black */
+}
+
+/* MongoDB Technology */
+#web-apps .skill-nav-btn[data-category="mongodb"] i,
+#web-apps .skill-nav-btn[data-category="mongodb"] span {
+    color: #47A248 !important; /* MongoDB Green */
+}
+
+/* MySQL Technology */
+#web-apps .skill-nav-btn[data-category="mysql"] i,
+#web-apps .skill-nav-btn[data-category="mysql"] span {
+    color: #4479A1 !important; /* MySQL Blue */
+}
+
+/* Python Technology */
+#web-apps .skill-nav-btn[data-category="python"] i,
+#web-apps .skill-nav-btn[data-category="python"] span {
+    color: #3776AB !important; /* Python Blue */
+}
+
+/* PHP Technology */
+#web-apps .skill-nav-btn[data-category="php"] i,
+#web-apps .skill-nav-btn[data-category="php"] span {
+    color: #777BB4 !important; /* PHP Purple */
 }
 
 /* Responsive Websites Colors */
-.skill-nav-btn[data-category="responsive"] i,
-.icon-nav-btn[data-category="responsive"] i,
-.popup-title i.fa-mobile-alt {
+#web-apps .skill-nav-btn[data-category="responsive"] i,
+#web-apps .icon-nav-btn[data-category="responsive"] i,
+#web-apps .popup-title i.fa-mobile-alt {
     color: #ff6b6b !important; /* Red for Responsive */
 }
 
-.skill-nav-btn[data-category="responsive"] span,
-.popup-title span:has(+ i.fa-mobile-alt) {
+#web-apps .skill-nav-btn[data-category="responsive"] span,
+#web-apps .popup-title span:has(+ i.fa-mobile-alt) {
     color: #ff6b6b !important;
 }
 
 /* Other Web Projects Colors */
-.skill-nav-btn[data-category="othersweb"] i,
-.icon-nav-btn[data-category="othersweb"] i,
-.popup-title i.fa-globe {
+#web-apps .skill-nav-btn[data-category="othersweb"] i,
+#web-apps .icon-nav-btn[data-category="othersweb"] i,
+#web-apps .popup-title i.fa-globe {
     color: #4ecdc4 !important; /* Teal for Other Web */
 }
 
-.skill-nav-btn[data-category="othersweb"] span,
-.popup-title span:has(+ i.fa-globe) {
+#web-apps .skill-nav-btn[data-category="othersweb"] span,
+#web-apps .popup-title span:has(+ i.fa-globe) {
     color: #4ecdc4 !important;
 }
 
@@ -147,10 +407,10 @@ project-images-container single-image-container/* ==============================
     margin-bottom: 0.8rem;
 }
 
-/* WEB APPS NAVIGATION BUTTONS - Using Skills Section Approach */
+/* WEB APPS NAVIGATION BUTTONS - 3-2-1 Layout with Consistent Width */
 #web-apps .skills-nav {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 220px);
     gap: 1.5rem;
     margin: 3rem auto 0;
     padding: 1rem;
@@ -162,36 +422,76 @@ project-images-container single-image-container/* ==============================
     margin-right: auto;
 }
 
-/* Center remaining buttons in incomplete rows for web apps */
-#web-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+1):last-child {
-    grid-column: 2; /* Center single remaining button */
+/* 3-2-1 Layout Pattern for Web Apps - Fixed Width Buttons */
+/* First row: 3 buttons (full row) */
+#web-apps .skills-nav .skill-nav-btn:nth-child(-n+3) {
+    width: 220px;
+    min-width: 220px;
+    grid-column: span 1;
 }
 
-#web-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+2):last-child {
-    grid-column: 1 / span 2; /* Center 2 buttons in 3-column grid */
+/* Second row: 2 buttons (centered) */
+#web-apps .skills-nav .skill-nav-btn:nth-child(4):nth-last-child(-n+2),
+#web-apps .skills-nav .skill-nav-btn:nth-child(5):nth-last-child(-n+1) {
+    width: 220px;
+    min-width: 220px;
+    grid-column: 1 / span 2;
+    justify-self: center;
 }
 
-/* For 1 button - center it perfectly */
-#web-apps .skills-nav:has(:only-child) {
-    grid-template-columns: 1fr;
-    justify-content: center;
-    justify-items: center;
-    max-width: 300px;
+/* Third row: 1 button (perfectly centered) */
+#web-apps .skills-nav .skill-nav-btn:nth-child(6):last-child {
+    width: 220px;
+    min-width: 220px;
+    grid-column: 2;
+    justify-self: center;
 }
 
-/* For 2 buttons - center them perfectly */
-#web-apps .skills-nav:has(:nth-child(2):last-child) {
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: center;
-    justify-items: center;
-    max-width: 600px;
+/* Ensure all skill-nav-btn have consistent width */
+#web-apps .skill-nav-btn {
+    width: 220px;
+    min-width: 220px;
 }
 
-/* For 3 buttons - center them */
-#web-apps .skills-nav:has(:nth-child(3):last-child) {
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
-    max-width: 900px;
+/* Zoom Effects for skill-nav-btn - Matching Skills Section */
+#web-apps .skill-nav-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+#web-apps .skill-nav-btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(16, 185, 129, 0.6);
+    color: #10b981;
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        0 0 100px rgba(16, 185, 129, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+#web-apps .skill-nav-btn:active {
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* Enhanced zoom animation for better visual feedback */
+#web-apps .skill-nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.05) 0%,
+        rgba(249, 115, 22, 0.03) 50%,
+        rgba(139, 92, 246, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+#web-apps .skill-nav-btn:hover::before {
+    opacity: 1;
 }
 
 /* Tablet Styles - 2 buttons per row for web apps */
@@ -333,9 +633,15 @@ project-images-container single-image-container/* ==============================
     text-align: center;
     line-height: 1.2;
     max-width: 100%;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+    word-wrap: break-word;
+    hyphens: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 #web-apps .skill-nav-btn::before {

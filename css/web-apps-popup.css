@@ -27,9 +27,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    max-width: none;
-    height: 100%;
-    max-height: none;
+    max-width: 1000px;
+    height: 80vh;
+    max-height: 700px;
     background: rgba(2, 6, 23, 0.92);
     backdrop-filter: blur(20px);
     border-radius: 24px;
@@ -62,7 +62,6 @@
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    color: white;
 }
 
 #web-swiper-container .popup-title i {
@@ -94,13 +93,13 @@
 #web-icon-nav-top {
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 1.5rem;
     padding: 1rem;
     background: rgba(2, 6, 23, 0.62);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(16, 185, 129, 0.22);
     flex-shrink: 0;
+    flex-wrap: wrap;
 }
 
 #web-icon-nav-top .icon-nav-btn {

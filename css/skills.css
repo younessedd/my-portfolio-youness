@@ -2,13 +2,13 @@
    SKILLS SECTION - MODERN STYLE LIKE WEB APPS
 ============================================ */
 
-/* Skills Navigation - Clean Grid Layout for All Sections */
+/* Skills Navigation - 7 Button Layout (3-3-1) */
 #skills .skills-nav.center-buttons,
 #web-apps .skills-nav.center-buttons,
 #mobile-apps .skills-nav.center-buttons,
 #iot-projects .skills-nav.center-buttons {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 220px);
     gap: 1.5rem;
     margin: 3rem auto 0;
     padding: 1rem;
@@ -20,19 +20,71 @@
     margin-right: auto;
 }
 
-/* Center remaining buttons in incomplete rows for all sections */
-#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+1):last-child,
-#web-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+1):last-child,
-#mobile-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+1):last-child,
-#iot-projects .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+1):last-child {
-    grid-column: 2; /* Center single remaining button */
+/* 7 Button Layout Pattern for Skills Section */
+/* First row: 3 buttons (full row) */
+#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(-n+3) {
+    width: 220px;
+    min-width: 220px;
+    grid-column: span 1;
 }
 
-#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+2):last-child,
-#web-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+2):last-child,
-#mobile-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+2):last-child,
-#iot-projects .skills-nav.center-buttons .skill-nav-btn:nth-child(3n+2):last-child {
-    grid-column: 1 / span 2; /* Center 2 buttons in 3-column grid */
+/* Second row: 3 buttons (full row) */
+#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(n+4):nth-child(-n+6) {
+    width: 220px;
+    min-width: 220px;
+    grid-column: span 1;
+}
+
+/* Third row: 1 button (perfectly centered) */
+#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(7):last-child {
+    width: 220px;
+    min-width: 220px;
+    grid-column: 2;
+    justify-self: center;
+}
+
+/* Ensure all skill-nav-btn have consistent width */
+#skills .skill-nav-btn {
+    width: 220px;
+    min-width: 220px;
+}
+
+/* Zoom Effects for skill-nav-btn */
+#skills .skill-nav-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+#skills .skill-nav-btn:hover {
+    transform: scale(1.05) translateY(-2px);
+    z-index: 10;
+    position: relative;
+}
+
+#skills .skill-nav-btn:active {
+    transform: scale(0.98);
+}
+
+/* Enhanced zoom animation for better visual feedback */
+#skills .skill-nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.1) 0%,
+        rgba(249, 115, 22, 0.05) 50%,
+        rgba(6, 182, 212, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: 20px;
+}
+
+#skills .skill-nav-btn:hover::before {
+    opacity: 1;
 }
 
 #skills .skill-nav-btn {
@@ -40,29 +92,137 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.8rem;
-    padding: 1.5rem 1.2rem;
+    padding: 1rem;
     background: rgba(2, 6, 23, 0.8);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+    border: 2px solid rgba(16, 185, 129, 0.3);
+    border-radius: 20px;
     box-shadow: 
         0 8px 32px rgba(0, 0, 0, 0.3),
-        0 0 80px rgba(16, 185, 129, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    border: 2px solid rgba(16, 185, 129, 0.2);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     color: #fff;
     height: 140px;
     min-height: 140px;
+    max-height: 140px;
     box-sizing: border-box;
     text-align: center;
     position: relative;
     overflow: hidden;
-    width: 100%;
-    flex: 1;
     font-weight: 600;
+    /* Ensure perfect vertical centering */
+    line-height: 1;
+}
+
+/* Perfect centering for icon and text */
+#skills .skill-nav-btn i {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+#skills .skill-nav-btn span {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 100%;
+    word-wrap: break-word;
+    hyphens: auto;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+}
+
+/* Ensure perfect vertical centering within fixed height */
+#skills .skill-nav-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    height: 140px !important;
+    min-height: 140px !important;
+    max-height: 140px !important;
+    overflow: hidden !important;
+}
+
+#skills .skill-nav-btn i {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto 0.5rem auto !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+}
+
+#skills .skill-nav-btn span {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+}
+
+/* Override any conflicting styles from style.css */
+html body #skills .skill-nav-btn i {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto 0.5rem auto !important;
+}
+
+html body #skills .skill-nav-btn span {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+/* Center all skill-nav-btn zoom buttons content */
+.skill-nav-btn.zoom {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.skill-nav-btn.zoom i {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto 0.5rem auto !important;
+    width: 100% !important;
+}
+
+.skill-nav-btn.zoom span {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
 }
 
 #skills .skill-nav-btn::before {
@@ -97,33 +257,39 @@
     opacity: 1;
 }
 
-#skills .skill-nav-btn.active {
+#skills .skill-nav-btn[data-category="electronicsAndElectric"].active {
     background: rgba(2, 6, 23, 0.95);
     backdrop-filter: blur(20px);
-    border-color: rgba(16, 185, 129, 0.8);
-    color: white;
+    border-color: rgba(220, 38, 38, 0.8);
+    color: #dc2626;
     transform: translateY(-5px) scale(1.05);
     box-shadow: 
-        0 20px 40px rgba(16, 185, 129, 0.4),
-        0 0 80px rgba(16, 185, 129, 0.3),
+        0 20px 40px rgba(220, 38, 38, 0.4),
+        0 0 80px rgba(220, 38, 38, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
-#skills .skill-nav-btn i {
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
-}
+/* Icon centering - removed duplicate rule */
 
 #skills .skill-nav-btn span {
     color: #fff;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-align: center;
-    line-height: 1.2;
+    line-height: 1.4;
     max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+    word-wrap: break-word;
+    hyphens: auto;
+    display: block;
+    padding: 0.6rem 0.8rem;
+    min-height: 3.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 /* Tablet Styles - 2 buttons per row for all sections */
@@ -202,10 +368,10 @@
     color: #10b981 !important;
 }
 
-/* Electronics and Electric - Yellow */
+/* Electronics and Electric - Red */
 .skill-nav-btn[data-category="electronicsAndElectric"] i,
 .skill-nav-btn[data-category="electronicsAndElectric"] span {
-    color: #eab308 !important;
+    color: #dc2626 !important;
 }
 
 /* Robotics and Automatism - Purple */
@@ -255,11 +421,11 @@
 }
 
 .skill-nav-btn[data-category="electronicsAndElectric"]:hover {
-    border-color: rgba(234, 179, 8, 0.6);
-    color: #eab308;
+    border-color: rgba(220, 38, 38, 0.6);
+    color: #dc2626;
     box-shadow: 
-        0 20px 40px rgba(234, 179, 8, 0.3),
-        0 0 60px rgba(234, 179, 8, 0.2),
+        0 8px 25px rgba(220, 38, 38, 0.3),
+        0 0 40px rgba(220, 38, 38, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 

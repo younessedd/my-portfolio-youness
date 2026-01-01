@@ -30,11 +30,14 @@
     max-width: 1000px;
     height: 80vh;
     max-height: 700px;
-    background: var(--surface);
+    background: rgba(2, 6, 23, 0.92);
+    backdrop-filter: blur(20px);
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(16, 185, 129, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     z-index: 2;
     /* Removed animation for instant center appearance */
     display: flex;
@@ -47,18 +50,22 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.2rem 1.5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, #10b981, #f97316);
+    color: white;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     flex-shrink: 0;
 }
 
 #mobile-swiper-container .popup-title {
     font-size: 1.4rem;
-    color: white;
-    font-weight: 600;
+    font-weight: 700;
     display: flex;
     align-items: center;
     gap: 0.8rem;
+}
+
+#mobile-swiper-container .popup-title i {
+    font-size: 1.3rem;
 }
 
 #mobile-close-btn {
@@ -72,7 +79,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: var(--transition);
     font-size: 1.2rem;
 }
 
@@ -85,37 +92,58 @@
 #mobile-swiper-container .popup-icon-nav {
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 1.5rem;
     padding: 1rem;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
+    background: rgba(2, 6, 23, 0.62);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(16, 185, 129, 0.22);
     flex-shrink: 0;
+    flex-wrap: wrap;
 }
 
 #mobile-swiper-container .icon-nav-btn {
     width: 50px;
     height: 50px;
     border-radius: 15px;
-    border: 2px solid var(--border);
-    background: var(--surface);
+    border: 2px solid rgba(16, 185, 129, 0.32);
+    background: rgba(2, 6, 23, 0.42);
+    backdrop-filter: blur(10px);
     color: var(--text-secondary);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 1.4rem;
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 #mobile-icon-nav-top .icon-nav-btn:hover {
-    border-color: var(--primary-color);
+    border-color: rgba(16, 185, 129, 0.62);
+    color: #10b981;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 8px 20px rgba(16, 185, 129, 0.32),
+        0 0 40px rgba(16, 185, 129, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 #mobile-icon-nav-top .icon-nav-btn.active {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-color: transparent;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.82), rgba(249, 115, 22, 0.82));
+    border-color: rgba(16, 185, 129, 0.82);
     color: white;
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 
+        0 12px 30px rgba(16, 185, 129, 0.42),
+        0 0 60px rgba(16, 185, 129, 0.32),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Make all icons white in mobile popup like web and skills */
+#mobile-swiper-container .popup-icon-nav .icon-nav-btn i.fas {
+    color: white !important;
 }
 
 /* Main Swiper Container */
