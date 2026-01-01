@@ -2,7 +2,7 @@
     padding: 4rem 1rem;
     position: relative;
     min-height: 100vh;
-    background: url('../images/background/h.jpeg') center center/cover no-repeat, var(--cv-bg);
+    background: url('../images/background/cv.jpeg') center center/cover no-repeat, var(--cv-bg);
     overflow: hidden;
 }
 

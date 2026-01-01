@@ -2,7 +2,7 @@
     padding: 4rem 1rem;
     position: relative;
     min-height: auto;
-    background: var(--contact-bg);
+    background: url('../images/background/contact.jpeg') center center/cover no-repeat, var(--contact-bg);
     overflow: hidden;
 }
 

@@ -48,7 +48,7 @@ project-images-container single-image-container/* ==============================
     padding: 4rem 1rem;
     position: relative;
     min-height: 100vh;
-    background: url('../images/background/c.jpeg') center center/cover no-repeat, var(--web-apps-bg);
+    background: url('../images/background/web.jpeg') center center/cover no-repeat, var(--web-apps-bg);
     overflow: hidden;
 }
 

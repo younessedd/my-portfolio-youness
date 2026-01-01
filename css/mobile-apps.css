@@ -56,7 +56,7 @@
     padding: 4rem 1rem;
     position: relative;
     min-height: 100vh;
-    background: url('../images/background/b.jpeg') center center/cover no-repeat, var(--mobile-apps-bg);
+    background: url('../images/background/mob.jpeg') center center/cover no-repeat, var(--mobile-apps-bg);
     overflow: hidden;
 }
 

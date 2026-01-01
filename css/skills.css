@@ -420,7 +420,7 @@
     padding: 4rem 1rem;
     position: relative;
     min-height: 100vh;
-    background: url('../images/background/a.jpeg') center center/cover no-repeat, var(--skills-bg);
+    background: url('../images/background/skill.jpeg') center center/cover no-repeat, var(--skills-bg);
     overflow: hidden;
 }
 

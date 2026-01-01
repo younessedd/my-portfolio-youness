@@ -15,7 +15,7 @@ slides: [
         id: 1,
         title: "Développeur <span>Web Full Stack</span><br>Front-end & Back-end",
         description: "Je développe des applications web modernes et performantes avec HTML, CSS, JavaScript, React.js et Laravel.",
-        backgroundImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        backgroundImage: "images/hero/hero1.jpeg",
         buttons: [
             { text: "Web Projects", href: "#web-apps", class: "btn" },
             { text: "Download CV", href: "#cv", class: "btn btn-secondary" }

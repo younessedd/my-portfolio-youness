@@ -103,7 +103,7 @@
     padding: 4rem 1rem;
     position: relative;
     min-height: 100vh;
-    background: url('../images/background/d.jpeg') center center/cover no-repeat, var(--iot-projects-bg);
+    background: url('../images/background/ioot.jpeg') center center/cover no-repeat, var(--iot-projects-bg);
     overflow: hidden;
 }
 

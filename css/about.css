@@ -7,7 +7,7 @@
     padding: 4rem 1rem;
     position: relative;
     min-height: 100vh;
-    background: url('../images/background/l.jpeg') center center/cover no-repeat, linear-gradient(135deg, #020617 0%, #0f172a 50%, #020617 100%);
+    background: url('../images/background/about.jpeg') center center/cover no-repeat, linear-gradient(135deg, #020617 0%, #0f172a 50%, #020617 100%);
     overflow: hidden;
 }
 

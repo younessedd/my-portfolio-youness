@@ -85,6 +85,16 @@ window.addEventListener('load', () => {
                 // Remove from DOM after transition
                 setTimeout(() => {
                     splashScreen.classList.add('hidden');
+                    
+                    // SET HOME LINK TO HOVER STATE WHEN SPLASH SCREEN FINISHES
+                    // because hero section is on screen
+                    const homeLinks = document.querySelectorAll('a[href="#home"]');
+                    homeLinks.forEach(link => {
+                        link.classList.add('active');
+                        console.log('🍔 HOME LINK SET TO HOVER STATE - SPLASH SCREEN FINISHED - HERO SECTION VISIBLE');
+                    });
+                    
+                    console.log('🍔 HOME LINK ACTIVE - Hero section visible after splash screen');
                 }, 1000);
             }
         }, 3500); // Extended delay for better loading experience
@@ -103,6 +113,16 @@ document.addEventListener('keydown', (e) => {
             
             setTimeout(() => {
                 splashScreen.classList.add('hidden');
+                
+                // SET HOME LINK TO HOVER STATE WHEN SPLASH SCREEN SKIPPED
+                // because hero section is on screen
+                const homeLinks = document.querySelectorAll('a[href="#home"]');
+                homeLinks.forEach(link => {
+                    link.classList.add('active');
+                    console.log('🍔 HOME LINK SET TO HOVER STATE - SPLASH SCREEN SKIPPED - HERO SECTION VISIBLE');
+                });
+                
+                console.log('🍔 HOME LINK ACTIVE - Hero section visible after splash screen skip');
             }, 500);
         }
     }

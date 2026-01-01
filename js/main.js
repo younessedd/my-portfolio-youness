@@ -271,6 +271,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // إضافة مستمع للتمرير للروابط النشطة
     window.addEventListener('scroll', updateActiveNavLink);
+    
+    // SET HOME LINK TO HOVER STATE WHEN APP OPENS FIRST TIME
+    // because hero section is on screen
+    setTimeout(() => {
+        const homeLinks = document.querySelectorAll('a[href="#home"]');
+        homeLinks.forEach(link => {
+            link.classList.add('active');
+            console.log('🍔 HOME LINK SET TO HOVER STATE - APP OPENED FIRST TIME - HERO SECTION VISIBLE');
+        });
+        
+        console.log('🍔 HOME LINK ACTIVE - Hero section visible on app first open');
+    }, 100);
 });
 
 /**
