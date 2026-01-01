@@ -13,9 +13,9 @@ const HeroSwiperManager = {
 slides: [
     {
         id: 1,
-        title: "Développeur <span>Web Full Stack</span><br>Front-end & Back-end",
-        description: "Je développe des applications web modernes et performantes avec HTML, CSS, JavaScript, React.js et Laravel.",
-        backgroundImage: "images/hero/hero1.jpeg",
+        title: "Full Stack <span>Web Developer</span><br>Front-end & Back-end",
+        description: "I develop modern and performant web applications with HTML, CSS, JavaScript, React.js and Laravel.",
+        backgroundImage: "images/hero/web.jpeg",
         buttons: [
             { text: "Web Projects", href: "#web-apps", class: "btn" },
             { text: "Download CV", href: "#cv", class: "btn btn-secondary" }
@@ -23,9 +23,9 @@ slides: [
     },
     {
         id: 2,
-        title: "Développeur <span>Mobile</span><br>Android & Cross-Platform",
-        description: "Création d’applications mobiles avec App Inventor, Kodular et Flutter (niveau débutant), orientées performance et simplicité.",
-        backgroundImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        title: "Mobile <span>Developer</span><br>Android & Cross-Platform",
+        description: "Creating mobile applications with App Inventor, Kodular and Flutter (beginner level), focused on performance and simplicity.",
+        backgroundImage: "images/hero/mob.jpeg",
         buttons: [
          { text: "Download CV", href: "#cv", class: "btn btn-secondary" },
             { text: "Mobile Apps", href: "#mobile-apps", class: "btn" }
@@ -35,9 +35,9 @@ slides: [
     },
     {
         id: 3,
-        title: "IoT & <span>Domotique</span><br>Smart Home • Arduino • ESP32",
-        description: "Conception de systèmes IoT et domotiques pour maisons intelligentes, intégrant capteurs, actionneurs, automatisation et supervision à distance.",
-        backgroundImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        title: "IoT & <span>Smart Home</span><br>Arduino • ESP32 • Automation",
+        description: "Designing IoT and smart home systems for intelligent homes, integrating sensors, actuators, automation and remote supervision.",
+        backgroundImage: "images/hero/iot.jpeg",
         buttons: [
             { text: "IoT Projects", href: "#iot-projects", class: "btn" },
             { text: "Download CV", href: "#cv", class: "btn btn-secondary" }
@@ -46,23 +46,12 @@ slides: [
     },
     {
         id: 4,
-        title: "Électricité, <span>Automatisation & Domotique</span>",
-        description: "Technicien en électricité industrielle et domestique, automatisation et domotique, spécialisé en électronique analogique et numérique.",
-        backgroundImage: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        title: "Electrical <span>Maintenance</span><br>Industrial & Automation",
+        description: "Industrial and domestic electrical maintenance: diagnostics, troubleshooting, improvement and modernization of installations.",
+        backgroundImage: "images/hero/elec.jpeg",
         buttons: [
-          { text: "Contact Me", href: "#contact", class: "btn btn-outline" },
+          { text: "Contact Me", href: "#contact", class: "btn" },
             { text: "View Skills", href: "#skills", class: "btn btn-secondary" }
-        ]
-    },
-    {
-        id: 5,
-        title: "Maintenance <span>Électrique</span><br>Industrielle & Domotique",
-        description: "Maintenance électrique industrielle, domestique et domotique : diagnostic, dépannage, amélioration et modernisation des installations.",
-        backgroundImage: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-        buttons: [
-            { text: "View Skills", href: "#skills", class: "btn btn-secondary" },
-            { text: "Contact Me", href: "#contact", class: "btn btn-outline" }
-            
         ]
     }
 ],

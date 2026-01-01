@@ -14,7 +14,7 @@ window.iotProjectsData = {
       title: "Smart Lighting Control",
       description: "Control home lighting remotely using a mobile app with automation and scheduling features.",
       images: [
-        "https://placehold.co/600x400/0f172a/ffffff?text=Smart+Lighting"
+        "images/iot/SMARTHOME.jpg"
       ],
       technologies: ["ESP32", "Relay", "WiFi", "Mobile App"],
       features: [
@@ -33,7 +33,7 @@ window.iotProjectsData = {
       title: "Smart Door Lock (RFID)",
       description: "Secure smart door system using RFID authentication with access logging.",
       images: [
-        "https://placehold.co/600x400/1e293b/ffffff?text=Smart+Door"
+        "images/iot/DOOR.jpg"
       ],
       technologies: ["Arduino", "RFID", "Servo Motor"],
       features: [
@@ -58,7 +58,7 @@ window.iotProjectsData = {
       title: "Industrial Motor Control Panel",
       description: "Industrial automation system for controlling motors with safety features.",
       images: [
-        "https://placehold.co/600x400/374151/ffffff?text=Motor+Control"
+        "images/iot/ELEC MOTOR.jpg"
       ],
       technologies: ["Arduino", "Relay", "Timers", "Industrial Wiring"],
       features: [
@@ -77,7 +77,7 @@ window.iotProjectsData = {
       title: "Product Counter System",
       description: "Automatic product counting system for production lines using IR sensors.",
       images: [
-        "https://placehold.co/600x400/4b5563/ffffff?text=Product+Counter"
+        "images/iot/SYSTEM INDESTRY.jpg"
       ],
       technologies: ["Arduino", "IR Sensor", "LCD"],
       features: [
@@ -102,7 +102,7 @@ window.iotProjectsData = {
       title: "Temperature & Humidity Monitor",
       description: "Environmental monitoring system using temperature and humidity sensors.",
       images: [
-        "https://placehold.co/600x400/6b7280/ffffff?text=Temp+Humidity"
+        "images/iot/TEMP SENSOR.jpg"
       ],
       technologies: ["DHT11", "Arduino", "LCD"],
       features: [
@@ -121,7 +121,7 @@ window.iotProjectsData = {
       title: "Gas Leakage Detection System",
       description: "Safety system to detect gas leakage and trigger alarms.",
       images: [
-        "https://placehold.co/600x400/71717a/ffffff?text=Gas+Detection"
+        "images/iot/GAZ SENSOR.jpg"
       ],
       technologies: ["MQ Sensor", "Buzzer", "Arduino"],
       features: [
@@ -146,7 +146,7 @@ window.iotProjectsData = {
       title: "Obstacle Avoiding Robot",
       description: "Autonomous robot that avoids obstacles using ultrasonic sensors.",
       images: [
-        "https://placehold.co/600x400/64748b/ffffff?text=Obstacle+Robot"
+        "images/iot/OBSTACLE.jpg"
       ],
       technologies: ["Arduino", "Ultrasonic Sensor", "Motor Driver"],
       features: [
@@ -165,7 +165,7 @@ window.iotProjectsData = {
       title: "Bluetooth Control Robot",
       description: "Robot controlled via smartphone using Bluetooth communication.",
       images: [
-        "https://placehold.co/600x400/475569/ffffff?text=Bluetooth+Robot"
+        "images/iot/ROBOT REMOT.jpg"
       ],
       technologies: ["Arduino", "Bluetooth", "Motor Driver"],
       features: [

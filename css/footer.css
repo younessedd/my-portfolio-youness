@@ -61,16 +61,54 @@ footer .container {
     height: 50px;
     border-radius: 50%;
     background: var(--background);
-    color: var(--text-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.4rem;
     transition: var(--transition);
+    text-decoration: none;
 }
 
-.footer-social-icon:hover {
-    background: var(--primary-color);
+/* GitHub - White */
+.footer-social-icon.github {
+    color: #ffffff;
+}
+
+.footer-social-icon.github:hover {
+    background: #333333;
+    color: white;
+    transform: translateY(-5px) scale(1.1);
+}
+
+/* LinkedIn - Blue */
+.footer-social-icon.linkedin {
+    color: #0077B5;
+}
+
+.footer-social-icon.linkedin:hover {
+    background: #0077B5;
+    color: white;
+    transform: translateY(-5px) scale(1.1);
+}
+
+/* WhatsApp - Green */
+.footer-social-icon.whatsapp {
+    color: #25D366;
+}
+
+.footer-social-icon.whatsapp:hover {
+    background: #25D366;
+    color: white;
+    transform: translateY(-5px) scale(1.1);
+}
+
+/* Email - White */
+.footer-social-icon.email {
+    color: #ffffff;
+}
+
+.footer-social-icon.email:hover {
+    background: #EA4335;
     color: white;
     transform: translateY(-5px) scale(1.1);
 }
@@ -87,17 +125,43 @@ footer .container {
     text-align: center;
 }
 
-/* Desktop layout - 4 columns centered */
+/* Desktop layout - 4 columns centered with same vertical position */
 @media (min-width: 1200px) {
     .footer-main {
         grid-template-columns: repeat(4, 1fr);
         justify-items: center;
         text-align: center;
+        align-items: start;
+    }
+    
+    .footer-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+}
+
+/* Laptop layout - 4 columns in same line with same vertical position */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .footer-main {
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+        text-align: center;
+        gap: 2rem;
+        align-items: start;
+    }
+    
+    .footer-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
     }
 }
 
 /* Tablet layout - 2 columns centered */
-@media (min-width: 768px) and (max-width: 1199px) {
+@media (min-width: 768px) and (max-width: 1023px) {
     .footer-main {
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
