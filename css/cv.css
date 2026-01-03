@@ -167,6 +167,7 @@
     position: relative;
     z-index: 1;
     overflow: hidden;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -243,18 +244,27 @@
     justify-content: center;
     gap: 12px;
     padding: 16px 24px;
-    background: #000;
-    color: #ffffff;
+    background: #ffffff;
+    color: #000000;
     text-decoration: none;
     border-radius: 12px;
     font-weight: 600;
     font-size: 1rem;
     transition: all 0.3s ease;
     box-shadow: 
-        0 4px 15px rgba(0, 0, 0, 0.3),
-        0 0 30px rgba(0, 0, 0, 0.2);
+        0 4px 15px rgba(255, 255, 255, 0.3),
+        0 0 30px rgba(255, 255, 255, 0.2);
     position: relative;
     overflow: hidden;
+    transform: scale(1);
+}
+
+.cv-popup-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        0 8px 25px rgba(255, 255, 255, 0.4),
+        0 0 40px rgba(255, 255, 255, 0.3);
+    color: #000000;
 }
 
 .cv-popup-btn::before {

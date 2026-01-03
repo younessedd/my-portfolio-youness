@@ -1,227 +1,183 @@
 /**
- * email-service.js - Email Service Management
- * Handles EmailJS configuration, email sending, and email service utilities
+ * email-config.js - Email Configuration
+ * ⚠️ CONTAINS SENSITIVE DATA - DO NOT UPLOAD TO GITHUB ⚠️
+ * 
+ * This file contains EmailJS configuration with sensitive API keys.
+ * Make sure to add this file to .gitignore before committing.
  */
 
-const EmailServiceManager = {
-    // EmailJS configuration
-    config: null,
+const emailConfig = {
+    // ================================
+    // 🔐 EmailJS Configuration - SENSITIVE DATA
+    // ================================
+    // Get these values from EmailJS dashboard: https://dashboard.emailjs.com/admin
     
-    // Service state
-    isInitialized: false,
+    // Service ID (Your EmailJS service)
+    serviceID: 'service_9a47m0s',
+   
     
-    /**
-     * Initialize email service
-     */
-    init: function() {
-        this.loadConfig();
-        
-        if (this.config && this.config.publicKey) {
-            this.initializeEmailJS();
-            console.log('Email service manager initialized');
-        } else {
-            console.warn('EmailJS configuration not found. Email functionality will be disabled.');
-        }
-    },
+    // Template ID (Your email template)
+    templateID: 'template_vlo4ub3',
     
-    /**
-     * Load email configuration
-     */
-    loadConfig: function() {
-        // Use hardcoded values
-        this.config = {
-            serviceID: 'service_l953yi6',
-            templateID: 'template_5aimrbz',
-            publicKey: 'IbbG69TuO-Uyx_4I8',
-            toEmail: 'eddanguiryouness@gmail.com',
-            fromName: 'Portfolio Contact Form',
-            subject: 'New Message from Portfolio'
-        };
-        
-        console.log('Email config loaded');
-    },
+    // Public Key (Your EmailJS public key)
+    publicKey: 'IbbG69TuO-Uyx_4I8',
     
-    /**
-     * Initialize EmailJS with public key
-     */
-    initializeEmailJS: function() {
-        if (typeof emailjs === 'undefined') {
-            console.error('EmailJS library not loaded');
-            return;
-        }
-        
-        if (!this.config.publicKey) {
-            console.error('EmailJS public key not found in configuration');
-            return;
-        }
-        
-        try {
-            emailjs.init(this.config.publicKey);
-            this.isInitialized = true;
-            console.log('EmailJS initialized successfully');
-        } catch (error) {
-            console.error('Failed to initialize EmailJS:', error);
-            this.isInitialized = false;
-        }
-    },
+    // ================================
+    // 📧 Email Settings
+    // ================================
+    // Your email address that will receive contact form messages
+    toEmail: 'eddanguiryouness@gmail.com',
+    
+    // Sender name that appears in emails
+    fromName: 'Portfolio Contact Form',
+    
+    // Default email subject
+    subject: 'New Message from Portfolio Website',
+    
+    // Email reply-to address
+    replyTo: 'no-reply@portfolio.com',
+    
+    // ================================
+    // ⚠️ IMPORTANT WARNINGS
+    // ================================
+    // 1. This file contains sensitive API keys
+    // 2. Add this file to .gitignore immediately
+    // 3. Never share these keys with anyone
+    // 4. If keys are compromised, regenerate them in EmailJS dashboard
+    // 5. Use environment variables in production if possible
+    
+    // ================================
+    // ✅ Configuration Validation
+    // ================================
     
     /**
-     * Send email using EmailJS
-     * @param {Object} data - Email data including name, email, message, etc.
-     * @returns {Promise} Promise that resolves when email is sent
+     * Validate the configuration
+     * @returns {Object} Validation result
      */
-    sendEmail: async function(data) {
-        if (!this.isInitialized) {
-            throw new Error('Email service is not initialized');
-        }
+    validate: function() {
+        const errors = [];
+        const warnings = [];
         
-        if (!this.config.serviceID || !this.config.templateID) {
-            throw new Error('Email service configuration incomplete');
-        }
+        // Check required fields
+        if (!this.serviceID) errors.push('serviceID is missing');
+        if (!this.templateID) errors.push('templateID is missing');
+        if (!this.publicKey) errors.push('publicKey is missing');
+        if (!this.toEmail) errors.push('toEmail is missing');
         
-        // Prepare template parameters
-        const templateParams = this.prepareTemplateParams(data);
-        
-        try {
-            const response = await emailjs.send(
-                this.config.serviceID,
-                this.config.templateID,
-                templateParams
-            );
-            
-            console.log('Email sent successfully:', response);
-            return response;
-            
-        } catch (error) {
-            console.error('Email sending failed:', error);
-            throw this.parseEmailError(error);
-        }
-    },
-    
-    /**
-     * Prepare template parameters for EmailJS
-     * @param {Object} data - Form data
-     * @returns {Object} Template parameters
-     */
-    prepareTemplateParams: function(data) {
-        const now = new Date();
-        const formattedTime = now.toLocaleString('en-US', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-            timeZoneName: 'short'
-        });
-        
-        // Build the message with all contact information
-        let fullMessage = data.message || '';
-        
-        if (data.phone) {
-            fullMessage += `\n\nPhone: ${data.phone}`;
-        }
-        
-        if (data.subject) {
-            fullMessage += `\n\nSubject: ${data.subject}`;
-        }
-        
-        return {
-            to_email: this.config.toEmail || 'eddanguiryouness@gmail.com',
-            from_name: data.name || 'Portfolio Visitor',
-            from_email: data.email || 'no-reply@portfolio.com',
-            reply_to: data.email || '',
-            subject: data.subject || this.config.subject || 'New Message from Portfolio',
-            message: fullMessage,
-            timestamp: formattedTime,
-            date: now.toLocaleDateString(),
-            time: now.toLocaleTimeString(),
-            page_url: window.location.href
-        };
-    },
-    
-    /**
-     * Parse EmailJS error for user-friendly message
-     * @param {Object} error - EmailJS error object
-     * @returns {Error} Parsed error with user-friendly message
-     */
-    parseEmailError: function(error) {
-        let userMessage = 'There was an error sending your message. Please try again later.';
-        let technicalMessage = error.text || error.message || 'Unknown error';
-        
-        // Common EmailJS errors
-        if (error.status === 0) {
-            userMessage = 'Network error. Please check your internet connection and try again.';
-        } else if (error.text && error.text.includes('Invalid login credentials')) {
-            userMessage = 'Email service configuration error. Please contact the website administrator.';
-        } else if (error.text && error.text.includes('Template not found')) {
-            userMessage = 'Email template configuration error. Please contact the website administrator.';
-        } else if (error.status === 400) {
-            userMessage = 'Invalid request. Please check your information and try again.';
-        } else if (error.status === 429) {
-            userMessage = 'Too many requests. Please wait a few minutes and try again.';
-        } else if (error.status >= 500) {
-            userMessage = 'Server error. Please try again later or contact the website administrator.';
-        }
-        
-        // Create new error with user-friendly message
-        const parsedError = new Error(userMessage);
-        parsedError.originalError = error;
-        parsedError.technicalMessage = technicalMessage;
-        parsedError.status = error.status;
-        
-        return parsedError;
-    },
-    
-    /**
-     * Validate email address format
-     * @param {string} email - Email address to validate
-     * @returns {boolean} True if email is valid
-     */
-    validateEmail: function(email) {
+        // Check email format
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    },
-    
-    /**
-     * Validate phone number format
-     * @param {string} phone - Phone number to validate
-     * @returns {boolean} True if phone is valid
-     */
-    validatePhone: function(phone) {
-        if (!phone) return false;
-        
-        const cleanedPhone = phone.replace(/[\s\-()]/g, '');
-        
-        // Check if starts with + or 0
-        if (!/^(\+|0)/.test(cleanedPhone)) {
-            return false;
+        if (this.toEmail && !emailRegex.test(this.toEmail)) {
+            warnings.push('toEmail may not be a valid email address');
         }
         
-        // Remove + or 0 prefix and check if remaining are digits
-        const digits = cleanedPhone.replace(/^\+/, '').replace(/^0/, '');
-        return /^\d+$/.test(digits) && digits.length >= 8 && digits.length <= 15;
+        // Check if using example values
+        if (this.publicKey.includes('example') || 
+            this.serviceID.includes('example') || 
+            this.templateID.includes('example')) {
+            errors.push('You are using example values. Replace with your actual EmailJS credentials.');
+        }
+        
+        return {
+            isValid: errors.length === 0,
+            errors: errors,
+            warnings: warnings,
+            hasWarnings: warnings.length > 0
+        };
     },
     
     /**
-     * Get email configuration status
-     * @returns {Object} Configuration status
+     * Test the configuration (for development)
+     * @returns {Object} Test result
      */
-    getConfigStatus: function() {
+    test: function() {
+        const validation = this.validate();
+        
+        if (!validation.isValid) {
+            return {
+                success: false,
+                message: 'Configuration is invalid',
+                details: validation.errors
+            };
+        }
+        
+        console.log('✅ Email configuration loaded successfully');
+        console.log('Service ID:', this.serviceID ? '✓ Loaded' : '✗ Missing');
+        console.log('Template ID:', this.templateID ? '✓ Loaded' : '✗ Missing');
+        console.log('Public Key:', this.publicKey ? '✓ Loaded' : '✗ Missing');
+        console.log('To Email:', this.toEmail ? '✓ Loaded' : '✗ Missing');
+        
+        if (validation.hasWarnings) {
+            console.warn('⚠️ Configuration warnings:', validation.warnings);
+        }
+        
         return {
-            isInitialized: this.isInitialized,
-            hasServiceID: !!this.config?.serviceID,
-            hasTemplateID: !!this.config?.templateID,
-            hasPublicKey: !!this.config?.publicKey,
-            configSource: this.config ? 'loaded' : 'not loaded'
+            success: true,
+            message: 'Configuration is valid',
+            warnings: validation.warnings
+        };
+    },
+    
+    /**
+     * Mask sensitive data for logging
+     * @returns {Object} Safe configuration object for logging
+     */
+    getSafeConfig: function() {
+        return {
+            serviceID: this.serviceID ? '***' + this.serviceID.slice(-4) : 'Missing',
+            templateID: this.templateID ? '***' + this.templateID.slice(-4) : 'Missing',
+            publicKey: this.publicKey ? '***' + this.publicKey.slice(-4) : 'Missing',
+            toEmail: this.toEmail || 'Missing',
+            fromName: this.fromName || 'Missing',
+            subject: this.subject || 'Missing'
         };
     }
 };
 
-// Initialize email service when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    EmailServiceManager.init();
-});
+// ================================
+// 🚀 Initialization
+// ================================
 
-// Make available globally
-window.EmailServiceManager = EmailServiceManager;
+// Test configuration when loaded
+if (typeof window !== 'undefined') {
+    window.addEventListener('load', () => {
+        // Wait a moment for everything to load
+        setTimeout(() => {
+            const testResult = emailConfig.test();
+            
+            if (!testResult.success) {
+                console.error('❌ Email configuration error:', testResult.details);
+                
+                // Show error toast if available
+                if (typeof showToast === 'function') {
+                    showToast('Email configuration error. Contact form may not work.', 'error');
+                }
+            }
+        }, 1000);
+    });
+}
+
+// ================================
+// 📦 Export for Different Environments
+// ================================
+
+// For Node.js/CommonJS
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = emailConfig;
+}
+
+// For ES6 Modules
+if (typeof exports !== 'undefined') {
+    exports.default = emailConfig;
+}
+
+// For browser global scope
+if (typeof window !== 'undefined') {
+    window.emailConfig = emailConfig;
+}
+
+// ================================
+// 🛡️ Security Reminder
+// ================================
+console.log('%c⚠️ SECURITY WARNING ⚠️', 'color: red; font-weight: bold; font-size: 14px;');
+console.log('%cThis file contains sensitive API keys.', 'color: orange;');
+console.log('%cMake sure email-config.js is in .gitignore!', 'color: orange; font-weight: bold;');

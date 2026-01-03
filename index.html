@@ -682,7 +682,7 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
                         </div>
                         <div class="form-group">
                             <label for="message">Message *</label>
-                            <textarea id="message" class="form-control" required placeholder="Enter your message here" title="Enter your message here"></textarea>
+                            <textarea id="message" class="form-control" required placeholder="Enter your message here" title="Enter your message here" style="resize: none; overflow: hidden; min-height: 100px;" oninput="autoResize(this)"></textarea>
                             <div class="error" id="messageError">Message required (minimum 5 characters)</div>
                         </div>
                         <button type="submit" class="btn form-btn zoom">
@@ -700,7 +700,7 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
         <div class="container">
             <div class="footer-top">
                 <div class="footer-logo">
-                    <a href="#" class="logo">Portfo<span>lio</span></a>
+                    <a href="#" class="logo">Youness <span>Edd</span></a>
                 </div>
                 <div class="footer-social-icons">
                     <a href="https://github.com/younessedd" target="_blank" class="footer-social-icon github"><i class="fab fa-github"></i></a>
@@ -752,13 +752,12 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
         </div>
     </footer>
 
-    <!-- Toast Container -->
-    <div class="toast-container" id="toastContainer"></div>
-
     <!-- External Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js" defer></script>
     
     <!-- JavaScript Files -->
+    <!-- Toast System (must load first) -->
+    <script src="js/toast.js" defer></script>
     <script src="js/simple-burger.js" defer></script>
     <script src="js/config.js" defer></script>
     <script src="js/data/web-projects.js" defer></script>
@@ -772,7 +771,7 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
     <script src="js/iot-projects.js" defer></script>
     <script src="js/contact-form.js" defer></script>
     <script src="js/email-service.js" defer></script>
-    <script src="js/toast.js" defer></script>
+    <script src="js/cv-cards.js" defer></script>
     <script src="js/splash.js" defer></script>
     <script src="js/main.js" defer></script>
     <!-- Scroll Reveal Animation System -->
