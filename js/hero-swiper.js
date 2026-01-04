@@ -63,8 +63,9 @@ slides: [
             loop: true,
             speed: 1000,
             autoplay: {
-                delay: 3000,
+                delay: 5000,
                 disableOnInteraction: false,
+                enabled: false, // Initially disabled
             },
             effect: 'fade',
             fadeEffect: {
@@ -82,17 +83,20 @@ slides: [
             breakpoints: {
                 320: {
                     autoplay: {
-                        delay: 4000,
+                        delay: 5000,
+                        enabled: false, // Initially disabled
                     }
                 },
                 768: {
                     autoplay: {
                         delay: 5000,
+                        enabled: false, // Initially disabled
                     }
                 },
                 1024: {
                     autoplay: {
-                        delay: 6000,
+                        delay: 5000,
+                        enabled: false, // Initially disabled
                     }
                 }
             },
@@ -112,7 +116,60 @@ slides: [
         this.loadSlides();
         this.initSwiper();
         this.setupEventListeners();
+        this.setupSplashScreenListener();
         console.log('Hero swiper manager initialized');
+    },
+    
+    /**
+     * Setup splash screen listener
+     */
+    setupSplashScreenListener: function() {
+        // Listen for splash screen to be hidden
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    const body = document.body;
+                    if (body.classList.contains('splash-hidden')) {
+                        // Splash screen is hidden, start autoplay
+                        this.startAutoplayAfterDelay();
+                    }
+                }
+            });
+        });
+        
+        // Start observing the body for class changes
+        observer.observe(document.body, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+        
+        // Also check if splash is already hidden
+        if (document.body.classList.contains('splash-hidden')) {
+            this.startAutoplayAfterDelay();
+        }
+    },
+    
+    /**
+     * Start autoplay after a delay
+     */
+    startAutoplayAfterDelay: function() {
+        // Wait 2 seconds after splash is hidden before starting autoplay
+        setTimeout(() => {
+            if (this.swiper && this.swiper.autoplay) {
+                // Enable autoplay for all breakpoints
+                this.swiper.params.autoplay.enabled = true;
+                
+                // Update autoplay settings for current breakpoint
+                const currentBreakpoint = this.swiper.currentBreakpoint;
+                if (this.swiper.params.breakpoints[currentBreakpoint]) {
+                    this.swiper.params.breakpoints[currentBreakpoint].autoplay.enabled = true;
+                }
+                
+                // Start autoplay
+                this.swiper.autoplay.start();
+                console.log('Hero autoplay started after splash screen');
+            }
+        }, 2000);
     },
     
     /**

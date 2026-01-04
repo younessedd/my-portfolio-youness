@@ -97,7 +97,7 @@ window.addEventListener('load', () => {
                     console.log('🍔 HOME LINK ACTIVE - Hero section visible after splash screen');
                 }, 1000);
             }
-        }, 3500); // Extended delay for better loading experience
+        }, 3000); // 3 second delay for better loading experience
     }
 });
 

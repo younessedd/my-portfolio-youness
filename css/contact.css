@@ -256,7 +256,6 @@
         0 0 20px rgba(6, 182, 212, 0.4),
         0 0 40px rgba(6, 182, 212, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
 }
 
 /* Form Error Messages */
@@ -270,23 +269,10 @@
     border: 1px solid rgba(220, 38, 38, 0.2);
     border-radius: 8px;
     padding: 8px 12px;
-    transition: all 0.3s ease;
-    animation: slideDown 0.3s ease;
 }
 
 .error.show {
     display: block;
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* Input Error States - REMOVED - Keep inputs normal */
