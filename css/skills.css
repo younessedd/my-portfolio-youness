@@ -1,0 +1,624 @@
+/* ============================================
+   SKILLS SECTION - MODERN STYLE LIKE WEB APPS
+============================================ */
+
+/* Skills Navigation - 7 Button Layout (3-3-1) */
+#skills .skills-nav.center-buttons,
+#web-apps .skills-nav.center-buttons,
+#mobile-apps .skills-nav.center-buttons,
+#iot-projects .skills-nav.center-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 220px);
+    gap: 1.5rem;
+    margin: 3rem auto 0;
+    padding: 1rem;
+    justify-content: center;
+    justify-items: center;
+    max-width: 900px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 7 Button Layout Pattern for Skills Section */
+/* First row: 3 buttons (full row) */
+#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(-n+3) {
+    width: 220px;
+    min-width: 220px;
+    grid-column: span 1;
+}
+
+/* Second row: 3 buttons (full row) */
+#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(n+4):nth-child(-n+6) {
+    width: 220px;
+    min-width: 220px;
+    grid-column: span 1;
+}
+
+/* Third row: 1 button (perfectly centered) */
+#skills .skills-nav.center-buttons .skill-nav-btn:nth-child(7):last-child {
+    width: 220px;
+    min-width: 220px;
+    grid-column: 2;
+    justify-self: center;
+}
+
+/* Ensure all skill-nav-btn have consistent width */
+#skills .skill-nav-btn {
+    width: 220px;
+    min-width: 220px;
+}
+
+/* Zoom Effects for skill-nav-btn */
+#skills .skill-nav-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+#skills .skill-nav-btn:hover {
+    transform: scale(1.05) translateY(-2px);
+    z-index: 10;
+    position: relative;
+}
+
+#skills .skill-nav-btn:active {
+    transform: scale(0.98);
+}
+
+/* Enhanced zoom animation for better visual feedback */
+#skills .skill-nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.1) 0%,
+        rgba(249, 115, 22, 0.05) 50%,
+        rgba(6, 182, 212, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: 20px;
+}
+
+#skills .skill-nav-btn:hover::before {
+    opacity: 1;
+}
+
+#skills .skill-nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(16, 185, 129, 0.3);
+    border-radius: 20px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #fff;
+    height: 140px;
+    min-height: 140px;
+    max-height: 140px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    font-weight: 600;
+    /* Ensure perfect vertical centering */
+    line-height: 1;
+}
+
+/* Perfect centering for icon and text */
+#skills .skill-nav-btn i {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+#skills .skill-nav-btn span {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 100%;
+    word-wrap: break-word;
+    hyphens: auto;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+}
+
+/* Ensure perfect vertical centering within fixed height */
+#skills .skill-nav-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    height: 140px !important;
+    min-height: 140px !important;
+    max-height: 140px !important;
+    overflow: hidden !important;
+}
+
+#skills .skill-nav-btn i {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto 0.5rem auto !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+}
+
+#skills .skill-nav-btn span {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+}
+
+/* Override any conflicting styles from style.css */
+html body #skills .skill-nav-btn i {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto 0.5rem auto !important;
+}
+
+html body #skills .skill-nav-btn span {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+/* Center all skill-nav-btn zoom buttons content */
+.skill-nav-btn.zoom {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.skill-nav-btn.zoom i {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto 0.5rem auto !important;
+    width: 100% !important;
+}
+
+.skill-nav-btn.zoom span {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+#skills .skill-nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.05) 0%,
+        rgba(249, 115, 22, 0.03) 50%,
+        rgba(139, 92, 246, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+#skills .skill-nav-btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(16, 185, 129, 0.6);
+    color: #10b981;
+    background: rgba(2, 6, 23, 0.9);
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.3),
+        0 0 80px rgba(16, 185, 129, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+#skills .skill-nav-btn:hover::before {
+    opacity: 1;
+}
+
+#skills .skill-nav-btn[data-category="electronicsAndElectric"].active {
+    background: rgba(2, 6, 23, 0.95);
+    backdrop-filter: blur(20px);
+    border-color: rgba(220, 38, 38, 0.8);
+    color: #dc2626;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 20px 40px rgba(220, 38, 38, 0.4),
+        0 0 80px rgba(220, 38, 38, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Icon centering - removed duplicate rule */
+
+#skills .skill-nav-btn span {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    line-height: 1.4;
+    max-width: 100%;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+    word-wrap: break-word;
+    hyphens: auto;
+    display: block;
+    padding: 0.6rem 0.8rem;
+    min-height: 3.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Tablet Styles - 2 buttons per row for all sections */
+@media (max-width: 1024px) {
+    #skills .skills-nav.center-buttons,
+    #web-apps .skills-nav.center-buttons,
+    #mobile-apps .skills-nav.center-buttons,
+    #iot-projects .skills-nav.center-buttons {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 600px;
+        gap: 1.2rem;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Center remaining button in tablet layout for all sections */
+    #skills .skills-nav.center-buttons .skill-nav-btn:nth-child(odd):last-child,
+    #web-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(odd):last-child,
+    #mobile-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(odd):last-child,
+    #iot-projects .skills-nav.center-buttons .skill-nav-btn:nth-child(odd):last-child {
+        grid-column: 1 / span 2; /* Center odd remaining button across 2 columns */
+    }
+}
+
+/* Mobile Styles - 1 button per row for all sections */
+@media (max-width: 768px) {
+    #skills .skills-nav.center-buttons,
+    #web-apps .skills-nav.center-buttons,
+    #mobile-apps .skills-nav.center-buttons,
+    #iot-projects .skills-nav.center-buttons {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        gap: 1rem;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #skills .skills-nav.center-buttons .skill-nav-btn,
+    #web-apps .skills-nav.center-buttons .skill-nav-btn,
+    #mobile-apps .skills-nav.center-buttons .skill-nav-btn,
+    #iot-projects .skills-nav.center-buttons .skill-nav-btn {
+        width: 100%;
+        height: 120px;
+        min-height: 120px;
+        padding: 1.2rem;
+    }
+    
+    /* Reset grid positioning for mobile (single column) for all sections */
+    #skills .skills-nav.center-buttons .skill-nav-btn,
+    #web-apps .skills-nav.center-buttons .skill-nav-btn,
+    #mobile-apps .skills-nav.center-buttons .skill-nav-btn,
+    #iot-projects .skills-nav.center-buttons .skill-nav-btn {
+        grid-column: auto !important;
+    }
+}
+
+/* Category Colors for Skill Navigation Buttons */
+
+/* Web Development - Orange */
+.skill-nav-btn[data-category="webDevelopment"] i,
+.skill-nav-btn[data-category="webDevelopment"] span {
+    color: #f97316 !important;
+}
+
+/* Mobile Development - Blue */
+.skill-nav-btn[data-category="mobileDevelopment"] i,
+.skill-nav-btn[data-category="mobileDevelopment"] span {
+    color: #3b82f6 !important;
+}
+
+/* IoT and Domotic - Green */
+.skill-nav-btn[data-category="iotAndDomotic"] i,
+.skill-nav-btn[data-category="iotAndDomotic"] span {
+    color: #10b981 !important;
+}
+
+/* Electronics and Electric - Red */
+.skill-nav-btn[data-category="electronicsAndElectric"] i,
+.skill-nav-btn[data-category="electronicsAndElectric"] span {
+    color: #dc2626 !important;
+}
+
+/* Robotics and Automatism - Purple */
+.skill-nav-btn[data-category="roboticsAndAutomatism"] i,
+.skill-nav-btn[data-category="roboticsAndAutomatism"] span {
+    color: #8b5cf6 !important;
+}
+
+/* Soft Skills - Pink */
+.skill-nav-btn[data-category="softSkills"] i,
+.skill-nav-btn[data-category="softSkills"] span {
+    color: #ec4899 !important;
+}
+
+/* AI Prompt - Yellow/Orange */
+.skill-nav-btn[data-category="aiPrompt"] i,
+.skill-nav-btn[data-category="aiPrompt"] span {
+    color: #f59e0b !important;
+}
+
+/* Hover effects for colored buttons */
+.skill-nav-btn[data-category="webDevelopment"]:hover {
+    border-color: rgba(249, 115, 22, 0.6);
+    color: #f97316;
+    box-shadow: 
+        0 20px 40px rgba(249, 115, 22, 0.3),
+        0 0 60px rgba(249, 115, 22, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.skill-nav-btn[data-category="mobileDevelopment"]:hover {
+    border-color: rgba(59, 130, 246, 0.6);
+    color: #3b82f6;
+    box-shadow: 
+        0 20px 40px rgba(59, 130, 246, 0.3),
+        0 0 60px rgba(59, 130, 246, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.skill-nav-btn[data-category="iotAndDomotic"]:hover {
+    border-color: rgba(16, 185, 129, 0.6);
+    color: #10b981;
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.3),
+        0 0 60px rgba(16, 185, 129, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.skill-nav-btn[data-category="electronicsAndElectric"]:hover {
+    border-color: rgba(220, 38, 38, 0.6);
+    color: #dc2626;
+    box-shadow: 
+        0 8px 25px rgba(220, 38, 38, 0.3),
+        0 0 40px rgba(220, 38, 38, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.skill-nav-btn[data-category="roboticsAndAutomatism"]:hover {
+    border-color: rgba(139, 92, 246, 0.6);
+    color: #8b5cf6;
+    box-shadow: 
+        0 20px 40px rgba(139, 92, 246, 0.3),
+        0 0 60px rgba(139, 92, 246, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.skill-nav-btn[data-category="softSkills"]:hover {
+    border-color: rgba(236, 72, 153, 0.6);
+    color: #ec4899;
+    box-shadow: 
+        0 20px 40px rgba(236, 72, 153, 0.3),
+        0 0 60px rgba(236, 72, 153, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.skill-nav-btn[data-category="aiPrompt"]:hover {
+    border-color: rgba(245, 158, 11, 0.6);
+    color: #f59e0b;
+    box-shadow: 
+        0 20px 40px rgba(245, 158, 11, 0.3),
+        0 0 60px rgba(245, 158, 11, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Active states for colored buttons - Header Navbar Style */
+.skill-nav-btn[data-category="webDevelopment"].active {
+    background: rgba(2, 6, 23, 0.95);
+    backdrop-filter: blur(20px);
+    border-color: rgba(16, 185, 129, 0.8);
+    color: white;
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.4),
+        0 0 80px rgba(16, 185, 129, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.skill-nav-btn[data-category="mobileDevelopment"].active {
+    background: rgba(2, 6, 23, 0.95);
+    backdrop-filter: blur(20px);
+    border-color: rgba(16, 185, 129, 0.8);
+    color: white;
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.4),
+        0 0 80px rgba(16, 185, 129, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.skill-nav-btn[data-category="iotAndDomotic"].active {
+    background: rgba(2, 6, 23, 0.95);
+    backdrop-filter: blur(20px);
+    border-color: rgba(16, 185, 129, 0.8);
+    color: white;
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.4),
+        0 0 80px rgba(16, 185, 129, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.skill-nav-btn[data-category="electronicsAndElectric"].active {
+    background: rgba(2, 6, 23, 0.95);
+    backdrop-filter: blur(20px);
+    border-color: rgba(16, 185, 129, 0.8);
+    color: white;
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.4),
+        0 0 80px rgba(16, 185, 129, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.skill-nav-btn[data-category="roboticsAndAutomatism"].active {
+    background: rgba(2, 6, 23, 0.95);
+    backdrop-filter: blur(20px);
+    border-color: rgba(16, 185, 129, 0.8);
+    color: white;
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.4),
+        0 0 80px rgba(16, 185, 129, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.skill-nav-btn[data-category="softSkills"].active {
+    background: rgba(2, 6, 23, 0.95);
+    backdrop-filter: blur(20px);
+    border-color: rgba(16, 185, 129, 0.8);
+    color: white;
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.4),
+        0 0 80px rgba(16, 185, 129, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.skill-nav-btn[data-category="aiPrompt"].active {
+    background: rgba(2, 6, 23, 0.95);
+    backdrop-filter: blur(20px);
+    border-color: rgba(16, 185, 129, 0.8);
+    color: white;
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.4),
+        0 0 80px rgba(16, 185, 129, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.skill-header-box {
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 80px rgba(16, 185, 129, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    border-radius: 18px;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    position: relative;
+    z-index: 1;
+    top: 0;
+}
+
+/* Responsive skill-header-box positioning */
+@media (max-width: 1024px) {
+    .skill-header-box {
+        top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .skill-header-box {
+        top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .skill-header-box {
+        top: 0;
+        padding: 1.5rem 1rem 1rem 1rem;
+    }
+}
+.skill-header-box h2,
+.skill-header-box p {
+    color: #fff;
+    margin-bottom: 0.8rem;
+}
+
+/* SKILLS SECTION CONTAINER */
+#skills {
+    padding: 4rem 1rem;
+    position: relative;
+    min-height: 100vh;
+    background: url('../images/background/skill.webp') center center/cover no-repeat, var(--skills-bg);
+    overflow: hidden;
+}
+
+#skills::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        url('../images/skills-background.png'),
+        radial-gradient(circle at 30% 70%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(249, 115, 22, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.03) 0%, transparent 60%);
+    background-size: cover, 100% 100%, 100% 100%, 100% 100%;
+    background-position: center, 0 0, 0 0, 0 0;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Skills Section Main Heading - LIKE MOBILE APPS */
+#skills h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text);
+    font-weight: 700;
+    background: linear-gradient(135deg, #10b981, #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+}

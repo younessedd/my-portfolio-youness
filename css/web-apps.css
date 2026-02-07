@@ -1,0 +1,1041 @@
+project-images-container single-image-container/* ============================================
+   COMPREHENSIVE TECHNOLOGY COLORS
+============================================ */
+
+/* WEB TECHNOLOGIES */
+/* HTML5 */
+.tech-html5, .technology-html5, [data-tech*="html5"], [data-tech*="HTML5"] {
+    color: #E34F26 !important; /* HTML5 Orange */
+    background: linear-gradient(135deg, #E34F26, #F06529) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* CSS3 */
+.tech-css3, .technology-css3, [data-tech*="css3"], [data-tech*="CSS3"] {
+    color: #1572B6 !important; /* CSS3 Blue */
+    background: linear-gradient(135deg, #1572B6, #33A9DC) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* JavaScript */
+.tech-javascript, .technology-javascript, [data-tech*="javascript"], [data-tech*="JavaScript"], [data-tech*="JS"] {
+    color: #F7DF1E !important; /* JavaScript Yellow */
+    background: linear-gradient(135deg, #F7DF1E, #FFD700) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* React.js */
+.tech-react, .technology-react, [data-tech*="react"], [data-tech*="React"], [data-tech*="React.js"] {
+    color: #61DAFB !important; /* React Light Blue */
+    background: linear-gradient(135deg, #61DAFB, #4FA8C5) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Node.js */
+.tech-nodejs, .technology-nodejs, [data-tech*="node"], [data-tech*="Node"], [data-tech*="Node.js"] {
+    color: #339933 !important; /* Node.js Green */
+    background: linear-gradient(135deg, #339933, #4CAF50) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Express.js */
+.tech-express, .technology-express, [data-tech*="express"], [data-tech*="Express"], [data-tech*="Express.js"] {
+    color: #000000 !important; /* Express Black */
+    background: linear-gradient(135deg, #000000, #333333) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* MongoDB */
+.tech-mongodb, .technology-mongodb, [data-tech*="mongodb"], [data-tech*="MongoDB"], [data-tech*="mongo"] {
+    color: #47A248 !important; /* MongoDB Green */
+    background: linear-gradient(135deg, #47A248, #5CB85C) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* API Integration */
+.tech-api, .technology-api, [data-tech*="api"], [data-tech*="API"], [data-tech*="REST"] {
+    color: #FF6B35 !important; /* API Orange */
+    background: linear-gradient(135deg, #FF6B35, #FF8C42) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* GitHub Pages */
+.tech-github, .technology-github, [data-tech*="github"], [data-tech*="GitHub"], [data-tech*="Pages"] {
+    color: #24292E !important; /* GitHub Dark */
+    background: linear-gradient(135deg, #24292E, #586069) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Vercel */
+.tech-vercel, .technology-vercel, [data-tech*="vercel"], [data-tech*="Vercel"] {
+    color: #000000 !important; /* Vercel Black */
+    background: linear-gradient(135deg, #000000, #FFFFFF) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Database */
+.tech-database, .technology-database, [data-tech*="database"], [data-tech*="Database"], [data-tech*="DB"] {
+    color: #336791 !important; /* Database Blue */
+    background: linear-gradient(135deg, #336791, #4A90E2) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Authentication */
+.tech-auth, .technology-auth, [data-tech*="auth"], [data-tech*="Auth"], [data-tech*="Authentication"] {
+    color: #FF4B4B !important; /* Auth Red */
+    background: linear-gradient(135deg, #FF4B4B, #FF6B6B) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* MOBILE TECHNOLOGIES */
+/* Kodular */
+.tech-kodular, .technology-kodular, [data-tech*="kodular"], [data-tech*="Kodular"] {
+    color: #FF6B35 !important; /* Kodular Orange */
+    background: linear-gradient(135deg, #FF6B35, #FF8C42) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Firebase */
+.tech-firebase, .technology-firebase, [data-tech*="firebase"], [data-tech*="Firebase"] {
+    color: #FFCA28 !important; /* Firebase Yellow */
+    background: linear-gradient(135deg, #FFCA28, #FFD54F) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* AdMob */
+.tech-admob, .technology-admob, [data-tech*="admob"], [data-tech*="AdMob"], [data-tech*="Ad"] {
+    color: #4285F4 !important; /* AdMob Blue */
+    background: linear-gradient(135deg, #4285F4, #5B9FFF) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Android */
+.tech-android, .technology-android, [data-tech*="android"], [data-tech*="Android"] {
+    color: #3DDC84 !important; /* Android Green */
+    background: linear-gradient(135deg, #3DDC84, #4CAF50) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Camera API */
+.tech-camera, .technology-camera, [data-tech*="camera"], [data-tech*="Camera"], [data-tech*="QR"] {
+    color: #E91E63 !important; /* Camera Pink */
+    background: linear-gradient(135deg, #E91E63, #F06292) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Android Sensors API */
+.tech-sensors, .technology-sensors, [data-tech*="sensor"], [data-tech*="Sensor"], [data-tech*="Sensors"] {
+    color: #9C27B0 !important; /* Sensors Purple */
+    background: linear-gradient(135deg, #9C27B0, #BA68C8) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Bluetooth */
+.tech-bluetooth, .technology-bluetooth, [data-tech*="bluetooth"], [data-tech*="Bluetooth"], [data-tech*="ESP32"] {
+    color: #0082FC !important; /* Bluetooth Blue */
+    background: linear-gradient(135deg, #0082FC, #2196F3) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* IOT TECHNOLOGIES */
+/* ESP32 */
+.tech-esp32, .technology-esp32, [data-tech*="esp32"], [data-tech*="ESP32"] {
+    color: #0082FC !important; /* ESP32 Blue */
+    background: linear-gradient(135deg, #0082FC, #2196F3) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Arduino */
+.tech-arduino, .technology-arduino, [data-tech*="arduino"], [data-tech*="Arduino"] {
+    color: #00979D !important; /* Arduino Teal */
+    background: linear-gradient(135deg, #00979D, #00BCD4) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* IoT Sensors */
+.tech-iot-sensors, .technology-iot-sensors, [data-tech*="sensor"], [data-tech*="Sensor"], [data-tech*="DHT"], [data-tech*="PIR"], [data-tech*="Ultrasonic"] {
+    color: #FF5722 !important; /* IoT Sensor Orange */
+    background: linear-gradient(135deg, #FF5722, #FF7043) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Relay */
+.tech-relay, .technology-relay, [data-tech*="relay"], [data-tech*="Relay"], [data-tech*="Motor"] {
+    color: #795548 !important; /* Relay Brown */
+    background: linear-gradient(135deg, #795548, #8D6E63) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* LCD Display */
+.tech-lcd, .technology-lcd, [data-tech*="lcd"], [data-tech*="LCD"], [data-tech*="Display"] {
+    color: #607D8B !important; /* LCD Blue Grey */
+    background: linear-gradient(135deg, #607D8B, #78909C) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Buzzer */
+.tech-buzzer, .technology-buzzer, [data-tech*="buzzer"], [data-tech*="Buzzer"], [data-tech*="Sound"] {
+    color: #FF9800 !important; /* Buzzer Amber */
+    background: linear-gradient(135deg, #FF9800, #FFB74D) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* GENERAL TECHNOLOGIES */
+/* Payment Integration */
+.tech-payment, .technology-payment, [data-tech*="payment"], [data-tech*="Payment"], [data-tech*="Stripe"], [data-tech*="PayPal"] {
+    color: #4CAF50 !important; /* Payment Green */
+    background: linear-gradient(135deg, #4CAF50, #66BB6A) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Task Management */
+.tech-task, .technology-task, [data-tech*="task"], [data-tech*="Task"], [data-tech*="Workflow"] {
+    color: #2196F3 !important; /* Task Blue */
+    background: linear-gradient(135deg, #2196F3, #42A5F5) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Music Data Management */
+.tech-music, .technology-music, [data-tech*="music"], [data-tech*="Music"], [data-tech*="Audio"] {
+    color: #E91E63 !important; /* Music Pink */
+    background: linear-gradient(135deg, #E91E63, #F06292) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* JavaScript ES6+ */
+.tech-es6, .technology-es6, [data-tech*="es6"], [data-tech*="ES6"], [data-tech*="ES6+"] {
+    color: #F7DF1E !important; /* ES6 Yellow */
+    background: linear-gradient(135deg, #F7DF1E, #FFD700) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Technology badge styles */
+.technology-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    margin: 0.25rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 2px solid currentColor;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.technology-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: currentColor;
+    opacity: 0.1;
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.technology-badge:hover::before {
+    left: 0;
+}
+
+.technology-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Technology icon styles */
+.technology-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+/* Technology list styles */
+.technologies-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.technologies-list .technology-badge {
+    margin: 0;
+}
+
+/* ============================================
+   WEB APPS SECTION - SINGLE IMAGE VERSION
+============================================ */
+
+/* Technology-Specific Icon Colors for Web Apps */
+/* Frontend Projects Colors - Red */
+#web-apps .skill-nav-btn[data-category="frontend"] i.fa-code,
+#web-apps .skill-nav-btn[data-category="frontend"] span {
+    color: #dc2626 !important; /* Red for Frontend */
+}
+
+/* Force red color for fas fa-code icon in frontend button */
+#web-apps .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Additional specificity to override general icon styles */
+#web-apps .skills-nav .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Maximum specificity to ensure red color overrides all other styles */
+body #web-apps .skills-nav .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Override global white color styles for frontend button icon */
+html body #web-apps .skill-nav-btn[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn.active[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Force red color with inline style if needed */
+#web-apps .skill-nav-btn[data-category="frontend"] i.fa-code[style*="color"] {
+    color: #dc2626 !important;
+}
+
+/* Target specific icon class with maximum specificity */
+#web-apps .skills-nav .skill-nav-btn[data-category="frontend"] i.fa-code.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Ultimate specificity to override ALL conflicting styles */
+html body #web-apps .skills-nav .skill-nav-btn[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn.active[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn[data-category="frontend"] i.fa-code.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Target all possible icon states */
+#web-apps .skill-nav-btn[data-category="frontend"] i.fa-code,
+#web-apps .skill-nav-btn[data-category="frontend"]:hover i.fa-code,
+#web-apps .skill-nav-btn[data-category="frontend"]:active i.fa-code,
+#web-apps .skill-nav-btn[data-category="frontend"].active i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Target the exact HTML structure for web-apps frontend button */
+#web-apps #web-apps-nav .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Force red color with !important on all possible selectors */
+#web-apps-nav .skill-nav-btn[data-category="frontend"] i.fa-code,
+.skills-nav.center-buttons .skill-nav-btn[data-category="frontend"] i.fa-code,
+#web-apps .skills-nav .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Ultimate override for fas fa-code icon in frontend button */
+html body #web-apps-nav .skill-nav-btn[data-category="frontend"] i.fa-code,
+html body .skills-nav.center-buttons .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Target the exact button in web-apps section */
+#web-apps #web-apps-nav .skill-nav-btn[data-category="frontend"] i.fa-code,
+#web-apps .skills-nav.center-buttons .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Force red color with inline style if CSS fails */
+#web-apps-nav .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+    text-shadow: 0 0 8px rgba(220, 38, 38, 0.5);
+}
+
+/* Override ALL conflicting styles including active states */
+html body #web-apps .skill-nav-btn[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn.active[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn:hover[data-category="frontend"] i.fa-code,
+html body .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Ultimate specificity to override style.css rules */
+html body #web-apps .skill-nav-btn.active[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn[data-category="frontend"].active i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Force red color with !important on all possible states */
+#web-apps .skill-nav-btn[data-category="frontend"] i.fa-code,
+#web-apps .skill-nav-btn.active[data-category="frontend"] i.fa-code,
+#web-apps .skill-nav-btn:hover[data-category="frontend"] i.fa-code,
+#web-apps .skill-nav-btn:focus[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Center all skill-nav-btn zoom buttons content */
+#web-apps .skill-nav-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+#web-apps .skill-nav-btn i {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto 0.5rem auto !important;
+    width: 100% !important;
+}
+
+#web-apps .skill-nav-btn span {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+/* Target the exact HTML structure with maximum specificity */
+html body #web-apps #web-apps-nav .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+}
+
+/* Override any inherited styles */
+#web-apps .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+    filter: none !important;
+}
+
+/* Force red color with multiple approaches */
+#web-apps-nav .skill-nav-btn[data-category="frontend"] i.fa-code,
+#web-apps .skills-nav .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+    text-shadow: 0 0 5px rgba(220, 38, 38, 0.8) !important;
+}
+
+/* Ultimate override for fas fa-code icon */
+#web-apps .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+    text-shadow: 0 0 10px rgba(220, 38, 38, 1) !important;
+    filter: hue-rotate(0deg) !important;
+}
+
+/* Target all possible icon states with maximum specificity */
+html body #web-apps .skill-nav-btn[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn.active[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn:hover[data-category="frontend"] i.fa-code,
+html body #web-apps .skill-nav-btn:focus[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+    text-shadow: 0 0 8px rgba(220, 38, 38, 0.9) !important;
+}
+
+/* Force red color with !important on all possible selectors */
+#web-apps-nav .skill-nav-btn[data-category="frontend"] i.fa-code,
+.skills-nav.center-buttons .skill-nav-btn[data-category="frontend"] i.fa-code,
+#web-apps .skills-nav .skill-nav-btn[data-category="frontend"] i.fa-code {
+    color: #dc2626 !important;
+    text-shadow: 0 0 6px rgba(220, 38, 38, 0.8) !important;
+}
+
+/* Backend Projects Colors - Node.js */
+#web-apps .skill-nav-btn[data-category="backend"] i.fa-server,
+#web-apps .skill-nav-btn[data-category="backend"] span {
+    color: #339933 !important; /* Node.js Green */
+}
+
+/* Fullstack Projects Colors - React.js */
+#web-apps .skill-nav-btn[data-category="fullstack"] i.fa-globe,
+#web-apps .skill-nav-btn[data-category="fullstack"] span {
+    color: #61DAFB !important; /* React.js Light Blue */
+}
+
+/* Additional technology-specific colors for mixed technology buttons */
+/* JavaScript Technology */
+#web-apps .skill-nav-btn[data-category="javascript"] i,
+#web-apps .skill-nav-btn[data-category="javascript"] span {
+    color: #F7DF1E !important; /* JavaScript Yellow */
+}
+
+/* CSS3 Technology */
+#web-apps .skill-nav-btn[data-category="css3"] i,
+#web-apps .skill-nav-btn[data-category="css3"] span {
+    color: #1572B6 !important; /* CSS3 Blue */
+}
+
+/* React.js Technology */
+#web-apps .skill-nav-btn[data-category="react"] i,
+#web-apps .skill-nav-btn[data-category="react"] span {
+    color: #61DAFB !important; /* React.js Light Blue */
+}
+
+/* Node.js Technology */
+#web-apps .skill-nav-btn[data-category="nodejs"] i,
+#web-apps .skill-nav-btn[data-category="nodejs"] span {
+    color: #339933 !important; /* Node.js Green */
+}
+
+/* Vue.js Technology */
+#web-apps .skill-nav-btn[data-category="vue"] i,
+#web-apps .skill-nav-btn[data-category="vue"] span {
+    color: #4FC08D !important; /* Vue.js Green */
+}
+
+/* Angular Technology */
+#web-apps .skill-nav-btn[data-category="angular"] i,
+#web-apps .skill-nav-btn[data-category="angular"] span {
+    color: #DD0031 !important; /* Angular Red */
+}
+
+/* TypeScript Technology */
+#web-apps .skill-nav-btn[data-category="typescript"] i,
+#web-apps .skill-nav-btn[data-category="typescript"] span {
+    color: #3178C6 !important; /* TypeScript Blue */
+}
+
+/* Bootstrap Technology */
+#web-apps .skill-nav-btn[data-category="bootstrap"] i,
+#web-apps .skill-nav-btn[data-category="bootstrap"] span {
+    color: #7952B3 !important; /* Bootstrap Purple */
+}
+
+/* Sass Technology */
+#web-apps .skill-nav-btn[data-category="sass"] i,
+#web-apps .skill-nav-btn[data-category="sass"] span {
+    color: #CC6699 !important; /* Sass Pink */
+}
+
+/* Tailwind CSS Technology */
+#web-apps .skill-nav-btn[data-category="tailwind"] i,
+#web-apps .skill-nav-btn[data-category="tailwind"] span {
+    color: #38B2AC !important; /* Tailwind Teal */
+}
+
+/* Express.js Technology */
+#web-apps .skill-nav-btn[data-category="express"] i,
+#web-apps .skill-nav-btn[data-category="express"] span {
+    color: #000000 !important; /* Express.js Black */
+}
+
+/* MongoDB Technology */
+#web-apps .skill-nav-btn[data-category="mongodb"] i,
+#web-apps .skill-nav-btn[data-category="mongodb"] span {
+    color: #47A248 !important; /* MongoDB Green */
+}
+
+/* MySQL Technology */
+#web-apps .skill-nav-btn[data-category="mysql"] i,
+#web-apps .skill-nav-btn[data-category="mysql"] span {
+    color: #4479A1 !important; /* MySQL Blue */
+}
+
+/* Python Technology */
+#web-apps .skill-nav-btn[data-category="python"] i,
+#web-apps .skill-nav-btn[data-category="python"] span {
+    color: #3776AB !important; /* Python Blue */
+}
+
+/* PHP Technology */
+#web-apps .skill-nav-btn[data-category="php"] i,
+#web-apps .skill-nav-btn[data-category="php"] span {
+    color: #777BB4 !important; /* PHP Purple */
+}
+
+/* Responsive Websites Colors */
+#web-apps .skill-nav-btn[data-category="responsive"] i,
+#web-apps .icon-nav-btn[data-category="responsive"] i,
+#web-apps .popup-title i.fa-mobile-alt {
+    color: #ff6b6b !important; /* Red for Responsive */
+}
+
+#web-apps .skill-nav-btn[data-category="responsive"] span,
+#web-apps .popup-title span:has(+ i.fa-mobile-alt) {
+    color: #ff6b6b !important;
+}
+
+/* Other Web Projects Colors */
+#web-apps .skill-nav-btn[data-category="othersweb"] i,
+#web-apps .icon-nav-btn[data-category="othersweb"] i,
+#web-apps .popup-title i.fa-globe {
+    color: #4ecdc4 !important; /* Teal for Other Web */
+}
+
+#web-apps .skill-nav-btn[data-category="othersweb"] span,
+#web-apps .popup-title span:has(+ i.fa-globe) {
+    color: #4ecdc4 !important;
+}
+
+/* WEB APPS SECTION CONTAINER */
+#web-apps {
+    padding: 4rem 1rem;
+    position: relative;
+    min-height: 100vh;
+    background: url('../images/background/web.webp') center center/cover no-repeat, var(--web-apps-bg);
+    overflow: hidden;
+}
+
+#web-apps::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(249, 115, 22, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(251, 146, 60, 0.09) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(234, 88, 12, 0.06) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+#web-apps h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text);
+    font-weight: 700;
+    background: linear-gradient(135deg, #10b981, #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+}
+
+#web-apps > .container > p {
+    text-align: center;
+    color: #000;
+    margin-bottom: 3rem;
+    font-size: 1.15rem;
+    font-weight: 500;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.web-header-box {
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 80px rgba(16, 185, 129, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    border-radius: 18px;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    position: relative;
+    z-index: 1;
+    top: 0;
+}
+
+/* Responsive web-header-box positioning */
+@media (max-width: 1024px) {
+    .web-header-box {
+        top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .web-header-box {
+        top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .web-header-box {
+        top: 0;
+        padding: 1.5rem 1rem 1rem 1rem;
+    }
+}
+.web-header-box h2 {
+    background: linear-gradient(135deg, #10b981, #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.8rem 0;
+}
+
+.web-header-box p {
+    color: #fff;
+    margin-bottom: 0.8rem;
+}
+
+/* WEB APPS NAVIGATION BUTTONS - 3-2-1 Layout with Consistent Width */
+#web-apps .skills-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 220px);
+    gap: 1.5rem;
+    margin: 3rem auto 0;
+    padding: 1rem;
+    justify-content: center;
+    justify-items: center;
+    max-width: 900px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 3-2-1 Layout Pattern for Web Apps - Fixed Width Buttons */
+/* First row: 3 buttons (full row) */
+#web-apps .skills-nav .skill-nav-btn:nth-child(-n+3) {
+    width: 220px;
+    min-width: 220px;
+    grid-column: span 1;
+}
+
+/* Second row: 2 buttons (centered) */
+#web-apps .skills-nav .skill-nav-btn:nth-child(4):nth-last-child(-n+2),
+#web-apps .skills-nav .skill-nav-btn:nth-child(5):nth-last-child(-n+1) {
+    width: 220px;
+    min-width: 220px;
+    grid-column: 1 / span 2;
+    justify-self: center;
+}
+
+/* Third row: 1 button (perfectly centered) */
+#web-apps .skills-nav .skill-nav-btn:nth-child(6):last-child {
+    width: 220px;
+    min-width: 220px;
+    grid-column: 2;
+    justify-self: center;
+}
+
+/* Ensure all skill-nav-btn have consistent width */
+#web-apps .skill-nav-btn {
+    width: 220px;
+    min-width: 220px;
+}
+
+/* Zoom Effects for skill-nav-btn - Matching Skills Section */
+#web-apps .skill-nav-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+#web-apps .skill-nav-btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(16, 185, 129, 0.6);
+    color: #10b981;
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        0 0 100px rgba(16, 185, 129, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+#web-apps .skill-nav-btn:active {
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* Enhanced zoom animation for better visual feedback */
+#web-apps .skill-nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.05) 0%,
+        rgba(249, 115, 22, 0.03) 50%,
+        rgba(139, 92, 246, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+#web-apps .skill-nav-btn:hover::before {
+    opacity: 1;
+}
+
+/* Tablet Styles - 2 buttons per row for web apps */
+@media (max-width: 1024px) {
+    #web-apps .skills-nav {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 600px;
+        gap: 1.2rem;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    #web-apps .skills-nav:has(:only-child) {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        justify-content: center;
+        justify-items: center;
+    }
+    #web-apps .skills-nav:has(:nth-child(2):last-child) {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 600px;
+        justify-content: center;
+        justify-items: center;
+    }
+    #web-apps .skills-nav:has(:nth-child(3):last-child),
+    #web-apps .skills-nav:has(:nth-child(4):last-child) {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 600px;
+        justify-content: center;
+        justify-items: center;
+    }
+    
+    /* Center remaining button in tablet layout for web apps */
+    #web-apps .skills-nav.center-buttons .skill-nav-btn:nth-child(odd):last-child {
+        grid-column: 1 / span 2; /* Center odd remaining button across 2 columns */
+    }
+/* Mobile Styles - 1 button per row for web apps */
+@media (max-width: 768px) {
+    #web-apps .skills-nav {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        gap: 1rem;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    #web-apps .skills-nav:has(:only-child),
+    #web-apps .skills-nav:has(:nth-child(2):last-child),
+    #web-apps .skills-nav:has(:nth-child(3):last-child),
+    #web-apps .skills-nav:has(:nth-child(4):last-child) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 300px;
+        justify-content: center;
+        justify-items: center;
+    }
+    
+    #web-apps .skill-nav-btn {
+        width: 100%;
+        height: 120px;
+        min-height: 120px;
+        padding: 1.2rem;
+    }
+    
+    /* Reset grid positioning for mobile (single column) for web apps */
+    #web-apps .skills-nav.center-buttons .skill-nav-btn {
+        grid-column: auto !important;
+    }
+}
+}
+
+@media (max-width: 900px) {
+    #web-apps .skills-nav:has(:only-child) {
+        grid-template-columns: 220px;
+        max-width: 220px;
+        justify-content: center;
+    }
+    #web-apps .skills-nav:has(:nth-child(2):last-child),
+    #web-apps .skills-nav:has(:nth-child(3):last-child),
+    #web-apps .skills-nav:has(:nth-child(4):last-child) {
+        grid-template-columns: repeat(2, 220px);
+        max-width: 500px;
+        gap: 1.2rem;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    #web-apps .skills-nav:has(:only-child),
+    #web-apps .skills-nav:has(:nth-child(2):last-child),
+    #web-apps .skills-nav:has(:nth-child(3):last-child),
+    #web-apps .skills-nav:has(:nth-child(4):last-child) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 350px;
+        justify-content: center;
+    }
+}
+
+#web-apps .skill-nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1.5rem 1.2rem;
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 80px rgba(16, 185, 129, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    border: 2px solid rgba(16, 185, 129, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    color: #fff;
+    height: 140px;
+    min-height: 140px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    flex: 1;
+    font-weight: 600;
+}
+#web-apps .skill-nav-btn i {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+#web-apps .skill-nav-btn span {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.2;
+    max-width: 100%;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+    word-wrap: break-word;
+    hyphens: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+#web-apps .skill-nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(139, 92, 246, 0.11) 0%,
+        rgba(168, 85, 247, 0.05) 50%,
+        rgba(147, 51, 234, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+#web-apps .skill-nav-btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(16, 185, 129, 0.6);
+    color: #10b981;
+    background: rgba(2, 6, 23, 0.9);
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.3),
+        0 0 80px rgba(16, 185, 129, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+#web-apps .skill-nav-btn:hover::before {
+    opacity: 1;
+}
+
+#web-apps .skill-nav-btn.active {
+    background: rgba(2, 6, 23, 0.95);
+    backdrop-filter: blur(20px);
+    border-color: rgba(16, 185, 129, 0.8);
+    color: white;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.4),
+        0 0 80px rgba(16, 185, 129, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+#web-apps .skill-nav-btn i {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+#web-apps .skill-nav-btn:hover i,
+#web-apps .skill-nav-btn.active i {
+    transform: scale(1.1);
+}
+
+#web-apps .skill-nav-btn span {
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}

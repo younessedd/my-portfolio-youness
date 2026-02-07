@@ -1,0 +1,119 @@
+/* ============================================
+   POPUP IMAGE LOADING OPTIMIZATIONS
+   Fast loading states and smooth transitions
+============================================ */
+
+/* Image Loading Placeholder */
+.image-loading-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    z-index: 1;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid #334155;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Spin Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Optimized Image Container */
+.project-images-container {
+    position: relative;
+    overflow: hidden;
+    contain: layout style paint;
+}
+
+.project-image-single {
+    position: relative;
+    z-index: 2;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Swiper Gallery Optimizations */
+.swiper-slide {
+    contain: layout style paint;
+}
+
+.swiper-slide img {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Fast Image Loading */
+.project-image-single[loading="eager"] {
+    transform: translateZ(0);
+    will-change: transform;
+    contain: layout style paint;
+}
+
+/* Smooth Fade-in Effect */
+.project-image-single,
+.swiper-slide img {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Error State */
+.project-image-single.error,
+.swiper-slide img.error {
+    opacity: 1;
+    background: #1e293b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-image-single.error::before,
+.swiper-slide img.error::before {
+    content: "🖼️";
+    font-size: 24px;
+    position: absolute;
+    color: #64748b;
+}
+
+/* Performance Optimizations */
+.popup-content {
+    contain: layout style paint;
+}
+
+.image-gallery-container {
+    contain: layout style paint;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .loading-spinner {
+        width: 24px;
+        height: 24px;
+        border-width: 2px;
+    }
+    
+    .image-loading-placeholder {
+        animation-duration: 1s;
+    }
+}

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Performance: preconnect to required CDNs -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    
+    <!-- Critical Image Preloading for Ultra-Fast Popups -->
+    <link rel="preload" as="image" href="images/web/workly.webp" fetchpriority="highest">
+    <link rel="preload" as="image" href="images/mob/ameriaue-quiz.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="images/iot/smarthome1.webp" fetchpriority="high">
+    
+    <!-- Preload largest hero image for fast LCP -->
+    <link rel="preload" as="image" href="images/hero/web.webp" fetchpriority="high">
+    <title>Web Developer & IoT Maker Portfolio</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/skills.css">
+    <link rel="stylesheet" href="css/web-apps.css">
+    <link rel="stylesheet" href="css/mobile-apps.css">
+    <link rel="stylesheet" href="css/iot-projects.css">
+    <link rel="stylesheet" href="css/cv.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/splash.css">
+    <link rel="stylesheet" href="css/web-apps-popup.css">
+    <link rel="stylesheet" href="css/skills-popup.css">
+    <link rel="stylesheet" href="css/iot-projects-popup.css">
+    <link rel="stylesheet" href="css/mobile-apps-popup.css">
+    <!-- Scroll Reveal Animation System -->
+    <link rel="stylesheet" href="css/scroll-reveal.css">
+    <!-- Popup Image Loading Optimizations -->
+    <link rel="stylesheet" href="css/popup-image-loading.css">
+</head>
+<body class="theme-light">
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="code-editor">
+                <div class="editor-header">
+                    <div class="editor-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="editor-title">portfolio.js</div>
+                    <div class="editor-actions">
+                        <i class="fas fa-code-branch"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <div class="code-line">
+                        <span class="line-number">1</span>
+                        <span class="code-text"><span class="comment">// Modern Web Developer Portfolio</span></span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">2</span>
+                        <span class="code-text"><span class="keyword">import</span> { <span class="variable">React</span>, <span class="variable">NodeJS</span>, <span class="variable">IoT</span> } <span class="keyword">from</span> <span class="string">'technologies'</span>;</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">3</span>
+                        <span class="code-text"></span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">4</span>
+                        <span class="code-text"><span class="keyword">class</span> <span class="class-name">Developer</span> {</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">5</span>
+                        <span class="code-text">  <span class="keyword">constructor</span>() {</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">6</span>
+                        <span class="code-text">    <span class="keyword">this</span>.<span class="property">name</span> = <span class="string">"Youness Eddanguir"</span>;</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">7</span>
+                        <span class="code-text">    <span class="keyword">this</span>.<span class="property">skills</span> = [</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">8</span>
+                        <span class="code-text">      <span class="string">"JavaScript"</span>, <span class="string">"React.js"</span>, <span class="string">"Node.js"</span>,</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">9</span>
+                        <span class="code-text">      <span class="string">"HTML5"</span>, <span class="string">"CSS3"</span>, <span class="string">"Laravel"</span></span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">10</span>
+                        <span class="code-text">    ];</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">11</span>
+                        <span class="code-text">    <span class="keyword">this</span>.<span class="property">passion</span> = <span class="string">"Web Development & IoT"</span>;</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">12</span>
+                        <span class="code-text">  }</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">13</span>
+                        <span class="code-text"></span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">14</span>
+                        <span class="code-text">  <span class="function">createPortfolio</span>() {</span>
+                    </div>
+                    <div class="code-line typing">
+                        <span class="line-number">15</span>
+                        <span class="code-text">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="class-name">Promise</span>(<span class="variable">resolve</span> => {</span><span class="cursor">|</span></span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">16</span>
+                        <span class="code-text">      <span class="variable">setTimeout</span>(() => {</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">17</span>
+                        <span class="code-text">        <span class="variable">console</span>.<span class="function">log</span>(<span class="string">"Portfolio Ready!"</span>);</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">18</span>
+                        <span class="code-text">        <span class="variable">resolve</span>(<span class="keyword">this</span>.<span class="property">showcase</span>());</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">19</span>
+                        <span class="code-text">      }, <span class="number">3000</span>);</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">20</span>
+                        <span class="code-text">    });</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">21</span>
+                        <span class="code-text">  }</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">22</span>
+                        <span class="code-text">}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="loading-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="loading-text">Initializing development environment...</div>
+            </div>
+        </div>
+    </div>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#home" class="logo">Youness <span>Eddanguir</span></a>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#web-apps">Web Projects</a></li>
+                    <li><a href="#mobile-apps">Mobile Projects</a></li>
+                    <li><a href="#iot-projects">IoT Projects</a></li>
+                    <li><a href="#cv">My CV</a></li>
+                    <li><a href="#contact">Contact Me</a></li>
+                </ul>
+            </nav>
+            
+            <button class="burger-btn" id="burger-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="#home" class="mobile-nav-link">Home</a></li>
+                    <li><a href="#about" class="mobile-nav-link">About Me</a></li>
+                    <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+                    <li><a href="#web-apps" class="mobile-nav-link">Web Projects</a></li>
+                    <li><a href="#mobile-apps" class="mobile-nav-link">Mobile Projects</a></li>
+                    <li><a href="#iot-projects" class="mobile-nav-link">IoT Projects</a></li>
+                    <li><a href="#cv" class="mobile-nav-link">My CV</a></li>
+                    <li><a href="#contact" class="mobile-nav-link">Contact Me</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Automatic Swiper -->
+    <section id="home" class="hero">
+        <div class="hero-swiper-container">
+            <div class="swiper hero-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slides will be populated by JavaScript -->
+                </div>
+                
+                <!-- Swiper Pagination -->
+                <div class="swiper-pagination"></div>
+                
+                <!-- Swiper Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-header-box reveal from-left">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-name-container reveal from-left">
+                    <h3 class="about-name">YOUNESS EDDANGUIR</h3>
+                </div>
+                <picture class="about-img-circle reveal from-right active">
+    <source type="image/webp" srcset="images/mypic.webp">
+    <img src="images/mypic.webp" alt="Youness Eddanguir" width="280" height="280" loading="lazy">
+</picture>
+                <div class="about-text">
+                    <div class="about-bio-container reveal from-right">
+                    <p class="about-bio">Junior Web Developer with a strong passion for innovation in web technologies and IoT. Leveraging my background in electrical engineering, I seamlessly integrate digital solutions with physical systems to create intelligent and practical applications.
+
+I thrive on quickly learning new technologies and solving complex technical challenges. My goal is to deliver efficient, scalable, and user-friendly solutions that enhance productivity and improve everyday life.
+
+Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, and IoT platforms including Arduino, ESP32, ESP8266, and robotics, aiming to develop cutting-edge projects that bridge the digital and physical worlds.</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<section id="skills">
+    <div class="container">
+            <div class="skill-header-box reveal from-right">
+                <h2>Skills</h2>
+                <p>Comprehensive technical skills across multiple domains</p>
+            </div>
+        
+        <!-- Skills Navigation - 6 buttons with staggered animation -->
+        <div class="skills-nav center-buttons reveal-grid" id="skills-nav">
+            <button class="skill-nav-btn zoom" data-category="webDevelopment">
+                <i class="fas fa-code"></i>
+                <span>Web Development</span>
+            </button>
+            <button class="skill-nav-btn zoom" data-category="mobileDevelopment">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Mobile Development</span>
+            </button>
+            <button class="skill-nav-btn zoom" data-category="iotAndDomotic">
+                <i class="fas fa-home"></i>
+                <span>IoT and Domotic</span>
+            </button>
+            <button class="skill-nav-btn zoom" data-category="electronicsAndElectric">
+                <i class="fas fa-bolt"></i>
+                <span>Electronics and Electric</span>
+            </button>
+            <button class="skill-nav-btn zoom" data-category="roboticsAndAutomatism">
+                <i class="fas fa-robot"></i>
+                <span>Robotics and Automatism</span>
+            </button>
+            <button class="skill-nav-btn zoom" data-category="softSkills">
+                <i class="fas fa-star"></i>
+                <span>Soft Skills</span>
+            </button>
+            <button class="skill-nav-btn zoom" data-category="aiPrompt">
+                <i class="fas fa-brain"></i>
+                <span>Ai prompt</span>
+            </button>
+        </div>
+        
+        <!-- POPUP CONTAINER (EXACT SAME STRUCTURE AS WEB) -->
+        <div class="popup-container" id="skills-swiper-container">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3 class="popup-title" id="skills-category-title">
+                        <i class="fas fa-code"></i>
+                        <span>Web Development</span>
+                    </h3>
+                    <button class="popup-close-btn" id="skills-close-btn">
+                        <i class="fas fa-times"></i>
+                        <span class="sr-only">Close</span>
+                    </button>
+                </div>
+                
+                <!-- Icon Navigation -->
+                <div class="popup-icon-nav" id="skills-icon-nav-top">
+                    <button class="icon-nav-btn active" data-category="webDevelopment">
+                        <i class="fas fa-code"></i>
+                    </button>
+                    <button class="icon-nav-btn" data-category="mobileDevelopment">
+                        <i class="fas fa-mobile-alt"></i>
+                    </button>
+                    <button class="icon-nav-btn" data-category="iotAndDomotic">
+                        <i class="fas fa-home"></i>
+                    </button>
+                    <button class="icon-nav-btn" data-category="electronicsAndElectric">
+                        <i class="fas fa-bolt"></i>
+                    </button>
+                    <button class="icon-nav-btn" data-category="roboticsAndAutomatism">
+                        <i class="fas fa-robot"></i>
+                    </button>
+                    <button class="icon-nav-btn" data-category="softSkills">
+                        <i class="fas fa-star"></i>
+                    </button>
+                    <button class="icon-nav-btn" data-category="aiPrompt">
+                        <i class="fas fa-brain"></i>
+                    </button>
+                </div>
+                
+                <!-- Swiper Container -->
+                <div class="swiper popup-swiper" id="skillsSwiper">
+                    <div class="swiper-wrapper">
+                        <!-- سيتم تعبئته بالجافاسكريبت -->
+                    </div>
+                </div>
+                
+                <!-- Card Navigation -->
+                <div class="popup-card-nav" id="skills-card-navigation">
+                    <button class="card-nav-btn prev-card" id="skills-prev-card">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="card-nav-btn next-card" id="skills-next-card">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <!-- Card Counter -->
+                <div class="popup-counter" id="skills-card-counter">
+                    <span class="counter-number">1/3</span>
+                </div>
+            </div>
+            
+            <!-- Popup Overlay -->
+            <div class="popup-overlay" id="skills-popup-overlay"></div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+<!-- Web Apps Section - Clean Modern Style -->
+<section id="web-apps">
+    <div class="container">
+        <div class="web-header-box reveal from-right">
+            <h2>Web Projects</h2>
+            <p>Modern web applications built with latest technologies</p>
+        </div>
+        
+        <!-- Web Projects Navigation - 3 BUTTONS LAYOUT with stagger animation -->
+        <div class="skills-nav center-buttons reveal-grid" id="web-apps-nav">
+            <button class="skill-nav-btn zoom" data-category="frontend">
+                <i class="fas fa-code"></i>
+                <span>Frontend</span>
+            </button>
+            <button class="skill-nav-btn zoom" data-category="backend">
+                <i class="fas fa-server"></i>
+                <span>Backend</span>
+            </button>
+            <button class="skill-nav-btn zoom" data-category="fullstack">
+                <i class="fas fa-globe"></i>
+                <span>Full Stack</span>
+            </button>
+        </div>
+        
+        <!-- POPUP CONTAINER (CLEAN MODERN STYLE) -->
+        <div class="popup-container" id="web-swiper-container">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3 class="popup-title" id="web-category-title">
+                        <i class="fas fa-code"></i>
+                        <span>Frontend Projects</span>
+                    </h3>
+                    <button class="popup-close-btn" id="web-close-btn">
+                        <i class="fas fa-times"></i>
+                        <span class="sr-only">Close</span>
+                    </button>
+                </div>
+                
+                <!-- Icon Navigation -->
+                <div class="popup-icon-nav" id="web-icon-nav-top">
+                    <button class="icon-nav-btn active" data-category="frontend">
+                        <i class="fas fa-code"></i>
+                    </button>
+                    <button class="icon-nav-btn" data-category="backend">
+                        <i class="fas fa-server"></i>
+                    </button>
+                    <button class="icon-nav-btn" data-category="fullstack">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                </div>
+                
+                <!-- Main Swiper Container -->
+                <div class="swiper popup-swiper" id="webSwiper">
+                    <div class="swiper-wrapper">
+                        <!-- سيتم تعبئته بالجافاسكريبت -->
+                    </div>
+                </div>
+                
+                
+                
+                
+                
+                <!-- Card Navigation -->
+                <div class="popup-card-nav" id="web-card-navigation">
+                    <button class="card-nav-btn prev-card" id="web-prev-card">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="card-nav-btn next-card" id="web-next-card">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <!-- Card Counter -->
+                <div class="popup-counter" id="web-card-counter">
+                    <span class="counter-number">1/4</span>
+                </div>
+            </div>
+            
+            <!-- Popup Overlay -->
+            <div class="popup-overlay" id="web-popup-overlay"></div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- Mobile Apps Section - Clean Modern Style -->
+<section id="mobile-apps">
+    <div class="container">
+        <div class="mobile-header-box reveal from-left">
+            <h2>Mobile Projects</h2>
+            <p>Native and cross-platform mobile apps built with latest technologies</p>
+        </div>
+        
+        <!-- Mobile Projects Navigation - 3 BUTTONS LAYOUT with stagger animation -->
+        <div class="skills-nav center-buttons reveal-grid" id="mobile-apps-nav">
+            <button class="skill-nav-btn zoom" data-category="quiz">
+                <i class="fas fa-question-circle"></i>
+                <span>Quiz Apps</span>
+            </button>
+            <button class="skill-nav-btn zoom" data-category="utility">
+                <i class="fas fa-tools"></i>
+                <span>Utility & Tools</span>
+            </button>
+            <button class="skill-nav-btn zoom" data-category="smartHome">
+                <i class="fas fa-home"></i>
+                <span>Smart Home</span>
+            </button>
+        </div>
+        
+        <!-- POPUP CONTAINER (CLEAN MODERN STYLE) -->
+        <div class="popup-container" id="mobile-swiper-container">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3 class="popup-title" id="mobile-category-title">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Quiz Apps</span>
+                    </h3>
+                    <button class="popup-close-btn" id="mobile-close-btn">
+                        <i class="fas fa-times"></i>
+                        <span class="sr-only">Close</span>
+                    </button>
+                </div>
+                
+                <!-- Icon Navigation -->
+                <div class="popup-icon-nav" id="mobile-icon-nav-top">
+                    <button class="icon-nav-btn active" data-category="quiz">
+                        <i class="fas fa-question-circle"></i>
+                    </button>
+                    <button class="icon-nav-btn" data-category="utility">
+                        <i class="fas fa-tools"></i>
+                    </button>
+                    <button class="icon-nav-btn" data-category="smartHome">
+                        <i class="fas fa-home"></i>
+                    </button>
+                </div>
+                
+                <!-- Main Swiper Container -->
+                <div class="swiper popup-swiper" id="mobileSwiper">
+                    <div class="swiper-wrapper">
+                        <!-- سيتم تعبئته بالجافاسكريبت -->
+                    </div>
+                </div>
+                
+                <!-- Card Navigation -->
+                <div class="popup-card-nav" id="mobile-card-navigation">
+                    <button class="card-nav-btn prev-card" id="mobile-prev-card">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="card-nav-btn next-card" id="mobile-next-card">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <!-- Card Counter -->
+                <div class="popup-counter" id="mobile-card-counter">
+                    <span class="counter-number">1/4</span>
+                </div>
+            </div>
+            
+            <!-- Popup Overlay -->
+            <div class="popup-overlay" id="mobile-popup-overlay"></div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- IoT Projects Section -->
+<section id="iot-projects">
+    <div class="container">
+        <div class="iot-header-box reveal from-right">
+            <h2>IoT Projects</h2>
+            <p>Internet of Things projects combining hardware and software</p>
+        </div>
+        
+        <!-- IoT Projects Navigation - Same Style with stagger animation -->
+        <div class="skills-nav center-buttons reveal-grid" id="iot-projects-nav">
+            <button class="skill-nav-btn zoom" data-category="home">
+                <i class="fas fa-home"></i>
+                <span>Smart Home</span>
+            </button>
+            <button class="skill-nav-btn zoom" data-category="industrial">
+                <i class="fas fa-industry"></i>
+                <span>Industrial IoT</span>
+            </button>
+            <button class="skill-nav-btn zoom" data-category="sensors">
+                <i class="fas fa-thermometer-half"></i>
+                <span>Sensor Projects</span>
+            </button>
+            <button class="skill-nav-btn zoom" data-category="othersiot">
+                <i class="fas fa-microchip"></i>
+                <span>Other IoT Projects</span>
+            </button>
+        </div>
+        
+        <!-- POPUP CONTAINER (EXACT SAME STRUCTURE AS WEB) -->
+        <div class="popup-container" id="iot-swiper-container">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3 class="popup-title" id="iot-category-title">
+                        <i class="fas fa-home"></i>
+                        <span>Smart Home</span>
+                    </h3>
+                    <button class="popup-close-btn" id="iot-close-btn">
+                        <i class="fas fa-times"></i>
+                        <span class="sr-only">Close</span>
+                    </button>
+                </div>
+                
+                <!-- Icon Navigation -->
+                <div class="popup-icon-nav" id="iot-icon-nav-top">
+                    <button class="icon-nav-btn active" data-category="home">
+                        <i class="fas fa-home"></i>
+                    </button>
+                    <button class="icon-nav-btn" data-category="industrial">
+                        <i class="fas fa-industry"></i>
+                    </button>
+                    <button class="icon-nav-btn" data-category="sensors">
+                        <i class="fas fa-thermometer-half"></i>
+                    </button>
+                    <button class="icon-nav-btn" data-category="othersiot">
+                        <i class="fas fa-microchip"></i>
+                    </button>
+                </div>
+                
+                <!-- Main Swiper Container -->
+                <div class="swiper popup-swiper" id="iotSwiper">
+                    <div class="swiper-wrapper">
+                        <!-- سيتم تعبئته بالجافاسكريبت -->
+                    </div>
+                </div>
+                
+                <!-- Card Navigation -->
+                <div class="popup-card-nav" id="iot-card-navigation">
+                    <button class="card-nav-btn prev-card" id="iot-prev-card">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="card-nav-btn next-card" id="iot-next-card">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <!-- Card Counter -->
+                <div class="popup-counter" id="iot-card-counter">
+                    <span class="counter-number">1/4</span>
+                </div>
+            </div>
+            
+            <!-- Popup Overlay -->
+            <div class="popup-overlay" id="iot-popup-overlay"></div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+    <!-- CV Download Section -->
+    <section id="cv" class="cv-section">
+        <div class="container">
+            <div class="cv-header-box reveal from-left">
+                <h2>Curriculum Vitae</h2>
+                <p>View and download my specialized CVs according to field</p>
+            </div>
+            <div class="cv-cards-container">
+                <div class="cv-cards two-items">
+                    <div class="cv-card reveal from-left active">
+                        <div class="cv-icon reveal zoom">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="reveal from-left">Web Developer CV</h3>
+                        <p class="reveal from-left">Professional web developer with 5+ years of experience in frontend and fullstack development.</p>
+                        <div class="cv-buttons-container">
+                            <a href="doc/cv/WEB EN CV.pdf" 
+                               class="btn cv-popup-btn reveal zoom" 
+                               target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                View CV English
+                            </a>
+                            <a href="doc/cv/WEB FR CV.pdf" 
+                               class="btn cv-popup-btn reveal zoom active" 
+                               target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                View CV French
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cv-card reveal from-right active">
+                        <div class="cv-icon reveal zoom">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3 class="reveal from-right">Electrical Engineer / IoT CV</h3>
+                        <p class="reveal from-right">Electrical engineer specializing in IoT solutions with expertise in embedded systems and industrial automation.</p>
+                        <div class="cv-buttons-container">
+                            <a href="doc/cv/CV ELEC IOT EN.pdf" 
+                               class="btn cv-popup-btn reveal zoom" 
+                               target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                View CV English
+                            </a>
+                            <a href="doc/cv/CV ELEC IOT FR.pdf" 
+                               class="btn cv-popup-btn reveal zoom active" 
+                               target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                View CV French
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="reveal from-left">
+                <h2>Contact Me</h2>
+                <p class="section-subtitle">Get in touch for opportunities or collaborations</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-form-wrapper reveal">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" class="form-control" required placeholder="Enter your full name" title="Enter your full name">
+                            <div class="error" id="nameError">Name required (minimum 3 characters)</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" class="form-control" required placeholder="Enter your email address" title="Enter your email address">
+                            <div class="error" id="emailError">Valid email required</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" class="form-control" required placeholder="Enter your phone number" title="Enter your phone number">
+                            <div class="error" id="phoneError">Valid phone number required</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" class="form-control" required placeholder="Enter your message here" title="Enter your message here" style="resize: none; overflow: hidden; min-height: 100px;" oninput="autoResize(this)"></textarea>
+                            <div class="error" id="messageError">Message required (minimum 5 characters)</div>
+                        </div>
+                        <button type="submit" class="btn form-btn zoom">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top reveal from-left active">
+                <div class="footer-logo">
+                    <a href="#" class="logo">Youness <span>Eddanguir</span></a>
+                </div>
+                <div class="footer-social-icons">
+                    <a href="https://github.com/younessedd" target="_blank" class="footer-social-icon github"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/youness-eddanguir-723166398/" target="_blank" class="footer-social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/212664837281" target="_blank" class="footer-social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:eddanguiryouness@gmail.com" class="footer-social-icon email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+    
+            <div class="footer-main reveal-grid">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="quick-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#cv">My CV</a></li>
+                        <li><a href="#contact">Contact Me</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                     <h3>Projects</h3>
+                    <ul class="quick-links">
+                        <li><a href="#web-apps">Web Projects</a></li>
+                        <li><a href="#mobile-apps">Mobile Projects</a></li>
+                        <li><a href="#iot-projects">IoT Projects</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info-footer">
+                        <li><a href="https://www.google.com/maps/place/Casablanca" target="_blank"><i class="fas fa-map-marker-alt"></i><span>Morocco</span></a></li>
+                        <li><a href="tel:+212664837281"><i class="fas fa-phone"></i><span>+212 6 6483 7281</span></a></li>
+                        <li><a href="mailto:eddanguiryouness@gmail.com"><i class="fas fa-envelope"></i><span>eddanguiryouness@gmail.com</span></a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <p>Junior Web Developer & IoT Maker creating innovative digital solutions.</p>
+                </div>
+            </div>
+    
+            <div class="footer-bottom reveal from-right">
+                <p>&copy; <span id="current-year"></span> Youness Eddanguir. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js" defer></script>
+    
+    <!-- JavaScript Files -->
+    <!-- Toast System (must load first) -->
+    <script src="js/toast.js" defer></script>
+    <script src="js/simple-burger.js" defer></script>
+    <script src="js/config.js" defer></script>
+    <script src="js/data/web-projects.js" defer></script>
+    <script src="js/data/mobile-projects.js" defer></script>
+    <script src="js/data/iot-projects.js" defer></script>
+    <script src="js/data/skills-data.js" defer></script>
+    <!-- Popup Image Preloader for fast loading -->
+    <script src="js/popup-image-preloader.js" defer></script>
+    <script src="js/hero-swiper.js" defer></script>
+    <script src="js/skills-modal.js" defer></script>
+    <script src="js/web-projects.js" defer></script>
+    <script src="js/mobile-projects.js" defer></script>
+    <script src="js/iot-projects.js" defer></script>
+    <script src="js/contact-form.js" defer></script>
+    <script src="js/email-service.js" defer></script>
+    <script src="js/cv-cards.js" defer></script>
+    <script src="js/splash.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <!-- Scroll Reveal Animation System -->
+    <script src="js/scroll-reveal.js" defer></script>
+    <!-- Active Navigation Detection -->
+    <script src="js/navigation-active.js" defer></script>
+    <!-- Force Home Link Hover on App Load -->
+    <script src="js/force-home-hover.js" defer></script>
+    <!-- Startup Image Preloader for Fast Popups -->
+    <script src="js/startup-image-preloader.js" defer></script>
+</body>
+</html>

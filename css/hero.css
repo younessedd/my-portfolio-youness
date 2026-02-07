@@ -1,0 +1,224 @@
+/* ============================================
+   hero.css - Hero Section Styles
+   UPDATED: Light theme with 25% gray background
+   ============================================ */
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    padding-top: 80px;
+    overflow: hidden;
+}
+
+/* Hero Swiper Container */
+.hero-swiper-container {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.hero-swiper {
+    width: 100%;
+    height: 100%;
+}
+
+/* Hero Slide */
+.hero-slide {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: white;
+    position: relative;
+    filter: none !important;
+}
+
+.swiper-slide-visible .hero-slide,
+.swiper-slide-fully-visible .hero-slide,
+.swiper-slide-active .hero-slide {
+    filter: none !important;
+}
+
+.hero-slide .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Hero Content */
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation-delay: 0.3s;
+}
+
+.hero h1 span {
+    color: var(--primary-color);
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    animation-delay: 0.6s;
+    color: white;
+}
+
+/* Hero Buttons */
+.hero-btns {
+    animation-delay: 0.9s;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+}
+
+/* Swiper Navigation for Hero */
+.hero-swiper .swiper-button-next,
+.hero-swiper .swiper-button-prev {
+    color: white;
+    background: transparent;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    backdrop-filter: none;
+    border: none;
+    transition: var(--transition);
+}
+
+.hero-swiper .swiper-button-next:hover,
+.hero-swiper .swiper-button-prev:hover {
+    background: transparent;
+    transform: scale(1.1);
+    color: #10b981;
+}
+
+.hero-swiper .swiper-button-next:after,
+.hero-swiper .swiper-button-prev:after {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Swiper Pagination for Hero */
+.hero-swiper .swiper-pagination {
+    bottom: 40px !important;
+}
+
+.hero-swiper .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0.7;
+    transition: var(--transition);
+}
+
+.hero-swiper .swiper-pagination-bullet-active {
+    background: var(--primary-color);
+    opacity: 1;
+    transform: scale(1.2);
+}
+/* في hero.css - إضافة تحسينات للأزرار */
+
+/* تحسين أزرار Hero */
+.hero-btns {
+    animation-delay: 0.9s;
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+}
+
+/* تصميم محترف ونظيف للأزرار */
+.hero-btns .btn {
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: var(--radius-lg);
+    min-width: 200px;
+    max-width: 300px;
+    height: auto;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero-btns .btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(var(--primary-color-rgb, 79, 70, 229), 0.3);
+}
+
+/* زر رئيسي */
+.hero-btns .btn:first-child {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+/* زر outline */
+.hero-btns .btn.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.hero-btns .btn.btn-outline:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* زر ثانوي */
+.hero-btns .btn.btn-secondary {
+    background: linear-gradient(135deg, var(--secondary-color), #8b5cf6);
+    color: white;
+}
+
+/* تحسين الأزرار للجوال */
+@media (max-width: 768px) {
+    .hero-btns {
+        gap: 1rem;
+    }
+    
+    .hero-btns .btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        min-width: 180px;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-btns {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-btns .btn {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+}
