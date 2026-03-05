@@ -416,49 +416,47 @@ p {
 
 .popup-content {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 1000px;
-    height: 80vh;
-    max-height: 700px;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
     background: var(--popup-bg-light);
-    border-radius: 24px;
+    border-radius: 0 !important;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--border);
+    box-shadow: none !important;
+    border: none !important;
     z-index: 2;
-    /* Removed animation for instant center appearance */
     display: flex;
     flex-direction: column;
 }
 
-/* Centered popup for all screen sizes */
+/* Responsive popup content adjustments */
 @media (max-width: 768px) {
     .popup-content {
-        width: 95%;
-        height: 85vh;
-        max-width: none;
-        max-height: none;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        position: fixed;
-        border-radius: 20px;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        max-width: none !important;
+        max-height: none !important;
+        border-radius: 0 !important;
     }
 }
 
 @media (max-width: 480px) {
     .popup-content {
-        width: 98%;
-        height: 80vh;
-        max-width: none;
-        max-height: none;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 15px;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        max-width: none !important;
+        max-height: none !important;
+        border-radius: 0 !important;
     }
 }
 
@@ -508,41 +506,115 @@ p {
 }
 
 /* Popup Icon Navigation */
-.popup-icon-nav {
+.popup-icon-nav, 
+#web-icon-nav-top, 
+#mobile-icon-nav-top, 
+#skills-icon-nav-top, 
+#iot-icon-nav-top {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    padding: 1rem;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
+    padding: 1.5rem;
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
     flex-shrink: 0;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
 }
 
 .icon-nav-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 15px;
-    border: 2px solid var(--border);
-    background: var(--surface);
-    cursor: pointer;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: var(--transition);
-    font-size: 1.4rem;
+    gap: 0.7rem;
+    padding: 1rem;
+    min-width: 160px;
+    height: 120px;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--border-color) !important;
+    background: var(--card-bg);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: var(--text-secondary);
+    position: relative;
+    box-shadow: var(--shadow-sm);
+}
+
+.icon-nav-btn i {
+    font-size: 2.2rem;
+    margin-bottom: 0.2rem;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.icon-nav-btn span {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    line-height: 1.3;
+    display: block;
+    color: var(--text-color);
+    transition: all 0.3s ease;
 }
 
 .icon-nav-btn:hover {
-    border-color: var(--primary-accent);
+    border-color: var(--primary-color) !important;
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    background: var(--bg-color);
 }
 
+.icon-nav-btn:hover i {
+    transform: scale(1.2) rotate(5deg);
+}
+
+ .icon-nav-btn:hover i,
+ .icon-nav-btn:hover span {
+     color: var(--primary-color) !important;
+ }
+
 .icon-nav-btn.active {
-    background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
-    border-color: transparent;
-    color: var(--text-light);
-    transform: translateY(-5px);
-    box-shadow: var(--hover-glow);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    border-color: transparent !important;
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(var(--primary-color-rgb), 0.3);
+}
+
+.icon-nav-btn.active i,
+.icon-nav-btn.active span {
+    color: #ffffff !important;
+    transform: scale(1.1);
+}
+
+.icon-nav-btn.active span {
+    letter-spacing: 1px;
+}
+
+/* Mobile adjustments for icon nav */
+@media (max-width: 768px) {
+    #web-icon-nav-top, #mobile-icon-nav-top, #skills-icon-nav-top, #iot-icon-nav-top {
+        gap: 0.8rem;
+        padding: 1rem;
+    }
+    
+    .icon-nav-btn {
+        min-width: 120px;
+        height: 100px;
+        padding: 0.8rem;
+        gap: 0.5rem;
+    }
+    
+    .icon-nav-btn i {
+        font-size: 1.8rem;
+    }
+    
+    .icon-nav-btn span {
+        font-size: 0.8rem;
+        letter-spacing: 0.3px;
+    }
 }
 
 /* Popup Swiper */
@@ -915,20 +987,19 @@ footer {
 
 #web-swiper-container .popup-content {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 1000px;
-    height: 80vh;
-    max-height: 700px;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
     background: var(--surface);
-    border-radius: 24px;
+    border-radius: 0 !important;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: none !important;
+    border: none !important;
     z-index: 2;
-    /* Removed animation for instant center appearance */
     display: flex;
     flex-direction: column;
 }
@@ -938,10 +1009,25 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.2rem 1.5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    flex-shrink: 0;
+    padding: 1rem 1.5rem;
+    position: relative;
+}
+
+#web-swiper-container .popup-header .popup-icon-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    border-bottom: none;
+    padding: 0;
+    background: transparent;
+}
+
+#web-swiper-container .popup-header .popup-close-btn {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #web-swiper-container .popup-title {
@@ -979,45 +1065,107 @@ footer {
 }
 
 /* WEB APPS ICON NAVIGATION */
-#web-icon-nav-top {
+#web-popup-icon-nav {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    padding: 1rem;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
+    padding: 1.5rem;
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
     flex-shrink: 0;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
 }
 
 #web-icon-nav-top .icon-nav-btn {
     width: 50px;
-    height: 50px;
+    height: 80px;
     border-radius: 15px;
-    border: 2px solid var(--border);
-    background: var(--surface);
-    color: var(--text-secondary);
+    border: 2px solid var(--border-color) !important;
+    background: var(--card-bg);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: var(--transition);
     font-size: 1.4rem;
-    justify-content: center;
-    transition: var(--transition);
-    font-size: 1.4rem;
 }
 
-#web-icon-nav-top .icon-nav-btn:hover {
-    border-color: var(--primary-color);
+.icon-nav-btn i {
+    font-size: 2.2rem;
+    margin-bottom: 0.2rem;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
 }
 
-#web-icon-nav-top .icon-nav-btn.active {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-color: transparent;
-    color: white;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(var(--primary-color-rgb), 0.3);
+.icon-nav-btn span {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    line-height: 1.3;
+    display: block; /* Ensure title is shown */
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.icon-nav-btn:hover {
+    border-color: var(--primary-color) !important;
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    background: var(--bg-color);
+    color: var(--primary-color) !important;
+}
+
+.icon-nav-btn:hover i {
+    transform: scale(1.2) rotate(5deg);
+    color: var(--primary-color) !important;
+}
+
+.icon-nav-btn:hover span {
+    color: var(--primary-color) !important;
+}
+
+.icon-nav-btn.active {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    border-color: transparent !important;
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(var(--primary-color-rgb), 0.3);
+}
+
+.icon-nav-btn.active i,
+.icon-nav-btn.active span {
+    color: #ffffff !important;
+    transform: scale(1.1);
+}
+
+.icon-nav-btn.active span {
+    letter-spacing: 1px;
+}
+
+/* Mobile adjustments for icon nav */
+@media (max-width: 768px) {
+    #web-popup-icon-nav {
+        gap: 0.8rem;
+        padding: 1rem;
+    }
+    
+    .icon-nav-btn {
+        min-width: 120px;
+        height: 100px;
+        padding: 0.8rem;
+        gap: 0.5rem;
+    }
+    
+    .icon-nav-btn i {
+        font-size: 1.8rem;
+    }
+    
+    .icon-nav-btn span {
+        font-size: 0.8rem;
+        letter-spacing: 0.3px;
+    }
 }
 
 /* WEB APPS SWIPER */
@@ -1428,15 +1576,77 @@ footer {
     flex-direction: column;
 }
 
-/* MOBILE APPS POPUP HEADER */
+/* SKILLS APPS POPUP HEADER */
+#skills-swiper-container .popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem 1.5rem;
+    background: linear-gradient(135deg, #10b981, #f97316);
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+    position: relative;
+}
+
+#skills-swiper-container .popup-header .popup-icon-nav {
+    flex: 1;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0;
+    background: transparent;
+    border-bottom: none;
+}
+
+#skills-swiper-container .popup-header .popup-close-btn {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#skills-swiper-container .popup-header .popup-icon-nav {
+    flex: 1;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0;
+    background: transparent;
+    border-bottom: none;
+}
+
+#skills-swiper-container .popup-header .popup-close-btn {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 #mobile-swiper-container .popup-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 1.2rem 1.5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, #10b981, #f97316);
+    color: white;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     flex-shrink: 0;
+    position: relative;
+}
+
+#mobile-swiper-container .popup-header .popup-icon-nav {
+    flex: 1;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0;
+    background: transparent;
+    border-bottom: none;
+}
+
+#mobile-swiper-container .popup-header .popup-close-btn {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #mobile-swiper-container .popup-title {
@@ -1471,6 +1681,116 @@ footer {
     background: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.5);
     transform: rotate(90deg);
+}
+
+#iot-swiper-container .popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem 1.5rem;
+    background: linear-gradient(135deg, #10b981, #f97316);
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+    position: relative;
+}
+
+#iot-swiper-container .popup-header .popup-icon-nav {
+    flex: 1;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0;
+    background: transparent;
+    border-bottom: none;
+}
+
+#iot-swiper-container .popup-header .popup-close-btn {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Popup Counter - Black Background */
+.popup-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000000 !important;
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    z-index: 100;
+}
+
+/* MOBILE APPS POPUP NAVIGATION BUTTONS */
+#mobile-swiper-container .icon-nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    padding: 1rem;
+    min-width: 160px;
+    height: 120px;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--border-color) !important;
+    background: var(--card-bg);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: var(--text-secondary);
+    position: relative;
+    box-shadow: var(--shadow-sm);
+}
+
+#mobile-swiper-container .icon-nav-btn i {
+    font-size: 2.2rem;
+    margin-bottom: 0.2rem;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+#mobile-swiper-container .icon-nav-btn span {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    line-height: 1.3;
+    display: block;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+#mobile-swiper-container .icon-nav-btn:hover {
+    border-color: var(--primary-color) !important;
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    background: var(--bg-color);
+}
+
+#mobile-swiper-container .icon-nav-btn:hover i {
+    transform: scale(1.2) rotate(5deg);
+}
+
+#mobile-swiper-container .icon-nav-btn.active {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    border-color: transparent !important;
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(var(--primary-color-rgb), 0.3);
+}
+
+#mobile-swiper-container .icon-nav-btn.active i,
+#mobile-swiper-container .icon-nav-btn.active span {
+    color: #ffffff !important;
+    transform: scale(1.1);
+}
+
+#mobile-swiper-container .icon-nav-btn.active span {
+    letter-spacing: 1px;
 }
 
 /* UPDATED: MOBILE APPS PROJECT IMAGES - REMOVED PADDING FOR 100% COVERAGE */
@@ -1856,12 +2176,49 @@ footer {
 }
 
 /* Skills Grid Container */
+#skillsSwiper .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+
 #skillsSwiper .skills-grid-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin: 0 auto;
     width: 100%;
+    max-width: 750px;
+    justify-items: center;
+    align-items: center;
+}
+
+/* Tablet: 3 columns */
+@media (max-width: 768px) {
+    #skillsSwiper .skills-grid-container {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 550px;
+    }
+}
+
+/* Mobile: 2 columns */
+@media (max-width: 480px) {
+    #skillsSwiper .skills-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 350px;
+        gap: 0.8rem;
+    }
+    
+    #skillsSwiper .skill-item {
+        height: 110px;
+        width: 140px;
+        min-height: 110px;
+        min-width: 140px;
+        max-height: 110px;
+        max-width: 140px;
+        padding: 1rem 0.5rem;
+    }
 }
 
 #skillsSwiper .skill-item {
@@ -1874,14 +2231,19 @@ footer {
     text-align: center;
     gap: 0.8rem;
     backdrop-filter: blur(10px);
-    height: 100%;
-    min-height: 120px;
+    height: 130px;
+    width: 160px;
+    min-height: 130px;
+    min-width: 160px;
+    max-height: 130px;
+    max-width: 160px;
     justify-content: center;
     position: relative;
     overflow: hidden;
     cursor: pointer;
     border: 2px solid transparent;
     background: var(--surface);
+    box-sizing: border-box;
 }
 
 #skillsSwiper .skill-item:hover {

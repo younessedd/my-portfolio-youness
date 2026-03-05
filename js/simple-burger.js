@@ -44,8 +44,6 @@ class SimpleBurger {
         
         // Setup event listeners
         this.setupEvents();
-        
-        console.log('✅ Simple Burger initialized successfully');
     }
     
     setupEvents() {
@@ -91,7 +89,10 @@ class SimpleBurger {
             }
         });
         
-        // Setup navigation link clicks (desktop and mobile)
+        console.log('✅ Simple Burger initialized successfully');
+    }
+    
+    // Setup navigation link clicks (desktop and mobile)
     setupNavigationClicks() {
         // Get all navigation links
         const desktopLinks = document.querySelectorAll('.desktop-nav a');

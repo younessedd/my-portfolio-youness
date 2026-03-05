@@ -384,3 +384,107 @@ footer .container {
         padding-top: 1.5rem;
     }
 }
+
+/* ============================================
+   Floating Social Icons Sidebar
+   ============================================ */
+
+.floating-social-icons {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 1000;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+.floating-social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.floating-social-icon:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.floating-social-icon.github {
+    background: linear-gradient(135deg, #333, #555);
+}
+
+.floating-social-icon.github:hover {
+    background: linear-gradient(135deg, #555, #777);
+    box-shadow: 0 6px 20px rgba(51, 51, 51, 0.6);
+}
+
+.floating-social-icon.linkedin {
+    background: linear-gradient(135deg, #0077b5, #00a0dc);
+}
+
+.floating-social-icon.linkedin:hover {
+    background: linear-gradient(135deg, #00a0dc, #0077b5);
+    box-shadow: 0 6px 20px rgba(0, 119, 181, 0.6);
+}
+
+.floating-social-icon.whatsapp {
+    background: linear-gradient(135deg, #25d366, #128c7e);
+}
+
+.floating-social-icon.whatsapp:hover {
+    background: linear-gradient(135deg, #128c7e, #25d366);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+.floating-social-icon.email {
+    background: linear-gradient(135deg, #ea4335, #d93025);
+}
+
+.floating-social-icon.email:hover {
+    background: linear-gradient(135deg, #d93025, #ea4335);
+    box-shadow: 0 6px 20px rgba(234, 67, 53, 0.6);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .floating-social-icons {
+        right: 15px;
+        bottom: 15px;
+        gap: 0.8rem;
+    }
+    
+    .floating-social-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-social-icons {
+        right: 10px;
+        bottom: 10px;
+        gap: 0.6rem;
+    }
+    
+    .floating-social-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+}

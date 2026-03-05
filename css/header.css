@@ -198,6 +198,16 @@ body.no-scroll {
     outline: none !important;
 }
 
+.mobile-nav ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.mobile-nav li::marker {
+    display: none !important;
+}
+
 /* Mobile Home link - SAME AS ALL OTHERS */
 .mobile-nav-link[href="#home"] {
     color: #fff !important;

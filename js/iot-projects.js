@@ -619,11 +619,24 @@ const IoTProjectsManager = {
     generateProjectLinksHTML: function(links) {
         return `
             <div class="project-links-top">
-                ${links.map(link => `
-                    <a href="${link.url}" class="project-link" target="_blank" rel="noopener noreferrer">
-                        <i class="fas ${link.icon}"></i> ${link.name}
-                    </a>
-                `).join('')}
+                <a href="#" class="project-link green-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-plus"></i>
+                </a>
+                ${links.map(link => {
+                    if (link.name === 'GitHub') {
+                        return `<a href="${link.url}" class="project-link github-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>`;
+                    } else if (link.name === 'Live Demo') {
+                        return `<a href="${link.url}" class="project-link live-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-play"></i>
+                        </a>`;
+                    } else {
+                        return `<a href="${link.url}" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fas ${link.icon}"></i> ${link.name}
+                        </a>`;
+                    }
+                }).join('')}
             </div>
         `;
     },

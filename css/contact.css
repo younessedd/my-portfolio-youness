@@ -2,7 +2,7 @@
     padding: 4rem 1rem;
     position: relative;
     min-height: auto;
-    background: url('../images/background/contact.webp') center center/cover no-repeat, var(--contact-bg);
+    background: var(--contact-bg);
     overflow: hidden;
 }
 

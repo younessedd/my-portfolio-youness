@@ -635,7 +635,7 @@ html body #web-apps .skill-nav-btn:focus[data-category="frontend"] i.fa-code {
     padding: 4rem 1rem;
     position: relative;
     min-height: 100vh;
-    background: url('../images/background/web.webp') center center/cover no-repeat, var(--web-apps-bg);
+    background: var(--web-apps-bg);
     overflow: hidden;
 }
 
@@ -967,6 +967,7 @@ html body #web-apps .skill-nav-btn:focus[data-category="frontend"] i.fa-code {
     hyphens: auto;
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }

@@ -567,13 +567,34 @@ const WebProjectsManager = {
     },
     
     generateProjectLinksHTML: function(links) {
+        // Separate Live Demo and GitHub links
+        const liveDemoLink = links.find(link => link.name === 'Live Demo');
+        const githubLink = links.find(link => link.name === 'GitHub');
+        const otherLinks = links.filter(link => link.name !== 'Live Demo' && link.name !== 'GitHub');
+        
+        // Build ordered array: Live Demo first, then GitHub, then others
+        const orderedLinks = [];
+        if (liveDemoLink) orderedLinks.push(liveDemoLink);
+        if (githubLink) orderedLinks.push(githubLink);
+        orderedLinks.push(...otherLinks);
+        
         return `
             <div class="project-links-top">
-                ${links.map(link => `
-                    <a href="${link.url}" class="project-link" target="_blank" rel="noopener noreferrer">
-                        <i class="fas ${link.icon}"></i> ${link.name}
-                    </a>
-                `).join('')}
+                ${orderedLinks.map(link => {
+                    if (link.name === 'Live Demo') {
+                        return `<a href="${link.url}" class="project-link live-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-play"></i>
+                        </a>`;
+                    } else if (link.name === 'GitHub') {
+                        return `<a href="${link.url}" class="project-link github-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>`;
+                    } else {
+                        return `<a href="${link.url}" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fas ${link.icon}"></i> ${link.name}
+                        </a>`;
+                    }
+                }).join('')}
             </div>
         `;
     },

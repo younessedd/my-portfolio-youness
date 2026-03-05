@@ -29,7 +29,6 @@ function initPortfolio() {
     setupKeyboardListeners();
     
     // Initialize startup image preloader for fast popups
-    initializeStartupImagePreloader();
     
     console.log('✅ تم تهيئة البورتفوليو بنجاح');
 }
@@ -343,16 +342,5 @@ function initializeStartupImagePreloader() {
     } else {
         // Retry initialization after data loads
         setTimeout(initializeStartupImagePreloader, 200);
-    }
-}
-
-// Hide splash screen function
-function hideSplashScreen() {
-    const splashScreen = document.getElementById('splash-screen');
-    if (splashScreen && splashScreen.style.display !== 'none') {
-        splashScreen.style.opacity = '0';
-        setTimeout(() => {
-            splashScreen.style.display = 'none';
-        }, 300);
     }
 }

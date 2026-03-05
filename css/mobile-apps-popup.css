@@ -329,33 +329,99 @@
     font-weight: 500;
 }
 
-/* Project Links */
+/* Project Links - Fixed at bottom-right corner */
 #mobileSwiper .project-links-top {
     display: flex;
-    gap: 1rem;
-    margin: 1.5rem 0;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: fixed;
+    bottom: 10px;
+    right: 2%;
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    z-index: 1000;
+    margin: 0;
+    max-width: 50px;
 }
 
 #mobileSwiper .project-link {
-    padding: 0.9rem 1.8rem;
+    padding: 0.4rem 0.8rem;
     background: linear-gradient(135deg, rgba(16, 185, 129, 0.82), rgba(249, 115, 22, 0.82));
     color: white;
     text-decoration: none;
-    border-radius: 10px;
-    font-size: 0.95rem;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: 600;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 0.5rem;
     position: relative;
     overflow: hidden;
     z-index: 1;
     box-shadow: 
-        0 4px 12px rgba(16, 185, 129, 0.32),
+        0 2px 8px rgba(16, 185, 129, 0.32),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Circular GitHub and Live Demo buttons */
+#mobileSwiper .project-link.github-btn,
+#mobileSwiper .project-link.live-btn {
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    gap: 0;
+}
+
+#mobileSwiper .project-link.github-btn {
+    background: linear-gradient(135deg, #333, #555);
+    box-shadow: 0 2px 8px rgba(51, 51, 51, 0.4);
+}
+
+#mobileSwiper .project-link.live-btn {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.4);
+}
+
+/* Google Play Store button */
+#mobileSwiper .project-link.playstore-btn {
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    gap: 0;
+    background: linear-gradient(135deg, #34a853, #4285f4);
+    box-shadow: 0 2px 8px rgba(52, 168, 83, 0.4);
+}
+
+/* Green button */
+#mobileSwiper .project-link.green-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    gap: 0;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    box-shadow: 0 2px 8px rgba(39, 174, 96, 0.4);
 }
 
 #mobileSwiper .project-link::before {

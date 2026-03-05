@@ -209,7 +209,7 @@
     padding: 4rem 1rem;
     position: relative;
     min-height: 100vh;
-    background: url('../images/background/mob.webp') center center/cover no-repeat, var(--mobile-apps-bg);
+    background: var(--mobile-apps-bg);
     overflow: hidden;
 }
 
@@ -458,9 +458,10 @@
     color: #fff;
     height: 140px;
     min-height: 140px;
-    box-sizing: border-box;
-    text-align: center;
-    position: relative;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
     overflow: hidden;
     width: 100%;
     flex: 1;
@@ -525,13 +526,6 @@
     max-width: 100%;
     overflow: visible;
     text-overflow: unset;
-    white-space: normal;
-    word-wrap: break-word;
-    hyphens: auto;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
 .mobile-header-box {

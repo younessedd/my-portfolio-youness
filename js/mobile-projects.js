@@ -563,11 +563,25 @@ const MobileProjectsManager = {
     generateProjectLinksHTML: function(links) {
         return `
             <div class="project-links-top">
-                ${links.map(link => `
-                    <a href="${link.url}" class="project-link" target="_blank" rel="noopener noreferrer">
-                        <i class="fas ${link.icon}"></i> ${link.name}
-                    </a>
-                `).join('')}
+                ${links.map(link => {
+                    if (link.name === 'GitHub') {
+                        return `<a href="${link.url}" class="project-link github-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>`;
+                    } else if (link.name === 'Google Play' || link.name === 'Play Store') {
+                        return `<a href="${link.url}" class="project-link playstore-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-google-play"></i>
+                        </a>`;
+                    } else if (link.name === 'Live Demo') {
+                        return `<a href="${link.url}" class="project-link live-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-play"></i>
+                        </a>`;
+                    } else {
+                        return `<a href="${link.url}" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fas ${link.icon}"></i>
+                        </a>`;
+                    }
+                }).join('')}
             </div>
         `;
     },
