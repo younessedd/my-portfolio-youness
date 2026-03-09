@@ -131,125 +131,11 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
     </section>
 
 
-<section id="skills">
-    <div class="container">
-            <div class="skill-header-box reveal from-right">
-                <h2>Skills</h2>
-                <p>Comprehensive technical skills across multiple domains</p>
-            </div>
-        
-        <!-- Skills Navigation - 6 buttons with staggered animation -->
-        <div class="skills-nav center-buttons reveal-grid" id="skills-nav">
-            <button class="skill-nav-btn zoom" data-category="webDevelopment">
-                <span>Web Development</span>
-            </button>
-            <button class="skill-nav-btn zoom" data-category="mobileDevelopment">
-                <span>Mobile Development</span>
-            </button>
-            <button class="skill-nav-btn zoom" data-category="iotAndDomotic">
-                <span>IoT and Domotic</span>
-            </button>
-            <button class="skill-nav-btn zoom" data-category="electronicsAndElectric">
-                <span>Electronics and Electric</span>
-            </button>
-            <button class="skill-nav-btn zoom" data-category="roboticsAndAutomatism">
-                <span>Robotics and Automatism</span>
-            </button>
-            <button class="skill-nav-btn zoom" data-category="softSkills">
-                <span>Soft Skills</span>
-            </button>
-            <button class="skill-nav-btn zoom" data-category="aiPrompt">
-                <span>Ai prompt</span>
-            </button>
-        </div>
-        
-        <!-- POPUP CONTAINER (EXACT SAME STRUCTURE AS WEB) -->
-        <div class="popup-container" id="skills-swiper-container">
-            <div class="popup-content">
-                <div class="popup-header">
-                    <div class="popup-icon-nav" id="skills-icon-nav-top">
-                        <button class="icon-nav-btn active" data-category="webDevelopment">
-                            <span>Web Development</span>
-                        </button>
-                        <button class="icon-nav-btn" data-category="mobileDevelopment">
-                            <span>Mobile Development</span>
-                        </button>
-                        <button class="icon-nav-btn" data-category="iotAndDomotic">
-                            <span>IoT & Domotic</span>
-                        </button>
-                        <button class="icon-nav-btn" data-category="electronicsAndElectric">
-                            <span>Electronics</span>
-                        </button>
-                        <button class="icon-nav-btn" data-category="roboticsAndAutomatism">
-                            <span>Robotics</span>
-                        </button>
-                        <button class="icon-nav-btn" data-category="softSkills">
-                            <span>Soft Skills</span>
-                        </button>
-                        <button class="icon-nav-btn" data-category="aiPrompt">
-                            <span>AI Prompt</span>
-                        </button>
-                    </div>
-                    <button class="popup-close-btn" id="skills-close-btn">
-                        <i class="fas fa-times"></i>
-                        <span class="sr-only">Close</span>
-                    </button>
-                </div>
-                
-                <!-- Swiper Container -->
-                <div class="swiper popup-swiper" id="skillsSwiper">
-                    <div class="swiper-wrapper">
-                        <!-- سيتم تعبئته بالجافاسكريبت -->
-                    </div>
-                </div>
-                
-                <!-- Card Navigation -->
-                <div class="popup-card-nav" id="skills-card-navigation">
-                    <button class="card-nav-btn prev-card" id="skills-prev-card">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="card-nav-btn next-card" id="skills-next-card">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-                
-                <!-- Card Counter -->
-                <div class="popup-counter" id="skills-card-counter">
-                    <span class="counter-number">1/3</span>
-                </div>
-            </div>
-            
-            <!-- Popup Overlay -->
-            <div class="popup-overlay" id="skills-popup-overlay"></div>
-        </div>
-    </div>
-</section>
-
-
-
-
-
-
-
 <!-- Web Apps Section - Clean Modern Style -->
 <section id="web-apps">
     <div class="container">
-        <div class="web-header-box reveal from-right">
+        <div class="web-header-box reveal from-right" onclick="openWebPopup()">
             <h2>Web Projects</h2>
-            <p>Modern web applications built with latest technologies</p>
-        </div>
-        
-        <!-- Web Projects Navigation - 3 BUTTONS LAYOUT with stagger animation -->
-        <div class="skills-nav center-buttons reveal-grid" id="web-apps-nav">
-            <button class="skill-nav-btn zoom" data-category="frontend">
-                <span>Frontend</span>
-            </button>
-            <button class="skill-nav-btn zoom" data-category="backend">
-                <span>Backend</span>
-            </button>
-            <button class="skill-nav-btn zoom" data-category="fullstack">
-                <span>Full Stack</span>
-            </button>
         </div>
         
         <!-- POPUP CONTAINER (CLEAN MODERN STYLE) -->
@@ -266,10 +152,12 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
                         <button class="icon-nav-btn" data-category="fullstack">
                             <span>Full Stack</span>
                         </button>
+                        <button class="icon-nav-btn" data-category="others">
+                            <span>Others Apps</span>
+                        </button>
                     </div>
                     <button class="popup-close-btn" id="web-close-btn">
                         <i class="fas fa-times"></i>
-                        <span class="sr-only">Close</span>
                     </button>
                 </div>
                 
@@ -293,16 +181,15 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
-                
-                <!-- Card Counter -->
-                <div class="popup-counter" id="web-card-counter">
-                    <span class="counter-number">1/4</span>
-                </div>
-            </div>
             
             <!-- Popup Overlay -->
             <div class="popup-overlay" id="web-popup-overlay"></div>
         </div>
+    </div>
+    
+    <!-- Card Counter Outside Web Apps Section -->
+    <div class="popup-counter" id="web-card-counter">
+        <span class="counter-number">1/2</span>
     </div>
 </section>
 
@@ -313,22 +200,8 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
 <!-- Mobile Apps Section - Clean Modern Style -->
 <section id="mobile-apps">
     <div class="container">
-        <div class="mobile-header-box reveal from-left">
+        <div class="mobile-header-box reveal from-left" onclick="openMobilePopup()">
             <h2>Mobile Projects</h2>
-            <p>Native and cross-platform mobile apps built with latest technologies</p>
-        </div>
-        
-        <!-- Mobile Projects Navigation - 3 BUTTONS LAYOUT with stagger animation -->
-        <div class="skills-nav center-buttons reveal-grid" id="mobile-apps-nav">
-            <button class="skill-nav-btn zoom" data-category="quiz">
-                <span>Quiz Apps</span>
-            </button>
-            <button class="skill-nav-btn zoom" data-category="utility">
-                <span>Utility & Tools</span>
-            </button>
-            <button class="skill-nav-btn zoom" data-category="smartHome">
-                <span>Smart Home</span>
-            </button>
         </div>
         
         <!-- POPUP CONTAINER (CLEAN MODERN STYLE) -->
@@ -346,11 +219,7 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
                             <span>Smart Home</span>
                         </button>
                     </div>
-                    <button class="popup-close-btn" id="mobile-close-btn">
-                        <i class="fas fa-times"></i>
-                        <span class="sr-only">Close</span>
-                    </button>
-                </div>
+                                    </div>
                 
                 <!-- Main Swiper Container -->
                 <div class="swiper popup-swiper" id="mobileSwiper">
@@ -368,16 +237,15 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
-                
-                <!-- Card Counter -->
-                <div class="popup-counter" id="mobile-card-counter">
-                    <span class="counter-number">1/4</span>
-                </div>
-            </div>
             
             <!-- Popup Overlay -->
             <div class="popup-overlay" id="mobile-popup-overlay"></div>
         </div>
+    </div>
+    
+    <!-- Card Counter Outside Mobile Apps Section -->
+    <div class="popup-counter" id="mobile-card-counter">
+        <span class="counter-number">1/3</span>
     </div>
 </section>
 
@@ -388,25 +256,8 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
 <!-- IoT Projects Section -->
 <section id="iot-projects">
     <div class="container">
-        <div class="iot-header-box reveal from-right">
+        <div class="iot-header-box reveal from-right" onclick="openIoTPopup()">
             <h2>IoT Projects</h2>
-            <p>Internet of Things projects combining hardware and software</p>
-        </div>
-        
-        <!-- IoT Projects Navigation - Same Style with stagger animation -->
-        <div class="skills-nav center-buttons reveal-grid" id="iot-projects-nav">
-            <button class="skill-nav-btn zoom" data-category="home">
-                <span>Smart Home</span>
-            </button>
-            <button class="skill-nav-btn zoom" data-category="industrial">
-                <span>Industrial IoT</span>
-            </button>
-            <button class="skill-nav-btn zoom" data-category="sensors">
-                <span>Sensor Projects</span>
-            </button>
-            <button class="skill-nav-btn zoom" data-category="othersiot">
-                <span>Other IoT Projects</span>
-            </button>
         </div>
         
         <!-- POPUP CONTAINER (EXACT SAME STRUCTURE AS WEB) -->
@@ -424,14 +275,10 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
                             <span>Sensors</span>
                         </button>
                         <button class="icon-nav-btn" data-category="othersiot">
-                            <span>Others</span>
+                            <span>Others Projects</span>
                         </button>
                     </div>
-                    <button class="popup-close-btn" id="iot-close-btn">
-                        <i class="fas fa-times"></i>
-                        <span class="sr-only">Close</span>
-                    </button>
-                </div>
+                                    </div>
                 
                 <!-- Main Swiper Container -->
                 <div class="swiper popup-swiper" id="iotSwiper">
@@ -449,21 +296,84 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
-                
-                <!-- Card Counter -->
-                <div class="popup-counter" id="iot-card-counter">
-                    <span class="counter-number">1/4</span>
-                </div>
-            </div>
             
             <!-- Popup Overlay -->
             <div class="popup-overlay" id="iot-popup-overlay"></div>
         </div>
     </div>
+    
+    <!-- Card Counter Outside IoT Projects Section -->
+    <div class="popup-counter" id="iot-card-counter">
+        <span class="counter-number">1/2</span>
+    </div>
 </section>
 
 
 
+
+
+<section id="skills">
+    <div class="container">
+            <div class="skill-header-box reveal from-right" onclick="openSkillsPopup()">
+                <h2>Skills</h2>
+            </div>
+        
+        <!-- POPUP CONTAINER (EXACT SAME STRUCTURE AS WEB) -->
+        <div class="popup-container" id="skills-swiper-container">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <div class="popup-icon-nav" id="skills-icon-nav-top">
+                        <button class="icon-nav-btn" data-category="webDevelopment">
+                            <span>Web Development</span>
+                        </button>
+                        <button class="icon-nav-btn active" data-category="mobileDevelopment">
+                            <span>Mobile Development</span>
+                        </button>
+                        <button class="icon-nav-btn" data-category="iotAndDomotic">
+                            <span>IoT &amp; Domotic</span>
+                        </button>
+                        <button class="icon-nav-btn" data-category="electronicsAndElectric">
+                            <span>Electronics</span>
+                        </button>
+                        <button class="icon-nav-btn" data-category="roboticsAndAutomatism">
+                            <span>Robotics</span>
+                        </button>
+                        <button class="icon-nav-btn" data-category="softSkills">
+                            <span>Soft Skills</span>
+                        </button>
+                        <button class="icon-nav-btn" data-category="aiPrompt">
+                            <span>AI Prompt</span>
+                        </button>
+                    </div>
+                                    </div>
+                
+                <!-- Swiper Container -->
+                <div class="swiper popup-swiper" id="skillsSwiper">
+                    <div class="swiper-wrapper">
+                        <!-- سيتم تعبئته بالجافاسكريبت -->
+                    </div>
+                </div>
+                
+                <!-- Card Navigation -->
+                <div class="popup-card-nav" id="skills-card-navigation">
+                    <button class="card-nav-btn prev-card" id="skills-prev-card">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="card-nav-btn next-card" id="skills-next-card">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            
+            <!-- Popup Overlay -->
+            <div class="popup-overlay" id="skills-popup-overlay"></div>
+        </div>
+    </div>
+    
+    <!-- Card Counter Outside Skills Section -->
+    <div class="popup-counter" id="skills-card-counter">
+        <span class="counter-number">1/1</span>
+    </div>
+</section>
 
 
 
@@ -473,7 +383,6 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
         <div class="container">
             <div class="cv-header-box reveal from-left">
                 <h2>Curriculum Vitae</h2>
-                <p>View and download my specialized CVs according to field</p>
             </div>
             <div class="cv-cards-container">
                 <div class="cv-cards two-items">
@@ -529,7 +438,6 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
         <div class="container">
             <div class="reveal from-left">
                 <h2>Contact Me</h2>
-                <p class="section-subtitle">Get in touch for opportunities or collaborations</p>
             </div>
             
             <div class="contact-container">
@@ -624,7 +532,6 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
 
     <!-- Floating Social Icons Sidebar -->
     <div class="floating-social-icons">
-        <a href="https://github.com/younessedd" target="_blank" class="floating-social-icon github"><i class="fab fa-github"></i></a>
         <a href="https://www.linkedin.com/in/youness-eddanguir-723166398/" target="_blank" class="floating-social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://wa.me/212664837281" target="_blank" class="floating-social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
         <a href="mailto:eddanguiryouness@gmail.com" class="floating-social-icon email"><i class="fas fa-envelope"></i></a>

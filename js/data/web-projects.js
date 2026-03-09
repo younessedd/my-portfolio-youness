@@ -426,6 +426,97 @@ frontend: [
                 }
             ]
         }
+    ],
+
+    // Others Category (placeholder projects)
+    others: [
+        {
+            id: "web-others-001",
+            category: "others",
+            title: "E-Learning Platform",
+            description: "A comprehensive online learning management system with video streaming, quizzes, and progress tracking.",
+            technologies: ["React", "Node.js", "MongoDB", "AWS", "Socket.io"],
+            images: [
+                "images/web/elearning.webp"
+            ],
+            features: [
+                "Video streaming with adaptive quality",
+                "Interactive quizzes and assessments",
+                "Progress tracking and certificates",
+                "Real-time chat with instructors",
+                "Discussion forums"
+            ],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "#",
+                    icon: "fa-brands fa-github"
+                },
+                {
+                    name: "Live Demo",
+                    url: "#",
+                    icon: "fa-external-link-alt"
+                }
+            ]
+        },
+        {
+            id: "web-others-002",
+            category: "others",
+            title: "Healthcare Dashboard",
+            description: "A medical dashboard for patient management, appointment scheduling, and health analytics.",
+            technologies: ["Vue.js", "Python", "PostgreSQL", "Docker", "TensorFlow"],
+            images: [
+                "images/web/healthcare.webp"
+            ],
+            features: [
+                "Patient records management",
+                "Appointment scheduling system",
+                "Health analytics and reports",
+                "Doctor availability calendar",
+                "Prescription management"
+            ],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "#",
+                    icon: "fa-brands fa-github"
+                },
+                {
+                    name: "Live Demo",
+                    url: "#",
+                    icon: "fa-external-link-alt"
+                }
+            ]
+        },
+        {
+            id: "web-others-003",
+            category: "others",
+            title: "Real Estate Marketplace",
+            description: "A property listing platform with virtual tours, advanced search, and agent management.",
+            technologies: ["Angular", "Spring Boot", "MySQL", "Three.js", "Google Maps API"],
+            images: [
+                "images/web/realestate.webp"
+            ],
+            features: [
+                "Virtual property tours",
+                "Advanced property search filters",
+                "Agent profiles and ratings",
+                "Mortgage calculator",
+                "Favorites and notifications"
+            ],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "#",
+                    icon: "fa-brands fa-github"
+                },
+                {
+                    name: "Live Demo",
+                    url: "#",
+                    icon: "fa-external-link-alt"
+                }
+            ]
+        }
     ]
 };
 

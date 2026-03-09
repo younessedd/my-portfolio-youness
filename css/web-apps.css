@@ -697,6 +697,17 @@ html body #web-apps .skill-nav-btn:focus[data-category="frontend"] i.fa-code {
     position: relative;
     z-index: 1;
     top: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.web-header-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        0 0 100px rgba(16, 185, 129, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: rgba(2, 6, 23, 0.9);
 }
 
 /* Responsive web-header-box positioning */

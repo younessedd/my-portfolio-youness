@@ -7,6 +7,31 @@
 let heroSwiper = null;
 let imageSwipers = [];
 
+// Global popup opening functions
+function openWebPopup() {
+    if (typeof WebProjectsManager !== 'undefined' && typeof WebProjectsManager.showCategory === 'function') {
+        WebProjectsManager.showCategory('frontend', 'Frontend');
+    }
+}
+
+function openMobilePopup() {
+    if (typeof MobileProjectsManager !== 'undefined' && typeof MobileProjectsManager.showCategory === 'function') {
+        MobileProjectsManager.showCategory('quiz', 'Quiz Apps');
+    }
+}
+
+function openSkillsPopup() {
+    if (typeof SkillsManager !== 'undefined' && typeof SkillsManager.showCategory === 'function') {
+        SkillsManager.showCategory('webDevelopment', 'Web Development');
+    }
+}
+
+function openIoTPopup() {
+    if (typeof IoTProjectsManager !== 'undefined' && typeof IoTProjectsManager.showCategory === 'function') {
+        IoTProjectsManager.showCategory('home', 'Smart Home');
+    }
+}
+
 /**
  * تهيئة التطبيق بالكامل
  */
@@ -22,9 +47,7 @@ function initPortfolio() {
     // إضافة مستمعي الأحداث لتنزيل السيرة الذاتية
     setupCvDownloadTracking();
     
-    // إعداد النقر خارجي لإغلاق سوابير
-    setupSwiperCloseListeners();
-    
+        
     // إعداد مستمعي لوحة المفاتيح
     setupKeyboardListeners();
     
@@ -65,12 +88,9 @@ function setupEventListeners() {
     // التمرير السلس للروابط
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === '#') return;
-            
             e.preventDefault();
             
-            const targetElement = document.querySelector(href);
+            const targetElement = document.querySelector(this.getAttribute('href'));
             if (targetElement) {
                 // إغلاق قائمة الموبايل إذا كانت مفتوحة
                 if (mobileMenu && mobileMenu.classList.contains('active')) {

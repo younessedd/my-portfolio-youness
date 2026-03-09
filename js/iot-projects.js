@@ -193,8 +193,6 @@ const IoTProjectsManager = {
                     this.navigationLock = true;
                     this.navigateToNextCard();
                     setTimeout(() => { this.navigationLock = false; }, 300);
-                } else if (e.key === 'Escape') {
-                    this.closePopup();
                 }
             }
         });
@@ -203,7 +201,11 @@ const IoTProjectsManager = {
     showCategory: function(category, buttonText) {
         console.log(`🔌 Opening category: ${category}`);
         
-        this.currentCategory = category;
+        // Always open in first category (home)
+        const firstCategory = this.categories[0];
+        const firstCategoryName = this.categoryNames[firstCategory];
+        
+        this.currentCategory = firstCategory;
         this.currentCardIndex = 0;
         this.isModalOpen = true;
         this.navigationLock = false;
@@ -211,18 +213,18 @@ const IoTProjectsManager = {
         this.elements.popupContainer.style.display = 'block';
         document.body.style.overflow = 'hidden';
         
-        this.updateCategoryTitle(category, buttonText);
-        this.updateIconNavigation(category);
-        this.updateActiveButton(category);
+        this.updateCategoryTitle(firstCategory, firstCategoryName);
+        this.updateIconNavigation(firstCategory);
+        this.updateActiveButton(firstCategory);
         
         this.initializeSwiperWithAllCategories();
         
-        const targetSlideIndex = this.cardPositions[`${category}-0`];
+        const targetSlideIndex = this.cardPositions[`${firstCategory}-0`];
         
         if (targetSlideIndex !== undefined && this.swiperInstance) {
             this.currentCardIndex = 0;
             this.swiperInstance.slideTo(targetSlideIndex, 0);
-            this.updateCardCounter(category);
+            this.updateCardCounter(firstCategory);
         }
     },
     
@@ -518,8 +520,8 @@ const IoTProjectsManager = {
         
         const featuresHTML = this.generateFeaturesHTML(skillSet.features);
         const techTagsHTML = this.generateTechTagsHTML(skillSet.technologies);
-        const linksHTML = skillSet.links ? this.generateProjectLinksHTML(skillSet.links) : '';
-        const imagesHTML = this.generateImagesHTML(skillSet.images, skillSet.id);
+        const linksHTML = '';
+        const imagesHTML = this.generateImagesHTML(skillSet.images, skillSet.links, skillSet.id);
         
         const slide = document.createElement('div');
         slide.className = 'swiper-slide';
@@ -537,18 +539,14 @@ const IoTProjectsManager = {
                     
                     ${imagesHTML}
                     
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <h4 class="features-title">Technologies</h4>
+                    </div>
+                    
                     <div class="skills-category-container">
                         ${linksHTML}
                         
                         <div class="skill-set-features">
-                            <h4 class="features-title">Key Features:</h4>
-                            <ul class="features-list">
-                                ${featuresHTML}
-                            </ul>
-                        </div>
-                        
-                        <div class="skill-set-features">
-                            <h4 class="features-title">Technologies:</h4>
                             <div class="tech-tags-container">
                                 ${techTagsHTML}
                             </div>
@@ -561,7 +559,7 @@ const IoTProjectsManager = {
         this.elements.swiperWrapper.appendChild(slide);
     },
     
-    generateImagesHTML: function(images, projectId) {
+    generateImagesHTML: function(images, links, projectId) {
         if (!images || images.length === 0) {
             return `
                 <div class="project-images-container single-image-container">
@@ -574,6 +572,27 @@ const IoTProjectsManager = {
         }
 
         if (images.length === 1) {
+            // Check if this project has links and add them inside image container
+            let linksHTML = '';
+            if (links && links.length > 0) {
+                // Generate links HTML for IoT projects
+                const githubLink = links.find(link => link.name === 'GitHub');
+                const demoLink = links.find(link => link.name === 'Live Demo' || link.name === 'Demo');
+                
+                linksHTML = '<div class="project-links-top">';
+                if (demoLink) {
+                    linksHTML += `<a href="${demoLink.url}" class="project-link live-btn" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-play"></i>
+                            </a>`;
+                }
+                if (githubLink) {
+                    linksHTML += `<a href="${githubLink.url}" class="project-link github-btn" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i>
+                            </a>`;
+                }
+                linksHTML += '</div>';
+            }
+            
             return `
                 <div class="project-images-container single-image-container">
                     <div class="image-loading-placeholder">
@@ -584,6 +603,7 @@ const IoTProjectsManager = {
                          onload="this.previousElementSibling.style.display='none'; this.style.opacity='1'"
                          onerror="this.src='images/ImageNotAvailable.webp'; this.previousElementSibling.style.display='none'"
                          style="opacity: 0; transition: opacity 0.3s ease;">
+                    ${linksHTML}
                 </div>
             `;
         }
@@ -789,6 +809,10 @@ const IoTProjectsManager = {
 document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('iot-projects')) {
         IoTProjectsManager.init();
+        // Auto-open popup with first category
+        setTimeout(() => {
+            IoTProjectsManager.showCategory('home', 'Home Automation');
+        }, 100);
     }
 });
 

@@ -196,8 +196,6 @@ const SkillsManager = {
                     this.navigationLock = true;
                     this.navigateToNextCard();
                     setTimeout(() => { this.navigationLock = false; }, 300);
-                } else if (e.key === 'Escape') {
-                    this.closePopup();
                 }
             }
         });
@@ -205,21 +203,25 @@ const SkillsManager = {
 
     showCategory: function(category, buttonText) {
         console.log(`🌐 Opening category: ${category}`);
-        this.currentCategory = category;
+        
+        // Always open in first category (webDevelopment)
+        const firstCategory = this.categories[0];
+        const firstCategoryName = this.categoryNames[firstCategory];
+        
+        this.currentCategory = firstCategory;
         this.currentCardIndex = 0;
         this.isModalOpen = true;
         this.navigationLock = false;
         this.elements.popupContainer.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-        this.updateCategoryTitle(category, buttonText);
-        this.updateIconNavigation(category);
-        this.updateActiveButton(category);
+        this.updateCategoryTitle(firstCategory, firstCategoryName);
+        this.updateIconNavigation(firstCategory);
+        this.updateActiveButton(firstCategory);
         this.initializeSwiperWithAllCategories();
-        const targetSlideIndex = this.cardPositions[`${category}-0`];
+        const targetSlideIndex = this.cardPositions[`${firstCategory}-0`];
         if (targetSlideIndex !== undefined && this.swiperInstance) {
             this.currentCardIndex = 0;
             this.swiperInstance.slideTo(targetSlideIndex, 0);
-            this.updateCardCounter(category);
+            this.updateCardCounter(firstCategory);
         }
     },
 
@@ -375,15 +377,9 @@ const SkillsManager = {
                 <div class="project-info">
                     <div class="skills-category-container" data-category="${skillSet.category}">
                         <h3 class="skill-main-title">${skillSet.title}</h3>
-                        <p class="skill-main-description">${skillSet.description}</p>
+                        <h4 class="features-title">Technologies</h4>
                         <div class="skills-grid-container">
                             ${skillsHTML}
-                        </div>
-                        <div class="skill-set-features">
-                            <h4 class="features-title">Key Competencies:</h4>
-                            <ul class="features-list">
-                                ${featuresHTML}
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -486,7 +482,6 @@ const SkillsManager = {
     closePopup: function() {
         console.log('🔴 Closing skills popup');
         this.isModalOpen = false;
-        document.body.style.overflow = '';
         if (this.swiperInstance) {
             this.swiperInstance.destroy(true, true);
             this.swiperInstance = null;
@@ -622,6 +617,10 @@ const SkillsManager = {
 document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('skills')) {
         SkillsManager.init();
+        // Auto-open popup with first category
+        setTimeout(() => {
+            SkillsManager.showCategory('webDevelopment', 'Web Development');
+        }, 100);
     }
 });
 

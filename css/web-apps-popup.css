@@ -1,35 +1,19 @@
-/* WEB APPS POPUP CONTAINER */
 #web-swiper-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
+    position: relative;
     display: none;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
 }
 
 #web-popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(10px);
-    z-index: 1;
-    /* Removed animation for instant appearance */
+    display: none;
 }
 
 #web-swiper-container .popup-content {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 1000px;
-    height: 80vh;
-    max-height: 700px;
+    position: relative;
+    width: 100%;
+    height: auto;
     background: rgba(2, 6, 23, 0.92);
     backdrop-filter: blur(20px);
     border-radius: 24px;
@@ -39,7 +23,6 @@
         0 0 80px rgba(16, 185, 129, 0.22),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
     z-index: 2;
-    /* Removed animation for instant center appearance */
     display: flex;
     flex-direction: column;
 }
@@ -48,12 +31,29 @@
 #web-swiper-container .popup-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 1.2rem 1.5rem;
     background: linear-gradient(135deg, #10b981, #f97316);
     color: white;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     flex-shrink: 0;
+    position: relative;
+}
+
+#web-swiper-container .popup-header .popup-icon-nav {
+    flex: 1;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0;
+    background: transparent;
+    border-bottom: none;
+}
+
+#web-swiper-container .popup-header .popup-close-btn {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #web-swiper-container .popup-title {
@@ -89,23 +89,25 @@
     transform: rotate(90deg);
 }
 
-/* Icon Navigation */
+/* Icon Navigation - Matching Mobile Style */
 #web-icon-nav-top {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1rem;
     padding: 1rem;
-    background: rgba(2, 6, 23, 0.62);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(16, 185, 129, 0.22);
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: none;
     flex-shrink: 0;
     flex-wrap: wrap;
 }
 
 #web-icon-nav-top .icon-nav-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 15px;
+    width: auto;
+    min-width: 100px;
+    height: 45px;
+    padding: 0 1.2rem;
+    border-radius: 12px;
     border: 2px solid rgba(16, 185, 129, 0.32);
     background: rgba(2, 6, 23, 0.42);
     backdrop-filter: blur(10px);
@@ -114,11 +116,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    font-size: 1.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
     box-shadow: 
         0 4px 12px rgba(0, 0, 0, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+#web-icon-nav-top .icon-nav-btn span {
+    display: inline-block;
 }
 
 #web-icon-nav-top .icon-nav-btn:hover {
@@ -145,7 +153,7 @@
 /* Main Swiper Container */
 #webSwiper {
     width: 100%;
-    height: 100%;
+    height: auto;
     flex: 1;
     overflow: hidden;
 }
@@ -256,7 +264,8 @@
 /* SINGLE IMAGE CONTAINER - NEW STYLE */
 #webSwiper .single-image-container {
     width: 100%;
-    height: 90%;
+    height: auto;
+    aspect-ratio: 16 / 9;
     margin-bottom: 1.5rem;
     border-radius: 15px;
     overflow: hidden;
@@ -282,7 +291,7 @@
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     transition: transform 0.5s ease;
 }
 
@@ -482,29 +491,40 @@
 /* Features Section */
 #webSwiper .skill-set-features {
     background: linear-gradient(135deg, 
-        rgba(var(--primary-color-rgb), 0.08), 
-        rgba(var(--secondary-color-rgb), 0.03));
-    border-radius: 12px;
-    padding: 1.3rem;
-    border: 1px solid rgba(var(--primary-color-rgb), 0.15);
-    margin-top: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        rgba(var(--primary-color-rgb), 0.1), 
+        rgba(var(--secondary-color-rgb), 0.05));
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(var(--primary-color-rgb), 0.2);
+    margin-top: 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 #webSwiper .features-title {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: var(--text);
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
     font-weight: 600;
+    padding-left: 0;
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 0.5rem;
     text-align: center;
 }
 
-#webSwiper .features-title i {
+#webSwiper .features-title::before {
+    content: '▶';
+    position: absolute;
+    left: -20px;
     color: var(--primary-color);
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#webSwiper .features-title:hover::before {
+    opacity: 1;
 }
 
 #webSwiper .features-list {
@@ -554,9 +574,9 @@
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: rgba(var(--surface-rgb), 0.9);
-    border: 2px solid var(--border);
-    color: var(--text);
+    background: black;
+    border: 2px solid white;
+    color: white;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -570,9 +590,9 @@
 
 #web-prev-card:hover,
 #web-next-card:hover {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-color: transparent;
-    color: white;
+    background: white;
+    border-color: black;
+    color: black;
     transform: scale(1.1);
     box-shadow: 0 6px 20px rgba(var(--primary-color-rgb), 0.3);
 }
@@ -615,7 +635,8 @@
     }
     
     #webSwiper .single-image-container {
-        height: 280px;
+        height: auto;
+        aspect-ratio: 16 / 9;
     }
     
     #web-card-navigation {
@@ -645,19 +666,34 @@
         display: none;
     }
     
+    #web-swiper-container .popup-header {
+        padding: 1rem;
+    }
+    
+    #web-swiper-container .popup-header .popup-icon-nav {
+        gap: 0.6rem;
+    }
+    
+    #web-swiper-container .popup-header .popup-close-btn {
+        width: 35px;
+        height: 35px;
+    }
+    
     #web-icon-nav-top {
-        gap: 1rem;
+        gap: 0.8rem;
         padding: 0.8rem;
     }
     
     #web-icon-nav-top .icon-nav-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1.2rem;
+        min-width: 90px;
+        height: 40px;
+        padding: 0 1rem;
+        font-size: 0.85rem;
     }
     
     #webSwiper .single-image-container {
-        height: 250px;
+        height: auto;
+        aspect-ratio: 16 / 9;
         margin-bottom: 1.2rem;
     }
     
@@ -705,6 +741,32 @@
         border-radius: 0;
     }
     
+    #web-swiper-container .popup-header {
+        padding: 0.8rem;
+    }
+    
+    #web-swiper-container .popup-header .popup-icon-nav {
+        gap: 0.5rem;
+    }
+    
+    #web-swiper-container .popup-header .popup-close-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+    
+    #web-icon-nav-top {
+        gap: 0.6rem;
+        padding: 0.6rem;
+    }
+    
+    #web-icon-nav-top .icon-nav-btn {
+        min-width: 80px;
+        height: 38px;
+        padding: 0 0.8rem;
+        font-size: 0.8rem;
+    }
+    
     #webSwiper .project-info {
         padding: 1.2rem;
     }
@@ -718,7 +780,8 @@
     }
     
     #webSwiper .single-image-container {
-        height: 220px;
+        height: auto;
+        aspect-ratio: 16 / 9;
         margin-bottom: 1rem;
         border-radius: 12px;
     }
@@ -764,7 +827,7 @@
     }
     
     #webSwiper .single-image-container {
-        height: 200px;
+        height: 463px;
     }
     
     #webSwiper .project-info {

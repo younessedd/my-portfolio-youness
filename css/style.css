@@ -433,6 +433,38 @@ p {
     flex-direction: column;
 }
 
+/* In-section popups (Skills/Web/Mobile/IoT): override the global fullscreen modal rules */
+#web-swiper-container.popup-container,
+#mobile-swiper-container.popup-container,
+#iot-swiper-container.popup-container {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    z-index: 10;
+}
+
+#skills-swiper-container .popup-content,
+#web-swiper-container .popup-content,
+#mobile-swiper-container .popup-content,
+#iot-swiper-container .popup-content {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    border-radius: 24px !important;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(16, 185, 129, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    border: none !important;
+}
+
 /* Responsive popup content adjustments */
 @media (max-width: 768px) {
     .popup-content {
@@ -444,6 +476,20 @@ p {
         max-width: none !important;
         max-height: none !important;
         border-radius: 0 !important;
+    }
+
+    #skills-swiper-container .popup-content,
+    #web-swiper-container .popup-content,
+    #mobile-swiper-container .popup-content,
+    #iot-swiper-container .popup-content {
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        border-radius: 24px !important;
     }
 }
 
@@ -457,6 +503,20 @@ p {
         max-width: none !important;
         max-height: none !important;
         border-radius: 0 !important;
+    }
+
+    #skills-swiper-container .popup-content,
+    #web-swiper-container .popup-content,
+    #mobile-swiper-container .popup-content,
+    #iot-swiper-container .popup-content {
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        border-radius: 24px !important;
     }
 }
 
@@ -962,485 +1022,8 @@ footer {
     line-height: 1.2;
 }
 
-/* WEB APPS POPUP CONTAINER */
-#web-swiper-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    display: none;
-}
-
-#web-popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(10px);
-    z-index: 1;
-    animation: fadeIn 0.3s ease;
-}
-
-#web-swiper-container .popup-content {
-    position: fixed;
-    top: 0 !important;
-    left: 0 !important;
-    transform: none !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    max-width: 100vw !important;
-    max-height: 100vh !important;
-    background: var(--surface);
-    border-radius: 0 !important;
-    overflow: hidden;
-    box-shadow: none !important;
-    border: none !important;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-}
-
-/* WEB APPS POPUP HEADER */
-#web-swiper-container .popup-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.5rem;
-    position: relative;
-}
-
-#web-swiper-container .popup-header .popup-icon-nav {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    border-bottom: none;
-    padding: 0;
-    background: transparent;
-}
-
-#web-swiper-container .popup-header .popup-close-btn {
-    position: absolute;
-    right: 2%;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-#web-swiper-container .popup-title {
-    font-size: 1.4rem;
-    color: white;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-#web-swiper-container .popup-title i {
-    font-size: 1.3rem;
-}
-
-#web-close-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-    font-size: 1.2rem;
-}
-
-#web-close-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: rotate(90deg);
-}
-
-/* WEB APPS ICON NAVIGATION */
-#web-popup-icon-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1.5rem;
-    background: var(--bg-color);
-    border-bottom: 1px solid var(--border-color);
-    flex-shrink: 0;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
-}
-
-#web-icon-nav-top .icon-nav-btn {
-    width: 50px;
-    height: 80px;
-    border-radius: 15px;
-    border: 2px solid var(--border-color) !important;
-    background: var(--card-bg);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-    font-size: 1.4rem;
-}
-
-.icon-nav-btn i {
-    font-size: 2.2rem;
-    margin-bottom: 0.2rem;
-    color: var(--primary-color);
-    transition: all 0.3s ease;
-}
-
-.icon-nav-btn span {
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    text-align: center;
-    line-height: 1.3;
-    display: block; /* Ensure title is shown */
-    color: var(--text-color);
-    transition: all 0.3s ease;
-}
-
-.icon-nav-btn:hover {
-    border-color: var(--primary-color) !important;
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
-    background: var(--bg-color);
-    color: var(--primary-color) !important;
-}
-
-.icon-nav-btn:hover i {
-    transform: scale(1.2) rotate(5deg);
-    color: var(--primary-color) !important;
-}
-
-.icon-nav-btn:hover span {
-    color: var(--primary-color) !important;
-}
-
-.icon-nav-btn.active {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
-    border-color: transparent !important;
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(var(--primary-color-rgb), 0.3);
-}
-
-.icon-nav-btn.active i,
-.icon-nav-btn.active span {
-    color: #ffffff !important;
-    transform: scale(1.1);
-}
-
-.icon-nav-btn.active span {
-    letter-spacing: 1px;
-}
-
-/* Mobile adjustments for icon nav */
-@media (max-width: 768px) {
-    #web-popup-icon-nav {
-        gap: 0.8rem;
-        padding: 1rem;
-    }
-    
-    .icon-nav-btn {
-        min-width: 120px;
-        height: 100px;
-        padding: 0.8rem;
-        gap: 0.5rem;
-    }
-    
-    .icon-nav-btn i {
-        font-size: 1.8rem;
-    }
-    
-    .icon-nav-btn span {
-        font-size: 0.8rem;
-        letter-spacing: 0.3px;
-    }
-}
-
-/* WEB APPS SWIPER */
-#webSwiper {
-    width: 100%;
-    height: 100%;
-    flex: 1;
-    overflow: hidden;
-}
-
-#webSwiper .swiper-wrapper {
-    height: 100%;
-}
-
-#webSwiper .swiper-slide {
-    height: 100%;
-    overflow: hidden;
-}
-
-/* WEB APPS PROJECT CARD */
-#webSwiper .project-card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-#webSwiper .project-info {
-    height: 100%;
-    flex: 1;
-    overflow-y: auto;
-    padding: 2rem;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) var(--border);
-    position: relative;
-    overscroll-behavior: contain;
-}
-
-#webSwiper .project-info::-webkit-scrollbar {
-    width: 8px;
-}
-
-#webSwiper .project-info::-webkit-scrollbar-track {
-    background: var(--border);
-    border-radius: 4px;
-}
-
-#webSwiper .project-info::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-radius: 4px;
-}
-
-/* WEB APPS CATEGORY CONTENT */
-#webSwiper .skills-category-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-#webSwiper .skill-main-title {
-    font-size: 2rem;
-    color: var(--text);
-    margin-bottom: 1rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-#webSwiper .skill-main-description {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 2rem;
-}
-
-/* UPDATED: WEB APPS PROJECT IMAGES - REMOVED PADDING FOR 100% COVERAGE */
-#webSwiper .project-images-container {
-    width: 100%;
-    height: 400px;
-    margin-bottom: 2rem;
-    border-radius: 15px;
-    overflow: hidden;
-    border: 2px solid var(--border);
-    background: var(--background);
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* Ensure single-image-container has auto height */
-#webSwiper .project-images-container.single-image-container {
-    height: auto;
-}
-
-#webSwiper .project-image-slide {
-    padding: 0 !important; /* إزالة padding لتأخذ الصورة المساحة بالكامل */
-}
-
-/* Auto scroll animation container */
-#webSwiper .auto-scroll-container {
-    width: 500%; /* 5 images = 500% width */
-    height: 100%;
-    display: flex;
-    animation: autoScroll 30s infinite linear;
-}
-
-#webSwiper .project-image-slide {
-    width: 20%; /* Each image takes 20% of container */
-    height: 100%;
-    background: transparent;
-    flex-shrink: 0;
-}
-
-/* Auto scroll indicator */
-#webSwiper .auto-scroll-indicator {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(var(--surface-rgb), 0.8);
-    padding: 6px 12px;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    color: var(--text);
-    z-index: 10;
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-#webSwiper .auto-scroll-indicator i {
-    font-size: 0.8rem;
-    animation: pulse 2s infinite;
-    color: var(--primary-color);
-}
-
-/* WEB APPS PROJECT LINKS */
-#webSwiper .project-links-top {
-    display: flex;
-    gap: 1rem;
-    margin: 2rem 0;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-#webSwiper .project-link {
-    padding: 1rem 2rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    text-decoration: none;
-    border-radius: 12px;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-}
-
-#webSwiper .project-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.1) 0%,
-        rgba(255, 255, 255, 0.05) 100%);
-    z-index: -1;
-    transition: opacity 0.3s ease;
-}
-
-#webSwiper .project-link:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(var(--primary-color-rgb), 0.3);
-}
-
-#webSwiper .project-link i {
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
-}
-
-#webSwiper .project-link:hover i {
-    transform: translateX(5px);
-}
-
-/* WEB APPS TECH TAGS */
-#webSwiper .tech-tags-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin: 1.5rem 0;
-}
-
-#webSwiper .tech-tag {
-    padding: 0.8rem 1.2rem;
-    border-radius: 15px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border: 2px solid transparent;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-}
-
-/* WEB APPS FEATURES SECTION */
-#webSwiper .skill-set-features {
-    background: linear-gradient(135deg, 
-        rgba(var(--primary-color-rgb), 0.1), 
-        rgba(var(--secondary-color-rgb), 0.05));
-    border-radius: 15px;
-    padding: 1.5rem;
-    border: 1px solid rgba(var(--primary-color-rgb), 0.2);
-    margin-top: 2rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-#webSwiper .features-title {
-    font-size: 1.3rem;
-    color: var(--text);
-    margin-bottom: 1rem;
-    font-weight: 600;
-    padding-left: 0;
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-#webSwiper .features-title::before {
-    content: '▶';
-    position: absolute;
-    left: -20px;
-    color: var(--primary-color);
-    font-size: 0.8rem;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-#webSwiper .features-title:hover::before {
-    opacity: 1;
-}
-
-#webSwiper .features-list {
-    list-style: none;
-    padding-left: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-#webSwiper .features-list li {
-    padding: 0.8rem 1rem;
-    color: var(--text-secondary);
-    background: rgba(var(--surface-rgb), 0.7);
-    border-radius: 10px;
-    border-left: 4px solid var(--primary-color);
-    transition: all 0.3s ease;
-    position: relative;
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-#webSwiper .features-list li:hover {
-    transform: translateX(5px);
-    background: rgba(var(--primary-color-rgb), 0.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
+/* WEB APPS POPUP STYLES MOVED TO web-apps-popup.css TO AVOID CONFLICTS */
+/* All web popup styles are now in web-apps-popup.css to prevent conflicts */
 
 /* ============================================
    MOBILE APPS SECTION
@@ -1953,11 +1536,10 @@ footer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    margin: 3rem auto 0;
-    max-width: 900px;
     justify-content: center;
     justify-items: center;
-    padding: 1rem;
+    max-width: 900px;
+    margin: 3rem auto;
 }
 
 /* For 1 button - center it perfectly */
