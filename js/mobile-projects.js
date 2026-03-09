@@ -108,6 +108,14 @@ const MobileProjectsManager = {
             e.stopPropagation();
             this.closePopup();
         });
+        
+        // Allow scroll to pass through to body when cursor is in popup
+        if (this.elements.popupContainer) {
+            this.elements.popupContainer.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                window.scrollBy(0, e.deltaY);
+            }, { passive: false });
+        }
     },
     
     setupOverlayClick: function() {
