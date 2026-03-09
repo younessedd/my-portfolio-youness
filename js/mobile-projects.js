@@ -205,7 +205,6 @@ const MobileProjectsManager = {
         this.navigationLock = false;
         
         this.elements.popupContainer.style.display = 'block';
-        document.body.style.overflow = 'hidden';
         
         this.updateCategoryTitle(firstCategory, firstCategoryName);
         this.updateIconNavigation(firstCategory);
