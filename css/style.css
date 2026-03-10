@@ -441,6 +441,7 @@ p {
         0 0 80px rgba(16, 185, 129, 0.22),
         inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
     border: none !important;
+    pointer-events: auto !important;
 }
 
 /* Responsive popup content adjustments */
@@ -1122,9 +1123,9 @@ footer {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     border: 1px solid var(--border);
     z-index: 2;
-    /* Removed animation for instant center appearance */
     display: flex;
     flex-direction: column;
+    pointer-events: auto !important;
 }
 
 /* SKILLS APPS POPUP HEADER */
