@@ -5,7 +5,6 @@
     /* Ensure full width on tablets with body centering */
     body {
         width: 100vw;
-        overflow-x: hidden;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -108,7 +107,6 @@
     /* Ensure full width on mobile with body centering */
     body {
         width: 100vw;
-        overflow-x: hidden;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -264,7 +262,6 @@
     /* Ensure full viewport width */
     body {
         width: 100vw;
-        overflow-x: hidden;
     }
     
     .container {
