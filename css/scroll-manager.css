@@ -115,6 +115,24 @@ body:not(.scroll-locked) .popup-container {
         pointer-events: auto;
     }
     
+    /* Allow touch events to pass through popup overlays to enable page scrolling */
+    body:not(.scroll-locked) .popup-overlay {
+        pointer-events: none;
+    }
+    
+    /* Allow touch events only on popup content, not containers */
+    body:not(.scroll-locked) .popup-container {
+        pointer-events: none;
+    }
+    
+    body:not(.scroll-locked) .popup-container > *,
+    body:not(.scroll-locked) .popup-container .swiper-slide,
+    body:not(.scroll-locked) .popup-container .project-info {
+        pointer-events: auto;
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+    }
+    
     body:not(.scroll-locked) > * {
         touch-action: auto;
         pointer-events: auto;
@@ -166,6 +184,24 @@ body:not(.scroll-locked) .popup-container {
         -webkit-overflow-scrolling: touch;
         overscroll-behavior: contain;
         pointer-events: auto;
+    }
+    
+    /* Allow touch events to pass through popup overlays on iOS */
+    body:not(.scroll-locked) .popup-overlay {
+        pointer-events: none;
+    }
+    
+    /* Allow touch events only on popup content on iOS */
+    body:not(.scroll-locked) .popup-container {
+        pointer-events: none;
+    }
+    
+    body:not(.scroll-locked) .popup-container > *,
+    body:not(.scroll-locked) .popup-container .swiper-slide,
+    body:not(.scroll-locked) .popup-container .project-info {
+        pointer-events: auto;
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
     }
 }
 
