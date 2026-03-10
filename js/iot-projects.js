@@ -702,21 +702,20 @@ const IoTProjectsManager = {
             slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
-            speed: 100, // ⚡ Super Fast
-            
-            // إعدادات السلاسة
-            resistanceRatio: 0.3,
-            touchRatio: 1, // Optimal touch response
+            speed: 100,
+            resistanceRatio: 0.85,
+            touchRatio: 1,
             followFinger: true,
-            threshold: 2, // Lower threshold for swipe
+            threshold: 20,
             shortSwipes: true,
             longSwipesRatio: 0.5,
+            nested: true,
+            grabCursor: true,
+            cssMode: false,
             
-            // الانتقال السلس
             transitionStart: true,
             transitionEnd: true,
             
-            // Pagination
             pagination: {
                 el: '.popup-counter',
                 type: 'fraction',
