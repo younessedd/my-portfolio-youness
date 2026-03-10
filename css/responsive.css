@@ -148,24 +148,19 @@
         justify-content: center;
     }
     
-    /* Fix popup containers for mobile - scroll with page */
+    /* Fix popup containers for mobile */
     .popup-content {
         width: 100%;
-        height: auto;
+        height: 100vh;
         max-width: none;
-        margin: 20px auto;
-        top: auto;
-        left: auto;
+        margin: 0 auto;
+        top: 0;
+        left: 0;
         transform: none;
-        position: relative;
+        position: fixed;
         text-align: center;
-        min-height: 700px;
-        border-radius: 24px;
-        background: var(--popup-bg-light);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        border: 1px solid var(--border);
     }
-
+    
     .popup-container.active .popup-content {
         transform: none;
     }

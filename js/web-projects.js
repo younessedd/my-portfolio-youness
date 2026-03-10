@@ -211,7 +211,6 @@ const WebProjectsManager = {
         this.navigationLock = false;
         
         this.elements.popupContainer.style.display = 'block';
-        document.body.style.overflow = 'hidden';
         
         this.updateCategoryTitle(firstCategory, firstCategoryName);
         this.updateIconNavigation(firstCategory);
@@ -680,45 +679,57 @@ const WebProjectsManager = {
     initMainSwiper: function() {
         if (!this.elements.swiper) return;
 
-        // Disable swiper sliding to allow natural page scrolling
         this.swiperInstance = new Swiper(this.elements.swiper, {
             slidesPerView: 1,
-            spaceBetween: 0,
-            loop: false,
-            speed: 0, // Disable transitions for natural scrolling
-            resistanceRatio: 0,
-            touchRatio: 0, // Disable touch sliding
-            followFinger: false,
-            threshold: 0,
-            shortSwipes: false,
-            longSwipesRatio: 0,
-            allowTouchMove: false, // Disable touch move for natural scrolling
-            pagination: false, // Disable pagination
-            navigation: false, // Disable navigation
+            spaceBetween: 30,
+            loop: true,
+            speed: 100,
+            resistanceRatio: 0.3,
+            touchRatio: 1,
+            followFinger: true,
+            threshold: 2,
+            shortSwipes: true,
+            longSwipesRatio: 0.5,
+            pagination: {
+                el: '.popup-counter',
+                type: 'fraction',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: this.elements.nextCardBtn,
+                prevEl: this.elements.prevCardBtn,
+            },
             on: {
                 init: () => {
-                    // Remove swiper styles that interfere with natural scrolling
-                    this.elements.swiper.style.overflow = 'visible';
-                    this.elements.swiper.style.height = 'auto';
-                    
-                    const wrapper = this.elements.swiper.querySelector('.swiper-wrapper');
-                    if (wrapper) {
-                        wrapper.style.display = 'block';
-                        wrapper.style.height = 'auto';
-                        wrapper.style.transform = 'none';
-                    }
-                    
-                    // Make all slides visible for natural scrolling
-                    const slides = this.elements.swiper.querySelectorAll('.swiper-slide');
-                    slides.forEach(slide => {
-                        slide.style.position = 'relative';
-                        slide.style.height = 'auto';
-                        slide.style.overflow = 'visible';
-                        slide.style.display = 'block';
-                        slide.style.transform = 'none';
+                    this.elements.swiper.querySelectorAll('.image-gallery-container .swiper-container').forEach(container => {
+                        new Swiper(container, {
+                            loop: true,
+                            pagination: {
+                                el: container.querySelector('.swiper-pagination'),
+                                clickable: true,
+                            },
+                            navigation: {
+                                nextEl: container.querySelector('.swiper-button-next'),
+                                prevEl: container.querySelector('.swiper-button-prev'),
+                            },
+                        });
                     });
-                    
-                    console.log('📜 Swiper disabled - natural page scrolling enabled');
+                },
+                slideChange: () => {
+                    if (!this.swiperInstance) return;
+                    const activeSlide = this.swiperInstance.slides[this.swiperInstance.activeIndex];
+                    const category = activeSlide.dataset.category;
+                    const cardIndex = parseInt(activeSlide.dataset.cardIndex, 10);
+
+                    if (category) {
+                        this.currentCategory = category;
+                        this.currentCardIndex = cardIndex;
+                        const categoryName = this.categoryNames[category];
+                        this.updateIconNavigation(category);
+                        this.updateCardCounter(category);
+                        this.updateActiveButton(category);
+                        this.updateCategoryTitle(category, categoryName);
+                    }
                 }
             }
         });
@@ -737,7 +748,6 @@ const WebProjectsManager = {
         }
         
         this.elements.popupContainer.style.display = 'none';
-        document.body.style.overflow = '';
         
         if (this.elements.nav) {
             this.elements.nav.querySelectorAll('.skill-nav-btn').forEach(btn => {

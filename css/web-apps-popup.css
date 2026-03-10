@@ -4,6 +4,9 @@
     width: 100%;
     height: auto;
     margin-top: 20px;
+    touch-action: pan-y;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 #web-popup-overlay {
@@ -153,23 +156,18 @@
 /* Main Swiper Container */
 #webSwiper {
     width: 100%;
-    height: auto !important;
+    height: auto;
     flex: 1;
-    overflow: visible !important; /* Allow natural page flow */
+    overflow: hidden;
 }
 
 #webSwiper .swiper-wrapper {
-    height: auto !important; /* Allow content to flow naturally */
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 20px !important;
+    height: 100%;
 }
 
 #webSwiper .swiper-slide {
-    height: auto !important;
-    overflow: visible !important; /* Allow content to flow */
-    width: 100% !important;
-    margin: 0 !important;
+    height: 100%;
+    overflow: hidden;
 }
 
 /* Project Card */
@@ -180,11 +178,14 @@
 }
 
 #webSwiper .project-info {
-    height: auto !important; /* Remove fixed height for natural flow */
+    height: 100%;
     flex: 1;
-    overflow: visible !important; /* Remove internal scrolling, let content flow with page */
+    overflow-y: auto;
     padding: 2rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--border);
     position: relative;
+    overscroll-behavior: contain;
 }
 
 #webSwiper .project-info::-webkit-scrollbar {

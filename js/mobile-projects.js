@@ -205,7 +205,6 @@ const MobileProjectsManager = {
         this.navigationLock = false;
         
         this.elements.popupContainer.style.display = 'block';
-        document.body.style.overflow = 'hidden';
         
         this.updateCategoryTitle(firstCategory, firstCategoryName);
         this.updateIconNavigation(firstCategory);
@@ -725,7 +724,6 @@ const MobileProjectsManager = {
         }
         
         this.elements.popupContainer.style.display = 'none';
-        document.body.style.overflow = '';
         
         if (this.elements.nav) {
             this.elements.nav.querySelectorAll('.skill-nav-btn').forEach(btn => {

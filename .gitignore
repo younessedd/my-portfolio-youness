@@ -103,15 +103,7 @@ Thumbs.db
 *.tmp
 *.temp
 
-# Vercel
 .vercel
-.vercel/
-
-# Environment variables
 .env*.local
-
-# Build outputs
-dist/
-build/
 
 .vercel
