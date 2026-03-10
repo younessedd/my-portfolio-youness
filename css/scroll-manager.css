@@ -1,0 +1,193 @@
+/* ============================================
+   SCROLL MANAGER STYLES
+   Supports the comprehensive scroll control system
+============================================ */
+
+/* Scroll lock styles applied by JavaScript */
+body.scroll-locked {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+/* Prevent layout shift when scroll is locked */
+body.scroll-locked header,
+body.scroll-locked .fixed,
+body.scroll-locked [style*="position: fixed"],
+body.scroll-locked [style*="position:fixed"] {
+    transition: padding-right 0.3s ease;
+}
+
+/* Smooth scroll behavior for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Override smooth scroll when scroll manager is handling it */
+html.scroll-manager-active {
+    scroll-behavior: auto;
+}
+
+/* Ensure proper stacking context for popups */
+.popup-overlay,
+.swiper-container,
+.popup-container {
+    z-index: 1000;
+}
+
+/* Higher z-index for scroll-locked body content */
+body.scroll-locked > *:not(.popup-overlay):not(.swiper-container):not(.popup-container) {
+    z-index: 1;
+}
+
+/* Prevent touch momentum scrolling on iOS when locked */
+@supports (-webkit-touch-callout: none) {
+    body.scroll-locked {
+        -webkit-overflow-scrolling: touch;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        touch-action: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+}
+
+/* Mobile touch scroll prevention for popups */
+body.scroll-locked .popup-overlay,
+body.scroll-locked .swiper-container,
+body.scroll-locked .popup-container {
+    touch-action: pan-y pinch-zoom;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+/* Prevent body scroll when popup is open on mobile */
+@media (max-width: 768px) {
+    body.scroll-locked {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        touch-action: none;
+        -webkit-touch-callout: none;
+    }
+    
+    /* Allow scrolling inside popup content only */
+    body.scroll-locked .popup-container {
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+    
+    /* Prevent scroll on all background elements */
+    body.scroll-locked > *:not(.popup-overlay):not(.swiper-container):not(.popup-container) {
+        touch-action: none;
+        pointer-events: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    
+    /* Ensure popup content is scrollable */
+    body.scroll-locked .swiper-slide,
+    body.scroll-locked .project-info {
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+}
+
+/* Enhanced touch prevention for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    body.scroll-locked {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        touch-action: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-overflow-scrolling: auto;
+    }
+    
+    /* Allow touch scrolling only inside popup content */
+    body.scroll-locked .popup-container {
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+    
+    /* Prevent all touch on background */
+    body.scroll-locked > *:not(.popup-overlay):not(.swiper-container):not(.popup-container) {
+        touch-action: none;
+        pointer-events: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+}
+
+/* Firefox scrollbar width fix */
+@supports selector(::-moz-selection) {
+    body.scroll-locked {
+        scrollbar-width: none;
+    }
+}
+
+/* Ensure smooth transitions for scroll-related changes */
+header,
+.fixed,
+[style*="position: fixed"],
+[style*="position:fixed"] {
+    transition: padding-right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Prevent content jump when scrollbar disappears */
+.scrollbar-compensate {
+    padding-right: var(--scrollbar-width, 0);
+}
+
+/* Support for reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    
+    header,
+    .fixed,
+    [style*="position: fixed"],
+    [style*="position:fixed"] {
+        transition: none;
+    }
+}
+
+/* Mobile-specific scroll handling */
+@media (max-width: 768px) {
+    body.scroll-locked {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    body.scroll-locked {
+        outline: 2px solid currentColor;
+    }
+}
+
+/* Print styles - ensure scroll is unlocked when printing */
+@media print {
+    body {
+        overflow: visible !important;
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        padding-right: 0 !important;
+    }
+}
