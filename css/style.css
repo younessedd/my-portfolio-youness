@@ -410,7 +410,7 @@ p {
     backdrop-filter: blur(10px);
     z-index: 1;
     animation: fadeIn 0.3s ease;
-    /* Allow touch events to pass through for mobile scrolling */
+    /* Allow touch events to pass through for page scrolling */
     pointer-events: none;
 }
 
@@ -431,7 +431,7 @@ p {
     z-index: 2;
     display: flex;
     flex-direction: column;
-    /* Allow touch events on popup content only */
+    /* Allow touch events on popup content for interaction */
     pointer-events: auto;
 }
 
@@ -454,15 +454,24 @@ p {
     display: flex;
     flex-direction: column;
     margin: 20px auto;
-    /* Allow touch events to pass through to background */
+    /* Allow page scrolling through popup container */
     pointer-events: none;
 }
 
-/* Allow touch events only on popup content elements */
+/* Allow touch events only on interactive popup content elements */
 #web-swiper-container.popup-container > *,
 #mobile-swiper-container.popup-container > *,
 #iot-swiper-container.popup-container > * {
     pointer-events: auto;
+}
+
+/* Allow page scrolling through popup container */
+#web-swiper-container.popup-container,
+#mobile-swiper-container.popup-container,
+#iot-swiper-container.popup-container {
+    /* Page can scroll through this container */
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
 }
 
 #skills-swiper-container.popup-container {
@@ -2031,3 +2040,70 @@ footer {
 /* ============================================
    END OF COMPLETE CSS FILE
 ============================================ */
+
+/* ============================================
+   MOBILE POPUP SCROLLING FIX
+   Allow popup to scroll with main app on touch
+============================================ */
+
+@media (max-width: 768px) {
+    /* Allow touch events to pass through popup overlays for page scrolling */
+    .popup-overlay {
+        pointer-events: none !important;
+        touch-action: pan-y !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    /* Allow popup containers to pass touch events to page for scrolling */
+    .popup-container {
+        pointer-events: none !important;
+        touch-action: pan-y !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    /* Keep interactive elements working (buttons, navigation, etc.) */
+    .popup-container > *,
+    .popup-content,
+    .swiper-slide,
+    .project-card,
+    .popup-header button,
+    .card-nav-btn,
+    .skill-nav-btn,
+    .swiper-button-next,
+    .swiper-button-prev,
+    .popup-close-btn {
+        pointer-events: auto !important;
+    }
+
+    /* Ensure page can scroll through all popup areas */
+    body {
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+    }
+
+    /* Allow swiper navigation and interactive elements */
+    .swiper-pagination,
+    .swiper-pagination-bullet {
+        pointer-events: auto !important;
+    }
+}
+
+/* Additional mobile touch optimizations */
+@media (pointer: coarse) {
+    /* For touch devices, ensure popup areas don't block scrolling */
+    .popup-overlay,
+    .popup-container {
+        pointer-events: none;
+        touch-action: pan-y;
+    }
+
+    /* Re-enable pointer events for interactive popup elements */
+    .popup-container .popup-header,
+    .popup-container .card-nav-btn,
+    .popup-container .skill-nav-btn,
+    .popup-container .project-links-top a,
+    .popup-container .swiper-button-next,
+    .popup-container .swiper-button-prev {
+        pointer-events: auto;
+    }
+}
