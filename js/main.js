@@ -71,7 +71,6 @@ function setupEventListeners() {
             if (icon) {
                 icon.className = mobileMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
             }
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         });
         
         // إغلاق القائمة عند النقر على الروابط
@@ -80,7 +79,6 @@ function setupEventListeners() {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
                 burgerBtn.querySelector('i').className = 'fas fa-bars';
-                document.body.style.overflow = '';
             });
         });
     }
@@ -96,7 +94,6 @@ function setupEventListeners() {
                 if (mobileMenu && mobileMenu.classList.contains('active')) {
                     mobileMenu.classList.remove('active');
                     burgerBtn.querySelector('i').className = 'fas fa-bars';
-                    document.body.style.overflow = '';
                 }
                 
                 const headerHeight = document.querySelector('header').offsetHeight || 80;
@@ -262,7 +259,6 @@ function setupKeyboardListeners() {
                 if (burgerBtn) {
                     burgerBtn.querySelector('i').className = 'fas fa-bars';
                 }
-                document.body.style.overflow = '';
             }
         }
     });
@@ -280,7 +276,6 @@ function handleResize() {
         if (burgerBtn) {
             burgerBtn.querySelector('i').className = 'fas fa-bars';
         }
-        document.body.style.overflow = '';
     }
 }
 

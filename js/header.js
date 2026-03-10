@@ -63,13 +63,11 @@ class CleanHeader {
     // Open mobile menu
     openMobileMenu() {
         this.mobileMenu.classList.add('active');
-        document.body.style.overflow = 'hidden';
     }
     
     // Close mobile menu
     closeMobileMenu() {
         this.mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
     }
     
     // Setup navigation with IntersectionObserver

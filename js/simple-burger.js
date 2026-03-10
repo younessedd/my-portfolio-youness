@@ -173,9 +173,6 @@ class SimpleBurger {
         // Update burger button
         this.burgerBtn.classList.add('active');
         
-        // Lock body scroll
-        document.body.style.overflow = 'hidden';
-        
         console.log('🍔 Mobile menu opened');
     }
     

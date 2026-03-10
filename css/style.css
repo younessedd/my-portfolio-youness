@@ -59,8 +59,8 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
-    /* Prevent horizontal scroll */
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -70,17 +70,16 @@ body {
     line-height: 1.5;
     transition: background-color 0.3s ease, color 0.3s ease;
     min-height: 100vh;
-    /* Prevent horizontal scroll on mobile */
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
-    /* Body centering for all screens */
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     text-align: center;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Mobile-first base styles with body centering */
