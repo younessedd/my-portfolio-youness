@@ -180,14 +180,11 @@
 }
 
 #webSwiper .project-info {
-    height: 100%;
+    height: auto !important; /* Remove fixed height for natural flow */
     flex: 1;
-    overflow-y: auto;
+    overflow: visible !important; /* Remove internal scrolling, let content flow with page */
     padding: 2rem;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) var(--border);
     position: relative;
-    overscroll-behavior: contain;
 }
 
 #webSwiper .project-info::-webkit-scrollbar {
