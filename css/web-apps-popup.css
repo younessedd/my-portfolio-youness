@@ -153,18 +153,23 @@
 /* Main Swiper Container */
 #webSwiper {
     width: 100%;
-    height: auto;
+    height: auto !important;
     flex: 1;
-    overflow: hidden;
+    overflow: visible !important; /* Allow natural page flow */
 }
 
 #webSwiper .swiper-wrapper {
-    height: 100%;
+    height: auto !important; /* Allow content to flow naturally */
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
 }
 
 #webSwiper .swiper-slide {
-    height: 100%;
-    overflow: hidden;
+    height: auto !important;
+    overflow: visible !important; /* Allow content to flow */
+    width: 100% !important;
+    margin: 0 !important;
 }
 
 /* Project Card */
