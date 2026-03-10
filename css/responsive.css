@@ -5,6 +5,7 @@
     /* Ensure full width on tablets with body centering */
     body {
         width: 100vw;
+        overflow-x: hidden;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -107,6 +108,7 @@
     /* Ensure full width on mobile with body centering */
     body {
         width: 100vw;
+        overflow-x: hidden;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -262,6 +264,7 @@
     /* Ensure full viewport width */
     body {
         width: 100vw;
+        overflow-x: hidden;
     }
     
     .container {
@@ -368,6 +371,7 @@
     footer {
         width: 100vw;
         padding: 2rem 0.5rem 1rem;
+        overflow-x: hidden;
         text-align: center;
     }
     
@@ -479,6 +483,7 @@
     /* FOOTER RESPONSIVE CENTERING */
     footer {
         width: 100vw;
+        overflow-x: hidden;
         text-align: center;
     }
     

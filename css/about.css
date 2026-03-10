@@ -612,6 +612,7 @@ h3.about-name {
     #about {
         width: 100vw;
         padding: 4rem 2rem;
+        overflow-x: hidden;
     }
     
     #about .container {
@@ -670,6 +671,7 @@ h3.about-name {
     #about {
         width: 100vw;
         padding: 4rem 1rem;
+        overflow-x: hidden;
     }
     
     #about .container {
@@ -730,6 +732,7 @@ h3.about-name {
     #about {
         width: 100vw;
         padding: 3rem 0.5rem;
+        overflow-x: hidden;
     }
     
     #about .container {

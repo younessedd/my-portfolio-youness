@@ -43,6 +43,15 @@ const NavigationManager = {
                 icon.className = isActive ? 'fas fa-times' : 'fas fa-bars';
             }
             
+            // Toggle body scroll
+            if (isActive) {
+                document.documentElement.classList.add('no-scroll');
+                document.body.classList.add('no-scroll');
+            } else {
+                document.documentElement.classList.remove('no-scroll');
+                document.body.classList.remove('no-scroll');
+            }
+            
             console.log('📱 Menu state:', isActive ? 'OPEN' : 'CLOSED');
         });
         
@@ -54,6 +63,8 @@ const NavigationManager = {
                 
                 mobileMenu.classList.remove('active');
                 burgerBtn.querySelector('i').className = 'fas fa-bars';
+                document.documentElement.classList.remove('no-scroll');
+                document.body.classList.remove('no-scroll');
             }
         });
         
@@ -62,6 +73,8 @@ const NavigationManager = {
             if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
                 mobileMenu.classList.remove('active');
                 burgerBtn.querySelector('i').className = 'fas fa-bars';
+                document.documentElement.classList.remove('no-scroll');
+                document.body.classList.remove('no-scroll');
             }
         });
     },
@@ -79,6 +92,8 @@ const NavigationManager = {
                 
                 if (mobileMenu) mobileMenu.classList.remove('active');
                 if (burgerBtn) burgerBtn.querySelector('i').className = 'fas fa-bars';
+                document.documentElement.classList.remove('no-scroll');
+                document.body.classList.remove('no-scroll');
             });
         });
     },

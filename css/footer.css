@@ -9,6 +9,7 @@ footer {
     padding: 5rem 2rem 2rem;
     border-top: 1px solid var(--border);
     width: 100%;
+    overflow-x: hidden;
 }
 
 /* Footer container with full width centering */

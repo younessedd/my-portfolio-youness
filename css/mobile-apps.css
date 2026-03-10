@@ -210,6 +210,7 @@
     position: relative;
     min-height: 100vh;
     background: var(--mobile-apps-bg);
+    overflow: hidden;
 }
 
 #mobile-apps::before {
