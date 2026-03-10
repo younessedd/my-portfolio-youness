@@ -184,3 +184,299 @@
         font-size: 1.1rem;
     }
 }
+
+/* ===============================
+   Mobile Projects Card Slider
+   =============================== */
+.mobile-card-slider {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.mobile-card-slider .swiper {
+    padding-bottom: 50px;
+}
+
+.mobile-card-slider .swiper-slide {
+    height: auto;
+}
+
+.mobile-project-card {
+    background: var(--surface);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mobile-project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-stats {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.card-stats .stat {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.card-stats .stat i {
+    color: var(--accent);
+}
+
+.play-btn {
+    background: #4285F4;
+    color: white;
+}
+
+.play-btn:hover {
+    background: #3367D6;
+}
+
+/* ===============================
+   IoT Projects Card Slider
+   =============================== */
+.iot-card-slider {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.iot-card-slider .swiper {
+    padding-bottom: 50px;
+}
+
+.iot-card-slider .swiper-slide {
+    height: auto;
+}
+
+.iot-project-card {
+    background: var(--surface);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.iot-project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-features {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+}
+
+.card-features h4 {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.card-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card-features li {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding: 3px 0;
+    padding-left: 15px;
+    position: relative;
+}
+
+.card-features li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+/* ===============================
+   Skills Card Slider
+   =============================== */
+.skills-card-slider {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.skills-card-slider .swiper {
+    padding-bottom: 50px;
+}
+
+.skills-card-slider .swiper-slide {
+    height: auto;
+}
+
+.skill-card {
+    background: var(--surface);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.skill-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--bg);
+}
+
+.skill-card .skill-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+}
+
+.skill-card .skill-description {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.skill-tag {
+    background: var(--primary);
+    color: var(--text);
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-left: 3px solid var(--tag-color, var(--accent));
+}
+
+.skill-tag.more {
+    background: var(--secondary);
+    color: var(--text-muted);
+}
+
+.skill-card .skill-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: auto;
+}
+
+.skill-card .skill-features li {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding: 4px 0;
+    padding-left: 18px;
+    position: relative;
+}
+
+.skill-card .skill-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+/* Shared Swiper Navigation & Pagination for all sliders */
+.mobile-card-slider .swiper-button-prev,
+.mobile-card-slider .swiper-button-next,
+.iot-card-slider .swiper-button-prev,
+.iot-card-slider .swiper-button-next,
+.skills-card-slider .swiper-button-prev,
+.skills-card-slider .swiper-button-next {
+    color: var(--accent);
+    background: var(--surface);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+}
+
+.mobile-card-slider .swiper-button-prev:after,
+.mobile-card-slider .swiper-button-next:after,
+.iot-card-slider .swiper-button-prev:after,
+.iot-card-slider .swiper-button-next:after,
+.skills-card-slider .swiper-button-prev:after,
+.skills-card-slider .swiper-button-next:after {
+    font-size: 1.2rem;
+}
+
+.mobile-card-slider .swiper-button-prev:hover,
+.mobile-card-slider .swiper-button-next:hover,
+.iot-card-slider .swiper-button-prev:hover,
+.iot-card-slider .swiper-button-next:hover,
+.skills-card-slider .swiper-button-prev:hover,
+.skills-card-slider .swiper-button-next:hover {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.mobile-card-slider .swiper-pagination-bullet,
+.iot-card-slider .swiper-pagination-bullet,
+.skills-card-slider .swiper-pagination-bullet {
+    background: var(--text-muted);
+    opacity: 0.5;
+}
+
+.mobile-card-slider .swiper-pagination-bullet-active,
+.iot-card-slider .swiper-pagination-bullet-active,
+.skills-card-slider .swiper-pagination-bullet-active {
+    background: var(--accent);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .mobile-card-slider .swiper-button-prev,
+    .mobile-card-slider .swiper-button-next,
+    .iot-card-slider .swiper-button-prev,
+    .iot-card-slider .swiper-button-next,
+    .skills-card-slider .swiper-button-prev,
+    .skills-card-slider .swiper-button-next {
+        display: none;
+    }
+}
