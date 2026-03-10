@@ -1,5 +1,5 @@
 #mobile-swiper-container {
-    position: relative;
+    position: static;
     display: none;
     width: 100%;
     height: auto;
@@ -8,12 +8,10 @@
 
 #mobile-popup-overlay {
     display: none;
-    visibility: hidden;
-    pointer-events: none;
 }
 
 #mobile-swiper-container .popup-content {
-    position: relative;
+    position: static;
     width: 100%;
     height: auto;
     background: rgba(2, 6, 23, 0.92);
