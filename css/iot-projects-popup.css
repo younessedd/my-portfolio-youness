@@ -168,7 +168,9 @@
 
 #iotSwiper .swiper-slide {
     height: 100%;
-    overflow: hidden;
+    overflow-y: auto;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Project Card */
