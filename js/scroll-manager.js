@@ -57,6 +57,12 @@ class ScrollManager {
      * @param {string} popupId - ID of the popup that's locking scroll
      */
     lockScroll(popupId = 'default') {
+        // Only lock scroll for mobile menu, not for popups
+        if (popupId !== 'mobile-menu') {
+            console.log(`📱 Popup ${popupId} opened - scroll remains enabled`);
+            return;
+        }
+        
         if (this.isLocked && this.lockedElements.has(popupId)) {
             return; // Already locked by this popup
         }
@@ -248,6 +254,7 @@ class ScrollManager {
         
         // Touch start event
         document.addEventListener('touchstart', (e) => {
+            // Only prevent touch if scroll is locked (mobile menu open)
             if (!this.isLocked) return;
             
             touchStartY = e.touches[0].clientY;
@@ -256,7 +263,7 @@ class ScrollManager {
             // Check if touch is on popup element
             isPopupElement = this.isTouchOnPopup(e.target);
             
-            // Prevent default if not on popup
+            // Prevent default if not on popup AND scroll is locked
             if (!isPopupElement) {
                 e.preventDefault();
             }
@@ -264,6 +271,7 @@ class ScrollManager {
         
         // Touch move event
         document.addEventListener('touchmove', (e) => {
+            // Only prevent touch if scroll is locked (mobile menu open)
             if (!this.isLocked) return;
             
             const touchY = e.touches[0].clientY;
@@ -283,12 +291,13 @@ class ScrollManager {
                 return;
             }
             
-            // Prevent all other touch movements when locked
+            // Prevent all other touch movements when scroll is locked
             e.preventDefault();
         }, { passive: false });
         
         // Touch end event
         document.addEventListener('touchend', (e) => {
+            // Only handle if scroll is locked
             if (!this.isLocked) return;
             
             // Reset touch tracking
@@ -297,7 +306,7 @@ class ScrollManager {
             isPopupElement = false;
         }, { passive: true });
         
-        console.log('📱 Mobile touch handling setup complete');
+        console.log('📱 Mobile touch handling setup complete - only locks scroll for mobile menu');
     }
     
     /**

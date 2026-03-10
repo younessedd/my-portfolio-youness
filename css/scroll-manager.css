@@ -56,16 +56,16 @@ body.scroll-locked > *:not(.popup-overlay):not(.swiper-container):not(.popup-con
     }
 }
 
-/* Mobile touch scroll prevention for popups */
-body.scroll-locked .popup-overlay,
-body.scroll-locked .swiper-container,
-body.scroll-locked .popup-container {
+/* Mobile touch scroll prevention for popups - REMOVED to allow page scroll */
+body:not(.scroll-locked) .popup-overlay,
+body:not(.scroll-locked) .swiper-container,
+body:not(.scroll-locked) .popup-container {
     touch-action: pan-y pinch-zoom;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
 }
 
-/* Prevent body scroll when popup is open on mobile */
+/* Only prevent scroll when mobile menu is open (scroll-locked class) */
 @media (max-width: 768px) {
     body.scroll-locked {
         position: fixed;
@@ -76,14 +76,14 @@ body.scroll-locked .popup-container {
         -webkit-touch-callout: none;
     }
     
-    /* Allow scrolling inside popup content only */
+    /* Allow scrolling inside popup content only when scroll is locked */
     body.scroll-locked .popup-container {
         touch-action: pan-y;
         -webkit-overflow-scrolling: touch;
         overscroll-behavior: contain;
     }
     
-    /* Prevent scroll on all background elements */
+    /* Prevent scroll on all background elements when scroll is locked */
     body.scroll-locked > *:not(.popup-overlay):not(.swiper-container):not(.popup-container) {
         touch-action: none;
         pointer-events: none;
@@ -91,16 +91,39 @@ body.scroll-locked .popup-container {
         user-select: none;
     }
     
-    /* Ensure popup content is scrollable */
+    /* Ensure popup content is scrollable when scroll is locked */
     body.scroll-locked .swiper-slide,
     body.scroll-locked .project-info {
         touch-action: pan-y;
         -webkit-overflow-scrolling: touch;
         overscroll-behavior: contain;
     }
+    
+    /* IMPORTANT: Allow normal page scrolling when popups are open but scroll is not locked */
+    body:not(.scroll-locked) {
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+    }
+    
+    body:not(.scroll-locked) .popup-overlay,
+    body:not(.scroll-locked) .swiper-container,
+    body:not(.scroll-locked) .popup-container {
+        touch-action: pan-y pinch-zoom;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        pointer-events: auto;
+    }
+    
+    body:not(.scroll-locked) > * {
+        touch-action: auto;
+        pointer-events: auto;
+        -webkit-user-select: auto;
+        user-select: auto;
+    }
 }
 
-/* Enhanced touch prevention for iOS Safari */
+/* Enhanced touch prevention for iOS Safari - Only when mobile menu is open */
 @supports (-webkit-touch-callout: none) {
     body.scroll-locked {
         position: fixed;
@@ -114,19 +137,35 @@ body.scroll-locked .popup-container {
         -webkit-overflow-scrolling: auto;
     }
     
-    /* Allow touch scrolling only inside popup content */
+    /* Allow touch scrolling only inside popup content when scroll is locked */
     body.scroll-locked .popup-container {
         touch-action: pan-y;
         -webkit-overflow-scrolling: touch;
         overscroll-behavior: contain;
     }
     
-    /* Prevent all touch on background */
+    /* Prevent all touch on background when scroll is locked */
     body.scroll-locked > *:not(.popup-overlay):not(.swiper-container):not(.popup-container) {
         touch-action: none;
         pointer-events: none;
         -webkit-user-select: none;
         user-select: none;
+    }
+    
+    /* IMPORTANT: Allow normal page scrolling when popups are open on iOS */
+    body:not(.scroll-locked) {
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+        overflow: auto;
+    }
+    
+    body:not(.scroll-locked) .popup-overlay,
+    body:not(.scroll-locked) .swiper-container,
+    body:not(.scroll-locked) .popup-container {
+        touch-action: pan-y pinch-zoom;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        pointer-events: auto;
     }
 }
 
