@@ -8,6 +8,8 @@
 
 #web-popup-overlay {
     display: none;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 #web-swiper-container .popup-content {
@@ -24,6 +26,7 @@
     z-index: 2;
     display: flex;
     flex-direction: column;
+    pointer-events: auto;
 }
 
 /* Popup Header */

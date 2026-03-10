@@ -8,6 +8,8 @@
 
 #iot-popup-overlay {
     display: none;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 #iot-swiper-container .popup-content {
@@ -21,6 +23,7 @@
     z-index: 2 !important;
     display: flex !important;
     flex-direction: column !important;
+    pointer-events: auto !important;
 }
 
 #iot-swiper-container .popup-header {
