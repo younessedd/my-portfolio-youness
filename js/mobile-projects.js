@@ -108,6 +108,11 @@ const MobileProjectsManager = {
             e.stopPropagation();
             this.closePopup();
         });
+        
+        // Ensure scroll works properly in popup
+        if (this.elements.popupContainer) {
+            this.elements.popupContainer.addEventListener('wheel', () => {}, { passive: true });
+        }
     },
     
     setupOverlayClick: function() {
@@ -205,6 +210,7 @@ const MobileProjectsManager = {
         this.navigationLock = false;
         
         this.elements.popupContainer.style.display = 'block';
+        document.body.style.overflowY = 'auto';
         
         this.updateCategoryTitle(firstCategory, firstCategoryName);
         this.updateIconNavigation(firstCategory);
