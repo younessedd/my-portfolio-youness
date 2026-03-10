@@ -598,7 +598,6 @@ html body #skills .skill-nav-btn span {
     position: relative;
     min-height: 100vh;
     background: var(--skills-bg);
-    overflow: hidden;
 }
 
 #skills::before {

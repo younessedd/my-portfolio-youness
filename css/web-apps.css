@@ -636,7 +636,6 @@ html body #web-apps .skill-nav-btn:focus[data-category="frontend"] i.fa-code {
     position: relative;
     min-height: 100vh;
     background: var(--web-apps-bg);
-    overflow: hidden;
 }
 
 #web-apps::before {
