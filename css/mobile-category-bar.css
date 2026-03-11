@@ -1,0 +1,36 @@
+/* Mobile Projects Category Buttons - Same style as Web Projects */
+.mobile-category-bar {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+    flex-wrap: wrap;
+}
+
+.mobile-category-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #f1f5f9;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.mobile-category-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.mobile-category-btn.active {
+    /* Same gradient as Web Projects category buttons */
+    background: linear-gradient(135deg, #38bdf8, #22c55e);
+    border-color: transparent;
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+}

@@ -118,7 +118,8 @@ html body #web-apps .web-swiper .swiper-slide {
     gap: 10px; 
     margin-top: auto;
 }
-.web-card-btns a { 
+.web-card-btns a, 
+.web-card-btns .web-card-btn { 
     flex: 1; 
     padding: 10px 16px; 
     border-radius: 8px; 
@@ -127,22 +128,61 @@ html body #web-apps .web-swiper .swiper-slide {
     font-weight: 600; 
     text-decoration: none; 
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
-.btn-live { 
+.web-card-btns a i,
+.web-card-btns .web-card-btn i {
+    font-size: 1rem;
+}
+
+/* Live Demo Button - Green gradient */
+.btn-live, 
+.web-card-btn[href*="demo"]:not([href*="github"]):not([href*="git"]),
+a.web-card-btn[href*="demo"],
+a.web-card-btn[href*="vercel"],
+a.web-card-btn[href*="netlify"] { 
     background: linear-gradient(135deg, #10b981, #059669); 
     color: white !important; 
     box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
 }
-.btn-live:hover { 
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+.btn-live:hover, 
+.web-card-btn[href*="demo"]:not([href*="github"]):not([href*="git"]):hover,
+a.web-card-btn[href*="demo"]:hover,
+a.web-card-btn[href*="vercel"]:hover,
+a.web-card-btn[href*="netlify"]:hover { 
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+    background: linear-gradient(135deg, #34d399, #10b981);
 }
-.btn-code { 
+
+/* GitHub Button - Dark with GitHub icon */
+.btn-code, 
+.web-card-btn[href*="github"],
+a.web-card-btn[href*="github"] { 
+    background: linear-gradient(135deg, #1f2937, #374151); 
+    color: white !important; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.btn-code:hover, 
+.web-card-btn[href*="github"]:hover,
+a.web-card-btn[href*="github"]:hover { 
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #374151, #4b5563);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Generic button fallback */
+a.web-card-btn:not([href*="github"]):not([href*="demo"]):not([href*="vercel"]):not([href*="netlify"]):not([href*="git"]) { 
     background: var(--surface-light); 
     color: var(--text) !important; 
     border: 1px solid var(--border-color); 
 }
-.btn-code:hover { 
+a.web-card-btn:not([href*="github"]):not([href*="demo"]):not([href*="vercel"]):not([href*="netlify"]):not([href*="git"]):hover { 
     background: var(--border-color);
     transform: translateY(-2px);
 }

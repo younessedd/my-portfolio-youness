@@ -31,10 +31,13 @@
     <link rel="stylesheet" href="css/skills-slider.css">
     <link rel="stylesheet" href="css/web-apps.css">
     <link rel="stylesheet" href="css/web-projects-slider.css">
+    <link rel="stylesheet" href="css/web-category-bar.css">
     <link rel="stylesheet" href="css/mobile-apps.css">
     <link rel="stylesheet" href="css/mobile-projects-slider.css">
+    <link rel="stylesheet" href="css/mobile-category-bar.css">
     <link rel="stylesheet" href="css/iot-projects.css">
     <link rel="stylesheet" href="css/iot-projects-slider.css">
+    <link rel="stylesheet" href="css/iot-category-bar.css">
     <link rel="stylesheet" href="css/cv.css">
     <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/footer.css">
@@ -46,16 +49,15 @@
     <!-- Header -->
     <header>
         <div class="header-container">
-            <a href="#home" class="logo">Youness <span>Eddanguir</span></a>
+            <a href="#about" class="logo">Youness <span>Eddanguir</span></a>
             
             <nav class="desktop-nav">
                 <ul>
-                    <li><a href="#home">Home</a></li>
                     <li><a href="#about">About Me</a></li>
-                    <li><a href="#skills">Skills</a></li>
                     <li><a href="#web-apps">Web Projects</a></li>
                     <li><a href="#mobile-apps">Mobile Projects</a></li>
                     <li><a href="#iot-projects">IoT Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
                     <li><a href="#cv">My CV</a></li>
                     <li><a href="#contact">Contact Me</a></li>
                 </ul>
@@ -70,12 +72,11 @@
         <div class="mobile-menu" id="mobile-menu">
             <nav class="mobile-nav">
                 <ul>
-                    <li><a href="#home" class="mobile-nav-link">Home</a></li>
                     <li><a href="#about" class="mobile-nav-link">About Me</a></li>
-                    <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
                     <li><a href="#web-apps" class="mobile-nav-link">Web Projects</a></li>
                     <li><a href="#mobile-apps" class="mobile-nav-link">Mobile Projects</a></li>
                     <li><a href="#iot-projects" class="mobile-nav-link">IoT Projects</a></li>
+                    <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
                     <li><a href="#cv" class="mobile-nav-link">My CV</a></li>
                     <li><a href="#contact" class="mobile-nav-link">Contact Me</a></li>
                 </ul>
@@ -83,37 +84,16 @@
         </div>
     </header>
 
-    <!-- Hero Section with Automatic Swiper -->
-    <section id="home" class="hero">
-        <div class="hero-swiper-container">
-            <div class="swiper hero-swiper">
-                <div class="swiper-wrapper">
-                    <!-- Slides will be populated by JavaScript -->
-                </div>
-                
-                <!-- Swiper Pagination -->
-                <div class="swiper-pagination"></div>
-                
-                <!-- Swiper Navigation -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
+    <!-- About Section (moved to top) -->
     <section id="about">
         <div class="container">
-            <div class="about-header-box reveal from-left">
-                <h2>About Me</h2>
-            </div>
             <div class="about-content">
                 <div class="about-name-container reveal from-left">
                     <h3 class="about-name">YOUNESS EDDANGUIR</h3>
                 </div>
-                <picture class="about-img-circle reveal from-right active">
+                <picture class="about-img-circle">
     <source type="image/webp" srcset="images/mypic.webp">
-    <img src="images/mypic.webp" alt="Youness Eddanguir" width="280" height="280" loading="lazy">
+    <img src="images/mypic.webp" alt="Youness Eddanguir" width="280" height="280" loading="lazy" class="reveal from-left">
 </picture>
                 <div class="about-text">
                     <div class="about-bio-container reveal from-right">
@@ -136,55 +116,21 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
             <h2>Web Projects</h2>
         </div>
         
-        <!-- Frontend -->
-        <div class="web-row">
-            <h3 class="web-cat-title">Frontend</h3>
-            <div class="web-swiper">
-                <div class="swiper" id="web-frontend">
-                    <div class="swiper-wrapper" id="web-frontend-cards"></div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
-            </div>
+        <!-- Category Buttons -->
+        <div class="web-category-bar">
+            <button class="web-category-btn active" data-category="frontend">Frontend</button>
+            <button class="web-category-btn" data-category="backend">Backend</button>
+            <button class="web-category-btn" data-category="fullstack">Fullstack</button>
+            <button class="web-category-btn" data-category="others">Others</button>
         </div>
         
-        <!-- Backend -->
-        <div class="web-row">
-            <h3 class="web-cat-title">Backend</h3>
-            <div class="web-swiper">
-                <div class="swiper" id="web-backend">
-                    <div class="swiper-wrapper" id="web-backend-cards"></div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Full Stack -->
-        <div class="web-row">
-            <h3 class="web-cat-title">Full Stack</h3>
-            <div class="web-swiper">
-                <div class="swiper" id="web-fullstack">
-                    <div class="swiper-wrapper" id="web-fullstack-cards"></div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Others -->
-        <div class="web-row">
-            <h3 class="web-cat-title">Others Apps</h3>
-            <div class="web-swiper">
-                <div class="swiper" id="web-others">
-                    <div class="swiper-wrapper" id="web-others-cards"></div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
+        <!-- Single Swiper -->
+        <div class="web-swiper">
+            <div class="swiper" id="web-projects-swiper">
+                <div class="swiper-wrapper" id="web-projects-cards"></div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
         </div>
     </div>
@@ -201,29 +147,19 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
             <h2>Mobile Projects</h2>
         </div>
         
-        <!-- Quiz Projects -->
-        <div class="mobile-row">
-            <h3 class="mobile-cat-title">Quiz Apps</h3>
-            <div class="mobile-swiper">
-                <div class="swiper" id="mobile-quiz">
-                    <div class="swiper-wrapper" id="mobile-quiz-cards"></div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
-            </div>
+        <!-- Category Buttons -->
+        <div class="mobile-category-bar">
+            <button class="mobile-category-btn active" data-category="quiz">Quiz</button>
+            <button class="mobile-category-btn" data-category="others">Others</button>
         </div>
         
-        <!-- Others Projects -->
-        <div class="mobile-row">
-            <h3 class="mobile-cat-title">Others Apps</h3>
-            <div class="mobile-swiper">
-                <div class="swiper" id="mobile-others">
-                    <div class="swiper-wrapper" id="mobile-others-cards"></div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
+        <!-- Single Swiper -->
+        <div class="mobile-swiper">
+            <div class="swiper" id="mobile-projects-swiper">
+                <div class="swiper-wrapper" id="mobile-projects-cards"></div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
         </div>
     </div>
@@ -240,29 +176,19 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
             <h2>IoT Projects</h2>
         </div>
         
-        <!-- Internet of Things Projects -->
-        <div class="iot-row">
-            <h3 class="iot-cat-title">Internet of Things</h3>
-            <div class="iot-swiper">
-                <div class="swiper" id="iot-iot">
-                    <div class="swiper-wrapper" id="iot-iot-cards"></div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
-            </div>
+        <!-- Category Buttons -->
+        <div class="iot-category-bar">
+            <button class="iot-category-btn active" data-category="InternetofThings">Internet of Things</button>
+            <button class="iot-category-btn" data-category="others">Others</button>
         </div>
         
-        <!-- Others Projects -->
-        <div class="iot-row">
-            <h3 class="iot-cat-title">Others Projects</h3>
-            <div class="iot-swiper">
-                <div class="swiper" id="iot-others">
-                    <div class="swiper-wrapper" id="iot-others-cards"></div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
+        <!-- Single Swiper -->
+        <div class="iot-swiper">
+            <div class="swiper" id="iot-projects-swiper">
+                <div class="swiper-wrapper" id="iot-projects-cards"></div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
         </div>
     </div>
@@ -409,11 +335,10 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="quick-links">
-                        <li><a href="#home">Home</a></li>
                         <li><a href="#about">About Me</a></li>
-                        <li><a href="#skills">Skills</a></li>
                         <li><a href="#cv">My CV</a></li>
                         <li><a href="#contact">Contact Me</a></li>
+                        <li><a href="#skills">Skills</a></li>
                     </ul>
                 </div>
                 
@@ -465,11 +390,10 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
     <script src="js/data/web-projects.js" defer></script>
     <script src="js/data/mobile-projects.js" defer></script>
     <script src="js/data/iot-projects.js" defer></script>
+    <script src="js/iot-projects-category.js" defer></script>
+    <script src="js/mobile-projects-category.js" defer></script>
     <script src="js/data/skills-data.js" defer></script>
-    <script src="js/hero-swiper.js" defer></script>
-    <script src="js/web-projects-slider.js" defer></script>
-    <script src="js/mobile-projects-slider.js" defer></script>
-    <script src="js/iot-projects-slider.js" defer></script>
+    <script src="js/web-projects-category.js" defer></script>
     <script src="js/skills-slider.js" defer></script>
     <script src="js/contact-form.js" defer></script>
     <script src="js/email-service.js" defer></script>

@@ -136,7 +136,8 @@
     margin-top: auto;
 }
 
-.card-btns a {
+.card-btns a,
+.mobile-card-btn {
     flex: 1;
     padding: 10px 16px;
     border-radius: 8px;
@@ -145,17 +146,48 @@
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
-.btn-playstore {
-    background: linear-gradient(135deg, #4285f4, #1967d2);
-    color: white !important;
-    box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+.card-btns a i,
+.mobile-card-btn i {
+    font-size: 1rem;
 }
 
-.btn-playstore:hover {
+/* Play Store Button - Same green gradient as Live Demo */
+.btn-playstore,
+.mobile-card-btn[href*="play"],
+.mobile-card-btn[href*="google"],
+a.mobile-card-btn[href*="play"],
+a.mobile-card-btn[href*="app"] { 
+    background: linear-gradient(135deg, #10b981, #059669); 
+    color: white !important; 
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-playstore:hover,
+.mobile-card-btn[href*="play"]:hover,
+.mobile-card-btn[href*="google"]:hover,
+a.mobile-card-btn[href*="play"]:hover,
+a.mobile-card-btn[href*="app"]:hover { 
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+    background: linear-gradient(135deg, #34d399, #10b981);
+}
+
+/* Generic button fallback */
+a.mobile-card-btn:not([href*="play"]):not([href*="google"]):not([href*="app"]) { 
+    background: var(--surface-light); 
+    color: var(--text) !important; 
+    border: 1px solid var(--border-color); 
+}
+
+a.mobile-card-btn:not([href*="play"]):not([href*="google"]):not([href*="app"]):hover { 
+    background: var(--border-color);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(66, 133, 244, 0.4);
 }
 
 /* Swiper Navigation */

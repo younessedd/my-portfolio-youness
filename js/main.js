@@ -12,7 +12,6 @@
  */
 
 // Global variables for managing swiper instances
-let heroSwiper = null;
 let imageSwipers = [];
 
 // Global popup opening functions (legacy code for popup system - may be unused)
@@ -289,15 +288,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add scroll listener for active navigation highlighting
     window.addEventListener('scroll', updateActiveNavLink);
 
-    // Set home link to active state initially since hero section is visible
+    // Set about link to active state initially since about section is visible
     setTimeout(() => {
-        const homeLinks = document.querySelectorAll('a[href="#home"]');
-        homeLinks.forEach(link => {
+        const aboutLinks = document.querySelectorAll('a[href="#about"]');
+        aboutLinks.forEach(link => {
             link.classList.add('active');
-            console.log('🍔 HOME LINK SET TO HOVER STATE - APP OPENED FIRST TIME - HERO SECTION VISIBLE');
+            console.log('🍔 ABOUT LINK SET TO ACTIVE STATE - APP OPENED FIRST TIME - ABOUT SECTION VISIBLE');
         });
 
-        console.log('🍔 HOME LINK ACTIVE - Hero section visible on app first open');
+        console.log('🍔 ABOUT LINK ACTIVE - About section visible on app first open');
     }, 100);
 });
 
