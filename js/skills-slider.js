@@ -1,80 +1,149 @@
 /**
- * Skills Card Slider
- * Uses Swiper.js to display skill category cards
+ * Skills Swiper Slider
+ *
+ * This script initializes and manages a single Swiper slider for the skills section.
+ * It combines all skills from different categories (web development, mobile development, IoT, etc.)
+ * into one continuous slider with compact skill cards and autoplay functionality.
  */
 
+// Wait for DOM to be fully loaded before initializing the skills slider
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('🍔 Skills swiper: DOM loaded, checking skillsData...');
+
+    // Check if skills data is available, exit if not loaded
     if (typeof skillsData === 'undefined') {
-        console.error('Skills data not found!');
+        console.error('❌ Skills swiper: skillsData is undefined!');
         return;
     }
 
-    const wrapper = document.getElementById('skills-wrapper');
-    if (!wrapper) return;
+    console.log('✅ Skills swiper: skillsData found, combining categories...');
 
-    const categories = [
-        { key: 'webDevelopment', label: 'Web Dev', icon: 'fas fa-globe' },
-        { key: 'mobileDevelopment', label: 'Mobile', icon: 'fas fa-mobile-alt' },
-        { key: 'iotAndDomotic', label: 'IoT', icon: 'fas fa-wifi' },
-        { key: 'electronicsAndElectric', label: 'Electronics', icon: 'fas fa-bolt' },
-        { key: 'roboticsAndAutomatism', label: 'Robotics', icon: 'fas fa-robot' },
-        { key: 'softSkills', label: 'Soft Skills', icon: 'fas fa-users' },
-        { key: 'aiPrompt', label: 'AI Tools', icon: 'fas fa-robot' }
+    // Combine skills from all categories into a single array for unified display
+    const allSkills = [
+        // Spread operator to include all web development skills
+        ...skillsData.webDevelopment,
+        // Spread operator to include all mobile development skills
+        ...skillsData.mobileDevelopment,
+        // Spread operator to include all IoT and domotics skills
+        ...skillsData.iotAndDomotic,
+        // Spread operator to include all electronics and electrical skills
+        ...skillsData.electronicsAndElectric,
+        // Spread operator to include all robotics and automation skills
+        ...skillsData.roboticsAndAutomatism,
+        // Spread operator to include all soft skills
+        ...skillsData.softSkills,
+        // Spread operator to include all AI prompt engineering skills
+        ...skillsData.aiPrompt
     ];
 
-    categories.forEach(cat => {
-        const data = skillsData[cat.key];
-        if (!data || !data[0]) return;
+    console.log('🍔 Skills swiper: Combined skills:', allSkills.length, 'categories');
+    console.log('🍔 Skills swiper: First category skills:', allSkills[0]?.skills?.length || 'no skills');
 
-        const skill = data[0];
-        
-        const card = document.createElement('div');
-        card.className = 'swiper-slide';
-        card.innerHTML = `
-            <div class="skill-card">
-                <div class="skill-card-header">
-                    <div class="skill-icon">
-                        <i class="${cat.icon}"></i>
+    // Initialize the skills swiper with combined data
+    initSkillsSwiper('skillsSwiper', 'skills-wrapper', allSkills);
+});
+
+// Main function to initialize the skills swiper slider
+function initSkillsSwiper(swiperId, wrapperId, skillsCategories) {
+    console.log('🍔 initSkillsSwiper called with:', swiperId, wrapperId, skillsCategories?.length);
+
+    // Get the swiper wrapper element where slides will be added
+    const wrapper = document.getElementById(wrapperId);
+    console.log('🍔 Wrapper element found:', !!wrapper);
+
+    // Exit if wrapper not found or no skills categories to display
+    if (!wrapper || !skillsCategories?.length) {
+        console.error('❌ Skills swiper: Wrapper not found or no categories!');
+        return;
+    }
+
+    console.log('🍔 Creating slides for', skillsCategories.length, 'categories...');
+
+    let totalSlides = 0;
+
+    // Loop through each skill category
+    skillsCategories.forEach((cat, catIndex) => {
+        console.log('🍔 Processing category', catIndex, 'title:', cat.title, 'skills:', cat.skills?.length);
+
+        // Skip categories that don't have a skills array
+        if (!cat.skills) {
+            console.warn('⚠️ Category has no skills array:', cat.title);
+            return;
+        }
+
+        // Loop through each individual skill within the category
+        cat.skills.forEach((skill, skillIndex) => {
+            console.log('🍔 Creating slide for skill:', skill.name, 'in category:', cat.title);
+
+            // Create slide element for each skill
+            const slide = document.createElement('div');
+            slide.className = 'swiper-slide';
+
+            // Generate HTML content for the skill card
+            slide.innerHTML = `
+                <div class="card-item">
+                    <div class="card-wrapper">
+                        <div class="card-list">
+                            <div class="card-body">
+                                <span class="card-badge">${cat.title}</span>
+                                <div class="skill-icon" style="--skill-color: ${skill.color}">
+                                    <i class="${skill.icon}"></i>
+                                </div>
+                                <h4>${skill.name}</h4>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="skill-title">${skill.title}</h3>
                 </div>
-                <p class="skill-description">${skill.description}</p>
-                <div class="skill-tags">
-                    ${skill.skills.slice(0, 6).map(s => 
-                        `<span class="skill-tag" style="--tag-color: ${s.color}">
-                            <i class="${s.icon}"></i> ${s.name}
-                        </span>`
-                    ).join('')}
-                    ${skill.skills.length > 6 ? `<span class="skill-tag more">+${skill.skills.length - 6}</span>` : ''}
-                </div>
-                <div class="skill-features">
-                    ${skill.features.slice(0, 3).map(f => `<li>${f}</li>`).join('')}
-                </div>
-            </div>
-        `;
-        wrapper.appendChild(card);
+            `;
+
+            // Add the completed slide to the wrapper
+            wrapper.appendChild(slide);
+            totalSlides++;
+        });
     });
 
-    const swiper = new Swiper('#skillsSwiper', {
+    console.log('🍔 Total slides created:', totalSlides);
+    console.log('🍔 Wrapper children count:', wrapper.children.length);
+
+    // Initialize Swiper with configuration for skills display
+    console.log('🍔 Initializing Swiper...');
+    new Swiper(`#${swiperId}`, {
+        // Enable infinite loop scrolling
         loop: true,
+        // Set transition speed in milliseconds
         speed: 700,
+        // Set space between slides in pixels
         spaceBetween: 30,
-        slidesPerView: 1,
+        // Configure autoplay functionality
+        autoplay: {
+            // Delay between automatic slides in milliseconds (1 second)
+            delay: 1000,
+            // Continue autoplay after user interaction
+            disableOnInteraction: false
+        },
+        // Configure pagination dots
         pagination: {
-            el: '.swiper-pagination',
+            el: `#${swiperId} .swiper-pagination`,
             clickable: true,
+            dynamicBullets: true
         },
+        // Configure navigation arrows
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: `#${swiperId} .swiper-button-next`,
+            prevEl: `#${swiperId} .swiper-button-prev`
         },
+        // Responsive breakpoints for different screen sizes
         breakpoints: {
-            768: {
-                slidesPerView: 2,
-            },
-            1024: {
-                slidesPerView: 3,
-            }
+            // Extra small screens: 1 slide per view
+            0: { slidesPerView: 1 },
+            // Small screens: 2 slides per view
+            576: { slidesPerView: 2 },
+            // Medium screens: 3 slides per view
+            768: { slidesPerView: 3 },
+            // Large screens: 4 slides per view
+            1024: { slidesPerView: 4 }
         }
     });
-});
+
+    console.log('✅ Skills swiper initialized successfully!');
+}

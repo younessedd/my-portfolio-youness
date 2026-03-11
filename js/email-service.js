@@ -1,82 +1,61 @@
 /**
- * email-config.js - Email Configuration
- * ⚠️ CONTAINS SENSITIVE DATA - DO NOT UPLOAD TO GITHUB ⚠️
- * 
- * This file contains EmailJS configuration with sensitive API keys.
- * Make sure to add this file to .gitignore before committing.
+ * Email Service Configuration
+ *
+ * This file contains EmailJS configuration and utilities for sending emails from the contact form.
+ * It includes sensitive API keys, validation functions, and security warnings.
+ * WARNING: This file contains sensitive data and should never be committed to version control.
  */
 
+// EmailJS configuration object containing all necessary settings
 const emailConfig = {
-    // ================================
-    // 🔐 EmailJS Configuration - SENSITIVE DATA
-    // ================================
-    // Get these values from EmailJS dashboard: https://dashboard.emailjs.com/admin
-    
-    // Service ID (Your EmailJS service)
+
+    // EmailJS service identifier from dashboard
     serviceID: 'service_9a47m0s',
-   
-    
-    // Template ID (Your email template)
+
+    // EmailJS email template identifier
     templateID: 'template_vlo4ub3',
-    
-    // Public Key (Your EmailJS public key)
+
+    // EmailJS public key for client-side authentication
     publicKey: 'IbbG69TuO-Uyx_4I8',
-    
-    // ================================
-    // 📧 Email Settings
-    // ================================
-    // Your email address that will receive contact form messages
+
+    // Recipient email address for contact form messages
     toEmail: 'eddanguiryouness@gmail.com',
-    
-    // Sender name that appears in emails
+
+    // Sender name that appears in email notifications
     fromName: 'Portfolio Contact Form',
-    
-    // Default email subject
+
+    // Default subject line for contact form emails
     subject: 'New Message from Portfolio Website',
-    
-    // Email reply-to address
+
+    // Reply-to email address for email responses
     replyTo: 'no-reply@portfolio.com',
-    
-    // ================================
-    // ⚠️ IMPORTANT WARNINGS
-    // ================================
-    // 1. This file contains sensitive API keys
-    // 2. Add this file to .gitignore immediately
-    // 3. Never share these keys with anyone
-    // 4. If keys are compromised, regenerate them in EmailJS dashboard
-    // 5. Use environment variables in production if possible
-    
-    // ================================
-    // ✅ Configuration Validation
-    // ================================
-    
-    /**
-     * Validate the configuration
-     * @returns {Object} Validation result
-     */
+
+    // Validate configuration settings and check for missing or invalid values
     validate: function() {
+        // Arrays to collect validation errors and warnings
         const errors = [];
         const warnings = [];
-        
-        // Check required fields
+
+        // Check that all required configuration fields are present
         if (!this.serviceID) errors.push('serviceID is missing');
         if (!this.templateID) errors.push('templateID is missing');
         if (!this.publicKey) errors.push('publicKey is missing');
         if (!this.toEmail) errors.push('toEmail is missing');
-        
-        // Check email format
+
+        // Validate email format using regular expression
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (this.toEmail && !emailRegex.test(this.toEmail)) {
             warnings.push('toEmail may not be a valid email address');
         }
-        
-        // Check if using example values
-        if (this.publicKey.includes('example') || 
-            this.serviceID.includes('example') || 
+
+        // Check if configuration is using example/placeholder values
+        if (this.publicKey.includes('example') ||
+            this.serviceID.includes('example') ||
             this.templateID.includes('example')) {
             errors.push('You are using example values. Replace with your actual EmailJS credentials.');
         }
-        
+
+        // Return validation results
         return {
             isValid: errors.length === 0,
             errors: errors,
@@ -84,14 +63,13 @@ const emailConfig = {
             hasWarnings: warnings.length > 0
         };
     },
-    
-    /**
-     * Test the configuration (for development)
-     * @returns {Object} Test result
-     */
+
+    // Test configuration and log results to console
     test: function() {
+        // First validate the configuration
         const validation = this.validate();
-        
+
+        // If validation failed, return error result
         if (!validation.isValid) {
             return {
                 success: false,
@@ -99,32 +77,35 @@ const emailConfig = {
                 details: validation.errors
             };
         }
-        
+
+        // Log successful configuration load
         console.log('✅ Email configuration loaded successfully');
         console.log('Service ID:', this.serviceID ? '✓ Loaded' : '✗ Missing');
         console.log('Template ID:', this.templateID ? '✓ Loaded' : '✗ Missing');
         console.log('Public Key:', this.publicKey ? '✓ Loaded' : '✗ Missing');
         console.log('To Email:', this.toEmail ? '✓ Loaded' : '✗ Missing');
-        
+
+        // Log any warnings if present
         if (validation.hasWarnings) {
             console.warn('⚠️ Configuration warnings:', validation.warnings);
         }
-        
+
+        // Return success result with any warnings
         return {
             success: true,
             message: 'Configuration is valid',
             warnings: validation.warnings
         };
     },
-    
-    /**
-     * Mask sensitive data for logging
-     * @returns {Object} Safe configuration object for logging
-     */
+
+    // Return a safe version of configuration with sensitive data masked for logging
     getSafeConfig: function() {
         return {
+            // Mask service ID, showing only last 4 characters
             serviceID: this.serviceID ? '***' + this.serviceID.slice(-4) : 'Missing',
+            // Mask template ID, showing only last 4 characters
             templateID: this.templateID ? '***' + this.templateID.slice(-4) : 'Missing',
+            // Mask public key, showing only last 4 characters
             publicKey: this.publicKey ? '***' + this.publicKey.slice(-4) : 'Missing',
             toEmail: this.toEmail || 'Missing',
             fromName: this.fromName || 'Missing',
@@ -133,21 +114,18 @@ const emailConfig = {
     }
 };
 
-// ================================
-// 🚀 Initialization
-// ================================
-
-// Test configuration when loaded
+// Test configuration when the page loads (browser environment only)
 if (typeof window !== 'undefined') {
     window.addEventListener('load', () => {
-        // Wait a moment for everything to load
+        // Wait a moment for all scripts to load
         setTimeout(() => {
             const testResult = emailConfig.test();
-            
+
+            // If configuration test failed, log error and show toast if available
             if (!testResult.success) {
                 console.error('❌ Email configuration error:', testResult.details);
-                
-                // Show error toast if available
+
+                // Show error toast if toast function is available
                 if (typeof showToast === 'function') {
                     showToast('Email configuration error. Contact form may not work.', 'error');
                 }
@@ -156,28 +134,24 @@ if (typeof window !== 'undefined') {
     });
 }
 
-// ================================
-// 📦 Export for Different Environments
-// ================================
+// Export configuration for different JavaScript environments
 
-// For Node.js/CommonJS
+// Export for Node.js/CommonJS environments
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = emailConfig;
 }
 
-// For ES6 Modules
+// Export for ES6 module environments
 if (typeof exports !== 'undefined') {
     exports.default = emailConfig;
 }
 
-// For browser global scope
+// Make configuration available globally in browser environment
 if (typeof window !== 'undefined') {
     window.emailConfig = emailConfig;
 }
 
-// ================================
-// 🛡️ Security Reminder
-// ================================
+// Security warning displayed in console to remind developers
 console.log('%c⚠️ SECURITY WARNING ⚠️', 'color: red; font-weight: bold; font-size: 14px;');
 console.log('%cThis file contains sensitive API keys.', 'color: orange;');
 console.log('%cMake sure email-config.js is in .gitignore!', 'color: orange; font-weight: bold;');

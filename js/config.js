@@ -1,46 +1,50 @@
 /**
- * config.js - الإعدادات العامة
- * تم التعديل مع إزالة ميزة التبديل بين الوضع المظلم والفاتح
+ * Portfolio Configuration
+ *
+ * This file contains all configuration settings for the portfolio website including
+ * app information, contact details, external service configurations, feature flags,
+ * and performance settings. It provides methods for configuration management and persistence.
  */
 
+// Main portfolio configuration object
 const PortfolioConfig = {
-    // معلومات التطبيق
+    // Application basic information
     app: {
-        name: 'البورتفوليو',
+        name: 'Portfolio',
         version: '1.0.0',
-        author: 'يونس الدانكير',
+        author: 'Youness Eddanghiri',
         year: new Date().getFullYear()
     },
-    
-    // معلومات الاتصال
+
+    // Contact information and social links
     contact: {
         email: 'eddanguiryouness@gmail.com',
         phone: '+212 6 6483 7281',
-        location: 'المغرب',
+        location: 'Morocco',
         whatsapp: 'https://wa.me/212664837281',
         github: 'https://github.com/younessedd',
         linkedin: 'https://www.linkedin.com/in/your-profile',
         twitter: 'https://twitter.com/yourusername',
         codepen: 'https://codepen.io/yourusername'
     },
-    
-    // روابط تنزيل السيرة الذاتية
+
+    // CV download links for different profiles
     cv: {
         webDeveloper: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
         iotEngineer: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
     },
-    
-    // الخدمات الخارجية
+
+    // External services configuration
     services: {
-        // تكوين EmailJS
+        // EmailJS service configuration
         emailjs: {
             serviceID: 'service_l953yi6',
             templateID: 'template_5aimrbz',
             publicKey: 'IbbG69TuO-Uyx_4I8'
         }
     },
-    
-    // ميزات التطبيق
+
+    // Feature flags and toggles
     features: {
         heroSwiper: true,
         skillsModal: true,
@@ -48,44 +52,42 @@ const PortfolioConfig = {
         contactForm: true,
         mobileMenu: true,
         toastNotifications: true,
-        
-        // إعدادات التحريك
+
+        // Animation settings
         animations: {
             enabled: true,
             duration: 300
         }
     },
-    
-    // إعدادات الأداء
+
+    // Performance optimization settings
     performance: {
-        // التحميل المتأخر
+        // Lazy loading configuration
         lazyLoadImages: true,
         lazyLoadThreshold: 100,
-        
-        // إعدادات Debounce
+
+        // Debounce settings for performance
         scrollDebounce: 100,
         resizeDebounce: 200,
-        
-        // إعدادات التخزين
+
+        // Storage settings
         localStorageEnabled: true,
         sessionStorageEnabled: true
     },
-    
-    /**
-     * تهيئة الإعدادات
-     */
+
+    // Initialize configuration system
     init: function() {
+        // Load saved settings from localStorage
         this.loadFromLocalStorage();
+        // Set up event listener for configuration changes
         this.setupConfigUpdateListener();
-        console.log('تم تحميل إعدادات البورتفوليو');
+        console.log('Portfolio configuration loaded');
     },
-    
-    /**
-     * تحميل الإعدادات من localStorage
-     */
+
+    // Load configuration from localStorage
     loadFromLocalStorage: function() {
         if (!this.performance.localStorageEnabled) return;
-        
+
         try {
             const savedConfig = localStorage.getItem('portfolio-config');
             if (savedConfig) {
@@ -93,32 +95,27 @@ const PortfolioConfig = {
                 this.mergeConfig(parsed);
             }
         } catch (error) {
-            console.warn('فشل تحميل الإعدادات من localStorage:', error);
+            console.warn('Failed to load configuration from localStorage:', error);
         }
     },
-    
-    /**
-     * حفظ الإعدادات في localStorage
-     */
+
+    // Save current configuration to localStorage
     saveToLocalStorage: function() {
         if (!this.performance.localStorageEnabled) return;
-        
+
         try {
             const saveableConfig = {
                 features: this.features,
                 contact: this.contact
             };
-            
+
             localStorage.setItem('portfolio-config', JSON.stringify(saveableConfig));
         } catch (error) {
-            console.warn('فشل حفظ الإعدادات في localStorage:', error);
+            console.warn('Failed to save configuration to localStorage:', error);
         }
     },
-    
-    /**
-     * دمج الإعدادات الجديدة مع الموجودة
-     * @param {Object} newConfig - الإعدادات الجديدة للدمج
-     */
+
+    // Deep merge new configuration with existing configuration
     mergeConfig: function(newConfig) {
         const deepMerge = (target, source) => {
             for (const key in source) {
@@ -131,69 +128,57 @@ const PortfolioConfig = {
             }
             return target;
         };
-        
+
         deepMerge(this, newConfig);
     },
-    
-    /**
-     * تحديث الإعدادات
-     * @param {Object} updates - تحديثات الإعدادات
-     * @param {boolean} save - حفظ في localStorage أم لا
-     */
+
+    // Update configuration with new values
     update: function(updates, save = true) {
+        // Merge the updates into current configuration
         this.mergeConfig(updates);
-        
+
         if (save) {
+            // Save to localStorage if requested
             this.saveToLocalStorage();
         }
-        
-        // إرسال حدث تغيير الإعدادات
+
+        // Dispatch change event to notify other parts of the application
         this.dispatchChangeEvent();
     },
-    
-    /**
-     * إرسال حدث تغيير الإعدادات
-     */
+
+    // Dispatch custom event when configuration changes
     dispatchChangeEvent: function() {
         const event = new CustomEvent('portfolioConfigChanged', {
             detail: { config: this }
         });
         document.dispatchEvent(event);
     },
-    
-    /**
-     * إعداد مستمع تحديث الإعدادات
-     */
+
+    // Set up event listener for configuration changes
     setupConfigUpdateListener: function() {
         document.addEventListener('portfolioConfigChanged', (event) => {
-            console.log('تم تغيير الإعدادات:', event.detail);
+            console.log('Configuration changed:', event.detail);
         });
     },
-    
-    /**
-     * الحصول على معلومات الاتصال
-     * @returns {Object} معلومات الاتصال
-     */
+
+    // Get contact information
     getContactInfo: function() {
         return { ...this.contact };
     },
-    
-    /**
-     * تحديث معلومات الاتصال
-     * @param {Object} newContact - معلومات الاتصال الجديدة
-     */
+
+    // Update contact information
     updateContactInfo: function(newContact) {
         this.contact = { ...this.contact, ...newContact };
         this.saveToLocalStorage();
     }
 };
 
-// تهيئة الإعدادات عند تحميل DOM
+// Initialize configuration when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     PortfolioConfig.init();
 });
 
-// جعل الإعدادات متاحة عالمياً
+// Make configuration available globally in browser environment
 if (typeof window !== 'undefined') {
     window.PortfolioConfig = PortfolioConfig;
 }

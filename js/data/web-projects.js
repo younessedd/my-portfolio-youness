@@ -1,107 +1,123 @@
 /**
- * web-projects-data.js - Web Projects Data
- * Categories: Frontend, Backend, Full Stack
+ * Web Projects Data Structure
+ *
+ * This file contains all web development projects data organized by categories.
+ * Each project includes metadata, technologies, features, and links.
+ *
+ * Categories:
+ * - frontend: Frontend-focused projects with HTML, CSS, JavaScript
+ * - backend: Backend API services and server-side applications
+ * - fullstack: Full-stack applications combining frontend and backend
+ * - others: Placeholder projects for future development
  */
 
+// Global object containing all web projects data
 window.webProjectsData = {
-    // Frontend Category (real projects)
-frontend: [
-    {
-        id: "web-frontend-001",
-        category: "frontend",
-        title: "Workly Space",
-        description: "A modern web application for managing co-working spaces, showcasing services, booking options, and interactive features.",
-        technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages", "Vercel"],
-        images: [
-            "images/web/workly.webp"
-        ],
-        features: [
-            "Co-working space showcase",
-            "Booking and service features",
-            "Interactive dashboards",
-            "Responsive design for all devices",
-            "Hosted on GitHub Pages",
-            "Deployed on Vercel"
-        ],
-        links: [
-            {
-                name: "GitHub",
-                url: "https://github.com/younessedd/kow_worker_Simplon.git",
-                icon: "fa-brands fa-github"
-            },
-            {
-                name: "Live Demo",
-                url: "https://kow-worker-simplon-main.vercel.app/",
-                icon: "fa-external-link-alt"
-            }
-        ],
-    
-    },
-{
-    id: "web-frontend-002",
-    category: "frontend",
-    title: "Weather App",
-    description: "A modern web application displaying weather data using API integration with interactive UI and responsive design.",
-    technologies: ["HTML5", "CSS3", "JavaScript", "API Integration", "GitHub Pages", "Vercel"],
-    images: [
-        "images/web/weather.webp"
-    ],
-    features: [
-        "Real-time weather information",
-        "Responsive design",
-        "Multiple location support",
-        "Interactive UI elements",
-        "Hosted on GitHub Pages",
-        "Deployed on Vercel"
-    ],
-    links: [
-        {
-            name: "GitHub",
-            url: "https://github.com/younessedd/Weather-api_Simplon.git",
-            icon: "fa-brands fa-github"
-        },
-     
-        {
-            name: "Live Demo",
-            url: "https://weather-api-simplon-main.vercel.app/",
-            icon: "fa-external-link-alt"
-        }
-    ],
 
-},
-{
-    id: "web-frontend-004",
-    category: "frontend",
-    title: "Movies Scope",
-    description: "A movie discovery application with search functionality, movie details, and filtering options.",
-    technologies: ["HTML5", "CSS3", "JavaScript", "API Integration", "Vercel"],
-    images: [
-        "images/web/movis-scoop.webp"
-    ],
-    features: [
-        "Movie search and discovery",
-        "Detailed movie information",
-        "Filtering and sorting options",
-        "Responsive design",
-        "API integration for real-time data",
-        "Deployed on Vercel"
-    ],
-    links: [
+    // Frontend Category - Projects focused on client-side development
+    frontend: [
         {
-            name: "GitHub",
-            url: "https://github.com/younessedd/movies-scope-simplon.git", // Update with actual GitHub repo
-            icon: "fa-brands fa-github"
+            // Unique project identifier
+            id: "web-frontend-001",
+            // Project category for filtering and organization
+            category: "frontend",
+            // Display title of the project
+            title: "Workly Space",
+            // Detailed project description
+            description: "A modern web application for managing co-working spaces, showcasing services, booking options, and interactive features.",
+            // Technologies used in the project
+            technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages", "Vercel"],
+            // Project images array (only first image used for cards)
+            images: [
+                "images/web/workly.webp"
+            ],
+            // Key features of the project
+            features: [
+                "Co-working space showcase",
+                "Booking and service features",
+                "Interactive dashboards",
+                "Responsive design for all devices",
+                "Hosted on GitHub Pages",
+                "Deployed on Vercel"
+            ],
+            // Links to live demo and source code
+            links: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/younessedd/kow_worker_Simplon.git",
+                    icon: "fa-brands fa-github"
+                },
+                {
+                    name: "Live Demo",
+                    url: "https://kow-worker-simplon-main.vercel.app/",
+                    icon: "fa-external-link-alt"
+                }
+            ]
         },
         {
-            name: "Live Demo",
-            url: "https://movies-scope-simplon-main.vercel.app/",
-            icon: "fa-external-link-alt"
-        }
-    ],
-     
-},
-
+            // Second frontend project
+            id: "web-frontend-002",
+            category: "frontend",
+            title: "Weather App",
+            description: "A modern web application displaying weather data using API integration with interactive UI and responsive design.",
+            technologies: ["HTML5", "CSS3", "JavaScript", "API Integration", "GitHub Pages", "Vercel"],
+            images: [
+                "images/web/weather.webp"
+            ],
+            features: [
+                "Real-time weather information",
+                "Responsive design",
+                "Multiple location support",
+                "Interactive UI elements",
+                "Hosted on GitHub Pages",
+                "Deployed on Vercel"
+            ],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/younessedd/Weather-api_Simplon.git",
+                    icon: "fa-brands fa-github"
+                },
+                {
+                    name: "Live Demo",
+                    url: "https://weather-api-simplon-main.vercel.app/",
+                    icon: "fa-external-link-alt"
+                }
+            ]
+        },
         {
+            // Third frontend project
+            id: "web-frontend-004",
+            category: "frontend",
+            title: "Movies Scope",
+            description: "A movie discovery application with search functionality, movie details, and filtering options.",
+            technologies: ["HTML5", "CSS3", "JavaScript", "API Integration", "Vercel"],
+            images: [
+                "images/web/movis-scoop.webp"
+            ],
+            features: [
+                "Movie search and discovery",
+                "Detailed movie information",
+                "Filtering and sorting options",
+                "Responsive design",
+                "API integration for real-time data",
+                "Deployed on Vercel"
+            ],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/younessedd/movies-scope-simplon.git",
+                    icon: "fa-brands fa-github"
+                },
+                {
+                    name: "Live Demo",
+                    url: "https://movies-scope-simplon-main.vercel.app/",
+                    icon: "fa-external-link-alt"
+                }
+            ]
+        },
+        {
+            // Fourth frontend project
             id: "web-frontend-004",
             category: "frontend",
             title: "PowerGrid Solutions",
@@ -131,6 +147,7 @@ frontend: [
             ]
         },
         {
+            // Fifth frontend project
             id: "web-frontend-005",
             category: "frontend",
             title: "CoWork Hub",
@@ -160,6 +177,7 @@ frontend: [
             ]
         },
         {
+            // Sixth frontend project
             id: "web-frontend-006",
             category: "frontend",
             title: "Bella Vista",
@@ -189,6 +207,7 @@ frontend: [
             ]
         },
         {
+            // Seventh frontend project
             id: "web-frontend-007",
             category: "frontend",
             title: "GourmetDelight",
@@ -217,39 +236,40 @@ frontend: [
                 }
             ]
         },
-   
-{
-    id: "web-frontend-008",
-    category: "frontend",
-    title: "Foodie Foodie",
-    description: "A modern food discovery web application showcasing recipes, restaurants, and culinary experiences with interactive features using TheMealDB API.",
-    technologies: ["React.js", "CSS3", "API Integration", "Vercel", "JavaScript ES6+"],
-    images: [
-        "images/web/foody.webp"
-    ],
-    features: [
-        "Food and recipe discovery via TheMealDB API",
-        "Restaurant and cuisine showcase",
-        "Interactive food browsing with search functionality",
-        "Recipe details and instructions",
-        "Responsive design for all devices",
-        "Real-time data fetching from external APIs",
-        "Deployed on Vercel for live demo"
-    ],
-    links: [
         {
-            name: "GitHub",
-            url: "https://github.com/younessedd/Foodie_Simplon.git",
-            icon: "fa-brands fa-github"
+            // Eighth frontend project
+            id: "web-frontend-008",
+            category: "frontend",
+            title: "Foodie Foodie",
+            description: "A modern food discovery web application showcasing recipes, restaurants, and culinary experiences with interactive features using TheMealDB API.",
+            technologies: ["React.js", "CSS3", "API Integration", "Vercel", "JavaScript ES6+"],
+            images: [
+                "images/web/foody.webp"
+            ],
+            features: [
+                "Food and recipe discovery via TheMealDB API",
+                "Restaurant and cuisine showcase",
+                "Interactive food browsing with search functionality",
+                "Recipe details and instructions",
+                "Responsive design for all devices",
+                "Real-time data fetching from external APIs",
+                "Deployed on Vercel for live demo"
+            ],
+            links: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/younessedd/Foodie_Simplon.git",
+                    icon: "fa-brands fa-github"
+                },
+                {
+                    name: "Live Demo",
+                    url: "https://foodie-simplon-main.vercel.app/",
+                    icon: "fa-external-link-alt"
+                }
+            ]
         },
         {
-            name: "Live Demo",
-            url: "https://foodie-simplon-main.vercel.app/",
-            icon: "fa-external-link-alt"
-        }
-    ],
-   },
-        {
+            // Ninth frontend project
             id: "web-frontend-009",
             category: "frontend",
             title: "Blog API Frontend",
@@ -275,9 +295,10 @@ frontend: [
         }
     ],
 
-    // Backend Category (only real projects)
+    // Backend Category - Server-side applications and API services
     backend: [
         {
+            // First backend project
             id: "web-backend-001",
             category: "backend",
             title: "Job API",
@@ -302,6 +323,7 @@ frontend: [
             ]
         },
         {
+            // Second backend project
             id: "web-backend-002",
             category: "backend",
             title: "Music Box API",
@@ -309,7 +331,6 @@ frontend: [
             technologies: ["Node.js", "Express.js", "Database", "REST API", "Music Data Management"],
             images: [
                 "images/web/swager1.webp"
-
             ],
             features: [
                 "Music track management",
@@ -328,9 +349,10 @@ frontend: [
         }
     ],
 
-    // Full Stack Category (only real projects)
+    // Full Stack Category - Complete applications with both frontend and backend
     fullstack: [
         {
+            // First full-stack project
             id: "web-fullstack-001",
             category: "fullstack",
             title: "Eventify",
@@ -355,6 +377,7 @@ frontend: [
             ]
         },
         {
+            // Second full-stack project
             id: "web-fullstack-002",
             category: "fullstack",
             title: "Task Flow Project",
@@ -379,6 +402,7 @@ frontend: [
             ]
         },
         {
+            // Third full-stack project
             id: "web-fullstack-003",
             category: "fullstack",
             title: "E-Commerce",
@@ -403,6 +427,7 @@ frontend: [
             ]
         },
         {
+            // Fourth full-stack project
             id: "web-fullstack-004",
             category: "fullstack",
             title: "User Manager",
@@ -428,9 +453,10 @@ frontend: [
         }
     ],
 
-    // Others Category (placeholder projects)
+    // Others Category - Placeholder projects for future development
     others: [
         {
+            // First placeholder project
             id: "web-others-001",
             category: "others",
             title: "E-Learning Platform",
@@ -460,6 +486,7 @@ frontend: [
             ]
         },
         {
+            // Second placeholder project
             id: "web-others-002",
             category: "others",
             title: "Healthcare Dashboard",
@@ -489,6 +516,7 @@ frontend: [
             ]
         },
         {
+            // Third placeholder project
             id: "web-others-003",
             category: "others",
             title: "Real Estate Marketplace",
@@ -520,4 +548,5 @@ frontend: [
     ]
 };
 
+// Console log to confirm data loading
 console.log("🌐 Web projects data loaded successfully!");

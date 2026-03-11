@@ -1,21 +1,35 @@
 /**
- * mobile-projects-data.js - Mobile Apps Data
- * Categories: Quiz Apps, Utility & Tools, Smart Home
- * All apps made with Kodular
+ * Mobile Projects Data Structure
+ *
+ * This file contains all mobile application projects data organized by categories.
+ * Each project includes metadata, technologies, features, and Google Play Store links.
+ *
+ * Categories:
+ * - quiz: Educational quiz applications for learning and testing knowledge
+ * - others: Utility and smart home applications with practical functionality
  */
 
+// Global object containing all mobile projects data
 window.mobileProjectsData = {
-    // Quiz Apps Category (3 apps made with Kodular, Firebase, AdMob)
+
+    // Quiz Category - Educational applications focused on learning and knowledge testing
     quiz: [
         {
+            // Unique project identifier for tracking
             id: "mobile-quiz-001",
+            // Project category for filtering and organization
             category: "quiz",
+            // Display title of the mobile application
             title: "AmeriQuiz",
+            // Detailed description of the app's purpose and functionality
             description: "Explore your knowledge about American history, geography, and culture through engaging quizzes.",
+            // Technologies used to develop the application
             technologies: ["Kodular", "Firebase", "AdMob", "Android"],
+            // Application screenshots (only first image used for cards)
             images: [
                 "images/mob/ameriaue-quiz.webp"
             ],
+            // Key features of the application
             features: [
                 "American history & geography questions",
                 "Achievement system",
@@ -23,13 +37,21 @@ window.mobileProjectsData = {
                 "Track progress and scores",
                 "Share results with friends"
             ],
+            // Links to Google Play Store
             links: [
-                { name: "Google Play", url: "https://play.google.com/store/apps/details?id=com.youproproyou.ameriquizquest", icon: "fa-brands fa-google-play" }
+                {
+                    name: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.youproproyou.ameriquizquest",
+                    icon: "fa-brands fa-google-play"
+                }
             ],
+            // Download statistics from Play Store
             downloads: "5K+",
+            // User rating from Play Store
             rating: 4.2
         },
         {
+            // Second quiz application
             id: "mobile-quiz-002",
             category: "quiz",
             title: "Quiz Master: Electronics",
@@ -46,12 +68,17 @@ window.mobileProjectsData = {
                 "Multiple electronics topics"
             ],
             links: [
-                { name: "Google Play", url: "https://play.google.com/store/apps/details?id=com.youproproyou.quizquestanswerarcade", icon: "fa-brands fa-google-play" }
+                {
+                    name: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.youproproyou.quizquestanswerarcade",
+                    icon: "fa-brands fa-google-play"
+                }
             ],
             downloads: "8K+",
             rating: 4.4
         },
         {
+            // Third quiz application
             id: "mobile-quiz-003",
             category: "quiz",
             title: "Maaref & Puzzles",
@@ -68,18 +95,23 @@ window.mobileProjectsData = {
                 "Share results with friends"
             ],
             links: [
-                { name: "Google Play", url: "https://play.google.com/store/apps/details?id=com.youproproyou.quizgeniuslmrf", icon: "fa-brands fa-google-play" }
+                {
+                    name: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.youproproyou.quizgeniuslmrf",
+                    icon: "fa-brands fa-google-play"
+                }
             ],
             downloads: "10K+",
             rating: 4.3
         }
     ],
 
-    // Utility & Tools Category (2 apps made with Kodular)
-    utility: [
+    // Others Category - Utility and smart home applications
+    others: [
         {
+            // First utility application
             id: "mobile-utility-001",
-            category: "utility",
+            category: "others",
             title: "QR Reading Price",
             description: "Scan QR codes and barcodes quickly with your mobile camera and save scanned results.",
             technologies: ["Kodular", "Firebase", "AdMob", "Camera API", "QR Code Scanner"],
@@ -93,14 +125,19 @@ window.mobileProjectsData = {
                 "Copy or share scanned results"
             ],
             links: [
-                { name: "Google Play", url: "https://play.google.com/store/apps/details?id=com.QR.Scanand.Reading", icon: "fa-brands fa-google-play" }
+                {
+                    name: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.QR.Scanand.Reading",
+                    icon: "fa-brands fa-google-play"
+                }
             ],
             downloads: "5K+",
             rating: 4.2
         },
         {
+            // Second utility application
             id: "mobile-utility-002",
-            category: "utility",
+            category: "others",
             title: "Test Your Sensors",
             description: "Check and monitor all your device sensors in real-time, including accelerometer, gyroscope, and more.",
             technologies: ["Kodular", "Firebase", "AdMob", "Android Sensors API"],
@@ -114,18 +151,19 @@ window.mobileProjectsData = {
                 "User-friendly interface"
             ],
             links: [
-                { name: "Google Play", url: "https://play.google.com/store/apps/details?id=com.FiveStarApp.Test.Sensors.free", icon: "fa-brands fa-google-play" }
+                {
+                    name: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.FiveStarApp.Test.Sensors.free",
+                    icon: "fa-brands fa-google-play"
+                }
             ],
             downloads: "10K+",
             rating: 4.3
-        }
-    ],
-
-    // Smart Home Category (1 app made with Kodular, Firebase Auth, ESP32, Bluetooth)
-    smartHome: [
+        },
         {
+            // Smart home application
             id: "mobile-smarthome-001",
-            category: "smartHome",
+            category: "others",
             title: "DARI CONNECTER",
             description: "Control your smart home devices (lights, power, windows, RGB) via ESP32 using Bluetooth with up to 64 commands.",
             technologies: ["Kodular", "Firebase Auth", "Realtime Database", "ESP32", "Bluetooth", "Android"],
@@ -140,7 +178,11 @@ window.mobileProjectsData = {
                 "User authentication with Firebase Auth"
             ],
             links: [
-                { name: "Google Play", url: "#", icon: "fa-brands fa-google-play" }
+                {
+                    name: "Google Play",
+                    url: "#",
+                    icon: "fa-brands fa-google-play"
+                }
             ],
             downloads: "5K+",
             rating: 4.7
@@ -148,4 +190,5 @@ window.mobileProjectsData = {
     ]
 };
 
+// Console log to confirm data loading
 console.log("📱 Mobile projects data loaded successfully!");

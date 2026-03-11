@@ -1,13 +1,21 @@
 /**
- * main.js - الملف الرئيسي لجافاسكريبت
- * منسق ومصحح بدون ميزة التبديل بين الوضع المظلم والفاتح
+ * Main Portfolio JavaScript File
+ *
+ * This script handles the core functionality of the portfolio website including:
+ * - Mobile navigation menu
+ * - Smooth scrolling navigation
+ * - CV download tracking
+ * - Keyboard navigation
+ * - Active navigation highlighting
+ * - Image preloading for performance
+ * - Popup close handlers (legacy code for popup system)
  */
 
-// متغيرات عامة
+// Global variables for managing swiper instances
 let heroSwiper = null;
 let imageSwipers = [];
 
-// Global popup opening functions
+// Global popup opening functions (legacy code for popup system - may be unused)
 function openWebPopup() {
     if (typeof WebProjectsManager !== 'undefined' && typeof WebProjectsManager.showCategory === 'function') {
         WebProjectsManager.showCategory('frontend', 'Frontend');
@@ -32,49 +40,45 @@ function openIoTPopup() {
     }
 }
 
-/**
- * تهيئة التطبيق بالكامل
- */
+// Main portfolio initialization function
 function initPortfolio() {
-    console.log('🚀 جاري تهيئة البورتفوليو...');
-    
-    // تهيئة جميع المكونات
+    console.log('🚀 Initializing portfolio...');
+
+    // Set up all event listeners and interactions
     setupEventListeners();
-    
-    // تعيين السنة الحالية في الفوتر
+
+    // Update copyright year in footer
     updateCurrentYear();
-    
-    // إضافة مستمعي الأحداث لتنزيل السيرة الذاتية
+
+    // Add tracking for CV downloads
     setupCvDownloadTracking();
-    
-        
-    // إعداد مستمعي لوحة المفاتيح
+
+    // Set up keyboard event listeners
     setupKeyboardListeners();
-    
-    // Initialize startup image preloader for fast popups
-    
-    console.log('✅ تم تهيئة البورتفوليو بنجاح');
+
+    console.log('✅ Portfolio initialized successfully');
 }
 
-/**
- * إعداد جميع مستمعي الأحداث
- */
+// Set up all event listeners for interactive elements
 function setupEventListeners() {
-    // قائمة الموبايل
+    // Mobile navigation menu setup
     const burgerBtn = document.getElementById('burger-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    
+
     if (burgerBtn && mobileMenu) {
+        // Toggle mobile menu on burger button click
         burgerBtn.addEventListener('click', function() {
             mobileMenu.classList.toggle('active');
             const icon = this.querySelector('i');
             if (icon) {
+                // Change icon based on menu state
                 icon.className = mobileMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
             }
+            // Prevent body scrolling when menu is open
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         });
-        
-        // إغلاق القائمة عند النقر على الروابط
+
+        // Close mobile menu when navigation links are clicked
         const mobileLinks = document.querySelectorAll('.mobile-nav-link');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -84,24 +88,25 @@ function setupEventListeners() {
             });
         });
     }
-    
-    // التمرير السلس للروابط
+
+    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            
+
             const targetElement = document.querySelector(this.getAttribute('href'));
             if (targetElement) {
-                // إغلاق قائمة الموبايل إذا كانت مفتوحة
+                // Close mobile menu if it's open
                 if (mobileMenu && mobileMenu.classList.contains('active')) {
                     mobileMenu.classList.remove('active');
                     burgerBtn.querySelector('i').className = 'fas fa-bars';
                     document.body.style.overflow = '';
                 }
-                
+
                 const headerHeight = document.querySelector('header').offsetHeight || 80;
                 const targetPosition = targetElement.offsetTop - headerHeight;
-                
+
+                // Smooth scroll to target position
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -111,55 +116,49 @@ function setupEventListeners() {
     });
 }
 
-/**
- * تحديث السنة الحالية في الفوتر
- */
+// Update current year in footer copyright
 function updateCurrentYear() {
     const yearElements = document.querySelectorAll('.current-year');
     const currentYear = new Date().getFullYear();
-    
+
     yearElements.forEach(element => {
         if (element) {
             element.textContent = currentYear;
         }
     });
-    
-    // تحديث سنة الفوتر السفلية
+
+    // Update bottom footer year element
     const footerBottomYear = document.getElementById('current-year');
     if (footerBottomYear) {
         footerBottomYear.textContent = currentYear;
     }
 }
 
-/**
- * إعداد تتبع تنزيل السيرة الذاتية
- */
+// Set up tracking for CV download links
 function setupCvDownloadTracking() {
     const cvLinks = document.querySelectorAll('a[href*="cv"]');
-    
+
     cvLinks.forEach(link => {
         link.addEventListener('click', function() {
-            console.log('تم تنزيل السيرة الذاتية: ', this.href);
+            console.log('CV downloaded: ', this.href);
         });
     });
 }
 
-/**
- * إعداد النقر خارجي لإغلاق سوابير
- */
+// Set up click-outside listeners for closing popups (legacy popup system)
 function setupSwiperCloseListeners() {
     document.addEventListener('click', function(e) {
         const webSwiperContainer = document.getElementById('web-swiper-container');
         const mobileSwiperContainer = document.getElementById('mobile-swiper-container');
         const iotSwiperContainer = document.getElementById('iot-swiper-container');
         const skillsSwiperContainer = document.getElementById('skills-swiper-container');
-        
-        // فحص سوابير تطبيقات الويب
+
+        // Handle web projects popup close
         if (webSwiperContainer && webSwiperContainer.style.display === 'block') {
             const webNav = document.getElementById('web-apps-nav');
             const isClickInsideWebSwiper = webSwiperContainer.contains(e.target);
             const isClickOnWebNav = webNav && (webNav.contains(e.target) || e.target.closest('#web-apps-nav'));
-            
+
             if (!isClickInsideWebSwiper && !isClickOnWebNav) {
                 if (typeof WebProjectsManager !== 'undefined' && typeof WebProjectsManager.closePopup === 'function') {
                     WebProjectsManager.closePopup();
@@ -167,13 +166,13 @@ function setupSwiperCloseListeners() {
                 return;
             }
         }
-        
-        // فحص سوابير تطبيقات الموبايل
+
+        // Handle mobile projects popup close
         if (mobileSwiperContainer && mobileSwiperContainer.style.display === 'block') {
             const mobileNav = document.getElementById('mobile-apps-nav');
             const isClickInsideMobileSwiper = mobileSwiperContainer.contains(e.target);
             const isClickOnMobileNav = mobileNav && (mobileNav.contains(e.target) || e.target.closest('#mobile-apps-nav'));
-            
+
             if (!isClickInsideMobileSwiper && !isClickOnMobileNav) {
                 if (typeof MobileProjectsManager !== 'undefined' && typeof MobileProjectsManager.closePopup === 'function') {
                     MobileProjectsManager.closePopup();
@@ -181,13 +180,13 @@ function setupSwiperCloseListeners() {
                 return;
             }
         }
-        
-        // فحص سوابير مشاريع IoT
+
+        // Handle IoT projects popup close
         if (iotSwiperContainer && iotSwiperContainer.style.display === 'block') {
             const iotNav = document.getElementById('iot-projects-nav');
             const isClickInsideIotSwiper = iotSwiperContainer.contains(e.target);
             const isClickOnIotNav = iotNav && (iotNav.contains(e.target) || e.target.closest('#iot-projects-nav'));
-            
+
             if (!isClickInsideIotSwiper && !isClickOnIotNav) {
                 if (typeof IoTProjectsManager !== 'undefined' && typeof IoTProjectsManager.closePopup === 'function') {
                     IoTProjectsManager.closePopup();
@@ -195,13 +194,13 @@ function setupSwiperCloseListeners() {
                 return;
             }
         }
-        
-        // فحص سوابير المهارات
+
+        // Handle skills popup close
         if (skillsSwiperContainer && skillsSwiperContainer.style.display === 'block') {
             const skillsNav = document.getElementById('skills-nav');
             const isClickInsideSkillsSwiper = skillsSwiperContainer.contains(e.target);
             const isClickOnSkillsNav = skillsNav && (skillsNav.contains(e.target) || e.target.closest('#skills-nav'));
-            
+
             if (!isClickInsideSkillsSwiper && !isClickOnSkillsNav) {
                 if (typeof SkillsManager !== 'undefined' && typeof SkillsManager.closePopup === 'function') {
                     SkillsManager.closePopup();
@@ -212,13 +211,11 @@ function setupSwiperCloseListeners() {
     });
 }
 
-/**
- * إعداد مستمعي لوحة المفاتيح
- */
+// Set up keyboard event listeners for accessibility and shortcuts
 function setupKeyboardListeners() {
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            // إغلاق سوابير تطبيقات الويب
+            // Close web projects popup
             const webSwiperContainer = document.getElementById('web-swiper-container');
             if (webSwiperContainer && webSwiperContainer.style.display === 'block') {
                 if (typeof WebProjectsManager !== 'undefined' && typeof WebProjectsManager.closePopup === 'function') {
@@ -226,8 +223,8 @@ function setupKeyboardListeners() {
                 }
                 return;
             }
-            
-            // إغلاق سوابير تطبيقات الموبايل
+
+            // Close mobile projects popup
             const mobileSwiperContainer = document.getElementById('mobile-swiper-container');
             if (mobileSwiperContainer && mobileSwiperContainer.style.display === 'block') {
                 if (typeof MobileProjectsManager !== 'undefined' && typeof MobileProjectsManager.closePopup === 'function') {
@@ -235,8 +232,8 @@ function setupKeyboardListeners() {
                 }
                 return;
             }
-            
-            // إغلاق سوابير مشاريع IoT
+
+            // Close IoT projects popup
             const iotSwiperContainer = document.getElementById('iot-swiper-container');
             if (iotSwiperContainer && iotSwiperContainer.style.display === 'block') {
                 if (typeof IoTProjectsManager !== 'undefined' && typeof IoTProjectsManager.closePopup === 'function') {
@@ -244,8 +241,8 @@ function setupKeyboardListeners() {
                 }
                 return;
             }
-            
-            // إغلاق سوابير المهارات
+
+            // Close skills popup
             const skillsSwiperContainer = document.getElementById('skills-swiper-container');
             if (skillsSwiperContainer && skillsSwiperContainer.style.display === 'block') {
                 if (typeof SkillsManager !== 'undefined' && typeof SkillsManager.closePopup === 'function') {
@@ -253,8 +250,8 @@ function setupKeyboardListeners() {
                 }
                 return;
             }
-            
-            // إغلاق قائمة الموبايل
+
+            // Close mobile navigation menu
             const mobileMenu = document.getElementById('mobile-menu');
             if (mobileMenu && mobileMenu.classList.contains('active')) {
                 mobileMenu.classList.remove('active');
@@ -268,11 +265,9 @@ function setupKeyboardListeners() {
     });
 }
 
-/**
- * معالجة تغيير حجم النافذة
- */
+// Handle window resize events
 function handleResize() {
-    // إغلاق قائمة الموبايل على الشاشات الكبيرة
+    // Close mobile menu on larger screens
     const mobileMenu = document.getElementById('mobile-menu');
     if (window.innerWidth > 768 && mobileMenu && mobileMenu.classList.contains('active')) {
         mobileMenu.classList.remove('active');
@@ -284,48 +279,45 @@ function handleResize() {
     }
 }
 
-// تهيئة كل شيء عند تحميل DOM
+// Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initPortfolio();
-    
-    // إضافة مستمع لتغيير الحجم
+
+    // Add window resize listener
     window.addEventListener('resize', handleResize);
-    
-    // إضافة مستمع للتمرير للروابط النشطة
+
+    // Add scroll listener for active navigation highlighting
     window.addEventListener('scroll', updateActiveNavLink);
-    
-    // SET HOME LINK TO HOVER STATE WHEN APP OPENS FIRST TIME
-    // because hero section is on screen
+
+    // Set home link to active state initially since hero section is visible
     setTimeout(() => {
         const homeLinks = document.querySelectorAll('a[href="#home"]');
         homeLinks.forEach(link => {
             link.classList.add('active');
             console.log('🍔 HOME LINK SET TO HOVER STATE - APP OPENED FIRST TIME - HERO SECTION VISIBLE');
         });
-        
+
         console.log('🍔 HOME LINK ACTIVE - Hero section visible on app first open');
     }, 100);
 });
 
-/**
- * تحديث رابط التنقل النشط بناءً على موضع التمرير
- */
+// Update active navigation link based on scroll position
 function updateActiveNavLink() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
-    
+
     let currentSection = '';
     const headerHeight = document.querySelector('header').offsetHeight || 80;
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        
+
         if (window.scrollY >= (sectionTop - headerHeight - 100)) {
             currentSection = section.getAttribute('id');
         }
     });
-    
+
     navLinks.forEach(link => {
         link.classList.remove('active');
         const href = link.getAttribute('href');
@@ -335,19 +327,17 @@ function updateActiveNavLink() {
     });
 }
 
-/**
- * Initialize startup image preloader for fast popup loading
- */
+// Initialize startup image preloader for fast popup loading
 function initializeStartupImagePreloader() {
     // Check if startup preloader is available and project data is loaded
-    if (window.startupImagePreloader && 
-        window.webProjectsData && 
-        window.mobileProjectsData && 
-        window.iotProjectsData && 
+    if (window.startupImagePreloader &&
+        window.webProjectsData &&
+        window.mobileProjectsData &&
+        window.iotProjectsData &&
         window.skillsData) {
-        
+
         console.log('🖼️ Starting background image preloading...');
-        
+
         // Start preloading in background (doesn't control splash screen)
         window.startupImagePreloader.init(
             // Progress callback (background only - no splash updates)
