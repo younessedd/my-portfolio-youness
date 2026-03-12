@@ -221,6 +221,48 @@
     border-radius: 10px;
 }
 
+/* Custom Navigation Buttons */
+#iot-projects .carousel-container {
+    position: relative;
+    width: 100%;
+}
+
+#iot-projects .custom-prev-btn,
+#iot-projects .custom-next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #22c55e;
+    border-radius: 50%;
+    color: #22c55e;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#iot-projects .custom-prev-btn {
+    left: 10px;
+}
+
+#iot-projects .custom-next-btn {
+    right: 10px;
+}
+
+#iot-projects .custom-prev-btn:hover,
+#iot-projects .custom-next-btn:hover {
+    background: #fff;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     #iot-projects .swiper-button-prev,

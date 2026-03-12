@@ -184,19 +184,28 @@
         // Render carousel with all projects (no filtering - continuous loop)
         renderCarousel: function(container) {
             container.innerHTML = `
-                <div class="swiper web-projects-swiper">
-                    <div class="swiper-wrapper">
-                        ${this.allProjects.map(p => `
-                            <div class="swiper-slide">${this.createCardHTML(p)}</div>
-                        `).join('')}
+                <div class="carousel-container">
+                    <button class="custom-prev-btn" id="webPrevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="swiper web-projects-swiper">
+                        <div class="swiper-wrapper">
+                            ${this.allProjects.map(p => `
+                                <div class="swiper-slide">${this.createCardHTML(p)}</div>
+                            `).join('')}
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-pagination"></div>
                     </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-pagination"></div>
+                    <button class="custom-next-btn" id="webNextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             `;
 
             this.initSwiper();
+            this.initCustomButtons();
         },
 
         // Initialize Swiper
@@ -211,19 +220,14 @@
 
             this.swiperInstance = new Swiper(swiperEl, {
                 ...this.config,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true
+                navigation: {
+                    nextEl: '.web-projects-swiper .swiper-button-next',
+                    prevEl: '.web-projects-swiper .swiper-button-prev'
                 },
                 pagination: {
                     el: '.web-projects-swiper .swiper-pagination',
                     clickable: true,
                     dynamicBullets: true
-                },
-                navigation: {
-                    nextEl: '.web-projects-swiper .swiper-button-next',
-                    prevEl: '.web-projects-swiper .swiper-button-prev'
                 },
                 breakpoints: this.config.breakpoints,
                 on: {
@@ -234,6 +238,24 @@
 
             // Set initial active category
             setTimeout(() => this.updateActiveCategory(), 100);
+        },
+
+        // Initialize custom navigation buttons
+        initCustomButtons: function() {
+            const prevBtn = document.getElementById('webPrevBtn');
+            const nextBtn = document.getElementById('webNextBtn');
+
+            if (prevBtn && this.swiperInstance) {
+                prevBtn.addEventListener('click', () => {
+                    this.swiperInstance.slidePrev();
+                });
+            }
+
+            if (nextBtn && this.swiperInstance) {
+                nextBtn.addEventListener('click', () => {
+                    this.swiperInstance.slideNext();
+                });
+            }
         }
     };
 

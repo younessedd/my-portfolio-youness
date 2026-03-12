@@ -847,3 +847,70 @@ h3.about-name {
 .theme-dark .about-text p {
     color: var(--text-secondary);
 }
+
+/* ============================================
+   ABOUT SECTION BUTTONS
+============================================ */
+.about-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.about-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.about-btn i {
+    font-size: 1.1rem;
+}
+
+/* Contact Me Button - Primary Style */
+.contact-btn {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    background: linear-gradient(135deg, #4f46e5, #4338ca);
+}
+
+/* My CV Button - Secondary Style */
+.cv-btn {
+    background: transparent;
+    color: #10b981;
+    border: 2px solid #10b981;
+}
+
+.cv-btn:hover {
+    background: #10b981;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .about-btn {
+        justify-content: center;
+    }
+}

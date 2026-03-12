@@ -186,19 +186,28 @@
         // Render carousel with all projects
         renderCarousel: function(container) {
             container.innerHTML = `
-                <div class="swiper iot-projects-swiper">
-                    <div class="swiper-wrapper">
-                        ${this.allProjects.map(p => `
-                            <div class="swiper-slide">${this.createCardHTML(p)}</div>
-                        `).join('')}
+                <div class="carousel-container">
+                    <button class="custom-prev-btn" id="iotPrevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="swiper iot-projects-swiper">
+                        <div class="swiper-wrapper">
+                            ${this.allProjects.map(p => `
+                                <div class="swiper-slide">${this.createCardHTML(p)}</div>
+                            `).join('')}
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-pagination"></div>
                     </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-pagination"></div>
+                    <button class="custom-next-btn" id="iotNextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             `;
 
             this.initSwiper();
+            this.initCustomButtons();
         },
 
         // Initialize Swiper
@@ -213,11 +222,6 @@
 
             this.swiperInstance = new Swiper(swiperEl, {
                 ...this.config,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true
-                },
                 pagination: {
                     el: '.iot-projects-swiper .swiper-pagination',
                     clickable: true,
@@ -236,6 +240,24 @@
 
             // Set initial active category
             setTimeout(() => this.updateActiveCategory(), 100);
+        },
+
+        // Initialize custom navigation buttons
+        initCustomButtons: function() {
+            const prevBtn = document.getElementById('iotPrevBtn');
+            const nextBtn = document.getElementById('iotNextBtn');
+
+            if (prevBtn && this.swiperInstance) {
+                prevBtn.addEventListener('click', () => {
+                    this.swiperInstance.slidePrev();
+                });
+            }
+
+            if (nextBtn && this.swiperInstance) {
+                nextBtn.addEventListener('click', () => {
+                    this.swiperInstance.slideNext();
+                });
+            }
         }
     };
 

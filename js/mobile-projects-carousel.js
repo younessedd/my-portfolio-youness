@@ -187,19 +187,28 @@
         // Render carousel with all projects
         renderCarousel: function(container) {
             container.innerHTML = `
-                <div class="swiper mobile-projects-swiper">
-                    <div class="swiper-wrapper">
-                        ${this.allProjects.map(p => `
-                            <div class="swiper-slide">${this.createCardHTML(p)}</div>
-                        `).join('')}
+                <div class="carousel-container">
+                    <button class="custom-prev-btn" id="mobilePrevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="swiper mobile-projects-swiper">
+                        <div class="swiper-wrapper">
+                            ${this.allProjects.map(p => `
+                                <div class="swiper-slide">${this.createCardHTML(p)}</div>
+                            `).join('')}
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-pagination"></div>
                     </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-pagination"></div>
+                    <button class="custom-next-btn" id="mobileNextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             `;
 
             this.initSwiper();
+            this.initCustomButtons();
         },
 
         // Initialize Swiper
@@ -214,11 +223,6 @@
 
             this.swiperInstance = new Swiper(swiperEl, {
                 ...this.config,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true
-                },
                 pagination: {
                     el: '.mobile-projects-swiper .swiper-pagination',
                     clickable: true,
@@ -237,6 +241,24 @@
 
             // Set initial active category
             setTimeout(() => this.updateActiveCategory(), 100);
+        },
+
+        // Initialize custom navigation buttons
+        initCustomButtons: function() {
+            const prevBtn = document.getElementById('mobilePrevBtn');
+            const nextBtn = document.getElementById('mobileNextBtn');
+
+            if (prevBtn && this.swiperInstance) {
+                prevBtn.addEventListener('click', () => {
+                    this.swiperInstance.slidePrev();
+                });
+            }
+
+            if (nextBtn && this.swiperInstance) {
+                nextBtn.addEventListener('click', () => {
+                    this.swiperInstance.slideNext();
+                });
+            }
         }
     };
 
