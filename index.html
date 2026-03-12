@@ -268,27 +268,24 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
             
             <div class="contact-container">
                 <div class="contact-form-wrapper reveal">
-                    <form id="contactForm">
+                    <form id="contactForm" novalidate>
                         <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" class="form-control" required placeholder="Enter your full name" title="Enter your full name">
-                            <div class="error" id="nameError">Name required (minimum 3 characters)</div>
+                            <label for="name">Full Name *<span class="error" id="nameError"></span></label>
+                            <input type="text" id="name" class="form-control" placeholder="Enter your full name">
                         </div>
                         <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" class="form-control" required placeholder="Enter your email address" title="Enter your email address">
-                            <div class="error" id="emailError">Valid email required</div>
+                            <label for="email">Email *<span class="error" id="emailError"></span></label>
+                            <input type="text" id="email" class="form-control" placeholder="example@email.com">
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" class="form-control" required placeholder="Enter your phone number" title="Enter your phone number">
-                            <div class="error" id="phoneError">Valid phone number required</div>
+                            <label for="phone">Phone Number *<span class="error" id="phoneError"></span></label>
+                            <input type="text" id="phone" class="form-control" placeholder="Enter your phone number (10-15 digits)">
                         </div>
                         <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" class="form-control" required placeholder="Enter your message here" title="Enter your message here" style="resize: none; overflow: hidden; min-height: 100px;" oninput="autoResize(this)"></textarea>
-                            <div class="error" id="messageError">Message required (minimum 5 characters)</div>
+                            <label for="message">Message *<span class="error" id="messageError"></span></label>
+                            <textarea id="message" class="form-control" placeholder="Write your message" style="resize: none; overflow: hidden; min-height: 100px;" oninput="autoResize(this)"></textarea>
                         </div>
+                        <div id="formStatus" class="form-status"></div>
                         <button type="submit" class="btn form-btn zoom">
                             <i class="fas fa-paper-plane"></i>
                             Send Message
