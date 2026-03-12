@@ -13,9 +13,20 @@
     padding-bottom: 50px;
 }
 
+/* Ensure swiper slides have equal dimensions */
+#skills .swiper-slide {
+    height: auto !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
 /* Card Styles - match Web/Mobile/IoT */
 #skills .card-item {
-    height: 100%;
+    width: 100%;
+    display: flex;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 #skills .card-wrapper {
@@ -23,15 +34,21 @@
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid var(--border-color);
-    height: 100%;
+    width: 100%;
+    min-height: 280px;
     display: flex;
     flex-direction: column;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 #skills .card-list {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    width: 100%;
+    min-height: 280px;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 #skills .card-body {
@@ -42,6 +59,9 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    min-height: 280px;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 #skills .card-badge {

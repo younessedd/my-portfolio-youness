@@ -127,11 +127,6 @@ function initSkillsSwiper(swiperId, wrapperId, skillsCategories) {
             clickable: true,
             dynamicBullets: true
         },
-        // Configure navigation arrows
-        navigation: {
-            nextEl: `#${swiperId} .swiper-button-next`,
-            prevEl: `#${swiperId} .swiper-button-prev`
-        },
         // Responsive breakpoints for different screen sizes
         breakpoints: {
             // Extra small screens: 1 slide per view

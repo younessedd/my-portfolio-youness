@@ -46,7 +46,6 @@ const PortfolioConfig = {
 
     // Feature flags and toggles
     features: {
-        heroSwiper: true,
         skillsModal: true,
         projectsSwiper: true,
         contactForm: true,

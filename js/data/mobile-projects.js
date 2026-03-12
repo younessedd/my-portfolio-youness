@@ -13,12 +13,12 @@
 window.mobileProjectsData = {
 
     // Quiz Category - Educational applications focused on learning and knowledge testing
-    quiz: [
+    quiz_apps: [
         {
             // Unique project identifier for tracking
             id: "mobile-quiz-001",
             // Project category for filtering and organization
-            category: "quiz",
+            category: "quiz_apps",
             // Display title of the mobile application
             title: "AmeriQuiz",
             // Detailed description of the app's purpose and functionality
@@ -53,7 +53,7 @@ window.mobileProjectsData = {
         {
             // Second quiz application
             id: "mobile-quiz-002",
-            category: "quiz",
+            category: "quiz_apps",
             title: "Quiz Master: Electronics",
             description: "Interactive electronics quiz app with challenging questions and arcade-style gameplay for fun learning.",
             technologies: ["Kodular", "Firebase", "AdMob", "Android"],
@@ -80,7 +80,7 @@ window.mobileProjectsData = {
         {
             // Third quiz application
             id: "mobile-quiz-003",
-            category: "quiz",
+            category: "quiz_apps",
             title: "Maaref & Puzzles",
             description: "Test your knowledge with thousands of general knowledge and puzzle questions in Arabic and English.",
             technologies: ["Kodular", "Firebase", "AdMob", "Android"],
@@ -107,11 +107,11 @@ window.mobileProjectsData = {
     ],
 
     // Others Category - Utility and smart home applications
-    others: [
+    others_apps: [
         {
             // First utility application
             id: "mobile-utility-001",
-            category: "others",
+            category: "others_apps",
             title: "QR Reading Price",
             description: "Scan QR codes and barcodes quickly with your mobile camera and save scanned results.",
             technologies: ["Kodular", "Firebase", "AdMob", "Camera API", "QR Code Scanner"],
@@ -137,7 +137,7 @@ window.mobileProjectsData = {
         {
             // Second utility application
             id: "mobile-utility-002",
-            category: "others",
+            category: "others_apps",
             title: "Test Your Sensors",
             description: "Check and monitor all your device sensors in real-time, including accelerometer, gyroscope, and more.",
             technologies: ["Kodular", "Firebase", "AdMob", "Android Sensors API"],
@@ -163,7 +163,7 @@ window.mobileProjectsData = {
         {
             // Smart home application
             id: "mobile-smarthome-001",
-            category: "others",
+            category: "others_apps",
             title: "DARI CONNECTER",
             description: "Control your smart home devices (lights, power, windows, RGB) via ESP32 using Bluetooth with up to 64 commands.",
             technologies: ["Kodular", "Firebase Auth", "Realtime Database", "ESP32", "Bluetooth", "Android"],

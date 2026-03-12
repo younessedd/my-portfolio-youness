@@ -14,13 +14,13 @@
 // Global object containing all web projects data
 window.webProjectsData = {
 
-    // Frontend Category - Projects focused on client-side development
-    frontend: [
+    // Frontend Apps Category - Projects focused on client-side development
+    frontend_apps: [
         {
             // Unique project identifier
             id: "web-frontend-001",
             // Project category for filtering and organization
-            category: "frontend",
+            category: "frontend_apps",
             // Display title of the project
             title: "Workly Space",
             // Detailed project description
@@ -50,14 +50,14 @@ window.webProjectsData = {
                 {
                     name: "Live Demo",
                     url: "https://kow-worker-simplon-main.vercel.app/",
-                    icon: "fa-external-link-alt"
+                    icon: "fa-solid fa-play-circle"
                 }
             ]
         },
         {
             // Second frontend project
             id: "web-frontend-002",
-            category: "frontend",
+            category: "frontend_apps",
             title: "Weather App",
             description: "A modern web application displaying weather data using API integration with interactive UI and responsive design.",
             technologies: ["HTML5", "CSS3", "JavaScript", "API Integration", "GitHub Pages", "Vercel"],
@@ -81,14 +81,14 @@ window.webProjectsData = {
                 {
                     name: "Live Demo",
                     url: "https://weather-api-simplon-main.vercel.app/",
-                    icon: "fa-external-link-alt"
+                    icon: "fa-solid fa-play-circle"
                 }
             ]
         },
         {
             // Third frontend project
             id: "web-frontend-004",
-            category: "frontend",
+            category: "frontend_apps",
             title: "Movies Scope",
             description: "A movie discovery application with search functionality, movie details, and filtering options.",
             technologies: ["HTML5", "CSS3", "JavaScript", "API Integration", "Vercel"],
@@ -112,14 +112,14 @@ window.webProjectsData = {
                 {
                     name: "Live Demo",
                     url: "https://movies-scope-simplon-main.vercel.app/",
-                    icon: "fa-external-link-alt"
+                    icon: "fa-solid fa-play-circle"
                 }
             ]
         },
         {
             // Fourth frontend project
             id: "web-frontend-004",
-            category: "frontend",
+            category: "frontend_apps",
             title: "PowerGrid Solutions",
             description: "A professional web application for PowerGrid Solutions company, showcasing services, solutions, and projects.",
             technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
@@ -142,14 +142,14 @@ window.webProjectsData = {
                 {
                     name: "Live Demo",
                     url: "https://younessedd.github.io/PowerGrid-Solutions_Company/",
-                    icon: "fa-external-link-alt"
+                    icon: "fa-solid fa-play-circle"
                 }
             ]
         },
         {
             // Fifth frontend project
             id: "web-frontend-005",
-            category: "frontend",
+            category: "frontend_apps",
             title: "CoWork Hub",
             description: "A website for CoWork Hub company displaying services, workspace options, and interactive booking features.",
             technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
@@ -172,14 +172,14 @@ window.webProjectsData = {
                 {
                     name: "Live Demo",
                     url: "https://younessedd.github.io/CoWork-Hub_company/",
-                    icon: "fa-external-link-alt"
+                    icon: "fa-solid fa-play-circle"
                 }
             ]
         },
         {
             // Sixth frontend project
             id: "web-frontend-006",
-            category: "frontend",
+            category: "frontend_apps",
             title: "Bella Vista",
             description: "A modern web application for Bella Vista Food company showcasing menus, services, and interactive features.",
             technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
@@ -202,14 +202,14 @@ window.webProjectsData = {
                 {
                     name: "Live Demo",
                     url: "https://younessedd.github.io/Bella-Vista-Food_company/",
-                    icon: "fa-external-link-alt"
+                    icon: "fa-solid fa-play-circle"
                 }
             ]
         },
         {
             // Seventh frontend project
             id: "web-frontend-007",
-            category: "frontend",
+            category: "frontend_apps",
             title: "GourmetDelight",
             description: "A modern web application for a gourmet food company, showcasing menus, services, and interactive customer features with responsive design.",
             technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
@@ -232,14 +232,14 @@ window.webProjectsData = {
                 {
                     name: "Live Demo",
                     url: "https://younessedd.github.io/GourmetDelight-Food_company/",
-                    icon: "fa-external-link-alt"
+                    icon: "fa-solid fa-play-circle"
                 }
             ]
         },
         {
             // Eighth frontend project
             id: "web-frontend-008",
-            category: "frontend",
+            category: "frontend_apps",
             title: "Foodie Foodie",
             description: "A modern food discovery web application showcasing recipes, restaurants, and culinary experiences with interactive features using TheMealDB API.",
             technologies: ["React.js", "CSS3", "API Integration", "Vercel", "JavaScript ES6+"],
@@ -264,14 +264,14 @@ window.webProjectsData = {
                 {
                     name: "Live Demo",
                     url: "https://foodie-simplon-main.vercel.app/",
-                    icon: "fa-external-link-alt"
+                    icon: "fa-solid fa-play-circle"
                 }
             ]
         },
         {
             // Ninth frontend project
             id: "web-frontend-009",
-            category: "frontend",
+            category: "frontend_apps",
             title: "Blog API Frontend",
             description: "A React-based frontend application for a blog system that connects to a backend API to display, create, and manage blog content.",
             technologies: ["React.js", "CSS3", "JavaScript", "API Integration"],
@@ -295,12 +295,12 @@ window.webProjectsData = {
         }
     ],
 
-    // Backend Category - Server-side applications and API services
-    backend: [
+    // Backend Apps Category - Server-side applications and API services
+    backend_apps: [
         {
             // First backend project
             id: "web-backend-001",
-            category: "backend",
+            category: "backend_apps",
             title: "Job API",
             description: "A backend API service for job listings and employment opportunities with data management capabilities.",
             technologies: ["Node.js", "Express.js", "MongoDB", "REST API"],
@@ -325,7 +325,7 @@ window.webProjectsData = {
         {
             // Second backend project
             id: "web-backend-002",
-            category: "backend",
+            category: "backend_apps",
             title: "Music Box API",
             description: "A backend API service for managing music data, including tracks, artists, playlists, and music metadata.",
             technologies: ["Node.js", "Express.js", "Database", "REST API", "Music Data Management"],
@@ -349,12 +349,12 @@ window.webProjectsData = {
         }
     ],
 
-    // Full Stack Category - Complete applications with both frontend and backend
-    fullstack: [
+    // Fullstack Apps Category - Complete applications with both frontend and backend
+    fullstack_apps: [
         {
             // First full-stack project
             id: "web-fullstack-001",
-            category: "fullstack",
+            category: "fullstack_apps",
             title: "Eventify",
             description: "A full-stack event management application for creating, organizing, and managing events with interactive features.",
             technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "REST API", "Authentication"],
@@ -379,7 +379,7 @@ window.webProjectsData = {
         {
             // Second full-stack project
             id: "web-fullstack-002",
-            category: "fullstack",
+            category: "fullstack_apps",
             title: "Task Flow Project",
             description: "A full-stack task management and workflow application for organizing, tracking, and optimizing task completion processes.",
             technologies: ["React.js", "Node.js", "Express.js", "Database", "Task Management", "Workflow Engine"],
@@ -404,7 +404,7 @@ window.webProjectsData = {
         {
             // Third full-stack project
             id: "web-fullstack-003",
-            category: "fullstack",
+            category: "fullstack_apps",
             title: "E-Commerce",
             description: "A comprehensive full-stack e-commerce platform with product management, shopping cart, user authentication, and payment processing.",
             technologies: ["React.js", "Node.js", "Express.js", "Database", "Payment Integration", "Authentication"],
@@ -429,7 +429,7 @@ window.webProjectsData = {
         {
             // Fourth full-stack project
             id: "web-fullstack-004",
-            category: "fullstack",
+            category: "fullstack_apps",
             title: "User Manager",
             description: "A full-stack user management system with authentication, user profiles, and administrative controls.",
             technologies: ["React.js", "Node.js", "CSS3", "API Integration", "Express.js", "Authentication"],
@@ -453,12 +453,12 @@ window.webProjectsData = {
         }
     ],
 
-    // Others Category - Placeholder projects for future development
-    others: [
+    // Others Apps Category - Placeholder projects for future development
+    others_apps: [
         {
             // First placeholder project
             id: "web-others-001",
-            category: "others",
+            category: "others_apps",
             title: "E-Learning Platform",
             description: "A comprehensive online learning management system with video streaming, quizzes, and progress tracking.",
             technologies: ["React", "Node.js", "MongoDB", "AWS", "Socket.io"],
@@ -481,14 +481,14 @@ window.webProjectsData = {
                 {
                     name: "Live Demo",
                     url: "#",
-                    icon: "fa-external-link-alt"
+                    icon: "fa-solid fa-play-circle"
                 }
             ]
         },
         {
             // Second placeholder project
             id: "web-others-002",
-            category: "others",
+            category: "others_apps",
             title: "Healthcare Dashboard",
             description: "A medical dashboard for patient management, appointment scheduling, and health analytics.",
             technologies: ["Vue.js", "Python", "PostgreSQL", "Docker", "TensorFlow"],
@@ -511,14 +511,14 @@ window.webProjectsData = {
                 {
                     name: "Live Demo",
                     url: "#",
-                    icon: "fa-external-link-alt"
+                    icon: "fa-solid fa-play-circle"
                 }
             ]
         },
         {
             // Third placeholder project
             id: "web-others-003",
-            category: "others",
+            category: "others_apps",
             title: "Real Estate Marketplace",
             description: "A property listing platform with virtual tours, advanced search, and agent management.",
             technologies: ["Angular", "Spring Boot", "MySQL", "Three.js", "Google Maps API"],
@@ -541,7 +541,7 @@ window.webProjectsData = {
                 {
                     name: "Live Demo",
                     url: "#",
-                    icon: "fa-external-link-alt"
+                    icon: "fa-solid fa-play-circle"
                 }
             ]
         }

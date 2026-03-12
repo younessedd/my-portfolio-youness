@@ -262,14 +262,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ensure home link shows active state on initial page load
     setTimeout(() => {
-        // Force home links to be active since hero section is visible
-        const homeLinks = document.querySelectorAll('a[href="#home"]');
+        // Force home links to be active since About section is visible
+        const homeLinks = document.querySelectorAll('a[href="#about"]');
         homeLinks.forEach(link => {
             link.classList.add('active');
-            console.log('🍔 Home link FORCED to active state on first load - HERO SECTION VISIBLE');
         });
 
-        console.log('🍔 HOME LINK ACTIVE on ALL DEVICES - Hero section visible');
+        console.log('🍔 ABOUT LINK ACTIVE on first load');
     }, 100);
 });
 

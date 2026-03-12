@@ -325,31 +325,3 @@ function updateActiveNavLink() {
         }
     });
 }
-
-// Initialize startup image preloader for fast popup loading
-function initializeStartupImagePreloader() {
-    // Check if startup preloader is available and project data is loaded
-    if (window.startupImagePreloader &&
-        window.webProjectsData &&
-        window.mobileProjectsData &&
-        window.iotProjectsData &&
-        window.skillsData) {
-
-        console.log('🖼️ Starting background image preloading...');
-
-        // Start preloading in background (doesn't control splash screen)
-        window.startupImagePreloader.init(
-            // Progress callback (background only - no splash updates)
-            (progress) => {
-                console.log(`📊 Background loading: ${progress.percentage}% (${progress.loaded}/${progress.total})`);
-            },
-            // Completion callback (background only)
-            (result) => {
-                console.log(`✅ Background loading complete! ${result.loaded} images loaded for instant popup display.`);
-            }
-        );
-    } else {
-        // Retry initialization after data loads
-        setTimeout(initializeStartupImagePreloader, 200);
-    }
-}

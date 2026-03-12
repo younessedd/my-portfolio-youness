@@ -1,0 +1,247 @@
+/**
+ * Web Projects Carousel Module
+ * Dynamically renders project cards from window.webProjectsData
+ * with auto-updating category navigation based on centered slide
+ */
+
+(function() {
+    'use strict';
+
+    const WebProjectsCarousel = {
+        swiperInstance: null,
+        allProjects: [],
+        categoryIndices: {},
+        
+        // Configuration
+        config: {
+            breakpoints: {
+                0: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+                1440: { slidesPerView: 4 }
+            },
+            speed: 700,
+            spaceBetween: 30,
+            loop: true
+        },
+
+        // Initialize the module
+        init: function() {
+            const filterContainer = document.querySelector('.web-filter');
+            const carouselContainer = document.querySelector('.web-carousel');
+
+            if (!filterContainer || !carouselContainer) {
+                console.warn('Web Projects containers not found');
+                return;
+            }
+
+            this.waitForData().then(() => {
+                this.allProjects = this.getAllProjects();
+                this.buildCategoryIndex();
+                this.renderFilters(filterContainer);
+                this.renderCarousel(carouselContainer);
+            });
+        },
+
+        // Wait for data to be available
+        waitForData: function() {
+            return new Promise((resolve) => {
+                const check = () => {
+                    if (typeof window.webProjectsData !== 'undefined') {
+                        resolve();
+                    } else {
+                        setTimeout(check, 100);
+                    }
+                };
+                check();
+            });
+        },
+
+        // Get all projects merged from all categories
+        getAllProjects: function() {
+            let all = [];
+            Object.keys(window.webProjectsData).forEach(cat => {
+                all = all.concat(window.webProjectsData[cat]);
+            });
+            return all;
+        },
+
+        // Build index of first occurrence of each category
+        buildCategoryIndex: function() {
+            this.categoryIndices = {};
+            this.allProjects.forEach((project, index) => {
+                if (!this.categoryIndices[project.category]) {
+                    this.categoryIndices[project.category] = index;
+                }
+            });
+        },
+
+        // Render filter buttons (without "All")
+        renderFilters: function(container) {
+            const categories = ['frontend_apps', 'backend_apps', 'fullstack_apps', 'others_apps'];
+            const labels = {
+                'frontend_apps': 'Frontend Apps',
+                'backend_apps': 'Backend Apps',
+                'fullstack_apps': 'Fullstack Apps',
+                'others_apps': 'Others Apps'
+            };
+            
+            container.innerHTML = `
+                <div class="filter-buttons">
+                    ${categories.map(cat => `
+                        <button class="filter-btn" data-category="${cat}">
+                            ${labels[cat]}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+
+            // Add click handler for scrolling to category
+            container.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => this.scrollToCategory(e.target.dataset.category));
+            });
+        },
+
+        // Scroll to first card of a specific category
+        scrollToCategory: function(category) {
+            if (!this.swiperInstance || this.categoryIndices[category] === undefined) return;
+            
+            const targetIndex = this.categoryIndices[category];
+            this.swiperInstance.slideTo(targetIndex);
+            
+            // Update active button state
+            document.querySelectorAll('.web-filter .filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.category === category);
+            });
+        },
+
+        // Update active category button based on centered slide
+        updateActiveCategory: function() {
+            if (!this.swiperInstance) return;
+            
+            const realIndex = this.swiperInstance.realIndex;
+            const centeredProject = this.allProjects[realIndex];
+            
+            if (centeredProject) {
+                const activeCategory = centeredProject.category;
+                document.querySelectorAll('.web-filter .filter-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.category === activeCategory);
+                });
+            }
+        },
+
+        // Create project card HTML
+        createCardHTML: function(project) {
+            const imageUrl = project.images && project.images[0] ? project.images[0] : '';
+            const description = project.description ? project.description.substring(0, 100) + '...' : '';
+            const technologies = project.technologies ? project.technologies.slice(0, 4) : [];
+            
+            // Map category keys to display labels (same as button labels)
+            const categoryLabels = {
+                'frontend_apps': 'Frontend Apps',
+                'backend_apps': 'Backend Apps',
+                'fullstack_apps': 'Fullstack Apps',
+                'others_apps': 'Others Apps'
+            };
+            const displayCategory = categoryLabels[project.category] || project.category;
+            
+            let linksHTML = '';
+            if (project.links && project.links.length > 0) {
+                project.links.forEach(link => {
+                    const icon = link.icon || 'fa-link';
+                    const isGitHub = link.name && link.name.toLowerCase().includes('github');
+                    const btnText = isGitHub ? 'GitHub' : (link.name || 'Live Demo');
+                    linksHTML += `
+                        <a href="${link.url}" target="_blank" class="card-link-btn ${isGitHub ? 'github' : 'live'}">
+                            <span>${btnText}</span>
+                        </a>
+                    `;
+                });
+            }
+
+            return `
+                <div class="project-card" data-category="${project.category}">
+                    <div class="card-image-wrapper">
+                        <img src="${imageUrl}" alt="${project.title}" 
+                             class="card-image" 
+                             onerror="this.src='https://via.placeholder.com/400x250?text=No+Image'">
+                        <span class="card-badge">${displayCategory}</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">${project.title}</h3>
+                        <p class="card-description">${description}</p>
+                        <div class="card-technologies">
+                            ${technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                        </div>
+                        <div class="card-links">
+                            ${linksHTML}
+                        </div>
+                    </div>
+                </div>
+            `;
+        },
+
+        // Render carousel with all projects (no filtering - continuous loop)
+        renderCarousel: function(container) {
+            container.innerHTML = `
+                <div class="swiper web-projects-swiper">
+                    <div class="swiper-wrapper">
+                        ${this.allProjects.map(p => `
+                            <div class="swiper-slide">${this.createCardHTML(p)}</div>
+                        `).join('')}
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            `;
+
+            this.initSwiper();
+        },
+
+        // Initialize Swiper
+        initSwiper: function() {
+            if (typeof Swiper === 'undefined') {
+                setTimeout(() => this.initSwiper(), 100);
+                return;
+            }
+
+            const swiperEl = document.querySelector('.web-projects-swiper');
+            if (!swiperEl) return;
+
+            this.swiperInstance = new Swiper(swiperEl, {
+                ...this.config,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                },
+                pagination: {
+                    el: '.web-projects-swiper .swiper-pagination',
+                    clickable: true,
+                    dynamicBullets: true
+                },
+                navigation: {
+                    nextEl: '.web-projects-swiper .swiper-button-next',
+                    prevEl: '.web-projects-swiper .swiper-button-prev'
+                },
+                breakpoints: this.config.breakpoints,
+                on: {
+                    slideChange: () => this.updateActiveCategory(),
+                    realIndexChange: () => this.updateActiveCategory()
+                }
+            });
+
+            // Set initial active category
+            setTimeout(() => this.updateActiveCategory(), 100);
+        }
+    };
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => WebProjectsCarousel.init());
+    } else {
+        WebProjectsCarousel.init();
+    }
+
+})();
