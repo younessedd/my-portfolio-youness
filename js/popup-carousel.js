@@ -94,6 +94,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to open popup with specific project index
     function openPopup(startIndex = 0, category = 'web') {
+        // Only open popup on laptop and large tablet screens (min 1024px)
+        if (window.innerWidth < 1024) {
+            return;
+        }
+        
         // Store current category for filter
         window.currentPopupCategory = category;
         
@@ -293,6 +298,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Override openPopup to generate filter buttons
     window.openProjectPopup = function(startIndex = 0, category = 'web') {
+        // Only open popup on laptop and large tablet screens (min 1024px)
+        if (window.innerWidth < 1024) {
+            return;
+        }
+        
         window.currentPopupCategory = category;
         
         // Generate filter buttons based on category
