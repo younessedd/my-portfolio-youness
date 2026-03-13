@@ -184,9 +184,6 @@
         renderCarousel: function(container) {
             container.innerHTML = `
                 <div class="carousel-container">
-                    <button class="custom-prev-btn" id="webPrevBtn">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
                     <div class="swiper web-projects-swiper">
                         <div class="swiper-wrapper">
                             ${this.allProjects.map((project, index) => `
@@ -197,14 +194,10 @@
                         <div class="swiper-button-next"></div>
                         <div class="swiper-pagination"></div>
                     </div>
-                    <button class="custom-next-btn" id="webNextBtn">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
                 </div>
             `;
 
             this.initSwiper();
-            this.initCustomButtons();
         },
 
         // Initialize Swiper

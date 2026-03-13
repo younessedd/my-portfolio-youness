@@ -186,9 +186,6 @@
         renderCarousel: function(container) {
             container.innerHTML = `
                 <div class="carousel-container">
-                    <button class="custom-prev-btn" id="iotPrevBtn">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
                     <div class="swiper iot-projects-swiper">
                         <div class="swiper-wrapper">
                             ${this.allProjects.map((p, index) => `
@@ -199,9 +196,6 @@
                         <div class="swiper-button-next"></div>
                         <div class="swiper-pagination"></div>
                     </div>
-                    <button class="custom-next-btn" id="iotNextBtn">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
                 </div>
             `;
 

@@ -53,8 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="popup-image-swiper swiper" id="popup-image-swiper-${project.popupIndex}">
                         <div class="swiper-wrapper">${imagesSlides}</div>
                         <div class="swiper-pagination"></div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
                     </div>
                 `;
             } else {
@@ -142,10 +140,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                     slidesPerView: 1,
                                     spaceBetween: 0,
                                     loop: project.images.length > 1,
-                                    navigation: {
-                                        nextEl: imageSwiperEl.querySelector('.swiper-button-next'),
-                                        prevEl: imageSwiperEl.querySelector('.swiper-button-prev'),
-                                    },
                                     pagination: {
                                         el: imageSwiperEl.querySelector('.swiper-pagination'),
                                         clickable: true,
@@ -343,10 +337,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                     slidesPerView: 1,
                                     spaceBetween: 0,
                                     loop: true,
-                                    navigation: {
-                                        nextEl: imageSwiperEl.querySelector('.swiper-button-next'),
-                                        prevEl: imageSwiperEl.querySelector('.swiper-button-prev'),
-                                    },
                                     pagination: {
                                         el: imageSwiperEl.querySelector('.swiper-pagination'),
                                         clickable: true,
