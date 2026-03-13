@@ -616,22 +616,6 @@ header.scrolled {
     transform: scale(1.05);
 }
 
-/* Card Badge */
-.card-badge {
-    position: absolute;
-    top: var(--spacing-sm);
-    left: var(--spacing-sm);
-    padding: 4px 12px;
-    font-size: var(--font-size-xs);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-radius: var(--radius-full);
-    background: var(--gradient-primary);
-    color: white;
-    box-shadow: var(--shadow-sm);
-}
-
 /* Card Content */
 .card-content {
     padding: var(--spacing-md);
@@ -819,17 +803,6 @@ header.scrolled {
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-sm);
-}
-
-.card-badge {
-    font-size: var(--font-size-xs);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--color-accent-primary);
-    padding: 4px 12px;
-    background: rgba(99, 102, 241, 0.1);
-    border-radius: var(--radius-full);
 }
 
 /* Skill Icon */
@@ -1791,4 +1764,324 @@ footer {
 ::selection {
     background: var(--color-accent-primary);
     color: white;
+}
+
+/* Project Popup Modal */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 10000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.popup-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.popup-container .web-filter {
+    padding: var(--spacing-md);
+}
+
+.popup-container .web-filter .filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.popup-container .web-filter .filter-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+}
+
+.popup-container .web-filter .filter-btn:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-border-hover);
+    background: var(--color-bg-card-hover);
+}
+
+.popup-container .web-filter .filter-btn.active {
+    background: var(--gradient-primary);
+    color: white;
+    border-color: transparent;
+}
+
+.popup-container {
+    width: 90%;
+    max-width: 1200px;
+    height: 80vh;
+    position: relative;
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .popup-container {
+        width: 95%;
+        height: 90vh;
+        border-radius: var(--radius-md);
+    }
+    
+    .popup-container .web-filter {
+        padding: var(--spacing-sm);
+    }
+    
+    .popup-container .web-filter .filter-buttons {
+        gap: var(--spacing-xs);
+    }
+    
+    .popup-container .web-filter .filter-btn {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: var(--font-size-xs);
+    }
+    
+    .popup-image-container {
+        height: 250px !important;
+    }
+    
+    .popup-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    .popup-content h3 {
+        font-size: var(--font-size-lg) !important;
+    }
+    
+    .popup-content p {
+        font-size: var(--font-size-sm) !important;
+    }
+    
+    .popup-technologies {
+        gap: var(--spacing-xs) !important;
+    }
+    
+    .tech-tag {
+        font-size: var(--font-size-xs) !important;
+        padding: 4px 8px !important;
+    }
+    
+    .popup-links {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .card-link {
+        font-size: var(--font-size-sm) !important;
+        padding: var(--spacing-xs) var(--spacing-sm) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .popup-container {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+    
+    .popup-image-container {
+        height: 200px !important;
+    }
+    
+    .popup-container .web-filter .filter-btn {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+}
+
+.popup-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.popup-close:hover {
+    background: var(--color-accent-primary);
+}
+
+.popup-swiper {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.popup-swiper .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-swiper .swiper-button-next,
+.popup-swiper .swiper-button-prev {
+    color: var(--color-accent-primary);
+    background: rgba(0, 0, 0, 0.5);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.popup-swiper .swiper-button-next:after,
+.popup-swiper .swiper-button-prev:after {
+    font-size: 20px;
+}
+
+.popup-swiper .swiper-pagination-bullet {
+    background: var(--color-text-muted);
+}
+
+.popup-swiper .swiper-pagination-bullet-active {
+    background: var(--color-accent-primary);
+}
+
+/* Popup Card */
+.popup-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 900px;
+    max-height: 70vh;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.popup-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.popup-image-container {
+    width: 100%;
+    height: 350px;
+    background: var(--color-bg-primary);
+}
+
+.popup-image-swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.popup-image-swiper .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: var(--color-bg-primary);
+}
+
+.popup-image-swiper .swiper-button-next,
+.popup-image-swiper .swiper-button-prev {
+    color: var(--color-accent-primary);
+    background: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.popup-image-swiper .swiper-button-next:after,
+.popup-image-swiper .swiper-button-prev:after {
+    font-size: 16px;
+}
+
+.popup-image-swiper .swiper-pagination-bullet {
+    background: var(--color-text-muted);
+}
+
+.popup-image-swiper .swiper-pagination-bullet-active {
+    background: var(--color-accent-primary);
+}
+
+.popup-content {
+    padding: var(--spacing-lg);
+    overflow-y: auto;
+}
+
+.popup-content h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+}
+
+.popup-content p {
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+.popup-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.popup-links {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.popup-links .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--color-accent-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.popup-links .card-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 768px) {
+    .popup-card {
+        max-height: 60vh;
+    }
+    
+    .popup-image {
+        height: 200px;
+    }
+    
+    .popup-content {
+        padding: var(--spacing-md);
+    }
 }

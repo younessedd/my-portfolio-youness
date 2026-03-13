@@ -85,7 +85,6 @@ function initSkillsSwiper(swiperId, wrapperId, skillsCategories) {
                     <div class="card-wrapper">
                         <div class="card-list">
                             <div class="card-body">
-                                <span class="card-badge">${cat.title}</span>
                                 <div class="skill-icon" style="--skill-color: ${skill.color}">
                                     <i class="${skill.icon}"></i>
                                 </div>

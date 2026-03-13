@@ -160,12 +160,11 @@
             }
 
             return `
-                <div class="project-card" data-category="${project.category}">
+                <div class="project-card" data-category="${project.category}" onclick="openProjectPopup(${project.popupIndex || 0}, 'web')">
                     <div class="card-image-wrapper">
                         <img src="${imageUrl}" alt="${project.title}" 
                              class="card-image" 
                              onerror="this.src='https://via.placeholder.com/400x250?text=No+Image'">
-                        <span class="card-badge">${displayCategory}</span>
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">${project.title}</h3>
