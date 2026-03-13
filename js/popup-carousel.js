@@ -115,13 +115,13 @@ document.addEventListener('DOMContentLoaded', function() {
             spaceBetween: 30,
             loop: true,
             grabCursor: true,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
+            },
+            navigation: {
+                nextEl: '#popup-swiper .swiper-button-next',
+                prevEl: '#popup-swiper .swiper-button-prev',
             },
             keyboard: {
                 enabled: true,
@@ -188,86 +188,116 @@ document.addEventListener('DOMContentLoaded', function() {
     // Make openPopup available globally
     window.openProjectPopup = openPopup;
     
-    // Add click handlers for popup filter buttons
-    const popupFilterBtns = document.querySelectorAll('#project-popup .web-filter .filter-btn');
-    popupFilterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Update active button
-            popupFilterBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            
-            const filter = this.dataset.category;
-            const currentCategory = window.currentPopupCategory || 'web';
-            
-            // Get all projects from current category (web/mobile/iot)
-            let projects = collectProjectsByCategory(currentCategory);
-            
-            // Filter by sub-category
-            if (filter) {
-                projects = projects.filter(p => p.category === filter);
-            }
-            
-            // Re-render popup with filtered projects
-            if (projects.length > 0) {
-                popupWrapper.innerHTML = generatePopupSlides(projects);
+    // Generate filter buttons based on category
+    function generateFilterButtons(category) {
+        const filterContainer = document.getElementById('popup-filter');
+        if (!filterContainer) return;
+        
+        let categories = [];
+        let labels = {};
+        
+        if (category === 'web') {
+            categories = ['frontend_apps', 'backend_apps', 'fullstack_apps', 'others_apps'];
+            labels = {
+                'frontend_apps': 'Frontend Apps',
+                'backend_apps': 'Backend Apps',
+                'fullstack_apps': 'Fullstack Apps',
+                'others_apps': 'Others Apps'
+            };
+        } else if (category === 'mobile') {
+            categories = ['quiz_apps', 'others_apps'];
+            labels = {
+                'quiz_apps': 'Quiz Apps',
+                'others_apps': 'Others Apps'
+            };
+        } else if (category === 'iot') {
+            categories = ['InternetofThings', 'others apps'];
+            labels = {
+                'InternetofThings': 'Internet of Things',
+                'others apps': 'Others apps'
+            };
+        }
+        
+        filterContainer.innerHTML = `
+            <div class="filter-buttons">
+                ${categories.map(cat => `
+                    <button class="filter-btn" data-category="${cat}">
+                        ${labels[cat]}
+                    </button>
+                `).join('')}
+            </div>
+        `;
+        
+        // Add click handlers - scroll to category like main sections
+        filterContainer.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetCategory = this.dataset.category;
                 
-                if (popupSwiper) {
-                    popupSwiper.destroy(true, true);
+                // Update active button
+                filterContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Find first project with this category and slide to it
+                if (popupSwiper && window.currentPopupCategory === 'web' && window.webProjectsData) {
+                    let categoryIndex = 0;
+                    let foundIndex = -1;
+                    
+                    Object.values(window.webProjectsData).forEach(projectList => {
+                        projectList.forEach(project => {
+                            if (project.category === targetCategory && foundIndex === -1) {
+                                foundIndex = categoryIndex;
+                            }
+                            categoryIndex++;
+                        });
+                    });
+                    
+                    if (foundIndex >= 0) {
+                        popupSwiper.slideTo(foundIndex);
+                    }
+                } else if (popupSwiper && window.currentPopupCategory === 'mobile' && window.mobileProjectsData) {
+                    let categoryIndex = 0;
+                    let foundIndex = -1;
+                    
+                    Object.values(window.mobileProjectsData).forEach(projectList => {
+                        projectList.forEach(project => {
+                            if (project.category === targetCategory && foundIndex === -1) {
+                                foundIndex = categoryIndex;
+                            }
+                            categoryIndex++;
+                        });
+                    });
+                    
+                    if (foundIndex >= 0) {
+                        popupSwiper.slideTo(foundIndex);
+                    }
+                } else if (popupSwiper && window.currentPopupCategory === 'iot' && window.iotProjectsData) {
+                    let categoryIndex = 0;
+                    let foundIndex = -1;
+                    
+                    Object.values(window.iotProjectsData).forEach(projectList => {
+                        projectList.forEach(project => {
+                            if (project.category === targetCategory && foundIndex === -1) {
+                                foundIndex = categoryIndex;
+                            }
+                            categoryIndex++;
+                        });
+                    });
+                    
+                    if (foundIndex >= 0) {
+                        popupSwiper.slideTo(foundIndex);
+                    }
                 }
-                
-                popupSwiper = new Swiper('#popup-swiper', {
-                    initialSlide: 0,
-                    slidesPerView: 1,
-                    spaceBetween: 30,
-                    loop: true, // Infinite loop
-                    grabCursor: true,
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                    },
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true,
-                    },
-                    keyboard: {
-                        enabled: true,
-                    },
-                    on: {
-                        init: function() {
-                            setTimeout(() => {
-                                projects.forEach((project, idx) => {
-                                    const imageSwiperEl = document.getElementById(`popup-image-swiper-${idx}`);
-                                    if (imageSwiperEl && project.images && project.images.length > 1) {
-                                        new Swiper(`#popup-image-swiper-${idx}`, {
-                                            slidesPerView: 1,
-                                            spaceBetween: 0,
-                                            loop: project.images.length > 1,
-                                            navigation: {
-                                                nextEl: imageSwiperEl.querySelector('.swiper-button-next'),
-                                                prevEl: imageSwiperEl.querySelector('.swiper-button-prev'),
-                                            },
-                                            pagination: {
-                                                el: imageSwiperEl.querySelector('.swiper-pagination'),
-                                                clickable: true,
-                                            },
-                                        });
-                                    }
-                                });
-                            }, 100);
-                        },
-                    },
-                });
-            }
+            });
         });
-    });
+    }
     
-    // Make filter buttons cycle through categories when swiping
-    const originalOpenPopup = openPopup;
+    // Override openPopup to generate filter buttons
     window.openProjectPopup = function(startIndex = 0, category = 'web') {
-        // Store current category for filter
         window.currentPopupCategory = category;
         
-        // Get all projects from current category (web/mobile/iot)
+        // Generate filter buttons based on category
+        generateFilterButtons(category);
+        
         const projects = collectProjectsByCategory(category);
         if (projects.length === 0) return;
         
@@ -275,7 +305,6 @@ document.addEventListener('DOMContentLoaded', function() {
         popup.classList.add('active');
         document.body.style.overflow = 'hidden';
         
-        // Initialize main popup Swiper with infinite loop
         if (popupSwiper) {
             popupSwiper.destroy(true, true);
         }
@@ -284,22 +313,18 @@ document.addEventListener('DOMContentLoaded', function() {
             initialSlide: startIndex,
             slidesPerView: 1,
             spaceBetween: 30,
-            loop: true, // Infinite loop across all projects
+            loop: true,
             grabCursor: true,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
             },
-            keyboard: {
-                enabled: true,
+            navigation: {
+                nextEl: '#popup-swiper .swiper-button-next',
+                prevEl: '#popup-swiper .swiper-button-prev',
             },
             on: {
                 init: function() {
-                    // Initialize image swipers for each project after main swiper init
                     setTimeout(() => {
                         projects.forEach((project, idx) => {
                             const imageSwiperEl = document.getElementById(`popup-image-swiper-${idx}`);
@@ -307,7 +332,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 new Swiper(`#popup-image-swiper-${idx}`, {
                                     slidesPerView: 1,
                                     spaceBetween: 0,
-                                    loop: project.images.length > 1,
+                                    loop: true,
                                     navigation: {
                                         nextEl: imageSwiperEl.querySelector('.swiper-button-next'),
                                         prevEl: imageSwiperEl.querySelector('.swiper-button-prev'),
@@ -326,9 +351,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     const currentIndex = this.realIndex;
                     const currentProject = projects[currentIndex];
                     if (currentProject && currentProject.category) {
-                        popupFilterBtns.forEach(btn => {
-                            btn.classList.toggle('active', btn.dataset.category === currentProject.category);
-                        });
+                        const filterContainer = document.getElementById('popup-filter');
+                        if (filterContainer) {
+                            filterContainer.querySelectorAll('.filter-btn').forEach(btn => {
+                                btn.classList.toggle('active', btn.dataset.category === currentProject.category);
+                            });
+                        }
                     }
                 },
             },

@@ -91,11 +91,11 @@ window.iotProjectsData = {
   ],
 
   // Others Category - Additional IoT applications with sensors and robotics
-  others: [
+  "others apps": [
     {
       // First sensor-based IoT project
       id: "sensor-001",
-      category: "others",
+      category: "others apps",
       title: "Temperature & Humidity Monitor",
       description: "Environmental monitoring system using temperature and humidity sensors.",
       images: [
@@ -112,7 +112,7 @@ window.iotProjectsData = {
     {
       // Second sensor-based IoT project
       id: "sensor-002",
-      category: "others",
+      category: "others apps",
       title: "Gas Leakage Detection System",
       description: "Safety system to detect gas leakage and trigger alarms.",
       images: [
@@ -129,7 +129,7 @@ window.iotProjectsData = {
     {
       // Robotic IoT project
       id: "other-001",
-      category: "others",
+      category: "others apps",
       title: "Obstacle Avoiding Robot",
       description: "Autonomous robot that avoids obstacles using ultrasonic sensors.",
       images: [
@@ -146,7 +146,7 @@ window.iotProjectsData = {
     {
       // Bluetooth-controlled robotic project
       id: "other-002",
-      category: "others",
+      category: "others apps",
       title: "Bluetooth Control Robot",
       description: "Robot controlled via smartphone using Bluetooth communication.",
       images: [
@@ -163,7 +163,7 @@ window.iotProjectsData = {
     {
       // Weather monitoring IoT project
       id: "others-001",
-      category: "others",
+      category: "others apps",
       title: "Weather Station",
       description: "Remote weather monitoring system with cloud data storage and real-time updates.",
       images: [
@@ -180,7 +180,7 @@ window.iotProjectsData = {
     {
       // Smart garden IoT project
       id: "others-002",
-      category: "others",
+      category: "others apps",
       title: "Smart Garden System",
       description: "Automated plant watering and monitoring system for home gardens.",
       images: [

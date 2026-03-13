@@ -131,7 +131,7 @@
         },
 
         // Create project card HTML
-        createCardHTML: function(project) {
+        createCardHTML: function(project, index) {
             const imageUrl = project.images && project.images[0] ? project.images[0] : '';
             const description = project.description ? project.description.substring(0, 100) + '...' : '';
             const technologies = project.technologies ? project.technologies.slice(0, 4) : [];
@@ -160,7 +160,7 @@
             }
 
             return `
-                <div class="project-card" data-category="${project.category}" onclick="openProjectPopup(${project.popupIndex || 0}, 'web')">
+                <div class="project-card" data-category="${project.category}" onclick="openProjectPopup(${index}, 'web')">
                     <div class="card-image-wrapper">
                         <img src="${imageUrl}" alt="${project.title}" 
                              class="card-image" 
@@ -189,8 +189,8 @@
                     </button>
                     <div class="swiper web-projects-swiper">
                         <div class="swiper-wrapper">
-                            ${this.allProjects.map(p => `
-                                <div class="swiper-slide">${this.createCardHTML(p)}</div>
+                            ${this.allProjects.map((project, index) => `
+                                <div class="swiper-slide">${this.createCardHTML(project, index)}</div>
                             `).join('')}
                         </div>
                         <div class="swiper-button-prev"></div>
