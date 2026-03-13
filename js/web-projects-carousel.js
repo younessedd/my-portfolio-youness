@@ -152,7 +152,7 @@
                     const isGitHub = link.name && link.name.toLowerCase().includes('github');
                     const btnText = isGitHub ? 'GitHub' : (link.name || 'Live Demo');
                     linksHTML += `
-                        <a href="${link.url}" target="_blank" class="card-link-btn ${isGitHub ? 'github' : 'live'}">
+                        <a href="${link.url}" target="_blank" class="card-link-btn ${isGitHub ? 'github' : 'live'}" onclick="event.stopPropagation()">
                             <span>${btnText}</span>
                         </a>
                     `;

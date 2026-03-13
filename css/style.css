@@ -453,14 +453,14 @@ header.scrolled {
 }
 
 .cv-btn {
-    background: var(--color-bg-tertiary);
-    color: var(--color-text-primary);
-    border: 1px solid var(--color-border);
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #ffffff;
 }
 
 .cv-btn:hover {
-    background: var(--color-bg-card-hover);
-    border-color: var(--color-border-hover);
+    background: #f0f0f0;
+    border-color: #e0e0e0;
     transform: translateY(-2px);
 }
 
@@ -473,23 +473,23 @@ header.scrolled {
     background: var(--color-bg-secondary);
 }
 
-/* Web Apps - Blue accent */
+/* Web Apps */
 #web-apps .section-header h2 {
-    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     background-clip: text;
 }
 
-/* Mobile Apps - Orange accent */
+/* Mobile Apps */
 #mobile-apps .section-header h2 {
-    background: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     background-clip: text;
 }
 
-/* IoT Apps - Green accent */
+/* IoT Apps */
 #iot-projects .section-header h2 {
-    background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     background-clip: text;
 }
@@ -684,33 +684,35 @@ header.scrolled {
 }
 
 .card-link-btn.live {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+.card-link-btn.live:hover {
+    background: #f0f0f0;
+    border-color: #e0e0e0;
+    box-shadow: var(--shadow-glow);
+}
+
+.card-link-btn.github {
     background: var(--gradient-primary);
     color: white;
     border-color: transparent;
 }
 
-.card-link-btn.live:hover {
+.card-link-btn.github:hover {
     box-shadow: var(--shadow-glow);
 }
 
-.card-link-btn.github {
-    background: #24292e;
-    color: white;
-    border-color: transparent;
-}
-
-.card-link-btn.github:hover {
-    background: #0366d6;
-}
-
 .card-link-btn.play {
-    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    background: var(--gradient-primary);
     color: white;
     border-color: transparent;
 }
 
 .card-link-btn.play:hover {
-    box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+    box-shadow: var(--shadow-glow);
 }
 
 /* Swiper Pagination */
@@ -964,8 +966,6 @@ header.scrolled {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: block;
-    margin-bottom: var(--spacing-2xl);
 }
 
 .contact-container {
@@ -1234,17 +1234,19 @@ footer {
     align-items: center;
     justify-content: center;
     font-size: var(--font-size-lg);
+    background: #ffffff;
+    color: #000000;
     border-radius: 50%;
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    color: var(--color-text-secondary);
+    border: 1px solid #ffffff;
+    margin-bottom: var(--spacing-sm);
     transition: all var(--transition-base);
     box-shadow: var(--shadow-sm);
 }
 
 .floating-social-icon:hover {
     transform: translateX(-4px);
-    border-color: transparent;
+    background: #f0f0f0;
+    border-color: #f0f0f0;
 }
 
 .floating-social-icon.linkedin:hover {

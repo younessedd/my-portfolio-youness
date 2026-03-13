@@ -154,7 +154,7 @@
                     const isDemo = link.name && link.name.toLowerCase().includes('demo');
                     const btnText = link.name || 'View';
                     linksHTML += `
-                        <a href="${link.url}" target="_blank" class="card-link-btn ${isDemo ? 'live' : 'github'}">
+                        <a href="${link.url}" target="_blank" class="card-link-btn ${isDemo ? 'live' : 'github'}" onclick="event.stopPropagation()">
                             <span>${btnText}</span>
                         </a>
                     `;

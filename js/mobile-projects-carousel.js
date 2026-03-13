@@ -155,7 +155,7 @@
                     const isPlayStore = link.name && link.name.toLowerCase().includes('play');
                     const btnText = isPlayStore ? 'Google Play' : (link.name || 'Download');
                     linksHTML += `
-                        <a href="${link.url}" target="_blank" class="card-link-btn ${isPlayStore ? 'play' : 'live'}">
+                        <a href="${link.url}" target="_blank" class="card-link-btn ${isPlayStore ? 'play' : 'live'}" onclick="event.stopPropagation()">
                             <span>${btnText}</span>
                         </a>
                     `;
