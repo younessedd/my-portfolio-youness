@@ -63,29 +63,65 @@ function setupEventListeners() {
     // Mobile navigation menu setup
     const burgerBtn = document.getElementById('burger-btn');
     const mobileMenu = document.getElementById('mobile-menu');
+    let isMenuOpen = false;
 
     if (burgerBtn && mobileMenu) {
         // Toggle mobile menu on burger button click
         burgerBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('active');
             const icon = this.querySelector('i');
-            if (icon) {
-                // Change icon based on menu state
-                icon.className = mobileMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+            isMenuOpen = !isMenuOpen;
+            
+            if (isMenuOpen) {
+                // Open menu
+                mobileMenu.style.display = 'block';
+                mobileMenu.classList.add('active');
+                this.classList.add('active');
+                icon.className = 'fas fa-times';
+                document.body.style.overflow = 'hidden';
+            } else {
+                // Close menu
+                mobileMenu.style.display = 'none';
+                mobileMenu.classList.remove('active');
+                this.classList.remove('active');
+                icon.className = 'fas fa-bars';
+                document.body.style.overflow = '';
             }
-            // Prevent body scrolling when menu is open
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         });
 
         // Close mobile menu when navigation links are clicked
         const mobileLinks = document.querySelectorAll('.mobile-nav-link');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
+                mobileMenu.style.display = 'none';
                 mobileMenu.classList.remove('active');
+                burgerBtn.classList.remove('active');
                 burgerBtn.querySelector('i').className = 'fas fa-bars';
                 document.body.style.overflow = '';
+                isMenuOpen = false;
             });
         });
+        
+        // Close mobile menu when logo is clicked in responsive mode
+        const logo = document.querySelector('.logo');
+        if (logo) {
+            logo.addEventListener('click', function(e) {
+                // Only close menu if it's open
+                if (mobileMenu.style.display === 'block') {
+                    e.preventDefault();
+                    mobileMenu.style.display = 'none';
+                    mobileMenu.classList.remove('active');
+                    burgerBtn.classList.remove('active');
+                    burgerBtn.querySelector('i').className = 'fas fa-bars';
+                    document.body.style.overflow = '';
+                    isMenuOpen = false;
+                    // Scroll to about section
+                    const aboutSection = document.getElementById('about');
+                    if (aboutSection) {
+                        aboutSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        }
     }
 
     // Smooth scrolling for anchor links

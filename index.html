@@ -17,59 +17,12 @@
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
     
-    <!-- Web Projects Carousel CSS -->
-    <style>
-    #web-apps .web-filter { margin-bottom: 30px; }
-    #web-apps .filter-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
-    #web-apps .filter-btn { padding: 10px 20px; border: none; border-radius: 25px; background: rgba(255,255,255,0.1); color: #fff; cursor: pointer; font-weight: 500; transition: all 0.3s ease; }
-    #web-apps .filter-btn:hover, #web-apps .filter-btn.active { background: #5372f0; color: #fff; }
-    
-    #web-apps .web-projects-swiper { padding: 20px 0 50px; }
-    #web-apps .project-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column; }
-    #web-apps .project-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
-    #web-apps .card-image-wrapper { position: relative; }
-    #web-apps .card-image { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
-    #web-apps .card-badge { position: absolute; top: 12px; left: 12px; padding: 5px 12px; background: rgba(83,114,240,0.9); color: #fff; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; }
-    #web-apps .card-content { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-    #web-apps .card-title { font-size: 18px; font-weight: 600; color: #1a1a2e; margin: 0 0 10px; }
-    #web-apps .card-description { font-size: 14px; color: #666; line-height: 1.5; margin: 0 0 15px; flex: 1; }
-    #web-apps .card-technologies { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 15px; }
-    #web-apps .tech-tag { padding: 4px 10px; background: #f0f4f8; color: #5372f0; border-radius: 12px; font-size: 11px; font-weight: 500; }
-    #web-apps .card-links { display: flex; gap: 10px; }
-    #web-apps .card-link-btn { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #f0f4f8; color: #5372f0; transition: all 0.3s ease; text-decoration: none; }
-    #web-apps .card-link-btn:hover { background: #5372f0; color: #fff; }
-    #web-apps .card-link-btn.github { background: #24292e; color: #fff; }
-    #web-apps .card-link-btn.github:hover { background: #0366d6; }
-    
-    #web-apps .swiper-pagination-bullet { background: #5372f0; opacity: 0.5; }
-    #web-apps .swiper-pagination-bullet-active { opacity: 1; }
-    #web-apps .swiper-button-prev, #web-apps .swiper-button-next { color: #5372f0; }
-    @media (max-width: 768px) { #web-apps .swiper-button-prev, #web-apps .swiper-button-next { display: none; } }
-    </style>
+    <!-- Web Projects Carousel CSS - Now handled by style.css -->
     <!-- EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
     
-    <!-- CSS Files -->
+    <!-- Single Modern CSS File -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/skills-slider.css">
-    <link rel="stylesheet" href="css/web-apps.css">
-    <link rel="stylesheet" href="css/mobile-apps.css">
-    <link rel="stylesheet" href="css/mobile-projects-slider.css">
-    <link rel="stylesheet" href="css/mobile-category-bar.css">
-    <link rel="stylesheet" href="css/iot-projects.css">
-    <link rel="stylesheet" href="css/iot-projects-slider.css">
-    <link rel="stylesheet" href="css/iot-category-bar.css">
-    <link rel="stylesheet" href="css/web-projects-carousel.css">
-    <link rel="stylesheet" href="css/mobile-projects-carousel.css">
-    <link rel="stylesheet" href="css/iot-projects-carousel.css">
-    <link rel="stylesheet" href="css/cv.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- Scroll Reveal Animation System -->
-    <link rel="stylesheet" href="css/scroll-reveal.css">
 </head>
 <body class="theme-light">
     <!-- Header -->
@@ -89,13 +42,13 @@
                 </ul>
             </nav>
             
-            <button class="burger-btn" id="burger-btn">
+            <button class="burger-btn" id="burger-btn" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
         
         <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu" id="mobile-menu" style="display: none;">
             <nav class="mobile-nav">
                 <ul>
                     <li><a href="#about" class="mobile-nav-link">About Me</a></li>
@@ -296,7 +249,7 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
                             <textarea id="message" class="form-control" placeholder="Write your message" style="resize: none; overflow: hidden; min-height: 100px;" oninput="autoResize(this)"></textarea>
                         </div>
                         <div id="formStatus" class="form-status"></div>
-                        <button type="submit" class="btn form-btn zoom">
+                        <button type="submit" class="btn form-btn zoom" aria-label="Send message">
                             <i class="fas fa-paper-plane"></i>
                             Send Message
                         </button>

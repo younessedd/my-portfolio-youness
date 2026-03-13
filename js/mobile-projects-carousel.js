@@ -188,9 +188,6 @@
         renderCarousel: function(container) {
             container.innerHTML = `
                 <div class="carousel-container">
-                    <button class="custom-prev-btn" id="mobilePrevBtn">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
                     <div class="swiper mobile-projects-swiper">
                         <div class="swiper-wrapper">
                             ${this.allProjects.map(p => `
@@ -201,14 +198,10 @@
                         <div class="swiper-button-next"></div>
                         <div class="swiper-pagination"></div>
                     </div>
-                    <button class="custom-next-btn" id="mobileNextBtn">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
                 </div>
             `;
 
             this.initSwiper();
-            this.initCustomButtons();
         },
 
         // Initialize Swiper
