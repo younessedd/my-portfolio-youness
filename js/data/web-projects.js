@@ -31,7 +31,7 @@ window.webProjectsData = {
       title: "Workly Space",
 
       description:
-        "Modern coworking space platform presenting services, booking options and workspace information.",
+        "Modern coworking space platform presenting services booking options workspace information.",
 
       technologies: [
         "HTML5",
@@ -76,9 +76,18 @@ window.webProjectsData = {
       title: "PowerGrid Solutions",
 
       description:
-        "Corporate website presenting electrical services, company projects and solutions.",
+        "Corporate website presenting electrical services company projects business solutions.",
 
-      technologies: ["HTML5", "CSS3", "JavaScript"],
+      technologies: [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Bootstrap",
+        "Responsive Design",
+        "Git",
+        "GitHub Pages",
+        "Electrical Services"
+      ],
 
       images: ["images/web/powergride.webp"],
 
@@ -111,9 +120,18 @@ window.webProjectsData = {
       title: "CoWork Hub",
 
       description:
-        "Coworking company website with workspace presentation and service details.",
+        "Coworking company website with workspace presentation service details information.",
 
-      technologies: ["HTML5", "CSS3", "JavaScript"],
+      technologies: [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Bootstrap",
+        "Responsive Design",
+        "Git",
+        "GitHub Pages",
+        "UI/UX Design"
+      ],
 
       images: ["images/web/CoWork-Hub.webp"],
 
@@ -153,9 +171,18 @@ window.webProjectsData = {
       title: "Bella Vista",
 
       description:
-        "Restaurant website presenting menu, dining experience and services.",
+        "Restaurant website presenting menu dining experience services information.",
 
-      technologies: ["HTML5", "CSS3", "JavaScript"],
+      technologies: [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Bootstrap",
+        "Responsive Design",
+        "Git",
+        "GitHub Pages",
+        "Restaurant Menu"
+      ],
 
       images: ["images/web/Bella-Vista.webp"],
 
@@ -188,9 +215,18 @@ window.webProjectsData = {
       title: "GourmetDelight",
 
       description:
-        "Modern food company website showcasing menu and restaurant services.",
+        "Modern food company website showcasing menu restaurant services information.",
 
-      technologies: ["HTML5", "CSS3", "JavaScript"],
+      technologies: [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Bootstrap",
+        "Responsive Design",
+        "Git",
+        "GitHub Pages",
+        "Food Industry"
+      ],
 
       images: ["images/web/GourmetDelight.webp"],
 
@@ -216,9 +252,18 @@ window.webProjectsData = {
       title: "Foodie Foodie",
 
       description:
-        "Food discovery platform using TheMealDB API for exploring recipes and cuisines.",
+        "Food discovery platform using TheMealDB API exploring recipes cuisines.",
 
-      technologies: ["React", "JavaScript", "API Integration"],
+      technologies: [
+        "React",
+        "JavaScript",
+        "API Integration",
+        "TheMealDB API",
+        "CSS3",
+        "HTML5",
+        "Responsive Design",
+        "Recipe Search"
+      ],
 
       images: ["images/web/foody.webp"],
 
@@ -251,14 +296,17 @@ window.webProjectsData = {
       title: "Space Radio",
 
       description:
-        "Global radio streaming app integrating weather data and interactive world map.",
+        "Global radio streaming app integrating weather data interactive world map.",
 
       technologies: [
-        "HTML",
-        "CSS",
+        "HTML5",
+        "CSS3",
         "JavaScript",
         "Leaflet",
-        "OpenWeather API"
+        "OpenWeather API",
+        "Radio API",
+        "Responsive Design",
+        "Interactive Maps"
       ],
 
       images: ["images/web/space-radio.webp"],
@@ -285,9 +333,18 @@ window.webProjectsData = {
       title: "Movies Scope",
 
       description:
-        "Movie discovery application with search functionality and movie information.",
+        "Movie discovery application with search functionality movie information details.",
 
-      technologies: ["HTML", "CSS", "JavaScript", "API"],
+      technologies: [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Movie API",
+        "Search Functionality",
+        "Responsive Design",
+        "Movie Database",
+        "UI Components"
+      ],
 
       images: ["images/web/movis-scoop.webp"],
 
@@ -320,9 +377,18 @@ window.webProjectsData = {
       title: "Weather App",
 
       description:
-        "Weather application displaying real-time conditions using external API.",
+        "Weather application displaying real-time conditions using external API services.",
 
-      technologies: ["HTML", "CSS", "JavaScript", "Weather API"],
+      technologies: [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Weather API",
+        "API Integration",
+        "Responsive Design",
+        "Real-time Data",
+        "Weather Display"
+      ],
 
       images: ["images/web/weather.webp"],
 
@@ -357,7 +423,16 @@ window.webProjectsData = {
       description:
         "React frontend connected to backend API for blog content management.",
 
-      technologies: ["React", "JavaScript", "API"],
+      technologies: [
+        "React",
+        "JavaScript",
+        "API Integration",
+        "REST API",
+        "CSS3",
+        "HTML5",
+        "Responsive Design",
+        "Content Management"
+      ],
 
       images: ["images/web/bloger.webp"],
 
@@ -385,9 +460,18 @@ window.webProjectsData = {
       title: "Job API",
 
       description:
-        "Backend API for managing job listings and employment data.",
+        "Backend API for managing job listings employment data information.",
 
-      technologies: ["Node.js", "Express", "MongoDB", "REST API"],
+      technologies: [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "REST API",
+        "JavaScript",
+        "JSON",
+        "Database Design",
+        "Job Management"
+      ],
 
       images: ["images/web/swagger.webp"],
 
@@ -408,9 +492,18 @@ window.webProjectsData = {
       title: "Music Box API",
 
       description:
-        "Backend API for managing music tracks and playlists.",
+        "Backend API for managing music tracks playlists audio content.",
 
-      technologies: ["Node.js", "Express", "REST API"],
+      technologies: [
+        "Node.js",
+        "Express",
+        "REST API",
+        "JavaScript",
+        "JSON",
+        "Audio Management",
+        "Music Database",
+        "API Design"
+      ],
 
       images: ["images/web/swager1.webp"],
 

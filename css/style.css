@@ -607,8 +607,8 @@ header.scrolled {
 
 .card-category-label {
     position: absolute;
-    top: 12px;
-    left: 12px;
+    bottom: 12px;
+    right: 12px;
     background: var(--gradient-primary);
     color: white;
     padding: 4px 12px;

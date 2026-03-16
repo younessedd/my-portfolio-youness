@@ -141,7 +141,7 @@
         createCardHTML: function(project, index) {
             const imageUrl = project.images && project.images[0] ? project.images[0] : '';
             const description = project.description ? project.description.substring(0, 100) + '...' : '';
-            const technologies = project.technologies ? project.technologies.slice(0, 4) : [];
+            const technologies = project.technologies ? project.technologies : [];
             
             // Map category keys to display labels
             const categoryLabels = {
