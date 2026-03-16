@@ -374,7 +374,7 @@ window.webProjectsData = {
       category: "tools_apps",
       type: "frontend",
 
-      title: "Weather App",
+      title: "AstroWeather",
 
       description:
         "Weather application displaying real-time conditions using external API services.",
