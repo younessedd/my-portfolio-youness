@@ -55,8 +55,12 @@
 
         waitForData: function() {
             return new Promise((resolve) => {
-                const check = () => {
-                    if (window.mobileProjectsData) {
+                const check = async () => {
+                    if (typeof window.DataManager !== 'undefined' && window.DataManager.isReady()) {
+                        await window.DataManager.init();
+                        this.getAllProjects();
+                        resolve();
+                    } else if (window.mobileProjectsData) {
                         this.getAllProjects();
                         resolve();
                     } else {
@@ -69,8 +73,10 @@
 
         getAllProjects: function() {
             let all = [];
-            Object.keys(window.mobileProjectsData).forEach(cat => {
-                all = all.concat(window.mobileProjectsData[cat]);
+            const categories = window.DataManager.getMobileCategories();
+            categories.forEach(cat => {
+                const projects = window.DataManager.getMobileProjectsByCategory(cat);
+                all = all.concat(projects);
             });
             this.allProjects = all;
             
@@ -83,19 +89,15 @@
             });
         },
 
-        // Render filter buttons
+        // Render filter buttons dynamically based on data categories
         renderFilters: function(container) {
-            const categories = Object.keys(window.mobileProjectsData);
-            const labels = {
-                'quiz_apps': 'Quiz Apps',
-                'others_apps': 'Others Apps'
-            };
+            const categories = window.DataManager.getMobileCategories();
             
             container.innerHTML = `
                 <div class="filter-buttons">
                     ${categories.map(cat => `
                         <button class="filter-btn" data-category="${cat}">
-                            ${labels[cat] || cat.charAt(0).toUpperCase() + cat.slice(1)}
+                            ${window.DataManager.formatCategoryLabel(cat)}
                         </button>
                     `).join('')}
                 </div>
@@ -165,6 +167,7 @@
             return `
                 <div class="project-card" data-category="${project.category}" onclick="openProjectPopup(${index}, 'mobile')">
                     <div class="card-image-wrapper">
+                        <span class="card-category-label">${window.DataManager.formatCategoryLabel(project.category)}</span>
                         <img src="${imageUrl}" alt="${project.title}" 
                              class="card-image" 
                              onerror="this.src='https://via.placeholder.com/400x250?text=No+Image'">

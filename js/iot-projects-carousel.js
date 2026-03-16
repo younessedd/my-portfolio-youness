@@ -55,8 +55,12 @@
 
         waitForData: function() {
             return new Promise((resolve) => {
-                const check = () => {
-                    if (window.iotProjectsData) {
+                const check = async () => {
+                    if (typeof window.DataManager !== 'undefined' && window.DataManager.isReady()) {
+                        await window.DataManager.init();
+                        this.getAllProjects();
+                        resolve();
+                    } else if (window.iotProjectsData) {
                         this.getAllProjects();
                         resolve();
                     } else {
@@ -69,8 +73,10 @@
 
         getAllProjects: function() {
             let all = [];
-            Object.keys(window.iotProjectsData).forEach(cat => {
-                all = all.concat(window.iotProjectsData[cat]);
+            const categories = window.DataManager.getIotCategories();
+            categories.forEach(cat => {
+                const projects = window.DataManager.getIotProjectsByCategory(cat);
+                all = all.concat(projects);
             });
             this.allProjects = all;
             
@@ -83,19 +89,15 @@
             });
         },
 
-        // Render filter buttons
+        // Render filter buttons dynamically based on data categories
         renderFilters: function(container) {
-            const categories = Object.keys(window.iotProjectsData);
-            const labels = {
-                'InternetofThings': 'Internet of Things',
-                'others apps': 'Others apps'
-            };
+            const categories = window.DataManager.getIotCategories();
             
             container.innerHTML = `
                 <div class="filter-buttons">
                     ${categories.map(cat => `
                         <button class="filter-btn" data-category="${cat}">
-                            ${labels[cat] || cat.charAt(0).toUpperCase() + cat.slice(1)}
+                            ${window.DataManager.formatCategoryLabel(cat)}
                         </button>
                     `).join('')}
                 </div>
@@ -164,6 +166,7 @@
             return `
                 <div class="project-card" data-category="${project.category}" onclick="openProjectPopup(${index}, 'iot')">
                     <div class="card-image-wrapper">
+                        <span class="card-category-label">${window.DataManager.formatCategoryLabel(project.category)}</span>
                         <img src="${imageUrl}" alt="${project.title}" 
                              class="card-image" 
                              onerror="this.src='https://via.placeholder.com/400x250?text=No+Image'">

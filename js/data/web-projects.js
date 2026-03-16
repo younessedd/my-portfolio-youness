@@ -1,552 +1,429 @@
 /**
  * Web Projects Data Structure
  *
- * This file contains all web development projects data organized by categories.
- * Each project includes metadata, technologies, features, and links.
+ * All projects organized by application type.
+ * Each project contains metadata used to render cards in the portfolio.
  *
  * Categories:
- * - frontend: Frontend-focused projects with HTML, CSS, JavaScript
- * - backend: Backend API services and server-side applications
- * - fullstack: Full-stack applications combining frontend and backend
- * - others: Placeholder projects for future development
+ * business_apps
+ * food_apps
+ * entertainment_apps
+ * tools_apps
+ * blog_apps
+ * ecommerce_apps
+ * productivity_apps
+ * api_services
  */
 
-// Global object containing all web projects data
 window.webProjectsData = {
 
-    // Frontend Apps Category - Projects focused on client-side development
-    frontend_apps: [
-        {
-            // Unique project identifier
-            id: "web-frontend-001",
-            // Project category for filtering and organization
-            category: "frontend_apps",
-            // Display title of the project
-            title: "Workly Space",
-            // Detailed project description
-            description: "A modern web application for managing co-working spaces, showcasing services, booking options, and interactive features.",
-            // Technologies used in the project
-            technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages", "Vercel"],
-            // Project images array (only first image used for cards)
-            images: [
-                "images/web/workly.webp"
-            ],
-            // Key features of the project
-            features: [
-                "Co-working space showcase",
-                "Booking and service features",
-                "Interactive dashboards",
-                "Responsive design for all devices",
-                "Hosted on GitHub Pages",
-                "Deployed on Vercel"
-            ],
-            // Links to live demo and source code
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/kow_worker_Simplon.git",
-                    icon: "fa-brands fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "https://kow-worker-simplon-main.vercel.app/",
-                    icon: "fa-solid fa-play-circle"
-                }
-            ]
-        },
-        {
-            // Second frontend project
-            id: "web-frontend-002",
-            category: "frontend_apps",
-            title: "Weather App",
-            description: "A modern web application displaying weather data using API integration with interactive UI and responsive design.",
-            technologies: ["HTML5", "CSS3", "JavaScript", "API Integration", "GitHub Pages", "Vercel"],
-            images: [
-                "images/web/weather.webp"
-            ],
-            features: [
-                "Real-time weather information",
-                "Responsive design",
-                "Multiple location support",
-                "Interactive UI elements",
-                "Hosted on GitHub Pages",
-                "Deployed on Vercel"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/Weather-api_Simplon.git",
-                    icon: "fa-brands fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "https://weather-api-simplon-main.vercel.app/",
-                    icon: "fa-solid fa-play-circle"
-                }
-            ]
-        },
-        {
-            // Third frontend project
-            id: "web-frontend-004",
-            category: "frontend_apps",
-            title: "Movies Scope",
-            description: "A movie discovery application with search functionality, movie details, and filtering options.",
-            technologies: ["HTML5", "CSS3", "JavaScript", "API Integration", "Vercel"],
-            images: [
-                "images/web/movis-scoop.webp"
-            ],
-            features: [
-                "Movie search and discovery",
-                "Detailed movie information",
-                "Filtering and sorting options",
-                "Responsive design",
-                "API integration for real-time data",
-                "Deployed on Vercel"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/movies-scope-simplon.git",
-                    icon: "fa-brands fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "https://movies-scope-simplon-main.vercel.app/",
-                    icon: "fa-solid fa-play-circle"
-                }
-            ]
-        },
-        {
-            // Fourth frontend project
-            id: "web-frontend-004",
-            category: "frontend_apps",
-            title: "PowerGrid Solutions",
-            description: "A professional web application for PowerGrid Solutions company, showcasing services, solutions, and projects.",
-            technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
-            images: [
-                "images/web/powergride.webp"
-            ],
-            features: [
-                "Company services and solutions",
-                "Project showcase",
-                "Interactive design elements",
-                "Responsive layout",
-                "Hosted on GitHub Pages"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/PowerGrid-Solutions_Company.git",
-                    icon: "fa-brands fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "https://younessedd.github.io/PowerGrid-Solutions_Company/",
-                    icon: "fa-solid fa-play-circle"
-                }
-            ]
-        },
-        {
-            // Fifth frontend project
-            id: "web-frontend-005",
-            category: "frontend_apps",
-            title: "CoWork Hub",
-            description: "A website for CoWork Hub company displaying services, workspace options, and interactive booking features.",
-            technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
-            images: [
-                "images/web/CoWork-Hub.webp"
-            ],
-            features: [
-                "Workspace showcase",
-                "Booking and services",
-                "Interactive UI elements",
-                "Responsive design",
-                "Hosted on GitHub Pages"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/CoWork-Hub_company.git",
-                    icon: "fa-brands fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "https://younessedd.github.io/CoWork-Hub_company/",
-                    icon: "fa-solid fa-play-circle"
-                }
-            ]
-        },
-        {
-            // Sixth frontend project
-            id: "web-frontend-006",
-            category: "frontend_apps",
-            title: "Bella Vista",
-            description: "A modern web application for Bella Vista Food company showcasing menus, services, and interactive features.",
-            technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
-            images: [
-                "images/web/Bella-Vista.webp"
-            ],
-            features: [
-                "Food company showcase",
-                "Menu and services display",
-                "Interactive elements",
-                "Responsive design",
-                "Hosted on GitHub Pages"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/Bella-Vista-Food_company.git",
-                    icon: "fa-brands fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "https://younessedd.github.io/Bella-Vista-Food_company/",
-                    icon: "fa-solid fa-play-circle"
-                }
-            ]
-        },
-        {
-            // Seventh frontend project
-            id: "web-frontend-007",
-            category: "frontend_apps",
-            title: "GourmetDelight",
-            description: "A modern web application for a gourmet food company, showcasing menus, services, and interactive customer features with responsive design.",
-            technologies: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
-            images: [
-                "images/web/GourmetDelight.webp"
-            ],
-            features: [
-                "Gourmet food company showcase",
-                "Menu display and ordering interface",
-                "Interactive dashboards",
-                "Responsive design for all devices",
-                "Hosted on GitHub Pages"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/GourmetDelight-Food_company.git",
-                    icon: "fa-brands fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "https://younessedd.github.io/GourmetDelight-Food_company/",
-                    icon: "fa-solid fa-play-circle"
-                }
-            ]
-        },
-        {
-            // Eighth frontend project
-            id: "web-frontend-008",
-            category: "frontend_apps",
-            title: "Foodie Foodie",
-            description: "A modern food discovery web application showcasing recipes, restaurants, and culinary experiences with interactive features using TheMealDB API.",
-            technologies: ["React.js", "CSS3", "API Integration", "Vercel", "JavaScript ES6+"],
-            images: [
-                "images/web/foody.webp"
-            ],
-            features: [
-                "Food and recipe discovery via TheMealDB API",
-                "Restaurant and cuisine showcase",
-                "Interactive food browsing with search functionality",
-                "Recipe details and instructions",
-                "Responsive design for all devices",
-                "Real-time data fetching from external APIs",
-                "Deployed on Vercel for live demo"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/Foodie_Simplon.git",
-                    icon: "fa-brands fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "https://foodie-simplon-main.vercel.app/",
-                    icon: "fa-solid fa-play-circle"
-                }
-            ]
-        },
-        {
-            // Ninth frontend project
-            id: "web-frontend-009",
-            category: "frontend_apps",
-            title: "Blog API Frontend",
-            description: "A React-based frontend application for a blog system that connects to a backend API to display, create, and manage blog content.",
-            technologies: ["React.js", "CSS3", "JavaScript", "API Integration"],
-            images: [
-                "images/web/bloger.webp"
-            ],
-            features: [
-                "Blog post display and management",
-                "API integration for CRUD operations",
-                "Responsive blog interface",
-                "User-friendly content creation",
-                "Modern React components"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/Blog-Api_Simplon.git",
-                    icon: "fa-brands fa-github"
-                }
-            ]
-        }
-    ],
+  /* ===============================
+     BUSINESS WEBSITES
+  =============================== */
 
-    // Backend Apps Category - Server-side applications and API services
-    backend_apps: [
-        {
-            // First backend project
-            id: "web-backend-001",
-            category: "backend_apps",
-            title: "Job API",
-            description: "A backend API service for job listings and employment opportunities with data management capabilities.",
-            technologies: ["Node.js", "Express.js", "MongoDB", "REST API"],
-            images: [
-                "images/web/swagger.webp"
-            ],
-            features: [
-                "Job listing management",
-                "RESTful API endpoints",
-                "Data persistence",
-                "CRUD operations",
-                "Backend service architecture"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/Job-Api_Simplon.git",
-                    icon: "fa-brands fa-github"
-                }
-            ]
-        },
-        {
-            // Second backend project
-            id: "web-backend-002",
-            category: "backend_apps",
-            title: "Music Box API",
-            description: "A backend API service for managing music data, including tracks, artists, playlists, and music metadata.",
-            technologies: ["Node.js", "Express.js", "Database", "REST API", "Music Data Management"],
-            images: [
-                "images/web/swager1.webp"
-            ],
-            features: [
-                "Music track management",
-                "Artist and album data",
-                "Playlist creation and organization",
-                "RESTful API endpoints",
-                "Music metadata handling"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/Music-Box-Api_Simplon.git",
-                    icon: "fa-brands fa-github"
-                }
-            ]
-        }
-    ],
+  business_apps: [
 
-    // Fullstack Apps Category - Complete applications with both frontend and backend
-    fullstack_apps: [
-        {
-            // First full-stack project
-            id: "web-fullstack-001",
-            category: "fullstack_apps",
-            title: "Eventify",
-            description: "A full-stack event management application for creating, organizing, and managing events with interactive features.",
-            technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "REST API", "Authentication"],
-            images: [
-                "images/web/eventy.webp"
-            ],
-            features: [
-                "Event creation and management",
-                "User authentication and authorization",
-                "Real-time updates",
-                "Responsive frontend interface",
-                "Database persistence"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/Eventify_Simplon.git",
-                    icon: "fa-brands fa-github"
-                }
-            ]
-        },
-        {
-            // Second full-stack project
-            id: "web-fullstack-002",
-            category: "fullstack_apps",
-            title: "Task Flow Project",
-            description: "A full-stack task management and workflow application for organizing, tracking, and optimizing task completion processes.",
-            technologies: ["React.js", "Node.js", "Express.js", "Database", "Task Management", "Workflow Engine"],
-            images: [
-                "images/web/task-flow.webp"
-            ],
-            features: [
-                "Task organization and categorization",
-                "Workflow automation",
-                "Progress tracking and analytics",
-                "User collaboration features",
-                "Responsive task management interface"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/Task-Flow-Project_Simplon.git",
-                    icon: "fa-brands fa-github"
-                }
-            ]
-        },
-        {
-            // Third full-stack project
-            id: "web-fullstack-003",
-            category: "fullstack_apps",
-            title: "E-Commerce",
-            description: "A comprehensive full-stack e-commerce platform with product management, shopping cart, user authentication, and payment processing.",
-            technologies: ["React.js", "Node.js", "Express.js", "Database", "Payment Integration", "Authentication"],
-            images: [
-                "images/web/e-comerce.webp"
-            ],
-            features: [
-                "Product catalog and management",
-                "Shopping cart functionality",
-                "User authentication and accounts",
-                "Payment processing integration",
-                "Order management system"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/E-Commecres-Fil-Rouge_Simplon.git",
-                    icon: "fa-brands fa-github"
-                }
-            ]
-        },
-        {
-            // Fourth full-stack project
-            id: "web-fullstack-004",
-            category: "fullstack_apps",
-            title: "User Manager",
-            description: "A full-stack user management system with authentication, user profiles, and administrative controls.",
-            technologies: ["React.js", "Node.js", "CSS3", "API Integration", "Express.js", "Authentication"],
-            images: [
-                "images/web/user-manger.webp"
-            ],
-            features: [
-                "User authentication and registration",
-                "Profile management and editing",
-                "Administrative user controls",
-                "API-based user data management",
-                "Responsive admin interface"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "https://github.com/younessedd/User-Manager_Simplon.git",
-                    icon: "fa-brands fa-github"
-                }
-            ]
-        }
-    ],
+    {
+      id: "web-business-001",
+      category: "business_apps",
+      type: "frontend",
 
-    // Others Apps Category - Placeholder projects for future development
-    others_apps: [
+      title: "Workly Space",
+
+      description:
+        "Modern coworking space platform presenting services, booking options and workspace information.",
+
+      technologies: [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Bootstrap",
+        "Tailwind",
+        "EmailJS",
+        "Google Maps API",
+        "Vercel"
+      ],
+
+      images: ["images/web/workly.webp"],
+
+      features: [
+        "Workspace presentation",
+        "Booking features",
+        "Interactive UI",
+        "Google Maps integration",
+        "Responsive layout"
+      ],
+
+      links: [
         {
-            // First placeholder project
-            id: "web-others-001",
-            category: "others_apps",
-            title: "E-Learning Platform",
-            description: "A comprehensive online learning management system with video streaming, quizzes, and progress tracking.",
-            technologies: ["React", "Node.js", "MongoDB", "AWS", "Socket.io"],
-            images: [
-                "images/web/elearning.webp"
-            ],
-            features: [
-                "Video streaming with adaptive quality",
-                "Interactive quizzes and assessments",
-                "Progress tracking and certificates",
-                "Real-time chat with instructors",
-                "Discussion forums"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "#",
-                    icon: "fa-brands fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "#",
-                    icon: "fa-solid fa-play-circle"
-                }
-            ]
+          name: "GitHub",
+          url: "https://github.com/younessedd/kow_worker_Simplon.git",
+          icon: "fa-brands fa-github"
         },
         {
-            // Second placeholder project
-            id: "web-others-002",
-            category: "others_apps",
-            title: "Healthcare Dashboard",
-            description: "A medical dashboard for patient management, appointment scheduling, and health analytics.",
-            technologies: ["Vue.js", "Python", "PostgreSQL", "Docker", "TensorFlow"],
-            images: [
-                "images/web/healthcare.webp"
-            ],
-            features: [
-                "Patient records management",
-                "Appointment scheduling system",
-                "Health analytics and reports",
-                "Doctor availability calendar",
-                "Prescription management"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "#",
-                    icon: "fa-brands fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "#",
-                    icon: "fa-solid fa-play-circle"
-                }
-            ]
-        },
-        {
-            // Third placeholder project
-            id: "web-others-003",
-            category: "others_apps",
-            title: "Real Estate Marketplace",
-            description: "A property listing platform with virtual tours, advanced search, and agent management.",
-            technologies: ["Angular", "Spring Boot", "MySQL", "Three.js", "Google Maps API"],
-            images: [
-                "images/web/realestate.webp"
-            ],
-            features: [
-                "Virtual property tours",
-                "Advanced property search filters",
-                "Agent profiles and ratings",
-                "Mortgage calculator",
-                "Favorites and notifications"
-            ],
-            links: [
-                {
-                    name: "GitHub",
-                    url: "#",
-                    icon: "fa-brands fa-github"
-                },
-                {
-                    name: "Live Demo",
-                    url: "#",
-                    icon: "fa-solid fa-play-circle"
-                }
-            ]
+          name: "Live Demo",
+          url: "https://kow-worker-simplon-main.vercel.app/",
+          icon: "fa-solid fa-play-circle"
         }
-    ]
+      ]
+    },
+
+    {
+      id: "web-business-002",
+      category: "business_apps",
+      type: "frontend",
+
+      title: "PowerGrid Solutions",
+
+      description:
+        "Corporate website presenting electrical services, company projects and solutions.",
+
+      technologies: ["HTML5", "CSS3", "JavaScript"],
+
+      images: ["images/web/powergride.webp"],
+
+      features: [
+        "Company services",
+        "Project showcase",
+        "Contact section",
+        "Responsive design"
+      ],
+
+      links: [
+        {
+          name: "GitHub",
+          url: "https://github.com/younessedd/PowerGrid-Solutions_Company.git",
+          icon: "fa-brands fa-github"
+        },
+        {
+          name: "Live Demo",
+          url: "https://younessedd.github.io/PowerGrid-Solutions_Company/",
+          icon: "fa-solid fa-play-circle"
+        }
+      ]
+    },
+
+    {
+      id: "web-business-003",
+      category: "business_apps",
+      type: "frontend",
+
+      title: "CoWork Hub",
+
+      description:
+        "Coworking company website with workspace presentation and service details.",
+
+      technologies: ["HTML5", "CSS3", "JavaScript"],
+
+      images: ["images/web/CoWork-Hub.webp"],
+
+      features: [
+        "Workspace showcase",
+        "Service information",
+        "Interactive sections",
+        "Responsive design"
+      ],
+
+      links: [
+        {
+          name: "GitHub",
+          url: "https://github.com/younessedd/CoWork-Hub_company.git",
+          icon: "fa-brands fa-github"
+        },
+        {
+          name: "Live Demo",
+          url: "https://younessedd.github.io/CoWork-Hub_company/",
+          icon: "fa-solid fa-play-circle"
+        }
+      ]
+    }
+  ],
+
+  /* ===============================
+     FOOD & RESTAURANT APPS
+  =============================== */
+
+  food_apps: [
+
+    {
+      id: "web-food-001",
+      category: "food_apps",
+      type: "frontend",
+
+      title: "Bella Vista",
+
+      description:
+        "Restaurant website presenting menu, dining experience and services.",
+
+      technologies: ["HTML5", "CSS3", "JavaScript"],
+
+      images: ["images/web/Bella-Vista.webp"],
+
+      features: [
+        "Restaurant menu",
+        "Gallery section",
+        "Customer experience",
+        "Responsive layout"
+      ],
+
+      links: [
+        {
+          name: "GitHub",
+          url: "https://github.com/younessedd/Bella-Vista-Food_company.git",
+          icon: "fa-brands fa-github"
+        },
+        {
+          name: "Live Demo",
+          url: "https://younessedd.github.io/Bella-Vista-Food_company/",
+          icon: "fa-solid fa-play-circle"
+        }
+      ]
+    },
+
+    {
+      id: "web-food-002",
+      category: "food_apps",
+      type: "frontend",
+
+      title: "GourmetDelight",
+
+      description:
+        "Modern food company website showcasing menu and restaurant services.",
+
+      technologies: ["HTML5", "CSS3", "JavaScript"],
+
+      images: ["images/web/GourmetDelight.webp"],
+
+      links: [
+        {
+          name: "GitHub",
+          url: "https://github.com/younessedd/GourmetDelight-Food_company.git",
+          icon: "fa-brands fa-github"
+        },
+        {
+          name: "Live Demo",
+          url: "https://younessedd.github.io/GourmetDelight-Food_company/",
+          icon: "fa-solid fa-play-circle"
+        }
+      ]
+    },
+
+    {
+      id: "web-food-003",
+      category: "food_apps",
+      type: "frontend",
+
+      title: "Foodie Foodie",
+
+      description:
+        "Food discovery platform using TheMealDB API for exploring recipes and cuisines.",
+
+      technologies: ["React", "JavaScript", "API Integration"],
+
+      images: ["images/web/foody.webp"],
+
+      links: [
+        {
+          name: "GitHub",
+          url: "https://github.com/younessedd/Foodie_Simplon.git",
+          icon: "fa-brands fa-github"
+        },
+        {
+          name: "Live Demo",
+          url: "https://foodie-simplon-main.vercel.app/",
+          icon: "fa-solid fa-play-circle"
+        }
+      ]
+    }
+  ],
+
+  /* ===============================
+     ENTERTAINMENT APPS
+  =============================== */
+
+  entertainment_apps: [
+
+    {
+      id: "web-entertainment-001",
+      category: "entertainment_apps",
+      type: "frontend",
+
+      title: "Space Radio",
+
+      description:
+        "Global radio streaming app integrating weather data and interactive world map.",
+
+      technologies: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Leaflet",
+        "OpenWeather API"
+      ],
+
+      images: ["images/web/space-radio.webp"],
+
+      links: [
+        {
+          name: "GitHub",
+          url: "https://github.com/younessedd/Space-Radio-world.git",
+          icon: "fa-brands fa-github"
+        },
+        {
+          name: "Live Demo",
+          url: "https://space-radio-plum.vercel.app/",
+          icon: "fa-solid fa-play-circle"
+        }
+      ]
+    },
+
+    {
+      id: "web-entertainment-002",
+      category: "entertainment_apps",
+      type: "frontend",
+
+      title: "Movies Scope",
+
+      description:
+        "Movie discovery application with search functionality and movie information.",
+
+      technologies: ["HTML", "CSS", "JavaScript", "API"],
+
+      images: ["images/web/movis-scoop.webp"],
+
+      links: [
+        {
+          name: "GitHub",
+          url: "https://github.com/younessedd/movies-scope-simplon.git",
+          icon: "fa-brands fa-github"
+        },
+        {
+          name: "Live Demo",
+          url: "https://movies-scope-simplon-main.vercel.app/",
+          icon: "fa-solid fa-play-circle"
+        }
+      ]
+    }
+  ],
+
+  /* ===============================
+     TOOLS
+  =============================== */
+
+  tools_apps: [
+
+    {
+      id: "web-tools-001",
+      category: "tools_apps",
+      type: "frontend",
+
+      title: "Weather App",
+
+      description:
+        "Weather application displaying real-time conditions using external API.",
+
+      technologies: ["HTML", "CSS", "JavaScript", "Weather API"],
+
+      images: ["images/web/weather.webp"],
+
+      links: [
+        {
+          name: "GitHub",
+          url: "https://github.com/younessedd/Weather-api_Simplon.git",
+          icon: "fa-brands fa-github"
+        },
+        {
+          name: "Live Demo",
+          url: "https://weather-api-simplon-main.vercel.app/",
+          icon: "fa-solid fa-play-circle"
+        }
+      ]
+    }
+  ],
+
+  /* ===============================
+     BLOG
+  =============================== */
+
+  blog_apps: [
+
+    {
+      id: "web-blog-001",
+      category: "blog_apps",
+      type: "frontend",
+
+      title: "Blog API Frontend",
+
+      description:
+        "React frontend connected to backend API for blog content management.",
+
+      technologies: ["React", "JavaScript", "API"],
+
+      images: ["images/web/bloger.webp"],
+
+      links: [
+        {
+          name: "GitHub",
+          url: "https://github.com/younessedd/Blog-Api_Simplon.git",
+          icon: "fa-brands fa-github"
+        }
+      ]
+    }
+  ],
+
+  /* ===============================
+     API SERVICES
+  =============================== */
+
+  api_services: [
+
+    {
+      id: "web-api-001",
+      category: "api_services",
+      type: "backend",
+
+      title: "Job API",
+
+      description:
+        "Backend API for managing job listings and employment data.",
+
+      technologies: ["Node.js", "Express", "MongoDB", "REST API"],
+
+      images: ["images/web/swagger.webp"],
+
+      links: [
+        {
+          name: "GitHub",
+          url: "https://github.com/younessedd/Job-Api_Simplon.git",
+          icon: "fa-brands fa-github"
+        }
+      ]
+    },
+
+    {
+      id: "web-api-002",
+      category: "api_services",
+      type: "backend",
+
+      title: "Music Box API",
+
+      description:
+        "Backend API for managing music tracks and playlists.",
+
+      technologies: ["Node.js", "Express", "REST API"],
+
+      images: ["images/web/swager1.webp"],
+
+      links: [
+        {
+          name: "GitHub",
+          url: "https://github.com/younessedd/Music-Box-Api_Simplon.git",
+          icon: "fa-brands fa-github"
+        }
+      ]
+    }
+  ]
+
 };
 
-// Console log to confirm data loading
 console.log("🌐 Web projects data loaded successfully!");

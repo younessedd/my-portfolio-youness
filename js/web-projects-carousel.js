@@ -46,8 +46,11 @@
         // Wait for data to be available
         waitForData: function() {
             return new Promise((resolve) => {
-                const check = () => {
-                    if (typeof window.webProjectsData !== 'undefined') {
+                const check = async () => {
+                    if (typeof window.DataManager !== 'undefined' && window.DataManager.isReady()) {
+                        await window.DataManager.init();
+                        resolve();
+                    } else if (typeof window.webProjectsData !== 'undefined') {
                         resolve();
                     } else {
                         setTimeout(check, 100);
@@ -57,11 +60,13 @@
             });
         },
 
-        // Get all projects merged from all categories
+        // Get all projects merged from all categories (dynamic from data files)
         getAllProjects: function() {
             let all = [];
-            Object.keys(window.webProjectsData).forEach(cat => {
-                all = all.concat(window.webProjectsData[cat]);
+            const categories = window.DataManager.getWebCategories();
+            categories.forEach(cat => {
+                const projects = window.DataManager.getWebProjectsByCategory(cat);
+                all = all.concat(projects);
             });
             return all;
         },
@@ -76,21 +81,15 @@
             });
         },
 
-        // Render filter buttons (without "All")
+        // Render filter buttons dynamically based on data categories
         renderFilters: function(container) {
-            const categories = ['frontend_apps', 'backend_apps', 'fullstack_apps', 'others_apps'];
-            const labels = {
-                'frontend_apps': 'Frontend Apps',
-                'backend_apps': 'Backend Apps',
-                'fullstack_apps': 'Fullstack Apps',
-                'others_apps': 'Others Apps'
-            };
+            const categories = window.DataManager.getWebCategories();
             
             container.innerHTML = `
                 <div class="filter-buttons">
                     ${categories.map(cat => `
                         <button class="filter-btn" data-category="${cat}">
-                            ${labels[cat]}
+                            ${window.DataManager.formatCategoryLabel(cat)}
                         </button>
                     `).join('')}
                 </div>
@@ -162,6 +161,7 @@
             return `
                 <div class="project-card" data-category="${project.category}" onclick="openProjectPopup(${index}, 'web')">
                     <div class="card-image-wrapper">
+                        <span class="card-category-label">${window.DataManager.formatCategoryLabel(project.category)}</span>
                         <img src="${imageUrl}" alt="${project.title}" 
                              class="card-image" 
                              onerror="this.src='https://via.placeholder.com/400x250?text=No+Image'">

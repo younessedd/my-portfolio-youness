@@ -18,23 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log('✅ Skills swiper: skillsData found, combining categories...');
 
-    // Combine skills from all categories into a single array for unified display
-    const allSkills = [
-        // Spread operator to include all web development skills
-        ...skillsData.webDevelopment,
-        // Spread operator to include all mobile development skills
-        ...skillsData.mobileDevelopment,
-        // Spread operator to include all IoT and domotics skills
-        ...skillsData.iotAndDomotic,
-        // Spread operator to include all electronics and electrical skills
-        ...skillsData.electronicsAndElectric,
-        // Spread operator to include all robotics and automation skills
-        ...skillsData.roboticsAndAutomatism,
-        // Spread operator to include all soft skills
-        ...skillsData.softSkills,
-        // Spread operator to include all AI prompt engineering skills
-        ...skillsData.aiPrompt
-    ];
+    // Dynamically get all categories from skillsData
+    const allSkills = [];
+    Object.keys(skillsData).forEach(categoryKey => {
+        allSkills.push(...skillsData[categoryKey]);
+    });
 
     console.log('🍔 Skills swiper: Combined skills:', allSkills.length, 'categories');
     console.log('🍔 Skills swiper: First category skills:', allSkills[0]?.skills?.length || 'no skills');
