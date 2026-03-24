@@ -690,6 +690,7 @@ header.scrolled {
     font-weight: 600;
     color: var(--color-text-primary);
     margin-bottom: var(--spacing-xs);
+    flex-shrink: 0;
 }
 
 .card-description {
@@ -697,7 +698,7 @@ header.scrolled {
     color: var(--color-text-secondary);
     line-height: 1.6;
     margin-bottom: var(--spacing-sm);
-    flex: 1;
+    flex-shrink: 0;
 }
 
 /* Card Technologies */
@@ -706,6 +707,7 @@ header.scrolled {
     flex-wrap: wrap;
     gap: 6px;
     margin-bottom: var(--spacing-sm);
+    flex-shrink: 0;
 }
 
 .tech-tag {
@@ -722,7 +724,8 @@ header.scrolled {
 .card-links {
     display: flex;
     gap: var(--spacing-sm);
-    margin-top: auto;
+    flex-wrap: wrap;
+    flex-shrink: 0;
 }
 
 .card-link-btn {
@@ -1162,6 +1165,29 @@ footer {
     margin-bottom: var(--spacing-lg);
 }
 
+.footer-logo-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    width: 100%;
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-logo-center .logo {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+}
+
+.footer-name {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    letter-spacing: 1px;
+}
+
 .footer-logo .logo {
     font-size: var(--font-size-lg);
 }
@@ -1280,8 +1306,7 @@ footer {
 .floating-social-icons {
     position: fixed;
     right: var(--spacing-lg);
-    top: 50%;
-    transform: translateY(-50%);
+    bottom: var(--spacing-lg);
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
@@ -1547,6 +1572,17 @@ footer {
     }
 }
 
+/* Tablet Landscape & Small Laptop */
+@media (max-width: 1140px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .burger-btn {
+        display: flex;
+    }
+}
+
 /* Tablet Portrait */
 @media (max-width: 768px) {
     :root {
@@ -1568,6 +1604,25 @@ footer {
     
     .burger-btn {
         display: flex;
+    }
+    
+    /* Footer Center */
+    .footer-top {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-logo-center {
+        align-items: center;
+    }
+    
+    .footer-main {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-column ul {
+        align-items: center;
     }
     
     .about-name {
@@ -2245,9 +2300,10 @@ footer {
 
 .three-card {
     width: 320px;
+    min-height: 450px;
     background: var(--color-bg-card);
     border-radius: var(--radius-lg);
-    overflow: hidden;
+    overflow: visible;
     border: 1px solid var(--color-border);
     cursor: pointer;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2495,4 +2551,54 @@ footer {
     .nav-btn {
         display: none;
     }
+}
+
+/* Fullscreen Image Viewer */
+.fullscreen-image-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 99999;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.fullscreen-image-overlay.active {
+    display: flex;
+}
+
+.fullscreen-image-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+}
+
+.fullscreen-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 100000;
+}
+
+.fullscreen-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
 }

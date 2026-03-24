@@ -73,48 +73,7 @@ window.webProjectsData = {
 
   food_apps: [
   
-  {
-    id: "mobile-quiz-004",
-    category: "quiz_apps",
-    type: "mobile",
 
-    title: "World History Challenge",
-
-    description:
-    "Test your knowledge about world history through interactive quizzes and timed challenges.",
-
-    technologies: [
-        "Kodular",
-        "Firebase",
-        "AdMob",
-        "Android",
-        "Quiz Engine",
-        "Leaderboard System",
-        "Offline Mode"
-    ],
-
-    images: [
-        "images/mob/world-history.webp"
-    ],
-
-    features: [
-        "Global history questions",
-        "Timed quiz mode",
-        "Leaderboard ranking",
-        "Offline gameplay"
-    ],
-
-    links: [
-        {
-            name: "Google Play",
-            url: "#",
-            icon: "fa-brands fa-google-play"
-        }
-    ],
-
-    downloads: "3K+",
-    rating: 4.1
-    },
   
   
     {

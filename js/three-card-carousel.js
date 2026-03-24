@@ -29,7 +29,6 @@
             this.setupFilterButtons();
             this.render();
             this.setupTouchSwipe();
-            this.startAutoScroll();
             console.log(`[${this.section}] Carousel rendered`);
         }
 
@@ -103,7 +102,10 @@
             const count = this.filteredProjects.length;
             if (count === 0) return [0, 0, 0];
             if (count === 1) return [0, 0, 0];
-            if (count === 2) return [0, 1, 0];
+            if (count === 2) {
+                // With 2 cards, alternate between showing card 0 and card 1 at center
+                return this.currentIndex === 0 ? [1, 0, 1] : [0, 1, 0];
+            }
 
             const prev = (this.currentIndex - 1 + count) % count;
             const curr = this.currentIndex;
@@ -130,8 +132,10 @@
                 imageUrl = 'images/ImageNotAvailable.webp';
             }
             
-            const description = project.description ? project.description.substring(0, 80) + '...' : '';
-            const technologies = project.technologies ? project.technologies.slice(0, 3) : [];
+            // Show full description (not truncated)
+            const description = project.description || '';
+            // Show all technologies (not just 3)
+            const technologies = project.technologies || [];
 
             let linksHTML = '';
             if (project.links && project.links.length > 0) {
@@ -151,6 +155,7 @@
                     <div class="card-image-wrapper">
                         <img src="${imageUrl}" alt="${project.title}" 
                              class="card-image" 
+                             onclick="event.stopPropagation(); openFullscreenImage('${imageUrl}')"
                              onerror="this.src='images/ImageNotAvailable.webp'">
                     </div>
                     <div class="card-content">
@@ -310,3 +315,29 @@
     });
 
 })();
+
+// Fullscreen Image Functions
+function openFullscreenImage(imageUrl) {
+    const overlay = document.getElementById('image-fullscreen');
+    const img = document.getElementById('fullscreen-image');
+    if (overlay && img) {
+        img.src = imageUrl;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeFullscreenImage() {
+    const overlay = document.getElementById('image-fullscreen');
+    if (overlay) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeFullscreenImage();
+    }
+});
