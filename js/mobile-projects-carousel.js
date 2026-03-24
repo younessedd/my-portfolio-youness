@@ -8,6 +8,7 @@
         swiperInstance: null,
         allProjects: [],
         categoryIndices: {},
+        currentCategory: 'all',
 
         config: {
             slidesPerView: 1,
@@ -95,6 +96,7 @@
             
             container.innerHTML = `
                 <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">All</button>
                     ${categories.map(cat => `
                         <button class="filter-btn" data-category="${cat}">
                             ${window.DataManager.formatCategoryLabel(cat)}
@@ -105,8 +107,24 @@
 
             // Add click handler
             container.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => this.scrollToCategory(e.target.dataset.category));
+                btn.addEventListener('click', (e) => this.handleFilterClick(e.target.dataset.category));
             });
+        },
+
+        // Handle filter button click
+        handleFilterClick: function(category) {
+            this.currentCategory = category;
+            
+            // Update active button state
+            document.querySelectorAll('.mobile-filter .filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.category === category);
+            });
+            
+            if (category === 'all') {
+                this.swiperInstance?.slideTo(0);
+            } else {
+                this.scrollToCategory(category);
+            }
         },
 
         // Scroll to first card of a specific category
@@ -125,6 +143,9 @@
         // Update active category button based on centered slide
         updateActiveCategory: function() {
             if (!this.swiperInstance) return;
+            
+            // If "All" is selected, don't update based on slide
+            if (this.currentCategory === 'all') return;
             
             const realIndex = this.swiperInstance.realIndex;
             const centeredProject = this.allProjects[realIndex];
@@ -198,7 +219,11 @@
                         </div>
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div>
-                        <div class="swiper-pagination"></div>
+                        <div class="carousel-pagination">
+                            <span class="page-info swiper-pagination-current">1</span>
+                            <span>/</span>
+                            <span class="page-total swiper-pagination-total">${this.allProjects.length}</span>
+                        </div>
                     </div>
                 </div>
             `;
@@ -229,13 +254,28 @@
                 },
                 breakpoints: this.config.breakpoints,
                 on: {
-                    slideChange: () => this.updateActiveCategory(),
-                    realIndexChange: () => this.updateActiveCategory()
+                    slideChange: () => {
+                        this.updateActiveCategory();
+                        this.updatePaginationNumbers();
+                    },
+                    realIndexChange: () => {
+                        this.updateActiveCategory();
+                        this.updatePaginationNumbers();
+                    }
                 }
             });
 
             // Set initial active category
             setTimeout(() => this.updateActiveCategory(), 100);
+        },
+
+        updatePaginationNumbers: function() {
+            const currentEl = document.querySelector('.mobile-projects-swiper .swiper-pagination-current');
+            const totalEl = document.querySelector('.mobile-projects-swiper .swiper-pagination-total');
+            if (currentEl && totalEl && this.swiperInstance) {
+                const realIndex = this.swiperInstance.realIndex + 1;
+                currentEl.textContent = realIndex;
+            }
         },
 
         // Initialize custom navigation buttons
@@ -257,11 +297,11 @@
         }
     };
 
-    // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => MobileProjectsCarousel.init());
-    } else {
-        MobileProjectsCarousel.init();
-    }
+    // Initialize when DOM is ready (DISABLED - using three-card-carousel.js)
+    // if (document.readyState === 'loading') {
+    //     document.addEventListener('DOMContentLoaded', () => MobileProjectsCarousel.init());
+    // } else {
+    //     MobileProjectsCarousel.init();
+    // }
 
 })();

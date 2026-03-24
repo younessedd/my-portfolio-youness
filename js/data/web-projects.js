@@ -1,70 +1,17 @@
-/**
- * Web Projects Data Structure
- *
- * All projects organized by application type.
- * Each project contains metadata used to render cards in the portfolio.
- *
- * Categories:
- * business_apps
- * food_apps
- * entertainment_apps
- * tools_apps
- * blog_apps
- * ecommerce_apps
- * productivity_apps
- * api_services
- */
-
 window.webProjectsData = {
-
-  /* ===============================
-     BUSINESS WEBSITES
-  =============================== */
-
   business_apps: [
-
     {
       id: "web-business-001",
       category: "business_apps",
       type: "frontend",
-
       title: "Workly Space",
-
-      description:
-        "Modern coworking space platform presenting services booking options workspace information.",
-
-      technologies: [
-        "HTML5",
-        "CSS3",
-        "JavaScript",
-        "Bootstrap",
-        "Tailwind",
-        "EmailJS",
-        "Google Maps API",
-        "Vercel"
-      ],
-
+      description: "Modern coworking space platform presenting services and workspace booking options.",
+      technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Tailwind"],
       images: ["images/web/workly.webp"],
-
-      features: [
-        "Workspace presentation",
-        "Booking features",
-        "Interactive UI",
-        "Google Maps integration",
-        "Responsive layout"
-      ],
-
+      features: ["Workspace presentation", "Booking features", "Google Maps integration"],
       links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/younessedd/kow_worker_Simplon.git",
-          icon: "fa-brands fa-github"
-        },
-        {
-          name: "Live Demo",
-          url: "https://kow-worker-simplon-main.vercel.app/",
-          icon: "fa-solid fa-play-circle"
-        }
+        { name: "GitHub", url: "https://github.com/younessedd/kow_worker_Simplon.git", icon: "fa-brands fa-github" },
+        { name: "Live Demo", url: "https://kow-worker-simplon-main.vercel.app/", icon: "fa-solid fa-play-circle" }
       ]
     },
 
@@ -72,43 +19,13 @@ window.webProjectsData = {
       id: "web-business-002",
       category: "business_apps",
       type: "frontend",
-
       title: "PowerGrid Solutions",
-
-      description:
-        "Corporate website presenting electrical services company projects business solutions.",
-
-      technologies: [
-        "HTML5",
-        "CSS3",
-        "JavaScript",
-        "Bootstrap",
-        "Responsive Design",
-        "Git",
-        "GitHub Pages",
-        "Electrical Services"
-      ],
-
+      description: "Electrical services company website with project showcase and services.",
+      technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
       images: ["images/web/powergride.webp"],
-
-      features: [
-        "Company services",
-        "Project showcase",
-        "Contact section",
-        "Responsive design"
-      ],
-
       links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/younessedd/PowerGrid-Solutions_Company.git",
-          icon: "fa-brands fa-github"
-        },
-        {
-          name: "Live Demo",
-          url: "https://younessedd.github.io/PowerGrid-Solutions_Company/",
-          icon: "fa-solid fa-play-circle"
-        }
+        { name: "GitHub", url: "https://github.com/younessedd/PowerGrid-Solutions_Company.git", icon: "fa-brands fa-github" },
+        { name: "Live Demo", url: "https://younessedd.github.io/PowerGrid-Solutions_Company/", icon: "fa-solid fa-play-circle" }
       ]
     },
 
@@ -116,94 +33,101 @@ window.webProjectsData = {
       id: "web-business-003",
       category: "business_apps",
       type: "frontend",
-
       title: "CoWork Hub",
-
-      description:
-        "Coworking company website with workspace presentation service details information.",
-
-      technologies: [
-        "HTML5",
-        "CSS3",
-        "JavaScript",
-        "Bootstrap",
-        "Responsive Design",
-        "Git",
-        "GitHub Pages",
-        "UI/UX Design"
-      ],
-
+      description: "Coworking company website with service presentation and workspace info.",
+      technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
       images: ["images/web/CoWork-Hub.webp"],
-
-      features: [
-        "Workspace showcase",
-        "Service information",
-        "Interactive sections",
-        "Responsive design"
-      ],
-
       links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/younessedd/CoWork-Hub_company.git",
-          icon: "fa-brands fa-github"
-        },
-        {
-          name: "Live Demo",
-          url: "https://younessedd.github.io/CoWork-Hub_company/",
-          icon: "fa-solid fa-play-circle"
-        }
+        { name: "GitHub", url: "https://github.com/younessedd/CoWork-Hub_company.git", icon: "fa-brands fa-github" },
+        { name: "Live Demo", url: "https://younessedd.github.io/CoWork-Hub_company/", icon: "fa-solid fa-play-circle" }
+      ]
+    },
+
+    {
+      id: "web-business-004",
+      category: "business_apps",
+      type: "frontend",
+      title: "Wood Crafti Company",
+      description: "Woodcraft company landing page showcasing handmade wooden products.",
+      technologies: ["HTML5", "CSS3", "JavaScript"],
+      images: ["images/web/woodcompany.webp", "images/web/woodcraft.webp"],
+      links: [
+        { name: "GitHub", url: "https://github.com/younessedd/Wood-Crafti-company.git", icon: "fa-brands fa-github" },
+        { name: "Live Demo", url: "https://younessedd.github.io/Wood-Crafti-company/", icon: "fa-solid fa-play-circle" }
+      ]
+    },
+
+    {
+      id: "web-business-005",
+      category: "business_apps",
+      type: "fullstack",
+      title: "Eventyfy",
+      description: "Event management platform built with React and Laravel.",
+      technologies: ["React", "Laravel", "PHP", "REST API"],
+      images: ["images/web/eventy.webp", "images/web/eventyfy.webp"],
+      links: [
+        { name: "GitHub", url: "https://github.com/younessedd/Eventify_Simplon.git", icon: "fa-brands fa-github" }
       ]
     }
   ],
 
-  /* ===============================
-     FOOD & RESTAURANT APPS
-  =============================== */
-
   food_apps: [
+  
+  {
+    id: "mobile-quiz-004",
+    category: "quiz_apps",
+    type: "mobile",
 
+    title: "World History Challenge",
+
+    description:
+    "Test your knowledge about world history through interactive quizzes and timed challenges.",
+
+    technologies: [
+        "Kodular",
+        "Firebase",
+        "AdMob",
+        "Android",
+        "Quiz Engine",
+        "Leaderboard System",
+        "Offline Mode"
+    ],
+
+    images: [
+        "images/mob/world-history.webp"
+    ],
+
+    features: [
+        "Global history questions",
+        "Timed quiz mode",
+        "Leaderboard ranking",
+        "Offline gameplay"
+    ],
+
+    links: [
+        {
+            name: "Google Play",
+            url: "#",
+            icon: "fa-brands fa-google-play"
+        }
+    ],
+
+    downloads: "3K+",
+    rating: 4.1
+    },
+  
+  
     {
       id: "web-food-001",
       category: "food_apps",
       type: "frontend",
-
       title: "Bella Vista",
-
-      description:
-        "Restaurant website presenting menu dining experience services information.",
-
-      technologies: [
-        "HTML5",
-        "CSS3",
-        "JavaScript",
-        "Bootstrap",
-        "Responsive Design",
-        "Git",
-        "GitHub Pages",
-        "Restaurant Menu"
-      ],
-
+      description: "Restaurant website with menu and gallery.",
+      technologies: ["HTML5", "CSS3", "JavaScript"],
       images: ["images/web/Bella-Vista.webp"],
-
-      features: [
-        "Restaurant menu",
-        "Gallery section",
-        "Customer experience",
-        "Responsive layout"
-      ],
-
       links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/younessedd/Bella-Vista-Food_company.git",
-          icon: "fa-brands fa-github"
-        },
-        {
-          name: "Live Demo",
-          url: "https://younessedd.github.io/Bella-Vista-Food_company/",
-          icon: "fa-solid fa-play-circle"
-        }
+        { name: "GitHub", url: "https://github.com/younessedd/Bella-Vista-Food_company.git", icon: "fa-brands fa-github" },
+        { name: "Live Demo", url: "https://younessedd.github.io/Bella-Vista-Food_company/", icon: "fa-solid fa-play-circle" }
       ]
     },
 
@@ -211,36 +135,13 @@ window.webProjectsData = {
       id: "web-food-002",
       category: "food_apps",
       type: "frontend",
-
       title: "GourmetDelight",
-
-      description:
-        "Modern food company website showcasing menu restaurant services information.",
-
-      technologies: [
-        "HTML5",
-        "CSS3",
-        "JavaScript",
-        "Bootstrap",
-        "Responsive Design",
-        "Git",
-        "GitHub Pages",
-        "Food Industry"
-      ],
-
+      description: "Modern restaurant website showcasing food services.",
+      technologies: ["HTML5", "CSS3", "JavaScript"],
       images: ["images/web/GourmetDelight.webp"],
-
       links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/younessedd/GourmetDelight-Food_company.git",
-          icon: "fa-brands fa-github"
-        },
-        {
-          name: "Live Demo",
-          url: "https://younessedd.github.io/GourmetDelight-Food_company/",
-          icon: "fa-solid fa-play-circle"
-        }
+        { name: "GitHub", url: "https://github.com/younessedd/GourmetDelight-Food_company.git", icon: "fa-brands fa-github" },
+        { name: "Live Demo", url: "https://younessedd.github.io/GourmetDelight-Food_company/", icon: "fa-solid fa-play-circle" }
       ]
     },
 
@@ -248,239 +149,90 @@ window.webProjectsData = {
       id: "web-food-003",
       category: "food_apps",
       type: "frontend",
-
       title: "Foodie Foodie",
-
-      description:
-        "Food discovery platform using TheMealDB API exploring recipes cuisines.",
-
-      technologies: [
-        "React",
-        "JavaScript",
-        "API Integration",
-        "TheMealDB API",
-        "CSS3",
-        "HTML5",
-        "Responsive Design",
-        "Recipe Search"
-      ],
-
+      description: "Food discovery app using API.",
+      technologies: ["React", "API", "JavaScript"],
       images: ["images/web/foody.webp"],
-
       links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/younessedd/Foodie_Simplon.git",
-          icon: "fa-brands fa-github"
-        },
-        {
-          name: "Live Demo",
-          url: "https://foodie-simplon-main.vercel.app/",
-          icon: "fa-solid fa-play-circle"
-        }
+        { name: "GitHub", url: "https://github.com/younessedd/Foodie_Simplon.git", icon: "fa-brands fa-github" },
+        { name: "Live Demo", url: "https://foodie-simplon-main.vercel.app/", icon: "fa-solid fa-play-circle" }
       ]
     }
   ],
 
-  /* ===============================
-     ENTERTAINMENT APPS
-  =============================== */
-
   entertainment_apps: [
-
     {
-      id: "web-entertainment-001",
+      id: "web-ent-001",
       category: "entertainment_apps",
       type: "frontend",
-
       title: "Space Radio",
-
-      description:
-        "Global radio streaming app integrating weather data interactive world map.",
-
-      technologies: [
-        "HTML5",
-        "CSS3",
-        "JavaScript",
-        "Leaflet",
-        "OpenWeather API",
-        "Radio API",
-        "Responsive Design",
-        "Interactive Maps"
-      ],
-
+      description: "Radio streaming app with maps and weather API.",
+      technologies: ["JavaScript", "Leaflet", "OpenWeather API"],
       images: ["images/web/space-radio.webp"],
-
       links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/younessedd/Space-Radio-world.git",
-          icon: "fa-brands fa-github"
-        },
-        {
-          name: "Live Demo",
-          url: "https://space-radio-plum.vercel.app/",
-          icon: "fa-solid fa-play-circle"
-        }
+        { name: "GitHub", url: "https://github.com/younessedd/Space-Radio-world.git", icon: "fa-brands fa-github" },
+        { name: "Live Demo", url: "https://space-radio-plum.vercel.app/", icon: "fa-solid fa-play-circle" }
       ]
     },
 
     {
-      id: "web-entertainment-002",
+      id: "web-ent-002",
       category: "entertainment_apps",
       type: "frontend",
-
       title: "Movies Scope",
-
-      description:
-        "Movie discovery application with search functionality movie information details.",
-
-      technologies: [
-        "HTML5",
-        "CSS3",
-        "JavaScript",
-        "Movie API",
-        "Search Functionality",
-        "Responsive Design",
-        "Movie Database",
-        "UI Components"
-      ],
-
+      description: "Movie search and discovery app.",
+      technologies: ["JavaScript", "API"],
       images: ["images/web/movis-scoop.webp"],
-
       links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/younessedd/movies-scope-simplon.git",
-          icon: "fa-brands fa-github"
-        },
-        {
-          name: "Live Demo",
-          url: "https://movies-scope-simplon-main.vercel.app/",
-          icon: "fa-solid fa-play-circle"
-        }
+        { name: "GitHub", url: "https://github.com/younessedd/movies-scope-simplon.git", icon: "fa-brands fa-github" },
+        { name: "Live Demo", url: "https://movies-scope-simplon-main.vercel.app/", icon: "fa-solid fa-play-circle" }
       ]
     }
   ],
 
-  /* ===============================
-     TOOLS
-  =============================== */
-
   tools_apps: [
-
     {
       id: "web-tools-001",
       category: "tools_apps",
       type: "frontend",
-
       title: "AstroWeather",
-
-      description:
-        "Weather application displaying real-time conditions using external API services.",
-
-      technologies: [
-        "HTML5",
-        "CSS3",
-        "JavaScript",
-        "Weather API",
-        "API Integration",
-        "Responsive Design",
-        "Real-time Data",
-        "Weather Display"
-      ],
-
+      description: "Weather app using API.",
+      technologies: ["JavaScript", "Weather API"],
       images: ["images/web/weather.webp"],
-
       links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/younessedd/Weather-api_Simplon.git",
-          icon: "fa-brands fa-github"
-        },
-        {
-          name: "Live Demo",
-          url: "https://weather-api-simplon-main.vercel.app/",
-          icon: "fa-solid fa-play-circle"
-        }
+        { name: "GitHub", url: "https://github.com/younessedd/Weather-api_Simplon.git", icon: "fa-brands fa-github" },
+        { name: "Live Demo", url: "https://weather-api-simplon-main.vercel.app/", icon: "fa-solid fa-play-circle" }
       ]
     }
   ],
 
-  /* ===============================
-     BLOG
-  =============================== */
-
   blog_apps: [
-
     {
       id: "web-blog-001",
       category: "blog_apps",
-      type: "frontend",
-
-      title: "Blog API Frontend",
-
-      description:
-        "React frontend connected to backend API for blog content management.",
-
-      technologies: [
-        "React",
-        "JavaScript",
-        "API Integration",
-        "REST API",
-        "CSS3",
-        "HTML5",
-        "Responsive Design",
-        "Content Management"
-      ],
-
-      images: ["images/web/bloger.webp"],
-
+      type: "fullstack",
+      title: "DevBlog",
+      description: "Blog platform using React and Laravel API.",
+      technologies: ["React", "Laravel", "REST API"],
+      images: ["images/web/bloger.webp", "images/web/devblog.webp"],
       links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/younessedd/Blog-Api_Simplon.git",
-          icon: "fa-brands fa-github"
-        }
+        { name: "GitHub", url: "https://github.com/younessedd/Blog-Api_Simplon.git", icon: "fa-brands fa-github" },
+        { name: "Live Demo", url: "https://blog-api-simplon-main.vercel.app/", icon: "fa-solid fa-play-circle" }
       ]
     }
   ],
 
-  /* ===============================
-     API SERVICES
-  =============================== */
-
   api_services: [
-
     {
       id: "web-api-001",
       category: "api_services",
       type: "backend",
-
       title: "Job API",
-
-      description:
-        "Backend API for managing job listings employment data information.",
-
-      technologies: [
-        "Node.js",
-        "Express",
-        "MongoDB",
-        "REST API",
-        "JavaScript",
-        "JSON",
-        "Database Design",
-        "Job Management"
-      ],
-
+      description: "Backend API for job management.",
+      technologies: ["Laravel", "PHP", "REST API"],
       images: ["images/web/swagger.webp"],
-
       links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/younessedd/Job-Api_Simplon.git",
-          icon: "fa-brands fa-github"
-        }
+        { name: "GitHub", url: "https://github.com/younessedd/Job-Api_Simplon.git", icon: "fa-brands fa-github" }
       ]
     },
 
@@ -488,35 +240,71 @@ window.webProjectsData = {
       id: "web-api-002",
       category: "api_services",
       type: "backend",
-
       title: "Music Box API",
-
-      description:
-        "Backend API for managing music tracks playlists audio content.",
-
-      technologies: [
-        "Node.js",
-        "Express",
-        "REST API",
-        "JavaScript",
-        "JSON",
-        "Audio Management",
-        "Music Database",
-        "API Design"
-      ],
-
-      images: ["images/web/swager1.webp"],
-
+      description: "Music management backend API.",
+      technologies: ["Laravel", "PHP", "REST API"],
+      images: ["images/web/swager1.webp", "images/web/musicapi.webp"],
       links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/younessedd/Music-Box-Api_Simplon.git",
-          icon: "fa-brands fa-github"
-        }
+        { name: "GitHub", url: "https://github.com/younessedd/Music-Box-Api_Simplon.git", icon: "fa-brands fa-github" }
+      ]
+    }
+  ],
+
+  productivity_apps: [
+    {
+      id: "web-productivity-001",
+      category: "productivity_apps",
+      type: "fullstack",
+      title: "TaskFlow",
+      description: "Task management system with React and Laravel.",
+      technologies: ["React", "Laravel", "REST API"],
+      images: ["images/web/task-flow.webp", "images/web/taskflow.webp"],
+      links: [
+        { name: "GitHub", url: "https://github.com/younessedd/Task-Flow-Project_Simplon.git", icon: "fa-brands fa-github" }
+      ]
+    },
+
+    {
+      id: "web-productivity-002",
+      category: "productivity_apps",
+      type: "fullstack",
+      title: "SecureBoard",
+      description: "Secure admin dashboard system.",
+      technologies: ["React", "Laravel", "Authentication"],
+      images: ["images/web/secureboard.webp"],
+      links: [
+        { name: "GitHub", url: "https://github.com/asmaaghayyate/SecureBoard.git", icon: "fa-brands fa-github" }
+      ]
+    },
+
+    {
+      id: "web-productivity-003",
+      category: "productivity_apps",
+      type: "fullstack",
+      title: "User Manager",
+      description: "User management system with Node.js and React.",
+      technologies: ["React", "Node.js", "Express"],
+      images: ["images/web/user-manger.webp", "images/web/usermanager.webp"],
+      links: [
+        { name: "GitHub", url: "https://github.com/younessedd/User-Manager_Simplon.git", icon: "fa-brands fa-github" }
+      ]
+    }
+  ],
+
+  ecommerce_apps: [
+    {
+      id: "web-ecommerce-001",
+      category: "ecommerce_apps",
+      type: "fullstack",
+      title: "E-Commerce Platform",
+      description: "Full-stack e-commerce system with React and Laravel.",
+      technologies: ["React", "Laravel", "MySQL"],
+      images: ["images/web/e-comerce.webp", "images/web/ecommerce.webp"],
+      links: [
+        { name: "GitHub", url: "https://github.com/younessedd/E-Commecres-Fil-Rouge_Simplon.git", icon: "fa-brands fa-github" }
       ]
     }
   ]
-
 };
 
-console.log("🌐 Web projects data loaded successfully!");
+console.log("🚀 All projects loaded successfully!");
