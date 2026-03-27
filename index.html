@@ -23,8 +23,62 @@
     
     <!-- Single Modern CSS File -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Preloader to prevent FOUC -->
+    <style>
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        }
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .preloader-content {
+            text-align: center;
+            color: #f1f5f9;
+        }
+        .loader {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #1e293b;
+            border-top: 3px solid #38bdf8;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Hide main content initially */
+        body {
+            visibility: hidden;
+        }
+        body.loaded {
+            visibility: visible;
+        }
+    </style>
 </head>
-<body class="theme-light">
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="loader"></div>
+            <p>Chargement de votre portfolio...</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
     <!-- Header -->
     <header>
         <div class="header-container">
@@ -312,6 +366,61 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
             </div>
         </div>
     </footer>
+    </div> <!-- End main-content -->
+
+    <!-- Preloader Removal Script -->
+    <script>
+        // Remove preloader when page is fully loaded
+        window.addEventListener('load', function() {
+            // Ensure all stylesheets are loaded
+            const stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+            let loadedStylesheets = 0;
+            
+            function checkStylesheets() {
+                loadedStylesheets++;
+                if (loadedStylesheets === stylesheets.length) {
+                    // All stylesheets loaded, hide preloader and show content
+                    setTimeout(() => {
+                        const preloader = document.getElementById('preloader');
+                        const body = document.body;
+                        
+                        preloader.classList.add('hidden');
+                        body.classList.add('loaded');
+                        
+                        // Remove preloader from DOM after transition
+                        setTimeout(() => {
+                            preloader.remove();
+                        }, 300);
+                    }, 500); // Small delay to ensure everything is ready
+                }
+            }
+            
+            // Check each stylesheet
+            stylesheets.forEach(stylesheet => {
+                if (stylesheet.sheet) {
+                    checkStylesheets();
+                } else {
+                    stylesheet.addEventListener('load', checkStylesheets);
+                    stylesheet.addEventListener('error', checkStylesheets); // Handle errors too
+                }
+            });
+            
+            // Fallback: if no stylesheets or timeout
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                const body = document.body;
+                
+                if (preloader && !preloader.classList.contains('hidden')) {
+                    preloader.classList.add('hidden');
+                    body.classList.add('loaded');
+                    
+                    setTimeout(() => {
+                        preloader.remove();
+                    }, 300);
+                }
+            }, 3000); // 3 second fallback
+        });
+    </script>
 
     <!-- Floating Social Icons Sidebar -->
     <div class="floating-social-icons">
@@ -335,7 +444,6 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
     <script src="js/data-manager.js" defer></script>
     <script src="js/skills-slider.js" defer></script>
     <script src="js/contact-form.js" defer></script>
-    <script src="js/email-config.js" defer></script>
     <script src="js/email-service.js" defer></script>
     <script src="js/cv-cards.js" defer></script>
     <script src="js/main.js" defer></script>
