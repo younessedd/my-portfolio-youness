@@ -2,14 +2,14 @@
  * Email Service Configuration
  *
  * This file contains EmailJS utilities for sending emails from the contact form.
- * Sensitive configuration is loaded from email-config.js (which should be in .gitignore).
+ * For production deployment, configuration is embedded here.
+ * For local development, use email-config.js (which should be in .gitignore).
  */
 
-// Import email configuration from separate file
-// The actual email-config.js file should contain your real credentials
+// Import email configuration from separate file or use embedded config
 let emailConfig;
 
-// Try to load configuration from email-config.js
+// Try to load configuration from email-config.js (for local development)
 try {
     if (typeof require !== 'undefined') {
         // Node.js environment
@@ -18,41 +18,89 @@ try {
         // Browser environment - config loaded from email-config.js script
         emailConfig = window.emailConfig;
     } else {
-        throw new Error('Email configuration not found');
+        throw new Error('Using embedded configuration');
     }
 } catch (error) {
-    console.error('❌ Email configuration not found. Please create email-config.js from the template.');
+    // Embedded configuration for production deployment
+    console.log('📧 Using embedded email configuration for production');
     
-    // Fallback configuration (will not work for actual email sending)
     emailConfig = {
-        serviceID: 'MISSING',
-        templateID: 'MISSING',
-        publicKey: 'MISSING',
-        toEmail: 'missing@example.com',
+        // ================================
+        // 🔐 EmailJS Configuration
+        // ================================
+        serviceID: 'service_9a47m0s',
+        templateID: 'template_vlo4ub3',
+        publicKey: 'IbbG69TuO-Uyx_4I8',
+        
+        // ================================
+        // 📧 Email Settings
+        // ================================
+        toEmail: 'eddanguiryouness@gmail.com',
         fromName: 'Portfolio Contact Form',
         subject: 'New Message from Portfolio Website',
         replyTo: 'no-reply@portfolio.com',
+        
+        // ================================
+        // ✅ Validation
+        // ================================
         validate: function() {
+            const errors = [];
+            const warnings = [];
+            
+            if (!this.serviceID) errors.push('serviceID is missing');
+            if (!this.templateID) errors.push('templateID is missing');
+            if (!this.publicKey) errors.push('publicKey is missing');
+            if (!this.toEmail) errors.push('toEmail is missing');
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (this.toEmail && !emailRegex.test(this.toEmail)) {
+                warnings.push('toEmail may not be a valid email address');
+            }
+            
             return {
-                isValid: false,
-                errors: ['Email configuration file not found or incomplete']
+                isValid: errors.length === 0,
+                errors: errors,
+                warnings: warnings,
+                hasWarnings: warnings.length > 0
             };
         },
+        
         test: function() {
+            const validation = this.validate();
+            
+            if (!validation.isValid) {
+                return {
+                    success: false,
+                    message: 'Configuration is invalid',
+                    details: validation.errors
+                };
+            }
+            
+            console.log('✅ Email configuration loaded successfully');
+            console.log('Service ID:', this.serviceID ? '✓ Loaded' : '✗ Missing');
+            console.log('Template ID:', this.templateID ? '✓ Loaded' : '✗ Missing');
+            console.log('Public Key:', this.publicKey ? '✓ Loaded' : '✗ Missing');
+            console.log('To Email:', this.toEmail ? '✓ Loaded' : '✗ Missing');
+            
+            if (validation.hasWarnings) {
+                console.warn('⚠️ Configuration warnings:', validation.warnings);
+            }
+            
             return {
-                success: false,
-                message: 'Email configuration not found',
-                details: ['Please create email-config.js from email-config.template.js']
+                success: true,
+                message: 'Configuration is valid',
+                warnings: validation.warnings
             };
         },
+        
         getSafeConfig: function() {
             return {
-                serviceID: 'Missing',
-                templateID: 'Missing',
-                publicKey: 'Missing',
-                toEmail: 'Missing',
-                fromName: 'Missing',
-                subject: 'Missing'
+                serviceID: this.serviceID ? '***' + this.serviceID.slice(-4) : 'Missing',
+                templateID: this.templateID ? '***' + this.templateID.slice(-4) : 'Missing',
+                publicKey: this.publicKey ? '***' + this.publicKey.slice(-4) : 'Missing',
+                toEmail: this.toEmail || 'Missing',
+                fromName: this.fromName || 'Missing',
+                subject: this.subject || 'Missing'
             };
         }
     };
@@ -94,8 +142,3 @@ if (typeof exports !== 'undefined') {
 if (typeof window !== 'undefined') {
     window.emailConfig = emailConfig;
 }
-
-// Security warning displayed in console to remind developers
-console.log('%c⚠️ SECURITY WARNING ⚠️', 'color: red; font-weight: bold; font-size: 14px;');
-console.log('%cThis file contains sensitive API keys.', 'color: orange;');
-console.log('%cMake sure email-config.js is in .gitignore!', 'color: orange; font-weight: bold;');
