@@ -248,6 +248,7 @@
             let touchEndX = 0;
             const minSwipeDistance = 50;
 
+            // Touch swipe (mobile)
             container.addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
             }, { passive: true });
@@ -264,6 +265,47 @@
                     }
                 }
             }, { passive: true });
+
+            // Mouse drag swipe (desktop)
+            let isDragging = false;
+            let dragStartX = 0;
+            let dragEndX = 0;
+
+            container.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                dragStartX = e.clientX;
+                container.style.cursor = 'grabbing';
+            });
+
+            container.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                dragEndX = e.clientX;
+            });
+
+            container.addEventListener('mouseup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                container.style.cursor = 'grab';
+                
+                const diff = dragStartX - dragEndX;
+                if (Math.abs(diff) > minSwipeDistance) {
+                    if (diff > 0) {
+                        this.next();
+                    } else {
+                        this.prev();
+                    }
+                }
+            });
+
+            container.addEventListener('mouseleave', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    container.style.cursor = 'grab';
+                }
+            });
+
+            // Set cursor style
+            container.style.cursor = 'grab';
         }
 
         goTo(index) {

@@ -2436,6 +2436,25 @@ footer {
     transition: all 0.3s;
     flex-shrink: 0;
     z-index: 20;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.three-card-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 80px;
+}
+
+.three-card-carousel .nav-btn.prev {
+    left: 10px;
+}
+
+.three-card-carousel .nav-btn.next {
+    right: 10px;
 }
 
 .nav-btn:hover {
@@ -2548,6 +2567,14 @@ footer {
         transform: scale(1);
     }
     
+    /* Keep nav buttons visible on tablet */
+    .nav-btn {
+        display: flex;
+    }
+}
+
+/* Hide nav buttons only on very small mobile screens */
+@media (max-width: 480px) {
     .nav-btn {
         display: none;
     }
