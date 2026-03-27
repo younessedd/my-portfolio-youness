@@ -1,17 +1,7 @@
 /**
- * IoT Projects Data Structure
- *
- * This file contains all Internet of Things (IoT) projects data organized by categories.
- * Each project includes metadata, technologies, and system features.
- *
- * Categories:
- * - smarthome_apps: Smart home automation systems
- * - industrial_iot: Industrial automation and electrical control systems
- * - sensor_projects: Sensor-based monitoring systems
- * - robotics_iot: Robotics and autonomous systems
+ * IoT Projects Data Structure - UPDATED VERSION
  */
 
-// Global object containing all IoT projects data
 window.iotProjectsData = {
 
     /* =========================================
@@ -28,28 +18,17 @@ window.iotProjectsData = {
             title: "Smart Lighting Control",
 
             description:
-            "Control home lighting remotely using mobile application automation scheduling features.",
+            "A smart lighting system that allows remote control and automation using mobile applications and scheduling features.",
 
-            images: [
-                "images/iot/SMARTHOME.webp"
-            ],
+            images: ["images/iot/SMARTHOME.webp"],
 
-            technologies: [
-                "ESP32",
-                "Relay Module",
-                "WiFi",
-                "Mobile App",
-                "Arduino IDE",
-                "Home Automation",
-                "Light Control",
-                "Scheduling System"
-            ],
+            technologies: ["ESP32", "Relay Module", "WiFi", "Mobile App", "MQTT", "Light Sensor"],
 
             features: [
-                "Remote ON / OFF control",
-                "Lighting scheduling system",
+                "Remote ON/OFF control",
+                "Lighting scheduling",
                 "Energy saving automation",
-                "Mobile application interface"
+                "Mobile interface"
             ]
         },
 
@@ -61,33 +40,43 @@ window.iotProjectsData = {
             title: "Smart Door Lock (RFID)",
 
             description:
-            "Secure smart door access system using RFID authentication servo motor.",
+            "Secure smart door lock system using RFID authentication and servo motor mechanism.",
 
-            images: [
-                "images/iot/DOOR.webp"
-            ],
+            images: ["images/iot/DOOR.webp"],
 
-            technologies: [
-                "Arduino",
-                "RFID Module",
-                "Servo Motor",
-                "Access Control",
-                "Security System",
-                "Door Lock",
-                "Authentication",
-                "Home Security"
-            ],
+            technologies: ["ESP32", "RFID", "Servo Motor", "WiFi", "Mobile App", "Battery Monitor"],
 
             features: [
                 "RFID authentication",
-                "Secure access system",
-                "Manual override mode",
-                "Low power consumption"
+                "Secure access",
+                "Manual override",
+                "Low power usage"
+            ]
+        },
+
+        {
+            id: "iot-home-003",
+            category: "smarthome_apps",
+            type: "iot",
+
+            title: "Complete Smart Home System",
+
+            description:
+            "Full smart home automation system integrating lighting, sensors, and remote control using ESP32.",
+
+            images: ["images/iot/SMART-SYSTEM.webp"],
+
+            technologies: ["ESP32", "Sensors", "WiFi", "Relays", "MQTT", "Mobile App"],
+
+            features: [
+                "Full home automation",
+                "Remote control",
+                "Security system",
+                "Energy optimization"
             ]
         }
 
     ],
-
 
     /* =========================================
        INDUSTRIAL AUTOMATION
@@ -103,28 +92,17 @@ window.iotProjectsData = {
             title: "Industrial Motor Control Panel",
 
             description:
-            "Industrial automation system used control motors protection safety mechanisms.",
+            "Industrial system for controlling motors with protection and automation features.",
 
-            images: [
-                "images/iot/ELEC MOTOR.webp"
-            ],
+            images: ["images/iot/ELEC MOTOR.webp"],
 
-            technologies: [
-                "Arduino",
-                "Industrial Relays",
-                "Timers",
-                "Electrical Control Wiring",
-                "Motor Control",
-                "Safety Systems",
-                "Automation",
-                "Industrial Grade"
-            ],
+            technologies: ["Relays", "Timers", "Electrical Wiring", "ESP32", "Sensors", "PLC Integration"],
 
             features: [
-                "Start / Stop motor control",
+                "Motor control",
                 "Overload protection",
-                "Manual and automatic modes",
-                "Industrial safety system"
+                "Manual/Auto mode",
+                "Industrial safety"
             ]
         },
 
@@ -136,36 +114,46 @@ window.iotProjectsData = {
             title: "Product Counter System",
 
             description:
-            "Automatic product counting system for industrial production lines using sensors.",
+            "Automated system that counts products on a production line using sensors.",
 
-            images: [
-                "images/iot/SYSTEM INDESTRY.webp"
-            ],
+            images: ["images/iot/SYSTEM INDESTRY.webp"],
 
-            technologies: [
-                "Arduino",
-                "IR Sensor",
-                "LCD Display",
-                "Industrial Automation",
-                "Product Counting",
-                "Manufacturing",
-                "Quality Control",
-                "Production Line"
-            ],
+            technologies: ["ESP32", "IR Sensor", "LCD", "WiFi", "MQTT", "Data Logging"],
 
             features: [
-                "Real-time product counting",
-                "Reset function",
-                "LCD display interface",
-                "High accuracy detection"
+                "Real-time counting",
+                "LCD display",
+                "High accuracy",
+                "Reset system"
+            ]
+        },
+
+        {
+            id: "iot-industrial-003",
+            category: "industrial_iot",
+            type: "iot",
+
+            title: "Automated Electrical Panel",
+
+            description:
+            "Electrical panel integrating automation logic with relays and industrial components.",
+
+            images: ["images/iot/ELECTRICAL PANEL.webp"],
+
+            technologies: ["Relays", "Contactors", "ESP32", "WiFi", "Sensors", "Industrial IoT Protocols"],
+
+            features: [
+                "Automatic control",
+                "Safety system",
+                "Manual override",
+                "Industrial integration"
             ]
         }
 
     ],
 
-
     /* =========================================
-       SENSOR BASED PROJECTS
+       SENSOR PROJECTS
     ========================================= */
 
     sensor_projects: [
@@ -178,28 +166,17 @@ window.iotProjectsData = {
             title: "Temperature & Humidity Monitor",
 
             description:
-            "Environmental monitoring system measuring temperature humidity real-time data.",
+            "System that measures temperature and humidity in real-time using sensors.",
 
-            images: [
-                "images/iot/TEMP SENSOR.webp"
-            ],
+            images: ["images/iot/TEMP SENSOR.webp"],
 
-            technologies: [
-                "DHT11 Sensor",
-                "Arduino",
-                "LCD Display",
-                "Temperature Monitoring",
-                "Humidity Sensing",
-                "Environmental Data",
-                "Real-time Display",
-                "Low Cost Sensor"
-            ],
+            technologies: ["DHT11", "ESP32", "LCD", "WiFi", "Data Logging", "MQTT"],
 
             features: [
-                "Live temperature monitoring",
-                "Humidity detection",
-                "Stable sensor readings",
-                "Low cost implementation"
+                "Real-time monitoring",
+                "Stable readings",
+                "Low cost",
+                "Simple display"
             ]
         },
 
@@ -211,28 +188,17 @@ window.iotProjectsData = {
             title: "Gas Leakage Detection System",
 
             description:
-            "Safety monitoring system designed detect gas leakage trigger alarm.",
+            "Safety system that detects gas leakage and triggers an alarm instantly.",
 
-            images: [
-                "images/iot/GAZ SENSOR.webp"
-            ],
+            images: ["images/iot/GAZ SENSOR.webp"],
 
-            technologies: [
-                "MQ Gas Sensor",
-                "Arduino",
-                "Buzzer Alarm",
-                "Gas Detection",
-                "Safety System",
-                "Alarm Monitoring",
-                "Industrial Safety",
-                "Emergency Alert"
-            ],
+            technologies: ["MQ Sensor", "ESP32", "Buzzer", "WiFi", "Alarm System", "MQTT"],
 
             features: [
-                "Gas level monitoring",
-                "Sound alarm system",
-                "Fast response detection",
-                "Home and industrial safety"
+                "Gas detection",
+                "Alarm system",
+                "Fast response",
+                "Safety protection"
             ]
         },
 
@@ -244,33 +210,21 @@ window.iotProjectsData = {
             title: "Weather Monitoring Station",
 
             description:
-            "Remote weather monitoring system with multiple sensors real-time environmental data.",
+            "IoT weather station that collects environmental data and sends it to the cloud.",
 
-            images: [
-                "images/iot/WEATHER.webp"
-            ],
+            images: ["images/iot/WEATHER.webp"],
 
-            technologies: [
-                "ESP8266",
-                "DHT22",
-                "BMP280",
-                "WiFi",
-                "Weather Station",
-                "Cloud Data",
-                "Environmental Monitoring",
-                "Remote Sensing"
-            ],
+            technologies: ["ESP8266", "DHT22", "BMP280", "WiFi", "Cloud Integration", "MQTT"],
 
             features: [
-                "Real-time weather data",
-                "Multi sensor support",
-                "Cloud data transmission",
-                "Mobile monitoring"
+                "Weather data",
+                "Cloud integration",
+                "Multi sensors",
+                "Remote monitoring"
             ]
         }
 
     ],
-
 
     /* =========================================
        ROBOTICS PROJECTS
@@ -286,28 +240,17 @@ window.iotProjectsData = {
             title: "Obstacle Avoiding Robot",
 
             description:
-            "Autonomous robot capable detecting avoiding obstacles using ultrasonic sensors.",
+            "Autonomous robot that avoids obstacles using ultrasonic sensors.",
 
-            images: [
-                "images/iot/OBSTACLE.webp"
-            ],
+            images: ["images/iot/OBSTACLE.webp"],
 
-            technologies: [
-                "Arduino",
-                "Ultrasonic Sensor",
-                "Motor Driver",
-                "Obstacle Detection",
-                "Autonomous Navigation",
-                "Robot Control",
-                "Sensor Fusion",
-                "Path Planning"
-            ],
+            technologies: ["ESP32", "Ultrasonic Sensor", "Motor Driver", "Battery", "WiFi", "Mobile App"],
 
             features: [
-                "Autonomous navigation",
                 "Obstacle detection",
-                "Motor speed control",
-                "Efficient movement algorithm"
+                "Autonomous movement",
+                "Motor control",
+                "Navigation logic"
             ]
         },
 
@@ -319,28 +262,17 @@ window.iotProjectsData = {
             title: "Bluetooth Control Robot",
 
             description:
-            "Smart robot controlled through mobile phone using Bluetooth communication.",
+            "Robot controlled using a smartphone via Bluetooth communication.",
 
-            images: [
-                "images/iot/ROBOT REMOT.webp"
-            ],
+            images: ["images/iot/ROBOT REMOT.webp"],
 
-            technologies: [
-                "Arduino",
-                "Bluetooth Module",
-                "Motor Driver",
-                "Mobile Control",
-                "Wireless Communication",
-                "Robot Interface",
-                "Remote Operation",
-                "Bluetooth Protocol"
-            ],
+            technologies: ["ESP32", "Bluetooth", "Motor Driver", "Battery", "Mobile App", "Sensors"],
 
             features: [
-                "Mobile phone control",
+                "Mobile control",
                 "Directional movement",
-                "Low latency communication",
-                "Simple control interface"
+                "Wireless control",
+                "Low latency"
             ]
         },
 
@@ -352,28 +284,77 @@ window.iotProjectsData = {
             title: "Smart Garden System",
 
             description:
-            "Automated garden irrigation system that waters plants based soil moisture.",
+            "Automated irrigation system based on soil moisture detection.",
 
-            images: [
-                "images/iot/GARDEN.webp"
-            ],
+            images: ["images/iot/GARDEN.webp"],
 
-            technologies: [
-                "Arduino",
-                "Soil Moisture Sensor",
-                "Relay",
-                "Water Pump",
-                "Garden Automation",
-                "Irrigation System",
-                "Plant Care",
-                "Smart Agriculture"
-            ],
+            technologies: ["ESP32", "Soil Sensor", "Pump", "Relay Module", "WiFi", "Mobile App"],
 
             features: [
-                "Automatic plant watering",
-                "Soil moisture monitoring",
-                "Water saving system",
-                "Simple automation setup"
+                "Auto watering",
+                "Water saving",
+                "Soil monitoring",
+                "Simple automation"
+            ]
+        }
+
+    ],
+
+    /* =========================================
+       MOBILE IoT APPS
+    ========================================= */
+
+    iot_mobile_apps: [
+
+        {
+            id: "iot-app-001",
+            category: "iot_mobile_apps",
+            type: "iot",
+
+            title: "Smart Home Mobile App",
+
+            description:
+            "Mobile application for controlling IoT devices using Bluetooth and WiFi.",
+
+            images: ["images/iot/MOBILE APP.webp"],
+
+            technologies: ["Kodular", "ESP32", "ESP8266", "Bluetooth", "WiFi", "MQTT"],
+
+            features: [
+                "Device control",
+                "Real-time interaction",
+                "User interface",
+                "Wireless connection"
+            ]
+        }
+
+    ],
+
+    /* =========================================
+       AI SYSTEMS
+    ========================================= */
+
+    ai_iot_systems: [
+
+        {
+            id: "iot-ai-001",
+            category: "ai_iot_systems",
+            type: "iot",
+
+            title: "AI Smart Home Assistant",
+
+            description:
+            "AI-powered system that controls smart home devices using voice commands.",
+
+            images: ["images/iot/AI HOME.webp"],
+
+            technologies: ["ESP32", "ESP8266", "AI API", "WiFi", "Mobile App", "Voice Recognition"],
+
+            features: [
+                "Voice control",
+                "AI automation",
+                "Smart interaction",
+                "Real-time response"
             ]
         }
 
@@ -381,6 +362,4 @@ window.iotProjectsData = {
 
 };
 
-
-// Console log to confirm data loading
-console.log("📡 IoT projects data loaded successfully!");
+console.log("📡 IoT projects UPDATED data loaded!");
