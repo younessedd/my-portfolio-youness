@@ -155,6 +155,9 @@
                     <div class="card-image-wrapper">
                         <img src="${imageUrl}" alt="${project.title}" 
                              class="card-image" 
+                             loading="lazy"
+                             decoding="async"
+                             fetchpriority="${position === 'center' ? 'high' : 'low'}"
                              onclick="event.stopPropagation(); openFullscreenImage('${imageUrl}')"
                              onerror="this.src='images/ImageNotAvailable.webp'">
                     </div>
