@@ -111,3 +111,8 @@ Thumbs.db
 .vercel
 
 .vercel
+
+# Sensitive configuration files
+email-config.js
+js/email-config.js
+config/email-config.js
