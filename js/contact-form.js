@@ -8,12 +8,7 @@
 // Google Apps Script URL for contact form
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby9zZofomH4nhxKYOrqKbLtr49S_vNxpffvkjQUqLKsLaNBwmEYp1XL85wLh9doI2vK/exec';
 
-// EmailJS configuration
-const emailConfig = {
-    serviceID: 'service_9a47m0s',
-    templateID: 'template_vlo4ub3',
-    publicKey: 'IbbG69TuO-Uyx_4I8'
-};
+// EmailJS configuration is imported from email-service.js
 
 // Send email using EmailJS
 async function sendEmailViaEmailJS(name, email, phone, message) {
