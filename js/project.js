@@ -228,6 +228,8 @@
     }
 
     function displayCategoryFilters() {
+        if (!elements.categoryFilters) return;
+        
         const categories = getAllCategoriesForType(currentType);
         
         elements.categoryFilters.innerHTML = categories.map(cat => {
@@ -335,6 +337,7 @@
 
     function displayCarousel() {
         if (allProjects.length === 0) return;
+        if (!elements.carouselTrack) return;
 
         elements.totalSlides.textContent = allProjects.length;
         elements.currentSlide.textContent = currentIndex + 1;
