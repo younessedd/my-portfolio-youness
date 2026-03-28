@@ -8,6 +8,13 @@ window.webProjectsData = {
       description: "Modern coworking space platform presenting services and workspace booking options.",
       technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Tailwind", "Responsive"],
       images: ["images/web/workly.webp"],
+      features: [
+        "Responsive modern design",
+        "Workspace booking system",
+        "Service showcase",
+        "Contact form integration",
+        "Smooth animations"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/kow_worker_Simplon.git", icon: "fa-brands fa-github" },
         { name: "Live Demo", url: "https://kow-worker-simplon-main.vercel.app/", icon: "fa-solid fa-play-circle" }
@@ -21,6 +28,13 @@ window.webProjectsData = {
       description: "Electrical services company website with project showcase and services.",
       technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Responsive", "UI/UX"],
       images: ["images/web/powergride.webp"],
+      features: [
+        "Project portfolio gallery",
+        "Service listing",
+        "Contact form",
+        "Responsive layout",
+        "Modern UI design"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/PowerGrid-Solutions_Company.git", icon: "fa-brands fa-github" },
         { name: "Live Demo", url: "https://younessedd.github.io/PowerGrid-Solutions_Company/", icon: "fa-solid fa-play-circle" }
@@ -34,6 +48,13 @@ window.webProjectsData = {
       description: "Coworking company website with service presentation and workspace info.",
       technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Responsive", "UI/UX"],
       images: ["images/web/CoWork-Hub.webp"],
+      features: [
+        "Service presentation",
+        "Workspace information",
+        "Pricing plans",
+        "Responsive design",
+        "Modern interface"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/CoWork-Hub_company.git", icon: "fa-brands fa-github" },
         { name: "Live Demo", url: "https://younessedd.github.io/CoWork-Hub_company/", icon: "fa-solid fa-play-circle" }
@@ -47,6 +68,13 @@ window.webProjectsData = {
       description: "Woodcraft company landing page showcasing handmade wooden products.",
       technologies: ["HTML5", "CSS3", "JavaScript", "Responsive", "UI/UX", "Animations"],
       images: ["images/web/woodcompany.webp", "images/web/woodcraft.webp"],
+      features: [
+        "Product showcase gallery",
+        "Smooth scroll animations",
+        "Product categories",
+        "Contact information",
+        "Responsive design"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/Wood-Crafti-company.git", icon: "fa-brands fa-github" },
         { name: "Live Demo", url: "https://younessedd.github.io/Wood-Crafti-company/", icon: "fa-solid fa-play-circle" }
@@ -60,6 +88,13 @@ window.webProjectsData = {
       description: "Event management platform built with React and Laravel.",
       technologies: ["React", "Laravel", "REST API", "Authentication", "Database", "UI/UX"],
       images: ["images/web/eventy.webp", "images/web/eventyfy.webp"],
+      features: [
+        "Event creation and management",
+        "User authentication",
+        "Event registration",
+        "Dashboard for organizers",
+        "RESTful API integration"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/Eventify_Simplon.git", icon: "fa-brands fa-github" }
       ]
@@ -75,6 +110,13 @@ window.webProjectsData = {
       description: "Restaurant website with menu and gallery.",
       technologies: ["HTML5", "CSS3", "JavaScript", "Responsive", "UI/UX", "Animations"],
       images: ["images/web/Bella-Vista.webp"],
+      features: [
+        "Menu display with categories",
+        "Image gallery",
+        "Reservation form",
+        "Responsive design",
+        "Smooth animations"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/Bella-Vista-Food_company.git", icon: "fa-brands fa-github" },
         { name: "Live Demo", url: "https://younessedd.github.io/Bella-Vista-Food_company/", icon: "fa-solid fa-play-circle" }
@@ -88,6 +130,13 @@ window.webProjectsData = {
       description: "Modern restaurant website showcasing food services.",
       technologies: ["HTML5", "CSS3", "JavaScript", "Responsive", "UI/UX", "Animations"],
       images: ["images/web/GourmetDelight.webp"],
+      features: [
+        "Food menu showcase",
+        "About section",
+        "Contact information",
+        "Responsive layout",
+        "Modern design"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/GourmetDelight-Food_company.git", icon: "fa-brands fa-github" },
         { name: "Live Demo", url: "https://younessedd.github.io/GourmetDelight-Food_company/", icon: "fa-solid fa-play-circle" }
@@ -101,6 +150,13 @@ window.webProjectsData = {
       description: "Food discovery app using API.",
       technologies: ["React", "JavaScript", "API", "Responsive", "UI/UX", "Animations"],
       images: ["images/web/foody.webp"],
+      features: [
+        "Food recipe search",
+        "API integration",
+        "Recipe details",
+        "Search functionality",
+        "Responsive design"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/Foodie_Simplon.git", icon: "fa-brands fa-github" },
         { name: "Live Demo", url: "https://foodie-simplon-main.vercel.app/", icon: "fa-solid fa-play-circle" }
@@ -117,6 +173,13 @@ window.webProjectsData = {
       description: "Radio streaming app with maps and weather API.",
       technologies: ["JavaScript", "Leaflet", "API", "Responsive", "UI/UX", "Animations"],
       images: ["images/web/space-radio.webp"],
+      features: [
+        "Radio streaming",
+        "Map integration with Leaflet",
+        "Weather API display",
+        "Station search",
+        "Responsive design"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/Space-Radio-world.git", icon: "fa-brands fa-github" },
         { name: "Live Demo", url: "https://space-radio-plum.vercel.app/", icon: "fa-solid fa-play-circle" }
@@ -130,6 +193,13 @@ window.webProjectsData = {
       description: "Movie search and discovery app.",
       technologies: ["JavaScript", "API", "Responsive", "UI/UX", "Animations", "Fetch"],
       images: ["images/web/movis-scoop.webp"],
+      features: [
+        "Movie search functionality",
+        "Movie details display",
+        "API integration",
+        "Image gallery",
+        "Responsive layout"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/movies-scope-simplon.git", icon: "fa-brands fa-github" },
         { name: "Live Demo", url: "https://movies-scope-simplon-main.vercel.app/", icon: "fa-solid fa-play-circle" }
@@ -146,6 +216,13 @@ window.webProjectsData = {
       description: "Weather app using API.",
       technologies: ["JavaScript", "API", "Responsive", "UI/UX", "Fetch", "JSON"],
       images: ["images/web/weather.webp"],
+      features: [
+        "Current weather display",
+        "Weather forecast",
+        "Location search",
+        "API integration",
+        "Responsive design"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/Weather-api_Simplon.git", icon: "fa-brands fa-github" },
         { name: "Live Demo", url: "https://weather-api-simplon-main.vercel.app/", icon: "fa-solid fa-play-circle" }
@@ -162,6 +239,13 @@ window.webProjectsData = {
       description: "Blog platform using React and Laravel API.",
       technologies: ["React", "Laravel", "REST API", "Authentication", "Database", "UI/UX"],
       images: ["images/web/bloger.webp", "images/web/devblog.webp"],
+      features: [
+        "Blog post creation",
+        "User authentication",
+        "Comment system",
+        "Category filtering",
+        "RESTful API backend"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/Blog-Api_Simplon.git", icon: "fa-brands fa-github" },
         { name: "Live Demo", url: "https://blog-api-simplon-main.vercel.app/", icon: "fa-solid fa-play-circle" }
@@ -178,6 +262,13 @@ window.webProjectsData = {
       description: "Backend API for job management.",
       technologies: ["Laravel", "PHP", "REST API", "Database", "Authentication", "JSON"],
       images: ["images/web/swagger.webp"],
+      features: [
+        "Job CRUD operations",
+        "User authentication",
+        "API documentation with Swagger",
+        "Database integration",
+        "JSON responses"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/Job-Api_Simplon.git", icon: "fa-brands fa-github" }
       ]
@@ -190,6 +281,13 @@ window.webProjectsData = {
       description: "Music management backend API.",
       technologies: ["Laravel", "PHP", "REST API", "Database", "Authentication", "JSON"],
       images: ["images/web/swager1.webp", "images/web/musicapi.webp"],
+      features: [
+        "Music library management",
+        "Playlist creation",
+        "User authentication",
+        "API endpoints",
+        "Database storage"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/Music-Box-Api_Simplon.git", icon: "fa-brands fa-github" }
       ]
@@ -205,6 +303,13 @@ window.webProjectsData = {
       description: "Task management system with React and Laravel.",
       technologies: ["React", "Laravel", "REST API", "Authentication", "Database", "UI/UX"],
       images: ["images/web/task-flow.webp", "images/web/taskflow.webp"],
+      features: [
+        "Task creation and management",
+        "User authentication",
+        "Task categorization",
+        "Dashboard overview",
+        "RESTful API integration"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/Task-Flow-Project_Simplon.git", icon: "fa-brands fa-github" }
       ]
@@ -217,6 +322,13 @@ window.webProjectsData = {
       description: "Secure admin dashboard system.",
       technologies: ["React", "Laravel", "Authentication", "Database", "API", "UI/UX"],
       images: ["images/web/secureboard.webp"],
+      features: [
+        "Admin dashboard",
+        "User management",
+        "Secure authentication",
+        "Data visualization",
+        "Role-based access"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/asmaaghayyate/SecureBoard.git", icon: "fa-brands fa-github" }
       ]
@@ -229,6 +341,13 @@ window.webProjectsData = {
       description: "User management system with Node.js and React.",
       technologies: ["React", "Node.js", "Express", "Database", "API", "UI/UX"],
       images: ["images/web/user-manger.webp", "images/web/usermanager.webp"],
+      features: [
+        "User CRUD operations",
+        "User profile management",
+        "Node.js backend",
+        "RESTful API",
+        "Responsive interface"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/User-Manager_Simplon.git", icon: "fa-brands fa-github" }
       ]
@@ -244,6 +363,13 @@ window.webProjectsData = {
       description: "Full-stack e-commerce system with React and Laravel.",
       technologies: ["React", "Laravel", "MySQL", "API", "Authentication", "UI/UX"],
       images: ["images/web/e-comerce.webp", "images/web/ecommerce.webp"],
+      features: [
+        "Product catalog",
+        "Shopping cart",
+        "User authentication",
+        "Order management",
+        "Payment integration ready"
+      ],
       links: [
         { name: "GitHub", url: "https://github.com/younessedd/E-Commecres-Fil-Rouge_Simplon.git", icon: "fa-brands fa-github" }
       ]

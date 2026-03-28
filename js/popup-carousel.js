@@ -35,28 +35,36 @@ document.addEventListener('DOMContentLoaded', function() {
         return allProjects;
     }
 
-    // Function to generate popup slides HTML with image carousel for each project
+    // Function to generate popup slides HTML with thumbnail grid for each project
     function generatePopupSlides(projects) {
         return projects.map(project => {
             const images = project.images || [];
             const description = project.description || 'No description available';
             const technologies = project.technologies || [];
             
-            // Generate image carousel HTML if there are multiple images
-            let imagesCarouselHTML = '';
+            // Generate thumbnail grid HTML if there are multiple images
+            let imagesHTML = '';
             if (images.length > 0) {
-                const imagesSlides = images.map((img, idx) => 
-                    `<div class="swiper-slide"><img src="${img}" alt="${project.title} - Image ${idx + 1}" class="popup-project-image" onerror="this.src='https://via.placeholder.com/800x500?text=No+Image'"></div>`
+                const thumbnails = images.map((img, idx) => 
+                    `<img src="${img}" alt="${project.title} - Image ${idx + 1}" 
+                          class="popup-thumbnail ${idx === 0 ? 'active' : ''}" 
+                          data-index="${idx}"
+                          onclick="event.stopPropagation(); switchPopupImage(this, '${project.popupIndex}', ${idx})"
+                          onerror="this.src='images/ImageNotAvailable.webp'">`
                 ).join('');
                 
-                imagesCarouselHTML = `
-                    <div class="popup-image-swiper swiper" id="popup-image-swiper-${project.popupIndex}">
-                        <div class="swiper-wrapper">${imagesSlides}</div>
-                        <div class="swiper-pagination"></div>
-                    </div>
+                const mainImage = images[0] || 'images/ImageNotAvailable.webp';
+                
+                imagesHTML = `
+                    <div class="popup-images-grid">${thumbnails}</div>
+                    <img src="${mainImage}" alt="${project.title}" 
+                         class="popup-main-image" 
+                         id="popup-main-image-${project.popupIndex}"
+                         onclick="event.stopPropagation(); openFullscreenImage('${mainImage}')"
+                         onerror="this.src='images/ImageNotAvailable.webp'">
                 `;
             } else {
-                imagesCarouselHTML = `<img src="https://via.placeholder.com/800x500?text=No+Image" alt="No Image" class="popup-project-image">`;
+                imagesHTML = `<img src="images/ImageNotAvailable.webp" alt="No Image" class="popup-main-image">`;
             }
             
             let linksHTML = '';
@@ -186,6 +194,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Make openPopup available globally
     window.openProjectPopup = openPopup;
+    
+    // Function to switch popup main image when thumbnail is clicked
+    window.switchPopupImage = function(thumbnail, popupIndex, imageIndex) {
+        const mainImage = document.getElementById(`popup-main-image-${popupIndex}`);
+        if (mainImage && thumbnail.src) {
+            mainImage.src = thumbnail.src;
+            
+            // Update active thumbnail
+            const grid = thumbnail.closest('.popup-images-grid');
+            if (grid) {
+                grid.querySelectorAll('.popup-thumbnail').forEach(thumb => thumb.classList.remove('active'));
+                thumbnail.classList.add('active');
+            }
+        }
+    };
     
     // Generate filter buttons based on category
     function generateFilterButtons(category) {
@@ -329,22 +352,7 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             on: {
                 init: function() {
-                    setTimeout(() => {
-                        projects.forEach((project, idx) => {
-                            const imageSwiperEl = document.getElementById(`popup-image-swiper-${idx}`);
-                            if (imageSwiperEl && project.images && project.images.length > 1) {
-                                new Swiper(`#popup-image-swiper-${idx}`, {
-                                    slidesPerView: 1,
-                                    spaceBetween: 0,
-                                    loop: true,
-                                    pagination: {
-                                        el: imageSwiperEl.querySelector('.swiper-pagination'),
-                                        clickable: true,
-                                    },
-                                });
-                            }
-                        });
-                    }, 100);
+                    // Thumbnails are now clickable - no need for inner swiper
                 },
                 // Update active filter button based on current slide
                 slideChange: function() {

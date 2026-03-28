@@ -27,7 +27,6 @@
     
     <!-- Critical Image Preloading for Ultra-Fast Initial Load -->
     <link rel="preload" as="image" href="images/mypic.webp" fetchpriority="highest">
-    <link rel="preload" as="image" href="images/background/hero.webp" fetchpriority="high">
     <link rel="preload" as="image" href="images/web/workly.webp" fetchpriority="high">
     <link rel="preload" as="image" href="images/mob/ameriaue-quiz.webp" fetchpriority="high">
     <link rel="preload" as="image" href="images/iot/SMARTHOME.webp" fetchpriority="high">
@@ -390,6 +389,72 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
 
     <!-- Preloader Removal Script -->
     <script>
+        // Handle hash scroll to center section on page load
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                setTimeout(function() {
+                    const hash = window.location.hash.replace('#', '');
+                    const target = document.getElementById(hash);
+                    if (target) {
+                        const header = document.querySelector('.desktop-nav');
+                        const headerHeight = header ? header.offsetHeight : 80;
+                        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                    }
+                }, 300);
+            }
+        });
+
+        // Handle hash change events
+        window.addEventListener('hashchange', function() {
+            if (window.location.hash) {
+                setTimeout(function() {
+                    const hash = window.location.hash.replace('#', '');
+                    const target = document.getElementById(hash);
+                    if (target) {
+                        const header = document.querySelector('.desktop-nav');
+                        const headerHeight = header ? header.offsetHeight : 80;
+                        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                    }
+                }, 100);
+            }
+        });
+
+        // Scrollspy - update nav active state and URL based on visible section
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
+        let lastHash = '';
+        
+        function updateActiveNav() {
+            const scrollPos = window.scrollY + 150;
+            
+            sections.forEach(section => {
+                const top = section.offsetTop;
+                const height = section.offsetHeight;
+                const id = section.getAttribute('id');
+                
+                if (scrollPos >= top && scrollPos < top + height) {
+                    // Update nav active state
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + id) {
+                            link.classList.add('active');
+                        }
+                    });
+                    
+                    // Update URL hash without triggering scroll
+                    if (lastHash !== '#' + id) {
+                        lastHash = '#' + id;
+                        history.replaceState(null, null, '#' + id);
+                    }
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', updateActiveNav);
+        updateActiveNav(); // Run on load
+
         // Remove preloader when page is fully loaded
         window.addEventListener('load', function() {
             // Ensure all stylesheets are loaded

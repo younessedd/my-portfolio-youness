@@ -151,14 +151,13 @@
             }
 
             return `
-                <div class="three-card ${position}" onclick="window.${this.section}Carousel?.goToCenter()">
+                <div class="three-card ${position}" data-category="${project.category}" data-id="${project.id}">
                     <div class="card-image-wrapper">
                         <img src="${imageUrl}" alt="${project.title}" 
                              class="card-image" 
                              loading="lazy"
                              decoding="async"
                              fetchpriority="${position === 'center' ? 'high' : 'low'}"
-                             onclick="event.stopPropagation(); openFullscreenImage('${imageUrl}')"
                              onerror="this.src='images/ImageNotAvailable.webp'">
                     </div>
                     <div class="card-content">
@@ -216,6 +215,18 @@
                     <span class="page-total">${this.filteredProjects.length}</span>
                 </div>
             `;
+            
+            // Add click handlers to cards
+            container.querySelectorAll('.three-card').forEach(card => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', (e) => {
+                    const category = card.dataset.category;
+                    const id = card.dataset.id;
+                    if (category && id) {
+                        window.location.href = `project.html?category=${category}&id=${id}`;
+                    }
+                });
+            });
         }
 
         handleMouseMove(e) {
@@ -253,10 +264,19 @@
 
             // Touch swipe (mobile)
             container.addEventListener('touchstart', (e) => {
+                // Don't capture touch if touching interactive elements that should redirect
+                if (e.target.closest('.card-link-btn')) {
+                    e.preventDefault();
+                    return;
+                }
                 touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
+            }, { passive: false });
 
             container.addEventListener('touchend', (e) => {
+                // Don't trigger swipe if touching interactive elements
+                if (e.target.closest('.card-link-btn')) {
+                    return;
+                }
                 touchEndX = e.changedTouches[0].screenX;
                 const diff = touchStartX - touchEndX;
                 
@@ -275,6 +295,10 @@
             let dragEndX = 0;
 
             container.addEventListener('mousedown', (e) => {
+                // Don't start drag if clicking on an image that should open fullscreen or on a card that should redirect
+                if (e.target.closest('.card-image[data-fullscreen="true"]') || e.target.closest('.three-card')) {
+                    return;
+                }
                 isDragging = true;
                 dragStartX = e.clientX;
                 container.style.cursor = 'grabbing';
@@ -362,7 +386,7 @@
 })();
 
 // Fullscreen Image Functions
-function openFullscreenImage(imageUrl) {
+window.openFullscreenImage = function(imageUrl) {
     const overlay = document.getElementById('image-fullscreen');
     const img = document.getElementById('fullscreen-image');
     if (overlay && img) {
@@ -370,19 +394,19 @@ function openFullscreenImage(imageUrl) {
         overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
-}
+};
 
-function closeFullscreenImage() {
+window.closeFullscreenImage = function() {
     const overlay = document.getElementById('image-fullscreen');
     if (overlay) {
         overlay.classList.remove('active');
         document.body.style.overflow = '';
     }
-}
+};
 
 // Close on Escape key
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-        closeFullscreenImage();
+        window.closeFullscreenImage();
     }
 });

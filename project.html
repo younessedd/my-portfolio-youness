@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Project Details - Youness Eddanguir Portfolio">
+    <meta name="keywords" content="developer portfolio, project details, web development">
+    <meta name="author" content="Youness Eddanguir">
+    <meta name="theme-color" content="#0f172a">
+    
+    <meta property="og:title" content="Project Details - Youness Eddanguir">
+    <meta property="og:description" content="View project details">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" type="image/webp" href="images/mypic.webp">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    
+    <title>Project Details - Youness Eddanguir</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+    
+    <link rel="stylesheet" href="css/project.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="project-nav">
+        <div class="nav-container">
+            <button id="back-btn" class="back-btn" type="button" onclick="var p=new URLSearchParams(location.search).get('category'); if(p=='quiz_apps'||p=='utility_apps'||p=='iot_apps'){window.location.hash='mobile-apps';}else if(p=='smarthome_apps'||p=='industrial_iot'||p=='sensor_projects'||p=='robotics_iot'||p=='iot_mobile_apps'||p=='ai_iot_systems'){window.location.hash='iot-projects';}else{window.location.hash='web-apps';} window.location.reload();">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content - Single Section -->
+    <main class="project-main">
+        <section class="project-section">
+            <div class="project-container">
+                <!-- Category Filter Buttons -->
+                <div class="category-filters" id="category-filters"></div>
+                
+                <!-- Project Display -->
+                <div class="project-display">
+                    <!-- Project Image -->
+                    <div class="project-image-container reveal active">
+                        <img id="project-image" src="" alt="" class="project-hero-image" onclick="window.openFullscreenImage && window.openFullscreenImage(this.src); event.stopPropagation();">
+                        <div class="image-overlay"></div>
+                        <!-- Navigation Arrows -->
+                        <button class="project-nav-arrow prev" id="project-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="project-nav-arrow next" id="project-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <!-- Pagination -->
+                        <div class="project-pagination">
+                            <span class="page-info" id="current-slide">1</span>
+                            <span>/</span>
+                            <span class="page-total" id="total-slides">1</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Info -->
+                    <div class="project-info reveal delay-1 active">
+                        <h1 id="project-title" class="project-title"></h1>
+                        <p id="project-description" class="project-description"></p>
+                        
+                        <div class="project-technologies">
+                            <h3>Technologies</h3>
+                            <div class="tech-tags" id="project-technologies"></div>
+                        </div>
+                        
+                        <!-- Features -->
+                        <div class="project-features">
+                            <h3>Key Features</h3>
+                            <div class="features-list" id="project-features"></div>
+                        </div>
+                        
+                        <!-- Links -->
+                        <div class="project-links" id="project-links"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top reveal from-left active">
+                <div class="footer-logo-center">
+                    <span class="footer-name">Youness Eddanguir</span>
+                    <a href="index.html" class="logo">Fullstack<span>Developer</span></a>
+                    <div class="footer-social-icons">
+                        <a href="https://github.com/younessedd" target="_blank" class="footer-social-icon github"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/youness-eddanguir-723166398/" target="_blank" class="footer-social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/212664837281" target="_blank" class="footer-social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:eddanguiryouness@gmail.com" class="footer-social-icon email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="footer-main reveal-grid">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="quick-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#cv">My CV</a></li>
+                        <li><a href="index.html#contact">Contact Me</a></li>
+                        <li><a href="index.html#skills">My Skills</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                     <h3>Projects</h3>
+                    <ul class="quick-links">
+                        <li><a href="index.html#web-apps">Web Projects</a></li>
+                        <li><a href="index.html#mobile-apps">Mobile Projects</a></li>
+                        <li><a href="index.html#iot-projects">IoT Projects</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info-footer">
+                        <li><a href="https://www.google.com/maps/place/Casablanca" target="_blank"><i class="fas fa-map-marker-alt"></i><span>Morocco</span></a></li>
+                        <li><a href="tel:+212664837281"><i class="fas fa-phone"></i><span>+212 6 6483 7281</span></a></li>
+                        <li><a href="mailto:eddanguiryouness@gmail.com"><i class="fas fa-envelope"></i><span>eddanguiryouness@gmail.com</span></a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <p>Junior Web Developer & IoT Maker creating innovative digital solutions.</p>
+                </div>
+            </div>
+    
+            <div class="footer-bottom reveal from-right">
+                <p>&copy; <span id="current-year"></span> Youness Eddanguir. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data/web-projects.js"></script>
+    <script src="js/data/mobile-projects.js"></script>
+    <script src="js/data/iot-projects.js"></script>
+    <script src="js/project.js"></script>
+    <script src="js/three-card-carousel.js"></script>
+
+    <!-- Image Fullscreen Viewer -->
+    <div id="image-fullscreen" class="fullscreen-image-overlay" onclick="closeFullscreenImage()">
+        <button class="fullscreen-close-btn" onclick="closeFullscreenImage()">
+            <i class="fas fa-times"></i>
+        </button>
+        <img id="fullscreen-image" src="" alt="Fullscreen Image">
+    </div>
+</body>
+</html>
