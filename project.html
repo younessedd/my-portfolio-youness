@@ -28,9 +28,27 @@
     <!-- Navigation -->
     <nav class="project-nav">
         <div class="nav-container">
-            <button id="back-btn" class="back-btn" type="button" onclick="var p=new URLSearchParams(location.search).get('category'); if(p=='quiz_apps'||p=='utility_apps'||p=='iot_apps'){window.location.hash='mobile-apps';}else if(p=='smarthome_apps'||p=='industrial_iot'||p=='sensor_projects'||p=='robotics_iot'||p=='iot_mobile_apps'||p=='ai_iot_systems'){window.location.hash='iot-projects';}else{window.location.hash='web-apps';} window.location.reload();">
+            <a id="back-btn" class="back-btn" href="index.html">
                 <i class="fas fa-arrow-left"></i>
-            </button>
+            </a>
+            <script>
+            (function(){
+                var params = new URLSearchParams(window.location.search);
+                var cat = params.get('category');
+                var btn = document.getElementById('back-btn');
+                if(btn && cat){
+                    if(cat === 'quiz_apps' || cat === 'utility_apps' || cat === 'iot_apps'){
+                        btn.href = 'index.html#mobile-apps';
+                    }else if(cat === 'smarthome_apps' || cat === 'industrial_iot' || cat === 'sensor_projects' || cat === 'robotics_iot' || cat === 'iot_mobile_apps' || cat === 'ai_iot_systems'){
+                        btn.href = 'index.html#iot-projects';
+                    }else{
+                        btn.href = 'index.html#web-apps';
+                    }
+                }else if(btn){
+                    btn.href = 'index.html#web-apps';
+                }
+            })();
+            </script>
         </div>
     </nav>
 
@@ -45,7 +63,7 @@
                 <div class="project-display">
                     <!-- Project Image -->
                     <div class="project-image-container reveal active">
-                        <img id="project-image" src="" alt="" class="project-hero-image" onclick="window.openFullscreenImage && window.openFullscreenImage(this.src); event.stopPropagation();">
+                        <img id="project-image" src="" alt="" class="project-hero-image" onclick="event.stopPropagation(); if(typeof openFullscreenImage==='function'){openFullscreenImage(this.src);}">
                         <div class="image-overlay"></div>
                         <!-- Navigation Arrows -->
                         <button class="project-nav-arrow prev" id="project-prev">
@@ -86,62 +104,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-top reveal from-left active">
-                <div class="footer-logo-center">
-                    <span class="footer-name">Youness Eddanguir</span>
-                    <a href="index.html" class="logo">Fullstack<span>Developer</span></a>
-                    <div class="footer-social-icons">
-                        <a href="https://github.com/younessedd" target="_blank" class="footer-social-icon github"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/youness-eddanguir-723166398/" target="_blank" class="footer-social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/212664837281" target="_blank" class="footer-social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="mailto:eddanguiryouness@gmail.com" class="footer-social-icon email"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="footer-main reveal-grid">
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="quick-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#cv">My CV</a></li>
-                        <li><a href="index.html#contact">Contact Me</a></li>
-                        <li><a href="index.html#skills">My Skills</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                     <h3>Projects</h3>
-                    <ul class="quick-links">
-                        <li><a href="index.html#web-apps">Web Projects</a></li>
-                        <li><a href="index.html#mobile-apps">Mobile Projects</a></li>
-                        <li><a href="index.html#iot-projects">IoT Projects</a></li>
-                    </ul>
-                </div>
-    
-                <div class="footer-column">
-                    <h3>Contact Info</h3>
-                    <ul class="contact-info-footer">
-                        <li><a href="https://www.google.com/maps/place/Casablanca" target="_blank"><i class="fas fa-map-marker-alt"></i><span>Morocco</span></a></li>
-                        <li><a href="tel:+212664837281"><i class="fas fa-phone"></i><span>+212 6 6483 7281</span></a></li>
-                        <li><a href="mailto:eddanguiryouness@gmail.com"><i class="fas fa-envelope"></i><span>eddanguiryouness@gmail.com</span></a></li>
-                    </ul>
-                </div>
-    
-                <div class="footer-column">
-                    <h3>About</h3>
-                    <p>Junior Web Developer & IoT Maker creating innovative digital solutions.</p>
-                </div>
-            </div>
-    
-            <div class="footer-bottom reveal from-right">
-                <p>&copy; <span id="current-year"></span> Youness Eddanguir. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
 
     <!-- Scripts -->
     <script src="js/data/web-projects.js"></script>
@@ -157,5 +119,46 @@
         </button>
         <img id="fullscreen-image" src="" alt="Fullscreen Image">
     </div>
+
+    <script>
+    window.openFullscreenImage = function(imageUrl) {
+        console.log('Opening fullscreen:', imageUrl);
+        const overlay = document.getElementById('image-fullscreen');
+        const img = document.getElementById('fullscreen-image');
+        if (overlay && img) {
+            img.src = imageUrl;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    window.closeFullscreenImage = function() {
+        const overlay = document.getElementById('image-fullscreen');
+        if (overlay) {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            window.closeFullscreenImage();
+        }
+    });
+    </script>
+    <script>
+    (function() {
+        var params = new URLSearchParams(window.location.search);
+        var cat = params.get('category');
+        var btn = document.getElementById('back-btn');
+        if(btn && cat){
+            if(cat === 'quiz_apps' || cat === 'utility_apps' || cat === 'iot_apps'){
+                btn.href = 'index.html#mobile-apps';
+            }else if(cat === 'smarthome_apps' || cat === 'industrial_iot' || cat === 'sensor_projects' || cat === 'robotics_iot' || cat === 'iot_mobile_apps' || cat === 'ai_iot_systems'){
+                btn.href = 'index.html#iot-projects';
+            }
+        }
+    })();
+    </script>
 </body>
 </html>

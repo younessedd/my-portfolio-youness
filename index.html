@@ -389,39 +389,61 @@ Currently, I am refining my skills in HTML, CSS, JavaScript, React.js, Laravel, 
 
     <!-- Preloader Removal Script -->
     <script>
-        // Handle hash scroll to center section on page load
-        window.addEventListener('load', function() {
-            if (window.location.hash) {
-                setTimeout(function() {
-                    const hash = window.location.hash.replace('#', '');
-                    const target = document.getElementById(hash);
-                    if (target) {
-                        const header = document.querySelector('.desktop-nav');
-                        const headerHeight = header ? header.offsetHeight : 80;
-                        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                        window.scrollTo({ top: targetPos, behavior: 'smooth' });
-                    }
-                }, 300);
+        // Scroll function using window.scrollTo
+        function doScroll() {
+            var hash = location.hash;
+            
+            // Only go to about if there's NO hash at all
+            if (!hash || hash === '#') {
+                var about = document.getElementById('about');
+                if (about) window.scrollTo(0, about.offsetTop);
+            } else {
+                var target = document.getElementById(hash.replace('#',''));
+                if (target) window.scrollTo(0, target.offsetTop);
             }
-        });
+        }
 
-        // Handle hash change events
+        // Handle hash scroll using window.scrollTo
+        function scrollToHash() {
+            var hash = window.location.hash;
+            
+            // Only go to about if there's NO hash at all
+            if (!hash || hash === '#') {
+                var about = document.getElementById('about');
+                if (about) window.scrollTo(0, about.offsetTop);
+            } else {
+                var target = document.getElementById(hash.replace('#',''));
+                if (target) window.scrollTo(0, target.offsetTop);
+            }
+        }
+
+        // Handle hash change events - immediate scroll
         window.addEventListener('hashchange', function() {
-            if (window.location.hash) {
-                setTimeout(function() {
-                    const hash = window.location.hash.replace('#', '');
-                    const target = document.getElementById(hash);
-                    if (target) {
-                        const header = document.querySelector('.desktop-nav');
-                        const headerHeight = header ? header.offsetHeight : 80;
-                        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                        window.scrollTo({ top: targetPos, behavior: 'smooth' });
-                    }
-                }, 100);
+            var hash = window.location.hash;
+            if(hash && hash !== '#'){
+                var target = document.getElementById(hash.replace('#',''));
+                if(target) window.scrollTo(0, target.offsetTop);
+            }else{
+                var about = document.getElementById('about');
+                if(about) window.scrollTo(0, about.offsetTop);
             }
         });
 
-        // Scrollspy - update nav active state and URL based on visible section
+        // Scroll on load
+        window.addEventListener('load', function() {
+            setTimeout(doScroll, 100);
+            setTimeout(doScroll, 500);
+            setTimeout(doScroll, 1000);
+        });
+
+        // Immediate scroll on DOMContentLoaded
+        if(document.readyState === 'loading'){
+            document.addEventListener('DOMContentLoaded', function(){
+                setTimeout(doScroll, 100);
+            });
+        }
+
+        // Scrollspy - update nav active state and URL hash
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
         let lastHash = '';

@@ -74,19 +74,11 @@
         elements.projectPrev?.addEventListener('click', prevProject);
         elements.projectNext?.addEventListener('click', nextProject);
 
-        // Back button click handler
-        document.getElementById('back-btn')?.addEventListener('click', () => {
-            const params = new URLSearchParams(window.location.search);
-            const category = params.get('category') || '';
-            let section = 'index.html#web-apps';
-            if (category === 'quiz_apps' || category === 'utility_apps' || category === 'iot_apps') {
-                section = 'index.html#mobile-apps';
-            } else if (category === 'smarthome_apps' || category === 'industrial_iot' || 
-                     category === 'sensor_projects' || category === 'robotics_iot' || 
-                     category === 'iot_mobile_apps' || category === 'ai_iot_systems') {
-                section = 'index.html#iot-projects';
+        // Project image click - open fullscreen
+        elements.projectImage?.addEventListener('click', function(e) {
+            if (this.src) {
+                window.openFullscreenImage && window.openFullscreenImage(this.src);
             }
-            window.location.href = section;
         });
 
         // Keyboard navigation
@@ -99,29 +91,38 @@
         const projectDisplay = document.querySelector('.project-display');
         if (projectDisplay) {
             let touchStartX = 0;
+            let touchStartY = 0;
             let touchEndX = 0;
+            let touchEndY = 0;
             const minSwipeDistance = 50;
 
             projectDisplay.addEventListener('touchstart', (e) => {
-                // Don't capture touch on links or interactive elements
-                if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.project-hero-image')) {
+                // Don't capture touch on links or buttons
+                if (e.target.closest('a') || e.target.closest('button')) {
                     return;
                 }
                 touchStartX = e.changedTouches[0].screenX;
+                touchStartY = e.changedTouches[0].screenY;
             }, { passive: true });
 
             projectDisplay.addEventListener('touchend', (e) => {
-                // Don't trigger swipe on links or interactive elements
+                // Don't trigger swipe on links or buttons
                 if (e.target.closest('a') || e.target.closest('button')) {
                     return;
                 }
                 touchEndX = e.changedTouches[0].screenX;
-                const swipeDistance = touchEndX - touchStartX;
+                touchEndY = e.changedTouches[0].screenY;
                 
-                if (swipeDistance > minSwipeDistance) {
-                    prevProject();
-                } else if (swipeDistance < -minSwipeDistance) {
-                    nextProject();
+                const diffX = touchEndX - touchStartX;
+                const diffY = Math.abs(touchEndY - touchStartY);
+                
+                // Only trigger swipe if horizontal movement > vertical (not a vertical scroll)
+                if (Math.abs(diffX) > minSwipeDistance && diffY < 30) {
+                    if (diffX > 0) {
+                        prevProject();
+                    } else {
+                        nextProject();
+                    }
                 }
             }, { passive: true });
         }
