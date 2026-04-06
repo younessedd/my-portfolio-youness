@@ -102,41 +102,29 @@
     <header>
         <div class="header-container">
             <a href="#about" class="logo">
-                <svg width="140" height="40" viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg" class="logo-img">
+                <svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg" class="logo-img">
                   <defs>
-                    <!-- Gradient for YE -->
-                    <linearGradient id="grad" x1="0" y1="0" x2="140" y2="0">
-                      <stop offset="0%" stop-color="#6366f1"/> <!-- --color-accent-primary -->
-                      <stop offset="100%" stop-color="#8b5cf6"/> <!-- --color-accent-secondary -->
+                    <linearGradient id="gradYE" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#6366f1"/>
+                      <stop offset="100%" stop-color="#8b5cf6"/>
+                    </linearGradient>
+                    <linearGradient id="gradLeft" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#facc15"/>
+                      <stop offset="100%" stop-color="#f87171"/>
+                    </linearGradient>
+                    <linearGradient id="gradRight" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#10b981"/>
+                      <stop offset="100%" stop-color="#3b82f6"/>
+                    </linearGradient>
+                    <linearGradient id="gradExtra" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#ec4899"/>
+                      <stop offset="100%" stop-color="#f97316"/>
                     </linearGradient>
                   </defs>
-                
-                  <!-- Left Symbol: { -->
-                  <text x="0" y="28" 
-                        font-family="Inter, Arial, sans-serif"
-                        font-size="24"
-                        font-weight="700"
-                        fill="#ec4899"> <!-- --color-accent-tertiary -->
-                    &#123;
-                  </text>
-                
-                  <!-- YE Text -->
-                  <text x="40" y="28" 
-                        font-family="Inter, Arial, sans-serif"
-                        font-size="24"
-                        font-weight="800"
-                        fill="url(#grad)">
-                    YE
-                  </text>
-                
-                  <!-- Right Symbol: </> -->
-                  <text x="100" y="28" 
-                        font-family="Inter, Arial, sans-serif"
-                        font-size="24"
-                        font-weight="700"
-                        fill="#ec4899"> <!-- --color-accent-tertiary -->
-                    &lt;/&gt;
-                  </text>
+                  <text x="10" y="50%" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="url(#gradLeft)" dominant-baseline="middle">{</text>
+                  <text x="50%" y="50%" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="800" fill="url(#gradYE)" dominant-baseline="middle">YE</text>
+                  <text x="170" y="50%" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="url(#gradRight)" dominant-baseline="middle">&lt;/&gt;</text>
+                  <text x="190" y="50%" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="url(#gradExtra)" dominant-baseline="middle">}</text>
                 </svg>
             </a>
             
@@ -196,49 +184,71 @@
                     <span class="letter">U</span>
                     <span class="letter">I</span>
                     <span class="letter">R</span>
-                </h3>
+                    </h3>
                 </div>
-                <picture class="about-img-circle">
-    <source type="image/webp" srcset="images/mypic.webp">
-    <img src="images/mypic.webp" alt="Youness Eddanguir" width="280" height="280" loading="lazy" class="reveal from-left">
-</picture>
-                <div class="about-text">
-                    <div class="about-bio-container reveal from-right">
-                    <p class="about-bio">
-                    <span class="word-title">Full</span>
-                    <span class="word-title space">&nbsp;</span>
-                    <span class="word-title">Stack</span>
-                    <span class="word-title space">&nbsp;</span>
-                    <span class="word-title">Web,</span>
-                    <span class="word-title space">&nbsp;</span>
-                    <span class="word-title">Mobile</span>
-                    <span class="word-title space">&nbsp;</span>
-                    <span class="word-title">&</span>
-                    <span class="word-title space">&nbsp;</span>
-                    <span class="word-title">IoT</span>
-                    <span class="word-title space">&nbsp;</span>
-                    <span class="word-title">Developer</span>
-                    <br><br>
-                    <span class="bio-word">Passionate</span>
-                    <span class="bio-word">about</span>
-                    <span class="bio-word">building</span>
-                    <span class="bio-word">modern</span>
-                    <span class="bio-word">web</span>
-                    <span class="bio-word">and</span>
-                    <span class="bio-word">mobile</span>
-                    <span class="bio-word">applications</span>
-                    <span class="bio-word">using</span>
-                    <span class="bio-word">React.js,</span>
-                    <span class="bio-word">Laravel,</span>
-                    <span class="bio-word">Flutter,</span>
-                    <span class="bio-word">and</span>
-                    <span class="bio-word">Kodular,</span>
-                    <span class="bio-word">I</span>
-                    <span class="bio-word">combine</span>
-                    <span class="bio-word">advanced</span>
-                    <span class="bio-word">front-end</span>
-                    <span class="bio-word">design</span>
-                    <span class="bio-word">with</span>
+                <div class="about-hero-layout">
+                    <picture class="about-img-circle">
+                        <source type="image/webp" srcset="images/mypic.webp">
+                        <img src="images/mypic.webp" alt="Youness Eddanguir" width="280" height="280" loading="lazy" class="reveal from-left">
+                    </picture>
+                    <div class="about-text">
+                        <div class="about-name-container-mobile">
+                            <h3 class="about-name">
+                            <span class="letter">Y</span>
+                            <span class="letter">O</span>
+                            <span class="letter">U</span>
+                            <span class="letter">N</span>
+                            <span class="letter">E</span>
+                            <span class="letter">S</span>
+                            <span class="letter">S</span>
+                            <span class="letter space">&nbsp;</span>
+                            <span class="letter">E</span>
+                            <span class="letter">D</span>
+                            <span class="letter">D</span>
+                            <span class="letter">A</span>
+                            <span class="letter">N</span>
+                            <span class="letter">G</span>
+                            <span class="letter">U</span>
+                            <span class="letter">I</span>
+                            <span class="letter">R</span>
+                            </h3>
+                        </div>
+                        <div class="about-bio-container reveal from-right">
+                        <p class="about-bio">
+                        <span class="word-title">Full</span>
+                        <span class="word-title space">&nbsp;</span>
+                        <span class="word-title">Stack</span>
+                        <span class="word-title space">&nbsp;</span>
+                        <span class="word-title">Web,</span>
+                        <span class="word-title space">&nbsp;</span>
+                        <span class="word-title">Mobile</span>
+                        <span class="word-title space">&nbsp;</span>
+                        <span class="word-title">&</span>
+                        <span class="word-title space">&nbsp;</span>
+                        <span class="word-title">IoT</span>
+                        <span class="word-title space">&nbsp;</span>
+                        <span class="word-title">Developer</span>
+                        <br><br>
+                        <span class="bio-word">Passionate</span>
+                        <span class="bio-word">about</span>
+                        <span class="bio-word">building</span>
+                        <span class="bio-word">modern</span>
+                        <span class="bio-word">web</span>
+                        <span class="bio-word">and</span>
+                        <span class="bio-word">mobile</span>
+                        <span class="bio-word">applications</span>
+                        <span class="bio-word">using</span>
+                        <span class="bio-word">React.js,</span>
+                        <span class="bio-word">Laravel,</span>
+                        <span class="bio-word">Flutter,</span>
+                        <span class="bio-word">and</span>
+                        <span class="bio-word">Kodular,</span>
+                        <span class="bio-word">I</span>
+                        <span class="bio-word">combine</span>
+                        <span class="bio-word">advanced</span>
+                        <span class="bio-word">front-end</span>
+                        <span class="bio-word">design</span>
+                        <span class="bio-word">with</span>
                     <span class="bio-word">robust</span>
                     <span class="bio-word">back-end</span>
                     <span class="bio-word">systems</span>
@@ -585,6 +595,7 @@
                     <a href="#cv" class="btn about-btn cv-btn">
                         <i class="fas fa-file-download"></i> My CV
                     </a>
+                </div>
                 </div>
                 </div>
             </div>

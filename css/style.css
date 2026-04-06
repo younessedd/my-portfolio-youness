@@ -366,6 +366,24 @@ header.scrolled {
     margin: 0 auto;
 }
 
+.about-hero-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-2xl);
+}
+
+.about-hero-layout .about-img-circle {
+    flex-shrink: 0;
+}
+
+.about-hero-layout .about-text {
+    flex: 1;
+}
+
+.about-name-container-mobile {
+    display: none;
+}
+
 .about-name-container {
     grid-column: 1 / -1;
     text-align: center;
@@ -433,12 +451,15 @@ header.scrolled {
 .about-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: var(--spacing-xs);
     padding: var(--spacing-sm) var(--spacing-lg);
     font-size: var(--font-size-base);
     font-weight: 600;
     border-radius: var(--radius-md);
     transition: all var(--transition-base);
+    min-width: 150px;
+    text-align: center;
 }
 
 .contact-btn {
@@ -498,7 +519,11 @@ header.scrolled {
 .web-filter,
 .mobile-filter,
 .iot-filter {
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 80px;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    overflow: visible;
 }
 
 .filter-buttons {
@@ -506,6 +531,8 @@ header.scrolled {
     justify-content: center;
     flex-wrap: wrap;
     gap: var(--spacing-sm);
+    width: 100%;
+    overflow: visible;
 }
 
 .filter-btn {
@@ -1652,19 +1679,56 @@ footer {
         display: flex;
     }
     
-    /* Footer Center */
-    .footer-top {
-        flex-direction: column;
-        text-align: center;
+    /* Hero/About Section */
+    #about {
+        min-height: auto;
+        padding: 100px 0 var(--spacing-2xl);
     }
     
-    .footer-logo-center {
+    /* Hide original name on mobile */
+    .about-name-container {
+        display: none !important;
+    }
+    
+    /* Show mobile name container above bio on mobile */
+    .about-name-container-mobile {
+        display: block !important;
+        text-align: center;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .about-name-container-mobile .about-name {
+        font-size: var(--font-size-xl);
+    }
+    
+    .about-content {
+        gap: var(--spacing-lg);
+        display: flex;
+        flex-direction: column;
         align-items: center;
     }
     
-    .footer-main {
+    .about-hero-layout {
+        display: flex;
         flex-direction: column;
-        text-align: center;
+        align-items: flex-start;
+        gap: var(--spacing-lg);
+        width: 100%;
+    }
+    
+    .about-hero-layout .about-img-circle {
+        display: block;
+        visibility: visible;
+        width: 180px;
+        height: 180px;
+        align-self: flex-start;
+    }
+    
+    .about-hero-layout .about-text {
+        display: block;
+        visibility: visible;
+        width: 100%;
+        text-align: left;
     }
     
     .footer-column ul {
@@ -1673,6 +1737,18 @@ footer {
     
     .about-name {
         font-size: var(--font-size-2xl);
+    }
+    
+    /* Tech swiper full width on tablet */
+    .tech-3d-swiper {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin-left: calc(-50vw + 50%) !important;
+        margin-right: calc(-50vw + 50%) !important;
+        padding-left: calc((100vw - 100%) / 2 + 15px) !important;
+        padding-right: calc((100vw - 100%) / 2 + 15px) !important;
+        box-sizing: border-box;
+        overflow: visible;
     }
     
     .about-img-circle {
@@ -1767,6 +1843,15 @@ footer {
     }
     
     /* Profile Image */
+    .about-hero-layout {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .about-hero-layout .about-img-circle {
+        margin: 0 auto;
+    }
     .about-img-circle {
         width: 180px !important;
         height: 180px !important;
@@ -1834,8 +1919,8 @@ footer {
     .about-buttons {
         width: 100% !important;
         order: 5;
-        flex-direction: column !important;
-        gap: 10px;
+        flex-direction: row !important;
+        gap: var(--spacing-md);
         padding: 10px;
         display: flex !important;
         align-items: center !important;
@@ -1883,30 +1968,130 @@ footer {
 
 /* Tablet */
 @media (min-width: 481px) and (max-width: 1024px) {
+    #about {
+        overflow: visible !important;
+    }
+    
+    /* Hide original name on tablet */
+    .about-name-container {
+        display: none !important;
+    }
+    
+    /* Show mobile name container above bio on tablet */
+    .about-name-container-mobile {
+        display: block !important;
+        text-align: center;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .about-name-container-mobile .about-name {
+        font-size: var(--font-size-2xl);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .about-name-container-mobile .about-name .letter.space {
+        flex-basis: 100%;
+        height: 5px;
+    }
+    
+    /* Force reveal animation to complete on tablet */
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    .reveal.from-left {
+        transform: none !important;
+    }
+    
+    .reveal.from-right {
+        transform: none !important;
+    }
+    
+    /* Force all animated elements visible */
+    .about-img-circle,
+    .about-bio-container,
+    .about-name-container-mobile {
+        opacity: 1 !important;
+        animation: none !important;
+        transform: none !important;
+    }
+    
     .about-content {
-        padding: var(--spacing-lg) 0;
+        padding: var(--spacing-lg) 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+    }
+    
+    .about-name-container {
+        display: none !important;
+    }
+    
+    .about-hero-layout {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: var(--spacing-md) !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 var(--spacing-md) !important;
+        overflow: visible !important;
+    }
+    
+    .about-hero-layout .about-img-circle {
+        width: 160px !important;
+        height: 160px !important;
+        flex-shrink: 0 !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    .about-hero-layout .about-img-circle img {
+        width: 160px !important;
+        height: 160px !important;
+        display: block !important;
+    }
+    
+    .about-hero-layout .about-text {
+        flex: 1 !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: auto !important;
+        max-width: 60% !important;
+    }
+    
+    .about-bio-container {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
     .about-name {
-        font-size: var(--font-size-3xl);
-    }
-    
-    /* Profile Image Tablet */
-    .about-img-circle {
-        width: 240px !important;
-        height: 240px !important;
-        margin: var(--spacing-md) auto !important;
-    }
-    
-    .about-img-circle img {
-        width: 240px !important;
-        height: 240px !important;
+        font-size: var(--font-size-xl) !important;
     }
     
     /* Bio Text Tablet */
     .about-bio {
-        font-size: var(--font-size-base);
-        padding: 0 var(--spacing-md);
+        font-size: var(--font-size-xs) !important;
+        padding: 0 var(--spacing-xs) !important;
+        display: block !important;
+        visibility: visible !important;
+    }
+    
+    .about-bio .word-title,
+    .about-bio .bio-word {
+        display: inline !important;
     }
     
     /* Tech 3D Swiper Tablet */
@@ -1925,7 +2110,17 @@ footer {
     
     /* Buttons Tablet */
     .about-buttons {
-        gap: var(--spacing-md);
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center;
+        gap: var(--spacing-md) !important;
+        width: 100% !important;
+    }
+    
+    .about-buttons .btn {
+        flex: 1;
+        max-width: 200px;
+        justify-content: center;
     }
 }
 
@@ -2529,9 +2724,11 @@ footer {
     align-items: center;
     justify-content: center;
     gap: var(--spacing-md);
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-3xl) 0;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    z-index: 5;
 }
 
 .cards-container {
@@ -2749,9 +2946,12 @@ footer {
     justify-content: center;
     align-items: center;
     gap: var(--spacing-md);
-    margin-top: var(--spacing-lg);
+    margin-top: 60px;
+    margin-bottom: var(--spacing-xl);
     font-size: var(--font-size-sm);
     color: white;
+    position: relative;
+    z-index: 10;
 }
 
 .carousel-pagination .page-number {
