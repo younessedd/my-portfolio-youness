@@ -89,8 +89,8 @@ window.skillsData = {
         { name: "Firebase Auth", icon: "fas fa-user-shield", color: "#FFA000" },
         // Firebase realtime database skill
         { name: "Firebase Realtime DB", icon: "fas fa-database", color: "#FFCA28" },
-        // Flutter UI framework skill (beginner level)
-        { name: "Flutter (Beginner)", icon: "fab fa-flutter", color: "#02569B" },
+        // Flutter UI framework skill
+        { name: "Flutter", icon: "fas fa-mobile-alt", color: "#02569B" },
         // Dart programming language skill (basics)
         { name: "Dart (Basics)", icon: "fas fa-code", color: "#0175C2" }
       ],
@@ -135,7 +135,7 @@ window.skillsData = {
         // WiFi communication technology skill
         { name: "WiFi Communication", icon: "fas fa-wifi", color: "#2196F3" },
         // Bluetooth communication technology skill
-        { name: "Bluetooth Communication", icon: "fas fa-bluetooth", color: "#0082FC" }
+        { name: "Bluetooth Communication", icon: "fab fa-bluetooth", color: "#0082FC" }
       ],
       // Key features and competencies in this skill category
       features: [
@@ -169,7 +169,7 @@ window.skillsData = {
         // Single-phase electrical systems skill
         { name: "Single Phase Systems", icon: "fas fa-plug", color: "#FF9800" },
         // Three-phase electrical systems skill
-        { name: "Three Phase Systems", icon: "fas fa-plug", color: "#FF5722" },
+        { name: "Three Phase Systems", icon: "fas fa-industry", color: "#FF5722" },
         // Basic electronics components skill
         { name: "Basic Electronics", icon: "fas fa-microchip", color: "#9C27B0" },
         // Multimeter measurement tool skill
@@ -294,7 +294,7 @@ window.skillsData = {
         // GitHub Copilot AI coding assistant skill
         { name: "GitHub Copilot", icon: "fab fa-github", color: "#4078C0" },
         // Cursor AI coding assistant skill
-        { name: "Cursor AI", icon: "fas fa-cursor", color: "#5865F2" },
+        { name: "Cursor AI", icon: "fa-solid fa-robot", color: "#5865F2" },
         // Vibe coding AI assistant skill
         { name: "Vibe Coding", icon: "fas fa-wave-square", color: "#00BCD4" },
         // Ideogram AI tool skill
@@ -302,7 +302,7 @@ window.skillsData = {
         // DALL-E image generation skill
         { name: "DALL-E", icon: "fas fa-palette", color: "#9C27B0" },
         // Adobe Firefly AI tool skill
-        { name: "Adobe Firefly", icon: "fab fa-adobe", color: "#FF0000" },
+        { name: "Adobe Firefly", icon: "fa-solid fa-image", color: "#FF0000" },
         // Runway ML video generation skill
         { name: "Runway ML", icon: "fas fa-film", color: "#000000" },
         // Figma AI design assistant skill

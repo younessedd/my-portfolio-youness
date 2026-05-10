@@ -92,39 +92,46 @@ function initSkillsSwiper(swiperId, wrapperId, skillsCategories) {
     console.log('🍔 Total slides created:', totalSlides);
     console.log('🍔 Wrapper children count:', wrapper.children.length);
 
+    // Get all slides
+    const allSlides = wrapper.querySelectorAll('.swiper-slide');
+    const slideCount = allSlides.length;
+    
+    // Clone slides to reach 260 total (need 195 more clones)
+    const targetSlides = 260;
+    const clonesNeeded = targetSlides - slideCount;
+    
+    // Add clones to end
+    for (let i = 0; i < clonesNeeded; i++) {
+        const slideToClone = allSlides[i % slideCount];
+        const clone = slideToClone.cloneNode(true);
+        wrapper.appendChild(clone);
+    }
+    
+    // Add clones to beginning for seamless loop
+    for (let i = 0; i < clonesNeeded; i++) {
+        const slideToClone = allSlides[(slideCount - 1) - (i % slideCount)];
+        const clone = slideToClone.cloneNode(true);
+        wrapper.insertBefore(clone, wrapper.firstChild);
+    }
+
     // Initialize Swiper with configuration for skills display
     console.log('🍔 Initializing Swiper...');
-    new Swiper(`#${swiperId}`, {
-        // Enable infinite loop scrolling
+    const swiper = new Swiper(`#${swiperId}`, {
+        // Enable infinite loop
         loop: true,
-        // Set transition speed in milliseconds
-        speed: 700,
-        // Set space between slides in pixels
+        // Set slides per view
+        slidesPerView: 4,
+        // Set transition speed - slower
+        speed: 800,
+        // Set space between slides
         spaceBetween: 30,
-        // Configure autoplay functionality
+        // Autoplay - slower
         autoplay: {
-            // Delay between automatic slides in milliseconds (1 second)
-            delay: 1000,
-            // Continue autoplay after user interaction
+            delay: 800,
             disableOnInteraction: false
         },
-        // Configure pagination dots
-        pagination: {
-            el: `#${swiperId} .swiper-pagination`,
-            clickable: true,
-            dynamicBullets: true
-        },
-        // Responsive breakpoints for different screen sizes
-        breakpoints: {
-            // Extra small screens: 1 slide per view
-            0: { slidesPerView: 1 },
-            // Small screens: 2 slides per view
-            576: { slidesPerView: 2 },
-            // Medium screens: 3 slides per view
-            768: { slidesPerView: 3 },
-            // Large screens: 4 slides per view
-            1024: { slidesPerView: 4 }
-        }
+        // Important: tell Swiper how many slides to loop
+        loopAdditionalSlides: slideCount,
     });
 
     console.log('✅ Skills swiper initialized successfully!');

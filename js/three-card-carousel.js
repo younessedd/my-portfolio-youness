@@ -138,7 +138,12 @@
             const technologies = project.technologies || [];
 
             let linksHTML = '';
-            if (project.links && project.links.length > 0) {
+            const linkCount = project.links ? project.links.length : 0;
+            
+            // Wrap buttons in a container for proper flex layout
+            linksHTML += '<div class="card-links-row">';
+            
+            if (linkCount > 0) {
                 project.links.forEach(link => {
                     const isGitHub = link.name && link.name.toLowerCase().includes('github');
                     const btnText = isGitHub ? 'GitHub' : (link.name || 'Demo');
@@ -148,6 +153,28 @@
                         </a>
                     `;
                 });
+            }
+            
+            // Add Learn More beside buttons if 1 link
+            if (linkCount <= 1) {
+                linksHTML += `
+                    <a href="project.html?category=${project.category}&id=${project.id}" class="card-link-btn learn-more" onclick="event.stopPropagation()">
+                        <span>Learn More</span>
+                    </a>
+                `;
+            }
+            
+            linksHTML += '</div>';
+            
+            // Add Learn More in new row below if 2+ links
+            if (linkCount >= 2) {
+                linksHTML += `
+                    <div class="card-links-row">
+                        <a href="project.html?category=${project.category}&id=${project.id}" class="card-link-btn learn-more full-width" onclick="event.stopPropagation()">
+                            <span>Learn More</span>
+                        </a>
+                    </div>
+                `;
             }
 
             return `
@@ -216,17 +243,7 @@
                 </div>
             `;
             
-            // Add click handlers to cards
-            container.querySelectorAll('.three-card').forEach(card => {
-                card.style.cursor = 'pointer';
-                card.addEventListener('click', (e) => {
-                    const category = card.dataset.category;
-                    const id = card.dataset.id;
-                    if (category && id) {
-                        window.location.href = `project.html?category=${category}&id=${id}`;
-                    }
-                });
-            });
+            // Cards no longer navigate on click - only Learn More button does
         }
 
         handleMouseMove(e) {

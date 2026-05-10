@@ -62,17 +62,19 @@
                 <!-- Project Display -->
                 <div class="project-display">
                     <!-- Project Image -->
-                    <div class="project-image-container reveal active">
-                        <img id="project-image" src="" alt="" class="project-hero-image" onclick="event.stopPropagation(); if(typeof openFullscreenImage==='function'){openFullscreenImage(this.src);}">
-                        <div class="image-overlay"></div>
-                        <!-- Navigation Arrows -->
-                        <button class="project-nav-arrow prev" id="project-prev">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="project-nav-arrow next" id="project-next">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                        <!-- Pagination -->
+                    <div class="project-image-wrapper">
+                        <div class="project-image-container reveal active">
+                            <img id="project-image" src="" alt="" class="project-hero-image" onclick="event.stopPropagation(); if(typeof openFullscreenImage==='function'){openFullscreenImage(this.src);}">
+                            <div class="image-overlay"></div>
+                            <!-- Navigation Arrows -->
+                            <button class="project-nav-arrow prev" id="project-prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="project-nav-arrow next" id="project-next">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <!-- Pagination below image -->
                         <div class="project-pagination">
                             <span class="page-info" id="current-slide">1</span>
                             <span>/</span>
